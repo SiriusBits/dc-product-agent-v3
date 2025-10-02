@@ -23,7 +23,7 @@ This project uses a monorepo structure with:
 
 ### Prerequisites
 
-- **Node.js** 18+ and **pnpm**
+- **Node.js** 18+ and **pnpm** (package manager)
 - **Python** 3.11+ and **UV**
 - **Docker** and **Docker Compose**
 - **Ollama** (running externally on macOS)

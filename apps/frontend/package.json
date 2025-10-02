@@ -13,22 +13,22 @@
     "type-check": "astro check",
     "test": "vitest --run",
     "test:watch": "vitest",
+    "format": "prettier --write \"src/**/*.{astro,ts,tsx,js,jsx}\"",
     "clean": "rm -rf dist .astro"
   },
   "dependencies": {
-    "@astrojs/react": "^3.0.9",
-    "@astrojs/tailwind": "^5.1.0",
+    "@astrojs/react": "^4.4.0",
     "@repo/shared-types": "workspace:*",
-    "@types/react": "^18.2.45",
-    "@types/react-dom": "^18.2.18",
-    "astro": "^4.0.8",
-    "class-variance-authority": "^0.7.0",
-    "clsx": "^2.0.0",
-    "lucide-react": "^0.303.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "tailwind-merge": "^2.2.0",
-    "tailwindcss": "^3.4.0"
+    "@tailwindcss/vite": "^4.1.14",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "astro": "^5.14.1",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.544.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "tailwindcss": "^4.1.14"
   },
   "devDependencies": {
     "@astrojs/check": "^0.3.4",
@@ -44,6 +44,8 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
     "jsdom": "^23.0.1",
+    "prettier": "^3.6.2",
+    "prettier-plugin-astro": "^0.14.1",
     "typescript": "^5.3.3",
     "vitest": "^1.1.0"
   }
