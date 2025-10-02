@@ -1,0 +1,641 @@
+doc_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+filename: ECA_1000L_Technical_Bulletin.pdf
+filepath: ${paths.processed_pdfs_root}/ECA_1000L_Technical_Bulletin.pdf
+extraction_metadata:
+  confidence_scores: ${extraction.default_confidence_scores_derived}
+  extractor_version: ${extraction.extractor_version}
+  extraction_date: '2025-08-28T16:53:00-04:00'
+derived_info:
+  summary: ECA 1000L (Methyltetrahydrophthalic Anhydride, MTHPA, CAS# 34090-76-1)
+    is a clear light to yellow liquid epoxy curing agent with a pour point of -27°C.
+    It is used to convert epoxy resins into highly crosslinked polymers with excellent
+    physical and electrical properties. The product contains a minimum of 99% MTHPA
+    with strict specifications for impurities (≤0.1% MAN, ≤100 ppm volatiles, and
+    ≤2.0% free acid). ECA 1000L is particularly valuable for demanding applications
+    including filament winding, pultrusion, lamination, electrical encapsulating,
+    insulating, casting, and potting. When formulated with various epoxy resins (83-116
+    phr) and 1 part 1-Methylimidazole, it achieves glass transition temperatures ranging
+    from 137°C to 220°C after a standard cure cycle (1h/120°C + 1h/220°C). The highest
+    Tg (220°C) is achieved with cycloaliphatic epoxy systems. Like other anhydrides,
+    ECA 1000L reacts with water to form diacids, requiring protection from moisture
+    contamination during storage. Safety precautions are necessary as the product
+    is classified as a primary skin and eye irritant, necessitating appropriate PPE
+    including chemical goggles, impenetrable gloves, and adequate ventilation during
+    handling.
+  personas:
+    sales_summary: ECA 1000L (MTHPA) is our premium liquid anhydride curing agent
+      that delivers exceptional performance in demanding composite and electrical
+      applications. This clear light to yellow liquid offers an ideal combination
+      of processing ease with a low pour point (-27°C) and superior cured properties.
+      With a high purity specification (minimum 99% MTHPA), ECA 1000L creates highly
+      crosslinked polymers featuring excellent physical and electrical characteristics.
+      It's particularly valuable for critical applications including filament winding,
+      pultrusion, lamination, and electrical encapsulation systems. Our formulation
+      testing demonstrates ECA 1000L's versatility across multiple epoxy systems,
+      achieving glass transition temperatures up to 220°C with cycloaliphatic epoxies.
+      This makes it perfect for high-temperature applications where thermal stability
+      is essential. The product's consistent quality ensures reliable processing and
+      end-product performance, while its liquid form simplifies handling compared
+      to solid anhydrides. Available from our Pasadena, Texas facility, ECA 1000L
+      represents a trusted solution for formulators seeking to optimize both processing
+      efficiency and final product performance in advanced composite and electrical
+      insulation systems.
+    technical_summary: ECA 1000L (Methyltetrahydrophthalic Anhydride, CAS# 34090-76-1)
+      is a high-purity anhydride epoxy curing agent with minimum 99% MTHPA content.
+      This clear light to yellow liquid has a molecular weight of 166, pour point
+      of -27°C, and strict specifications for impurities (≤0.1% MAN, ≤100 ppm volatiles,
+      ≤2.0% free acid). When formulated with standard BPA liquid epoxy at 84 phr,
+      it produces a mix with 590 cP viscosity, 32 minute gel time at 100°C, and 139°C
+      Tg after standard cure (1h/120°C + 1h/220°C). With cycloaliphatic epoxy at 116
+      phr, it achieves superior thermal performance with 220°C Tg. Optimal formulations
+      include 1 part 1-Methylimidazole as accelerator. ECA 1000L reacts with water
+      to form diacids, requiring moisture protection during storage. The product is
+      classified as a primary skin and eye irritant requiring appropriate PPE including
+      chemical goggles, impenetrable gloves, and adequate ventilation. First aid for
+      exposure includes flushing with water for at least 15 minutes and seeking medical
+      attention for eye contact. Recommended cure schedule is 1 hour at 120°C followed
+      by 1 hour post-cure at 220°C for optimal properties.
+  key_applications:
+  - Filament winding
+  - Pultrusion
+  - Lamination
+  - Electrical encapsulating
+  - Electrical insulating
+  - Casting
+  - Potting
+  - High temperature resistant composites
+  - Cycloaliphatic epoxy systems
+  - Epoxy novolac systems
+knowledge_graph:
+  entities:
+  - id: c172317c-0499-54af-b9ed-5f86a41a6302
+    text: ECA 1000L
+    type: PRODUCT_NAME
+    canonical_name: Epoxy Curing Agent 1000L
+    aliases:
+    - ECA 1000L
+    - MTHPA
+    source_text: EPOXY CURING AGENT 1000L (Methyltetrahydrophthalic Anhydride) (ECA
+      1000L, MTHPA, CAS# 34090-76-1)
+    provenance:
+      page: 1
+      spans:
+      - start: 0
+        end: 19
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+    metadata: {}
+  - id: 0c6565e4-9dc3-51aa-a791-ffa626ae5873
+    text: Methyltetrahydrophthalic Anhydride
+    type: CHEMICAL
+    canonical_name: Methyltetrahydrophthalic Anhydride
+    aliases:
+    - MTHPA
+    source_text: EPOXY CURING AGENT 1000L (Methyltetrahydrophthalic Anhydride) (ECA
+      1000L, MTHPA, CAS# 34090-76-1)
+    provenance:
+      page: 1
+      spans:
+      - start: 21
+        end: 54
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+    metadata:
+      cas_number: 34090-76-1
+  - id: 77d89161-8bb1-5369-bf34-d69228b1cac8
+    text: Dixie Chemical
+    type: ORGANIZATION
+    canonical_name: Dixie Chemical Company
+    aliases:
+    - Dixie Chemical
+    source_text: ECA 1000L is available from Dixie Chemical in Pasadena, Texas.
+    provenance:
+      page: 3
+      spans:
+      - start: 26
+        end: 40
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+    metadata:
+      location: Pasadena, Texas
+  - id: 67ae413b-eb51-52f1-b28c-9c6dcb89b691
+    text: Standard BPA Liquid Epoxy
+    type: CHEMICAL
+    canonical_name: Standard BPA Liquid Epoxy
+    aliases: []
+    source_text: Standard BPA Liquid Epoxy
+    provenance:
+      page: 2
+      spans:
+      - start: 0
+        end: 25
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+    metadata: {}
+  - id: 3c976542-1b65-5aa4-9631-8c41bead419d
+    text: Low Viscosity BPA Liquid
+    type: CHEMICAL
+    canonical_name: Low Viscosity BPA Liquid
+    aliases: []
+    source_text: Low Viscosity BPA Liquid
+    provenance:
+      page: 2
+      spans:
+      - start: 0
+        end: 23
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+    metadata: {}
+  - id: e408b29a-6bde-5c8f-b68d-f6c77f03945d
+    text: Cycloaliphatic Epoxy
+    type: CHEMICAL
+    canonical_name: Cycloaliphatic Epoxy
+    aliases: []
+    source_text: Cycloaliphatic Epoxy
+    provenance:
+      page: 2
+      spans:
+      - start: 0
+        end: 19
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+    metadata: {}
+  - id: 095086d6-2262-5489-a71f-2017633d606c
+    text: Epoxy Phenol Novolac
+    type: CHEMICAL
+    canonical_name: Epoxy Phenol Novolac
+    aliases: []
+    source_text: Epoxy Phenol Novolac
+    provenance:
+      page: 2
+      spans:
+      - start: 0
+        end: 20
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+    metadata: {}
+  - id: 56bfe439-346d-50f3-885e-677ee9995923
+    text: Epoxy BPA Novolac
+    type: CHEMICAL
+    canonical_name: Epoxy BPA Novolac
+    aliases: []
+    source_text: Epoxy BPA Novolac
+    provenance:
+      page: 2
+      spans:
+      - start: 0
+        end: 17
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+    metadata: {}
+  - id: a467ae95-f1c5-5a97-b163-f8ec04a016e1
+    text: 1-Methylimidazole
+    type: CHEMICAL
+    canonical_name: 1-Methylimidazole
+    aliases: []
+    source_text: The samples were formulated with 100 parts of epoxy resin, 83-116
+      parts ECA 1000L, and 1 part 1-Methylimidazole.
+    provenance:
+      page: 2
+      spans:
+      - start: 92
+        end: 108
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+    metadata: {}
+  - id: 2b8878ed-0d6e-5f0d-8c43-55c53e2886bf
+    text: anhydride epoxy curing agent
+    type: APPLICATION
+    canonical_name: anhydride epoxy curing agent
+    aliases: []
+    source_text: For more information on the use of anhydrides like ECA 1000L as epoxy
+      curing agents
+    provenance:
+      page: 1
+      spans:
+      - start: 36
+        end: 46
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+    metadata: {}
+  - id: c2667595-325f-50f0-8960-1dec28c1d8ca
+    text: filament winding
+    type: APPLICATION
+    canonical_name: filament winding
+    aliases: []
+    source_text: ECA 1000L performs well when used in demanding applications, such
+      as filament winding
+    provenance:
+      page: 1
+      spans:
+      - start: 76
+        end: 92
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+    metadata: {}
+  - id: c5344687-ef91-54b5-8bdc-2dca1901c3b8
+    text: pultrusion
+    type: APPLICATION
+    canonical_name: pultrusion
+    aliases: []
+    source_text: such as filament winding, pultrusion, and other forms of lamination
+    provenance:
+      page: 1
+      spans:
+      - start: 24
+        end: 34
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+    metadata: {}
+  - id: d20361ac-dfa1-5af0-9d1f-0ff38cfc8f7e
+    text: electrical encapsulating
+    type: APPLICATION
+    canonical_name: electrical encapsulating
+    aliases: []
+    source_text: as well as electrical encapsulating, insulating, casting, and potting
+    provenance:
+      page: 1
+      spans:
+      - start: 11
+        end: 35
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+    metadata: {}
+  - id: 84c24f11-21bb-56f2-a9b9-2a9719cc4af7
+    text: MAN
+    type: CHEMICAL
+    canonical_name: Maleic Anhydride
+    aliases:
+    - MAN
+    source_text: 'MAN, %: 0.1 max.'
+    provenance:
+      page: 1
+      spans:
+      - start: 0
+        end: 3
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+    metadata: {}
+  - id: 5fee8b6d-9e59-597f-928b-cff0071a7ef5
+    text: diacids
+    type: CHEMICAL_CLASS
+    canonical_name: diacids
+    aliases: []
+    source_text: ECA 1000L will react with water to form diacids.
+    provenance:
+      page: 2
+      spans:
+      - start: 40
+        end: 47
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+    metadata: {}
+  kg_triples:
+  - subject: c172317c-0499-54af-b9ed-5f86a41a6302
+    predicate: is_a
+    object: 2b8878ed-0d6e-5f0d-8c43-55c53e2886bf
+    source_text: For more information on the use of anhydrides like ECA 1000L as epoxy
+      curing agents
+    confidence: 1.0
+    provenance:
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+  - subject: c172317c-0499-54af-b9ed-5f86a41a6302
+    predicate: has_chemical_name
+    object: 0c6565e4-9dc3-51aa-a791-ffa626ae5873
+    source_text: EPOXY CURING AGENT 1000L (Methyltetrahydrophthalic Anhydride) (ECA
+      1000L, MTHPA, CAS# 34090-76-1)
+    confidence: 1.0
+    provenance:
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+  - subject: c172317c-0499-54af-b9ed-5f86a41a6302
+    predicate: has_cas_number
+    object: 34090-76-1
+    source_text: EPOXY CURING AGENT 1000L (Methyltetrahydrophthalic Anhydride) (ECA
+      1000L, MTHPA, CAS# 34090-76-1)
+    confidence: 1.0
+    provenance:
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+  - subject: c172317c-0499-54af-b9ed-5f86a41a6302
+    predicate: is_manufactured_by
+    object: 77d89161-8bb1-5369-bf34-d69228b1cac8
+    source_text: ECA 1000L is available from Dixie Chemical in Pasadena, Texas.
+    confidence: 1.0
+    provenance:
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+  - subject: c172317c-0499-54af-b9ed-5f86a41a6302
+    predicate: has_molecular_weight
+    object: '166'
+    source_text: 'Molecular Weight: 166'
+    confidence: 1.0
+    provenance:
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+  - subject: c172317c-0499-54af-b9ed-5f86a41a6302
+    predicate: has_appearance
+    object: Clear light to yellow liquid
+    source_text: 'Appearance: Clear light to yellow liquid'
+    confidence: 1.0
+    provenance:
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+  - subject: c172317c-0499-54af-b9ed-5f86a41a6302
+    predicate: has_pour_point
+    object: -27°C
+    source_text: 'Pour Point, °C: -27'
+    confidence: 1.0
+    provenance:
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+  - subject: c172317c-0499-54af-b9ed-5f86a41a6302
+    predicate: has_purity
+    object: 99% min.
+    source_text: 'MTHPA, %: 99 min.'
+    confidence: 1.0
+    provenance:
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+  - subject: c172317c-0499-54af-b9ed-5f86a41a6302
+    predicate: has_impurity
+    object: 84c24f11-21bb-56f2-a9b9-2a9719cc4af7
+    source_text: 'MAN, %: 0.1 max.'
+    confidence: 1.0
+    provenance:
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+  - subject: c172317c-0499-54af-b9ed-5f86a41a6302
+    predicate: has_impurity_level
+    object: 'MAN: 0.1% max.'
+    source_text: 'MAN, %: 0.1 max.'
+    confidence: 1.0
+    provenance:
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+  - subject: c172317c-0499-54af-b9ed-5f86a41a6302
+    predicate: has_volatiles
+    object: 100 ppm max.
+    source_text: 'Volatiles, ppm: 100 max.'
+    confidence: 1.0
+    provenance:
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+  - subject: c172317c-0499-54af-b9ed-5f86a41a6302
+    predicate: has_free_acid
+    object: 2.0% max.
+    source_text: 'Free Acid, %: 2.0 max.'
+    confidence: 1.0
+    provenance:
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+  - subject: c172317c-0499-54af-b9ed-5f86a41a6302
+    predicate: has_application
+    object: c2667595-325f-50f0-8960-1dec28c1d8ca
+    source_text: ECA 1000L performs well when used in demanding applications, such
+      as filament winding
+    confidence: 1.0
+    provenance:
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+  - subject: c172317c-0499-54af-b9ed-5f86a41a6302
+    predicate: has_application
+    object: c5344687-ef91-54b5-8bdc-2dca1901c3b8
+    source_text: such as filament winding, pultrusion, and other forms of lamination
+    confidence: 1.0
+    provenance:
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+  - subject: c172317c-0499-54af-b9ed-5f86a41a6302
+    predicate: has_application
+    object: d20361ac-dfa1-5af0-9d1f-0ff38cfc8f7e
+    source_text: as well as electrical encapsulating, insulating, casting, and potting
+    confidence: 1.0
+    provenance:
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+  - subject: c172317c-0499-54af-b9ed-5f86a41a6302
+    predicate: has_application
+    object: insulating
+    source_text: as well as electrical encapsulating, insulating, casting, and potting
+    confidence: 1.0
+    provenance:
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+  - subject: c172317c-0499-54af-b9ed-5f86a41a6302
+    predicate: has_application
+    object: casting
+    source_text: as well as electrical encapsulating, insulating, casting, and potting
+    confidence: 1.0
+    provenance:
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+  - subject: c172317c-0499-54af-b9ed-5f86a41a6302
+    predicate: has_application
+    object: potting
+    source_text: as well as electrical encapsulating, insulating, casting, and potting
+    confidence: 1.0
+    provenance:
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+  - subject: c172317c-0499-54af-b9ed-5f86a41a6302
+    predicate: has_chemical_reaction
+    object: reacts with water to form diacids
+    source_text: ECA 1000L will react with water to form diacids.
+    confidence: 1.0
+    provenance:
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+  - subject: c172317c-0499-54af-b9ed-5f86a41a6302
+    predicate: has_storage_requirement
+    object: protected from moisture contamination
+    source_text: ECA 1000L should be stored in such a way that it is carefully protected
+      from moisture contamination.
+    confidence: 1.0
+    provenance:
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+  - subject: c172317c-0499-54af-b9ed-5f86a41a6302
+    predicate: has_safety_hazard
+    object: primary skin irritant
+    source_text: These anhydrides are primary skin and eye irritants.
+    confidence: 1.0
+    provenance:
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+  - subject: c172317c-0499-54af-b9ed-5f86a41a6302
+    predicate: has_safety_hazard
+    object: primary eye irritant
+    source_text: These anhydrides are primary skin and eye irritants.
+    confidence: 1.0
+    provenance:
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+  - subject: c172317c-0499-54af-b9ed-5f86a41a6302
+    predicate: requires_ppe
+    object: protective chemical goggles
+    source_text: At a minimum, these procedures typically include protective chemical
+      goggles, impenetrable gloves, and measures to avoid breathing chemical vapors.
+    confidence: 1.0
+    provenance:
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+  - subject: c172317c-0499-54af-b9ed-5f86a41a6302
+    predicate: requires_ppe
+    object: impenetrable gloves
+    source_text: At a minimum, these procedures typically include protective chemical
+      goggles, impenetrable gloves, and measures to avoid breathing chemical vapors.
+    confidence: 1.0
+    provenance:
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+  - subject: c172317c-0499-54af-b9ed-5f86a41a6302
+    predicate: requires_ppe
+    object: adequate ventilation
+    source_text: Use only with adequate ventilation.
+    confidence: 1.0
+    provenance:
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+  - subject: c172317c-0499-54af-b9ed-5f86a41a6302
+    predicate: has_first_aid
+    object: flush with water for at least 15 minutes
+    source_text: Generally, these procedures include immediately flushing the affected
+      skin or eyes with copious amounts of water for at least 15 minutes.
+    confidence: 1.0
+    provenance:
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+  - subject: c172317c-0499-54af-b9ed-5f86a41a6302
+    predicate: formulated_with
+    object: 67ae413b-eb51-52f1-b28c-9c6dcb89b691
+    source_text: ECA 1000L was formulated with a variety of epoxy resins.
+    confidence: 1.0
+    provenance:
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+  - subject: c172317c-0499-54af-b9ed-5f86a41a6302
+    predicate: formulated_with
+    object: 3c976542-1b65-5aa4-9631-8c41bead419d
+    source_text: ECA 1000L was formulated with a variety of epoxy resins.
+    confidence: 1.0
+    provenance:
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+  - subject: c172317c-0499-54af-b9ed-5f86a41a6302
+    predicate: formulated_with
+    object: e408b29a-6bde-5c8f-b68d-f6c77f03945d
+    source_text: ECA 1000L was formulated with a variety of epoxy resins.
+    confidence: 1.0
+    provenance:
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+  - subject: c172317c-0499-54af-b9ed-5f86a41a6302
+    predicate: formulated_with
+    object: 095086d6-2262-5489-a71f-2017633d606c
+    source_text: ECA 1000L was formulated with a variety of epoxy resins.
+    confidence: 1.0
+    provenance:
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+  - subject: c172317c-0499-54af-b9ed-5f86a41a6302
+    predicate: formulated_with
+    object: 56bfe439-346d-50f3-885e-677ee9995923
+    source_text: ECA 1000L was formulated with a variety of epoxy resins.
+    confidence: 1.0
+    provenance:
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+  - subject: c172317c-0499-54af-b9ed-5f86a41a6302
+    predicate: formulated_with
+    object: a467ae95-f1c5-5a97-b163-f8ec04a016e1
+    source_text: The samples were formulated with 100 parts of epoxy resin, 83-116
+      parts ECA 1000L, and 1 part 1-Methylimidazole.
+    confidence: 1.0
+    provenance:
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+  - subject: c172317c-0499-54af-b9ed-5f86a41a6302
+    predicate: has_cure_schedule
+    object: 1 hour at 120°C followed by 1 hour at 220°C
+    source_text: Samples were cured for 1 hour at 120°C, followed by a post-cure of
+      1 hour at 220°C
+    confidence: 1.0
+    provenance:
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+  - subject: c172317c-0499-54af-b9ed-5f86a41a6302
+    predicate: achieves_tg_with
+    object: 139°C with Standard BPA Liquid Epoxy
+    source_text: 'Standard BPA Liquid Epoxy: Tg, °C: 139'
+    confidence: 1.0
+    provenance:
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+  - subject: c172317c-0499-54af-b9ed-5f86a41a6302
+    predicate: achieves_tg_with
+    object: 220°C with Cycloaliphatic Epoxy
+    source_text: 'Cycloaliphatic Epoxy: Tg, °C: 220'
+    confidence: 1.0
+    provenance:
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+  - subject: c172317c-0499-54af-b9ed-5f86a41a6302
+    predicate: has_property
+    object: excellent physical properties
+    source_text: It is used in converting epoxy resins to highly crosslinked polymers
+      with excellent physical and electrical properties.
+    confidence: 1.0
+    provenance:
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+  - subject: c172317c-0499-54af-b9ed-5f86a41a6302
+    predicate: has_property
+    object: excellent electrical properties
+    source_text: It is used in converting epoxy resins to highly crosslinked polymers
+      with excellent physical and electrical properties.
+    confidence: 1.0
+    provenance:
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+  - subject: c172317c-0499-54af-b9ed-5f86a41a6302
+    predicate: creates
+    object: highly crosslinked polymers
+    source_text: It is used in converting epoxy resins to highly crosslinked polymers
+      with excellent physical and electrical properties.
+    confidence: 1.0
+    provenance:
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+  - subject: c172317c-0499-54af-b9ed-5f86a41a6302
+    predicate: has_dosage_with
+    object: 84 phr with Standard BPA Liquid Epoxy
+    source_text: 'Standard BPA Liquid Epoxy: ECA 1000L, phr: 84'
+    confidence: 1.0
+    provenance:
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+  - subject: c172317c-0499-54af-b9ed-5f86a41a6302
+    predicate: has_dosage_with
+    object: 116 phr with Cycloaliphatic Epoxy
+    source_text: 'Cycloaliphatic Epoxy: ECA 1000L, phr: 116'
+    confidence: 1.0
+    provenance:
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+  - subject: 67ae413b-eb51-52f1-b28c-9c6dcb89b691
+    predicate: has_formulation_property
+    object: 'viscosity: 590 cP'
+    source_text: 'Standard BPA Liquid Epoxy: Viscosity @ 25 °C, cP: 590'
+    confidence: 1.0
+    provenance:
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+  - subject: 67ae413b-eb51-52f1-b28c-9c6dcb89b691
+    predicate: has_formulation_property
+    object: 'gel time: 32 min'
+    source_text: 'Standard BPA Liquid Epoxy: Gel Time, min: 32'
+    confidence: 1.0
+    provenance:
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+  - subject: 3c976542-1b65-5aa4-9631-8c41bead419d
+    predicate: has_formulation_property
+    object: 'viscosity: 500 cP'
+    source_text: 'Low Viscosity BPA Liquid: Viscosity @ 25 °C, cP: 500'
+    confidence: 1.0
+    provenance:
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+  - subject: 3c976542-1b65-5aa4-9631-8c41bead419d
+    predicate: has_formulation_property
+    object: 'gel time: 34 min'
+    source_text: 'Low Viscosity BPA Liquid: Gel Time, min: 34'
+    confidence: 1.0
+    provenance:
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+  - subject: e408b29a-6bde-5c8f-b68d-f6c77f03945d
+    predicate: has_formulation_property
+    object: 'viscosity: 90 cP'
+    source_text: 'Cycloaliphatic Epoxy: Viscosity @ 25 °C, cP: 90'
+    confidence: 1.0
+    provenance:
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+  - subject: e408b29a-6bde-5c8f-b68d-f6c77f03945d
+    predicate: has_formulation_property
+    object: 'gel time: 41 min'
+    source_text: 'Cycloaliphatic Epoxy: Gel Time, min: 41'
+    confidence: 1.0
+    provenance:
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+  - subject: 095086d6-2262-5489-a71f-2017633d606c
+    predicate: has_formulation_property
+    object: 'viscosity: 770 cP'
+    source_text: 'Epoxy Phenol Novolac: Viscosity @ 25 °C, cP: 770'
+    confidence: 1.0
+    provenance:
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+  - subject: 095086d6-2262-5489-a71f-2017633d606c
+    predicate: has_formulation_property
+    object: 'gel time: 33 min'
+    source_text: 'Epoxy Phenol Novolac: Gel Time, min: 33'
+    confidence: 1.0
+    provenance:
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+  - subject: 56bfe439-346d-50f3-885e-677ee9995923
+    predicate: has_formulation_property
+    object: 'viscosity: 1630 cP'
+    source_text: 'Epoxy BPA Novolac: Viscosity @ 25 °C, cP: 1630'
+    confidence: 1.0
+    provenance:
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4
+  - subject: 56bfe439-346d-50f3-885e-677ee9995923
+    predicate: has_formulation_property
+    object: 'gel time: 27 min'
+    source_text: 'Epoxy BPA Novolac: Gel Time, min: 27'
+    confidence: 1.0
+    provenance:
+      document_id: 5359594f-f966-50c7-b353-3cc6a5be21d4

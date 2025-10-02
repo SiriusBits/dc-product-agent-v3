@@ -1,0 +1,260 @@
+doc_id: d08b5de9-ae15-5d6a-9261-f64eb60c84f6
+filename: CG_Technical_Bulletin.pdf
+source_filepath: ${paths.raw_pdfs_root}/CG_Technical_Bulletin.pdf
+filepath: ${paths.processed_pdfs_root}/CG_Technical_Bulletin.pdf
+document_file_metadata:
+  document_title: Chloroglycerine Technical Bulletin.pdf
+  author:
+  - Negandhi, Nishant
+  copyright_status: Unknown
+  created: 4/16/25, 1:59:42 PM UTC
+  modified: 4/16/25, 1:59:42 PM UTC
+  application: 'Microsoft: Print To PDF'
+  advanced:
+    pdf_producer: 'Microsoft: Print To PDF'
+    pdf_version: '1.7'
+    location: /Users/benjaminbykowski/projects/ai-apps/forks/qwen-dc-product/dc-product-agent/data/raw_pdfs/CG_Technical_Bulletin.pdf
+    file_size: 212.52 KB (217,619 Bytes)
+    page_size: 8.50 x 11.00 in
+    number_of_pages: 2
+    tagged_pdf: 'No'
+    fast_web_view: 'No'
+source_file_hash:
+  sha256: 89958a4d4b1dc02d1c89db59527a2d4e7da98ee4c772d510103c3639df4d5c44
+document_type: Product Technical Bulletin
+manufacturer: ${manufacturer.name}
+contact_info:
+  address: ${manufacturer.contact_info.address}
+  phone: ${manufacturer.contact_info.phone}
+  fax: ${manufacturer.contact_info.fax}
+  email: ${manufacturer.contact_info.email}
+product_info:
+  product_name: 3-CHLORO-1, 2-PROPANEDIOL
+  product_short_name: CG
+  product_family: Chlorinated Alcohols
+  cas_number: 96-24-2
+  chemical_name: 3-CHLORO-1, 2-PROPANEDIOL
+  synonyms:
+  - Chloroglycerine
+registrations: []
+key_benefits: []
+applications_text: Chloroglycerine can be used as a starting material for the preparation
+  of pharmaceutical intermediates. It is also used as a fungicide and has found efficacy
+  as a chemosterilant for rodent control. CG is commonly used to prepare glycidol
+  ethers, esters and amines.
+applications:
+- Pharmaceutical intermediates
+- Fungicide
+- Chemosterilant for rodent control
+- Preparation of glycidol ethers
+- Preparation of glycidol esters
+- Preparation of glycidol amines
+properties_and_specifications:
+- category: Typical
+  name: Appearance
+  unit: null
+  value_string: Clear to light yellow viscous liquid
+  value_numeric: null
+  value_min: null
+  value_max: null
+  test_method: D-104
+  page: 1
+  notes: null
+- category: Typical
+  name: Color, Pt-Co
+  unit: null
+  value_string: 50 Max
+  value_numeric: null
+  value_min: null
+  value_max: 50
+  test_method: D-103
+  page: 1
+  notes: null
+- category: Typical
+  name: "Specific Gravity at 25\xB0C"
+  unit: null
+  value_string: "1.310 \u2013 1.325"
+  value_numeric: null
+  value_min: 1.31
+  value_max: 1.325
+  test_method: D-102
+  page: 1
+  notes: null
+- category: Typical
+  name: Chloroglycerine, %
+  unit: '%'
+  value_string: 98.5 Min
+  value_numeric: null
+  value_min: 98.5
+  value_max: null
+  test_method: D-131C
+  page: 1
+  notes: null
+- category: Typical
+  name: Water, %
+  unit: '%'
+  value_string: 1.0 Max
+  value_numeric: null
+  value_min: null
+  value_max: 1.0
+  test_method: D-101
+  page: 1
+  notes: null
+typical_properties:
+  table_name: Typical Properties
+  page: 1
+  data_type: typical_properties
+  description: Chloroglycerine can be used as a starting material for the preparation
+    of pharmaceutical intermediates. It is also used as a fungicide and has found
+    efficacy as a chemosterilant for rodent control. CG is commonly used to prepare
+    glycidol ethers, esters and amines.
+  row_count: 5
+  data:
+  - name: Appearance
+    unit: null
+    value_string: Clear to light yellow viscous liquid
+    value_min: null
+    value_max: null
+    value_numeric: null
+    test_method: D-104
+  - name: Color, Pt-Co
+    unit: null
+    value_string: 50 Max
+    value_min: null
+    value_max: 50
+    value_numeric: null
+    test_method: D-103
+  - name: "Specific Gravity at 25\xB0C"
+    unit: null
+    value_string: "1.310 \u2013 1.325"
+    value_min: 1.31
+    value_max: 1.325
+    value_numeric: null
+    test_method: D-102
+  - name: Chloroglycerine, %
+    unit: '%'
+    value_string: 98.5 Min
+    value_min: 98.5
+    value_max: null
+    value_numeric: null
+    test_method: D-131C
+  - name: Water, %
+    unit: '%'
+    value_string: 1.0 Max
+    value_min: null
+    value_max: 1.0
+    value_numeric: null
+    test_method: D-101
+  notes: {}
+other_tables:
+- table_name: Typical Properties
+  page: 1
+  data_type: typical_properties
+  description: Chloroglycerine can be used as a starting material for the preparation
+    of pharmaceutical intermediates. It is also used as a fungicide and has found
+    efficacy as a chemosterilant for rodent control. CG is commonly used to prepare
+    glycidol ethers, esters and amines.
+  row_count: 5
+  data:
+  - name: Appearance
+    unit: null
+    value_string: Clear to light yellow viscous liquid
+    value_min: null
+    value_max: null
+    value_numeric: null
+    test_method: D-104
+  - name: Color, Pt-Co
+    unit: null
+    value_string: 50 Max
+    value_min: null
+    value_max: 50
+    value_numeric: null
+    test_method: D-103
+  - name: "Specific Gravity at 25\xB0C"
+    unit: null
+    value_string: "1.310 \u2013 1.325"
+    value_min: 1.31
+    value_max: 1.325
+    value_numeric: null
+    test_method: D-102
+  - name: Chloroglycerine, %
+    unit: '%'
+    value_string: 98.5 Min
+    value_min: 98.5
+    value_max: null
+    value_numeric: null
+    test_method: D-131C
+  - name: Water, %
+    unit: '%'
+    value_string: 1.0 Max
+    value_min: null
+    value_max: 1.0
+    value_numeric: null
+    test_method: D-101
+formulation_data: []
+toxicity_data:
+- metric: toxicity
+  species: human
+  route: oral
+  value: null
+  unit: null
+  test_method: null
+  conditions: null
+  page: 1
+  source_text: Both mono- and dichloroglycerines are harmful when taken internally
+    and when absorbed through the skin. Extreme care should be taken to avoid any
+    exposure to this chemical.
+- metric: toxicity
+  species: human
+  route: dermal
+  value: null
+  unit: null
+  test_method: null
+  conditions: null
+  page: 1
+  source_text: Both mono- and dichloroglycerines are harmful when taken internally
+    and when absorbed through the skin. Extreme care should be taken to avoid any
+    exposure to this chemical.
+sections:
+- name: Applications
+  page: 1
+  text: Chloroglycerine can be used as a starting material for the preparation of
+    pharmaceutical intermediates. It is also used as a fungicide and has found efficacy
+    as a chemosterilant for rodent control. CG is commonly used to prepare glycidol
+    ethers, esters and amines.
+- name: Handling & Storage
+  page: 1
+  text: Chloroglycerine should be stored in a well-ventilated area. Drums should be
+    kept tightly sealed.
+- name: Health Hazards
+  page: 1
+  text: 'Read and understand the relevant Safety Data Sheets (SDS) for all products
+    before use. Both mono- and dichloroglycerines are harmful when taken internally
+    and when absorbed through the skin. Extreme care should be taken to avoid any
+    exposure to this chemical. In case of contact, follow the procedures outlined
+    in the SDS. Generally, these procedures include immediately flushing the affected
+    skin or eyes with copious amounts of water for at least 15 minutes. In case of
+    contact to eyes, skin or by inhalation, get medical attention. Wash contaminated
+    clothing before reuse.
+
+
+    Follow the recommendations in the SDS for personal protective equipment when handling
+    chloroglycerine. Impenetrable gloves, chemically impervious apron over lab coat
+    and full coverage clothing are recommended. Wear chemical goggles and a face shield
+    in combination. If ventilation is insufficient, wear respiratory protection.'
+- name: Availability
+  page: 2
+  text: Chloroglycerine is available from Dixie Chemical in Pasadena, Texas. Contact
+    your Dixie representative for details.
+images: []
+document_footnotes: {}
+extraction_metadata:
+  confidence_scores:
+    product_info: 100
+    properties: 100
+    other_tables: 100
+    sections: 100
+    images: 100
+    overall: 100
+  extractor_version: ${extraction.extractor_version}
+  extraction_date: '2025-08-26T19:35:00-04:00'

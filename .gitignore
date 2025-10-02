@@ -1,0 +1,53 @@
+# Python
+.venv/
+__pycache__/
+
+# build output
+dist/
+# generated types
+.astro/
+.cache/
+.netlify/
+
+# dependencies
+node_modules/
+.pnpm-store
+
+# logs
+npm-debug.log*ve 
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# environment variables
+.env
+.env.backend
+.env.backend.local
+.env.production
+
+# macOS-specific files
+.DS_Store
+
+# Data
+backend/data/chroma/
+backend/data/product_knowledge_graph/
+backend/data/raw_pdfs/
+data/chroma/
+data/product_knowledge_graph/
+data/raw_pdfs/
+data/pdf_metadata/
+
+# build output
+dist/
+
+# generated types
+.astro/
+
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*

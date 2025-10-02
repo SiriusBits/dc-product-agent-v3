@@ -1,0 +1,773 @@
+<!doctype html><html><head><meta charset='utf-8'><title>Common Definitions for Technical Bulletin Schemas</title>
+    <style>
+      body { font-family: -apple-system, Segoe UI, Roboto, Inter, sans-serif; line-height: 1.5; padding: 24px; max-width: 1100px; margin: auto; }
+      header h1 { margin-bottom: 0; }
+      header .id { color: #444; }
+      nav { background: #fafafa; border: 1px solid #eee; padding: 12px 16px; border-radius: 8px; }
+      table { width: 100%; border-collapse: collapse; margin: 12px 0 24px; }
+      th, td { border: 1px solid #e6e6e6; padding: 8px 10px; vertical-align: top; }
+      th { background: #f6f6f6; text-align: left; }
+      code { background: #f0f3f7; padding: 2px 5px; border-radius: 4px; }
+      h3 { margin-top: 32px; }
+      h4 { margin-top: 28px; }
+      .desc { color: #333; }
+      .footer { margin-top: 48px; color: #666; font-size: 13px; }
+      .badge { display:inline-block; background:#eef; color:#225; padding:2px 6px; border-radius:6px; font-size:12px; margin-left:6px; }
+      a { color: #0b66c3; text-decoration: none; }
+      a:hover { text-decoration: underline; }
+    </style>
+    </head><body>
+    <header>
+      <h1>Common Definitions for Technical Bulletin Schemas</h1>
+      <p class='id'><strong>$id:</strong> https://example.com/schemas/common-defs.schema.json</p>
+      <p class='desc'>Shared $defs library for Base and Derived schemas.</p>
+    </header>
+    <nav>
+      <h3>Contents</h3>
+      <ul>
+        <li><a href="#root-props">Root properties</a></li>
+        <li><a href="#root-required">Root required</a></li>
+        <li><a href="#defs">Shared definitions ($defs)</a>
+          <ul><li><a href='#def-ContactInfo'><code>$defs.ContactInfo</code></a></li><li><a href='#def-Registration'><code>$defs.Registration</code></a></li><li><a href='#def-PropertySpecRow'><code>$defs.PropertySpecRow</code></a></li><li><a href='#def-Axis'><code>$defs.Axis</code></a></li><li><a href='#def-GraphPoint'><code>$defs.GraphPoint</code></a></li><li><a href='#def-Image'><code>$defs.Image</code></a></li><li><a href='#def-FormulationRow'><code>$defs.FormulationRow</code></a></li><li><a href='#def-ToxicityRecord'><code>$defs.ToxicityRecord</code></a></li><li><a href='#def-Section'><code>$defs.Section</code></a></li><li><a href='#def-ProvenanceSpan'><code>$defs.ProvenanceSpan</code></a></li><li><a href='#def-Provenance'><code>$defs.Provenance</code></a></li><li><a href='#def-Entity'><code>$defs.Entity</code></a></li><li><a href='#def-TripleSubjectRef'><code>$defs.TripleSubjectRef</code></a></li><li><a href='#def-TripleObjectRef'><code>$defs.TripleObjectRef</code></a></li><li><a href='#def-Triple'><code>$defs.Triple</code></a></li></ul>
+        </li>
+      </ul>
+    </nav>
+    <h3 id='root-props'>Root properties</h3><p><em>No properties</em></p><h3 id='root-required'>Root required</h3><p><em>None</em></p><h3 id='defs'>$defs</h3><h4 id='def-ContactInfo'><code>$defs.ContactInfo</code> – object | null</h4><p class='desc'>Structured manufacturer contact block (address, phone, fax, email).</p><h4 id='def-Registration'><code>$defs.Registration</code> – object</h4><p class='desc'>Regulatory/compliance record with authority, jurisdiction, and optional ID.</p>
+    <table>
+      <thead>
+        <tr><th>Property</th><th>Type</th><th>Required</th><th>Enum</th><th>Default</th><th>Description</th></tr>
+      </thead>
+      <tbody>
+        
+        <tr>
+          <td><code>authority</code></td>
+          <td>string</td>
+          <td>yes</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>jurisdiction</code></td>
+          <td>string | null</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>registration_number</code></td>
+          <td>string | null</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>registration_name</code></td>
+          <td>string | null</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>cas_number</code></td>
+          <td>string | null</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>status</code></td>
+          <td>string | null</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>effective_date</code></td>
+          <td>string | null</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>notes</code></td>
+          <td>string | null</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+      </tbody>
+    </table>
+    <p><strong>additionalProperties:</strong> False</p><h4 id='def-PropertySpecRow'><code>$defs.PropertySpecRow</code> – object</h4><p class='desc'>Flattened property/spec row used for sorting/filtering across tables.</p>
+    <table>
+      <thead>
+        <tr><th>Property</th><th>Type</th><th>Required</th><th>Enum</th><th>Default</th><th>Description</th></tr>
+      </thead>
+      <tbody>
+        
+        <tr>
+          <td><code>category</code></td>
+          <td>enum(Typical, Specification, Regulatory, Other)</td>
+          <td>yes</td>
+          <td>Typical, Specification, Regulatory, Other</td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>name</code></td>
+          <td>string</td>
+          <td>yes</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>unit</code></td>
+          <td>string | null</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>valueString</code></td>
+          <td>string | null</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>valueNumeric</code></td>
+          <td>number | null</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>valueMin</code></td>
+          <td>number | null</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>valueMax</code></td>
+          <td>number | null</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>testMethod</code></td>
+          <td>string | null</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>page</code></td>
+          <td>integer | null</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>notes</code></td>
+          <td>string | null</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+      </tbody>
+    </table>
+    <p><strong>additionalProperties:</strong> False</p><h4 id='def-Axis'><code>$defs.Axis</code> – object</h4><p class='desc'>Axis label and optional unit for graph metadata.</p>
+    <table>
+      <thead>
+        <tr><th>Property</th><th>Type</th><th>Required</th><th>Enum</th><th>Default</th><th>Description</th></tr>
+      </thead>
+      <tbody>
+        
+        <tr>
+          <td><code>label</code></td>
+          <td>string</td>
+          <td>yes</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>unit</code></td>
+          <td>string | null</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+      </tbody>
+    </table>
+    <p><strong>additionalProperties:</strong> False</p><h4 id='def-GraphPoint'><code>$defs.GraphPoint</code> – object</h4><p class='desc'>Single (x, y) point for a graph series.</p>
+    <table>
+      <thead>
+        <tr><th>Property</th><th>Type</th><th>Required</th><th>Enum</th><th>Default</th><th>Description</th></tr>
+      </thead>
+      <tbody>
+        
+        <tr>
+          <td><code>x</code></td>
+          <td>number</td>
+          <td>yes</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>y</code></td>
+          <td>number</td>
+          <td>yes</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+      </tbody>
+    </table>
+    <p><strong>additionalProperties:</strong> False</p><h4 id='def-Image'><code>$defs.Image</code> – object</h4><p class='desc'>Cropped image metadata; when type=graph, x_axis, y_axis, and graph_data are required.</p>
+    <table>
+      <thead>
+        <tr><th>Property</th><th>Type</th><th>Required</th><th>Enum</th><th>Default</th><th>Description</th></tr>
+      </thead>
+      <tbody>
+        
+        <tr>
+          <td><code>filename</code></td>
+          <td>string</td>
+          <td>yes</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>page</code></td>
+          <td>integer</td>
+          <td>yes</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>type</code></td>
+          <td>enum(graph, structure, image)</td>
+          <td>yes</td>
+          <td>graph, structure, image</td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>title</code></td>
+          <td>string | null</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>x_axis</code></td>
+          <td>ref: #/$defs/Axis</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>y_axis</code></td>
+          <td>ref: #/$defs/Axis</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>graph_data</code></td>
+          <td>array | null</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+      </tbody>
+    </table>
+    <p><strong>additionalProperties:</strong> False</p><h4 id='def-FormulationRow'><code>$defs.FormulationRow</code> – object</h4><p class='desc'>Normalized formulation/performance row (phr, viscosity, gel time, Tg, etc.).</p>
+    <table>
+      <thead>
+        <tr><th>Property</th><th>Type</th><th>Required</th><th>Enum</th><th>Default</th><th>Description</th></tr>
+      </thead>
+      <tbody>
+        
+        <tr>
+          <td><code>epoxy_type</code></td>
+          <td>string | null</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>phr</code></td>
+          <td>number | string | null</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>viscosity_at_25c_cp</code></td>
+          <td>number | null</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>gel_time_min</code></td>
+          <td>number | null</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>tg_c</code></td>
+          <td>number | null</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>cure_schedule</code></td>
+          <td>string | null</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>page</code></td>
+          <td>integer | null</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>source_table</code></td>
+          <td>string | null</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>notes</code></td>
+          <td>string | null</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+      </tbody>
+    </table>
+    <p><strong>additionalProperties:</strong> True</p><h4 id='def-ToxicityRecord'><code>$defs.ToxicityRecord</code> – object</h4><p class='desc'>Toxicology datum with metric, value, units, route, and provenance.</p>
+    <table>
+      <thead>
+        <tr><th>Property</th><th>Type</th><th>Required</th><th>Enum</th><th>Default</th><th>Description</th></tr>
+      </thead>
+      <tbody>
+        
+        <tr>
+          <td><code>metric</code></td>
+          <td>string</td>
+          <td>yes</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>species</code></td>
+          <td>string | null</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>route</code></td>
+          <td>string | null</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>value</code></td>
+          <td>number | string | null</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>unit</code></td>
+          <td>string | null</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>test_method</code></td>
+          <td>string | null</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>conditions</code></td>
+          <td>string | null</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>page</code></td>
+          <td>integer | null</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>source_text</code></td>
+          <td>string | null</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+      </tbody>
+    </table>
+    <p><strong>additionalProperties:</strong> False</p><h4 id='def-Section'><code>$defs.Section</code> – object</h4><p class='desc'>Named text block with page and content.</p>
+    <table>
+      <thead>
+        <tr><th>Property</th><th>Type</th><th>Required</th><th>Enum</th><th>Default</th><th>Description</th></tr>
+      </thead>
+      <tbody>
+        
+        <tr>
+          <td><code>section_name</code></td>
+          <td>string</td>
+          <td>yes</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>page</code></td>
+          <td>integer</td>
+          <td>yes</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>text</code></td>
+          <td>string</td>
+          <td>yes</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+      </tbody>
+    </table>
+    <p><strong>additionalProperties:</strong> False</p><h4 id='def-ProvenanceSpan'><code>$defs.ProvenanceSpan</code> – object</h4><p class='desc'>Character offsets into source_text that support an entity/triple.</p>
+    <table>
+      <thead>
+        <tr><th>Property</th><th>Type</th><th>Required</th><th>Enum</th><th>Default</th><th>Description</th></tr>
+      </thead>
+      <tbody>
+        
+        <tr>
+          <td><code>start</code></td>
+          <td>integer</td>
+          <td>yes</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>end</code></td>
+          <td>integer</td>
+          <td>yes</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+      </tbody>
+    </table>
+    <p><strong>additionalProperties:</strong> False</p><h4 id='def-Provenance'><code>$defs.Provenance</code> – object</h4><p class='desc'>Page, spans, and optional bbox anchoring an extracted item to the source.</p>
+    <table>
+      <thead>
+        <tr><th>Property</th><th>Type</th><th>Required</th><th>Enum</th><th>Default</th><th>Description</th></tr>
+      </thead>
+      <tbody>
+        
+        <tr>
+          <td><code>page</code></td>
+          <td>integer</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>page_label</code></td>
+          <td>string | null</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>spans</code></td>
+          <td>array[ref: #/$defs/ProvenanceSpan]</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>bbox</code></td>
+          <td>array[number]</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+      </tbody>
+    </table>
+    <p><strong>additionalProperties:</strong> False</p><h4 id='def-Entity'><code>$defs.Entity</code> – object</h4><p class='desc'>Knowledge graph node with id, text, type, canonical_name, aliases, provenance, metadata.</p>
+    <table>
+      <thead>
+        <tr><th>Property</th><th>Type</th><th>Required</th><th>Enum</th><th>Default</th><th>Description</th></tr>
+      </thead>
+      <tbody>
+        
+        <tr>
+          <td><code>id</code></td>
+          <td>string</td>
+          <td>yes</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>text</code></td>
+          <td>string</td>
+          <td>yes</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>type</code></td>
+          <td>enum(CHEMICAL, PRODUCT_NAME, ORGANIZATION, APPLICATION, PROPERTY, CAS_NUMBER, CHEMICAL_CLASS, CHEMICAL_FUNCTION, TEST_METHOD, UNIT, HAZARD, REGISTRATION, BENEFIT)</td>
+          <td>yes</td>
+          <td>CHEMICAL, PRODUCT_NAME, ORGANIZATION, APPLICATION, PROPERTY, CAS_NUMBER, CHEMICAL_CLASS, CHEMICAL_FUNCTION, TEST_METHOD, UNIT, HAZARD, REGISTRATION, BENEFIT</td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>canonical_name</code></td>
+          <td>string | null</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>aliases</code></td>
+          <td>array[string]</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>source_text</code></td>
+          <td>string</td>
+          <td>yes</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>provenance</code></td>
+          <td>ref: #/$defs/Provenance</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>metadata</code></td>
+          <td>object</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+      </tbody>
+    </table>
+    <p><strong>additionalProperties:</strong> False</p><h4 id='def-TripleSubjectRef'><code>$defs.TripleSubjectRef</code> –  oneOf(object, object, string) </h4><p class='desc'>Reference to a triple subject (by entity_id, canonical_name, or raw string).</p><h4 id='def-TripleObjectRef'><code>$defs.TripleObjectRef</code> –  oneOf(object, object, string, object) </h4><p class='desc'>Reference to a triple object (entity ref, string, or property/value literal).</p><h4 id='def-Triple'><code>$defs.Triple</code> – object</h4><p class='desc'>Subject–predicate–object relation with source_text, optional provenance, and confidence.</p>
+    <table>
+      <thead>
+        <tr><th>Property</th><th>Type</th><th>Required</th><th>Enum</th><th>Default</th><th>Description</th></tr>
+      </thead>
+      <tbody>
+        
+        <tr>
+          <td><code>subject</code></td>
+          <td>ref: #/$defs/TripleSubjectRef</td>
+          <td>yes</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>predicate</code></td>
+          <td>string</td>
+          <td>yes</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>object</code></td>
+          <td>ref: #/$defs/TripleObjectRef</td>
+          <td>yes</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>source_text</code></td>
+          <td>string</td>
+          <td>yes</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>provenance</code></td>
+          <td>ref: #/$defs/Provenance</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+        <tr>
+          <td><code>confidence</code></td>
+          <td>number</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+        
+      </tbody>
+    </table>
+    <p><strong>additionalProperties:</strong> False</p><div class='footer'>Generated 2025-08-26 16:36 UTC</div></body></html>

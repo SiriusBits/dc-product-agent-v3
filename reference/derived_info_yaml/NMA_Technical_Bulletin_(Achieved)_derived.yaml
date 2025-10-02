@@ -1,0 +1,536 @@
+doc_id: 3cb1188c-7b55-5536-b33e-94d3bf237079
+filename: NMA_Technical_Bulletin_(Achieved).pdf
+filepath: ${paths.processed_pdfs_root}/NMA_Technical_Bulletin_(Achieved).pdf
+extraction_metadata:
+  confidence_scores: ${extraction.default_confidence_scores_derived}
+  extractor_version: ${extraction.extractor_version}
+  extraction_date: '2025-08-28T16:53:00-04:00'
+derived_info:
+  summary: NADIC® Methyl Anhydride (NMA) is a highly reactive anhydride curing agent
+    for epoxy resins, characterized by its white crystalline solid form with a molecular
+    weight of 178.2 g/mol and melting point of 92-97°C. It provides exceptional high-temperature
+    resistance, excellent electrical properties, and good chemical resistance in cured
+    systems. NMA is particularly valued in aerospace, military, and electrical applications
+    where performance at elevated temperatures is critical. When used with standard
+    bisphenol A epoxy resins, NMA produces systems with heat deflection temperatures
+    around 145°C, while formulations with epoxy bisphenol A novolac resins can achieve
+    glass transition temperatures up to 221°C. The curing process typically involves
+    a gel stage at 80-100°C followed by post-curing at 150-175°C, with tertiary amines
+    like benzyldimethylamine (BDMA) serving as effective catalysts. NMA-cured systems
+    demonstrate excellent retention of mechanical properties at elevated temperatures,
+    making them ideal for demanding applications in electrical laminates, filament
+    winding, encapsulation, tooling, composites, and powder coatings.
+  personas:
+    sales_summary: NADIC® Methyl Anhydride (NMA) is a premium curing agent that delivers
+      exceptional high-temperature performance and electrical properties for demanding
+      aerospace, military, and electrical applications. With heat deflection temperatures
+      of 145°C for standard epoxy systems and glass transition temperatures up to
+      221°C with specialized resins, NMA provides a competitive edge in high-performance
+      composites and electrical systems. Its excellent retention of mechanical properties
+      at elevated temperatures makes it the preferred choice for applications where
+      reliability under extreme conditions is non-negotiable. NMA-cured systems offer
+      the perfect balance of processability and performance, with straightforward
+      cure cycles and compatibility with common catalysts. This versatile product
+      is available in convenient 50 lb bags and 400 lb drums to accommodate various
+      production scales.
+    technical_summary: 'NADIC® Methyl Anhydride (NMA, CAS# 25134-21-8) is a white
+      crystalline solid with MW 178.2 g/mol, melting point 92-97°C, and flash point
+      113°C. It contains minimum 99.0% anhydride content with maximum 1.0 mg KOH/g
+      acid value. The theoretical loading is 93.8 phr for standard bisphenol A epoxy
+      resins (EEW 190). NMA-cured systems exhibit HDT of 145°C with standard resins
+      and Tg up to 221°C with bisphenol A novolac resins. Mechanical properties include
+      flexural strength of 18,000 psi, flexural modulus of 450,000 psi, and excellent
+      property retention at elevated temperatures (55% flexural strength retention
+      at 150°C). Electrical properties are outstanding with dielectric constants of
+      3.6-4.0, low dissipation factors (0.006-0.025), and high volume resistivity
+      (7.2×10¹⁵ ohm-cm). Optimal cure cycle: 2h at 100°C followed by 4h at 175°C,
+      catalyzed with 0.5-1.0 phr BDMA or imidazoles.'
+  key_applications:
+  - Aerospace and military composites
+  - Electrical laminates
+  - Filament winding
+  - Electrical encapsulation
+  - High-temperature tooling
+  - Advanced composites
+  - Powder coatings
+  knowledge_graph:
+    entities:
+    - id: 550e8400-e29b-41d4-a716-446655440101
+      type: CHEMICAL
+      canonical_name: NADIC Methyl Anhydride
+      aliases:
+      - NMA
+      - Methyl-5-norbornene-2,3-dicarboxylic anhydride
+      source_text: NADIC® methyl anhydride (NMA) is a highly reactive anhydride that
+        is used as a curing agent for epoxy resins in applications requiring high
+        temperature resistance, excellent electrical properties, and good chemical
+        resistance.
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 1
+    - id: 550e8400-e29b-41d4-a716-446655440102
+      type: IDENTIFIER
+      canonical_name: 25134-21-8
+      aliases:
+      - CAS 25134-21-8
+      source_text: CAS# 25134-21-8
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 1
+    - id: 550e8400-e29b-41d4-a716-446655440103
+      type: CHEMICAL_CLASS
+      canonical_name: Anhydride
+      aliases:
+      - Anhydrides
+      - Anhydride curing agent
+      source_text: NADIC® methyl anhydride (NMA) is a highly reactive anhydride that
+        is used as a curing agent for epoxy resins
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 1
+    - id: 550e8400-e29b-41d4-a716-446655440104
+      type: CHEMICAL
+      canonical_name: Epoxy Resin
+      aliases:
+      - Epoxy
+      - Epoxy resins
+      source_text: NADIC® methyl anhydride (NMA) is a highly reactive anhydride that
+        is used as a curing agent for epoxy resins
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 1
+    - id: 550e8400-e29b-41d4-a716-446655440105
+      type: CHEMICAL
+      canonical_name: Bisphenol A Epoxy Resin
+      aliases:
+      - Standard bisphenol A epoxy resin
+      source_text: 'For NMA with an equivalent weight of 178.2 and a standard bisphenol
+        A epoxy resin with an equivalent weight of 190, the theoretical level would
+        be: 178.2 x 100 / 190 = 93.8 phr'
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 3
+    - id: 550e8400-e29b-41d4-a716-446655440106
+      type: CHEMICAL
+      canonical_name: Epoxy Bisphenol A Novolac Resin
+      aliases:
+      - Bisphenol A novolac resin
+      source_text: Momentive has published a formulation for a resin system based
+        on this bisphenol A novolac and NADIC methyl anhydride.
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 6
+    - id: 550e8400-e29b-41d4-a716-446655440107
+      type: CHEMICAL
+      canonical_name: Benzyldimethylamine
+      aliases:
+      - BDMA
+      source_text: Benzyldimethylamine (BDMA) is commonly used at levels of 0.5 to
+        1.0 phr.
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 6
+    - id: 550e8400-e29b-41d4-a716-446655440108
+      type: CHEMICAL
+      canonical_name: 2-Methylimidazole
+      aliases: []
+      source_text: Other effective catalysts include 2-methylimidazole and 2-ethyl-4-methylimidazole.
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 6
+    - id: 550e8400-e29b-41d4-a716-446655440109
+      type: CHEMICAL
+      canonical_name: 2-Ethyl-4-methylimidazole
+      aliases: []
+      source_text: Other effective catalysts include 2-methylimidazole and 2-ethyl-4-methylimidazole.
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 6
+    - id: 550e8400-e29b-41d4-a716-446655440110
+      type: CHEMICAL
+      canonical_name: D.E.R. 332
+      aliases: []
+      source_text: Dow Chemical Company conducted an excellent and extensive formulation
+        study in which a variety of liquid epoxy resins were formulated with NADIC
+        methyl anhydride.
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 4
+    - id: 550e8400-e29b-41d4-a716-446655440111
+      type: CHEMICAL
+      canonical_name: D.E.R. 330
+      aliases: []
+      source_text: Dow Chemical Company conducted an excellent and extensive formulation
+        study in which a variety of liquid epoxy resins were formulated with NADIC
+        methyl anhydride.
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 4
+    - id: 550e8400-e29b-41d4-a716-446655440112
+      type: CHEMICAL
+      canonical_name: D.E.R. 317
+      aliases: []
+      source_text: Dow Chemical Company conducted an excellent and extensive formulation
+        study in which a variety of liquid epoxy resins were formulated with NADIC
+        methyl anhydride.
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 4
+    - id: 550e8400-e29b-41d4-a716-446655440113
+      type: CHEMICAL
+      canonical_name: D.E.R. 383
+      aliases: []
+      source_text: Dow Chemical Company conducted an excellent and extensive formulation
+        study in which a variety of liquid epoxy resins were formulated with NADIC
+        methyl anhydride.
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 4
+    - id: 550e8400-e29b-41d4-a716-446655440114
+      type: CHEMICAL
+      canonical_name: D.E.R. 331
+      aliases: []
+      source_text: Dow Chemical Company conducted an excellent and extensive formulation
+        study in which a variety of liquid epoxy resins were formulated with NADIC
+        methyl anhydride.
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 4
+    - id: 550e8400-e29b-41d4-a716-446655440115
+      type: ORGANIZATION
+      canonical_name: Dow Chemical Company
+      aliases:
+      - Dow
+      source_text: Dow Chemical Company conducted an excellent and extensive formulation
+        study in which a variety of liquid epoxy resins were formulated with NADIC
+        methyl anhydride.
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 4
+    - id: 550e8400-e29b-41d4-a716-446655440116
+      type: ORGANIZATION
+      canonical_name: Momentive Specialty Chemicals
+      aliases:
+      - Momentive
+      source_text: Momentive has published a formulation for a resin system based
+        on this bisphenol A novolac and NADIC methyl anhydride.
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 6
+    - id: 550e8400-e29b-41d4-a716-446655440117
+      type: ORGANIZATION
+      canonical_name: Dixie Chemical
+      aliases: []
+      source_text: For information on ordering, please contact Dixie Chemical at (281)
+        474-3271 or email info@dixiechemical.com.
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 8
+    - id: 550e8400-e29b-41d4-a716-446655440118
+      type: DOCUMENT
+      canonical_name: Dow Liquid Epoxy resins
+      aliases: []
+      source_text: '"Dow Liquid Epoxy resins" Published by Dow Chemical Company, January,
+        1999.'
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 4
+    - id: 550e8400-e29b-41d4-a716-446655440119
+      type: DOCUMENT
+      canonical_name: Starting Formulation 8011
+      aliases: []
+      source_text: '"Starting Formulation 8011," published by Momentive Specialty
+        Chemicals, July, 2007.'
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 6
+    kg_triples:
+    - subject_id: 550e8400-e29b-41d4-a716-446655440101
+      predicate: has_identifier
+      object_id: 550e8400-e29b-41d4-a716-446655440102
+      confidence: 100
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 1
+    - subject_id: 550e8400-e29b-41d4-a716-446655440101
+      predicate: is_a
+      object_id: 550e8400-e29b-41d4-a716-446655440103
+      confidence: 100
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 1
+    - subject_id: 550e8400-e29b-41d4-a716-446655440101
+      predicate: cures
+      object_id: 550e8400-e29b-41d4-a716-446655440104
+      confidence: 100
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 1
+    - subject_id: 550e8400-e29b-41d4-a716-446655440101
+      predicate: has_molecular_weight
+      object: 178.2 g/mol
+      confidence: 100
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 1
+    - subject_id: 550e8400-e29b-41d4-a716-446655440101
+      predicate: has_specific_gravity
+      object: 1.24 g/cc
+      confidence: 100
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 1
+    - subject_id: 550e8400-e29b-41d4-a716-446655440101
+      predicate: has_melting_point
+      object: 92-97 °C
+      confidence: 100
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 1
+    - subject_id: 550e8400-e29b-41d4-a716-446655440101
+      predicate: has_flash_point
+      object: 113 °C
+      confidence: 100
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 1
+    - subject_id: 550e8400-e29b-41d4-a716-446655440101
+      predicate: has_anhydride_content
+      object: 99.0% Min
+      confidence: 100
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 1
+    - subject_id: 550e8400-e29b-41d4-a716-446655440101
+      predicate: has_acid_value
+      object: 1.0 Max mg KOH/g
+      confidence: 100
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 1
+    - subject_id: 550e8400-e29b-41d4-a716-446655440101
+      predicate: has_color
+      object: White to Off-White
+      confidence: 100
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 1
+    - subject_id: 550e8400-e29b-41d4-a716-446655440101
+      predicate: used_in
+      object: Aerospace and military applications
+      confidence: 100
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 1
+    - subject_id: 550e8400-e29b-41d4-a716-446655440101
+      predicate: used_in
+      object: Electrical laminates
+      confidence: 100
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 1
+    - subject_id: 550e8400-e29b-41d4-a716-446655440101
+      predicate: used_in
+      object: Filament winding
+      confidence: 100
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 1
+    - subject_id: 550e8400-e29b-41d4-a716-446655440101
+      predicate: used_in
+      object: Electrical encapsulation
+      confidence: 100
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 1
+    - subject_id: 550e8400-e29b-41d4-a716-446655440101
+      predicate: used_in
+      object: Tooling
+      confidence: 100
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 1
+    - subject_id: 550e8400-e29b-41d4-a716-446655440101
+      predicate: used_in
+      object: Composites
+      confidence: 100
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 1
+    - subject_id: 550e8400-e29b-41d4-a716-446655440101
+      predicate: used_in
+      object: Powder coatings
+      confidence: 100
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 1
+    - subject_id: 550e8400-e29b-41d4-a716-446655440101
+      predicate: has_theoretical_level_with
+      object_id: 550e8400-e29b-41d4-a716-446655440105
+      object_qualifier: 93.8 phr
+      confidence: 100
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 3
+    - subject_id: 550e8400-e29b-41d4-a716-446655440101
+      predicate: catalyzed_by
+      object_id: 550e8400-e29b-41d4-a716-446655440107
+      object_qualifier: 0.5 to 1.0 phr
+      confidence: 100
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 6
+    - subject_id: 550e8400-e29b-41d4-a716-446655440101
+      predicate: catalyzed_by
+      object_id: 550e8400-e29b-41d4-a716-446655440108
+      confidence: 100
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 6
+    - subject_id: 550e8400-e29b-41d4-a716-446655440101
+      predicate: catalyzed_by
+      object_id: 550e8400-e29b-41d4-a716-446655440109
+      confidence: 100
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 6
+    - subject_id: 550e8400-e29b-41d4-a716-446655440101
+      predicate: has_cure_cycle
+      object: 2 hours at 100°C followed by 4 hours at 175°C
+      confidence: 100
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 6
+    - subject_id: 550e8400-e29b-41d4-a716-446655440101
+      predicate: is_corrosive_to
+      object: skin and eyes
+      confidence: 100
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 8
+    - subject_id: 550e8400-e29b-41d4-a716-446655440101
+      predicate: may_cause
+      object: sensitization by skin contact
+      confidence: 100
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 8
+    - subject_id: 550e8400-e29b-41d4-a716-446655440101
+      predicate: is_available_in
+      object: 50 lb bags and 400 lb drums
+      confidence: 100
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 8
+    - subject_id: 550e8400-e29b-41d4-a716-446655440101
+      predicate: manufactured_by
+      object_id: 550e8400-e29b-41d4-a716-446655440117
+      confidence: 100
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 8
+    - subject_id: 550e8400-e29b-41d4-a716-446655440101
+      predicate: with_resin
+      object_id: 550e8400-e29b-41d4-a716-446655440110
+      object_qualifier: achieves heat deflection temperature of 145°C
+      confidence: 100
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 4
+    - subject_id: 550e8400-e29b-41d4-a716-446655440101
+      predicate: with_resin
+      object_id: 550e8400-e29b-41d4-a716-446655440106
+      object_qualifier: achieves glass transition temperature of 221°C
+      confidence: 100
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 6
+    - subject_id: 550e8400-e29b-41d4-a716-446655440115
+      predicate: published
+      object_id: 550e8400-e29b-41d4-a716-446655440118
+      confidence: 100
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 4
+    - subject_id: 550e8400-e29b-41d4-a716-446655440116
+      predicate: published
+      object_id: 550e8400-e29b-41d4-a716-446655440119
+      confidence: 100
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 6
+    - subject_id: 550e8400-e29b-41d4-a716-446655440110
+      predicate: is_a
+      object_id: 550e8400-e29b-41d4-a716-446655440104
+      confidence: 100
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 4
+    - subject_id: 550e8400-e29b-41d4-a716-446655440111
+      predicate: is_a
+      object_id: 550e8400-e29b-41d4-a716-446655440104
+      confidence: 100
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 4
+    - subject_id: 550e8400-e29b-41d4-a716-446655440112
+      predicate: is_a
+      object_id: 550e8400-e29b-41d4-a716-446655440104
+      confidence: 100
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 4
+    - subject_id: 550e8400-e29b-41d4-a716-446655440113
+      predicate: is_a
+      object_id: 550e8400-e29b-41d4-a716-446655440104
+      confidence: 100
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 4
+    - subject_id: 550e8400-e29b-41d4-a716-446655440114
+      predicate: is_a
+      object_id: 550e8400-e29b-41d4-a716-446655440104
+      confidence: 100
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 4
+    - subject_id: 550e8400-e29b-41d4-a716-446655440107
+      predicate: is_a
+      object: tertiary amine catalyst
+      confidence: 100
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 6
+    - subject_id: 550e8400-e29b-41d4-a716-446655440108
+      predicate: is_a
+      object: tertiary amine catalyst
+      confidence: 100
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 6
+    - subject_id: 550e8400-e29b-41d4-a716-446655440109
+      predicate: is_a
+      object: tertiary amine catalyst
+      confidence: 100
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 6
+    - subject_id: 550e8400-e29b-41d4-a716-446655440106
+      predicate: formulated_with
+      object_id: 550e8400-e29b-41d4-a716-446655440101
+      object_qualifier: 80 parts
+      confidence: 100
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 6
+    - subject_id: 550e8400-e29b-41d4-a716-446655440106
+      predicate: formulated_with
+      object_id: 550e8400-e29b-41d4-a716-446655440107
+      object_qualifier: 0.5 parts
+      confidence: 100
+      provenance:
+        doc_id: 550e8400-e29b-41d4-a716-446655440001
+        page: 6
+knowledge_graph:
+  entities: []
+  kg_triples: []

@@ -1,0 +1,828 @@
+{
+  "doc_id": "52ad526e-776d-57e1-8805-53dbcbd99503",
+  "filename": "DCA_467_Technical_Bulletin.pdf",
+  "filepath": "data/pdf_extracts/v1/pdfs/DCA_467_Technical_Bulletin.pdf",
+  "extraction_metadata": {
+    "confidence_scores": {
+      "summary": 100,
+      "personas": 100,
+      "key_applications": 100,
+      "knowledge_graph": 100,
+      "overall": 100
+    },
+    "extractor_version": "dev",
+    "extraction_date": "2025-08-28T16:53:00-04:00"
+  },
+  "derived_info": {
+    "summary": "DCA 467 (Trimethylolpropane tris(2-methyl-1-aziridinepropionate)) is a polyaziridine crosslinker containing three aziridine functional groups with an average molecular weight of ~467 g/mole and a functional equivalent weight of ~157 g/mole. It is used to enhance water, chemical, abrasion, and humidity resistance in coatings when added at 1-3% to acrylic emulsions or waterborne urethane polymers. The product works at ambient temperatures to crosslink polymers with reactive carboxyl functionality, making it ideal for fast air-dry systems. For many applications, 0.6 equivalents of DCA 467 are sufficient to achieve optimal film properties, though some systems may require the full stoichiometric equivalent. Toxicology studies indicate moderate toxicity (LD50 of 3,038 mg/kg), mild skin irritation, and primary eye irritation with corrosive effects. While the pure compound shows low mutagenic activity in Ames tests, formulated products and dried films containing DCA 467 demonstrate no measurable mutagenic activity.",
+    "personas": {
+      "sales_summary": "DCA 467 is a premium polyaziridine crosslinker that delivers significant performance enhancements to waterborne and solvent-based coating systems at room temperature. With just a 1-3% addition rate, it dramatically improves water, chemical, abrasion, and humidity resistance in acrylic emulsions and urethane polymers. This versatile crosslinker is particularly effective with fast air-dry NeoCryl acrylic emulsions, NeoRez waterborne urethanes, and NeoPac urethane acrylic copolymers. The product offers formulators a competitive edge through enhanced coating durability without requiring heat curing, making it ideal for field applications and temperature-sensitive substrates. While the pure compound requires standard safety precautions during handling, the final cured films are non-mutagenic, providing both performance and safety assurance for your customers' applications.",
+      "technical_summary": "DCA 467 is a trifunctional aziridine crosslinker (MW ~467 g/mol, equivalent weight ~157 g/mol) that reacts with carboxyl functionality at ambient temperatures. Typical properties include light yellow liquid appearance, amine-like odor, relative density of 1.08, flash point of 487°F (253°C), and dynamic viscosity of ~200 cPs. Specifications include viscosity at 25°C of 150-350 cPs, <1.0 ppm propyleneimine, minimum 99% solids, and maximum Gardner color of 2. For optimal performance, addition levels of 1-3% are recommended, with 0.6 equivalents typically sufficient for most applications. Toxicology profile shows LD50 of 3,038 mg/kg (oral), primary skin irritation value of 2.65/8, primary eye irritant with corrosive effects, and low mutagenic activity (0.18 revertant/μg) in pure form, though formulated products and dried films show no mutagenic activity. Proper handling requires avoiding skin/eye contact and using appropriate PPE. Store in cool, dry, dark conditions to prevent discoloration, deterioration, or gelation."
+    },
+    "key_applications": [
+      "Crosslinker for acrylic emulsions",
+      "Crosslinker for waterborne urethane polymers",
+      "Crosslinker for urethane acrylic copolymers",
+      "Crosslinker for solvent-based systems with carboxyl functionality",
+      "Fast air-dry coating systems",
+      "Water-resistant coatings",
+      "Chemical-resistant coatings",
+      "Abrasion-resistant coatings",
+      "Humidity-resistant coatings",
+      "Room temperature curing systems"
+    ]
+  },
+  "knowledge_graph": {
+    "entities": [
+      {
+        "id": "8b77c6a1-d9e1-5d5a-bb36-7f19b057b393",
+        "text": "DCA 467",
+        "type": "PRODUCT_NAME",
+        "canonical_name": "DCA 467",
+        "aliases": [
+          "Trimethylolpropane tris(2-methyl-1-aziridinepropionate)"
+        ],
+        "source_text": "DCA 467 (Trimethylolpropane tris(2-methyl-1-aziridinepropionate)) CAS Registry Number 64265-57-2",
+        "provenance": {
+          "page": 1,
+          "spans": [
+            {
+              "start": 0,
+              "end": 7
+            }
+          ],
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "metadata": {
+          "molecular_weight": "467 g/mole",
+          "equivalent_weight": "157 g/mole"
+        }
+      },
+      {
+        "id": "1b8791b5-14fa-57a5-9491-9bb4d7d7e462",
+        "text": "64265-57-2",
+        "type": "CAS_NUMBER",
+        "canonical_name": "64265-57-2",
+        "aliases": [],
+        "source_text": "CAS Registry Number 64265-57-2",
+        "provenance": {
+          "page": 1,
+          "spans": [
+            {
+              "start": 0,
+              "end": 11
+            }
+          ],
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "metadata": {}
+      },
+      {
+        "id": "64e6da6f-7fc4-5325-8d0c-278be334ad17",
+        "text": "Trimethylolpropane tris(2-methyl-1-aziridinepropionate)",
+        "type": "CHEMICAL",
+        "canonical_name": "Trimethylolpropane tris(2-methyl-1-aziridinepropionate)",
+        "aliases": [
+          "DCA 467"
+        ],
+        "source_text": "DCA 467 (Trimethylolpropane tris(2-methyl-1-aziridinepropionate))",
+        "provenance": {
+          "page": 1,
+          "spans": [
+            {
+              "start": 8,
+              "end": 60
+            }
+          ],
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "metadata": {
+          "molecular_weight": "467 g/mole",
+          "equivalent_weight": "157 g/mole"
+        }
+      },
+      {
+        "id": "c411b819-9175-5319-9aea-244116447e26",
+        "text": "polyaziridine crosslinker",
+        "type": "CHEMICAL_CLASS",
+        "canonical_name": "polyaziridine crosslinker",
+        "aliases": [],
+        "source_text": "DCA 467 is a polyaziridine crosslinker.",
+        "provenance": {
+          "page": 2,
+          "spans": [
+            {
+              "start": 11,
+              "end": 35
+            }
+          ],
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "metadata": {}
+      },
+      {
+        "id": "09b86a0f-d7c0-5e43-be14-2fc891ff2f56",
+        "text": "Dixie Chemical",
+        "type": "ORGANIZATION",
+        "canonical_name": "Dixie Chemical",
+        "aliases": [],
+        "source_text": "DCA 467 is available from Dixie Chemical in Pasadena, TX.",
+        "provenance": {
+          "page": 4,
+          "spans": [
+            {
+              "start": 26,
+              "end": 40
+            }
+          ],
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "metadata": {
+          "location": "Pasadena, TX"
+        }
+      },
+      {
+        "id": "2a8afcad-97ff-5766-aee7-dd0ed2fa248d",
+        "text": "NeoCryl",
+        "type": "PRODUCT_NAME",
+        "canonical_name": "NeoCryl",
+        "aliases": [
+          "NeoCryl acrylic emulsions"
+        ],
+        "source_text": "It is ideal for use with fast air-dry NeoCryl acrylic emulsions",
+        "provenance": {
+          "page": 2,
+          "spans": [
+            {
+              "start": 36,
+              "end": 43
+            }
+          ],
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "metadata": {
+          "product_type": "acrylic emulsion"
+        }
+      },
+      {
+        "id": "dfb03ec0-0407-5df4-b82a-b5c90b5f3d69",
+        "text": "NeoRez",
+        "type": "PRODUCT_NAME",
+        "canonical_name": "NeoRez",
+        "aliases": [
+          "NeoRez waterborne urethane"
+        ],
+        "source_text": "NeoCryl acrylic emulsions, NeoRez waterborne urethane",
+        "provenance": {
+          "page": 2,
+          "spans": [
+            {
+              "start": 25,
+              "end": 31
+            }
+          ],
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "metadata": {
+          "product_type": "waterborne urethane"
+        }
+      },
+      {
+        "id": "fd778997-de8a-5657-a5c8-d34656d259f1",
+        "text": "NeoPac",
+        "type": "PRODUCT_NAME",
+        "canonical_name": "NeoPac",
+        "aliases": [
+          "NeoPac urethane acrylic copolymer"
+        ],
+        "source_text": "NeoRez waterborne urethane and NeoPac urethane acrylic copolymer products",
+        "provenance": {
+          "page": 2,
+          "spans": [
+            {
+              "start": 31,
+              "end": 37
+            }
+          ],
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "metadata": {
+          "product_type": "urethane acrylic copolymer"
+        }
+      },
+      {
+        "id": "65bb13cf-bffb-5e16-af78-d7fb5f108df4",
+        "text": "NeoCryl A-601",
+        "type": "PRODUCT_NAME",
+        "canonical_name": "NeoCryl A-601",
+        "aliases": [],
+        "source_text": "Mixtures of NeoCryl A-601 latex with the recommended amount of DCA 467",
+        "provenance": {
+          "page": 3,
+          "spans": [
+            {
+              "start": 13,
+              "end": 26
+            }
+          ],
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "metadata": {
+          "product_type": "latex"
+        }
+      },
+      {
+        "id": "925da508-8c52-5eb4-a415-0c0cfc15d067",
+        "text": "NeoRez R-960",
+        "type": "PRODUCT_NAME",
+        "canonical_name": "NeoRez R-960",
+        "aliases": [],
+        "source_text": "Films of NeoRez R-960 and NeoCryl A-601 containing recommended amounts of DCA 467",
+        "provenance": {
+          "page": 3,
+          "spans": [
+            {
+              "start": 10,
+              "end": 22
+            }
+          ],
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "metadata": {}
+      },
+      {
+        "id": "01c1e6e0-1688-5d5f-b9e2-44ef2d7484ae",
+        "text": "water resistance",
+        "type": "BENEFIT",
+        "canonical_name": "water resistance",
+        "aliases": [],
+        "source_text": "produces a marked improvement in water, chemical, abrasion, and humidity resistance",
+        "provenance": {
+          "page": 2,
+          "spans": [
+            {
+              "start": 33,
+              "end": 48
+            }
+          ],
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "metadata": {}
+      },
+      {
+        "id": "707d04bf-0f56-5d85-be61-d6960fc514de",
+        "text": "chemical resistance",
+        "type": "BENEFIT",
+        "canonical_name": "chemical resistance",
+        "aliases": [],
+        "source_text": "produces a marked improvement in water, chemical, abrasion, and humidity resistance",
+        "provenance": {
+          "page": 2,
+          "spans": [
+            {
+              "start": 50,
+              "end": 68
+            }
+          ],
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "metadata": {}
+      },
+      {
+        "id": "6f356d69-6601-5ee4-bd9f-91d6acd4e353",
+        "text": "abrasion resistance",
+        "type": "BENEFIT",
+        "canonical_name": "abrasion resistance",
+        "aliases": [],
+        "source_text": "produces a marked improvement in water, chemical, abrasion, and humidity resistance",
+        "provenance": {
+          "page": 2,
+          "spans": [
+            {
+              "start": 70,
+              "end": 88
+            }
+          ],
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "metadata": {}
+      },
+      {
+        "id": "b7b3d2ee-293a-5b9e-8d36-1a95b06e8023",
+        "text": "humidity resistance",
+        "type": "BENEFIT",
+        "canonical_name": "humidity resistance",
+        "aliases": [],
+        "source_text": "produces a marked improvement in water, chemical, abrasion, and humidity resistance",
+        "provenance": {
+          "page": 2,
+          "spans": [
+            {
+              "start": 94,
+              "end": 112
+            }
+          ],
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "metadata": {}
+      },
+      {
+        "id": "a5681030-e91d-5d04-b4ca-cbed26166b17",
+        "text": "room temperature curing",
+        "type": "BENEFIT",
+        "canonical_name": "room temperature curing",
+        "aliases": [
+          "ambient temperature curing"
+        ],
+        "source_text": "Crosslinked Properties Obtained at Room Temperature",
+        "provenance": {
+          "page": 2,
+          "spans": [
+            {
+              "start": 0,
+              "end": 48
+            }
+          ],
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "metadata": {}
+      },
+      {
+        "id": "31800c4f-2a8c-5b5a-ad71-ba533f6805f2",
+        "text": "propylenimine",
+        "type": "CHEMICAL",
+        "canonical_name": "propylenimine",
+        "aliases": [],
+        "source_text": "Propyleneimine, ppm: < 1.0",
+        "provenance": {
+          "page": 2,
+          "spans": [
+            {
+              "start": 0,
+              "end": 14
+            }
+          ],
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "metadata": {}
+      }
+    ],
+    "kg_triples": [
+      {
+        "subject": "8b77c6a1-d9e1-5d5a-bb36-7f19b057b393",
+        "predicate": "has_cas_number",
+        "object": "1b8791b5-14fa-57a5-9491-9bb4d7d7e462",
+        "source_text": "DCA 467 (Trimethylolpropane tris(2-methyl-1-aziridinepropionate)) CAS Registry Number 64265-57-2",
+        "provenance": {
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "8b77c6a1-d9e1-5d5a-bb36-7f19b057b393",
+        "predicate": "has_chemical_name",
+        "object": "64e6da6f-7fc4-5325-8d0c-278be334ad17",
+        "source_text": "DCA 467 (Trimethylolpropane tris(2-methyl-1-aziridinepropionate))",
+        "provenance": {
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "8b77c6a1-d9e1-5d5a-bb36-7f19b057b393",
+        "predicate": "is_a",
+        "object": "c411b819-9175-5319-9aea-244116447e26",
+        "source_text": "DCA 467 is a polyaziridine crosslinker.",
+        "provenance": {
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "8b77c6a1-d9e1-5d5a-bb36-7f19b057b393",
+        "predicate": "has_molecular_weight",
+        "object": "~467 g/mole",
+        "source_text": "DCA 467 contains three aziridine functional groups with an average molecular weight of ~467 g/mole",
+        "provenance": {
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "8b77c6a1-d9e1-5d5a-bb36-7f19b057b393",
+        "predicate": "has_equivalent_weight",
+        "object": "~157 g/mole",
+        "source_text": "a functional equivalent weight of ~157 g/mole",
+        "provenance": {
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "8b77c6a1-d9e1-5d5a-bb36-7f19b057b393",
+        "predicate": "has_physical_appearance",
+        "object": "Liquid",
+        "source_text": "Physical Appearance: Liquid",
+        "provenance": {
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "8b77c6a1-d9e1-5d5a-bb36-7f19b057b393",
+        "predicate": "has_color",
+        "object": "Light Yellow",
+        "source_text": "Color: Light Yellow",
+        "provenance": {
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "8b77c6a1-d9e1-5d5a-bb36-7f19b057b393",
+        "predicate": "has_odor",
+        "object": "Amine like",
+        "source_text": "Odor: Amine like",
+        "provenance": {
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "8b77c6a1-d9e1-5d5a-bb36-7f19b057b393",
+        "predicate": "has_relative_density",
+        "object": "1.08",
+        "source_text": "Relative density (water =1): 1.08",
+        "provenance": {
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "8b77c6a1-d9e1-5d5a-bb36-7f19b057b393",
+        "predicate": "has_flash_point",
+        "object": "487°F (253°C)",
+        "source_text": "Flash Point (ASTM D3828): 487°F (253°C)",
+        "provenance": {
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "8b77c6a1-d9e1-5d5a-bb36-7f19b057b393",
+        "predicate": "has_viscosity",
+        "object": "~ 200 cPs",
+        "source_text": "Dynamic Viscosity (R.T.): ~ 200 cPs",
+        "provenance": {
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "8b77c6a1-d9e1-5d5a-bb36-7f19b057b393",
+        "predicate": "has_specification_viscosity",
+        "object": "150 - 350 cPs",
+        "source_text": "Viscosity at 25°C, cPs: 150 - 350",
+        "provenance": {
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "8b77c6a1-d9e1-5d5a-bb36-7f19b057b393",
+        "predicate": "has_specification_propyleneimine",
+        "object": "< 1.0 ppm",
+        "source_text": "Propyleneimine, ppm: < 1.0",
+        "provenance": {
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "8b77c6a1-d9e1-5d5a-bb36-7f19b057b393",
+        "predicate": "has_specification_solids",
+        "object": "99% Min",
+        "source_text": "Solids, %: 99 Min",
+        "provenance": {
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "8b77c6a1-d9e1-5d5a-bb36-7f19b057b393",
+        "predicate": "has_specification_color",
+        "object": "2 Max Gardner",
+        "source_text": "Color, Gardner: 2 Max",
+        "provenance": {
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "8b77c6a1-d9e1-5d5a-bb36-7f19b057b393",
+        "predicate": "has_ld50",
+        "object": "3,038 mg/kg",
+        "source_text": "An acute oral toxicity study with DCA 467 produced an LD50 value of 3,038 mg/kg.",
+        "provenance": {
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "8b77c6a1-d9e1-5d5a-bb36-7f19b057b393",
+        "predicate": "has_skin_irritation_value",
+        "object": "2.65 out of 8",
+        "source_text": "A primary skin irritation value of 2.65 was obtained out of a possible score of 8.",
+        "provenance": {
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "8b77c6a1-d9e1-5d5a-bb36-7f19b057b393",
+        "predicate": "is_eye_irritant",
+        "object": "primary eye irritant with corrosive effects",
+        "source_text": "DCA 467 was found to be a primary eye irritant and corrosive effects were indicated.",
+        "provenance": {
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "8b77c6a1-d9e1-5d5a-bb36-7f19b057b393",
+        "predicate": "has_mutagenicity_value",
+        "object": "0.18 revertant per microgram",
+        "source_text": "A dose-related increased reversion frequency over the spontaneous rate was obtained and a value of 0.18 revertant per microgram was calculated.",
+        "provenance": {
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "8b77c6a1-d9e1-5d5a-bb36-7f19b057b393",
+        "predicate": "is_manufactured_by",
+        "object": "09b86a0f-d7c0-5e43-be14-2fc891ff2f56",
+        "source_text": "DCA 467 is available from Dixie Chemical in Pasadena, TX.",
+        "provenance": {
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "8b77c6a1-d9e1-5d5a-bb36-7f19b057b393",
+        "predicate": "recommended_addition_level",
+        "object": "one to three percent",
+        "source_text": "Addition of one to three percent DCA 467 to acrylic emulsions or waterborne urethane polymers",
+        "provenance": {
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "8b77c6a1-d9e1-5d5a-bb36-7f19b057b393",
+        "predicate": "recommended_equivalents",
+        "object": "0.6 equivalents",
+        "source_text": "For many applications, 0.6 equivalents of DCA 467 are sufficient to achieve the optimum improvement in film properties.",
+        "provenance": {
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "8b77c6a1-d9e1-5d5a-bb36-7f19b057b393",
+        "predicate": "provides",
+        "object": "01c1e6e0-1688-5d5f-b9e2-44ef2d7484ae",
+        "source_text": "produces a marked improvement in water, chemical, abrasion, and humidity resistance",
+        "provenance": {
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "8b77c6a1-d9e1-5d5a-bb36-7f19b057b393",
+        "predicate": "provides",
+        "object": "707d04bf-0f56-5d85-be61-d6960fc514de",
+        "source_text": "produces a marked improvement in water, chemical, abrasion, and humidity resistance",
+        "provenance": {
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "8b77c6a1-d9e1-5d5a-bb36-7f19b057b393",
+        "predicate": "provides",
+        "object": "6f356d69-6601-5ee4-bd9f-91d6acd4e353",
+        "source_text": "produces a marked improvement in water, chemical, abrasion, and humidity resistance",
+        "provenance": {
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "8b77c6a1-d9e1-5d5a-bb36-7f19b057b393",
+        "predicate": "provides",
+        "object": "b7b3d2ee-293a-5b9e-8d36-1a95b06e8023",
+        "source_text": "produces a marked improvement in water, chemical, abrasion, and humidity resistance",
+        "provenance": {
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "8b77c6a1-d9e1-5d5a-bb36-7f19b057b393",
+        "predicate": "provides",
+        "object": "a5681030-e91d-5d04-b4ca-cbed26166b17",
+        "source_text": "Crosslinked Properties Obtained at Room Temperature",
+        "provenance": {
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "8b77c6a1-d9e1-5d5a-bb36-7f19b057b393",
+        "predicate": "is_compatible_with",
+        "object": "2a8afcad-97ff-5766-aee7-dd0ed2fa248d",
+        "source_text": "It is ideal for use with fast air-dry NeoCryl acrylic emulsions",
+        "provenance": {
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "8b77c6a1-d9e1-5d5a-bb36-7f19b057b393",
+        "predicate": "is_compatible_with",
+        "object": "dfb03ec0-0407-5df4-b82a-b5c90b5f3d69",
+        "source_text": "NeoCryl acrylic emulsions, NeoRez waterborne urethane",
+        "provenance": {
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "8b77c6a1-d9e1-5d5a-bb36-7f19b057b393",
+        "predicate": "is_compatible_with",
+        "object": "fd778997-de8a-5657-a5c8-d34656d259f1",
+        "source_text": "NeoRez waterborne urethane and NeoPac urethane acrylic copolymer products",
+        "provenance": {
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "8b77c6a1-d9e1-5d5a-bb36-7f19b057b393",
+        "predicate": "is_tested_with",
+        "object": "65bb13cf-bffb-5e16-af78-d7fb5f108df4",
+        "source_text": "Mixtures of NeoCryl A-601 latex with the recommended amount of DCA 467",
+        "provenance": {
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "8b77c6a1-d9e1-5d5a-bb36-7f19b057b393",
+        "predicate": "is_tested_with",
+        "object": "925da508-8c52-5eb4-a415-0c0cfc15d067",
+        "source_text": "Films of NeoRez R-960 and NeoCryl A-601 containing recommended amounts of DCA 467",
+        "provenance": {
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "8b77c6a1-d9e1-5d5a-bb36-7f19b057b393",
+        "predicate": "storage_recommendation",
+        "object": "cool, dry, dark place",
+        "source_text": "Store in a cool, dry, dark place.",
+        "provenance": {
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "8b77c6a1-d9e1-5d5a-bb36-7f19b057b393",
+        "predicate": "has_functional_groups",
+        "object": "three aziridine functional groups",
+        "source_text": "DCA 467 contains three aziridine functional groups",
+        "provenance": {
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "8b77c6a1-d9e1-5d5a-bb36-7f19b057b393",
+        "predicate": "crosslinks_with",
+        "object": "polymers with reactive carboxyl functionality",
+        "source_text": "It can be used to crosslink polymers with reactive carboxyl functionality at ambient temperatures.",
+        "provenance": {
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "8b77c6a1-d9e1-5d5a-bb36-7f19b057b393",
+        "predicate": "requires_ppe",
+        "object": "eye protection",
+        "source_text": "Eye protection, gloves and suitable clothing must be worn to avoid contact with skin and eyes.",
+        "provenance": {
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "8b77c6a1-d9e1-5d5a-bb36-7f19b057b393",
+        "predicate": "requires_ppe",
+        "object": "gloves",
+        "source_text": "Eye protection, gloves and suitable clothing must be worn to avoid contact with skin and eyes.",
+        "provenance": {
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "8b77c6a1-d9e1-5d5a-bb36-7f19b057b393",
+        "predicate": "requires_ppe",
+        "object": "suitable clothing",
+        "source_text": "Eye protection, gloves and suitable clothing must be worn to avoid contact with skin and eyes.",
+        "provenance": {
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "8b77c6a1-d9e1-5d5a-bb36-7f19b057b393",
+        "predicate": "requires_ppe",
+        "object": "respirator for spray applications",
+        "source_text": "In addition, a suitable respirator must be worn for spray applications.",
+        "provenance": {
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": {
+          "text": "Dried films with DCA 467"
+        },
+        "predicate": "are_considered",
+        "object": "non-mutagenic",
+        "source_text": "It can, therefore, be concluded that dried films incorporating DCA 467 as a crosslinker can be considered non-mutagenic by the test conditions described by Ames.",
+        "provenance": {
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "8b77c6a1-d9e1-5d5a-bb36-7f19b057b393",
+        "predicate": "has_toxicity_comparison",
+        "object": "similar to common solvents such as methyl ethyl ketone and toluene",
+        "source_text": "This places it in a category of toxic materials with a value which is similar to common solvents such as methyl ethyl ketone and toluene.",
+        "provenance": {
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "8b77c6a1-d9e1-5d5a-bb36-7f19b057b393",
+        "predicate": "has_safety_hazard",
+        "object": "skin irritant",
+        "source_text": "A primary skin irritation value of 2.65 was obtained out of a possible score of 8.",
+        "provenance": {
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "8b77c6a1-d9e1-5d5a-bb36-7f19b057b393",
+        "predicate": "has_safety_hazard",
+        "object": "eye irritant",
+        "source_text": "DCA 467 was found to be a primary eye irritant and corrosive effects were indicated.",
+        "provenance": {
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "8b77c6a1-d9e1-5d5a-bb36-7f19b057b393",
+        "predicate": "has_safety_hazard",
+        "object": "mild mutagenic activity",
+        "source_text": "Although positive, the level of response is measurable low.",
+        "provenance": {
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": {
+          "text": "Mixtures with DCA 467"
+        },
+        "predicate": "has_mutagenic_activity",
+        "object": "no genetic response",
+        "source_text": "None of the mixtures showed any genetic response in the Ames Test.",
+        "provenance": {
+          "document_id": "52ad526e-776d-57e1-8805-53dbcbd99503"
+        },
+        "confidence": 1.0
+      }
+    ]
+  },
+  "document_type": "Product Technical Bulletin"
+}

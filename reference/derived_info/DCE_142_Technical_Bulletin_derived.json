@@ -1,0 +1,649 @@
+{
+  "doc_id": "7433fd79-c6f5-52bd-bf0c-b6f5a4d48ac6",
+  "filename": "DCE_142_Technical_Bulletin.pdf",
+  "filepath": "data/pdf_extracts/v1/pdfs/DCE_142_Technical_Bulletin.pdf",
+  "extraction_metadata": {
+    "confidence_scores": {
+      "summary": 100,
+      "personas": 100,
+      "key_applications": 100,
+      "knowledge_graph": 100,
+      "overall": 100
+    },
+    "extractor_version": "dev",
+    "extraction_date": "2025-08-28T16:53:00-04:00"
+  },
+  "derived_info": {
+    "summary": "DCE 142 (Diglycidyl 1,2-cyclohexanedicarboxylate, CAS# 5493-45-8) is a low viscosity cycloaliphatic diepoxy manufactured by Dixie Chemical. This clear to light yellow liquid has an epoxy equivalent weight of 160-181 g/mol, viscosity of 500-1,300 cPs at 25°C, and specific gravity of 1.20-1.25. When cured with carboxylic anhydrides, DCE 142 produces resins with excellent mechanical properties, high glass transition temperature (Tg), superior weather and chemical resistance, and outstanding electrical insulation characteristics. Its non-yellowing properties make it particularly valuable for outdoor applications. The product is ideal for coatings, electrical insulation components designed for medium/high voltage applications, and high-performance/temperature composites. DCE 142 has a flash point above 336°F (169°C) and contains minimal residual epichlorohydrin (0-50 ppm). Safety considerations include skin and eye irritation potential, requiring appropriate personal protective equipment including chemical goggles and impenetrable gloves during handling. The material must be stored in dry, cool, well-ventilated areas away from strong acids/bases, oxidizing agents, and ignition sources.",
+    "personas": {
+      "sales_summary": "DCE 142 is our premium cycloaliphatic diepoxy that delivers exceptional performance in demanding electrical and outdoor applications. This low viscosity (500-1,300 cPs) liquid epoxy offers formulators excellent processability while achieving superior cured properties when combined with carboxylic anhydrides. DCE 142 stands out for its ability to create systems with outstanding electrical resistance, making it ideal for medium to high voltage insulation components. Its exceptional weather and chemical resistance, combined with non-yellowing characteristics, make it perfect for outdoor applications where aesthetic stability and long-term performance are critical. The product's high glass transition temperature ensures excellent thermal performance in high-temperature composite applications. With tight manufacturing controls ensuring low residual epichlorohydrin levels (≤50 ppm) and consistent color (Gardner 0-3), DCE 142 provides reliable batch-to-batch performance. This versatile diepoxy is the preferred choice for formulators developing high-performance coatings, electrical insulation systems, and advanced composites where superior electrical properties, weatherability, and thermal performance are essential.",
+      "technical_summary": "DCE 142 (Diglycidyl 1,2-cyclohexanedicarboxylate, CAS# 5493-45-8) is a cycloaliphatic diepoxy with an epoxy equivalent weight of 160-181 g/mol. This clear to light yellow liquid has a viscosity range of 500-1,300 cPs at 25°C, specific gravity of 1.20-1.25, and refractive index of 1.480-1.491. The product is manufactured with strict quality controls, maintaining residual epichlorohydrin below 50 ppm and Gardner color between 0-3. With a flash point above 336°F (169°C), DCE 142 offers good thermal stability during processing. When formulated with carboxylic anhydrides, it produces systems with high glass transition temperature (Tg), excellent mechanical properties, and superior electrical resistance. The cycloaliphatic structure contributes to exceptional weather/chemical resistance and non-yellowing characteristics, making it suitable for outdoor applications. DCE 142 is classified as a skin and eye irritant, requiring appropriate PPE including chemical goggles, impenetrable gloves, and adequate ventilation during handling. The material is incompatible with strong acids/bases and oxidizing agents, necessitating storage in dry, cool, well-ventilated areas away from ignition sources. Recommended applications include electrical insulation for medium/high voltage components, outdoor coatings, and high-temperature composites."
+    },
+    "key_applications": [
+      "Electrical insulation components for medium/high voltage",
+      "Outdoor coatings with non-yellowing requirements",
+      "High performance/temperature composites",
+      "Weather-resistant coatings",
+      "Chemical-resistant coatings",
+      "Electrical potting compounds",
+      "Electrical encapsulation",
+      "Outdoor electrical components",
+      "High Tg composite systems",
+      "Cycloaliphatic epoxy formulations"
+    ]
+  },
+  "knowledge_graph": {
+    "entities": [
+      {
+        "id": "31be6ed1-a1e8-5e64-abd2-3cd4bc8cd85b",
+        "text": "DCE 142",
+        "type": "PRODUCT_NAME",
+        "canonical_name": "DCE 142",
+        "aliases": [
+          "DCE 142"
+        ],
+        "source_text": "DCE 142 (Diglycidyl 1,2-cyclohexanedicarboxylate) CAS Registry Number 5493-45-8",
+        "provenance": {
+          "page": 1,
+          "spans": [
+            {
+              "start": 0,
+              "end": 7
+            }
+          ],
+          "document_id": "7433fd79-c6f5-52bd-bf0c-b6f5a4d48ac6"
+        },
+        "metadata": {}
+      },
+      {
+        "id": "de2474c2-9268-54bf-a9cf-319cd8330759",
+        "text": "Diglycidyl 1,2-cyclohexanedicarboxylate",
+        "type": "CHEMICAL",
+        "canonical_name": "Diglycidyl 1,2-cyclohexanedicarboxylate",
+        "aliases": [],
+        "source_text": "DCE 142 (Diglycidyl 1,2-cyclohexanedicarboxylate) CAS Registry Number 5493-45-8",
+        "provenance": {
+          "page": 1,
+          "spans": [
+            {
+              "start": 9,
+              "end": 47
+            }
+          ],
+          "document_id": "7433fd79-c6f5-52bd-bf0c-b6f5a4d48ac6"
+        },
+        "metadata": {
+          "cas_number": "5493-45-8"
+        }
+      },
+      {
+        "id": "f9797ff9-ea58-536f-9135-9b344974cf4f",
+        "text": "Dixie Chemical",
+        "type": "ORGANIZATION",
+        "canonical_name": "Dixie Chemical Company",
+        "aliases": [
+          "Dixie Chemical"
+        ],
+        "source_text": "DCE 142 is available from Dixie Chemical in Pasadena, TX.",
+        "provenance": {
+          "page": 2,
+          "spans": [
+            {
+              "start": 26,
+              "end": 40
+            }
+          ],
+          "document_id": "7433fd79-c6f5-52bd-bf0c-b6f5a4d48ac6"
+        },
+        "metadata": {
+          "location": "Pasadena, Texas"
+        }
+      },
+      {
+        "id": "f6c5f7e4-dc50-5639-b98b-fcba04e189cd",
+        "text": "cycloaliphatic diepoxy",
+        "type": "CHEMICAL_CLASS",
+        "canonical_name": "cycloaliphatic diepoxy",
+        "aliases": [],
+        "source_text": "Diglycidyl 1,2-cyclohexanedicarboxylate or DCE 142 is a low viscosity cycloaliphatic diepoxy.",
+        "provenance": {
+          "page": 1,
+          "spans": [
+            {
+              "start": 76,
+              "end": 97
+            }
+          ],
+          "document_id": "7433fd79-c6f5-52bd-bf0c-b6f5a4d48ac6"
+        },
+        "metadata": {}
+      },
+      {
+        "id": "0704f2b8-8427-59ff-b349-4f6ffcc6a092",
+        "text": "carboxylic anhydrides",
+        "type": "CHEMICAL_CLASS",
+        "canonical_name": "carboxylic anhydrides",
+        "aliases": [],
+        "source_text": "The cured resins of DCE 142 with carboxylic anhydrides will have excellent mechanical properties",
+        "provenance": {
+          "page": 1,
+          "spans": [
+            {
+              "start": 33,
+              "end": 54
+            }
+          ],
+          "document_id": "7433fd79-c6f5-52bd-bf0c-b6f5a4d48ac6"
+        },
+        "metadata": {}
+      },
+      {
+        "id": "a9266d8c-4c38-57fe-af84-91def076cdcd",
+        "text": "electrical insulation components",
+        "type": "APPLICATION",
+        "canonical_name": "electrical insulation components",
+        "aliases": [],
+        "source_text": "DCE 142 is ideal for applications such as coatings, electrical insulation components designed for medium/high voltage",
+        "provenance": {
+          "page": 1,
+          "spans": [
+            {
+              "start": 48,
+              "end": 79
+            }
+          ],
+          "document_id": "7433fd79-c6f5-52bd-bf0c-b6f5a4d48ac6"
+        },
+        "metadata": {}
+      },
+      {
+        "id": "0e28c3d6-c831-5964-9365-760f4fc0c4f4",
+        "text": "coatings",
+        "type": "APPLICATION",
+        "canonical_name": "coatings",
+        "aliases": [],
+        "source_text": "DCE 142 is ideal for applications such as coatings",
+        "provenance": {
+          "page": 1,
+          "spans": [
+            {
+              "start": 39,
+              "end": 47
+            }
+          ],
+          "document_id": "7433fd79-c6f5-52bd-bf0c-b6f5a4d48ac6"
+        },
+        "metadata": {}
+      },
+      {
+        "id": "4d75c0f1-72a7-5be4-82f7-0ad7d5923f94",
+        "text": "outdoor applications",
+        "type": "APPLICATION",
+        "canonical_name": "outdoor applications",
+        "aliases": [],
+        "source_text": "outdoor applications, and high performance/temperature composites",
+        "provenance": {
+          "page": 1,
+          "spans": [
+            {
+              "start": 0,
+              "end": 20
+            }
+          ],
+          "document_id": "7433fd79-c6f5-52bd-bf0c-b6f5a4d48ac6"
+        },
+        "metadata": {}
+      },
+      {
+        "id": "2aa57344-dc71-55ec-a70e-b5e245ebe54b",
+        "text": "high performance/temperature composites",
+        "type": "APPLICATION",
+        "canonical_name": "high performance/temperature composites",
+        "aliases": [],
+        "source_text": "outdoor applications, and high performance/temperature composites",
+        "provenance": {
+          "page": 1,
+          "spans": [
+            {
+              "start": 26,
+              "end": 65
+            }
+          ],
+          "document_id": "7433fd79-c6f5-52bd-bf0c-b6f5a4d48ac6"
+        },
+        "metadata": {}
+      },
+      {
+        "id": "c934e05a-6aa5-5c06-a501-9540d5a92249",
+        "text": "epichlorohydrin",
+        "type": "CHEMICAL",
+        "canonical_name": "epichlorohydrin",
+        "aliases": [
+          "ECH"
+        ],
+        "source_text": "Residual ECH, ppm: 0 - 50",
+        "provenance": {
+          "page": 1,
+          "spans": [
+            {
+              "start": 9,
+              "end": 12
+            }
+          ],
+          "document_id": "7433fd79-c6f5-52bd-bf0c-b6f5a4d48ac6"
+        },
+        "metadata": {}
+      },
+      {
+        "id": "56cb8999-6077-540f-a07d-2a0acf0a39a7",
+        "text": "strong acids",
+        "type": "CHEMICAL_CLASS",
+        "canonical_name": "strong acids",
+        "aliases": [],
+        "source_text": "This material is not compatible with strong acids/bases or strong oxidizing agents.",
+        "provenance": {
+          "page": 2,
+          "spans": [
+            {
+              "start": 36,
+              "end": 48
+            }
+          ],
+          "document_id": "7433fd79-c6f5-52bd-bf0c-b6f5a4d48ac6"
+        },
+        "metadata": {}
+      },
+      {
+        "id": "ce6d85de-9465-521c-b92a-4765d6ad3c63",
+        "text": "strong bases",
+        "type": "CHEMICAL_CLASS",
+        "canonical_name": "strong bases",
+        "aliases": [],
+        "source_text": "This material is not compatible with strong acids/bases or strong oxidizing agents.",
+        "provenance": {
+          "page": 2,
+          "spans": [
+            {
+              "start": 48,
+              "end": 54
+            }
+          ],
+          "document_id": "7433fd79-c6f5-52bd-bf0c-b6f5a4d48ac6"
+        },
+        "metadata": {}
+      },
+      {
+        "id": "51cd83ca-7cfd-5007-bdfa-bc2b1b2fc159",
+        "text": "strong oxidizing agents",
+        "type": "CHEMICAL_CLASS",
+        "canonical_name": "strong oxidizing agents",
+        "aliases": [],
+        "source_text": "This material is not compatible with strong acids/bases or strong oxidizing agents.",
+        "provenance": {
+          "page": 2,
+          "spans": [
+            {
+              "start": 58,
+              "end": 81
+            }
+          ],
+          "document_id": "7433fd79-c6f5-52bd-bf0c-b6f5a4d48ac6"
+        },
+        "metadata": {}
+      }
+    ],
+    "kg_triples": [
+      {
+        "subject": "31be6ed1-a1e8-5e64-abd2-3cd4bc8cd85b",
+        "predicate": "is_a",
+        "object": "f6c5f7e4-dc50-5639-b98b-fcba04e189cd",
+        "source_text": "Diglycidyl 1,2-cyclohexanedicarboxylate or DCE 142 is a low viscosity cycloaliphatic diepoxy.",
+        "provenance": {
+          "document_id": "7433fd79-c6f5-52bd-bf0c-b6f5a4d48ac6"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "31be6ed1-a1e8-5e64-abd2-3cd4bc8cd85b",
+        "predicate": "has_chemical_name",
+        "object": "de2474c2-9268-54bf-a9cf-319cd8330759",
+        "source_text": "DCE 142 (Diglycidyl 1,2-cyclohexanedicarboxylate) CAS Registry Number 5493-45-8",
+        "provenance": {
+          "document_id": "7433fd79-c6f5-52bd-bf0c-b6f5a4d48ac6"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "31be6ed1-a1e8-5e64-abd2-3cd4bc8cd85b",
+        "predicate": "has_cas_number",
+        "object": "5493-45-8",
+        "source_text": "DCE 142 (Diglycidyl 1,2-cyclohexanedicarboxylate) CAS Registry Number 5493-45-8",
+        "provenance": {
+          "document_id": "7433fd79-c6f5-52bd-bf0c-b6f5a4d48ac6"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "31be6ed1-a1e8-5e64-abd2-3cd4bc8cd85b",
+        "predicate": "is_manufactured_by",
+        "object": "f9797ff9-ea58-536f-9135-9b344974cf4f",
+        "source_text": "DCE 142 is available from Dixie Chemical in Pasadena, TX.",
+        "provenance": {
+          "document_id": "7433fd79-c6f5-52bd-bf0c-b6f5a4d48ac6"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "31be6ed1-a1e8-5e64-abd2-3cd4bc8cd85b",
+        "predicate": "has_appearance",
+        "object": "Clear to Light Yellow Liquid",
+        "source_text": "Appearance: Clear to Light Yellow Liquid",
+        "provenance": {
+          "document_id": "7433fd79-c6f5-52bd-bf0c-b6f5a4d48ac6"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "31be6ed1-a1e8-5e64-abd2-3cd4bc8cd85b",
+        "predicate": "has_viscosity",
+        "object": "500 - 1,300 cPs at 25°C",
+        "source_text": "Viscosity at 25°C, cPs: 500 - 1,300",
+        "provenance": {
+          "document_id": "7433fd79-c6f5-52bd-bf0c-b6f5a4d48ac6"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "31be6ed1-a1e8-5e64-abd2-3cd4bc8cd85b",
+        "predicate": "has_epoxy_equivalent_weight",
+        "object": "160 - 181 g/mol",
+        "source_text": "Epoxy Equivalent Weight, g/mol: 160 - 181",
+        "provenance": {
+          "document_id": "7433fd79-c6f5-52bd-bf0c-b6f5a4d48ac6"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "31be6ed1-a1e8-5e64-abd2-3cd4bc8cd85b",
+        "predicate": "has_specific_gravity",
+        "object": "1.20 - 1.25 at 25°C",
+        "source_text": "Specific Gravity, 25°C: 1.20 - 1.25",
+        "provenance": {
+          "document_id": "7433fd79-c6f5-52bd-bf0c-b6f5a4d48ac6"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "31be6ed1-a1e8-5e64-abd2-3cd4bc8cd85b",
+        "predicate": "has_residual",
+        "object": "c934e05a-6aa5-5c06-a501-9540d5a92249",
+        "source_text": "Residual ECH, ppm: 0 - 50",
+        "provenance": {
+          "document_id": "7433fd79-c6f5-52bd-bf0c-b6f5a4d48ac6"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "31be6ed1-a1e8-5e64-abd2-3cd4bc8cd85b",
+        "predicate": "has_residual_level",
+        "object": "0 - 50 ppm ECH",
+        "source_text": "Residual ECH, ppm: 0 - 50",
+        "provenance": {
+          "document_id": "7433fd79-c6f5-52bd-bf0c-b6f5a4d48ac6"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "31be6ed1-a1e8-5e64-abd2-3cd4bc8cd85b",
+        "predicate": "has_color",
+        "object": "Gardner 0 - 3",
+        "source_text": "Color, Gardner: 0 - 3",
+        "provenance": {
+          "document_id": "7433fd79-c6f5-52bd-bf0c-b6f5a4d48ac6"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "31be6ed1-a1e8-5e64-abd2-3cd4bc8cd85b",
+        "predicate": "has_flash_point",
+        "object": "> 336°F (169°C)",
+        "source_text": "Flash Point: > 336°F (169°C)",
+        "provenance": {
+          "document_id": "7433fd79-c6f5-52bd-bf0c-b6f5a4d48ac6"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "31be6ed1-a1e8-5e64-abd2-3cd4bc8cd85b",
+        "predicate": "has_refractive_index",
+        "object": "1.480 - 1.491 at 25°C",
+        "source_text": "Refractive Index, 25°C: 1.480 - 1.491",
+        "provenance": {
+          "document_id": "7433fd79-c6f5-52bd-bf0c-b6f5a4d48ac6"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "31be6ed1-a1e8-5e64-abd2-3cd4bc8cd85b",
+        "predicate": "has_application",
+        "object": "a9266d8c-4c38-57fe-af84-91def076cdcd",
+        "source_text": "DCE 142 is ideal for applications such as coatings, electrical insulation components designed for medium/high voltage",
+        "provenance": {
+          "document_id": "7433fd79-c6f5-52bd-bf0c-b6f5a4d48ac6"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "31be6ed1-a1e8-5e64-abd2-3cd4bc8cd85b",
+        "predicate": "has_application",
+        "object": "0e28c3d6-c831-5964-9365-760f4fc0c4f4",
+        "source_text": "DCE 142 is ideal for applications such as coatings",
+        "provenance": {
+          "document_id": "7433fd79-c6f5-52bd-bf0c-b6f5a4d48ac6"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "31be6ed1-a1e8-5e64-abd2-3cd4bc8cd85b",
+        "predicate": "has_application",
+        "object": "4d75c0f1-72a7-5be4-82f7-0ad7d5923f94",
+        "source_text": "outdoor applications, and high performance/temperature composites",
+        "provenance": {
+          "document_id": "7433fd79-c6f5-52bd-bf0c-b6f5a4d48ac6"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "31be6ed1-a1e8-5e64-abd2-3cd4bc8cd85b",
+        "predicate": "has_application",
+        "object": "2aa57344-dc71-55ec-a70e-b5e245ebe54b",
+        "source_text": "outdoor applications, and high performance/temperature composites",
+        "provenance": {
+          "document_id": "7433fd79-c6f5-52bd-bf0c-b6f5a4d48ac6"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "31be6ed1-a1e8-5e64-abd2-3cd4bc8cd85b",
+        "predicate": "is_cured_with",
+        "object": "0704f2b8-8427-59ff-b349-4f6ffcc6a092",
+        "source_text": "The cured resins of DCE 142 with carboxylic anhydrides will have excellent mechanical properties",
+        "provenance": {
+          "document_id": "7433fd79-c6f5-52bd-bf0c-b6f5a4d48ac6"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "31be6ed1-a1e8-5e64-abd2-3cd4bc8cd85b",
+        "predicate": "has_property_when_cured",
+        "object": "excellent mechanical properties",
+        "source_text": "The cured resins of DCE 142 with carboxylic anhydrides will have excellent mechanical properties",
+        "provenance": {
+          "document_id": "7433fd79-c6f5-52bd-bf0c-b6f5a4d48ac6"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "31be6ed1-a1e8-5e64-abd2-3cd4bc8cd85b",
+        "predicate": "has_property_when_cured",
+        "object": "high Tg",
+        "source_text": "The cured resins of DCE 142 with carboxylic anhydrides will have excellent mechanical properties, high Tg",
+        "provenance": {
+          "document_id": "7433fd79-c6f5-52bd-bf0c-b6f5a4d48ac6"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "31be6ed1-a1e8-5e64-abd2-3cd4bc8cd85b",
+        "predicate": "has_property_when_cured",
+        "object": "high weather/chemical resistance",
+        "source_text": "The cured resins of DCE 142 with carboxylic anhydrides will have excellent mechanical properties, high Tg, high weather/chemical resistance",
+        "provenance": {
+          "document_id": "7433fd79-c6f5-52bd-bf0c-b6f5a4d48ac6"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "31be6ed1-a1e8-5e64-abd2-3cd4bc8cd85b",
+        "predicate": "has_property_when_cured",
+        "object": "superior electrical resistance",
+        "source_text": "The cured resins of DCE 142 with carboxylic anhydrides will have excellent mechanical properties, high Tg, high weather/chemical resistance, and superior electrical resistance",
+        "provenance": {
+          "document_id": "7433fd79-c6f5-52bd-bf0c-b6f5a4d48ac6"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "31be6ed1-a1e8-5e64-abd2-3cd4bc8cd85b",
+        "predicate": "has_property_when_cured",
+        "object": "non-yellowing characteristics",
+        "source_text": "The cured resins of DCE 142 with carboxylic anhydrides will have excellent mechanical properties, high Tg, high weather/chemical resistance, and superior electrical resistance along with non-yellowing characteristics.",
+        "provenance": {
+          "document_id": "7433fd79-c6f5-52bd-bf0c-b6f5a4d48ac6"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "31be6ed1-a1e8-5e64-abd2-3cd4bc8cd85b",
+        "predicate": "has_safety_hazard",
+        "object": "skin irritation",
+        "source_text": "DCE 142 primarily causes skin and eye irritations.",
+        "provenance": {
+          "document_id": "7433fd79-c6f5-52bd-bf0c-b6f5a4d48ac6"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "31be6ed1-a1e8-5e64-abd2-3cd4bc8cd85b",
+        "predicate": "has_safety_hazard",
+        "object": "eye irritation",
+        "source_text": "DCE 142 primarily causes skin and eye irritations.",
+        "provenance": {
+          "document_id": "7433fd79-c6f5-52bd-bf0c-b6f5a4d48ac6"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "31be6ed1-a1e8-5e64-abd2-3cd4bc8cd85b",
+        "predicate": "requires_ppe",
+        "object": "protective chemical goggles",
+        "source_text": "At a minimum, it requires protective chemical goggles, impenetrable gloves, and measures to avoid breathing chemical vapors.",
+        "provenance": {
+          "document_id": "7433fd79-c6f5-52bd-bf0c-b6f5a4d48ac6"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "31be6ed1-a1e8-5e64-abd2-3cd4bc8cd85b",
+        "predicate": "requires_ppe",
+        "object": "impenetrable gloves",
+        "source_text": "At a minimum, it requires protective chemical goggles, impenetrable gloves, and measures to avoid breathing chemical vapors.",
+        "provenance": {
+          "document_id": "7433fd79-c6f5-52bd-bf0c-b6f5a4d48ac6"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "31be6ed1-a1e8-5e64-abd2-3cd4bc8cd85b",
+        "predicate": "requires_ppe",
+        "object": "adequate ventilation",
+        "source_text": "Use only with adequate ventilation.",
+        "provenance": {
+          "document_id": "7433fd79-c6f5-52bd-bf0c-b6f5a4d48ac6"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "31be6ed1-a1e8-5e64-abd2-3cd4bc8cd85b",
+        "predicate": "has_first_aid",
+        "object": "flush with water for at least 15 minutes",
+        "source_text": "Generally, these procedures include immediately getting medical attention and flushing the affected skin or eyes with copious amounts of water for at least 15 minutes.",
+        "provenance": {
+          "document_id": "7433fd79-c6f5-52bd-bf0c-b6f5a4d48ac6"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "31be6ed1-a1e8-5e64-abd2-3cd4bc8cd85b",
+        "predicate": "is_incompatible_with",
+        "object": "56cb8999-6077-540f-a07d-2a0acf0a39a7",
+        "source_text": "This material is not compatible with strong acids/bases or strong oxidizing agents.",
+        "provenance": {
+          "document_id": "7433fd79-c6f5-52bd-bf0c-b6f5a4d48ac6"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "31be6ed1-a1e8-5e64-abd2-3cd4bc8cd85b",
+        "predicate": "is_incompatible_with",
+        "object": "ce6d85de-9465-521c-b92a-4765d6ad3c63",
+        "source_text": "This material is not compatible with strong acids/bases or strong oxidizing agents.",
+        "provenance": {
+          "document_id": "7433fd79-c6f5-52bd-bf0c-b6f5a4d48ac6"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "31be6ed1-a1e8-5e64-abd2-3cd4bc8cd85b",
+        "predicate": "is_incompatible_with",
+        "object": "51cd83ca-7cfd-5007-bdfa-bc2b1b2fc159",
+        "source_text": "This material is not compatible with strong acids/bases or strong oxidizing agents.",
+        "provenance": {
+          "document_id": "7433fd79-c6f5-52bd-bf0c-b6f5a4d48ac6"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "31be6ed1-a1e8-5e64-abd2-3cd4bc8cd85b",
+        "predicate": "has_storage_requirement",
+        "object": "dry, cool, and well-ventilated area",
+        "source_text": "Store in a dry, cool, and well-ventilated area.",
+        "provenance": {
+          "document_id": "7433fd79-c6f5-52bd-bf0c-b6f5a4d48ac6"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "31be6ed1-a1e8-5e64-abd2-3cd4bc8cd85b",
+        "predicate": "has_storage_requirement",
+        "object": "away from direct sunlight, heat, hot surfaces, sparks, open flames, and other ignition sources",
+        "source_text": "Keep away from direct sunlight, heat, hot surfaces, sparks, open flames, and other ignition sources.",
+        "provenance": {
+          "document_id": "7433fd79-c6f5-52bd-bf0c-b6f5a4d48ac6"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "31be6ed1-a1e8-5e64-abd2-3cd4bc8cd85b",
+        "predicate": "has_property",
+        "object": "low viscosity",
+        "source_text": "Diglycidyl 1,2-cyclohexanedicarboxylate or DCE 142 is a low viscosity cycloaliphatic diepoxy.",
+        "provenance": {
+          "document_id": "7433fd79-c6f5-52bd-bf0c-b6f5a4d48ac6"
+        },
+        "confidence": 1.0
+      }
+    ]
+  },
+  "document_type": "Product Technical Bulletin"
+}

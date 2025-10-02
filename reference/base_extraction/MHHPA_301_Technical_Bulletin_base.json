@@ -1,0 +1,500 @@
+{
+  "doc_id": "cffbcedd-5e83-58bd-9e78-d7a8a23c4ee4",
+  "filename": "MHHPA_301_Technical_Bulletin.pdf",
+  "source_filepath": "data/raw_pdfs/MHHPA_301_Technical_Bulletin.pdf",
+  "filepath": "data/pdf_extracts/v1/pdfs/MHHPA_301_Technical_Bulletin.pdf",
+  "document_file_metadata": {
+    "document_title": "MHHPA_301_Technical_Bulletin.pdf",
+    "copyright_status": "Unknown",
+    "created": "7/17/17, 9:46:22 PM UTC",
+    "modified": "7/17/17, 9:46:22 PM UTC",
+    "application": "Muhimbi PDF Converter Services - www.muhimbi.com",
+    "advanced": {
+      "pdf_producer": "Muhimbi PDF Converter Services - www.muhimbi.com",
+      "pdf_version": "1.5",
+      "location": "/Users/benjaminbykowski/projects/ai-apps/forks/qwen-dc-product/dc-product-agent/data/raw_pdfs/MHHPA_301_Technical_Bulletin.pdf",
+      "file_size": "215.51 KB (220,686 Bytes)",
+      "page_size": "8.50 x 11.00 in",
+      "number_of_pages": 4,
+      "tagged_pdf": "No",
+      "fast_web_view": "No"
+    }
+  },
+  "source_file_hash": {
+    "sha256": "6e8922e0ba64bcf64a64cd0c5f95582238525020ed8b118856701a15e5d02103"
+  },
+  "document_type": "Product Technical Bulletin",
+  "manufacturer": "Dixie Chemical",
+  "contact_info": {
+    "address": "10601 Bay Area Blvd. Pasadena, TX 77507",
+    "phone": "(281) 474-3271",
+    "fax": "(281) 291-3384",
+    "email": "info@dixiechemicalgroup.com"
+  },
+  "product_info": {
+    "product_name": "PRE-CATALYZED METHYLHEXAHYDROPHTHALIC ANHYDRIDE",
+    "product_short_name": "MHHPA 301",
+    "product_family": "Anhydrides",
+    "cas_number": null,
+    "chemical_name": "Methylhexahydrophthalic Anhydride",
+    "synonyms": [
+      "Pre-catalyzed MHHPA"
+    ]
+  },
+  "registrations": [],
+  "key_benefits": [
+    "Easy Handling: Low viscosity liquid gives low viscosity mixes with various epoxy resins",
+    "Convenience: Eliminates the need to add small amounts of catalyst",
+    "Consistency: Prevents potential batch-to-batch differences caused by errors in measuring and properly dispersing small amounts of catalyst",
+    "Low reactivity at room temperature: Provides long working times and pot lives for mixes with epoxy resins",
+    "High reactivity at cure temperature: Gives excellent cure response at cure temperatures, resulting in high crosslinking and relatively high Tg",
+    "Low color and low color development: Low residual unsaturation gives maximum resistance to yellowing, making it desirable where premium optical and electrical performance are needed in epoxy casting and encapsulation applications"
+  ],
+  "applications_text": "MHHPA 301 is a low color, low viscosity, pre-catalyzed epoxy curing agent with a proprietary catalyst that provides the following benefits: Easy Handling: Low viscosity liquid gives low viscosity mixes with various epoxy resins; Convenience: Eliminates the need to add small amounts of catalyst; Consistency: Prevents potential batch-to-batch differences caused by errors in measuring and properly dispersing small amounts of catalyst; Low reactivity at room temperature: Provides long working times and pot lives for mixes with epoxy resins; High reactivity at cure temperature: Gives excellent cure response at cure temperatures, resulting in high crosslinking and relatively high Tg; Low color and low color development: Low residual unsaturation gives maximum resistance to yellowing, making it desirable where premium optical and electrical performance are needed in epoxy casting and encapsulation applications.",
+  "applications": [
+    "Epoxy curing agent",
+    "Epoxy casting",
+    "Epoxy encapsulation",
+    "Optical applications",
+    "Electrical applications"
+  ],
+  "properties_and_specifications": [
+    {
+      "category": "Typical",
+      "name": "Molecular Weight (average)",
+      "unit": null,
+      "value_string": "170",
+      "value_numeric": 170,
+      "value_min": null,
+      "value_max": null,
+      "test_method": null,
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Typical",
+      "name": "Specific gravity @ 25\u00b0C",
+      "unit": "g/cc",
+      "value_string": "1.20",
+      "value_numeric": 1.2,
+      "value_min": null,
+      "value_max": null,
+      "test_method": "D-102 (ASTM D 4052)",
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Typical",
+      "name": "Appearance",
+      "unit": null,
+      "value_string": "clear liquid",
+      "value_numeric": null,
+      "value_min": null,
+      "value_max": null,
+      "test_method": "D-104 (Visual)",
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Typical",
+      "name": "Viscosity (Brookfield at 25 \u00b0C)",
+      "unit": "cP",
+      "value_string": "40 - 100",
+      "value_numeric": null,
+      "value_min": 40,
+      "value_max": 100,
+      "test_method": "D-150",
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Typical",
+      "name": "Color, Pt-Co",
+      "unit": null,
+      "value_string": "< 50",
+      "value_numeric": null,
+      "value_min": null,
+      "value_max": 50,
+      "test_method": "D-103 (ASTM D 1209)",
+      "page": 1,
+      "notes": null
+    }
+  ],
+  "epoxy_resin_properties": null,
+  "typical_properties": {
+    "table_name": "Typical Properties",
+    "page": 1,
+    "data_type": "typical_properties",
+    "description": "MHHPA 301 is a low color, low viscosity, pre-catalyzed epoxy curing agent with a proprietary catalyst that provides benefits including easy handling, convenience, consistency, low reactivity at room temperature, high reactivity at cure temperature, and low color development.",
+    "row_count": 5,
+    "data": [
+      {
+        "name": "Molecular Weight (average)",
+        "unit": null,
+        "value_string": "170",
+        "value_min": null,
+        "value_max": null,
+        "value_numeric": 170,
+        "test_method": null
+      },
+      {
+        "name": "Specific gravity @ 25\u00b0C",
+        "unit": "g/cc",
+        "value_string": "1.20",
+        "value_min": null,
+        "value_max": null,
+        "value_numeric": 1.2,
+        "test_method": "D-102 (ASTM D 4052)"
+      },
+      {
+        "name": "Appearance",
+        "unit": null,
+        "value_string": "clear liquid",
+        "value_min": null,
+        "value_max": null,
+        "value_numeric": null,
+        "test_method": "D-104 (Visual)"
+      },
+      {
+        "name": "Viscosity (Brookfield at 25 \u00b0C)",
+        "unit": "cP",
+        "value_string": "40 - 100",
+        "value_min": 40,
+        "value_max": 100,
+        "value_numeric": null,
+        "test_method": "D-150"
+      },
+      {
+        "name": "Color, Pt-Co",
+        "unit": null,
+        "value_string": "< 50",
+        "value_min": null,
+        "value_max": 50,
+        "value_numeric": null,
+        "test_method": "D-103 (ASTM D 1209)"
+      }
+    ],
+    "notes": {}
+  },
+  "other_tables": [
+    {
+      "table_name": "Formulation Example",
+      "page": 3,
+      "data_type": "formulation_data",
+      "description": "MHHPA 301 was formulated with a variety of epoxy resins. Viscosity was measured at 25\u00b0C, and gel time was measured at 150\u00b0C. Samples were cured for 1 hour at 120\u00b0C, followed by a post-cure of 1 hour at 220\u00b0C, and glass transition temperatures were measured using a differential scanning calorimeter.",
+      "row_count": 6,
+      "data": [
+        {
+          "epoxy_type": "Standard BPA Liquid Epoxy",
+          "mhhpa_301_phr": 89,
+          "viscosity_25c_cp": 1210,
+          "gel_time_min": 19,
+          "tg_c": 141
+        },
+        {
+          "epoxy_type": "Low Viscosity BPA Liquid",
+          "mhhpa_301_phr": 92,
+          "viscosity_25c_cp": 845,
+          "gel_time_min": 17,
+          "tg_c": 142
+        },
+        {
+          "epoxy_type": "Cycloaliphatic Epoxy",
+          "mhhpa_301_phr": 122,
+          "viscosity_25c_cp": 139,
+          "gel_time_min": 24,
+          "tg_c": 206
+        },
+        {
+          "epoxy_type": "Epoxy Phenol Novolac",
+          "mhhpa_301_phr": 96,
+          "viscosity_25c_cp": 968,
+          "gel_time_min": 17,
+          "tg_c": 134
+        },
+        {
+          "epoxy_type": "Epoxy BPA Novolac",
+          "mhhpa_301_phr": 87,
+          "viscosity_25c_cp": 3630,
+          "gel_time_min": 17,
+          "tg_c": 150
+        },
+        {
+          "epoxy_type": "BPF Liquid Epoxy",
+          "mhhpa_301_phr": 96,
+          "viscosity_25c_cp": 488,
+          "gel_time_min": 15,
+          "tg_c": 138
+        }
+      ],
+      "notes": {
+        "1": "Shyodu Hot Pot (100g at 100\u00b0C)",
+        "2": "Cured 1 hr at 120\u00b0C and 1 hr at 220\u00b0C. Analyzed in DSC: 40\u00b0C/min to 250\u00b0C"
+      }
+    },
+    {
+      "table_name": "Typical Properties",
+      "page": 1,
+      "data_type": "typical_properties",
+      "description": "MHHPA 301 is a low color, low viscosity, pre-catalyzed epoxy curing agent with a proprietary catalyst that provides benefits including easy handling, convenience, consistency, low reactivity at room temperature, high reactivity at cure temperature, and low color development.",
+      "row_count": 5,
+      "data": [
+        {
+          "name": "Molecular Weight (average)",
+          "unit": null,
+          "value_string": "170",
+          "value_min": null,
+          "value_max": null,
+          "value_numeric": 170,
+          "test_method": null
+        },
+        {
+          "name": "Specific gravity @ 25\u00b0C",
+          "unit": "g/cc",
+          "value_string": "1.20",
+          "value_min": null,
+          "value_max": null,
+          "value_numeric": 1.2,
+          "test_method": "D-102 (ASTM D 4052)"
+        },
+        {
+          "name": "Appearance",
+          "unit": null,
+          "value_string": "clear liquid",
+          "value_min": null,
+          "value_max": null,
+          "value_numeric": null,
+          "test_method": "D-104 (Visual)"
+        },
+        {
+          "name": "Viscosity (Brookfield at 25 \u00b0C)",
+          "unit": "cP",
+          "value_string": "40 - 100",
+          "value_min": 40,
+          "value_max": 100,
+          "value_numeric": null,
+          "test_method": "D-150"
+        },
+        {
+          "name": "Color, Pt-Co",
+          "unit": null,
+          "value_string": "< 50",
+          "value_min": null,
+          "value_max": 50,
+          "value_numeric": null,
+          "test_method": "D-103 (ASTM D 1209)"
+        }
+      ]
+    }
+  ],
+  "formulation_data": [
+    {
+      "epoxy_type": "Standard BPA Liquid Epoxy",
+      "phr": null,
+      "viscosity_at_25c_cp": null,
+      "gel_time_min": 19,
+      "tg_c": 141,
+      "cure_schedule": null,
+      "page": null,
+      "source_table": null,
+      "notes": null,
+      "mhhpa_301_phr": 89,
+      "viscosity_25c_cp": 1210
+    },
+    {
+      "epoxy_type": "Low Viscosity BPA Liquid",
+      "phr": null,
+      "viscosity_at_25c_cp": null,
+      "gel_time_min": 17,
+      "tg_c": 142,
+      "cure_schedule": null,
+      "page": null,
+      "source_table": null,
+      "notes": null,
+      "mhhpa_301_phr": 92,
+      "viscosity_25c_cp": 845
+    },
+    {
+      "epoxy_type": "Cycloaliphatic Epoxy",
+      "phr": null,
+      "viscosity_at_25c_cp": null,
+      "gel_time_min": 24,
+      "tg_c": 206,
+      "cure_schedule": null,
+      "page": null,
+      "source_table": null,
+      "notes": null,
+      "mhhpa_301_phr": 122,
+      "viscosity_25c_cp": 139
+    },
+    {
+      "epoxy_type": "Epoxy Phenol Novolac",
+      "phr": null,
+      "viscosity_at_25c_cp": null,
+      "gel_time_min": 17,
+      "tg_c": 134,
+      "cure_schedule": null,
+      "page": null,
+      "source_table": null,
+      "notes": null,
+      "mhhpa_301_phr": 96,
+      "viscosity_25c_cp": 968
+    },
+    {
+      "epoxy_type": "Epoxy BPA Novolac",
+      "phr": null,
+      "viscosity_at_25c_cp": null,
+      "gel_time_min": 17,
+      "tg_c": 150,
+      "cure_schedule": null,
+      "page": null,
+      "source_table": null,
+      "notes": null,
+      "mhhpa_301_phr": 87,
+      "viscosity_25c_cp": 3630
+    },
+    {
+      "epoxy_type": "BPF Liquid Epoxy",
+      "phr": null,
+      "viscosity_at_25c_cp": null,
+      "gel_time_min": 15,
+      "tg_c": 138,
+      "cure_schedule": null,
+      "page": null,
+      "source_table": null,
+      "notes": null,
+      "mhhpa_301_phr": 96,
+      "viscosity_25c_cp": 488
+    }
+  ],
+  "toxicity_data": [
+    {
+      "metric": "skin_irritation",
+      "species": "human",
+      "route": "dermal",
+      "value": null,
+      "unit": null,
+      "test_method": null,
+      "conditions": null,
+      "page": 4,
+      "source_text": "These anhydrides are primary skin and eye irritants. Avoid contact with skin, eyes, and clothing. Use only with adequate ventilation. In case of contact, follow the procedures outlined in the SDS. Generally, these procedures include immediately flushing the affected skin or eyes with copious amounts of water for at least 15 minutes. In the case of eye contact, get medical attention. Wash contaminated clothing before reuse."
+    },
+    {
+      "metric": "eye_irritation",
+      "species": "human",
+      "route": "ocular",
+      "value": null,
+      "unit": null,
+      "test_method": null,
+      "conditions": null,
+      "page": 4,
+      "source_text": "These anhydrides are primary skin and eye irritants. Avoid contact with skin, eyes, and clothing. Use only with adequate ventilation. In case of contact, follow the procedures outlined in the SDS. Generally, these procedures include immediately flushing the affected skin or eyes with copious amounts of water for at least 15 minutes. In the case of eye contact, get medical attention. Wash contaminated clothing before reuse."
+    }
+  ],
+  "sections": [
+    {
+      "name": "Applications",
+      "page": 2,
+      "text": "MHHPA 301 is a low color, low viscosity, pre-catalyzed epoxy curing agent with a proprietary catalyst that provides the following benefits:\n\u2022 Easy Handling: Low viscosity liquid gives low viscosity mixes with various epoxy resins\n\u2022 Convenience: Eliminates the need to add small amounts of catalyst\n\u2022 Consistency: Prevents potential batch-to-batch differences caused by errors in measuring and properly dispersing small amounts of catalyst\n\u2022 Low reactivity at room temperature: Provides long working times and pot lives for mixes with epoxy resins\n\u2022 High reactivity at cure temperature: Gives excellent cure response at cure temperatures, resulting in high crosslinking and relatively high Tg.\n\u2022 Low color and low color development: Low residual unsaturation gives maximum resistance to yellowing, making it desirable where premium optical and electrical performance are needed in epoxy casting and encapsulation applications.\n\nFor more information on the use of anhydrides like MHHPA 301 as epoxy curing agents, please consult the Technical Bulletin, FORMULATING ANHYDRIDE-CURED EPOXY SYSTEMS, available from Dixie Chemical Company."
+    },
+    {
+      "name": "Formulation Example",
+      "page": 3,
+      "text": "Most applications use between 80-90 parts by weight MHHPA 301 with 100 parts bisphenol A liquid epoxy resins. MHHPA 301 was formulated with a variety of epoxy resins. Viscosity was measured at 25\u00b0C, and gel time was measured at 150\u00b0C. Samples were cured for 1 hour at 120\u00b0C, followed by a post-cure of 1 hour at 220\u00b0C, and glass transition temperatures were measured using a differential scanning calorimeter."
+    },
+    {
+      "name": "Handling & Storage",
+      "page": 3,
+      "text": "MHHPA 301 will react with water to form methylhexahydrophthalic acid. This is normally undesirable, so MHHPA should be stored in such a way that it is carefully protected from moisture contamination.\n\nFor more details on the design of bulk storage for MHHPA 301, consult the Dixie Chemical Company brochure \"Epoxy Curing Agent Storage Requirements.\""
+    },
+    {
+      "name": "Health Hazards",
+      "page": 4,
+      "text": "Read and understand the relevant Safety Data Sheets (SDS) for all products before use. These anhydrides are primary skin and eye irritants. Avoid contact with skin, eyes, and clothing. Use only with adequate ventilation. In case of contact, follow the procedures outlined in the SDS. Generally, these procedures include immediately flushing the affected skin or eyes with copious amounts of water for at least 15 minutes. In the case of eye contact, get medical attention. Wash contaminated clothing before reuse.\n\nFollow the recommendations in the SDS for personal protective equipment when handling these materials. At a minimum, these procedures typically include protective chemical goggles, impenetrable gloves, and measures to avoid breathing chemical vapors."
+    },
+    {
+      "name": "Availability",
+      "page": 4,
+      "text": "MHHPA 301 is available from Dixie Chemical Company, Inc.'s plant in Pasadena, Texas. Contact your Dixie Chemical Company representative for details."
+    }
+  ],
+  "images": [
+    {
+      "filename": "mhhpa301_vapor_pressure_temperature_cropped.png",
+      "page": 1,
+      "type": "graph",
+      "description": "Vapor Pressure vs Temperature. \u2014 Vapor Pressure increases with Temperature. Vapor Pressure range 0.0\u201380.0 mm Hg; Temperature range 0.0\u2013200.0 \u00b0C",
+      "title": "Vapor Pressure as a Function of Temperature",
+      "x_axis": {
+        "label": "Temperature",
+        "unit": "\u00b0C"
+      },
+      "y_axis": {
+        "label": "Vapor Pressure",
+        "unit": "mm Hg"
+      },
+      "graph_data": [
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 20,
+          "y": 0
+        },
+        {
+          "x": 40,
+          "y": 0
+        },
+        {
+          "x": 60,
+          "y": 0
+        },
+        {
+          "x": 80,
+          "y": 0
+        },
+        {
+          "x": 100,
+          "y": 0.5
+        },
+        {
+          "x": 120,
+          "y": 2
+        },
+        {
+          "x": 140,
+          "y": 5
+        },
+        {
+          "x": 160,
+          "y": 15
+        },
+        {
+          "x": 180,
+          "y": 40
+        },
+        {
+          "x": 200,
+          "y": 80
+        }
+      ],
+      "notes": null
+    }
+  ],
+  "document_footnotes": {
+    "1": "FORMULATING ANHYDRIDE-CURED EPOXY SYSTEMS, available from Dixie Chemical Company."
+  },
+  "extraction_metadata": {
+    "confidence_scores": {
+      "product_info": 100,
+      "properties": 100,
+      "other_tables": 100,
+      "sections": 100,
+      "images": 100,
+      "overall": 100
+    },
+    "extractor_version": "dev",
+    "extraction_date": "2025-08-26T19:45:00-04:00"
+  }
+}

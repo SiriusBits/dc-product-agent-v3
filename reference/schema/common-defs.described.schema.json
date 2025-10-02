@@ -1,0 +1,841 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/common-defs.schema.json",
+  "title": "Common Definitions for Technical Bulletin Schemas",
+  "type": "object",
+  "$defs": {
+    "epoxy_resin_row": {
+      "type": "object",
+      "description": "A transposed row representing a single property for a specific epoxy resin under certain conditions.",
+      "properties": {
+        "resin_name": {
+          "type": "string",
+          "description": "The name of the Dow Epoxy Resin (e.g., 'D.E.R. 332')."
+        },
+        "property_name": {
+          "type": "string",
+          "description": "The name of the measured property (e.g., 'Average Epoxy Viscosity')."
+        },
+        "property_unit": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "The unit of measurement for the property (e.g., 'P', 'psi')."
+        },
+        "condition": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "The condition under which the property was measured (e.g., '@ 60 Hz', 'Condition A')."
+        },
+        "value_string": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "The original value as a string, preserving original formatting."
+        },
+        "value_numeric": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "description": "The value as a parsed number, if applicable."
+        },
+        "value_min": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "description": "The minimum value if the original value represents a range."
+        },
+        "value_max": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "description": "The maximum value if the original value represents a range."
+        },
+        "is_min": {
+          "type": [
+            "boolean",
+            "null"
+          ],
+          "description": "Flag indicating if this value is the minimum across all resins for this specific property and condition."
+        },
+        "is_max": {
+          "type": [
+            "boolean",
+            "null"
+          ],
+          "description": "Flag indicating if this value is the maximum across all resins for this specific property and condition."
+        },
+        "test_method": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "The ASTM or other test method used to determine the value."
+        }
+      },
+      "required": [
+        "resin_name",
+        "property_name"
+      ],
+      "additional_properties": false
+    },
+    "contact_info": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "address": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "phone": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "fax": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "email": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additional_properties": false,
+      "description": "Structured manufacturer contact block (address, phone, fax, email)."
+    },
+    "registration": {
+      "type": "object",
+      "properties": {
+        "authority": {
+          "type": "string"
+        },
+        "jurisdiction": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "registration_number": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "registration_name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "cas_number": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "status": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "effective_date": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "notes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "authority"
+      ],
+      "additional_properties": false,
+      "description": "Regulatory/compliance record with authority, jurisdiction, and optional ID."
+    },
+    "property_spec_row": {
+      "type": "object",
+      "properties": {
+        "category": {
+          "type": "string",
+          "enum": [
+            "Typical",
+            "Specification",
+            "Regulatory",
+            "Other",
+            "Physical",
+            "Chemical",
+            "Electrical",
+            "Thermal",
+            "Mechanical"
+          ]
+        },
+        "name": {
+          "type": "string"
+        },
+        "unit": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "value_string": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "value_numeric": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "value_min": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "value_max": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "test_method": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "page": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "notes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "category",
+        "name"
+      ],
+      "additional_properties": false,
+      "description": "Flattened property/spec row used for sorting/filtering across tables."
+    },
+    "table_note": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": "string",
+          "description": "Identifier as printed in the table (e.g., '1', '*')."
+        },
+        "text": {
+          "type": "string",
+          "description": "Footnote text exactly as printed."
+        },
+        "applies_to": {
+          "type": "string",
+          "enum": [
+            "table",
+            "column",
+            "row"
+          ],
+          "description": "Scope of the footnote."
+        },
+        "target": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Column name, row identifier, or null if it applies to the entire table."
+        }
+      },
+      "required": [
+        "label",
+        "text"
+      ],
+      "additional_properties": false
+    },
+    "axis": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "unit": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "label"
+      ],
+      "additional_properties": false,
+      "description": "Axis label and optional unit for graph metadata."
+    },
+    "graph_point": {
+      "type": "object",
+      "properties": {
+        "x": {
+          "type": "number"
+        },
+        "y": {
+          "type": "number"
+        },
+        "series": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Optional series name for multi-series graphs"
+        }
+      },
+      "required": [
+        "x",
+        "y"
+      ],
+      "additional_properties": false,
+      "description": "Single (x, y) point for a graph series with optional series identification."
+    },
+    "image": {
+      "type": "object",
+      "properties": {
+        "filename": {
+          "type": "string"
+        },
+        "page": {
+          "type": "integer"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "graph",
+            "structure",
+            "image"
+          ]
+        },
+        "description": {
+          "type": "string"
+        },
+        "image_path": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Relative or absolute path to the extracted image asset."
+        },
+        "title": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "x_axis": {
+          "$ref": "#/$defs/axis"
+        },
+        "y_axis": {
+          "$ref": "#/$defs/axis"
+        },
+        "graph_data": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "$ref": "#/$defs/graph_point"
+          }
+        },
+        "notes": {
+          "type": [
+            "string",
+            "object",
+            "null"
+          ],
+          "description": "Optional notes field for additional information about the image."
+        }
+      },
+      "required": [
+        "filename",
+        "page",
+        "type",
+        "description"
+      ],
+      "all_of": [
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "graph"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "x_axis",
+              "y_axis",
+              "graph_data"
+            ]
+          }
+        }
+      ],
+      "additional_properties": false,
+      "description": "Cropped image metadata; when type=graph, x_axis, y_axis, and graph_data are required."
+    },
+    "formulation_row": {
+      "type": "object",
+      "properties": {
+        "epoxy_type": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "phr": {
+          "type": [
+            "number",
+            "string",
+            "null"
+          ]
+        },
+        "viscosity_at_25c_cp": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "gel_time_min": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "tg_c": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "cure_schedule": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "page": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "source_table": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "notes": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additional_properties": true,
+      "description": "Normalized formulation/performance row (phr, viscosity, gel time, Tg, etc.)."
+    },
+    "toxicity_record": {
+      "type": "object",
+      "properties": {
+        "metric": {
+          "type": "string"
+        },
+        "species": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "route": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "value": {
+          "type": [
+            "number",
+            "string",
+            "null"
+          ]
+        },
+        "unit": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "test_method": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "conditions": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "page": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "source_text": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "metric"
+      ],
+      "additional_properties": false,
+      "description": "Toxicology datum with metric, value, units, route, and provenance."
+    },
+    "section": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "page": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1,
+          "description": "First page containing the section (legacy field; prefer page_start/page_end)."
+        },
+        "page_start": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1,
+          "description": "First page number (inclusive) where the section appears."
+        },
+        "page_end": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1,
+          "description": "Last page number (inclusive) where the section appears. Use the same value as page_start when single-page."
+        },
+        "text": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "text"
+      ],
+      "allOf": [
+        {
+          "anyOf": [
+            {
+              "required": [
+                "page"
+              ]
+            },
+            {
+              "required": [
+                "page_start"
+              ]
+            }
+          ]
+        }
+      ],
+      "additional_properties": false,
+      "description": "Named text block with page metadata and content."
+    },
+    "provenance_span": {
+      "type": "object",
+      "properties": {
+        "start": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "end": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "start",
+        "end"
+      ],
+      "additional_properties": false,
+      "description": "Character offsets into source_text that support an entity/triple."
+    },
+    "provenance": {
+      "type": "object",
+      "properties": {
+        "document_id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "page": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "page_label": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "spans": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/provenance_span"
+          }
+        },
+        "bbox": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "min_items": 4,
+          "max_items": 4
+        }
+      },
+      "additional_properties": false,
+      "description": "Page, spans, and optional bbox anchoring an extracted item to the source."
+    },
+    "entity": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "text": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "CHEMICAL",
+            "PRODUCT_NAME",
+            "ORGANIZATION",
+            "APPLICATION",
+            "PROPERTY",
+            "CAS_NUMBER",
+            "CHEMICAL_CLASS",
+            "CHEMICAL_FUNCTION",
+            "TEST_METHOD",
+            "UNIT",
+            "HAZARD",
+            "REGISTRATION",
+            "BENEFIT"
+          ]
+        },
+        "canonical_name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "aliases": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "source_text": {
+          "type": "string"
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        },
+        "metadata": {
+          "type": "object",
+          "additional_properties": {
+            "type": [
+              "string",
+              "number",
+              "boolean",
+              "null"
+            ]
+          }
+        }
+      },
+      "required": [
+        "id",
+        "text",
+        "type",
+        "source_text"
+      ],
+      "additional_properties": false,
+      "description": "Knowledge graph node with id, text, type, canonical_name, aliases, provenance, metadata."
+    },
+    "triple_subject_ref": {
+      "one_of": [
+        {
+          "type": "object",
+          "properties": {
+            "entity_id": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "entity_id"
+          ],
+          "additional_properties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "canonical_name": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "canonical_name"
+          ],
+          "additional_properties": false
+        },
+        {
+          "type": "string"
+        }
+      ],
+      "description": "Reference to a triple subject (by entity_id, canonical_name, or raw string)."
+    },
+    "triple_object_ref": {
+      "one_of": [
+        {
+          "type": "object",
+          "properties": {
+            "entity_id": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          "required": [
+            "entity_id"
+          ],
+          "additional_properties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "canonical_name": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "canonical_name"
+          ],
+          "additional_properties": false
+        },
+        {
+          "type": "string"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "property": {
+              "type": "string"
+            },
+            "value": {
+              "one_of": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "number"
+                }
+              ]
+            }
+          },
+          "required": [
+            "property",
+            "value"
+          ],
+          "additional_properties": false
+        }
+      ],
+      "description": "Reference to a triple object (entity ref, string, or property/value literal)."
+    },
+    "triple": {
+      "type": "object",
+      "properties": {
+        "subject": {
+          "$ref": "#/$defs/triple_subject_ref"
+        },
+        "predicate": {
+          "type": "string"
+        },
+        "object": {
+          "$ref": "#/$defs/triple_object_ref"
+        },
+        "source_text": {
+          "type": "string"
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      },
+      "required": [
+        "subject",
+        "predicate",
+        "object",
+        "source_text"
+      ],
+      "additional_properties": false,
+      "description": "Subject–predicate–object relation with source_text, optional provenance, and confidence."
+    }
+  },
+  "description": "Shared $defs library for Base and Derived schemas."
+}

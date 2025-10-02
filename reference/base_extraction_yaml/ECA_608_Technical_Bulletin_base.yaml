@@ -1,0 +1,372 @@
+doc_id: 131794a6-f3b1-51cc-9026-7db90a5b7acd
+filename: ECA_608_Technical_Bulletin.pdf
+source_filepath: ${paths.raw_pdfs_root}/ECA_608_Technical_Bulletin.pdf
+filepath: ${paths.processed_pdfs_root}/ECA_608_Technical_Bulletin.pdf
+document_file_metadata:
+  document_title: ECA 607 Technical Bulletin
+  author:
+  - John F. Kill
+  copyright_status: Unknown
+  created: 5/19/25, 8:12:09 PM UTC
+  modified: 5/19/25, 8:12:09 PM UTC
+  application: "Microsoft\xAE Word for Microsoft 365"
+  advanced:
+    pdf_producer: "Microsoft\xAE Word for Microsoft 365"
+    pdf_version: '1.7'
+    location: /Users/benjaminbykowski/projects/ai-apps/forks/qwen-dc-product/dc-product-agent/data/raw_pdfs/ECA_608_Technical_Bulletin.pdf
+    file_size: 537.59 KB (550,492 Bytes)
+    page_size: 8.50 x 11.00 in
+    number_of_pages: 4
+    tagged_pdf: 'No'
+    fast_web_view: 'No'
+source_file_hash:
+  sha256: 22c7797b53a4f9c95b0d1188e66894a8e202e46f18a9ed8ea2661c760355be36
+document_type: Product Technical Bulletin
+manufacturer: ${manufacturer.name}
+contact_info: ${manufacturer.contact_info}
+product_info:
+  product_name: Epoxy Curing Agent 608
+  product_short_name: ECA 608
+  product_family: Epoxy Curing Agent
+  cas_number: null
+  chemical_name: null
+  synonyms: []
+registrations: []
+key_benefits:
+- Low viscosity, non-crystallizing liquid anhydride epoxy curing agent blend
+- Pre-catalyzed with latent proprietary accelerators
+- High reactivity at process temperatures
+- Excellent pot life
+- Easy handling
+- Convenience
+- Consistency
+- Low reactivity at room temperature
+- High reactivity at cure temperature
+applications_text: ECA 608 is a low viscosity, non-crystallizing liquid anhydride
+  epoxy curing agent blend. For convenience, it is pre-catalyzed with latent proprietary
+  accelerators that impart high reactivity at process temperatures, while maintaining
+  excellent pot life. It is designed to cure efficiently in processes such as pultrusion
+  where residence time at curing temperature is limited.
+applications:
+- Pultrusion processes
+- Epoxy curing
+- Processes with limited residence time at curing temperature
+properties_and_specifications:
+- category: Typical
+  name: Molecular Weight (average)
+  unit: null
+  value_string: 172 - 174
+  value_numeric: null
+  value_min: 172
+  value_max: 174
+  test_method: null
+  page: 1
+  notes: null
+- category: Typical
+  name: "Specific gravity @ 25\xB0C"
+  unit: g/cc
+  value_string: 1.155 - 1.159
+  value_numeric: null
+  value_min: 1.155
+  value_max: 1.159
+  test_method: D-102 (ASTM D 4052)
+  page: 1
+  notes: null
+- category: Typical
+  name: Appearance
+  unit: null
+  value_string: Green Liquid
+  value_numeric: null
+  value_min: null
+  value_max: null
+  test_method: D-104 (Visual)
+  page: 1
+  notes: null
+- category: Typical
+  name: "Viscosity (Brookfield at 25 \xB0C)"
+  unit: cP
+  value_string: 50 - 200
+  value_numeric: null
+  value_min: 50
+  value_max: 200
+  test_method: D-150
+  page: 1
+  notes: null
+typical_properties:
+  table_name: Typical Properties
+  page: 1
+  data_type: typical_properties
+  description: ECA 608 is a low viscosity, non-crystallizing liquid anhydride epoxy
+    curing agent blend that is pre-catalyzed with latent proprietary accelerators
+    for high reactivity at process temperatures while maintaining excellent pot life.
+  row_count: 4
+  data:
+  - name: Molecular Weight (average)
+    unit: null
+    value_string: 172 - 174
+    value_min: 172
+    value_max: 174
+    value_numeric: null
+    test_method: null
+  - name: "Specific gravity @ 25\xB0C"
+    unit: g/cc
+    value_string: 1.155 - 1.159
+    value_min: 1.155
+    value_max: 1.159
+    value_numeric: null
+    test_method: D-102 (ASTM D 4052)
+  - name: Appearance
+    unit: null
+    value_string: Green Liquid
+    value_min: null
+    value_max: null
+    value_numeric: null
+    test_method: D-104 (Visual)
+  - name: "Viscosity (Brookfield at 25 \xB0C)"
+    unit: cP
+    value_string: 50 - 200
+    value_min: 50
+    value_max: 200
+    value_numeric: null
+    test_method: D-150
+  notes: {}
+other_tables:
+- table_name: Formulation Example
+  page: 2
+  data_type: formulation_data
+  description: "ECA 608 was formulated with a variety of epoxy resins. Viscosity was\
+    \ measured at 25\xB0C, and gel time was measured at 100\xB0C. Samples were cured\
+    \ for 1 hour at 120\xB0C, followed by a post-cure of 1 hour at 220\xB0C, and glass\
+    \ transition temperatures were measured using a differential scanning calorimeter."
+  row_count: 6
+  data:
+  - epoxy type: Standard BPA Liquid Epoxy
+    eca 608, phr: 89
+    "viscosity at 25 \xB0c, c_p": 750
+    gel _time, min: 20
+    "cured _tg, \xB0c": 152
+  - epoxy type: Low Viscosity BPA Liquid
+    eca 608, phr: 92
+    "viscosity at 25 \xB0c, c_p": 580
+    gel _time, min: 19
+    "cured _tg, \xB0c": 151
+  - epoxy type: Cycloaliphatic Epoxy
+    eca 608, phr: 122
+    "viscosity at 25 \xB0c, c_p": 120
+    gel _time, min: 16
+    "cured _tg, \xB0c": 231
+  - epoxy type: Epoxy Phenol Novolac
+    eca 608, phr: 96
+    "viscosity at 25 \xB0c, c_p": 680
+    gel _time, min: 19
+    "cured _tg, \xB0c": 150
+  - epoxy type: Epoxy BPA Novolac
+    eca 608, phr: 87
+    "viscosity at 25 \xB0c, c_p": 2330
+    gel _time, min: 19
+    "cured _tg, \xB0c": 161
+  - epoxy type: BPF Liquid Epoxy
+    eca 608, phr: 96
+    "viscosity at 25 \xB0c, c_p": 400
+    gel _time, min: 19
+    "cured _tg, \xB0c": 138
+  notes:
+    '1': "Shyodu Hot Pot (100g at 100\xB0C)"
+    '2': "Cured 1 hr at 120\xB0C and 1 hr at 220\xB0C. Analyzed in DSC: 40\xB0C/min\
+      \ to 250\xB0C"
+- table_name: Comparative Study
+  page: 3
+  data_type: comparative_performance_data
+  description: Different pre-catalyzed anhydrides were formulated with a standard
+    BPA liquid epoxy resin to compare their performance characteristics.
+  row_count: 5
+  data:
+  - anhydride type: ECA 608
+    "viscosity at 25 \xB0c, c_p": 750
+    onset _temperature, o_c: 91
+    gel _time, min: 20
+    "cured _tg, \xB0c": 152
+  - anhydride type: ECA 607
+    "viscosity at 25 \xB0c, c_p": 850
+    onset _temperature, o_c: 107
+    gel _time, min: 24
+    "cured _tg, \xB0c": 150
+  - anhydride type: ECA 609
+    "viscosity at 25 \xB0c, c_p": 810
+    onset _temperature, o_c: 90
+    gel _time, min: 16
+    "cured _tg, \xB0c": 150
+  - anhydride type: ECA 100NC with 2% BDMA
+    "viscosity at 25 \xB0c, c_p": null
+    onset _temperature, o_c: 115
+    gel _time, min: 18.6
+    "cured _tg, \xB0c": 140
+  - anhydride type: ECA 100KA
+    "viscosity at 25 \xB0c, c_p": 1560
+    onset _temperature, o_c: 120
+    gel _time, min: 33
+    "cured _tg, \xB0c": 144
+  notes:
+    '1': "Shyodu Hot Pot (100g at 100\xB0C)"
+    '2': "Cured 1 hr at 120\xB0C and 1 hr at 220\xB0C. Analyzed in DSC: 40\xB0C/min\
+      \ to 250\xB0C"
+- table_name: Typical Properties
+  page: 1
+  data_type: typical_properties
+  description: ECA 608 is a low viscosity, non-crystallizing liquid anhydride epoxy
+    curing agent blend that is pre-catalyzed with latent proprietary accelerators
+    for high reactivity at process temperatures while maintaining excellent pot life.
+  row_count: 4
+  data:
+  - name: Molecular Weight (average)
+    unit: null
+    value_string: 172 - 174
+    value_min: 172
+    value_max: 174
+    value_numeric: null
+    test_method: null
+  - name: "Specific gravity @ 25\xB0C"
+    unit: g/cc
+    value_string: 1.155 - 1.159
+    value_min: 1.155
+    value_max: 1.159
+    value_numeric: null
+    test_method: D-102 (ASTM D 4052)
+  - name: Appearance
+    unit: null
+    value_string: Green Liquid
+    value_min: null
+    value_max: null
+    value_numeric: null
+    test_method: D-104 (Visual)
+  - name: "Viscosity (Brookfield at 25 \xB0C)"
+    unit: cP
+    value_string: 50 - 200
+    value_min: 50
+    value_max: 200
+    value_numeric: null
+    test_method: D-150
+formulation_data:
+- epoxy_type: Standard BPA Liquid Epoxy
+  phr: 89
+  gel_time_min: 20
+  viscosity_c_p: 750
+  cured_tg_c: 152
+- epoxy_type: Low Viscosity BPA Liquid
+  phr: 92
+  gel_time_min: 19
+  viscosity_c_p: 580
+  cured_tg_c: 151
+- epoxy_type: Cycloaliphatic Epoxy
+  phr: 122
+  gel_time_min: 16
+  viscosity_c_p: 120
+  cured_tg_c: 231
+- epoxy_type: Epoxy Phenol Novolac
+  phr: 96
+  gel_time_min: 19
+  viscosity_c_p: 680
+  cured_tg_c: 150
+- epoxy_type: Epoxy BPA Novolac
+  phr: 87
+  gel_time_min: 19
+  viscosity_c_p: 2330
+  cured_tg_c: 161
+- epoxy_type: BPF Liquid Epoxy
+  phr: 96
+  gel_time_min: 19
+  viscosity_c_p: 400
+  cured_tg_c: 138
+toxicity_data:
+- metric: skin irritation
+  species: human
+  route: dermal
+  value: null
+  unit: null
+  test_method: null
+  conditions: null
+  page: 3
+  source_text: These anhydrides are primary skin and eye irritants. Avoid contact
+    with skin, eyes, and clothing. Use only with adequate ventilation.
+- metric: eye irritation
+  species: human
+  route: ocular
+  value: null
+  unit: null
+  test_method: null
+  conditions: null
+  page: 3
+  source_text: These anhydrides are primary skin and eye irritants. Avoid contact
+    with skin, eyes, and clothing. Use only with adequate ventilation.
+sections:
+- name: Applications
+  page: 1
+  text: "ECA 608 is a low viscosity, non-crystallizing liquid anhydride epoxy curing\
+    \ agent blend. For convenience, it is pre-catalyzed with latent proprietary accelerators\
+    \ that impart high reactivity at process temperatures, while maintaining excellent\
+    \ pot life. It is designed to cure efficiently in processes such as pultrusion\
+    \ where residence time at curing temperature is limited. ECA 608 has the following\
+    \ characteristics:\n\n\u2022 Easy Handling: Low viscosity liquid gives low viscosity\
+    \ mixes with various epoxy resins\n\n\u2022 Convenience: Eliminates the need to\
+    \ add small amounts of catalyst\n\n\u2022 Consistency: Prevents potential batch-to-batch\
+    \ differences caused by errors in measuring and properly dispersing small amounts\
+    \ of catalyst\n\n\u2022 Low reactivity at room temperature: Provides long working\
+    \ times and pot lives for mixes with epoxy resins. Formulations of ECA 608 and\
+    \ liquid epoxies have a long pot life/working time in excess of 24 hours.\n\n\u2022\
+    \ High reactivity at cure temperature: Gives excellent cure response at cure temperatures,\
+    \ resulting in high crosslinking and relatively high Tg.\n\nFor more information\
+    \ on the use of anhydrides like ECA 608 as epoxy curing agents, please consult\
+    \ the Technical Bulletin, FORMULATING ANHYDRIDE-CURED EPOXY SYSTEMS, available\
+    \ from Dixie Chemical Company."
+- name: Formulation Example
+  page: 2
+  text: "ECA 608 was formulated with a variety of epoxy resins. Viscosity was measured\
+    \ at 25\xB0C, and gel time was measured at 100\xB0C. Samples were cured for 1\
+    \ hour at 120\xB0C, followed by a post-cure of 1 hour at 220\xB0C, and glass transition\
+    \ temperatures were measured using a differential scanning calorimeter. The following\
+    \ table summarizes these results:"
+- name: Comparative Study
+  page: 3
+  text: 'Different pre-catalyzed anhydrides were formulated with a standard BPA liquid
+    epoxy resin. The following table summarizes these results:'
+- name: Handling & Storage
+  page: 3
+  text: 'ECA 608 will react with water to form diacids. This is normally undesirable,
+    so ECA 608 should be stored in such a way that it is carefully protected from
+    moisture contamination.
+
+
+    For more details on the design of bulk storage for ECA 608, consult the Dixie
+    Chemical Company brochure "Epoxy Curing Agent Storage Requirements."'
+- name: Health Hazards
+  page: 3
+  text: 'Read and understand the relevant Safety Data Sheets (SDS) for all products
+    before use. These anhydrides are primary skin and eye irritants. Avoid contact
+    with skin, eyes, and clothing. Use only with adequate ventilation. In case of
+    contact, follow the procedures outlined in the SDS.
+
+
+    Generally, these procedures include immediately flushing the affected skin or
+    eyes with copious amounts of water for at least 15 minutes. In the case of eye
+    contact, get medical attention. Wash contaminated clothing before reuse.
+
+
+    Follow the recommendations in the SDS for personal protective equipment when handling
+    these materials. At a minimum, these procedures typically include protective chemical
+    goggles, impenetrable gloves, and measures to avoid breathing chemical vapors.'
+- name: Availability
+  page: 4
+  text: ECA 608 is available from Dixie Chemical Company, Inc.'s plant in Pasadena,
+    Texas. Contact your Dixie representative for details.
+images: []
+document_footnotes: {}
+extraction_metadata:
+  confidence_scores:
+    product_info: 100
+    properties: 100
+    other_tables: 100
+    sections: 100
+    images: 100
+    overall: 100
+  extractor_version: ${extraction.extractor_version}
+  extraction_date: '2025-08-26T17:30:00-04:00'

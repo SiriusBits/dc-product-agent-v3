@@ -1,0 +1,556 @@
+{
+  "doc_id": "e3cd386e-45b9-5163-b041-0fad4ce077e7",
+  "filename": "ASA_155_Technical_Bulletin.pdf",
+  "source_filepath": "data/raw_pdfs/ASA_155_Technical_Bulletin.pdf",
+  "filepath": "data/pdf_extracts/v1/pdfs/ASA_155_Technical_Bulletin.pdf",
+  "document_file_metadata": {
+    "document_title": "ASA 155 Technical Bulletin",
+    "author": [
+      "John F. Kill"
+    ],
+    "keywords": [
+      "Paper Sizing"
+    ],
+    "copyright_status": "Unknown",
+    "created": "4/24/25, 7:18:06 PM UTC",
+    "modified": "9/16/25, 4:11:35 PM UTC",
+    "application": "Microsoft\u00ae Word for Microsoft 365",
+    "advanced": {
+      "pdf_producer": "Microsoft\u00ae Word for Microsoft 365",
+      "pdf_version": "1.7",
+      "location": "/Users/benjaminbykowski/projects/ai-apps/forks/qwen-dc-product/dc-product-agent/data/raw_pdfs/ASA_155_Technical_Bulletin.pdf",
+      "file_size": "458.58 KB (469,584 Bytes)",
+      "page_size": "8.50 x 11.00 in",
+      "number_of_pages": 3,
+      "tagged_pdf": "No",
+      "fast_web_view": "No"
+    }
+  },
+  "source_file_hash": {
+    "sha256": "fec7a678aa4269b576b2f343b9a51829a1b3601cb581ff11dc021b086efb4141"
+  },
+  "document_type": "Product Technical Bulletin",
+  "manufacturer": "Dixie Chemical",
+  "contact_info": {
+    "address": "10601 Bay Area Blvd. Pasadena, TX 77507",
+    "phone": "(281) 474-3271",
+    "fax": null,
+    "email": "info@dixiechemicalgroup.com"
+  },
+  "product_info": {
+    "product_name": "Alkenylsuccinic Anhydride 155",
+    "product_short_name": "ASA 155",
+    "product_family": "Alkenylsuccinic Anhydride",
+    "cas_number": "68784-12-3",
+    "chemical_name": "2,5-Furandione,dihydro-,mono-C15-20-alkenyl derivs",
+    "synonyms": [
+      "ASA 155",
+      "Alkenylsuccinic anhydride",
+      "HDSA/ODSA blend"
+    ]
+  },
+  "registrations": [
+    {
+      "authority": "REACh",
+      "jurisdiction": "EU",
+      "registration_number": "01-2119533117-46",
+      "registration_name": "2,5-Furandione,dihydro-,mono-C15-20-alkenyl derivs",
+      "cas_number": "68784-12-3",
+      "status": "registered",
+      "effective_date": null,
+      "notes": "REACh registered as a component"
+    }
+  ],
+  "key_benefits": [],
+  "applications_text": null,
+  "applications": [],
+  "properties_and_specifications": [
+    {
+      "category": "Typical",
+      "name": "Physical Appearance",
+      "unit": null,
+      "value_string": "Clear to Slightly Hazy, Yellow to Dark Amber Liquid",
+      "value_numeric": null,
+      "value_min": null,
+      "value_max": null,
+      "test_method": "D-104",
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Typical",
+      "name": "ODSA Content",
+      "unit": "%",
+      "value_string": "57 - 62",
+      "value_numeric": null,
+      "value_min": 57,
+      "value_max": 62,
+      "test_method": "D-150M",
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Typical",
+      "name": "HDSA Content",
+      "unit": "%",
+      "value_string": "38 - 43",
+      "value_numeric": null,
+      "value_min": 38,
+      "value_max": 43,
+      "test_method": "D-150M",
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Typical",
+      "name": "Gardner Color",
+      "unit": null,
+      "value_string": "10 Max",
+      "value_numeric": null,
+      "value_min": null,
+      "value_max": 10,
+      "test_method": "D-150G",
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Typical",
+      "name": "Residual Olefin",
+      "unit": "%",
+      "value_string": "3 Max",
+      "value_numeric": null,
+      "value_min": null,
+      "value_max": 3,
+      "test_method": "D-150M",
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Typical",
+      "name": "Free Acid",
+      "unit": "%",
+      "value_string": "2 Max",
+      "value_numeric": null,
+      "value_min": null,
+      "value_max": 2,
+      "test_method": "D-150L",
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Typical",
+      "name": "Maleic Anhydride",
+      "unit": "%",
+      "value_string": "0.1 Max",
+      "value_numeric": null,
+      "value_min": null,
+      "value_max": 0.1,
+      "test_method": "D-150M",
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Typical",
+      "name": "Neutralization Number",
+      "unit": "mg KOH/g",
+      "value_string": "325 - 360",
+      "value_numeric": null,
+      "value_min": 325,
+      "value_max": 360,
+      "test_method": "D-150I",
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Typical",
+      "name": "Specific Gravity @25\u00b0C",
+      "unit": null,
+      "value_string": "0.93 -0.98",
+      "value_numeric": null,
+      "value_min": 0.93,
+      "value_max": 0.98,
+      "test_method": "D-102",
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Typical",
+      "name": "Viscosity @25\u00b0C",
+      "unit": "cPs",
+      "value_string": "300 Max",
+      "value_numeric": null,
+      "value_min": null,
+      "value_max": 300,
+      "test_method": "D-150F",
+      "page": 1,
+      "notes": null
+    }
+  ],
+  "epoxy_resin_properties": null,
+  "typical_properties": {
+    "table_name": "Typical Properties",
+    "page": 1,
+    "data_type": "typical_properties",
+    "description": "ASA 155 is an alkenylsuccinic anhydride (ASA) based on C16-C18 alpha-olefin. The material is a blend of hexadecenylsuccinic anhydride (HDSA) and octadecenylsuccinic anhydride (ODSA).",
+    "row_count": 10,
+    "data": [
+      {
+        "name": "Physical Appearance",
+        "unit": null,
+        "value_string": "Clear to Slightly Hazy, Yellow to Dark Amber Liquid",
+        "value_min": null,
+        "value_max": null,
+        "value_numeric": null,
+        "test_method": "D-104"
+      },
+      {
+        "name": "ODSA Content",
+        "unit": "%",
+        "value_string": "57 - 62",
+        "value_min": 57,
+        "value_max": 62,
+        "value_numeric": null,
+        "test_method": "D-150M"
+      },
+      {
+        "name": "HDSA Content",
+        "unit": "%",
+        "value_string": "38 - 43",
+        "value_min": 38,
+        "value_max": 43,
+        "value_numeric": null,
+        "test_method": "D-150M"
+      },
+      {
+        "name": "Gardner Color",
+        "unit": null,
+        "value_string": "10 Max",
+        "value_min": null,
+        "value_max": 10,
+        "value_numeric": null,
+        "test_method": "D-150G"
+      },
+      {
+        "name": "Residual Olefin",
+        "unit": "%",
+        "value_string": "3 Max",
+        "value_min": null,
+        "value_max": 3,
+        "value_numeric": null,
+        "test_method": "D-150M"
+      },
+      {
+        "name": "Free Acid",
+        "unit": "%",
+        "value_string": "2 Max",
+        "value_min": null,
+        "value_max": 2,
+        "value_numeric": null,
+        "test_method": "D-150L"
+      },
+      {
+        "name": "Maleic Anhydride",
+        "unit": "%",
+        "value_string": "0.1 Max",
+        "value_min": null,
+        "value_max": 0.1,
+        "value_numeric": null,
+        "test_method": "D-150M"
+      },
+      {
+        "name": "Neutralization Number",
+        "unit": "mg KOH/g",
+        "value_string": "325 - 360",
+        "value_min": 325,
+        "value_max": 360,
+        "value_numeric": null,
+        "test_method": "D-150I"
+      },
+      {
+        "name": "Specific Gravity @25\u00b0C",
+        "unit": null,
+        "value_string": "0.93 -0.98",
+        "value_min": 0.93,
+        "value_max": 0.98,
+        "value_numeric": null,
+        "test_method": "D-102"
+      },
+      {
+        "name": "Viscosity @25\u00b0C",
+        "unit": "cPs",
+        "value_string": "300 Max",
+        "value_min": null,
+        "value_max": 300,
+        "value_numeric": null,
+        "test_method": "D-150F"
+      }
+    ],
+    "notes": null
+  },
+  "other_tables": [
+    {
+      "table_name": "Product Variants",
+      "page": 2,
+      "data_type": "product_variants",
+      "description": "The ASA 155 products can be available with or without surfactant as shown in the table below.",
+      "row_count": 4,
+      "data": [
+        {
+          "product _name": "ASA 155",
+          "dioctylsulfo-_succinate (doss)": "No",
+          "phosphate _ester": "No"
+        },
+        {
+          "product _name": "ASA 155-D",
+          "dioctylsulfo-_succinate (doss)": "Yes",
+          "phosphate _ester": "No"
+        },
+        {
+          "product _name": "ASA 155-B",
+          "dioctylsulfo-_succinate (doss)": "No",
+          "phosphate _ester": "Yes"
+        },
+        {
+          "product _name": "ASA 155-C",
+          "dioctylsulfo-_succinate (doss)": "Yes",
+          "phosphate _ester": "Yes"
+        }
+      ]
+    },
+    {
+      "table_name": "Typical Properties",
+      "page": 1,
+      "data_type": "typical_properties",
+      "description": "ASA 155 is an alkenylsuccinic anhydride (ASA) based on C16-C18 alpha-olefin. The material is a blend of hexadecenylsuccinic anhydride (HDSA) and octadecenylsuccinic anhydride (ODSA).",
+      "row_count": 10,
+      "data": [
+        {
+          "name": "Physical Appearance",
+          "unit": null,
+          "value_string": "Clear to Slightly Hazy, Yellow to Dark Amber Liquid",
+          "value_min": null,
+          "value_max": null,
+          "value_numeric": null,
+          "test_method": "D-104"
+        },
+        {
+          "name": "ODSA Content",
+          "unit": "%",
+          "value_string": "57 - 62",
+          "value_min": 57,
+          "value_max": 62,
+          "value_numeric": null,
+          "test_method": "D-150M"
+        },
+        {
+          "name": "HDSA Content",
+          "unit": "%",
+          "value_string": "38 - 43",
+          "value_min": 38,
+          "value_max": 43,
+          "value_numeric": null,
+          "test_method": "D-150M"
+        },
+        {
+          "name": "Gardner Color",
+          "unit": null,
+          "value_string": "10 Max",
+          "value_min": null,
+          "value_max": 10,
+          "value_numeric": null,
+          "test_method": "D-150G"
+        },
+        {
+          "name": "Residual Olefin",
+          "unit": "%",
+          "value_string": "3 Max",
+          "value_min": null,
+          "value_max": 3,
+          "value_numeric": null,
+          "test_method": "D-150M"
+        },
+        {
+          "name": "Free Acid",
+          "unit": "%",
+          "value_string": "2 Max",
+          "value_min": null,
+          "value_max": 2,
+          "value_numeric": null,
+          "test_method": "D-150L"
+        },
+        {
+          "name": "Maleic Anhydride",
+          "unit": "%",
+          "value_string": "0.1 Max",
+          "value_min": null,
+          "value_max": 0.1,
+          "value_numeric": null,
+          "test_method": "D-150M"
+        },
+        {
+          "name": "Neutralization Number",
+          "unit": "mg KOH/g",
+          "value_string": "325 - 360",
+          "value_min": 325,
+          "value_max": 360,
+          "value_numeric": null,
+          "test_method": "D-150I"
+        },
+        {
+          "name": "Specific Gravity @25\u00b0C",
+          "unit": null,
+          "value_string": "0.93 -0.98",
+          "value_min": 0.93,
+          "value_max": 0.98,
+          "value_numeric": null,
+          "test_method": "D-102"
+        },
+        {
+          "name": "Viscosity @25\u00b0C",
+          "unit": "cPs",
+          "value_string": "300 Max",
+          "value_min": null,
+          "value_max": 300,
+          "value_numeric": null,
+          "test_method": "D-150F"
+        }
+      ]
+    }
+  ],
+  "formulation_data": [],
+  "toxicity_data": [],
+  "sections": [
+    {
+      "name": "Applications",
+      "page": 2,
+      "text": "ASA 155 is an alkenylsuccinic anhydride (ASA) based on C16-C18 alpha-olefin. The material is a blend of hexadecenylsuccinic anhydride (HDSA) and octadecenylsuccinic anhydride (ODSA). ASAs such as ASA 155 are commonly used as alkaline paper sizing agents. These products are easy to handle and can be employed in both cationic starch and polymer emulsion systems. ASAs are also used in a variety of other products. In metal working fluids, ASAs are utilized as corrosion inhibitors. ASAs are often used in fuel and lubricant additives including pour point depressants, corrosion inhibitors and dispersants. ASAs find use as intermediates for surfactants and can also be converted to acid amides and esters. Other suggested applications are in plasticizers, epoxies, and moisture control for leather goods.\n\nThe ASA 155 products can be available with or without surfactant as shown in the table below."
+    },
+    {
+      "name": "Registration",
+      "page": 3,
+      "text": "ASA 155 is REACh registered as a component under the name 2,5-Furandione,dihydro-,mono-C15-20-alkenyl derivs. The CASRN is 68784-12-3 and the REACh registry number is 01-2119533117-46. In the US, CASRN 32072-96-1 is typically used for HDSA and CASRN 28777-98-2 is typically used for ODSA."
+    },
+    {
+      "name": "Handling & Storage",
+      "page": 3,
+      "text": "ASA 155 must be stored out of contact with moisture to avoid hydrolysis of the anhydride to the acid. When properly stored, ASA 155 has a shelf life of 24 months.\n\nASA storage tanks may be constructed of mild steel, 304 or 316 stainless steel. If protection from atmospheric moisture is difficult then 304 or 316 are preferred due to the formation of corrosive acids by the interaction of ASA with water. For more information on the design of bulk storage for ASA products, consult the Dixie Chemical brochure \"Alkenylsuccinic Anhydride Storage Requirements.\""
+    },
+    {
+      "name": "Health Hazards",
+      "page": 3,
+      "text": "Read and understand the relevant Safety Data Sheets (SDS) for all products before use. ASA 155 is a skin sensitizer. Avoid contact with skin, eyes and clothing. Use only with adequate ventilation. In case of contact, immediately flush skin or eyes with plenty of water for at least 15 minutes; for eyes, get medical attention. Wash contaminated clothing before reuse."
+    },
+    {
+      "name": "Availability",
+      "page": 3,
+      "text": "ASA 155 is available from Dixie Chemical in Pasadena, TX. Contact your Dixie representative for details."
+    }
+  ],
+  "images": [
+    {
+      "filename": "asa155_viscosity_temperature_cropped.png",
+      "page": 1,
+      "type": "graph",
+      "description": "Viscosity vs Temperature. \u2014 Viscosity decreases with Temperature. Viscosity range 25.0\u2013608.0 cPs; Temperature range 0.0\u201360.0 \u00b0C",
+      "title": "Specific Gravity as a Function of Temperature",
+      "x_axis": {
+        "label": "Temperature",
+        "unit": "\u00b0C"
+      },
+      "y_axis": {
+        "label": "Viscosity",
+        "unit": "cPs"
+      },
+      "graph_data": [
+        {
+          "x": 0,
+          "y": 608
+        },
+        {
+          "x": 10,
+          "y": 450
+        },
+        {
+          "x": 20,
+          "y": 300
+        },
+        {
+          "x": 30,
+          "y": 180
+        },
+        {
+          "x": 40,
+          "y": 100
+        },
+        {
+          "x": 50,
+          "y": 50
+        },
+        {
+          "x": 60,
+          "y": 25
+        }
+      ],
+      "notes": null
+    },
+    {
+      "filename": "asa155_specific_gravity_temperature_cropped.png",
+      "page": 2,
+      "type": "graph",
+      "description": "Specific Gravity vs Temperature. \u2014 Specific Gravity decreases with Temperature. Specific Gravity range 7.88\u20138.1 lbs/gal; Temperature range 0.0\u201360.0 \u00b0C",
+      "title": "Viscosity as a Function of Temperature",
+      "x_axis": {
+        "label": "Temperature",
+        "unit": "\u00b0C"
+      },
+      "y_axis": {
+        "label": "Specific Gravity",
+        "unit": "lbs/gal"
+      },
+      "graph_data": [
+        {
+          "x": 0,
+          "y": 8.1
+        },
+        {
+          "x": 10,
+          "y": 8.07
+        },
+        {
+          "x": 20,
+          "y": 8.03
+        },
+        {
+          "x": 30,
+          "y": 7.98
+        },
+        {
+          "x": 40,
+          "y": 7.94
+        },
+        {
+          "x": 50,
+          "y": 7.91
+        },
+        {
+          "x": 60,
+          "y": 7.88
+        }
+      ],
+      "notes": null
+    }
+  ],
+  "document_footnotes": {},
+  "extraction_metadata": {
+    "confidence_scores": {
+      "product_info": 100,
+      "properties": 100,
+      "other_tables": 100,
+      "sections": 100,
+      "images": 100,
+      "overall": 100
+    },
+    "extractor_version": "dev",
+    "extraction_date": "2025-08-26T15:10:00-04:00"
+  }
+}

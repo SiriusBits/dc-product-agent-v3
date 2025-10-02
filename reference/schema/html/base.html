@@ -1,0 +1,251 @@
+<!doctype html><html><head><meta charset='utf-8'><title>Base Technical Bulletin Extraction Schema</title>
+    <style>
+      body { font-family: -apple-system, Segoe UI, Roboto, Inter, sans-serif; line-height: 1.5; padding: 24px; max-width: 1100px; margin: auto; }
+      header h1 { margin-bottom: 0; }
+      header .id { color: #444; }
+      nav { background: #fafafa; border: 1px solid #eee; padding: 12px 16px; border-radius: 8px; }
+      table { width: 100%; border-collapse: collapse; margin: 12px 0 24px; }
+      th, td { border: 1px solid #e6e6e6; padding: 8px 10px; vertical-align: top; }
+      th { background: #f6f6f6; text-align: left; }
+      code { background: #f0f3f7; padding: 2px 5px; border-radius: 4px; }
+      h3 { margin-top: 32px; }
+      h4 { margin-top: 28px; }
+      .desc { color: #333; }
+      .footer { margin-top: 48px; color: #666; font-size: 13px; }
+      .badge { display:inline-block; background:#eef; color:#225; padding:2px 6px; border-radius:6px; font-size:12px; margin-left:6px; }
+      a { color: #0b66c3; text-decoration: none; }
+      a:hover { text-decoration: underline; }
+    </style>
+    </head><body>
+    <header>
+      <h1>Base Technical Bulletin Extraction Schema</h1>
+      <p class='id'><strong>$id:</strong> https://example.com/schemas/base-technical-bulletin.schema.json</p>
+      <p class='desc'>Source-of-truth extraction from the technical bulletin PDF.</p>
+    </header>
+    <nav>
+      <h3>Contents</h3>
+      <ul>
+        <li><a href="#root-props">Root properties</a></li>
+        <li><a href="#root-required">Root required</a></li>
+        <li><a href="#defs">Shared definitions ($defs)</a>
+          <ul><li><em>None</em></li></ul>
+        </li>
+      </ul>
+    </nav>
+    <h3 id='root-props'>Root properties</h3>
+    <table>
+      <thead>
+        <tr><th>Property</th><th>Type</th><th>Required</th><th>Enum</th><th>Default</th><th>Description</th></tr>
+      </thead>
+      <tbody>
+        
+        <tr>
+          <td><code>doc_id</code></td>
+          <td>string</td>
+          <td>yes</td>
+          <td></td>
+          <td></td>
+          <td>UUID that uniquely identifies this bulletin; also used to join to derived/KG data.</td>
+        </tr>
+        
+        <tr>
+          <td><code>filename</code></td>
+          <td>string</td>
+          <td>yes</td>
+          <td></td>
+          <td></td>
+          <td>The name of the source PDF file.</td>
+        </tr>
+        
+        <tr>
+          <td><code>source_filepath</code></td>
+          <td>string | null</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td>Original filesystem or object-store path (if available).</td>
+        </tr>
+        
+        <tr>
+          <td><code>filepath</code></td>
+          <td>string | null</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td>Processed/canonical path within your pipeline (if available).</td>
+        </tr>
+        
+        <tr>
+          <td><code>source_file_hash</code></td>
+          <td>object | null</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td>Integrity hashes (e.g., sha256) for the source artifact.</td>
+        </tr>
+        
+        <tr>
+          <td><code>document_type</code></td>
+          <td>string</td>
+          <td>yes</td>
+          <td></td>
+          <td></td>
+          <td>Document classification label, e.g., &#x27;Product Technical Bulletin&#x27;.</td>
+        </tr>
+        
+        <tr>
+          <td><code>manufacturer</code></td>
+          <td>string</td>
+          <td>yes</td>
+          <td></td>
+          <td></td>
+          <td>Company name as printed on the document.</td>
+        </tr>
+        
+        <tr>
+          <td><code>contact_info</code></td>
+          <td>ref: https://example.com/schemas/common-defs.schema.json#/$defs/ContactInfo</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td>Structured address/phone/fax/email block for the manufacturer.</td>
+        </tr>
+        
+        <tr>
+          <td><code>document_date</code></td>
+          <td>string | null</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td>Publication date string exactly as printed (nullable).</td>
+        </tr>
+        
+        <tr>
+          <td><code>product_info</code></td>
+          <td>object</td>
+          <td>yes</td>
+          <td></td>
+          <td></td>
+          <td>Product identity and naming details (name, family, CAS, etc.).</td>
+        </tr>
+        
+        <tr>
+          <td><code>registrations</code></td>
+          <td>array[ref: https://example.com/schemas/common-defs.schema.json#/$defs/Registration]</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td>Regulatory registrations or compliance identifiers for the product.</td>
+        </tr>
+        
+        <tr>
+          <td><code>key_benefits</code></td>
+          <td>array[string]</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td>Bulleted selling points captured as an array of strings.</td>
+        </tr>
+        
+        <tr>
+          <td><code>applications_text</code></td>
+          <td>string | null</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td>Raw narrative text for the Applications section.</td>
+        </tr>
+        
+        <tr>
+          <td><code>applications</code></td>
+          <td>array[string]</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td>Normalized list of applications/uses for search and filtering.</td>
+        </tr>
+        
+        <tr>
+          <td><code>properties_and_specifications</code></td>
+          <td>array[ref: https://example.com/schemas/common-defs.schema.json#/$defs/PropertySpecRow]</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td>Flattened, sortable rows spanning Typical/Specification/Other categories.</td>
+        </tr>
+        
+        <tr>
+          <td><code>typical_properties</code></td>
+          <td>object | null</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td>The original &#x27;Typical Properties&#x27; table preserved in table form.</td>
+        </tr>
+        
+        <tr>
+          <td><code>other_tables</code></td>
+          <td>array[object]</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td>Any additional tables (e.g., Specifications, variants, studies).</td>
+        </tr>
+        
+        <tr>
+          <td><code>formulation_data</code></td>
+          <td>array[ref: https://example.com/schemas/common-defs.schema.json#/$defs/FormulationRow]</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td>Normalized formulation/performance rows (phr, viscosity, gel time, Tg, etc.).</td>
+        </tr>
+        
+        <tr>
+          <td><code>toxicity_data</code></td>
+          <td>array[ref: https://example.com/schemas/common-defs.schema.json#/$defs/ToxicityRecord]</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td>Structured toxicology metrics (LD50, irritation, Ames, etc.) with provenance.</td>
+        </tr>
+        
+        <tr>
+          <td><code>sections</code></td>
+          <td>array[ref: https://example.com/schemas/common-defs.schema.json#/$defs/Section]</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td>Raw text sections by name with page anchors.</td>
+        </tr>
+        
+        <tr>
+          <td><code>images</code></td>
+          <td>array[ref: https://example.com/schemas/common-defs.schema.json#/$defs/Image]</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td>Cropped graphics (graphs/structures/photos) with optional axis/points for graphs.</td>
+        </tr>
+        
+        <tr>
+          <td><code>document_footnotes</code></td>
+          <td>object</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td>Map of footnote keys to text as printed in the PDF.</td>
+        </tr>
+        
+        <tr>
+          <td><code>extraction_metadata</code></td>
+          <td>object</td>
+          <td>no</td>
+          <td></td>
+          <td></td>
+          <td>Extractor version, date, and confidence scores by area.</td>
+        </tr>
+        
+      </tbody>
+    </table>
+    <h3 id='root-required'>Root required</h3><p><code>doc_id</code>, <code>filename</code>, <code>document_type</code>, <code>manufacturer</code>, <code>product_info</code></p><h3 id='defs'>$defs</h3><div class='footer'>Generated 2025-08-26 16:36 UTC</div></body></html>

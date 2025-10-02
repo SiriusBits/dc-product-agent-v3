@@ -1,0 +1,391 @@
+{
+  "doc_id": "7433fd79-c6f5-52bd-bf0c-b6f5a4d48ac6",
+  "filename": "DCE_142_Technical_Bulletin.pdf",
+  "source_filepath": "data/raw_pdfs/DCE_142_Technical_Bulletin.pdf",
+  "filepath": "data/pdf_extracts/v1/pdfs/DCE_142_Technical_Bulletin.pdf",
+  "document_file_metadata": {
+    "document_title": "ECA 100KA Technical Bulletin",
+    "author": [
+      "John F. Kill"
+    ],
+    "copyright_status": "Unknown",
+    "created": "8/14/23, 3:21:11 PM UTC",
+    "modified": "8/14/23, 3:21:11 PM UTC",
+    "application": "Microsoft\u00ae Word for Microsoft 365",
+    "advanced": {
+      "pdf_producer": "Microsoft\u00ae Word for Microsoft 365",
+      "pdf_version": "1.7",
+      "location": "/Users/benjaminbykowski/projects/ai-apps/forks/qwen-dc-product/dc-product-agent/data/raw_pdfs/DCE_142_Technical_Bulletin.pdf",
+      "file_size": "380.12 KB (389,245 Bytes)",
+      "page_size": "8.50 x 11.00 in",
+      "number_of_pages": 2,
+      "tagged_pdf": "No",
+      "fast_web_view": "No"
+    }
+  },
+  "source_file_hash": {
+    "sha256": "d4b993b50c767f3bbe630ec00ee195eac2a366b52fda911fb35d60b2bd3eb9d2"
+  },
+  "document_type": "Product Technical Bulletin",
+  "manufacturer": "Dixie Chemical",
+  "contact_info": {
+    "address": "10601 Bay Area Blvd. Pasadena, TX 77507",
+    "phone": "(281) 474-3271",
+    "fax": "(281) 291-3384",
+    "email": "info@dixiechemicalgroup.com"
+  },
+  "product_info": {
+    "product_name": "DCE 142",
+    "product_short_name": "DCE 142",
+    "product_family": "Cycloaliphatic Diepoxy",
+    "cas_number": "5493-45-8",
+    "chemical_name": "Diglycidyl 1,2-cyclohexanedicarboxylate",
+    "synonyms": []
+  },
+  "registrations": [],
+  "key_benefits": [
+    "Low viscosity cycloaliphatic diepoxy",
+    "Excellent mechanical properties when cured with carboxylic anhydrides",
+    "High Tg",
+    "High weather/chemical resistance",
+    "Superior electrical resistance",
+    "Non-yellowing characteristics"
+  ],
+  "applications_text": "Diglycidyl 1,2-cyclohexanedicarboxylate or DCE 142 is a low viscosity cycloaliphatic diepoxy. The cured resins of DCE 142 with carboxylic anhydrides will have excellent mechanical properties, high Tg, high weather/chemical resistance, and superior electrical resistance along with non-yellowing characteristics. DCE 142 is ideal for applications such as coatings, electrical insulation components designed for medium/high voltage, outdoor applications, and high performance/temperature composites.",
+  "applications": [
+    "Coatings",
+    "Electrical insulation components for medium/high voltage",
+    "Outdoor applications",
+    "High performance/temperature composites"
+  ],
+  "properties_and_specifications": [
+    {
+      "category": "Typical",
+      "name": "Appearance",
+      "unit": null,
+      "value_string": "Clear to Light Yellow Liquid",
+      "value_numeric": null,
+      "value_min": null,
+      "value_max": null,
+      "test_method": "D-104 (Visual)",
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Typical",
+      "name": "Viscosity at 25\u00b0C, cPs",
+      "unit": "cPs",
+      "value_string": "500 - 1,300",
+      "value_numeric": null,
+      "value_min": 500,
+      "value_max": 1300,
+      "test_method": "D-150F",
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Typical",
+      "name": "Epoxy Equivalent Weight, g/mol",
+      "unit": "g/mol",
+      "value_string": "160 - 181",
+      "value_numeric": null,
+      "value_min": 160,
+      "value_max": 181,
+      "test_method": "D-144",
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Typical",
+      "name": "Specific Gravity, 25\u00b0C",
+      "unit": null,
+      "value_string": "1.20 - 1.25",
+      "value_numeric": null,
+      "value_min": 1.2,
+      "value_max": 1.25,
+      "test_method": "D-102",
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Typical",
+      "name": "Residual ECH, ppm",
+      "unit": "ppm",
+      "value_string": "0 - 50",
+      "value_numeric": null,
+      "value_min": 0,
+      "value_max": 50,
+      "test_method": "D-657D",
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Typical",
+      "name": "Color, Gardner",
+      "unit": null,
+      "value_string": "0 - 3",
+      "value_numeric": null,
+      "value_min": 0,
+      "value_max": 3,
+      "test_method": "D-150G",
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Typical",
+      "name": "Flash Point",
+      "unit": "\u00b0F",
+      "value_string": "> 336\u00b0F (169\u00b0C)",
+      "value_numeric": null,
+      "value_min": 336,
+      "value_max": null,
+      "test_method": "ASTM D-93",
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Typical",
+      "name": "Refractive Index, 25\u00b0C",
+      "unit": null,
+      "value_string": "1.480 - 1.491",
+      "value_numeric": null,
+      "value_min": 1.48,
+      "value_max": 1.491,
+      "test_method": "D-107",
+      "page": 1,
+      "notes": null
+    }
+  ],
+  "epoxy_resin_properties": null,
+  "typical_properties": {
+    "table_name": "Typical Properties",
+    "page": 1,
+    "data_type": "typical_properties",
+    "description": "DCE 142 is a low viscosity cycloaliphatic diepoxy. The cured resins of DCE 142 with carboxylic anhydrides will have excellent mechanical properties, high Tg, high weather/chemical resistance, and superior electrical resistance along with non-yellowing characteristics.",
+    "row_count": 8,
+    "data": [
+      {
+        "name": "Appearance",
+        "unit": null,
+        "value_string": "Clear to Light Yellow Liquid",
+        "value_min": null,
+        "value_max": null,
+        "value_numeric": null,
+        "test_method": "D-104 (Visual)"
+      },
+      {
+        "name": "Viscosity at 25\u00b0C, cPs",
+        "unit": "cPs",
+        "value_string": "500 - 1,300",
+        "value_min": 500,
+        "value_max": 1300,
+        "value_numeric": null,
+        "test_method": "D-150F"
+      },
+      {
+        "name": "Epoxy Equivalent Weight, g/mol",
+        "unit": "g/mol",
+        "value_string": "160 - 181",
+        "value_min": 160,
+        "value_max": 181,
+        "value_numeric": null,
+        "test_method": "D-144"
+      },
+      {
+        "name": "Specific Gravity, 25\u00b0C",
+        "unit": null,
+        "value_string": "1.20 - 1.25",
+        "value_min": 1.2,
+        "value_max": 1.25,
+        "value_numeric": null,
+        "test_method": "D-102"
+      },
+      {
+        "name": "Residual ECH, ppm",
+        "unit": "ppm",
+        "value_string": "0 - 50",
+        "value_min": 0,
+        "value_max": 50,
+        "value_numeric": null,
+        "test_method": "D-657D"
+      },
+      {
+        "name": "Color, Gardner",
+        "unit": null,
+        "value_string": "0 - 3",
+        "value_min": 0,
+        "value_max": 3,
+        "value_numeric": null,
+        "test_method": "D-150G"
+      },
+      {
+        "name": "Flash Point",
+        "unit": "\u00b0F",
+        "value_string": "> 336\u00b0F (169\u00b0C)",
+        "value_min": 336,
+        "value_max": null,
+        "value_numeric": null,
+        "test_method": "ASTM D-93"
+      },
+      {
+        "name": "Refractive Index, 25\u00b0C",
+        "unit": null,
+        "value_string": "1.480 - 1.491",
+        "value_min": 1.48,
+        "value_max": 1.491,
+        "value_numeric": null,
+        "test_method": "D-107"
+      }
+    ],
+    "notes": {}
+  },
+  "other_tables": [
+    {
+      "table_name": "Typical Properties",
+      "page": 1,
+      "data_type": "typical_properties",
+      "description": "DCE 142 is a low viscosity cycloaliphatic diepoxy. The cured resins of DCE 142 with carboxylic anhydrides will have excellent mechanical properties, high Tg, high weather/chemical resistance, and superior electrical resistance along with non-yellowing characteristics.",
+      "row_count": 8,
+      "data": [
+        {
+          "name": "Appearance",
+          "unit": null,
+          "value_string": "Clear to Light Yellow Liquid",
+          "value_min": null,
+          "value_max": null,
+          "value_numeric": null,
+          "test_method": "D-104 (Visual)"
+        },
+        {
+          "name": "Viscosity at 25\u00b0C, cPs",
+          "unit": "cPs",
+          "value_string": "500 - 1,300",
+          "value_min": 500,
+          "value_max": 1300,
+          "value_numeric": null,
+          "test_method": "D-150F"
+        },
+        {
+          "name": "Epoxy Equivalent Weight, g/mol",
+          "unit": "g/mol",
+          "value_string": "160 - 181",
+          "value_min": 160,
+          "value_max": 181,
+          "value_numeric": null,
+          "test_method": "D-144"
+        },
+        {
+          "name": "Specific Gravity, 25\u00b0C",
+          "unit": null,
+          "value_string": "1.20 - 1.25",
+          "value_min": 1.2,
+          "value_max": 1.25,
+          "value_numeric": null,
+          "test_method": "D-102"
+        },
+        {
+          "name": "Residual ECH, ppm",
+          "unit": "ppm",
+          "value_string": "0 - 50",
+          "value_min": 0,
+          "value_max": 50,
+          "value_numeric": null,
+          "test_method": "D-657D"
+        },
+        {
+          "name": "Color, Gardner",
+          "unit": null,
+          "value_string": "0 - 3",
+          "value_min": 0,
+          "value_max": 3,
+          "value_numeric": null,
+          "test_method": "D-150G"
+        },
+        {
+          "name": "Flash Point",
+          "unit": "\u00b0F",
+          "value_string": "> 336\u00b0F (169\u00b0C)",
+          "value_min": 336,
+          "value_max": null,
+          "value_numeric": null,
+          "test_method": "ASTM D-93"
+        },
+        {
+          "name": "Refractive Index, 25\u00b0C",
+          "unit": null,
+          "value_string": "1.480 - 1.491",
+          "value_min": 1.48,
+          "value_max": 1.491,
+          "value_numeric": null,
+          "test_method": "D-107"
+        }
+      ]
+    }
+  ],
+  "formulation_data": [],
+  "toxicity_data": [
+    {
+      "metric": "skin irritation",
+      "species": "human",
+      "route": "dermal",
+      "value": null,
+      "unit": null,
+      "test_method": null,
+      "conditions": null,
+      "page": 2,
+      "source_text": "DCE 142 primarily causes skin and eye irritations."
+    },
+    {
+      "metric": "eye irritation",
+      "species": "human",
+      "route": "ocular",
+      "value": null,
+      "unit": null,
+      "test_method": null,
+      "conditions": null,
+      "page": 2,
+      "source_text": "DCE 142 primarily causes skin and eye irritations."
+    }
+  ],
+  "sections": [
+    {
+      "name": "Applications",
+      "page": 1,
+      "text": "Diglycidyl 1,2-cyclohexanedicarboxylate or DCE 142 is a low viscosity cycloaliphatic diepoxy. The cured resins of DCE 142 with carboxylic anhydrides will have excellent mechanical properties, high Tg, high weather/chemical resistance, and superior electrical resistance along with non-yellowing characteristics. DCE 142 is ideal for applications such as coatings, electrical insulation components designed for medium/high voltage, outdoor applications, and high performance/temperature composites."
+    },
+    {
+      "name": "Health Hazards",
+      "page": 2,
+      "text": "Read and understand the Safety Data Sheets (SDS) before use. DCE 142 primarily causes skin and eye irritations."
+    },
+    {
+      "name": "Handling & Storage",
+      "page": 2,
+      "text": "Follow the recommendations in the SDS for personal protective equipment when handling the material. At a minimum, it requires protective chemical goggles, impenetrable gloves, and measures to avoid breathing chemical vapors.\n\nUse only with adequate ventilation. Avoid contact with skin, eyes, and clothing. In case of contact, follow the procedures outlined in the SDS. Generally, these procedures include immediately getting medical attention and flushing the affected skin or eyes with copious amounts of water for at least 15 minutes. Wash contaminated clothing before reuse."
+    },
+    {
+      "name": "Storage",
+      "page": 2,
+      "text": "This material is not compatible with strong acids/bases or strong oxidizing agents. Store in a dry, cool, and well-ventilated area. Keep away from direct sunlight, heat, hot surfaces, sparks, open flames, and other ignition sources."
+    },
+    {
+      "name": "Availability",
+      "page": 2,
+      "text": "DCE 142 is available from Dixie Chemical in Pasadena, TX. Contact your Dixie representative for details."
+    }
+  ],
+  "images": [],
+  "document_footnotes": {},
+  "extraction_metadata": {
+    "confidence_scores": {
+      "product_info": 100,
+      "properties": 100,
+      "other_tables": 100,
+      "sections": 100,
+      "images": 100,
+      "overall": 100
+    },
+    "extractor_version": "dev",
+    "extraction_date": "2025-08-26T18:15:00-04:00"
+  }
+}

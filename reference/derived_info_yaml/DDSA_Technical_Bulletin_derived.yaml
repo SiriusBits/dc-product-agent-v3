@@ -1,0 +1,702 @@
+doc_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+filename: DDSA_Technical_Bulletin.pdf
+filepath: ${paths.processed_pdfs_root}/DDSA_Technical_Bulletin.pdf
+extraction_metadata:
+  confidence_scores: ${extraction.default_confidence_scores_derived}
+  extractor_version: ${extraction.extractor_version}
+  extraction_date: '2025-08-28T16:53:00-04:00'
+derived_info:
+  summary: DDSA (Dodecenylsuccinic Anhydride) is a liquid anhydride epoxy curing agent
+    manufactured by Dixie Chemical. It provides excellent electrical properties, flexibility,
+    and long pot life at room temperature. The document contains comprehensive performance
+    data including 11 graphs showing temperature-dependent properties, post-cure effects,
+    and mechanical testing results across multiple formulations. Key applications
+    include electrical potting compounds, coatings, conductive adhesives, and syntactic
+    foams.
+  personas:
+    sales_summary: DDSA offers exceptional value for electrical and high-performance
+      applications with its unique combination of long pot life, excellent electrical
+      properties, and flexibility. The extensive performance data demonstrates consistent
+      quality across multiple formulations and cure conditions, making it ideal for
+      demanding applications requiring chemical resistance and thermal stability.
+    technical_summary: DDSA is a 266 molecular weight liquid anhydride with 97% minimum
+      purity and specific gravity of 1.002 g/cc at 25°C. Performance data shows optimal
+      usage at 80-150 phr with BPA epoxy resins, with 140 phr recommended for high-performance
+      applications. Post-cure studies demonstrate improved HDT (60-75°C), reduced
+      water absorption (1.0-0.35%), and enhanced mechanical properties with extended
+      cure times.
+  key_applications:
+  - Electrical potting compounds
+  - Coatings for chemical resistance
+  - Conductive adhesives
+  - Syntactic foams
+  - Corrosion inhibitor intermediates
+  - Leather tanning applications
+  - Anhydride modifier for freezing point reduction
+  - High-performance structural composites
+  - Thermal stability applications
+  - Flexible epoxy systems
+knowledge_graph:
+  entities:
+  - id: b4e54b59-b87b-5f1b-802b-e285181a236c
+    text: DDSA
+    type: CHEMICAL
+    canonical_name: Dodecenylsuccinic Anhydride
+    aliases:
+    - DDSA
+    - Dodecenylsuccinic Anhydride
+    source_text: Dixie dodecenylsuccinic anhydride (DDSA)
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - id: b7b97c68-7a3b-592c-9911-bff22af10fa2
+    text: Dixie Chemical
+    type: ORGANIZATION
+    canonical_name: ${manufacturer.name}
+    aliases:
+    - Dixie Chemical
+    source_text: Dixie Chemical
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - id: cc278f1c-7413-5dcd-bf5e-c1356c65d050
+    text: 26544-38-7
+    type: CAS_NUMBER
+    canonical_name: 26544-38-7
+    aliases:
+    - 26544-38-7
+    source_text: CAS number 26544-38-7
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - id: 100d54a8-4848-5705-9fd9-ae257fba041b
+    text: BPA Liquid Epoxy
+    type: CHEMICAL
+    canonical_name: Bisphenol A Liquid Epoxy Resin
+    aliases:
+    - BPA liquid epoxy resin
+    - Standard BPA Liquid Epoxy
+    source_text: bisphenol A (BPA) liquid epoxy resins
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - id: 3a15083e-d020-5a96-a793-32662ee90d08
+    text: BDMA
+    type: CHEMICAL
+    canonical_name: Benzyldimethylamine
+    aliases:
+    - BDMA
+    - Benzyldimethylamine
+    source_text: Benzyldimethylamine (BDMA)
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - id: b82e2048-092e-5e98-b04c-5f4d0e112992
+    text: Molecular Weight
+    type: PROPERTY
+    canonical_name: Molecular Weight
+    aliases:
+    - Molecular Weight (average)
+    source_text: Molecular Weight (average)
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - id: 1b142dba-15ef-5e41-9bfa-dd059c1e9291
+    text: Specific Gravity
+    type: PROPERTY
+    canonical_name: Specific Gravity
+    aliases:
+    - Specific gravity @ 25°C
+    source_text: Specific gravity @ 25°C
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - id: 0fca4b3b-8775-5eca-9be3-698ea5059ed2
+    text: HDT
+    type: PROPERTY
+    canonical_name: Heat Distortion Temperature
+    aliases:
+    - HDT
+    - Heat Distortion Temperature
+    source_text: heat distortion temperature (HDT)
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - id: e4c0a98d-b611-53cd-8112-c9ed5ecc6211
+    text: Glass Transition Temperature
+    type: PROPERTY
+    canonical_name: Glass Transition Temperature
+    aliases:
+    - Tg
+    - Glass Transition Temperature
+    source_text: glass transition temperatures (Tg)
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - id: e6470bdf-c39c-5e91-8a98-c26f613222c3
+    text: Dielectric Constant
+    type: PROPERTY
+    canonical_name: Dielectric Constant
+    aliases:
+    - Dielectric Constant
+    source_text: Dielectric Constant
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - id: b482be3c-f09d-5082-97e9-00a2a6883f11
+    text: Tensile Strength
+    type: PROPERTY
+    canonical_name: Tensile Strength
+    aliases:
+    - Tensile Strength
+    source_text: tensile strength
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - id: 37a82784-d265-5807-81a7-18d808b0638d
+    text: Flexural Modulus
+    type: PROPERTY
+    canonical_name: Flexural Modulus
+    aliases:
+    - Flexural Modulus
+    source_text: Flexural Modulus
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - id: e50032b4-e206-5da1-8777-7bbabe4bf520
+    text: Electrical Potting Compounds
+    type: APPLICATION
+    canonical_name: Electrical Potting Compounds
+    aliases:
+    - electrical potting compounds
+    source_text: electrical potting compounds
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - id: 3005ac18-7c27-5b10-8d7d-2f3c526fec2b
+    text: Conductive Adhesives
+    type: APPLICATION
+    canonical_name: Conductive Adhesives
+    aliases:
+    - conductive adhesives
+    source_text: conductive adhesives
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - id: 5d8f09e0-0b57-56e1-8c04-0162748a6690
+    text: Long Pot Life
+    type: BENEFIT
+    canonical_name: Long Pot Life at Room Temperature
+    aliases:
+    - long pot life
+    - long pot life at room temperature
+    source_text: has a long pot life at room temperature
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  kg_triples:
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: manufactured_by
+    object: b7b97c68-7a3b-592c-9911-bff22af10fa2
+    source_text: Dixie Chemical
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: has_cas_number
+    object: cc278f1c-7413-5dcd-bf5e-c1356c65d050
+    source_text: CAS number 26544-38-7
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: has_property
+    object: b82e2048-092e-5e98-b04c-5f4d0e112992
+    source_text: Molecular Weight (average) 266
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b82e2048-092e-5e98-b04c-5f4d0e112992
+    predicate: has_value
+    object: '266'
+    source_text: Molecular Weight (average) 266
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: has_property
+    object: 1b142dba-15ef-5e41-9bfa-dd059c1e9291
+    source_text: Specific gravity @ 25°C, g/cc 1.002
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: 1b142dba-15ef-5e41-9bfa-dd059c1e9291
+    predicate: has_value
+    object: 1.002 g/cc
+    source_text: Specific gravity @ 25°C, g/cc 1.002
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: has_appearance
+    object: Light yellow liquid
+    source_text: Appearance Light yellow liquid
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: has_color_max
+    object: 6 Gardner
+    source_text: Color, Gardner 6 max.
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: has_purity_min
+    object: 97.0%
+    source_text: DDSA, % 97.0 min
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: has_maleic_anhydride_max
+    object: 0.2%
+    source_text: Maleic Anhydride, % 0.2 max
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: has_free_acid_max
+    object: 2.0%
+    source_text: Free Acid, % 2.0 max
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: has_neutralization_equivalent
+    object: 400-432 mg KOH/g
+    source_text: Neutralization Equivalent, mg KOH/g 400-432
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: used_in
+    object: e50032b4-e206-5da1-8777-7bbabe4bf520
+    source_text: epoxy curing agent for electrical potting compounds
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: used_in
+    object: 3005ac18-7c27-5b10-8d7d-2f3c526fec2b
+    source_text: conductive adhesives
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: provides
+    object: 5d8f09e0-0b57-56e1-8c04-0162748a6690
+    source_text: has a long pot life at room temperature
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: provides
+    object: excellent electrical properties
+    source_text: gives excellent electrical properties
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: provides
+    object: flexibility to castings
+    source_text: gives flexibility to castings
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: 100d54a8-4848-5705-9fd9-ae257fba041b
+    predicate: used_with
+    object: b4e54b59-b87b-5f1b-802b-e285181a236c
+    source_text: Standard BPA Liquid Epoxy 100, DDSA 133
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: 3a15083e-d020-5a96-a793-32662ee90d08
+    predicate: catalyzes
+    object: b4e54b59-b87b-5f1b-802b-e285181a236c
+    source_text: Benzyldimethylamine (BDMA) catalyst
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: typical_usage_range
+    object: 80-150 phr with BPA epoxy
+    source_text: Most applications use between 80-150 phr DDSA with bisphenol A (BPA)
+      liquid epoxy resins
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: high_performance_usage
+    object: 140 phr
+    source_text: Most high performance applications utilize about 140 phr
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: has_tg_at_84_phr
+    object: 79°C
+    source_text: Anhydride blend, phr 84, Tg,°C 79
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: has_tg_at_90_phr
+    object: 71°C
+    source_text: Anhydride blend, phr 90, Tg,°C 71
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: has_tg_at_95_phr
+    object: 71°C
+    source_text: Anhydride blend, phr 95, Tg,°C 71
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: has_tg_at_100_phr
+    object: 71°C
+    source_text: Anhydride blend, phr 100, Tg,°C 71
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: has_tg_at_110_phr
+    object: 77°C
+    source_text: Anhydride blend, phr 110, Tg,°C 77
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: has_tg_at_125_phr
+    object: 71°C
+    source_text: Anhydride blend, phr 125, Tg,°C 71
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: has_tg_at_135_phr
+    object: 85°C
+    source_text: Anhydride blend, phr 135, Tg,°C 85
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: has_tg_at_145_phr
+    object: 81°C
+    source_text: Anhydride blend, phr 145, Tg,°C 81
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: has_hdt_at_4h_postcure
+    object: 60°C
+    source_text: HDT at 4h post-cure 60°C
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: has_hdt_at_24h_postcure
+    object: 70°C
+    source_text: HDT at 24h post-cure 70°C
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: has_hdt_at_200h_postcure
+    object: 75°C
+    source_text: HDT at 200h post-cure 75°C
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: has_water_boil_gain_4h
+    object: 1.00%
+    source_text: 24 h Water Boil Weight Gain at 4h post-cure 1.00%
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: has_water_boil_gain_24h
+    object: 0.50%
+    source_text: 24 h Water Boil Weight Gain at 24h post-cure 0.50%
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: has_water_boil_gain_200h
+    object: 0.35%
+    source_text: 24 h Water Boil Weight Gain at 200h post-cure 0.35%
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: has_acetone_boil_gain_4h
+    object: 10.0%
+    source_text: 3 h Acetone Boil Wt Gain at 4h post-cure 10.0%
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: has_acetone_boil_gain_24h
+    object: 2.5%
+    source_text: 3 h Acetone Boil Wt Gain at 24h post-cure 2.5%
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: has_acetone_boil_gain_200h
+    object: 1.0%
+    source_text: 3 h Acetone Boil Wt Gain at 200h post-cure 1.0%
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: has_tensile_strength_minus25c_4h
+    object: 8.0 ksi
+    source_text: Tensile Strength @ -25°C at 4h post-cure 8.0 ksi
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: has_tensile_strength_minus25c_24h
+    object: 8.5 ksi
+    source_text: Tensile Strength @ -25°C at 24h post-cure 8.5 ksi
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: has_tensile_strength_minus25c_200h
+    object: 9.5 ksi
+    source_text: Tensile Strength @ -25°C at 200h post-cure 9.5 ksi
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: has_tensile_strength_25c_4h
+    object: 7.0 ksi
+    source_text: Tensile Strength @ 25°C at 4h post-cure 7.0 ksi
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: has_tensile_strength_25c_24h
+    object: 6.5 ksi
+    source_text: Tensile Strength @ 25°C at 24h post-cure 6.5 ksi
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: has_tensile_strength_25c_200h
+    object: 6.0 ksi
+    source_text: Tensile Strength @ 25°C at 200h post-cure 6.0 ksi
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: has_tensile_modulus_minus25c_4h
+    object: 400 ksi
+    source_text: Tensile Modulus @ -25°C at 4h post-cure 400 ksi
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: has_tensile_modulus_minus25c_24h
+    object: 400 ksi
+    source_text: Tensile Modulus @ -25°C at 24h post-cure 400 ksi
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: has_tensile_modulus_minus25c_200h
+    object: 400 ksi
+    source_text: Tensile Modulus @ -25°C at 200h post-cure 400 ksi
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: has_tensile_modulus_25c_4h
+    object: 400 ksi
+    source_text: Tensile Modulus @ 25°C at 4h post-cure 400 ksi
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: has_tensile_modulus_25c_24h
+    object: 350 ksi
+    source_text: Tensile Modulus @ 25°C at 24h post-cure 350 ksi
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: has_tensile_modulus_25c_200h
+    object: 300 ksi
+    source_text: Tensile Modulus @ 25°C at 200h post-cure 300 ksi
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: has_elongation_minus25c_4h
+    object: 1.5%
+    source_text: Elongation @ -25°C at 4h post-cure 1.5%
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: has_elongation_minus25c_24h
+    object: 2.0%
+    source_text: Elongation @ -25°C at 24h post-cure 2.0%
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: has_elongation_minus25c_200h
+    object: 4.0%
+    source_text: Elongation @ -25°C at 200h post-cure 4.0%
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: has_elongation_25c_4h
+    object: 4.5%
+    source_text: Elongation @ 25°C at 4h post-cure 4.5%
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: has_elongation_25c_24h
+    object: 4.5%
+    source_text: Elongation @ 25°C at 24h post-cure 4.5%
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: has_elongation_25c_200h
+    object: 4.5%
+    source_text: Elongation @ 25°C at 200h post-cure 4.5%
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: has_property
+    object: e6470bdf-c39c-5e91-8a98-c26f613222c3
+    source_text: Dielectric Constant @ 60 Hz 2.85
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: e6470bdf-c39c-5e91-8a98-c26f613222c3
+    predicate: has_value_at_60hz
+    object: '2.85'
+    source_text: Dielectric Constant @ 60 Hz 2.85
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: e6470bdf-c39c-5e91-8a98-c26f613222c3
+    predicate: has_value_at_1mhz
+    object: '2.79'
+    source_text: Dielectric Constant @ 1 MHz 2.79
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: has_power_factor_60hz
+    object: '0.0039'
+    source_text: Power Factor @ 60 Hz 0.0039
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: has_power_factor_1mhz
+    object: '0.0084'
+    source_text: Power Factor @ 1 MHz 0.0084
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: has_property
+    object: 0fca4b3b-8775-5eca-9be3-698ea5059ed2
+    source_text: HDT, °C 77
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: 0fca4b3b-8775-5eca-9be3-698ea5059ed2
+    predicate: has_value
+    object: 77°C
+    source_text: HDT, °C 77
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: has_izod_impact
+    object: 0.22 ft-lb/in. notch
+    source_text: Izod Impact, ft-lb/in. notch 0.22
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: has_flexural_strength
+    object: 13.2 ksi
+    source_text: Flexural Strength, ksi 13.2
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: has_property
+    object: 37a82784-d265-5807-81a7-18d808b0638d
+    source_text: Flexural Modulus, ksi 350
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: 37a82784-d265-5807-81a7-18d808b0638d
+    predicate: has_value
+    object: 350 ksi
+    source_text: Flexural Modulus, ksi 350
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: has_weight_loss_200c
+    object: 0.35%
+    source_text: '% Wt. loss 24 hr @ 200°C 0.35'
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: reacts_with
+    object: water
+    source_text: DDSA will react with water to form dodecenylsuccinic acid
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: requires
+    object: moisture protection
+    source_text: should be stored in such a way that it is carefully protected from
+      moisture contamination
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: is_irritant_to
+    object: skin and eyes
+    source_text: These anhydrides are primary skin and eye irritants
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: modifies
+    object: other anhydrides
+    source_text: DDSA is useful in modifying other anhydrides to lower their freezing
+      points
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: lowers_freezing_point_of
+    object: Phthalic Anhydride
+    source_text: shows how DDSA lowers the freezing point of five other anhydrides
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: lowers_freezing_point_of
+    object: Hexahydrophthalic Anhydride
+    source_text: shows how DDSA lowers the freezing point of five other anhydrides
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: lowers_freezing_point_of
+    object: Tetrahydrophthalic Anhydride
+    source_text: shows how DDSA lowers the freezing point of five other anhydrides
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: lowers_freezing_point_of
+    object: Maleic Anhydride
+    source_text: shows how DDSA lowers the freezing point of five other anhydrides
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: lowers_freezing_point_of
+    object: Methylhexahydrophthalic Anhydride
+    source_text: shows how DDSA lowers the freezing point of five other anhydrides
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: used_as_intermediate_for
+    object: corrosion inhibitors
+    source_text: An intermediate in the preparation of corrosion inhibitors for oils
+      and greases
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: used_as
+    object: leather tanning agent
+    source_text: As a leather tanning agent
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: reduces
+    object: brittleness of cured polymers
+    source_text: lend flexibility and reduce brittleness of cured polymers
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: used_in
+    object: syntactic foams
+    source_text: syntactic foams
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b4e54b59-b87b-5f1b-802b-e285181a236c
+    predicate: used_in
+    object: coatings
+    source_text: coatings
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b7b97c68-7a3b-592c-9911-bff22af10fa2
+    predicate: located_at
+    object: 10601 Bay Area Blvd. Pasadena, TX 77507
+    source_text: 10601 Bay Area Blvd. Pasadena, TX 77507
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b7b97c68-7a3b-592c-9911-bff22af10fa2
+    predicate: phone_number
+    object: (281) 474-3271
+    source_text: (281) 474-3271
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b7b97c68-7a3b-592c-9911-bff22af10fa2
+    predicate: fax_number
+    object: (281) 291-3384
+    source_text: (281) 291-3384
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+  - subject: b7b97c68-7a3b-592c-9911-bff22af10fa2
+    predicate: email
+    object: info@dixiechemical.com
+    source_text: info@dixiechemical.com
+    provenance:
+      document_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374

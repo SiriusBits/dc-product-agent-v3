@@ -1,0 +1,53 @@
+flowchart TD
+    A["Author Extracts<br/>(Human or LLM)"] --> B[Base/Derived YAML<br/>reference/gold/*_yaml]
+    A2["LLM Self‑Validation (optional) <br/>backend/extract_validator/llm_self_validate.py <br/>- --stdin/--file <br/>- returns structured errors"] --> B
+
+    B --> C["Format‑only Normalizers (idempotent) <br/>- Sections/Contact <br/>- Derived formatting"]
+    %%{init: { 'sequence': {'messageAlign': 'left'} }}%%
+    C --> D["Assemble & Validate <br/>backend/extract_validator/build_extracts.py <br/>- Placeholder resolution <br/>- Fill top‑level + nested <br/>- Apply defaults <br/>- Order keys by schema <br/>- Deterministic doc_id (UUID5 by filename stem)"]
+
+    D --> E1["JSON (Base/Derived) <br/>reference/build/*"]
+    D -. gold refresh .-> E2["JSON (Base/Derived) <br/>reference/gold/*"]
+
+    subgraph Optional Taxonomy
+      T1[Taxonomy YAMLs <br/>reference/gold/taxonomy/*.yaml]
+      T2[Normalize string labels <br/>backend/ingest/taxonomy_normalizer.py]
+    end
+
+    E1 -->|--normalize-taxonomy| T2 --> F["Ingest CLI <br/>backend/ingest/ingest_extracts.py <br/>- Chunker (--max-tokens/strategy) <br/>- KG export + schema checks <br/>- Report.json <br/>- --clean-out"]
+
+    F --> G1[Embeddings JSONL <br/>reference/ingest_out/embeddings/*.jsonl]
+    F --> G2["KG JSONL <br/>reference/ingest_out/kg/{entities,triples}.jsonl"]
+
+    subgraph Validation / Tests
+      V1[Chunk schema check]
+      V2[KG entity/triple schema check]
+      V3["KG load test + sanity <br/>(NetworkX)"]
+      V4[Duplicate doc_id audit]
+    end
+
+    G1 --> V1
+    G2 --> V2 --> V3
+    E1 --> V4
+
+    subgraph Pilot Integration
+      P1[Chroma bootstrap <br/>backend/chat/bootstrap_ingestion.py]
+    end
+
+    G1 --> P1
+    G2 --> P1
+
+    subgraph "CI (GitHub Actions)"
+      CI1[uv sync + pnpm]
+      CI2[Assemble base/derived]
+      CI3["Ingest (strict)"]
+      CI4[Format-only normalizers + git diff]
+      CI5[pytest, ruff, black, prettier]
+      CI6[KG load test + doc_id audit]
+    end
+
+    E1 --> CI2
+    G1 --> CI3
+    G2 --> CI6
+    CI1 --> CI2 --> CI3 --> CI4 --> CI5 --> CI6
+

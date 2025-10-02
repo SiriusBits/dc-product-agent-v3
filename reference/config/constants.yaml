@@ -1,0 +1,59 @@
+# Shared constants for assembling extracts from YAML
+project:
+  name: dc-product-agent-v2
+paths:
+  raw_pdfs_root: data/raw_pdfs
+  processed_pdfs_root: data/pdf_extracts/v2/pdfs
+  processed_images_root: data/pdf_extracts/v2/images
+
+extraction:
+  extractor_version: "2.0.0"
+  default_confidence_scores:
+    product_info: 100
+    key_benefits: 100
+    applications_text: 100
+    applications: 100
+    properties_and_specifications: 100
+    other_tables: 100
+    typical_properties: 100
+    epoxy_resin_properties: 100
+    formulation_data: 100
+    toxicity_data: 100
+    sections: 100
+    registrations: 100
+    document_footnotes: 100
+    images: 100
+    overall: 100
+  default_confidence_scores_derived:
+    summary: 100
+    personas: 100
+    key_applications: 100
+    knowledge_graph: 100
+    overall: 100
+
+manufacturer:
+  name: Dixie Chemical
+  contact_info:
+    address: "10601 Bay Area Blvd. Pasadena, TX 77507"
+    phone: "(281) 474-3271"
+    fax: "(281) 291-3384"
+    email: "info@dixiechemicalgroup.com"
+
+defaults:
+  document_type: "Product Technical Bulletin"
+  tables:
+    typical_properties:
+      table_name: "Typical Properties"
+      data_type: "typical_properties"
+
+sections:
+  canonical:
+    Applications:
+      - Applications
+    Availability:
+      - Availability
+    "Handling & Storage":
+      - "Handling & Storage"
+      - Handling
+    "Health Hazards":
+      - "Health Hazards"

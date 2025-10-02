@@ -1,0 +1,528 @@
+doc_id: 52ad526e-776d-57e1-8805-53dbcbd99503
+filename: DCA_467_Technical_Bulletin.pdf
+source_filepath: ${paths.raw_pdfs_root}/DCA_467_Technical_Bulletin.pdf
+filepath: ${paths.processed_pdfs_root}/DCA_467_Technical_Bulletin.pdf
+document_file_metadata:
+  document_title: ECA 100KA Technical Bulletin
+  author:
+  - John F. Kill
+  copyright_status: Unknown
+  created: 10/23/24, 4:29:11 PM UTC
+  modified: 10/23/24, 4:29:11 PM UTC
+  application: "Microsoft\xAE Word for Microsoft 365"
+  advanced:
+    pdf_producer: "Microsoft\xAE Word for Microsoft 365"
+    pdf_version: '1.7'
+    location: /Users/benjaminbykowski/projects/ai-apps/forks/qwen-dc-product/dc-product-agent/data/raw_pdfs/DCA_467_Technical_Bulletin.pdf
+    file_size: 598.67 KB (613,037 Bytes)
+    page_size: 8.50 x 11.00 in
+    number_of_pages: 4
+    tagged_pdf: 'No'
+    fast_web_view: 'No'
+source_file_hash:
+  sha256: 4a657d32f51497de8792cb43f8fc4b3f7a4aac935d47ea42adbed8521446ff9e
+document_type: Product Technical Bulletin
+manufacturer: ${manufacturer.name}
+contact_info:
+  address: ${manufacturer.contact_info.address}
+  phone: ${manufacturer.contact_info.phone}
+  fax: null
+  email: ${manufacturer.contact_info.email}
+product_info:
+  product_name: DCA 467
+  product_short_name: DCA 467
+  product_family: Polyaziridine Crosslinker
+  cas_number: 64265-57-2
+  chemical_name: Trimethylolpropane tris(2-methyl-1-aziridinepropionate)
+  synonyms: []
+registrations: []
+key_benefits:
+- Crosslinked Properties Obtained at Room Temperature
+- Improved Water, Alcohol and Print Resistance
+- Increased Chemical, Stain and Abrasion Resistance
+applications_text: 'DCA 467 is a polyaziridine crosslinker. Addition of one to three
+  percent DCA 467 to acrylic emulsions or waterborne urethane polymers produces a
+  marked improvement in water, chemical, abrasion, and humidity resistance. It is
+  ideal for use with fast air-dry NeoCryl acrylic emulsions, NeoRez waterborne urethane
+  and NeoPac urethane acrylic copolymer products. In addition, DCA 467 can be used
+  with solvent based systems provided reactive carboxyl functionality is present.
+
+
+  The equivalent weight of DCA 467 is 157 g/mole. For many applications, 0.6 equivalents
+  of DCA 467 are sufficient to achieve the optimum improvement in film properties.
+  However, some systems may require the full stoichiometric equivalent of crosslinker.'
+applications:
+- Crosslinker for acrylic emulsions
+- Crosslinker for waterborne urethane polymers
+- Crosslinker for urethane acrylic copolymers
+- Crosslinker for solvent-based systems with carboxyl functionality
+- Water resistance enhancement
+- Chemical resistance enhancement
+- Abrasion resistance enhancement
+- Humidity resistance enhancement
+properties_and_specifications:
+- category: Typical
+  name: Physical Appearance
+  unit: null
+  value_string: Liquid
+  value_numeric: null
+  value_min: null
+  value_max: null
+  test_method: null
+  page: 1
+  notes: null
+- category: Typical
+  name: Color
+  unit: null
+  value_string: Light Yellow
+  value_numeric: null
+  value_min: null
+  value_max: null
+  test_method: null
+  page: 1
+  notes: null
+- category: Typical
+  name: Odor
+  unit: null
+  value_string: Amine like
+  value_numeric: null
+  value_min: null
+  value_max: null
+  test_method: null
+  page: 1
+  notes: null
+- category: Typical
+  name: Relative density (water =1)
+  unit: null
+  value_string: '1.08'
+  value_numeric: 1.08
+  value_min: null
+  value_max: null
+  test_method: null
+  page: 1
+  notes: null
+- category: Typical
+  name: Flash Point
+  unit: "\xB0F"
+  value_string: "487\xB0F (253\xB0C)"
+  value_numeric: 487
+  value_min: null
+  value_max: null
+  test_method: ASTM D3828
+  page: 1
+  notes: null
+- category: Typical
+  name: Dynamic Viscosity
+  unit: cPs
+  value_string: ~ 200 cPs
+  value_numeric: 200
+  value_min: null
+  value_max: null
+  test_method: R.T.
+  page: 1
+  notes: null
+- category: Specification
+  name: Appearance
+  unit: null
+  value_string: Light yellow liquid
+  value_numeric: null
+  value_min: null
+  value_max: null
+  test_method: D-104 (Visual)
+  page: 2
+  notes: null
+- category: Specification
+  name: "Viscosity at 25\xB0C"
+  unit: cPs
+  value_string: 150 - 350
+  value_numeric: null
+  value_min: 150
+  value_max: 350
+  test_method: D-150F
+  page: 2
+  notes: null
+- category: Specification
+  name: Propyleneimine
+  unit: ppm
+  value_string: < 1.0
+  value_numeric: null
+  value_min: null
+  value_max: 1.0
+  test_method: D-160Y
+  page: 2
+  notes: null
+- category: Specification
+  name: Solids
+  unit: '%'
+  value_string: 99 Min
+  value_numeric: null
+  value_min: 99
+  value_max: null
+  test_method: D-160Y
+  page: 2
+  notes: null
+- category: Specification
+  name: Color, Gardner
+  unit: null
+  value_string: 2 Max
+  value_numeric: null
+  value_min: null
+  value_max: 2
+  test_method: D-150G
+  page: 2
+  notes: null
+typical_properties:
+  table_name: Typical Properties
+  page: 1
+  data_type: typical_properties
+  description: DCA 467 contains three aziridine functional groups with an average
+    molecular weight of ~467 g/mole and a functional equivalent weight of ~157 g/mole.
+    It can be used to crosslink polymers with reactive carboxyl functionality at ambient
+    temperatures.
+  row_count: 6
+  data:
+  - name: Physical Appearance
+    unit: null
+    value_string: Liquid
+    value_min: null
+    value_max: null
+    value_numeric: null
+    test_method: null
+  - name: Color
+    unit: null
+    value_string: Light Yellow
+    value_min: null
+    value_max: null
+    value_numeric: null
+    test_method: null
+  - name: Odor
+    unit: null
+    value_string: Amine like
+    value_min: null
+    value_max: null
+    value_numeric: null
+    test_method: null
+  - name: Relative density (water =1)
+    unit: null
+    value_string: '1.08'
+    value_min: null
+    value_max: null
+    value_numeric: 1.08
+    test_method: null
+  - name: Flash Point
+    unit: "\xB0F"
+    value_string: "487\xB0F (253\xB0C)"
+    value_min: null
+    value_max: null
+    value_numeric: 487
+    test_method: ASTM D3828
+  - name: Dynamic Viscosity
+    unit: cPs
+    value_string: ~ 200 cPs
+    value_min: null
+    value_max: null
+    value_numeric: 200
+    test_method: R.T.
+other_tables:
+- table_name: Specifications
+  page: 2
+  data_type: specification_data
+  description: Product specifications for DCA 467
+  row_count: 5
+  data:
+  - property: Appearance
+    values:
+      unit: null
+      value_string: Light yellow liquid
+      value_min: null
+      value_max: null
+      value_numeric: null
+    test _method:
+      unit: null
+      value_string: D-104 (Visual)
+      value_min: null
+      value_max: null
+      value_numeric: null
+  - property: "Viscosity at 25\xB0C, cPs"
+    values:
+      unit: cPs
+      value_string: 150 - 350
+      value_min: 150
+      value_max: 350
+      value_numeric: null
+    test _method:
+      unit: null
+      value_string: D-150F
+      value_min: null
+      value_max: null
+      value_numeric: null
+  - property: Propyleneimine, ppm
+    values:
+      unit: ppm
+      value_string: < 1.0
+      value_min: null
+      value_max: 1.0
+      value_numeric: null
+    test _method:
+      unit: null
+      value_string: D-160Y
+      value_min: null
+      value_max: null
+      value_numeric: null
+  - property: Solids, %
+    values:
+      unit: '%'
+      value_string: 99 Min
+      value_min: 99
+      value_max: null
+      value_numeric: null
+    test _method:
+      unit: null
+      value_string: D-160Y
+      value_min: null
+      value_max: null
+      value_numeric: null
+  - property: Color, Gardner
+    values:
+      unit: null
+      value_string: 2 Max
+      value_min: null
+      value_max: 2
+      value_numeric: null
+    test _method:
+      unit: null
+      value_string: D-150G
+      value_min: null
+      value_max: null
+      value_numeric: null
+- table_name: Typical Properties
+  page: 1
+  data_type: typical_properties
+  description: DCA 467 contains three aziridine functional groups with an average
+    molecular weight of ~467 g/mole and a functional equivalent weight of ~157 g/mole.
+    It can be used to crosslink polymers with reactive carboxyl functionality at ambient
+    temperatures.
+  row_count: 6
+  data:
+  - name: Physical Appearance
+    unit: null
+    value_string: Liquid
+    value_min: null
+    value_max: null
+    value_numeric: null
+    test_method: null
+  - name: Color
+    unit: null
+    value_string: Light Yellow
+    value_min: null
+    value_max: null
+    value_numeric: null
+    test_method: null
+  - name: Odor
+    unit: null
+    value_string: Amine like
+    value_min: null
+    value_max: null
+    value_numeric: null
+    test_method: null
+  - name: Relative density (water =1)
+    unit: null
+    value_string: '1.08'
+    value_min: null
+    value_max: null
+    value_numeric: 1.08
+    test_method: null
+  - name: Flash Point
+    unit: "\xB0F"
+    value_string: "487\xB0F (253\xB0C)"
+    value_min: null
+    value_max: null
+    value_numeric: 487
+    test_method: ASTM D3828
+  - name: Dynamic Viscosity
+    unit: cPs
+    value_string: ~ 200 cPs
+    value_min: null
+    value_max: null
+    value_numeric: 200
+    test_method: R.T.
+formulation_data: []
+toxicity_data:
+- metric: LD50
+  species: null
+  route: oral
+  value: 3038.0
+  unit: mg/kg
+  test_method: acute oral toxicity study
+  conditions: null
+  page: 2
+  source_text: An acute oral toxicity study with DCA 467 produced an LD50 value of
+    3,038 mg/kg. This places it in a category of toxic materials with a value which
+    is similar to common solvents such as methyl ethyl ketone and toluene.
+- metric: Primary Skin Irritation
+  species: null
+  route: dermal
+  value: 2.65
+  unit: score
+  test_method: null
+  conditions: out of a possible score of 8
+  page: 3
+  source_text: A primary skin irritation value of 2.65 was obtained out of a possible
+    score of 8. Compounds producing a primary irritation value of 5 or greater are
+    defined as "primary skin irritants".
+- metric: Eye Irritation
+  species: null
+  route: ocular
+  value: primary eye irritant
+  unit: null
+  test_method: null
+  conditions: corrosive effects indicated
+  page: 3
+  source_text: DCA 467 was found to be a primary eye irritant and corrosive effects
+    were indicated.
+- metric: Mutagenicity
+  species: null
+  route: null
+  value: 0.18
+  unit: revertant per microgram
+  test_method: Ames reverse mutation technique
+  conditions: measurable low response
+  page: 3
+  source_text: DCA 467 was tested for potential mutagenic activity in microbial assays
+    using the reverse mutation technique described by Ames. A dose-related increased
+    reversion frequency over the spontaneous rate was obtained and a value of 0.18
+    revertant per microgram was calculated. Although positive, the level of response
+    is measurable low.
+- metric: Mutagenicity in Mixture
+  species: null
+  route: null
+  value: no genetic response
+  unit: null
+  test_method: Ames Test
+  conditions: NeoCryl A-601 latex with recommended amount of DCA 467
+  page: 3
+  source_text: Mixtures of NeoCryl A-601 latex with the recommended amount of DCA
+    467 were tested immediately upon mixing, and at various elapsed times. None of
+    the mixtures showed any genetic response in the Ames Test.
+- metric: Mutagenicity in Films
+  species: null
+  route: null
+  value: non-mutagenic
+  unit: null
+  test_method: Ames Test
+  conditions: dried films incorporating DCA 467
+  page: 3
+  source_text: Films of NeoRez R-960 and NeoCryl A-601 containing recommended amounts
+    of DCA 467 did not demonstrate any mutagenic activity in any of the assays tested.
+    It can, therefore, be concluded that dried films incorporating DCA 467 as a crosslinker
+    can be considered non-mutagenic by the test conditions described by Ames.
+sections:
+- name: Chemical Properties
+  page: 1
+  text: DCA 467 contains three aziridine functional groups with an average molecular
+    weight of ~467 g/mole and a functional equivalent weight of ~157 g/mole. It can
+    be used to crosslink polymers with reactive carboxyl functionality at ambient
+    temperatures.
+- name: Applications
+  page: 2
+  text: 'DCA 467 is a polyaziridine crosslinker. Addition of one to three percent
+    DCA 467 to acrylic emulsions or waterborne urethane polymers produces a marked
+    improvement in water, chemical, abrasion, and humidity resistance. It is ideal
+    for use with fast air-dry NeoCryl acrylic emulsions, NeoRez waterborne urethane
+    and NeoPac urethane acrylic copolymer products. In addition, DCA 467 can be used
+    with solvent based systems provided reactive carboxyl functionality is present.
+
+
+    The equivalent weight of DCA 467 is 157 g/mole. For many applications, 0.6 equivalents
+    of DCA 467 are sufficient to achieve the optimum improvement in film properties.
+    However, some systems may require the full stoichiometric equivalent of crosslinker.'
+- name: Key Benefits
+  page: 2
+  text: "\u2022 Crosslinked Properties Obtained at Room Temperature\n\u2022 Improved\
+    \ Water, Alcohol and Print Resistance\n\u2022 Increased Chemical, Stain and Abrasion\
+    \ Resistance"
+- name: Toxicity Data
+  page: 2
+  text: 'An acute oral toxicity study with DCA 467 produced an LD50 value of 3,038
+    mg/kg. This places it in a category of toxic materials with a value which is similar
+    to common solvents such as methyl ethyl ketone and toluene.
+
+
+    A primary skin irritation value of 2.65 was obtained out of a possible score of
+    8. Compounds producing a primary irritation value of 5 or greater are defined
+    as "primary skin irritants".
+
+
+    DCA 467 was found to be a primary eye irritant and corrosive effects were indicated.
+
+
+    DCA 467 was tested for potential mutagenic activity in microbial assays using
+    the reverse mutation technique described by Ames. A dose-related increased reversion
+    frequency over the spontaneous rate was obtained and a value of 0.18 revertant
+    per microgram was calculated. Although positive, the level of response is measurable
+    low.
+
+
+    Mixtures of NeoCryl A-601 latex with the recommended amount of DCA 467 were tested
+    immediately upon mixing, and at various elapsed times. None of the mixtures showed
+    any genetic response in the Ames Test. This indicates that the coating vehicle
+    containing DCA 467 before and during applications does not have any measurable
+    mutagenic activity, although the title compound, DCA 467, is mildly active.
+
+
+    Films of NeoRez R-960 and NeoCryl A-601 containing recommended amounts of DCA
+    467 did not demonstrate any mutagenic activity in any of the assays tested. It
+    can, therefore, be concluded that dried films incorporating DCA 467 as a crosslinker
+    can be considered non-mutagenic by the test conditions described by Ames.'
+- name: Handling & Storage
+  page: 3
+  text: 'Care must be taken to avoid any contact with the skin and eyes. When used
+    in spray applications, particular care must be taken to avoid oral and/or nasal
+    ingestion. Eye protection, gloves and suitable clothing must be worn to avoid
+    contact with skin and eyes. In addition, a suitable respirator must be worn for
+    spray applications.
+
+    Where spillage of DCA 467 occurs, the area should be thoroughly flushed with water.
+    This will hydrolyze the DCA 467 and make it easier to clean. If more rapid cleaning
+    is desirable, a 5% solution acetic acid or a mineral acid can be used.
+
+
+    Containers of DCA 467 must show the following warning:
+
+
+    HANDLE WITH CARE
+
+
+    USE ONLY WITH ADEQUATE VENTILATION. AVOID CONTACT WITH SKIN OR EYES AND BREATHING
+    OF SPRAY MIST. IN CASE OF SKIN OR EYE CONTACT, FLUSH THOROUGHLY WITH PLENTY OF
+    WATER. FOR EYES, ALSO CALLPHYSICIAN. CLOSE CONTAINER AFTER EACH USE. KEEP OUT
+    OF REACH OF CHILDREN. STORE IN COOL, DARK PLACE.
+
+
+    For more detailed information on handling and precautions, see the Safety Data
+    Sheet.'
+- name: Storage Conditions
+  page: 4
+  text: Store in a cool, dry, dark place. If stored under conditions of excessive
+    heat for extended periods, the material may discolor, deteriorate, and even gel.
+- name: Availability
+  page: 4
+  text: DCA 467 is available from Dixie Chemical in Pasadena, TX. Contact your Dixie
+    representative for details.
+images:
+- filename: dca467_chemical_structure_cropped.png
+  page: 1
+  type: structure
+  description: Chemical Structure of DCA 467 (Trimethylolpropane tris(2-methyl-1-aziridinepropionate))
+  title: Chemical Structure of DCA 467 (Trimethylolpropane tris(2-methyl-1-aziridinepropionate))
+document_footnotes: {}
+extraction_metadata:
+  confidence_scores:
+    product_info: 100
+    properties: 100
+    other_tables: 100
+    sections: 100
+    images: 100
+    overall: 100
+  extractor_version: ${extraction.extractor_version}
+  extraction_date: '2025-08-26T17:00:00-04:00'

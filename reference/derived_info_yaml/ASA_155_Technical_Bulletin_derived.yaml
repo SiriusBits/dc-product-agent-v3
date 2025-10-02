@@ -1,0 +1,522 @@
+doc_id: e3cd386e-45b9-5163-b041-0fad4ce077e7
+filename: ASA_155_Technical_Bulletin.pdf
+filepath: ${paths.processed_pdfs_root}/ASA155_Technical_Bulletin.pdf
+extraction_metadata:
+  confidence_scores: ${extraction.default_confidence_scores_derived}
+  extractor_version: ${extraction.extractor_version}
+  extraction_date: '2025-08-26T15:10:00-04:00'
+derived_info:
+  summary: ASA 155 is an alkenylsuccinic anhydride (ASA) based on C16-C18 alpha-olefin,
+    consisting of a blend of hexadecenylsuccinic anhydride (HDSA) and octadecenylsuccinic
+    anhydride (ODSA). It is primarily used as an alkaline paper sizing agent and can
+    be employed in both cationic starch and polymer emulsion systems. The product
+    is available in four variants with different surfactant combinations. ASA 155
+    has a shelf life of 24 months when properly stored away from moisture to prevent
+    hydrolysis. It is REACh registered with CASRN 68784-12-3 and registry number 01-2119533117-46.
+    The technical bulletin provides detailed physical properties, handling instructions,
+    and safety information for this versatile chemical that finds applications in
+    paper sizing, metal working fluids, fuel additives, surfactant intermediates,
+    plasticizers, epoxies, and leather goods.
+  personas:
+    sales_summary: ASA 155 is a premium alkenylsuccinic anhydride blend designed for
+      alkaline paper sizing applications with excellent handling characteristics.
+      Available in four variants with different surfactant combinations (standard,
+      with DOSS, with phosphate ester, or with both), it offers customization options
+      to meet specific customer requirements. Beyond paper sizing, ASA 155 delivers
+      value in multiple industries including metal working fluids as a corrosion inhibitor,
+      fuel and lubricant additives for pour point depression and dispersion, and as
+      an intermediate for surfactants, plasticizers, epoxies, and leather goods. With
+      a 24-month shelf life and REACh registration, this product combines regulatory
+      compliance with versatile performance.
+    technical_summary: ASA 155 is a blend of hexadecenylsuccinic anhydride (HDSA,
+      38-43%) and octadecenylsuccinic anhydride (ODSA, 57-62%) with CAS number 68784-12-3
+      and REACh registry number 01-2119533117-46. The product has a neutralization
+      number of 325-360 mg KOH/g, specific gravity of 0.93-0.98 at 25°C, and viscosity
+      up to 300 cPs at 25°C. Both viscosity and specific gravity decrease with temperature
+      according to provided graphs. The product must be stored away from moisture
+      to prevent hydrolysis, with a 24-month shelf life when properly stored. Storage
+      tanks may be constructed of mild steel, though 304/316 stainless steel is preferred
+      when moisture protection is difficult. ASA 155 is available in four variants
+      with different surfactant combinations to meet specific application requirements.
+  key_applications:
+  - Alkaline paper sizing agent
+  - Cationic starch systems
+  - Polymer emulsion systems
+  - Metal working fluid corrosion inhibitor
+  - Fuel additive pour point depressant
+  - Lubricant additive corrosion inhibitor
+  - Lubricant additive dispersant
+  - Surfactant intermediate
+  - Plasticizer component
+  - Epoxy component
+  - Moisture control for leather goods
+knowledge_graph:
+  entities:
+  - id: c1dd630e-f2ab-57b2-89af-9a7255b8cd38
+    text: ASA 155
+    type: PRODUCT_NAME
+    canonical_name: ASA 155
+    aliases:
+    - Alkenylsuccinic anhydride 155
+    source_text: ASA 155 is an alkenylsuccinic anhydride (ASA) based on C16-C18 alpha-olefin.
+    provenance:
+      document_id: e3cd386e-45b9-5163-b041-0fad4ce077e7
+      page: 2
+  - id: 384bcfe9-8002-5021-851d-a7d90ee5ddf8
+    text: ASA 155-D
+    type: PRODUCT_NAME
+    canonical_name: ASA 155-D
+    aliases: []
+    source_text: ASA 155-D
+    provenance:
+      document_id: e3cd386e-45b9-5163-b041-0fad4ce077e7
+      page: 2
+  - id: 415b37ba-5572-5077-b121-3a72aea6744c
+    text: ASA 155-B
+    type: PRODUCT_NAME
+    canonical_name: ASA 155-B
+    aliases: []
+    source_text: ASA 155-B
+    provenance:
+      document_id: e3cd386e-45b9-5163-b041-0fad4ce077e7
+      page: 2
+  - id: d21b6b33-f727-529e-9f18-d89ca10d2990
+    text: ASA 155-C
+    type: PRODUCT_NAME
+    canonical_name: ASA 155-C
+    aliases: []
+    source_text: ASA 155-C
+    provenance:
+      document_id: e3cd386e-45b9-5163-b041-0fad4ce077e7
+      page: 2
+  - id: 04071e0d-af5a-50d3-a3b9-808c2e193b57
+    text: Hexadecenylsuccinic anhydride
+    type: CHEMICAL
+    canonical_name: Hexadecenylsuccinic anhydride
+    aliases:
+    - HDSA
+    source_text: The material is a blend of hexadecenylsuccinic anhydride (HDSA) and
+      octadecenylsuccinic anhydride (ODSA).
+    provenance:
+      document_id: e3cd386e-45b9-5163-b041-0fad4ce077e7
+      page: 2
+  - id: 86e15133-66e7-5e70-aae9-ad939b7107c7
+    text: Octadecenylsuccinic anhydride
+    type: CHEMICAL
+    canonical_name: Octadecenylsuccinic anhydride
+    aliases:
+    - ODSA
+    source_text: The material is a blend of hexadecenylsuccinic anhydride (HDSA) and
+      octadecenylsuccinic anhydride (ODSA).
+    provenance:
+      document_id: e3cd386e-45b9-5163-b041-0fad4ce077e7
+      page: 2
+  - id: 4597e744-25a4-5688-a79e-51a6387e27c9
+    text: 2,5-Furandione,dihydro-,mono-C15-20-alkenyl derivs
+    type: CHEMICAL
+    canonical_name: 2,5-Furandione,dihydro-,mono-C15-20-alkenyl derivs
+    aliases: []
+    source_text: ASA 155 is REACh registered as a component under the name 2,5-Furandione,dihydro-,mono-C15-20-alkenyl
+      derivs.
+    provenance:
+      document_id: e3cd386e-45b9-5163-b041-0fad4ce077e7
+      page: 3
+  - id: 92aca2dd-6233-5dd0-a86b-c7feb8ddcd19
+    text: Dioctylsulfo-Succinate
+    type: CHEMICAL
+    canonical_name: Dioctylsulfo-Succinate
+    aliases:
+    - DOSS
+    source_text: Dioctylsulfo-Succinate (DOSS)
+    provenance:
+      document_id: e3cd386e-45b9-5163-b041-0fad4ce077e7
+      page: 2
+  - id: 69cfee0d-a6eb-5683-a621-91b5b313da67
+    text: Phosphate Ester
+    type: CHEMICAL
+    canonical_name: Phosphate Ester
+    aliases: []
+    source_text: Phosphate Ester
+    provenance:
+      document_id: e3cd386e-45b9-5163-b041-0fad4ce077e7
+      page: 2
+  - id: 1c9b6d0d-fa88-5e14-a17a-9ab1f6247634
+    text: Dixie Chemical
+    type: ORGANIZATION
+    canonical_name: ${manufacturer.name}
+    aliases: []
+    source_text: ASA 155 is available from Dixie Chemical in Pasadena, TX.
+    provenance:
+      document_id: e3cd386e-45b9-5163-b041-0fad4ce077e7
+      page: 3
+  - id: d3f5c26a-084b-5ffb-8dc0-10565d077ce6
+    text: 68784-12-3
+    type: CAS_NUMBER
+    canonical_name: 68784-12-3
+    aliases:
+    - CASRN 68784-12-3
+    source_text: The CASRN is 68784-12-3
+    provenance:
+      document_id: e3cd386e-45b9-5163-b041-0fad4ce077e7
+      page: 3
+  - id: d4fbe114-2977-5d20-b890-19ac0ddb4d9c
+    text: 32072-96-1
+    type: CAS_NUMBER
+    canonical_name: 32072-96-1
+    aliases:
+    - CASRN 32072-96-1
+    source_text: In the US, CASRN 32072-96-1 is typically used for HDSA
+    provenance:
+      document_id: e3cd386e-45b9-5163-b041-0fad4ce077e7
+      page: 3
+  - id: 5d59afc8-639b-5ea7-bd98-cfb2f746cd75
+    text: 28777-98-2
+    type: CAS_NUMBER
+    canonical_name: 28777-98-2
+    aliases:
+    - CASRN 28777-98-2
+    source_text: CASRN 28777-98-2 is typically used for ODSA
+    provenance:
+      document_id: e3cd386e-45b9-5163-b041-0fad4ce077e7
+      page: 3
+  - id: 05795118-ac07-584d-abbb-c1beee41b5e1
+    text: 01-2119533117-46
+    type: CAS_NUMBER
+    canonical_name: 01-2119533117-46
+    aliases:
+    - REACh registry number 01-2119533117-46
+    source_text: the REACh registry number is 01-2119533117-46
+    provenance:
+      document_id: e3cd386e-45b9-5163-b041-0fad4ce077e7
+      page: 3
+  kg_triples:
+  - subject: c1dd630e-f2ab-57b2-89af-9a7255b8cd38
+    predicate: has_chemical_composition
+    object: 04071e0d-af5a-50d3-a3b9-808c2e193b57
+    source_text: The material is a blend of hexadecenylsuccinic anhydride (HDSA) and
+      octadecenylsuccinic anhydride (ODSA).
+    provenance:
+      document_id: e3cd386e-45b9-5163-b041-0fad4ce077e7
+      page: 2
+    confidence: 1.0
+  - subject: c1dd630e-f2ab-57b2-89af-9a7255b8cd38
+    predicate: has_chemical_composition
+    object: 86e15133-66e7-5e70-aae9-ad939b7107c7
+    source_text: The material is a blend of hexadecenylsuccinic anhydride (HDSA) and
+      octadecenylsuccinic anhydride (ODSA).
+    provenance:
+      document_id: e3cd386e-45b9-5163-b041-0fad4ce077e7
+      page: 2
+    confidence: 1.0
+  - subject: c1dd630e-f2ab-57b2-89af-9a7255b8cd38
+    predicate: has_cas_number
+    object: d3f5c26a-084b-5ffb-8dc0-10565d077ce6
+    source_text: The CASRN is 68784-12-3
+    provenance:
+      document_id: e3cd386e-45b9-5163-b041-0fad4ce077e7
+      page: 3
+    confidence: 1.0
+  - subject: c1dd630e-f2ab-57b2-89af-9a7255b8cd38
+    predicate: has_reach_number
+    object: 05795118-ac07-584d-abbb-c1beee41b5e1
+    source_text: the REACh registry number is 01-2119533117-46
+    provenance:
+      document_id: e3cd386e-45b9-5163-b041-0fad4ce077e7
+      page: 3
+    confidence: 1.0
+  - subject: 04071e0d-af5a-50d3-a3b9-808c2e193b57
+    predicate: has_cas_number
+    object: d4fbe114-2977-5d20-b890-19ac0ddb4d9c
+    source_text: In the US, CASRN 32072-96-1 is typically used for HDSA
+    provenance:
+      document_id: e3cd386e-45b9-5163-b041-0fad4ce077e7
+      page: 3
+    confidence: 1.0
+  - subject: 86e15133-66e7-5e70-aae9-ad939b7107c7
+    predicate: has_cas_number
+    object: 5d59afc8-639b-5ea7-bd98-cfb2f746cd75
+    source_text: CASRN 28777-98-2 is typically used for ODSA
+    provenance:
+      document_id: e3cd386e-45b9-5163-b041-0fad4ce077e7
+      page: 3
+    confidence: 1.0
+  - subject: c1dd630e-f2ab-57b2-89af-9a7255b8cd38
+    predicate: has_chemical_name
+    object: 4597e744-25a4-5688-a79e-51a6387e27c9
+    source_text: ASA 155 is REACh registered as a component under the name 2,5-Furandione,dihydro-,mono-C15-20-alkenyl
+      derivs.
+    provenance:
+      document_id: e3cd386e-45b9-5163-b041-0fad4ce077e7
+      page: 3
+    confidence: 1.0
+  - subject: c1dd630e-f2ab-57b2-89af-9a7255b8cd38
+    predicate: has_manufacturer
+    object: 1c9b6d0d-fa88-5e14-a17a-9ab1f6247634
+    source_text: ASA 155 is available from Dixie Chemical in Pasadena, TX.
+    provenance:
+      document_id: e3cd386e-45b9-5163-b041-0fad4ce077e7
+      page: 3
+    confidence: 1.0
+  - subject: c1dd630e-f2ab-57b2-89af-9a7255b8cd38
+    predicate: has_variant
+    object: 384bcfe9-8002-5021-851d-a7d90ee5ddf8
+    source_text: ASA 155-D
+    provenance:
+      document_id: e3cd386e-45b9-5163-b041-0fad4ce077e7
+      page: 2
+    confidence: 1.0
+  - subject: c1dd630e-f2ab-57b2-89af-9a7255b8cd38
+    predicate: has_variant
+    object: 415b37ba-5572-5077-b121-3a72aea6744c
+    source_text: ASA 155-B
+    provenance:
+      document_id: e3cd386e-45b9-5163-b041-0fad4ce077e7
+      page: 2
+    confidence: 1.0
+  - subject: c1dd630e-f2ab-57b2-89af-9a7255b8cd38
+    predicate: has_variant
+    object: d21b6b33-f727-529e-9f18-d89ca10d2990
+    source_text: ASA 155-C
+    provenance:
+      document_id: e3cd386e-45b9-5163-b041-0fad4ce077e7
+      page: 2
+    confidence: 1.0
+  - subject: 384bcfe9-8002-5021-851d-a7d90ee5ddf8
+    predicate: contains_additive
+    object: 92aca2dd-6233-5dd0-a86b-c7feb8ddcd19
+    source_text: 'ASA 155-D: Dioctylsulfo-Succinate (DOSS): Yes'
+    provenance:
+      document_id: e3cd386e-45b9-5163-b041-0fad4ce077e7
+      page: 2
+    confidence: 1.0
+  - subject: 415b37ba-5572-5077-b121-3a72aea6744c
+    predicate: contains_additive
+    object: 69cfee0d-a6eb-5683-a621-91b5b313da67
+    source_text: 'ASA 155-B: Phosphate Ester: Yes'
+    provenance:
+      document_id: e3cd386e-45b9-5163-b041-0fad4ce077e7
+      page: 2
+    confidence: 1.0
+  - subject: d21b6b33-f727-529e-9f18-d89ca10d2990
+    predicate: contains_additive
+    object: 92aca2dd-6233-5dd0-a86b-c7feb8ddcd19
+    source_text: 'ASA 155-C: Dioctylsulfo-Succinate (DOSS): Yes'
+    provenance:
+      document_id: e3cd386e-45b9-5163-b041-0fad4ce077e7
+      page: 2
+    confidence: 1.0
+  - subject: d21b6b33-f727-529e-9f18-d89ca10d2990
+    predicate: contains_additive
+    object: 69cfee0d-a6eb-5683-a621-91b5b313da67
+    source_text: 'ASA 155-C: Phosphate Ester: Yes'
+    provenance:
+      document_id: e3cd386e-45b9-5163-b041-0fad4ce077e7
+      page: 2
+    confidence: 1.0
+  - subject: c1dd630e-f2ab-57b2-89af-9a7255b8cd38
+    predicate: has_physical_appearance
+    object: Clear to Slightly Hazy, Yellow to Dark Amber Liquid
+    source_text: 'Physical Appearance: Clear to Slightly Hazy, Yellow to Dark Amber
+      Liquid'
+    provenance:
+      document_id: e3cd386e-45b9-5163-b041-0fad4ce077e7
+      page: 1
+    confidence: 1.0
+  - subject: c1dd630e-f2ab-57b2-89af-9a7255b8cd38
+    predicate: has_odsa_content
+    object: 57 - 62%
+    source_text: 'ODSA Content, %: 57 - 62'
+    provenance:
+      document_id: e3cd386e-45b9-5163-b041-0fad4ce077e7
+      page: 1
+    confidence: 1.0
+  - subject: c1dd630e-f2ab-57b2-89af-9a7255b8cd38
+    predicate: has_hdsa_content
+    object: 38 - 43%
+    source_text: 'HDSA Content, %: 38 - 43'
+    provenance:
+      document_id: e3cd386e-45b9-5163-b041-0fad4ce077e7
+      page: 1
+    confidence: 1.0
+  - subject: c1dd630e-f2ab-57b2-89af-9a7255b8cd38
+    predicate: has_gardner_color
+    object: 10 Max
+    source_text: 'Gardner Color: 10 Max'
+    provenance:
+      document_id: e3cd386e-45b9-5163-b041-0fad4ce077e7
+      page: 1
+    confidence: 1.0
+  - subject: c1dd630e-f2ab-57b2-89af-9a7255b8cd38
+    predicate: has_residual_olefin
+    object: 3 Max%
+    source_text: 'Residual Olefin, %: 3 Max'
+    provenance:
+      document_id: e3cd386e-45b9-5163-b041-0fad4ce077e7
+      page: 1
+    confidence: 1.0
+  - subject: c1dd630e-f2ab-57b2-89af-9a7255b8cd38
+    predicate: has_free_acid
+    object: 2 Max%
+    source_text: 'Free Acid, %: 2 Max'
+    provenance:
+      document_id: e3cd386e-45b9-5163-b041-0fad4ce077e7
+      page: 1
+    confidence: 1.0
+  - subject: c1dd630e-f2ab-57b2-89af-9a7255b8cd38
+    predicate: has_maleic_anhydride
+    object: 0.1 Max%
+    source_text: 'Maleic Anhydride, %: 0.1 Max'
+    provenance:
+      document_id: e3cd386e-45b9-5163-b041-0fad4ce077e7
+      page: 1
+    confidence: 1.0
+  - subject: c1dd630e-f2ab-57b2-89af-9a7255b8cd38
+    predicate: has_neutralization_number
+    object: 325 - 360 mg KOH/g
+    source_text: 'Neutralization Number, mg KOH/g: 325 - 360'
+    provenance:
+      document_id: e3cd386e-45b9-5163-b041-0fad4ce077e7
+      page: 1
+    confidence: 1.0
+  - subject: c1dd630e-f2ab-57b2-89af-9a7255b8cd38
+    predicate: has_specific_gravity
+    object: 0.93 -0.98
+    source_text: 'Specific Gravity @25°C: 0.93 -0.98'
+    provenance:
+      document_id: e3cd386e-45b9-5163-b041-0fad4ce077e7
+      page: 1
+    confidence: 1.0
+  - subject: c1dd630e-f2ab-57b2-89af-9a7255b8cd38
+    predicate: has_viscosity
+    object: 300 Max cPs
+    source_text: 'Viscosity @25°C, cPs: 300 Max'
+    provenance:
+      document_id: e3cd386e-45b9-5163-b041-0fad4ce077e7
+      page: 1
+    confidence: 1.0
+  - subject: c1dd630e-f2ab-57b2-89af-9a7255b8cd38
+    predicate: has_shelf_life
+    object: 24 months
+    source_text: When properly stored, ASA 155 has a shelf life of 24 months.
+    provenance:
+      document_id: e3cd386e-45b9-5163-b041-0fad4ce077e7
+      page: 3
+    confidence: 1.0
+  - subject: c1dd630e-f2ab-57b2-89af-9a7255b8cd38
+    predicate: has_application
+    object: alkaline paper sizing agent
+    source_text: ASAs such as ASA 155 are commonly used as alkaline paper sizing agents.
+    provenance:
+      document_id: e3cd386e-45b9-5163-b041-0fad4ce077e7
+      page: 2
+    confidence: 1.0
+  - subject: c1dd630e-f2ab-57b2-89af-9a7255b8cd38
+    predicate: has_application
+    object: corrosion inhibitor
+    source_text: In metal working fluids, ASAs are utilized as corrosion inhibitors.
+    provenance:
+      document_id: e3cd386e-45b9-5163-b041-0fad4ce077e7
+      page: 2
+    confidence: 1.0
+  - subject: c1dd630e-f2ab-57b2-89af-9a7255b8cd38
+    predicate: has_application
+    object: pour point depressant
+    source_text: ASAs are often used in fuel and lubricant additives including pour
+      point depressants
+    provenance:
+      document_id: e3cd386e-45b9-5163-b041-0fad4ce077e7
+      page: 2
+    confidence: 1.0
+  - subject: c1dd630e-f2ab-57b2-89af-9a7255b8cd38
+    predicate: has_application
+    object: dispersant
+    source_text: ASAs are often used in fuel and lubricant additives including pour
+      point depressants, corrosion inhibitors and dispersants.
+    provenance:
+      document_id: e3cd386e-45b9-5163-b041-0fad4ce077e7
+      page: 2
+    confidence: 1.0
+  - subject: c1dd630e-f2ab-57b2-89af-9a7255b8cd38
+    predicate: has_application
+    object: surfactant intermediate
+    source_text: ASAs find use as intermediates for surfactants
+    provenance:
+      document_id: e3cd386e-45b9-5163-b041-0fad4ce077e7
+      page: 2
+    confidence: 1.0
+  - subject: c1dd630e-f2ab-57b2-89af-9a7255b8cd38
+    predicate: has_application
+    object: plasticizer
+    source_text: Other suggested applications are in plasticizers, epoxies, and moisture
+      control for leather goods.
+    provenance:
+      document_id: e3cd386e-45b9-5163-b041-0fad4ce077e7
+      page: 2
+    confidence: 1.0
+  - subject: c1dd630e-f2ab-57b2-89af-9a7255b8cd38
+    predicate: has_application
+    object: epoxy component
+    source_text: Other suggested applications are in plasticizers, epoxies, and moisture
+      control for leather goods.
+    provenance:
+      document_id: e3cd386e-45b9-5163-b041-0fad4ce077e7
+      page: 2
+    confidence: 1.0
+  - subject: c1dd630e-f2ab-57b2-89af-9a7255b8cd38
+    predicate: has_application
+    object: moisture control for leather
+    source_text: Other suggested applications are in plasticizers, epoxies, and moisture
+      control for leather goods.
+    provenance:
+      document_id: e3cd386e-45b9-5163-b041-0fad4ce077e7
+      page: 2
+    confidence: 1.0
+  - subject: c1dd630e-f2ab-57b2-89af-9a7255b8cd38
+    predicate: has_hazard
+    object: skin sensitizer
+    source_text: ASA 155 is a skin sensitizer.
+    provenance:
+      document_id: e3cd386e-45b9-5163-b041-0fad4ce077e7
+      page: 3
+    confidence: 1.0
+  - subject: c1dd630e-f2ab-57b2-89af-9a7255b8cd38
+    predicate: has_storage_requirement
+    object: store away from moisture
+    source_text: ASA 155 must be stored out of contact with moisture to avoid hydrolysis
+      of the anhydride to the acid.
+    provenance:
+      document_id: e3cd386e-45b9-5163-b041-0fad4ce077e7
+      page: 3
+    confidence: 1.0
+  - subject: c1dd630e-f2ab-57b2-89af-9a7255b8cd38
+    predicate: has_viscosity_at_temperature
+    object: 608 cPs at 0°C
+    source_text: Viscosity as a Function of Temperature graph
+    provenance:
+      document_id: e3cd386e-45b9-5163-b041-0fad4ce077e7
+      page: 1
+    confidence: 1.0
+  - subject: c1dd630e-f2ab-57b2-89af-9a7255b8cd38
+    predicate: has_viscosity_at_temperature
+    object: 25 cPs at 60°C
+    source_text: Viscosity as a Function of Temperature graph
+    provenance:
+      document_id: e3cd386e-45b9-5163-b041-0fad4ce077e7
+      page: 1
+    confidence: 1.0
+  - subject: c1dd630e-f2ab-57b2-89af-9a7255b8cd38
+    predicate: has_specific_gravity_at_temperature
+    object: 8.1 lbs/gal at 0°C
+    source_text: Specific Gravity as a Function of Temperature graph
+    provenance:
+      document_id: e3cd386e-45b9-5163-b041-0fad4ce077e7
+      page: 2
+    confidence: 1.0
+  - subject: c1dd630e-f2ab-57b2-89af-9a7255b8cd38
+    predicate: has_specific_gravity_at_temperature
+    object: 7.88 lbs/gal at 60°C
+    source_text: Specific Gravity as a Function of Temperature graph
+    provenance:
+      document_id: e3cd386e-45b9-5163-b041-0fad4ce077e7
+      page: 2
+    confidence: 1.0

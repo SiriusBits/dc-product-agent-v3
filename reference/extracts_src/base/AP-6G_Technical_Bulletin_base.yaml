@@ -1,0 +1,80 @@
+doc_id: "550e8400-e29b-41d4-a716-446655440002"
+filename: "AP-6G_Technical_Bulletin.pdf"
+document_type: "Product Technical Bulletin"
+manufacturer: "Dixie Chemical"
+contact_info: # can be auto-filled from constants if omitted
+  address: "10601 Bay Area Blvd. Pasadena, TX 77507"
+  phone: "(281) 474-3271"
+  fax: null
+  email: "info@dixiechemicalgroup.com"
+document_date: null
+product_info:
+  product_name: "Benzyl Triethylammonium Chloride in Ethylene Glycol"
+  product_short_name: "AP-6G"
+  product_family: "Quaternary Ammonium Salt"
+  cas_number: "56-37-1"
+  chemical_name: "Benzyl Triethylammonium Chloride"
+
+applications_text: "AP-6G is a quaternary ammonium salt that is well known as phase-transfer catalyst and many other industrial applications."
+
+typical_properties:
+  table_name: "Typical Properties"
+  page: 1
+  data_type: "typical_properties"
+  row_count: 1
+  description: "AP-6G is a quaternary ammonium salt that is well known as phase-transfer catalyst and many other industrial applications."
+  data:
+    - name: "Assay"
+      unit: "%"
+      value_string: "58-62"
+      value_min: 58
+      value_max: 62
+      value_numeric: null
+      test_method: "D-162I"
+
+properties_and_specifications:
+  - category: "Typical"
+    name: "Assay"
+    unit: "%"
+    value_string: "58-62"
+    value_numeric: null
+    value_min: 58
+    value_max: 62
+    test_method: "D-162I"
+    page: 1
+    notes: null
+
+images: []
+other_tables: [] # assembler will insert a copy of Typical Properties here
+
+sections:
+  - page: 1
+    text: "AP-6G is a quaternary ammonium salt that is well known as phase-transfer catalyst and many other industrial applications."
+    name: "Applications"
+  - page: 1
+    text: "AP-6G is hygroscopic and stable under normal recommended conditions. It should be stored away from moisture, high temperatures, ignition sources, or oxidizing materials."
+    name: "Handling & Storage"
+  - page: 1
+    text: |
+      Avoid contact with skin, eyes, and clothing. Use only with adequate ventilation. In case of contact, immediately flush the affected skin or eyes with copious amounts of water for at least 15 minutes. In the case of eye contact, get medical attention. Wash contaminated clothing before reuse.
+
+      The minimum personal protective equipment when handling these materials typically includes protective chemical goggles, impenetrable gloves, and measures to avoid breathing chemical vapors. Please consult the SDS of AP-6G for more details to handle the chemical safely.
+    name: "Health Hazards"
+  - page: 2
+    text: "AP-6G is available from Dixie Chemical in Pasadena, Texas. Contact your Dixie Chemical Company representative for details."
+    name: "Availability"
+
+toxicity_data: []
+document_footnotes: {}
+
+extraction_metadata:
+  confidence_scores:
+    product_info: 100
+    properties: 100
+    other_tables: 100
+    sections: 100
+    images: 100
+    overall: 100
+  extractor_version: "2.0.0"
+  extraction_date: "2025-08-26T15:10:00-04:00"
+

@@ -1,0 +1,710 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/base-technical-bulletin.schema.json",
+  "title": "Base Technical Bulletin Extraction Schema",
+  "type": "object",
+  "properties": {
+    "doc_id": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "uuid",
+      "description": "UUID that uniquely identifies this bulletin; also used to join to derived/KG data."
+    },
+    "filename": {
+      "type": "string",
+      "description": "The name of the source PDF file."
+    },
+    "source_filepath": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^\\$\\{paths\\.raw_pdfs_root}/.+$",
+      "description": "Original filesystem or object-store path (if available)."
+    },
+    "filepath": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^\\$\\{paths\\.processed_pdfs_root}/.+$",
+      "description": "Processed/canonical path within your pipeline (if available)."
+    },
+    "document_file_metadata": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "document_title": {
+          "type": "string",
+          "description": "Title of the document; fall back to the raw PDF filename when blank."
+        },
+        "author": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Author names parsed from metadata (comma separated in source)."
+        },
+        "author_title": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Author titles parsed from metadata (aligned by index with authors)."
+        },
+        "description": {
+          "type": "string",
+          "description": "Narrative description of the document from metadata."
+        },
+        "description_writer": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Names of description writers parsed from metadata (comma separated in source)."
+        },
+        "keywords": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Keywords or phrases from the document metadata."
+        },
+        "copyright_status": {
+          "type": "string",
+          "enum": [
+            "Unknown",
+            "Copyrighted",
+            "Public Domain"
+          ],
+          "default": "Unknown",
+          "description": "Copyright status pulled from metadata; defaults to 'Unknown' when absent."
+        },
+        "copyright_notice": {
+          "type": "string",
+          "description": "Copyright notice text captured from the document metadata."
+        },
+        "copyright_info": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL pointing to copyright information for the document."
+        },
+        "created": {
+          "type": "string",
+          "description": "Creation date/time of the document (e.g., '4/24/25, 3:18:06 PM UTC')."
+        },
+        "modified": {
+          "type": "string",
+          "description": "Last modified date/time of the document (e.g., '4/24/25, 3:18:06 PM UTC')."
+        },
+        "application": {
+          "type": "string",
+          "description": "Application used to author the document (e.g., 'Microsoft\u00ae Word for Microsoft 365')."
+        },
+        "advanced": {
+          "type": "object",
+          "properties": {
+            "pdf_producer": {
+              "type": "string",
+              "description": "Application noted as the PDF producer (e.g., Acrobat Distiller)."
+            },
+            "pdf_version": {
+              "type": "string",
+              "description": "PDF version string (e.g., '1.7 (Acrobat 8.x)')."
+            },
+            "location": {
+              "type": "string",
+              "description": "Absolute path to the source PDF on disk."
+            },
+            "file_size": {
+              "type": "string",
+              "description": "Human-readable file size including bytes (e.g., '454.42 KB (465,327 Bytes)')."
+            },
+            "page_size": {
+              "type": "string",
+              "description": "Document page size description (e.g., '8.50 x 11.00 in')."
+            },
+            "number_of_pages": {
+              "type": "integer",
+              "description": "Total number of pages in the PDF."
+            },
+            "tagged_pdf": {
+              "type": "string",
+              "enum": [
+                "Yes",
+                "No"
+              ],
+              "default": "No",
+              "description": "Indicates whether the PDF is tagged."
+            },
+            "fast_web_view": {
+              "type": "string",
+              "enum": [
+                "Yes",
+                "No"
+              ],
+              "default": "No",
+              "description": "Indicates if the PDF is optimized for fast web view."
+            }
+          },
+          "required": [
+            "number_of_pages",
+            "tagged_pdf",
+            "fast_web_view"
+          ],
+          "additional_properties": false,
+          "description": "Advanced PDF attributes including page counts and optimization flags."
+        }
+      },
+      "required": [
+        "document_title",
+        "copyright_status",
+        "advanced"
+      ],
+      "additional_properties": false,
+      "description": "Metadata extracted directly from the source PDF file."
+    },
+    "source_file_hash": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "sha256": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "sha256"
+      ],
+      "additional_properties": {
+        "type": "string"
+      },
+      "description": "Integrity hashes (e.g., sha256) for the source artifact."
+    },
+    "document_type": {
+      "type": "string",
+      "description": "Document classification label, e.g., 'Product Technical Bulletin'."
+    },
+    "manufacturer": {
+      "type": "string",
+      "description": "Company name as printed on the document."
+    },
+    "contact_info": {
+      "$ref": "https://example.com/schemas/common-defs.schema.json#/$defs/contact_info",
+      "description": "Structured address/phone/fax/email block for the manufacturer."
+    },
+    "has_images": {
+      "type": "boolean",
+      "description": "Indicates whether the source PDF contains any extracted images."
+    },
+    "product_info": {
+      "type": "object",
+      "properties": {
+        "product_name": {
+          "type": "string",
+          "description": "Canonical product name as used in the bulletin."
+        },
+        "product_short_name": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Abbreviated name or code, if any."
+        },
+        "product_family": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Higher-level family/category for grouping."
+        },
+        "cas_number": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "CAS Registry Number for the product/active ingredient."
+        },
+        "chemical_name": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "IUPAC or formal chemical name for the product."
+        },
+        "synonyms": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Alternate names/aliases to improve recall in search."
+        }
+      },
+      "required": [
+        "product_name",
+        "product_short_name"
+      ],
+      "additional_properties": false,
+      "description": "Product identity and naming details (name, family, CAS, etc.)."
+    },
+    "registrations": {
+      "type": "array",
+      "items": {
+        "$ref": "https://example.com/schemas/common-defs.schema.json#/$defs/registration"
+      },
+      "description": "Regulatory registrations or compliance identifiers for the product."
+    },
+    "key_benefits": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Bulleted selling points captured as an array of strings."
+    },
+    "applications_text": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Raw narrative text for the Applications section."
+    },
+    "applications": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Normalized list of applications/uses for search and filtering."
+    },
+    "properties_and_specifications": {
+      "type": "array",
+      "items": {
+        "$ref": "https://example.com/schemas/common-defs.schema.json#/$defs/property_spec_row"
+      },
+      "description": "Flattened, sortable rows spanning Typical/Specification/Other categories."
+    },
+    "epoxy_resin_properties": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "table_name": {
+          "type": "string"
+        },
+        "page": {
+          "type": "integer"
+        },
+        "data_type": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "row_count": {
+          "type": "integer"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "https://example.com/schemas/common-defs.schema.json#/$defs/epoxy_resin_row"
+          }
+        },
+        "notes": {
+          "type": [
+            "string",
+            "object",
+            "null"
+          ],
+          "description": "Optional notes field for additional information about the epoxy resin properties."
+        },
+        "table_notes": {
+          "type": "array",
+          "items": {
+            "$ref": "https://example.com/schemas/common-defs.schema.json#/$defs/table_note"
+          }
+        }
+      },
+      "required": [
+        "table_name",
+        "page",
+        "data_type",
+        "row_count",
+        "data",
+        "description"
+      ],
+      "additional_properties": false,
+      "description": "Transposed data from the 'Properties of Liquid Epoxy Resins' table, with one property per row."
+    },
+    "typical_properties": {
+      "type": "object",
+      "properties": {
+        "table_name": {
+          "type": "string"
+        },
+        "page": {
+          "type": "integer"
+        },
+        "data_type": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "row_count": {
+          "type": "integer"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "unit": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "value_string": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "value_min": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "value_max": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "value_numeric": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "test_method": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "name"
+            ],
+            "additional_properties": false
+          }
+        },
+        "notes": {
+          "type": [
+            "string",
+            "object",
+            "null"
+          ],
+          "description": "Optional notes field for additional information about the typical properties."
+        },
+        "table_notes": {
+          "type": "array",
+          "items": {
+            "$ref": "https://example.com/schemas/common-defs.schema.json#/$defs/table_note"
+          }
+        }
+      },
+      "required": [
+        "table_name",
+        "page",
+        "data_type",
+        "row_count",
+        "data",
+        "description"
+      ],
+      "additional_properties": false,
+      "description": "The original 'Typical Properties' table preserved in table form."
+    },
+    "other_tables": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "table_name": {
+            "type": "string"
+          },
+          "page": {
+            "type": "integer"
+          },
+          "data_type": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "row_count": {
+            "type": "integer"
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          },
+          "table_notes": {
+            "type": "array",
+            "items": {
+              "$ref": "https://example.com/schemas/common-defs.schema.json#/$defs/table_note"
+            }
+          }
+        },
+        "required": [
+          "table_name",
+          "page",
+          "data_type",
+          "row_count",
+          "data",
+          "description"
+        ],
+        "additional_properties": false
+      },
+      "contains": {
+        "type": "object",
+        "properties": {
+          "table_name": {
+            "const": "Typical Properties"
+          }
+        },
+        "required": [
+          "table_name"
+        ]
+      },
+      "minContains": 1,
+      "description": "Any additional tables (e.g., Specifications, variants, studies) not covered by typical properties or epoxy resin properties, preserved in table form."
+    },
+    "formulation_data": {
+      "type": "array",
+      "items": {
+        "$ref": "https://example.com/schemas/common-defs.schema.json#/$defs/formulation_row"
+      },
+      "description": "Normalized formulation/performance rows (phr, viscosity, gel time, Tg, etc.)."
+    },
+    "toxicity_data": {
+      "type": "array",
+      "items": {
+        "$ref": "https://example.com/schemas/common-defs.schema.json#/$defs/toxicity_record"
+      },
+      "description": "Structured toxicology metrics (LD50, irritation, Ames, etc.) with provenance."
+    },
+    "sections": {
+      "type": "array",
+      "items": {
+        "$ref": "https://example.com/schemas/common-defs.schema.json#/$defs/section"
+      },
+      "allOf": [
+        {
+          "contains": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "const": "Applications"
+              }
+            },
+            "required": [
+              "name"
+            ]
+          },
+          "minContains": 1
+        },
+        {
+          "contains": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "const": "Availability"
+              }
+            },
+            "required": [
+              "name"
+            ]
+          },
+          "minContains": 1
+        }
+      ],
+      "description": "Raw text sections by name with page anchors."
+    },
+    "images": {
+      "type": "array",
+      "items": {
+        "$ref": "https://example.com/schemas/common-defs.schema.json#/$defs/image"
+      },
+      "description": "Cropped graphics (graphs/structures/photos) with optional axis/points for graphs."
+    },
+    "document_footnotes": {
+      "type": "object",
+      "additional_properties": {
+        "type": "string"
+      },
+      "description": "Map of footnote keys to text as printed in the PDF."
+    },
+    "extraction_metadata": {
+      "type": "object",
+      "properties": {
+        "confidence_scores": {
+          "type": "object",
+          "properties": {
+            "product_info": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "key_benefits": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "applications_text": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "applications": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "properties_and_specifications": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "typical_properties": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "epoxy_resin_properties": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "other_tables": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "formulation_data": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "toxicity_data": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "sections": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "images": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "registrations": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "document_footnotes": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "overall": {
+              "type": [
+                "number",
+                "null"
+              ]
+            }
+          },
+          "additional_properties": false,
+          "description": "Per-area confidence (e.g., tables, sections, graphs)."
+        },
+        "extractor_version": {
+          "type": "string",
+          "description": "Semantic/string version of the extractor used."
+        },
+        "extraction_date": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time",
+          "description": "RFC 3339 timestamp of when extraction occurred."
+        },
+        "extraction_report": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Optional analyst/model notes summarizing what was extracted and any items requiring manual review."
+        }
+      },
+      "required": [
+        "extractor_version",
+        "extraction_date"
+      ],
+      "description": "Extractor version, date, and confidence scores by area."
+    }
+  },
+  "required": [
+    "filename",
+    "document_type",
+    "manufacturer",
+    "contact_info",
+    "product_info",
+    "applications_text",
+    "applications",
+    "typical_properties",
+    "properties_and_specifications",
+    "other_tables",
+    "sections",
+    "images",
+    "registrations",
+    "key_benefits",
+    "formulation_data",
+    "toxicity_data",
+    "document_footnotes",
+    "epoxy_resin_properties",
+    "extraction_metadata"
+  ],
+  "additional_properties": false,
+  "description": "Source-of-truth extraction from the technical bulletin PDF."
+}

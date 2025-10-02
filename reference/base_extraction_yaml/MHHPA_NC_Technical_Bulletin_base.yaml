@@ -1,0 +1,536 @@
+doc_id: 1c0b982f-c206-5ada-adac-704309b24fb6
+filename: MHHPA_NC_Technical_Bulletin.pdf
+source_filepath: ${paths.raw_pdfs_root}/MHHPA_NC_Technical_Bulletin.pdf
+filepath: ${paths.processed_pdfs_root}/MHHPA_NC_Technical_Bulletin.pdf
+document_file_metadata:
+  document_title: MHHPA_NC_Technical_Bulletin.pdf
+  copyright_status: Unknown
+  created: 8/30/18, 7:12:34 PM UTC
+  modified: 8/30/18, 7:12:34 PM UTC
+  application: Muhimbi PDF Converter Services - www.muhimbi.com
+  advanced:
+    pdf_producer: Muhimbi PDF Converter Services - www.muhimbi.com
+    pdf_version: '1.5'
+    location: /Users/benjaminbykowski/projects/ai-apps/forks/qwen-dc-product/dc-product-agent/data/raw_pdfs/MHHPA_NC_Technical_Bulletin.pdf
+    file_size: 152.43 KB (156,087 Bytes)
+    page_size: 8.50 x 11.00 in
+    number_of_pages: 4
+    tagged_pdf: 'No'
+    fast_web_view: 'No'
+source_file_hash:
+  sha256: a8587c4b7021f2f8221502c04883ae287b1fbd21679faf79eb3b736bc96e359d
+document_type: Product Technical Bulletin
+manufacturer: ${manufacturer.name}
+contact_info:
+  address: ${manufacturer.contact_info.address}
+  phone: ${manufacturer.contact_info.phone}
+  fax: ${manufacturer.contact_info.fax}
+  email: ${manufacturer.contact_info.email}
+product_info:
+  product_name: Methylhexahydrophthalic Anhydride-NC
+  product_short_name: MHHPA-NC
+  product_family: Anhydride
+  cas_number: 25550-51-0
+  chemical_name: Methylhexahydrophthalic Anhydride-NC
+registrations: []
+key_benefits: []
+applications: []
+properties_and_specifications:
+- category: Typical
+  name: Molecular Weight (average)
+  unit: null
+  value_string: '168'
+  value_numeric: 168
+  test_method: null
+  page: 1
+- category: Typical
+  name: Total Anhydride
+  unit: '%'
+  value_string: 99 Min
+  value_min: 99
+  test_method: D-163
+  page: 1
+- category: Typical
+  name: "Specific gravity @ 25\xB0C"
+  unit: g/cc
+  value_string: '1.15'
+  value_numeric: 1.15
+  test_method: D-102 (ASTM D4052)
+  page: 1
+- category: Typical
+  name: Appearance
+  unit: null
+  value_string: Clear Liquid
+  test_method: D-104 (Visual)
+  page: 1
+- category: Typical
+  name: Color, Pt-co
+  unit: null
+  value_string: 25 Max
+  value_max: 25
+  test_method: D-103
+  page: 1
+- category: Typical
+  name: Freezing point
+  unit: "\xB0C"
+  value_string: -29 to -31
+  value_min: -31
+  value_max: -29
+  test_method: ASTM D1015
+  page: 1
+- category: Typical
+  name: Pour point
+  unit: "\xB0F"
+  value_string: -38 to -40
+  value_min: -40
+  value_max: -38
+  test_method: ASTM D97
+  page: 1
+typical_properties:
+  table_name: Typical Properties
+  page: 1
+  data_type: typical_properties
+  description: MHHPA NC is a clear colorless, high purity liquid which can be used
+    alone or in combination with hexahydrophthalic anhydride to produce a lower melting
+    mixture or with other anhydrides to modify physical properties. Its low residual
+    unsaturation level gives maximum resistance to yellowing in coatings and castings,
+    making it desirable where premium optical and electrical performance are needed
+    in epoxy casting and encapsulation applications.
+  row_count: 7
+  data:
+  - name: Molecular Weight (average)
+    unit: null
+    value_string: '168'
+    value_min: null
+    value_max: null
+    value_numeric: 168
+    test_method: null
+  - name: Total Anhydride
+    unit: '%'
+    value_string: 99 Min
+    value_min: 99
+    value_max: null
+    value_numeric: null
+    test_method: D-163
+  - name: "Specific gravity @ 25\xB0C"
+    unit: g/cc
+    value_string: '1.15'
+    value_min: null
+    value_max: null
+    value_numeric: 1.15
+    test_method: D-102 (ASTM D4052)
+  - name: Appearance
+    unit: null
+    value_string: Clear Liquid
+    value_min: null
+    value_max: null
+    value_numeric: null
+    test_method: D-104 (Visual)
+  - name: Color, Pt-co
+    unit: null
+    value_string: 25 Max
+    value_min: null
+    value_max: 25
+    value_numeric: null
+    test_method: D-103
+  - name: Freezing point
+    unit: "\xB0C"
+    value_string: -29 to -31
+    value_min: -31
+    value_max: -29
+    value_numeric: null
+    test_method: ASTM D1015
+  - name: Pour point
+    unit: "\xB0F"
+    value_string: -38 to -40
+    value_min: -40
+    value_max: -38
+    value_numeric: null
+    test_method: ASTM D97
+other_tables:
+- table_name: Formulation Example
+  page: 3
+  data_type: formulation_data
+  description: "MHHPA NC was formulated with a variety of epoxy resins. The samples\
+    \ were formulated with 100 parts of epoxy resin, 84-117 parts MHHPA NC, and 1\
+    \ part 1-Methylimidazole. Viscosity was measured at 25\xB0C, and gel time was\
+    \ measured at 100\xB0C. Samples were cured for 1 hour at 120\xB0C, followed by\
+    \ a post-cure of 1 hour at 220\xB0C, and glass transition temperatures were measured\
+    \ using a differential scanning calorimeter."
+  row_count: 6
+  data:
+  - epoxy type: Standard BPA Liquid Epoxy
+    mhhpa nc, phr:
+      value_string: '85'
+      value_numeric: 85
+      value_min: null
+      value_max: null
+      unit: phr
+    "viscosity @ 25 \xB0c, c_p":
+      value_string: '830'
+      value_numeric: 830
+      value_min: null
+      value_max: null
+      unit: cP
+    gel _time, min:
+      value_string: '39'
+      value_numeric: 39
+      value_min: null
+      value_max: null
+      unit: min
+    "tg, \xB0c":
+      value_string: '156'
+      value_numeric: 156
+      value_min: null
+      value_max: null
+      unit: "\xB0C"
+  - epoxy type: Low Viscosity BPA Liquid
+    mhhpa nc, phr:
+      value_string: '88'
+      value_numeric: 88
+      value_min: null
+      value_max: null
+      unit: phr
+    "viscosity @ 25 \xB0c, c_p":
+      value_string: '730'
+      value_numeric: 730
+      value_min: null
+      value_max: null
+      unit: cP
+    gel _time, min:
+      value_string: '37'
+      value_numeric: 37
+      value_min: null
+      value_max: null
+      unit: min
+    "tg, \xB0c":
+      value_string: '132'
+      value_numeric: 132
+      value_min: null
+      value_max: null
+      unit: "\xB0C"
+  - epoxy type: Cycloaliphatic Epoxy
+    mhhpa nc, phr:
+      value_string: '117'
+      value_numeric: 117
+      value_min: null
+      value_max: null
+      unit: phr
+    "viscosity @ 25 \xB0c, c_p":
+      value_string: '112'
+      value_numeric: 112
+      value_min: null
+      value_max: null
+      unit: cP
+    gel _time, min:
+      value_string: '45'
+      value_numeric: 45
+      value_min: null
+      value_max: null
+      unit: min
+    "tg, \xB0c":
+      value_string: '221'
+      value_numeric: 221
+      value_min: null
+      value_max: null
+      unit: "\xB0C"
+  - epoxy type: Epoxy Phenol Novolac
+    mhhpa nc, phr:
+      value_string: '93'
+      value_numeric: 93
+      value_min: null
+      value_max: null
+      unit: phr
+    "viscosity @ 25 \xB0c, c_p":
+      value_string: '92'
+      value_numeric: 92
+      value_min: null
+      value_max: null
+      unit: cP
+    gel _time, min:
+      value_string: '32'
+      value_numeric: 32
+      value_min: null
+      value_max: null
+      unit: min
+    "tg, \xB0c":
+      value_string: '157'
+      value_numeric: 157
+      value_min: null
+      value_max: null
+      unit: "\xB0C"
+  - epoxy type: Epoxy BPA Novolac
+    mhhpa nc, phr:
+      value_string: '84'
+      value_numeric: 84
+      value_min: null
+      value_max: null
+      unit: phr
+    "viscosity @ 25 \xB0c, c_p":
+      value_string: '3800'
+      value_numeric: 3800
+      value_min: null
+      value_max: null
+      unit: cP
+    gel _time, min:
+      value_string: '33'
+      value_numeric: 33
+      value_min: null
+      value_max: null
+      unit: min
+    "tg, \xB0c":
+      value_string: '142'
+      value_numeric: 142
+      value_min: null
+      value_max: null
+      unit: "\xB0C"
+  - epoxy type: BPF Liquid Epoxy
+    mhhpa nc, phr:
+      value_string: '95'
+      value_numeric: 95
+      value_min: null
+      value_max: null
+      unit: phr
+    "viscosity @ 25 \xB0c, c_p":
+      value_string: '420'
+      value_numeric: 420
+      value_min: null
+      value_max: null
+      unit: cP
+    gel _time, min:
+      value_string: '37'
+      value_numeric: 37
+      value_min: null
+      value_max: null
+      unit: min
+    "tg, \xB0c":
+      value_string: '148'
+      value_numeric: 148
+      value_min: null
+      value_max: null
+      unit: "\xB0C"
+  notes:
+    '1': "Shyodu Hot Pot (100g @ 100\xB0C)"
+    '2': "Cured 1 hr @ 120\xB0C and 1 hr @ 220\xB0C. Analyzed in DSC: 40\xB0C/min\
+      \ to 250\xB0C"
+- table_name: Typical Properties
+  page: 1
+  data_type: typical_properties
+  description: MHHPA NC is a clear colorless, high purity liquid which can be used
+    alone or in combination with hexahydrophthalic anhydride to produce a lower melting
+    mixture or with other anhydrides to modify physical properties. Its low residual
+    unsaturation level gives maximum resistance to yellowing in coatings and castings,
+    making it desirable where premium optical and electrical performance are needed
+    in epoxy casting and encapsulation applications.
+  row_count: 7
+  data:
+  - name: Molecular Weight (average)
+    unit: null
+    value_string: '168'
+    value_min: null
+    value_max: null
+    value_numeric: 168
+    test_method: null
+  - name: Total Anhydride
+    unit: '%'
+    value_string: 99 Min
+    value_min: 99
+    value_max: null
+    value_numeric: null
+    test_method: D-163
+  - name: "Specific gravity @ 25\xB0C"
+    unit: g/cc
+    value_string: '1.15'
+    value_min: null
+    value_max: null
+    value_numeric: 1.15
+    test_method: D-102 (ASTM D4052)
+  - name: Appearance
+    unit: null
+    value_string: Clear Liquid
+    value_min: null
+    value_max: null
+    value_numeric: null
+    test_method: D-104 (Visual)
+  - name: Color, Pt-co
+    unit: null
+    value_string: 25 Max
+    value_min: null
+    value_max: 25
+    value_numeric: null
+    test_method: D-103
+  - name: Freezing point
+    unit: "\xB0C"
+    value_string: -29 to -31
+    value_min: -31
+    value_max: -29
+    value_numeric: null
+    test_method: ASTM D1015
+  - name: Pour point
+    unit: "\xB0F"
+    value_string: -38 to -40
+    value_min: -40
+    value_max: -38
+    value_numeric: null
+    test_method: ASTM D97
+formulation_data: []
+toxicity_data:
+- metric: Skin Irritation
+  species: null
+  route: dermal
+  value: null
+  unit: null
+  test_method: null
+  conditions: null
+  page: 4
+  source_text: These anhydrides are primary skin and eye irritants. Avoid contact
+    with skin, eyes, and clothing.
+- metric: Eye Irritation
+  species: null
+  route: ocular
+  value: null
+  unit: null
+  test_method: null
+  conditions: null
+  page: 4
+  source_text: These anhydrides are primary skin and eye irritants. Avoid contact
+    with skin, eyes, and clothing.
+sections:
+- name: Applications
+  page: 2
+  text: 'MHHPA NC is a clear colorless, high purity liquid which can be used alone
+    or in combination with hexahydrophthalic anhydride to produce a lower melting
+    mixture or with other anhydrides to modify physical properties. Its low residual
+    unsaturation level gives maximum resistance to yellowing in coatings and castings,
+    making it desirable where premium optical and electrical performance are needed
+    in epoxy casting and encapsulation applications. Also, gives excellent cure response
+    at cure temperatures, resulting in high crosslinking and relatively high Tg.
+
+
+    For more information on the use of anhydrides like MHHPA NC as epoxy curing agents,
+    please consult the Technical Bulletin, "Formulating Anhydride-Cured Epoxy Systems",
+    available from Dixie Chemical.'
+- name: Formulation Example
+  page: 3
+  text: "MHHPA NC was formulated with a variety of epoxy resins. The samples were\
+    \ formulated with 100 parts of epoxy resin, 84-117 parts MHHPA NC, and 1 part\
+    \ 1-Methylimidazole. Viscosity was measured at 25\xB0C, and gel time was measured\
+    \ at 100\xB0C. Samples were cured for 1 hour at 120\xB0C, followed by a post-cure\
+    \ of 1 hour at 220\xB0C, and glass transition temperatures were measured using\
+    \ a differential scanning calorimeter.\n\nThe following table summarizes these\
+    \ results:"
+- name: Handling & Storage
+  page: 3
+  text: 'MHHPA-NC will react with water to form methylhexahydrophthalic acid. This
+    is normally undesirable, so MHHPA-NC should be stored in such a way that it is
+    carefully protected from moisture contamination.
+
+
+    For more details on the design of bulk storage for MHHPA-NC, consult the Dixie
+    Chemical Company brochure "Epoxy Curing Agent Storage Requirements."'
+- name: Special Handling Instructions
+  page: 4
+  text: "In some cases MHHPA NC may crystallize. If crystallization is observed, the\
+    \ material can be heated to return the product to a liquid state.\n\nLoosen bung\
+    \ caps on each drum and place the drums in a hotbox or oven at 80\xB0C for 24\
+    \ hours. Upon removal from the hotbox, the product should be free of crystals.\
+    \ The product should be used within 48 hours of melting to ensure no reoccurrence\
+    \ of crystal formation.\n\nHeating MHHPA NC following this procedure does not\
+    \ alter the chemical make-up or degrade any properties of the product."
+- name: Health Hazards
+  page: 4
+  text: 'Read and understand the relevant Safety Data Sheets (SDS) for all products
+    before use. These anhydrides are primary skin and eye irritants. Avoid contact
+    with skin, eyes, and clothing. Use only with adequate ventilation. In case of
+    contact, follow the procedures outlined in the SDS. Generally, these procedures
+    include immediately flushing the affected skin or eyes with copious amounts of
+    water for at least 15 minutes. In the case of eye contact, get medical attention.
+    Wash contaminated clothing before reuse.
+
+
+    Follow the recommendations in the SDS for personal protective equipment when handling
+    these materials. At a minimum, these procedures typically include protective chemical
+    goggles, impenetrable gloves, and measures to avoid breathing chemical vapors.'
+- name: Availability
+  page: 4
+  text: MHHPA NC is available from Dixie Chemical in Pasadena, Texas. Contact your
+    Dixie representative for details.
+images:
+- filename: mhhpa_nc_viscosity_temperature_cropped.png
+  page: 1
+  type: graph
+  description: "Viscosity vs Temperature. \u2014 Viscosity decreases with Temperature.\
+    \ Viscosity range 18.0\u2013120.0 cPs; Temperature range 10.0\u201360.0 \xB0C"
+  title: Viscosity as a Function of Temperature
+  x_axis:
+    label: Temperature
+    unit: "\xB0C"
+  y_axis:
+    label: Viscosity
+    unit: cPs
+  graph_data:
+  - x: 10
+    y: 120
+  - x: 15
+    y: 100
+  - x: 20
+    y: 85
+  - x: 25
+    y: 70
+  - x: 30
+    y: 55
+  - x: 35
+    y: 45
+  - x: 40
+    y: 35
+  - x: 45
+    y: 30
+  - x: 50
+    y: 25
+  - x: 55
+    y: 22
+  - x: 60
+    y: 18
+- filename: mhhpa_nc_specific_gravity_temperature_cropped.png
+  page: 2
+  type: graph
+  description: "Specific Gravity vs Temperature. \u2014 Specific Gravity decreases\
+    \ with Temperature. Specific Gravity range 1.136\u20131.154; Temperature range\
+    \ 20.0\u201360.0 \xB0C"
+  title: Specific Gravity as a Function of Temperature
+  x_axis:
+    label: Temperature
+    unit: "\xB0C"
+  y_axis:
+    label: Specific Gravity
+    unit: null
+  graph_data:
+  - x: 20
+    y: 1.154
+  - x: 25
+    y: 1.15
+  - x: 30
+    y: 1.146
+  - x: 35
+    y: 1.144
+  - x: 40
+    y: 1.142
+  - x: 45
+    y: 1.14
+  - x: 50
+    y: 1.138
+  - x: 55
+    y: 1.137
+  - x: 60
+    y: 1.136
+document_footnotes: {}
+extraction_metadata:
+  confidence_scores:
+    product_info: 100
+    properties: 100
+    other_tables: 100
+    sections: 100
+    images: 100
+    overall: 100
+  extractor_version: ${extraction.extractor_version}
+  extraction_date: '2025-08-26T15:10:00-04:00'

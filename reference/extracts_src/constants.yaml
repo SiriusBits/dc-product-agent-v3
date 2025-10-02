@@ -1,0 +1,13 @@
+project_name: dc-product-agent
+processed_base_path: data/pdf_extracts/v1/pdfs
+raw_base_path: data/raw_pdfs
+extractor_version: "2.0.0"
+
+# Optional manufacturer contact blocks (example)
+contacts:
+  "Dixie Chemical":
+    address: "10601 Bay Area Blvd. Pasadena, TX 77507"
+    phone: "(281) 474-3271"
+    fax: null
+    email: "info@dixiechemicalgroup.com"
+

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/kg-triple.schema.json",
+  "title": "KG Triple",
+  "type": "object",
+  "properties": {
+    "subject": { "type": ["string", "object"] },
+    "predicate": { "type": "string" },
+    "object": { "type": ["string", "number", "boolean", "null", "object"] },
+    "source_text": { "type": ["string", "null"] },
+    "provenance": {
+      "type": "object",
+      "properties": {
+        "document_id": { "type": "string" },
+        "page": { "type": ["integer", "null"] }
+      },
+      "additionalProperties": true
+    },
+    "confidence": { "type": ["number", "null"] }
+  },
+  "required": ["subject", "predicate", "object"],
+  "additionalProperties": false
+}

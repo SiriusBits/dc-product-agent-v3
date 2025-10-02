@@ -1,0 +1,1294 @@
+doc_id: 9d0a20c9-169c-5ef3-8327-3d3164a05374
+filename: DDSA_Technical_Bulletin.pdf
+source_filepath: ${paths.raw_pdfs_root}/DDSA_Technical_Bulletin.pdf
+filepath: ${paths.processed_pdfs_root}/DDSA_Technical_Bulletin.pdf
+document_file_metadata:
+  document_title: DDSA_Technical_Bulletin.pdf
+  copyright_status: Unknown
+  created: 8/4/17, 5:36:06 PM UTC
+  modified: 8/4/17, 5:36:06 PM UTC
+  application: Muhimbi PDF Converter Services - www.muhimbi.com
+  advanced:
+    pdf_producer: Muhimbi PDF Converter Services - www.muhimbi.com
+    pdf_version: '1.5'
+    location: /Users/benjaminbykowski/projects/ai-apps/forks/qwen-dc-product/dc-product-agent/data/raw_pdfs/DDSA_Technical_Bulletin.pdf
+    file_size: 251.16 KB (257,187 Bytes)
+    page_size: 8.50 x 11.00 in
+    number_of_pages: 11
+    tagged_pdf: 'No'
+    fast_web_view: 'No'
+source_file_hash:
+  sha256: 5eedd6feb2bac6d35a153ccb13beed8c5e64bddaaca104d4874dafd280f3e974
+document_type: Product Technical Bulletin
+manufacturer: ${manufacturer.name}
+contact_info:
+  address: ${manufacturer.contact_info.address}
+  phone: ${manufacturer.contact_info.phone}
+  fax: ${manufacturer.contact_info.fax}
+  email: ${manufacturer.contact_info.email}
+product_info:
+  product_name: Dodecenylsuccinic Anhydride
+  product_short_name: DDSA
+  product_family: Alkenylsuccinic Anhydride
+  cas_number: 26544-38-7
+  chemical_name: Dodecenylsuccinic Anhydride
+  synonyms:
+  - DDSA
+  - Dodecenylsuccinic Anhydride
+registrations: []
+key_benefits:
+- Long pot life at room temperature
+- Excellent electrical properties
+- Provides flexibility to castings
+- Good chemical resistance
+- Thermal stability
+- Can be blended with other anhydrides to modify properties
+- Reduces brittleness of cured polymers
+- Useful for modifying other anhydrides to lower freezing points
+applications_text: 'Dixie dodecenylsuccinic anhydride (DDSA) is a slightly viscous
+  liquid anhydride. DDSA can be used as: An epoxy curing agent for electrical potting
+  compounds, coatings, conductive adhesives, and syntactic foams; An intermediate
+  in the preparation of corrosion inhibitors for oils and greases; As a leather tanning
+  agent. When used as an epoxy-curing agent, it has a long pot life at room temperature
+  and gives excellent electrical properties and flexibility to castings. DDSA can
+  be used in blends with other anhydrides to modify physical properties of the mixture
+  and to lend flexibility and reduce brittleness of cured polymers.'
+applications:
+- Epoxy curing agent for electrical potting compounds
+- Coatings
+- Conductive adhesives
+- Syntactic foams
+- Intermediate in preparation of corrosion inhibitors for oils and greases
+- Leather tanning agent
+- Modifier for other anhydrides to reduce freezing points
+properties_and_specifications:
+- category: Physical
+  name: Molecular Weight (average)
+  unit: null
+  value_string: '266'
+  value_numeric: 266
+  value_min: null
+  value_max: null
+  test_method: null
+  page: 1
+  notes: Molecular Weight (average) 266
+- category: Physical
+  name: "Specific gravity @ 25\xB0C"
+  unit: g/cc
+  value_string: '1.002'
+  value_numeric: 1.002
+  value_min: null
+  value_max: null
+  test_method: D-102 (ASTM D 4052)
+  page: 1
+  notes: "Specific gravity @ 25\xB0C, g/cc 1.002 D-102 (ASTM D 4052)"
+- category: Physical
+  name: Appearance
+  unit: null
+  value_string: Light yellow liquid
+  value_numeric: null
+  value_min: null
+  value_max: null
+  test_method: D-104 (Visual)
+  page: 1
+  notes: Appearance Light yellow liquid D-104 (Visual)
+- category: Physical
+  name: Color, Gardner
+  unit: null
+  value_string: 6 max.
+  value_numeric: null
+  value_min: null
+  value_max: 6
+  test_method: D-103
+  page: 1
+  notes: Color, Gardner 6 max. D-103
+- category: Chemical
+  name: DDSA
+  unit: '%'
+  value_string: 97.0 min
+  value_numeric: null
+  value_min: 97.0
+  value_max: null
+  test_method: D-126
+  page: 1
+  notes: DDSA, % 97.0 min D-126
+- category: Chemical
+  name: Maleic Anhydride
+  unit: '%'
+  value_string: 0.2 max
+  value_numeric: null
+  value_min: null
+  value_max: 0.2
+  test_method: D-126
+  page: 1
+  notes: Maleic Anhydride, % 0.2 max D-126
+- category: Chemical
+  name: Free Acid
+  unit: '%'
+  value_string: 2.0 max
+  value_numeric: null
+  value_min: null
+  value_max: 2.0
+  test_method: D-126
+  page: 1
+  notes: Free Acid, % 2.0 max D-126
+- category: Chemical
+  name: Neutralization Equivalent
+  unit: mg KOH/g
+  value_string: 400-432
+  value_numeric: null
+  value_min: 400
+  value_max: 432
+  test_method: D-150I
+  page: 1
+  notes: Neutralization Equivalent, mg KOH/g 400-432 D-150I
+- category: Electrical
+  name: Dielectric Constant @ 60 Hz
+  unit: null
+  value_string: '2.85'
+  value_numeric: 2.85
+  value_min: null
+  value_max: null
+  test_method: null
+  page: 10
+  notes: Dielectric Constant @ 60 Hz 2.85
+- category: Electrical
+  name: Dielectric Constant @ 1 MHz
+  unit: null
+  value_string: '2.79'
+  value_numeric: 2.79
+  value_min: null
+  value_max: null
+  test_method: null
+  page: 10
+  notes: Dielectric Constant @ 1 MHz 2.79
+- category: Electrical
+  name: Power Factor @ 60 Hz
+  unit: null
+  value_string: '0.0039'
+  value_numeric: 0.0039
+  value_min: null
+  value_max: null
+  test_method: null
+  page: 10
+  notes: Power Factor @ 60 Hz 0.0039
+- category: Electrical
+  name: Power Factor @ 1 MHz
+  unit: null
+  value_string: '0.0084'
+  value_numeric: 0.0084
+  value_min: null
+  value_max: null
+  test_method: null
+  page: 10
+  notes: Power Factor @ 1 MHz 0.0084
+- category: Thermal
+  name: HDT
+  unit: "\xB0C"
+  value_string: '77'
+  value_numeric: 77
+  value_min: null
+  value_max: null
+  test_method: null
+  page: 10
+  notes: "HDT, \xB0C 77"
+- category: Mechanical
+  name: Izod Impact
+  unit: ft-lb/in. notch
+  value_string: '0.22'
+  value_numeric: 0.22
+  value_min: null
+  value_max: null
+  test_method: null
+  page: 10
+  notes: Izod Impact, ft-lb/in. notch 0.22
+- category: Mechanical
+  name: Flexural Strength
+  unit: ksi
+  value_string: '13.2'
+  value_numeric: 13.2
+  value_min: null
+  value_max: null
+  test_method: null
+  page: 10
+  notes: Flexural Strength, ksi 13.2
+- category: Mechanical
+  name: Flexural Modulus
+  unit: ksi
+  value_string: '350'
+  value_numeric: 350
+  value_min: null
+  value_max: null
+  test_method: null
+  page: 10
+  notes: Flexural Modulus, ksi 350
+- category: Thermal
+  name: "Weight Loss 24 hr @ 200\xB0C"
+  unit: '%'
+  value_string: '0.35'
+  value_numeric: 0.35
+  value_min: null
+  value_max: null
+  test_method: null
+  page: 10
+  notes: "% Wt. loss 24 hr @ 200\xB0C 0.35"
+typical_properties:
+  table_name: Typical Properties
+  page: 1
+  data_type: typical_properties
+  description: DDSA is a liquid anhydride used primarily as an epoxy curing agent.
+    It is used in applications requiring good electrical properties, chemical resistance,
+    and thermal stability.
+  row_count: 8
+  data:
+  - name: Molecular Weight (average)
+    unit: null
+    value_string: '266'
+    value_min: null
+    value_max: null
+    value_numeric: 266
+    test_method: null
+  - name: "Specific gravity @ 25\xB0C"
+    unit: g/cc
+    value_string: '1.002'
+    value_min: null
+    value_max: null
+    value_numeric: 1.002
+    test_method: D-102 (ASTM D 4052)
+  - name: Appearance
+    unit: null
+    value_string: Light yellow liquid
+    value_min: null
+    value_max: null
+    value_numeric: null
+    test_method: D-104 (Visual)
+  - name: Color, Gardner
+    unit: null
+    value_string: 6 max.
+    value_min: null
+    value_max: 6
+    value_numeric: null
+    test_method: D-103
+  - name: DDSA
+    unit: '%'
+    value_string: 97.0 min
+    value_min: 97.0
+    value_max: null
+    value_numeric: null
+    test_method: D-126
+  - name: Maleic Anhydride
+    unit: '%'
+    value_string: 0.2 max
+    value_min: null
+    value_max: 0.2
+    value_numeric: null
+    test_method: D-126
+  - name: Free Acid
+    unit: '%'
+    value_string: 2.0 max
+    value_min: null
+    value_max: 2.0
+    value_numeric: null
+    test_method: D-126
+  - name: Neutralization Equivalent
+    unit: mg KOH/g
+    value_string: 400-432
+    value_min: 400
+    value_max: 432
+    value_numeric: null
+    test_method: D-150I
+other_tables:
+- table_name: Cure Catalysts
+  page: 4
+  data_type: formulation_data
+  description: The effect of benzyldimethylamine (BDMA) catalyst on mix stability
+    was studied using the following formulations.
+  row_count: 3
+  data:
+  - system: Standard BPA Liquid Epoxy
+    catalyzed:
+      unit: null
+      value_string: '100'
+      value_numeric: 100
+      value_min: null
+      value_max: null
+    uncatalyzed_1:
+      unit: null
+      value_string: '100'
+      value_numeric: 100
+      value_min: null
+      value_max: null
+    uncatalyzed_2:
+      unit: null
+      value_string: '100'
+      value_numeric: 100
+      value_min: null
+      value_max: null
+  - system: DDSA
+    catalyzed:
+      unit: null
+      value_string: '133'
+      value_numeric: 133
+      value_min: null
+      value_max: null
+    uncatalyzed_1:
+      unit: null
+      value_string: '77'
+      value_numeric: 77
+      value_min: null
+      value_max: null
+    uncatalyzed_2:
+      unit: null
+      value_string: '100'
+      value_numeric: 100
+      value_min: null
+      value_max: null
+  - system: Benzyldimethylamine (BDMA)
+    catalyzed:
+      unit: null
+      value_string: '1'
+      value_numeric: 1
+      value_min: null
+      value_max: null
+    uncatalyzed_1:
+      unit: null
+      value_string: '0'
+      value_numeric: 0
+      value_min: null
+      value_max: null
+    uncatalyzed_2:
+      unit: null
+      value_string: '0'
+      value_numeric: 0
+      value_min: null
+      value_max: null
+  notes:
+    '1': Epoxy homopolymerization discussed above is a significant side reaction for
+      uncatalyzed systems, so anhydride demand is less.
+- table_name: Glass Transition Temperatures
+  page: 6
+  data_type: performance_data
+  description: The same experiments were conducted with a 20:80 blend of DDSA and
+    hexahydrophthalic anhydride. The following table summarizes the Tg data for these
+    tests.
+  row_count: 8
+  data:
+  - anhydride blend, phr:
+      unit: phr
+      value_string: '84'
+      value_numeric: 84
+      value_min: null
+      value_max: null
+    "tg, \xB0c":
+      unit: "\xB0C"
+      value_string: '79'
+      value_numeric: 79
+      value_min: null
+      value_max: null
+  - anhydride blend, phr:
+      unit: phr
+      value_string: '90'
+      value_numeric: 90
+      value_min: null
+      value_max: null
+    "tg, \xB0c":
+      unit: "\xB0C"
+      value_string: '71'
+      value_numeric: 71
+      value_min: null
+      value_max: null
+  - anhydride blend, phr:
+      unit: phr
+      value_string: '95'
+      value_numeric: 95
+      value_min: null
+      value_max: null
+    "tg, \xB0c":
+      unit: "\xB0C"
+      value_string: '71'
+      value_numeric: 71
+      value_min: null
+      value_max: null
+  - anhydride blend, phr:
+      unit: phr
+      value_string: '100'
+      value_numeric: 100
+      value_min: null
+      value_max: null
+    "tg, \xB0c":
+      unit: "\xB0C"
+      value_string: '71'
+      value_numeric: 71
+      value_min: null
+      value_max: null
+  - anhydride blend, phr:
+      unit: phr
+      value_string: '110'
+      value_numeric: 110
+      value_min: null
+      value_max: null
+    "tg, \xB0c":
+      unit: "\xB0C"
+      value_string: '77'
+      value_numeric: 77
+      value_min: null
+      value_max: null
+  - anhydride blend, phr:
+      unit: phr
+      value_string: '125'
+      value_numeric: 125
+      value_min: null
+      value_max: null
+    "tg, \xB0c":
+      unit: "\xB0C"
+      value_string: '71'
+      value_numeric: 71
+      value_min: null
+      value_max: null
+  - anhydride blend, phr:
+      unit: phr
+      value_string: '135'
+      value_numeric: 135
+      value_min: null
+      value_max: null
+    "tg, \xB0c":
+      unit: "\xB0C"
+      value_string: '85'
+      value_numeric: 85
+      value_min: null
+      value_max: null
+  - anhydride blend, phr:
+      unit: phr
+      value_string: '145'
+      value_numeric: 145
+      value_min: null
+      value_max: null
+    "tg, \xB0c":
+      unit: "\xB0C"
+      value_string: '81'
+      value_numeric: 81
+      value_min: null
+      value_max: null
+- table_name: Electrical Properties
+  page: 10
+  data_type: performance_data
+  description: "A formulation with 100 parts BPA liquid epoxy resin, 138 parts DDSA,\
+    \ and 1.46 part BDMA was prepared. Samples were cured for 4 hours at 80\xB0C,\
+    \ and post-cured for 24 hours at 100\xB0C. The following table summarizes electrical,\
+    \ mechanical, and heat stability data for this formulation."
+  row_count: 9
+  data:
+  - property: Dielectric Constant
+    condition:
+      unit: Hz
+      value_string: '@ 60 Hz'
+      value_numeric: 60
+      value_min: null
+      value_max: null
+    value:
+      unit: null
+      value_string: '2.85'
+      value_numeric: 2.85
+      value_min: null
+      value_max: null
+  - property: Dielectric Constant
+    condition:
+      unit: MHz
+      value_string: '@ 1 MHz'
+      value_numeric: 1
+      value_min: null
+      value_max: null
+    value:
+      unit: null
+      value_string: '2.79'
+      value_numeric: 2.79
+      value_min: null
+      value_max: null
+  - property: Power Factor
+    condition:
+      unit: Hz
+      value_string: '@ 60 Hz'
+      value_numeric: 60
+      value_min: null
+      value_max: null
+    value:
+      unit: null
+      value_string: '0.0039'
+      value_numeric: 0.0039
+      value_min: null
+      value_max: null
+  - property: Power Factor
+    condition:
+      unit: MHz
+      value_string: '@ 1 MHz'
+      value_numeric: 1
+      value_min: null
+      value_max: null
+    value:
+      unit: null
+      value_string: '0.0084'
+      value_numeric: 0.0084
+      value_min: null
+      value_max: null
+  - property: "HDT, \xB0C"
+    condition: null
+    value:
+      unit: "\xB0C"
+      value_string: '77'
+      value_numeric: 77
+      value_min: null
+      value_max: null
+  - property: Izod Impact, ft-lb/in. notch
+    condition: null
+    value:
+      unit: ft-lb/in
+      value_string: '0.22'
+      value_numeric: 0.22
+      value_min: null
+      value_max: null
+  - property: Flexural Strength, ksi
+    condition: null
+    value:
+      unit: ksi
+      value_string: '13.2'
+      value_numeric: 13.2
+      value_min: null
+      value_max: null
+  - property: Flexural Modulus, ksi
+    condition: null
+    value:
+      unit: ksi
+      value_string: '350'
+      value_numeric: 350
+      value_min: null
+      value_max: null
+  - property: "% Wt. loss 24 hr @ 200\xB0C"
+    condition: null
+    value:
+      unit: '%'
+      value_string: '0.35'
+      value_numeric: 0.35
+      value_min: null
+      value_max: null
+- table_name: Typical Properties
+  page: 1
+  data_type: typical_properties
+  description: DDSA is a liquid anhydride used primarily as an epoxy curing agent.
+    It is used in applications requiring good electrical properties, chemical resistance,
+    and thermal stability.
+  row_count: 8
+  data:
+  - name: Molecular Weight (average)
+    unit: null
+    value_string: '266'
+    value_min: null
+    value_max: null
+    value_numeric: 266
+    test_method: null
+  - name: "Specific gravity @ 25\xB0C"
+    unit: g/cc
+    value_string: '1.002'
+    value_min: null
+    value_max: null
+    value_numeric: 1.002
+    test_method: D-102 (ASTM D 4052)
+  - name: Appearance
+    unit: null
+    value_string: Light yellow liquid
+    value_min: null
+    value_max: null
+    value_numeric: null
+    test_method: D-104 (Visual)
+  - name: Color, Gardner
+    unit: null
+    value_string: 6 max.
+    value_min: null
+    value_max: 6
+    value_numeric: null
+    test_method: D-103
+  - name: DDSA
+    unit: '%'
+    value_string: 97.0 min
+    value_min: 97.0
+    value_max: null
+    value_numeric: null
+    test_method: D-126
+  - name: Maleic Anhydride
+    unit: '%'
+    value_string: 0.2 max
+    value_min: null
+    value_max: 0.2
+    value_numeric: null
+    test_method: D-126
+  - name: Free Acid
+    unit: '%'
+    value_string: 2.0 max
+    value_min: null
+    value_max: 2.0
+    value_numeric: null
+    test_method: D-126
+  - name: Neutralization Equivalent
+    unit: mg KOH/g
+    value_string: 400-432
+    value_min: 400
+    value_max: 432
+    value_numeric: null
+    test_method: D-150I
+formulation_data:
+- page: 4
+  formulation_name: Catalyzed System
+  components:
+  - name: Standard BPA Liquid Epoxy
+    amount: 100
+    unit: pbw
+  - name: DDSA
+    amount: 133
+    unit: pbw
+  - name: Benzyldimethylamine (BDMA)
+    amount: 1
+    unit: pbw
+  cure_conditions: null
+  properties: []
+  source_text: Standard BPA Liquid Epoxy 100, DDSA 133, Benzyldimethylamine (BDMA)
+    1
+- page: 4
+  formulation_name: Uncatalyzed System 1
+  components:
+  - name: Standard BPA Liquid Epoxy
+    amount: 100
+    unit: pbw
+  - name: DDSA
+    amount: 77
+    unit: pbw
+  - name: Benzyldimethylamine (BDMA)
+    amount: 0
+    unit: pbw
+  cure_conditions: null
+  properties: []
+  source_text: Standard BPA Liquid Epoxy 100, DDSA 77, Benzyldimethylamine (BDMA)
+    0
+- page: 4
+  formulation_name: Uncatalyzed System 2
+  components:
+  - name: Standard BPA Liquid Epoxy
+    amount: 100
+    unit: pbw
+  - name: DDSA
+    amount: 100
+    unit: pbw
+  - name: Benzyldimethylamine (BDMA)
+    amount: 0
+    unit: pbw
+  cure_conditions: null
+  properties: []
+  source_text: Standard BPA Liquid Epoxy 100, DDSA 100, Benzyldimethylamine (BDMA)
+    0
+- page: 5
+  formulation_name: Tg Study Formulation
+  components:
+  - name: BPA liquid epoxy resin
+    amount: 100
+    unit: parts
+  - name: DDSA
+    amount: 84-140
+    unit: phr
+  - name: BDMA
+    amount: 1.5
+    unit: part
+  cure_conditions: "30 minutes at 100\xB0C, increased to 160\xB0C in ten minutes,\
+    \ then post-cured for 30 minutes"
+  properties:
+  - name: Tg at 84 phr DDSA
+    value: 79
+    unit: "\xB0C"
+  - name: Tg at 90 phr DDSA
+    value: 71
+    unit: "\xB0C"
+  - name: Tg at 100 phr DDSA
+    value: 71
+    unit: "\xB0C"
+  - name: Tg at 110 phr DDSA
+    value: 72
+    unit: "\xB0C"
+  - name: Tg at 125 phr DDSA
+    value: 80
+    unit: "\xB0C"
+  - name: Tg at 140 phr DDSA
+    value: 84
+    unit: "\xB0C"
+  source_text: Formulations with 100 parts BPA liquid epoxy resin, DDSA, and 1.5 part
+    BDMA were prepared. The level of DDSA was varied from 84-140 phr.
+- page: 6
+  formulation_name: Post-cure Study Formulation
+  components:
+  - name: BPA liquid epoxy resin
+    amount: 100
+    unit: parts
+  - name: DDSA
+    amount: 134
+    unit: parts
+  - name: BDMA
+    amount: 1
+    unit: part
+  cure_conditions: "4 hours at 90\xB0C, and post-cured for 4, 24, and 200 hours at\
+    \ 150\xB0C"
+  properties:
+  - name: HDT at 4h post-cure
+    value: 60
+    unit: "\xB0C"
+  - name: HDT at 24h post-cure
+    value: 70
+    unit: "\xB0C"
+  - name: HDT at 200h post-cure
+    value: 75
+    unit: "\xB0C"
+  source_text: A formulation with 100 parts BPA liquid epoxy resin, 134 parts DDSA,
+    and 1 part BDMA was prepared.
+- page: 9
+  formulation_name: Electrical Properties Formulation
+  components:
+  - name: BPA liquid epoxy resin
+    amount: 100
+    unit: parts
+  - name: DDSA
+    amount: 138
+    unit: parts
+  - name: BDMA
+    amount: 1.46
+    unit: part
+  cure_conditions: "4 hours at 80\xB0C, and post-cured for 24 hours at 100\xB0C"
+  properties:
+  - name: Dielectric Constant @ 60 Hz
+    value: 2.85
+    unit: null
+  - name: Dielectric Constant @ 1 MHz
+    value: 2.79
+    unit: null
+  - name: Power Factor @ 60 Hz
+    value: 0.0039
+    unit: null
+  - name: Power Factor @ 1 MHz
+    value: 0.0084
+    unit: null
+  - name: HDT
+    value: 77
+    unit: "\xB0C"
+  - name: Izod Impact
+    value: 0.22
+    unit: ft-lb/in. notch
+  - name: Flexural Strength
+    value: 13.2
+    unit: ksi
+  - name: Flexural Modulus
+    value: 350
+    unit: ksi
+  - name: "Weight Loss 24 hr @ 200\xB0C"
+    value: 0.35
+    unit: '%'
+  source_text: A formulation with 100 parts BPA liquid epoxy resin, 138 parts DDSA,
+    and 1.46 part BDMA was prepared.
+toxicity_data: []
+sections:
+- name: Applications
+  page: 3
+  text: 'Dixie dodecenylsuccinic anhydride (DDSA) is a slightly viscous liquid anhydride.
+    DDSA can be used as: An epoxy curing agent for electrical potting compounds, coatings,
+    conductive adhesives, and syntactic foams; An intermediate in the preparation
+    of corrosion inhibitors for oils and greases; As a leather tanning agent. When
+    used as an epoxy-curing agent, it has a long pot life at room temperature and
+    gives excellent electrical properties and flexibility to castings. DDSA can be
+    used in blends with other anhydrides to modify physical properties of the mixture
+    and to lend flexibility and reduce brittleness of cured polymers. For more information
+    on the use of anhydrides like DDSA as epoxy curing agents, please consult the
+    Technical Bulletin, FORMULATING ANHYDRIDE-CURED EPOXY SYSTEMS, available from
+    Dixie Chemical.'
+- name: Modifying Other Anhydrides
+  page: 3
+  text: As a liquid, DDSA is useful in modifying other anhydrides to lower their freezing
+    points and make them easier to handle. The following plot shows how DDSA lowers
+    the freezing point of five other anhydrides.
+- name: Cure Catalysts
+  page: 4
+  text: The effect of benzyldimethylamine (BDMA) catalyst on mix stability was studied
+    using the following formulations. Epoxy homopolymerization discussed above is
+    a significant side reaction for uncatalyzed systems, so anhydride demand is less.
+- name: Anhydride Level
+  page: 5
+  text: "Most applications use between 80-150 phr DDSA with bisphenol A (BPA) liquid\
+    \ epoxy resins. Most high performance applications where high levels of heat or\
+    \ chemical resistance, or high strength is required utilize about 140 phr. Example:\
+    \ Formulations with 100 parts BPA liquid epoxy resin, DDSA, and 1.5 part BDMA\
+    \ were prepared. The level of DDSA was varied from 84-140 phr. Samples were cured\
+    \ for 30 minutes at 100\xB0C, the temperature was increased to 160\xB0C in ten\
+    \ minutes, and then post-cured for 30 minutes. The following plot summarizes the\
+    \ glass transition temperatures (Tg) for these formulations. The same experiments\
+    \ were conducted with a 20:80 blend of DDSA and hexahydrophthalic anhydride."
+- name: Cure Cycle
+  page: 6
+  text: "A formulation with 100 parts BPA liquid epoxy resin, 134 parts DDSA, and\
+    \ 1 part BDMA was prepared. Samples were cured for 4 hours at 90\xB0C, and post-cured\
+    \ for 4, 24, and 200 hours at 150\xB0C. The following plots show the effect of\
+    \ post-cure on heat distortion temperature (HDT), and weight increases after 24\
+    \ hours in boiling water and 3 hours in boiling acetone. Tensile testing was performed\
+    \ at -25\xB0C, and at room temperature. The following plots summarize results\
+    \ for tensile strength, tensile modulus, and elongation at break."
+- name: Electrical Properties
+  page: 9
+  text: "A formulation with 100 parts BPA liquid epoxy resin, 138 parts DDSA, and\
+    \ 1.46 part BDMA was prepared. Samples were cured for 4 hours at 80\xB0C, and\
+    \ post-cured for 24 hours at 100\xB0C. The following table summarizes electrical,\
+    \ mechanical, and heat stability data for this formulation."
+- name: Handling & Storage
+  page: 10
+  text: DDSA will react with water to form dodecenylsuccinic acid. This is normally
+    undesirable, so DDSA should be stored in such a way that it is carefully protected
+    from moisture contamination. For more details on the design of bulk storage for
+    DDSA, consult the Dixie Chemical brochure 'Epoxy Curing Agent Storage Requirements.'
+- name: Health Hazards
+  page: 10
+  text: Read and understand the relevant Safety Data Sheets (SDS) for all products
+    before use. These anhydrides are primary skin and eye irritants. Avoid contact
+    with skin, eyes, and clothing. Use only with adequate ventilation. In case of
+    contact, follow the procedures outlined in the SDS. Generally, these procedures
+    include immediately flushing the affected skin or eyes with copious amounts of
+    water for at least 15 minutes. In the case of eye contact, get medical attention.
+    Wash contaminated clothing before reuse. Follow the recommendations in the SDS
+    for personal protective equipment when handling these materials. At a minimum,
+    these procedures typically include protective chemical goggles, impenetrable gloves,
+    and measures to avoid breathing chemical vapors.
+- name: Availability
+  page: 11
+  text: Dodecenylsuccinic anhydride is available from Dixie Chemical, Pasadena, Texas.
+    Contact your Dixie representative for details.
+images:
+- filename: ddsa_specific_gravity_temperature_cropped.png
+  page: 2
+  type: graph
+  description: "Specific Gravity vs Temperature. \u2014 Specific Gravity decreases\
+    \ with Temperature. Specific Gravity range 0.992\u20131.002 g/cc; Temperature\
+    \ range 25.0\u201345.0 \xB0C"
+  title: Specific Gravity as a Function of Temperature
+  x_axis:
+    label: Temperature
+    unit: "\xB0C"
+  y_axis:
+    label: Specific Gravity
+    unit: g/cc
+  graph_data:
+  - x: 25
+    y: 1.002
+  - x: 35
+    y: 0.997
+  - x: 45
+    y: 0.992
+- filename: ddsa_viscosity_temperature_cropped.png
+  page: 2
+  type: graph
+  description: "Viscosity vs Temperature. \u2014 Viscosity decreases with Temperature.\
+    \ Viscosity range 500.0\u201310000.0 cP; Temperature range 10.0\u201325.0 \xB0\
+    C"
+  title: Viscosity as a Function of Temperature
+  x_axis:
+    label: Temperature
+    unit: "\xB0C"
+  y_axis:
+    label: Viscosity
+    unit: cP
+  graph_data:
+  - x: 10
+    y: 10000
+  - x: 20
+    y: 900
+  - x: 25
+    y: 500
+- filename: ddsa_freezing_point_cropped.png
+  page: 4
+  type: graph
+  description: "Freezing point vs DDSA. \u2014 Freezing point varies with DDSA. Freezing\
+    \ point range 0.0\u2013130.0 \xB0C; DDSA range 0.0\u201380.0 %"
+  title: Freezing Point vs DDSA Content
+  x_axis:
+    label: DDSA
+    unit: '%'
+  y_axis:
+    label: Freezing point
+    unit: "\xB0C"
+  graph_data:
+  - x: 0
+    y: 130
+    series: Phthalic Anhydride
+  - x: 20
+    y: 125
+    series: Phthalic Anhydride
+  - x: 40
+    y: 120
+    series: Phthalic Anhydride
+  - x: 60
+    y: 110
+    series: Phthalic Anhydride
+  - x: 80
+    y: 40
+    series: Phthalic Anhydride
+  - x: 0
+    y: 45
+    series: Hexahydrophthalic Anhydride
+  - x: 20
+    y: 40
+    series: Hexahydrophthalic Anhydride
+  - x: 40
+    y: 35
+    series: Hexahydrophthalic Anhydride
+  - x: 60
+    y: 30
+    series: Hexahydrophthalic Anhydride
+  - x: 80
+    y: 0
+    series: Hexahydrophthalic Anhydride
+  - x: 0
+    y: 100
+    series: Tetrahydrophthalic Anhydride
+  - x: 20
+    y: 95
+    series: Tetrahydrophthalic Anhydride
+  - x: 40
+    y: 90
+    series: Tetrahydrophthalic Anhydride
+  - x: 60
+    y: 70
+    series: Tetrahydrophthalic Anhydride
+  - x: 80
+    y: 0
+    series: Tetrahydrophthalic Anhydride
+  - x: 0
+    y: 55
+    series: Maleic Anhydride
+  - x: 20
+    y: 50
+    series: Maleic Anhydride
+  - x: 40
+    y: 45
+    series: Maleic Anhydride
+  - x: 60
+    y: 35
+    series: Maleic Anhydride
+  - x: 80
+    y: 0
+    series: Maleic Anhydride
+  - x: 0
+    y: 25
+    series: Methylhexahydrophthalic Anhydride
+  - x: 20
+    y: 20
+    series: Methylhexahydrophthalic Anhydride
+  - x: 40
+    y: 15
+    series: Methylhexahydrophthalic Anhydride
+  - x: 60
+    y: 0
+    series: Methylhexahydrophthalic Anhydride
+- filename: ddsa_viscosity_time_cropped.png
+  page: 5
+  type: graph
+  description: "Viscosity vs Time. \u2014 Viscosity varies with Time. Viscosity range\
+    \ 20.0\u2013150.0 P; Time range 0.0\u201310.0 Days"
+  title: Viscosity as a Function of Time
+  x_axis:
+    label: Time
+    unit: Days
+  y_axis:
+    label: Viscosity
+    unit: P
+  graph_data:
+  - x: 0
+    y: 20
+    series: 1 phr BDMA catalyzed
+  - x: 1
+    y: 25
+    series: 1 phr BDMA catalyzed
+  - x: 2
+    y: 30
+    series: 1 phr BDMA catalyzed
+  - x: 3
+    y: 35
+    series: 1 phr BDMA catalyzed
+  - x: 4
+    y: 40
+    series: 1 phr BDMA catalyzed
+  - x: 5
+    y: 50
+    series: 1 phr BDMA catalyzed
+  - x: 6
+    y: 60
+    series: 1 phr BDMA catalyzed
+  - x: 7
+    y: 80
+    series: 1 phr BDMA catalyzed
+  - x: 8
+    y: 100
+    series: 1 phr BDMA catalyzed
+  - x: 9
+    y: 120
+    series: 1 phr BDMA catalyzed
+  - x: 10
+    y: 150
+    series: 1 phr BDMA catalyzed
+  - x: 0
+    y: 20
+    series: Uncatalyzed, 77 phr DDSA
+  - x: 1
+    y: 20
+    series: Uncatalyzed, 77 phr DDSA
+  - x: 2
+    y: 20
+    series: Uncatalyzed, 77 phr DDSA
+  - x: 3
+    y: 20
+    series: Uncatalyzed, 77 phr DDSA
+  - x: 4
+    y: 20
+    series: Uncatalyzed, 77 phr DDSA
+  - x: 5
+    y: 20
+    series: Uncatalyzed, 77 phr DDSA
+  - x: 6
+    y: 20
+    series: Uncatalyzed, 77 phr DDSA
+  - x: 7
+    y: 20
+    series: Uncatalyzed, 77 phr DDSA
+  - x: 8
+    y: 20
+    series: Uncatalyzed, 77 phr DDSA
+  - x: 9
+    y: 20
+    series: Uncatalyzed, 77 phr DDSA
+  - x: 10
+    y: 25
+    series: Uncatalyzed, 77 phr DDSA
+  - x: 0
+    y: 20
+    series: Uncatalyzed, 100 phr DDSA
+  - x: 1
+    y: 20
+    series: Uncatalyzed, 100 phr DDSA
+  - x: 2
+    y: 20
+    series: Uncatalyzed, 100 phr DDSA
+  - x: 3
+    y: 20
+    series: Uncatalyzed, 100 phr DDSA
+  - x: 4
+    y: 20
+    series: Uncatalyzed, 100 phr DDSA
+  - x: 5
+    y: 20
+    series: Uncatalyzed, 100 phr DDSA
+  - x: 6
+    y: 20
+    series: Uncatalyzed, 100 phr DDSA
+  - x: 7
+    y: 20
+    series: Uncatalyzed, 100 phr DDSA
+  - x: 8
+    y: 20
+    series: Uncatalyzed, 100 phr DDSA
+  - x: 9
+    y: 20
+    series: Uncatalyzed, 100 phr DDSA
+  - x: 10
+    y: 25
+    series: Uncatalyzed, 100 phr DDSA
+- filename: ddsa_tg_content_cropped.png
+  page: 6
+  type: graph
+  description: "Tg vs DDSA. \u2014 Tg varies with DDSA. Tg range 71.0\u201384.0 \xB0\
+    C; DDSA range 84.0\u2013140.0 phr"
+  title: Tg vs DDSA Content
+  x_axis:
+    label: DDSA
+    unit: phr
+  y_axis:
+    label: Tg
+    unit: "\xB0C"
+  graph_data:
+  - x: 84
+    y: 79
+  - x: 90
+    y: 71
+  - x: 100
+    y: 71
+  - x: 110
+    y: 72
+  - x: 125
+    y: 80
+  - x: 140
+    y: 84
+- filename: ddsa_hdt_postcure_cropped.png
+  page: 7
+  type: graph
+  description: "HDT vs Post-cure @ 150\xB0C. \u2014 HDT increases with Post-cure @\
+    \ 150\xB0C. HDT range 60.0\u201375.0 \xB0C; Post-cure @ 150\xB0C range 4.0\u2013\
+    200.0 h"
+  title: HDT vs Post-cure Time
+  x_axis:
+    label: "Post-cure @ 150\xB0C"
+    unit: h
+  y_axis:
+    label: HDT
+    unit: "\xB0C"
+  graph_data:
+  - x: 4
+    y: 60
+  - x: 24
+    y: 70
+  - x: 200
+    y: 75
+- filename: ddsa_water_boil_cropped.png
+  page: 7
+  type: graph
+  description: "24 h Water Boil Weight Gain vs Post-cure @ 150\xB0C. \u2014 24 h Water\
+    \ Boil Weight Gain decreases with Post-cure @ 150\xB0C. 24 h Water Boil Weight\
+    \ Gain range 0.35\u20131.0 %; Post-cure @ 150\xB0C range 4.0\u2013200.0 h"
+  title: 24 h Water Boil Weight Gain
+  x_axis:
+    label: "Post-cure @ 150\xB0C"
+    unit: h
+  y_axis:
+    label: 24 h Water Boil Weight Gain
+    unit: '%'
+  graph_data:
+  - x: 4
+    y: 1.0
+  - x: 24
+    y: 0.5
+  - x: 200
+    y: 0.35
+- filename: ddsa_acetone_boil_cropped.png
+  page: 8
+  type: graph
+  description: "3 h Acetone Boil Wt Gain vs Post-cure @ 150\xB0C. \u2014 3 h Acetone\
+    \ Boil Wt Gain decreases with Post-cure @ 150\xB0C. 3 h Acetone Boil Wt Gain range\
+    \ 1.0\u201310.0 %; Post-cure @ 150\xB0C range 4.0\u2013200.0 h"
+  title: 3 h Acetone Boil Weight Gain
+  x_axis:
+    label: "Post-cure @ 150\xB0C"
+    unit: h
+  y_axis:
+    label: 3 h Acetone Boil Wt Gain
+    unit: '%'
+  graph_data:
+  - x: 4
+    y: 10.0
+  - x: 24
+    y: 2.5
+  - x: 200
+    y: 1.0
+- filename: ddsa_tensile_strength_cropped.png
+  page: 8
+  type: graph
+  description: "Tensile Strength vs Post-cure @ 150\xB0C. \u2014 Tensile Strength\
+    \ varies with Post-cure @ 150\xB0C. Tensile Strength range 6.0\u20139.5 ksi; Post-cure\
+    \ @ 150\xB0C range 4.0\u2013200.0 h"
+  title: Tensile Strength
+  x_axis:
+    label: "Post-cure @ 150\xB0C"
+    unit: h
+  y_axis:
+    label: Tensile Strength
+    unit: ksi
+  graph_data:
+  - x: 4
+    y: 8.0
+    series: "@ -25 \xB0C"
+  - x: 24
+    y: 8.5
+    series: "@ -25 \xB0C"
+  - x: 200
+    y: 9.5
+    series: "@ -25 \xB0C"
+  - x: 4
+    y: 7.0
+    series: "@ 25 \xB0C"
+  - x: 24
+    y: 6.5
+    series: "@ 25 \xB0C"
+  - x: 200
+    y: 6.0
+    series: "@ 25 \xB0C"
+- filename: ddsa_tensile_modulus_cropped.png
+  page: 9
+  type: graph
+  description: "Tensile Modulus vs Post-cure @ 150\xB0C. \u2014 Tensile Modulus decreases\
+    \ with Post-cure @ 150\xB0C. Tensile Modulus range 300.0\u2013400.0 ksi; Post-cure\
+    \ @ 150\xB0C range 4.0\u2013200.0 h"
+  title: Tensile Modulus
+  x_axis:
+    label: "Post-cure @ 150\xB0C"
+    unit: h
+  y_axis:
+    label: Tensile Modulus
+    unit: ksi
+  graph_data:
+  - x: 4
+    y: 400
+    series: "@ -25 \xB0C"
+  - x: 24
+    y: 400
+    series: "@ -25 \xB0C"
+  - x: 200
+    y: 400
+    series: "@ -25 \xB0C"
+  - x: 4
+    y: 400
+    series: "@ 25 \xB0C"
+  - x: 24
+    y: 350
+    series: "@ 25 \xB0C"
+  - x: 200
+    y: 300
+    series: "@ 25 \xB0C"
+- filename: ddsa_elongation_cropped.png
+  page: 9
+  type: graph
+  description: "Elongation @ 25\xB0C vs Post-cure @ 150\xB0C. \u2014 Elongation @\
+    \ 25\xB0C increases with Post-cure @ 150\xB0C. Elongation @ 25\xB0C range 1.5\u2013\
+    4.5 %; Post-cure @ 150\xB0C range 4.0\u2013200.0 h"
+  title: Elongation
+  x_axis:
+    label: "Post-cure @ 150\xB0C"
+    unit: h
+  y_axis:
+    label: "Elongation @ 25\xB0C"
+    unit: '%'
+  graph_data:
+  - x: 4
+    y: 1.5
+    series: "@ -25 \xB0C"
+  - x: 24
+    y: 2.0
+    series: "@ -25 \xB0C"
+  - x: 200
+    y: 4.0
+    series: "@ -25 \xB0C"
+  - x: 4
+    y: 4.5
+    series: "@ 25 \xB0C"
+  - x: 24
+    y: 4.5
+    series: "@ 25 \xB0C"
+  - x: 200
+    y: 4.5
+    series: "@ 25 \xB0C"
+document_footnotes:
+  '1': FORMULATING ANHYDRIDE-CURED EPOXY SYSTEMS bulletin by Dixie Chemical.
+  '2': Epoxy Curing Agent Storage Requirements brochure by Dixie Chemical.
+extraction_metadata:
+  confidence_scores:
+    product_info: 100
+    properties: 100
+    other_tables: 100
+    sections: 100
+    images: 100
+    overall: 100
+  extractor_version: ${extraction.extractor_version}
+  extraction_date: '2025-01-27T00:00:00Z'

@@ -1,0 +1,694 @@
+doc_id: ef807a17-2891-537a-bb0d-e2cd6060a0f5
+filename: DCA_221_Technical_Bulletin.pdf
+source_filepath: ${paths.raw_pdfs_root}/DCA_221_Technical_Bulletin.pdf
+filepath: ${paths.processed_pdfs_root}/DCA_221_Technical_Bulletin.pdf
+document_file_metadata:
+  document_title: DCA_221_Technical_Bulletin.pdf
+  copyright_status: Unknown
+  created: 2/15/18, 5:48:47 PM UTC
+  modified: 2/15/18, 5:48:47 PM UTC
+  application: Muhimbi PDF Converter Services - www.muhimbi.com
+  advanced:
+    pdf_producer: Muhimbi PDF Converter Services - www.muhimbi.com
+    pdf_version: '1.5'
+    location: /Users/benjaminbykowski/projects/ai-apps/forks/qwen-dc-product/dc-product-agent/data/raw_pdfs/DCA_221_Technical_Bulletin.pdf
+    file_size: 218.75 KB (224,001 Bytes)
+    page_size: 8.50 x 11.00 in
+    number_of_pages: 6
+    tagged_pdf: 'No'
+    fast_web_view: 'No'
+source_file_hash:
+  sha256: a52740795d5eb6ed97564ebf8ed7ad773b15ab256bb6f124d403bc5faadb7841
+document_type: Product Technical Bulletin
+manufacturer: ${manufacturer.name}
+contact_info:
+  address: ${manufacturer.contact_info.address}
+  phone: ${manufacturer.contact_info.phone}
+  fax: ${manufacturer.contact_info.fax}
+  email: ${manufacturer.contact_info.email}
+product_info:
+  product_name: Dixie Chemical Amine 221
+  product_short_name: DCA 221
+  product_family: Polyglycoldiamine
+  cas_number: 4246-51-9
+  chemical_name: Polyglycoldiamine
+  synonyms:
+  - DCA 221
+  - Dixie Chemical Amine 221
+  - Polyglycoldiamine
+registrations: []
+key_benefits:
+- Imparts high impact resistance to epoxy systems
+- Has low temperature thermal shock resistance
+- Provides excellent adhesion, steel-to-steel and aluminum-to-aluminum
+- Permanent, built-in flexibility
+- Light color
+- Low viscosity
+- Provides low viscosity and moderate pot life when properly combined with liquid
+  Bisphenol A-based resins
+- Very low vapor pressure
+- High boiling point
+- Excellent thermal shock resistance
+- "Excellent electrical properties to 60\xB0C (140\xB0F)"
+- Excellent wetting properties with fillers, metal, and glass
+applications_text: DCA 221 is used as a curing agent in performance epoxy resins systems.
+  Applications include adhesives, tooling, electrical potting and encapsulation, and
+  troweling compounds. Working time in coatings can be further extended by the addition
+  of a ketone solvent (10-15% on resin weight). DCA 221 is highly recommended for
+  a wide range of potting, impregnation, and coating applications for moderate temperature
+  electrical service.
+applications:
+- Curing agent in performance epoxy resin systems
+- Adhesives
+- Tooling compounds
+- Electrical potting and encapsulation
+- Troweling compounds
+- Coatings with extended working time
+- Potting applications for electrical service
+- Impregnation applications for electrical service
+- Coating applications for electrical service
+- High impact resistance castings
+- Highly flexible compounds
+- Flooring applications
+properties_and_specifications:
+- category: Typical
+  name: "Specific Gravity@25\xB0C"
+  unit: g/cc
+  value_string: 1.000-1.020
+  value_numeric: null
+  value_min: 1.0
+  value_max: 1.02
+  test_method: D-102
+  page: 1
+  notes: null
+- category: Typical
+  name: APHA Color
+  unit: Pt-Co
+  value_string: 100 Max.
+  value_numeric: null
+  value_min: null
+  value_max: 100
+  test_method: D-103
+  page: 1
+  notes: null
+- category: Typical
+  name: Appearance/Odor
+  unit: null
+  value_string: Clear Liquid, Slight Odor
+  value_numeric: null
+  value_min: null
+  value_max: null
+  test_method: D-104
+  page: 1
+  notes: null
+- category: Typical
+  name: DCA 221
+  unit: '%'
+  value_string: 98.0 Min
+  value_numeric: null
+  value_min: 98.0
+  value_max: null
+  test_method: D-145
+  page: 1
+  notes: null
+- category: Typical
+  name: Water
+  unit: '%'
+  value_string: 0.5 Max
+  value_numeric: null
+  value_min: null
+  value_max: 0.5
+  test_method: D-145
+  page: 1
+  notes: null
+- category: Typical
+  name: "Viscosity @ 25 \xB0C"
+  unit: cps
+  value_string: 9.5-15.8
+  value_numeric: null
+  value_min: 9.5
+  value_max: 15.8
+  test_method: D-150V-25
+  page: 1
+  notes: null
+- category: Typical
+  name: Amine Equivalent
+  unit: MEQ/g
+  value_string: 8.60-9.16
+  value_numeric: null
+  value_min: 8.6
+  value_max: 9.16
+  test_method: D-145D
+  page: 1
+  notes: null
+- category: Typical
+  name: Flash Point, PMCC
+  unit: "\xB0F"
+  value_string: "331\xB0F"
+  value_numeric: 331
+  value_min: null
+  value_max: null
+  test_method: ASTM D93
+  page: 1
+  notes: null
+typical_properties:
+  table_name: Typical Properties
+  page: 1
+  data_type: typical_properties
+  description: DCA 221 is used as a curing agent in performance epoxy resins systems
+    with applications in adhesives, tooling, electrical potting and encapsulation,
+    and troweling compounds.
+  row_count: 8
+  data:
+  - name: "Specific Gravity@25\xB0C"
+    unit: g/cc
+    value_string: 1.000-1.020
+    value_min: 1.0
+    value_max: 1.02
+    value_numeric: null
+    test_method: D-102
+  - name: APHA Color
+    unit: Pt-Co
+    value_string: 100 Max.
+    value_min: null
+    value_max: 100
+    value_numeric: null
+    test_method: D-103
+  - name: Appearance/Odor
+    unit: null
+    value_string: Clear Liquid, Slight Odor
+    value_min: null
+    value_max: null
+    value_numeric: null
+    test_method: D-104
+  - name: DCA 221
+    unit: '%'
+    value_string: 98.0 Min
+    value_min: 98.0
+    value_max: null
+    value_numeric: null
+    test_method: D-145
+  - name: Water
+    unit: '%'
+    value_string: 0.5 Max
+    value_min: null
+    value_max: 0.5
+    value_numeric: null
+    test_method: D-145
+  - name: "Viscosity @ 25 \xB0C"
+    unit: cps
+    value_string: 9.5-15.8
+    value_min: 9.5
+    value_max: 15.8
+    value_numeric: null
+    test_method: D-150V-25
+  - name: Amine Equivalent
+    unit: MEQ/g
+    value_string: 8.60-9.16
+    value_min: 8.6
+    value_max: 9.16
+    value_numeric: null
+    test_method: D-145D
+  - name: Flash Point, PMCC
+    unit: "\xB0F"
+    value_string: "331\xB0F"
+    value_min: null
+    value_max: null
+    value_numeric: 331
+    test_method: ASTM D93
+other_tables:
+- table_name: Castings - High Impact Resistance
+  page: 2
+  data_type: formulation_data
+  description: Formulation data for high impact resistance castings using DCA 221
+    with Bis-A Type II epoxy resin
+  row_count: 9
+  data:
+  - component: Bis-A, Type II
+    amount: '100'
+    unit: pbw
+  - component: Polyglycoldiamine
+    amount: '29'
+    unit: pbw
+  - property: Pot Life (100g.-mass)
+    value: '40'
+    unit: min.
+  - property: "Flexural Strength at 25\xB0C"
+    value: 12,300
+    unit: psi
+  - property: "Tensile Strength at 25\xB0C"
+    value: 8,500
+    unit: psi
+  - property: Tensile Elongation
+    value: '3.5'
+    unit: '%'
+  - property: Izod Impact
+    value: '1.5'
+    unit: ft-lb/in. notch
+  - property: Gardner Impact, 6-mil film
+    value: '130'
+    unit: in-lb
+  - property: Heat Deflection Temperature
+    value: '55'
+    unit: "\xB0C"
+- table_name: Highly Flexible Compounds
+  page: 2
+  data_type: formulation_data
+  description: Formulation data for highly flexible compounds using DCA 221 with modified
+    epoxy resin system
+  row_count: 5
+  data:
+  - component: Bis-A, Type II
+    amount: '88'
+    unit: pbw
+  - component: Butyl Glycidyl Ether
+    amount: '2'
+    unit: pbw
+  - component: Triphenyl Phosphite
+    amount: '10'
+    unit: pbw
+  - component: Polyglocoldiamine
+    amount: '26'
+    unit: pbw
+  - property: Pot Life (100 g-mass)
+    value: '40'
+    unit: min.
+- table_name: Red Troweling Compound
+  page: 3
+  data_type: formulation_data
+  description: Formulation for red troweling compound with high impact and good chemical
+    resistance for flooring applications
+  row_count: 8
+  data:
+  - part: Part A
+    component: Bis-A, Type II
+    amount: '100'
+    unit: pbw
+  - part: Part A
+    component: Glycol ether solvent
+    amount: '10'
+    unit: pbw
+  - part: Part A
+    component: Titanium Dioxide
+    amount: '10'
+    unit: pbw
+  - part: Part A
+    component: Red Iron Oxide
+    amount: '5'
+    unit: pbw
+  - part: Part A
+    component: Silica, 100 mesh
+    amount: '500'
+    unit: pbw
+  - part: Part A
+    property: Pot Life (100 g-mass)
+    value: one hour
+  - part: Part B
+    component: Polyglycoldiamine
+    amount: '15'
+    unit: pbw
+  - part: Part B
+    component: EH-30 or DMP-30
+    amount: '5'
+    unit: pbw
+- table_name: Adhesives Formulation
+  page: 3
+  data_type: formulation_data
+  description: Adhesive formulations comparing standard and silane-enhanced versions
+    with lap shear strength data
+  row_count: 11
+  data:
+  - formulation: Standard
+    component: Bis-A, Type II
+    amount: '100'
+    unit: pbw
+  - formulation: With Silane
+    component: Bis-A, Type II
+    amount: '100'
+    unit: pbw
+  - formulation: Standard
+    component: Polyglycoldiamine
+    amount: '29'
+    unit: pbw
+  - formulation: With Silane
+    component: Polyglycoldiamine
+    amount: '29'
+    unit: pbw
+  - formulation: With Silane
+    component: "Union Carbide\xAE A-187 Silane"
+    amount: '1.3'
+    unit: pbw
+  - formulation: Standard
+    component: Mineral Filler
+    amount: '30'
+    unit: pbw
+  - formulation: With Silane
+    component: Mineral Filler
+    amount: '30'
+    unit: pbw
+  - formulation: Standard
+    component: Thixotrope
+    amount: '5'
+    unit: pbw
+  - formulation: With Silane
+    component: Thixotrope
+    amount: '5'
+    unit: pbw
+  - test_condition: "Cured 7 days at 25\xB0C (77\xB0F)"
+    property: Lap Shear Strength, Al-Al
+    standard_value: 2,000
+    silane_value: 3,590
+    unit: psi
+  - test_condition: "After 7 days immersion 100\xB0F water"
+    property: Lap Shear Strength, Al-Al
+    standard_value: 2,434
+    silane_value: 3,520
+    unit: psi
+- table_name: Properties of Bis-A, Type II Epoxy/Polyglycoldiamine
+  page: 4
+  data_type: performance_data
+  description: Physical properties comparison between room temperature cure and postcured
+    samples
+  row_count: 8
+  data:
+  - property: Heat Distortion Temperature
+    room_temp_cure: '66'
+    postcured: '70'
+    unit: "\xB0C"
+  - property: Rockwell hardness (M Scale)
+    room_temp_cure: '51'
+    postcured: '57'
+    unit: null
+  - property: Izod Impact
+    room_temp_cure: '1.53'
+    postcured: '1.49'
+    unit: ft/lb/inch
+  - property: "Flexural Strength at 23\xB0C"
+    room_temp_cure: 12,800
+    postcured: 12,300
+    unit: psi
+  - property: Flexural Modulus
+    room_temp_cure: '0.40'
+    postcured: '0.36'
+    unit: psi x 10-6
+  - property: "Tensile Strength at 23\xB0C"
+    room_temp_cure: 8,880
+    postcured: 8,500
+    unit: psi
+  - property: Tensile Modulus
+    room_temp_cure: '0.39'
+    postcured: '0.29'
+    unit: pst x 10-6
+  - property: Gardner Impact on 6-mil films
+    room_temp_cure: '130'
+    postcured: '130'
+    unit: inch-lb passed
+- table_name: Electrical Properties - DCA 221
+  page: 5
+  data_type: electrical_properties
+  description: Electrical properties of Bis-A Type II Epoxy cured with DCA 221
+  row_count: 14
+  data:
+  - property: Arc Resistance
+    value: '110'
+    unit: seconds
+  - property: "Dielectric Strength, S/T at 23\xB0C"
+    value: '496'
+    unit: Volts/mil
+  - property: "Dielectric Strength, S/S at 23\xB0C"
+    value: '462'
+    unit: Volts/mil
+  - property: "Dielectric Strength, S/T at 60\xB0C"
+    value: '517'
+    unit: Volts/mil
+  - property: "Dielectric Strength, S/S at 60\xB0C"
+    value: '439'
+    unit: Volts/mil
+  - property: "Volume Resistivity at 23\xB0C, 50% R.H."
+    value: '>6 x 107'
+    unit: megohm-cm
+  - property: "Volume Resistivity at 60\xB0C"
+    value: '>2 x 107'
+    unit: megohm-cm
+  - property: "Surface Resistivity at 23\xB0C, 50% R.H."
+    value: '>2 x 107'
+    unit: megohms
+  - property: "Dielectric Constant at 23\xB0C, 60 cycles"
+    value: '4.99'
+    unit: null
+  - property: "Dielectric Constant at 23\xB0C, 103 cycles"
+    value: '4.94'
+    unit: null
+  - property: "Dielectric Constant at 23\xB0C, 106 cycles"
+    value: '3.90'
+    unit: null
+  - property: "Dielectric Constant at 60\xB0C, 60 cycles"
+    value: '5.12'
+    unit: null
+  - property: "Dielectric Constant at 60\xB0C, 103 cycles"
+    value: '5.08'
+    unit: null
+  - property: "Dielectric Constant at 60\xB0C, 106 cycles"
+    value: '4.44'
+    unit: null
+- table_name: Electrical Properties Comparison
+  page: 6
+  data_type: comparative_electrical_properties
+  description: Comparison of electrical properties between commercial grade diethylene
+    triamine and DCA 221 as hardeners for Bis-A Type II epoxy
+  row_count: 20
+  data:
+  - property: Arc Resistance
+    astm_method: D 495
+    commercial_triamine: '110'
+    dca_221: '110'
+    unit: Seconds
+  - property: "Dielectric Strength, S/T at 23\xB0C"
+    astm_method: D 149-55T
+    commercial_triamine: '420'
+    dca_221: '496'
+    unit: volts/mil
+  - property: "Dielectric Strength, S/S at 23\xB0C"
+    astm_method: D 149-55T
+    commercial_triamine: --
+    dca_221: '462'
+    unit: volts/mil
+  - property: "Dielectric Strength, S/T at 60\xB0C"
+    astm_method: D 149-55T
+    commercial_triamine: --
+    dca_221: '517'
+    unit: volts/mil
+  - property: "Dielectric Strength, S/S at 60\xB0C"
+    astm_method: D 149-55T
+    commercial_triamine: --
+    dca_221: '439'
+    unit: volts/mil
+  - property: "Volume Resistivity at 23\xB0C, 50% RH"
+    astm_method: D 257-58
+    commercial_triamine: 2 x 1016
+    dca_221: '>6 x 107'
+    unit: Megohm-cm
+  - property: "Volume Resistivity at 60\xB0C, 50% RH"
+    astm_method: D 257-58
+    commercial_triamine: 6 x 1014
+    dca_221: '>2.6 x 107'
+    unit: Megohm-cm
+  - property: "Surface Resistivity, 50% RH @ 23\xB0C"
+    astm_method: D 257-58
+    commercial_triamine: '>2 x107'
+    dca_221: '> 2 x 107'
+    unit: Megohms
+  - property: "Dielectric Constant at 23\xB0C, 60 cycles"
+    astm_method: D 150-54T
+    commercial_triamine: '4.4'
+    dca_221: '4.99'
+    unit: null
+  - property: "Dielectric Constant at 23\xB0C, 103 cycles"
+    astm_method: D 150-54T
+    commercial_triamine: '4.2'
+    dca_221: '4.94'
+    unit: null
+  - property: "Dielectric Constant at 23\xB0C, 106 cycles"
+    astm_method: D 150-54T
+    commercial_triamine: '4.2'
+    dca_221: '3.90'
+    unit: null
+  - property: "Dielectric Constant at 60\xB0C, 60 cycles"
+    astm_method: D 150-54T
+    commercial_triamine: '4.9'
+    dca_221: '5.12'
+    unit: null
+  - property: "Dielectric Constant at 60\xB0C, 103 cycles"
+    astm_method: D 150-54T
+    commercial_triamine: '4.4'
+    dca_221: '5.08'
+    unit: null
+  - property: "Dielectric Constant at 60\xB0C, 106 cycles"
+    astm_method: D 150-54T
+    commercial_triamine: '4.5'
+    dca_221: '4.44'
+    unit: null
+  - property: "Dissipation Factor at 23\xB0C, 60 cycles"
+    astm_method: D 150-54T
+    commercial_triamine: '0.03'
+    dca_221: '0.0038'
+    unit: null
+  - property: "Dissipation Factor at 23\xB0C, 103 cycles"
+    astm_method: D 150-54T
+    commercial_triamine: '0.04'
+    dca_221: '0.0011'
+    unit: null
+  - property: "Dissipation Factor at 23\xB0C, 106 cycles"
+    astm_method: D 150-54T
+    commercial_triamine: '0.01'
+    dca_221: '0.0547'
+    unit: null
+  - property: "Dissipation Factor at 60\xB0C, 60 cycles"
+    astm_method: D 150-54T
+    commercial_triamine: '0.016'
+    dca_221: '0.0079'
+    unit: null
+  - property: "Dissipation Factor at 60\xB0C, 103 cycles"
+    astm_method: D 150-54T
+    commercial_triamine: '0.01'
+    dca_221: '0.0050'
+    unit: null
+  - property: "Dissipation Factor at 60\xB0C, 106 cycles"
+    astm_method: D 150-54T
+    commercial_triamine: '0.01'
+    dca_221: '0.0554'
+    unit: null
+- table_name: Typical Properties
+  page: 1
+  data_type: typical_properties
+  description: DCA 221 is used as a curing agent in performance epoxy resins systems
+    with applications in adhesives, tooling, electrical potting and encapsulation,
+    and troweling compounds.
+  row_count: 8
+  data:
+  - name: "Specific Gravity@25\xB0C"
+    unit: g/cc
+    value_string: 1.000-1.020
+    value_min: 1.0
+    value_max: 1.02
+    value_numeric: null
+    test_method: D-102
+  - name: APHA Color
+    unit: Pt-Co
+    value_string: 100 Max.
+    value_min: null
+    value_max: 100
+    value_numeric: null
+    test_method: D-103
+  - name: Appearance/Odor
+    unit: null
+    value_string: Clear Liquid, Slight Odor
+    value_min: null
+    value_max: null
+    value_numeric: null
+    test_method: D-104
+  - name: DCA 221
+    unit: '%'
+    value_string: 98.0 Min
+    value_min: 98.0
+    value_max: null
+    value_numeric: null
+    test_method: D-145
+  - name: Water
+    unit: '%'
+    value_string: 0.5 Max
+    value_min: null
+    value_max: 0.5
+    value_numeric: null
+    test_method: D-145
+  - name: "Viscosity @ 25 \xB0C"
+    unit: cps
+    value_string: 9.5-15.8
+    value_min: 9.5
+    value_max: 15.8
+    value_numeric: null
+    test_method: D-150V-25
+  - name: Amine Equivalent
+    unit: MEQ/g
+    value_string: 8.60-9.16
+    value_min: 8.6
+    value_max: 9.16
+    value_numeric: null
+    test_method: D-145D
+  - name: Flash Point, PMCC
+    unit: "\xB0F"
+    value_string: "331\xB0F"
+    value_min: null
+    value_max: null
+    value_numeric: 331
+    test_method: ASTM D93
+formulation_data:
+- epoxy_type: Bis-A, Type II
+  phr: 29
+  viscosity_at_25c_cp: null
+  gel_time_min: 40
+  tg_c: null
+  cure_schedule: Room temperature cure
+  page: 2
+  source_table: Castings - High Impact Resistance
+  notes: High impact resistance formulation with 12,300 psi flexural strength
+- epoxy_type: Bis-A, Type II + Butyl Glycidyl Ether + Triphenyl Phosphite
+  phr: 26
+  viscosity_at_25c_cp: null
+  gel_time_min: 40
+  tg_c: null
+  cure_schedule: Room temperature cure
+  page: 2
+  source_table: Highly Flexible Compounds
+  notes: Flexible formulation with modified epoxy system
+- epoxy_type: Bis-A, Type II
+  phr: 15
+  viscosity_at_25c_cp: null
+  gel_time_min: 60
+  tg_c: null
+  cure_schedule: Room temperature cure
+  page: 3
+  source_table: Red Troweling Compound
+  notes: Flooring application with high filler loading and accelerator
+toxicity_data: []
+sections:
+- name: Applications
+  page: 1
+  text: DCA 221 is used as a curing agent in performance epoxy resins systems.
+- name: Formulating Advantages with DCA 221
+  page: 1
+  text: 'Balance of properties: Imparts high impact resistance to epoxy systems. Has
+    low temperature thermal shock resistance. Provides excellent adhesion, steel-to-steel
+    and aluminum-to-aluminum. Product quality: Permanent, built-in flexibility. Light
+    color. Low viscosity. Provides low viscosity and moderate pot life when properly
+    combined with liquid Bisphenol A-based resins. Versatility of application: Adhesives,
+    tooling, electrical potting and encapsulation, and troweling compounds. Working
+    time in coatings can be further extended by the addition of a ketone solvent (10-15%
+    on resin weight).'
+- name: Electrical Properties
+  page: 4
+  text: "DCA 221 is highly recommended for a wide range of potting, impregnation,\
+    \ and coating applications for moderate temperature electrical service. It offers\
+    \ the following advantages: Low viscosity, Very low vapor pressure, High boiling\
+    \ point, Permanent flexibility, Excellent thermal shock resistance, Excellent\
+    \ electrical properties to 60\xB0C (140\xB0F). Proper formulation can provide\
+    \ faster cure and improved electrical characteristics at elevated temperatures.\
+    \ DCA 221 has excellent wetting properties with fillers, metal, and glass. As\
+    \ a hardener and reactive diluent, it offers exciting possibilities in the development\
+    \ of tailor-made electrical formulations."
+- name: Availability
+  page: 4
+  text: DCA 221 is available from Dixie Chemical in Pasadena, TX. Contact your Dixie
+    representative for details.
+images: []
+document_footnotes: {}
+extraction_metadata:
+  confidence_scores:
+    product_info: 100
+    properties: 100
+    other_tables: 100
+    sections: 100
+    images: 100
+    overall: 100
+  extractor_version: ${extraction.extractor_version}
+  extraction_date: '2025-08-27T15:30:00-04:00'

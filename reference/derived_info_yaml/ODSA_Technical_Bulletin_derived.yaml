@@ -1,0 +1,448 @@
+doc_id: e0c59870-2030-5186-a3e7-fb62547957af
+filename: ODSA_Technical_Bulletin.pdf
+filepath: ${paths.processed_pdfs_root}/ODSA_Technical_Bulletin.pdf
+extraction_metadata:
+  confidence_scores: ${extraction.default_confidence_scores_derived}
+  extractor_version: ${extraction.extractor_version}
+  extraction_date: '2025-08-28T16:53:00-04:00'
+derived_info:
+  summary: This technical bulletin provides detailed information about Octadecenylsuccinic
+    Anhydride (ODSA), a versatile alkenyl succinic anhydride (ASA) based on C18 alpha-olefin
+    manufactured by Dixie Chemical. The document outlines ODSA's typical properties,
+    applications, registration information, handling and storage requirements, health
+    hazards, and availability. ODSA is characterized as an amber colored liquid with
+    a mild odor, having a specific gravity of 0.945-0.965 g/cc at 25°C, a Gardner
+    Color of 10 Max, and a minimum ODSA content of 90.0%. The bulletin includes temperature-dependent
+    property graphs showing how viscosity decreases from approximately 180 cPs at
+    20°C to 15 cPs at 80°C, and how specific gravity decreases from 8.04 lbs/gal at
+    0°C to 7.75 lbs/gal at 60°C. ODSA has multiple applications, primarily as an alkaline
+    paper sizing agent, but also in fuel and lubricant additives (pour point depressants,
+    corrosion inhibitors, and dispersants), as intermediates for surfactants, and
+    in plasticizers, epoxies, and moisture control for leather goods. The product
+    is REACh registered in the EU under the name 2,5-Furandione,dihydro-,mono-C15-20-alkenyl
+    derivs (CASRN 68784-12-3) with registry number 01-2119533117-46, while in the
+    US it is typically identified by CASRN 28777-98-2. The bulletin emphasizes that
+    ODSA must be stored away from moisture to avoid hydrolysis of the anhydride to
+    the acid, with a shelf life of 24 months when properly stored. Safety information
+    indicates that ODSA is a mild primary skin irritant requiring adequate ventilation
+    during handling and immediate flushing with water for at least 15 minutes in case
+    of skin or eye contact. The product is available from Dixie Chemical's facility
+    in Pasadena, Texas.
+  personas:
+    sales_summary: ODSA is a premium alkenyl succinic anhydride (ASA) derived from
+      C18 alpha-olefin that offers exceptional versatility across multiple industries.
+      This amber-colored liquid with mild odor provides reliable performance as an
+      alkaline paper sizing agent—a key application where its consistent quality (minimum
+      90% ODSA content) delivers dependable results. Beyond paper manufacturing, ODSA
+      creates significant value in the fuel and lubricant additives market, functioning
+      as an effective pour point depressant, corrosion inhibitor, and dispersant.
+      The product's well-characterized temperature-dependent properties—with viscosity
+      decreasing predictably from 180 cPs at 20°C to 15 cPs at 80°C—ensure consistent
+      processing across various application temperatures. ODSA's chemical versatility
+      makes it an excellent intermediate for surfactant production and allows conversion
+      to valuable acid amides and esters. Additional applications in plasticizers,
+      epoxies, and leather goods moisture control further demonstrate this product's
+      exceptional utility. With REACh registration in the EU and standard CAS identification
+      in the US, ODSA meets regulatory requirements in major markets. The product
+      offers excellent stability with a 24-month shelf life when properly stored,
+      and Dixie Chemical provides comprehensive storage guidance through our "Alkenylsuccinic
+      Anhydride Storage Requirements" brochure. Available from our Pasadena, Texas
+      facility, ODSA represents a high-value, multi-functional chemical that can address
+      diverse customer needs across paper, fuel, lubricant, surfactant, and specialty
+      chemical markets.
+    technical_summary: Octadecenylsuccinic Anhydride (ODSA) is an alkenyl succinic
+      anhydride based on C18 alpha-olefin with CAS number 28777-98-2 (US) and 68784-12-3
+      (EU REACh registration as 2,5-Furandione,dihydro-,mono-C15-20-alkenyl derivs,
+      registry number 01-2119533117-46). The product appears as an amber colored liquid
+      with mild odor and exhibits specific gravity of 0.945-0.965 g/cc at 25°C (D-102/ASTM
+      D 4052). ODSA has a Gardner Color of 10 Max (D-150G), residual olefin content
+      of 3.0% Max, minimum ODSA content of 90.0%, free acid content of 2.0% Max, and
+      neutralization value of 305-335 mg KOH/g. Low-temperature handling characteristics
+      include a pour point of -15°C (ASTM D97) and freeze point of -21°C (ASTM D1015).
+      The product demonstrates predictable temperature-dependent behavior with viscosity
+      decreasing exponentially from approximately 180 cPs at 20°C to 15 cPs at 80°C,
+      and specific gravity decreasing linearly from 8.04 lbs/gal at 0°C to 7.75 lbs/gal
+      at 60°C. ODSA is susceptible to hydrolysis when exposed to moisture, converting
+      the anhydride to the corresponding acid, necessitating moisture-free storage
+      conditions. When properly stored, shelf life extends to 24 months. The material
+      is classified as a mild primary skin irritant requiring standard chemical handling
+      precautions including adequate ventilation and appropriate personal protective
+      equipment. Primary applications include alkaline paper sizing, fuel and lubricant
+      additives (pour point depressants, corrosion inhibitors, dispersants), surfactant
+      intermediates (convertible to acid amides and esters), plasticizers, epoxy formulations,
+      and moisture control agents for leather goods.
+  key_applications:
+  - Alkaline paper sizing agent
+  - Fuel additives
+  - Lubricant additives
+  - Pour point depressants
+  - Corrosion inhibitors
+  - Dispersants
+  - Surfactant intermediates
+  - Acid amide precursor
+  - Ester precursor
+  - Plasticizers
+  - Epoxy formulations
+  - Moisture control for leather goods
+  knowledge_graph:
+    entities:
+    - id: f47ac10b-58cc-4372-a567-0e02b2c3d520
+      type: CHEMICAL
+      canonical_name: Octadecenylsuccinic Anhydride
+      aliases:
+      - ODSA
+      - ASA
+      source_text: Octadecenylsuccinic Anhydride CASRN 28777-98-2
+      provenance:
+        document_id: 550e8400-e29b-41d4-a716-446655440004
+        page: 1
+    - id: f47ac10b-58cc-4372-a567-0e02b2c3d521
+      type: ORGANIZATION
+      canonical_name: Dixie Chemical
+      aliases:
+      - Dixie Chemical Company
+      - Dixie
+      source_text: DIXIE CHEMICAL 10601 Bay Area Blvd. Pasadena, TX 77507
+      provenance:
+        document_id: 550e8400-e29b-41d4-a716-446655440004
+        page: 1
+    - id: f47ac10b-58cc-4372-a567-0e02b2c3d522
+      type: CHEMICAL_CLASS
+      canonical_name: Alkenylsuccinic Anhydride
+      aliases:
+      - ASA
+      source_text: ODSA is an alkenyl succinic anhydride (ASA) based on C18 alpha-olefin.
+      provenance:
+        document_id: 550e8400-e29b-41d4-a716-446655440004
+        page: 2
+    - id: f47ac10b-58cc-4372-a567-0e02b2c3d523
+      type: CHEMICAL
+      canonical_name: C18 alpha-olefin
+      aliases: []
+      source_text: ODSA is an alkenyl succinic anhydride (ASA) based on C18 alpha-olefin.
+      provenance:
+        document_id: 550e8400-e29b-41d4-a716-446655440004
+        page: 2
+    - id: f47ac10b-58cc-4372-a567-0e02b2c3d524
+      type: CHEMICAL
+      canonical_name: 2,5-Furandione,dihydro-,mono-C15-20-alkenyl derivs
+      aliases: []
+      source_text: ODSA is REACh registered as a component under the name 2,5-Furandione,dihydro-,mono-C15-20-alkenyl
+        derivs.
+      provenance:
+        document_id: 550e8400-e29b-41d4-a716-446655440004
+        page: 2
+    - id: f47ac10b-58cc-4372-a567-0e02b2c3d525
+      type: IDENTIFIER
+      canonical_name: CAS 68784-12-3
+      aliases:
+      - CASRN 68784-12-3
+      source_text: The CASRN is 68784-12-3
+      provenance:
+        document_id: 550e8400-e29b-41d4-a716-446655440004
+        page: 2
+    - id: f47ac10b-58cc-4372-a567-0e02b2c3d526
+      type: IDENTIFIER
+      canonical_name: CAS 28777-98-2
+      aliases:
+      - CASRN 28777-98-2
+      source_text: In the US, CASRN 28777-98-2 is typically used for ODSA.
+      provenance:
+        document_id: 550e8400-e29b-41d4-a716-446655440004
+        page: 2
+    - id: f47ac10b-58cc-4372-a567-0e02b2c3d527
+      type: IDENTIFIER
+      canonical_name: REACh 01-2119533117-46
+      aliases: []
+      source_text: the REACh registry number is 01-2119533117-46
+      provenance:
+        document_id: 550e8400-e29b-41d4-a716-446655440004
+        page: 2
+    - id: f47ac10b-58cc-4372-a567-0e02b2c3d528
+      type: LOCATION
+      canonical_name: Pasadena, TX
+      aliases:
+      - Pasadena, Texas
+      source_text: ODSA is available from Dixie Chemical in Pasadena, TX.
+      provenance:
+        document_id: 550e8400-e29b-41d4-a716-446655440004
+        page: 3
+    - id: f47ac10b-58cc-4372-a567-0e02b2c3d529
+      type: DOCUMENT
+      canonical_name: Alkenylsuccinic Anhydride Storage Requirements
+      aliases: []
+      source_text: consult the Dixie Chemical brochure "Alkenylsuccinic Anhydride
+        Storage Requirements."
+      provenance:
+        document_id: 550e8400-e29b-41d4-a716-446655440004
+        page: 3
+    - id: f47ac10b-58cc-4372-a567-0e02b2c3d530
+      type: CHEMICAL
+      canonical_name: Hexadecenylsuccinic Anhydride
+      aliases:
+      - HDSA
+      source_text: HDSA, %
+      provenance:
+        document_id: 550e8400-e29b-41d4-a716-446655440004
+        page: 1
+    kg_triples:
+    - subject:
+        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
+        name: Octadecenylsuccinic Anhydride
+      predicate: is_a
+      object:
+        id: f47ac10b-58cc-4372-a567-0e02b2c3d522
+        name: Alkenylsuccinic Anhydride
+    - subject:
+        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
+        name: Octadecenylsuccinic Anhydride
+      predicate: is_derived_from
+      object:
+        id: f47ac10b-58cc-4372-a567-0e02b2c3d523
+        name: C18 alpha-olefin
+    - subject:
+        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
+        name: Octadecenylsuccinic Anhydride
+      predicate: is_produced_by
+      object:
+        id: f47ac10b-58cc-4372-a567-0e02b2c3d521
+        name: Dixie Chemical
+    - subject:
+        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
+        name: Octadecenylsuccinic Anhydride
+      predicate: has_cas_number
+      object:
+        id: f47ac10b-58cc-4372-a567-0e02b2c3d526
+        name: CAS 28777-98-2
+    - subject:
+        id: f47ac10b-58cc-4372-a567-0e02b2c3d524
+        name: 2,5-Furandione,dihydro-,mono-C15-20-alkenyl derivs
+      predicate: has_cas_number
+      object:
+        id: f47ac10b-58cc-4372-a567-0e02b2c3d525
+        name: CAS 68784-12-3
+    - subject:
+        id: f47ac10b-58cc-4372-a567-0e02b2c3d524
+        name: 2,5-Furandione,dihydro-,mono-C15-20-alkenyl derivs
+      predicate: has_reach_number
+      object:
+        id: f47ac10b-58cc-4372-a567-0e02b2c3d527
+        name: REACh 01-2119533117-46
+    - subject:
+        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
+        name: Octadecenylsuccinic Anhydride
+      predicate: is_equivalent_to
+      object:
+        id: f47ac10b-58cc-4372-a567-0e02b2c3d524
+        name: 2,5-Furandione,dihydro-,mono-C15-20-alkenyl derivs
+    - subject:
+        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
+        name: Octadecenylsuccinic Anhydride
+      predicate: has_typical_property
+      object:
+        property: Physical Appearance
+        value: Amber colored liquid, mild odor
+    - subject:
+        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
+        name: Octadecenylsuccinic Anhydride
+      predicate: has_typical_property
+      object:
+        property: Specific gravity @ 25 °C
+        value: 0.945-0.965 g/cc
+    - subject:
+        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
+        name: Octadecenylsuccinic Anhydride
+      predicate: has_typical_property
+      object:
+        property: Gardner Color
+        value: 10 Max
+    - subject:
+        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
+        name: Octadecenylsuccinic Anhydride
+      predicate: has_typical_property
+      object:
+        property: HDSA
+        value: Report %
+    - subject:
+        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
+        name: Octadecenylsuccinic Anhydride
+      predicate: has_typical_property
+      object:
+        property: Residual Olefin
+        value: 3.0 Max %
+    - subject:
+        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
+        name: Octadecenylsuccinic Anhydride
+      predicate: has_typical_property
+      object:
+        property: ODSA
+        value: 90.0 Min %
+    - subject:
+        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
+        name: Octadecenylsuccinic Anhydride
+      predicate: has_typical_property
+      object:
+        property: Free Acid
+        value: 2.0 Max %
+    - subject:
+        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
+        name: Octadecenylsuccinic Anhydride
+      predicate: has_typical_property
+      object:
+        property: Neutralization
+        value: 305-335 mg KOH/g
+    - subject:
+        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
+        name: Octadecenylsuccinic Anhydride
+      predicate: has_typical_property
+      object:
+        property: Pour Point
+        value: -15 °C
+    - subject:
+        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
+        name: Octadecenylsuccinic Anhydride
+      predicate: has_typical_property
+      object:
+        property: Freeze Point
+        value: -21 °C
+    - subject:
+        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
+        name: Octadecenylsuccinic Anhydride
+      predicate: has_application
+      object: Alkaline paper sizing agent
+    - subject:
+        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
+        name: Octadecenylsuccinic Anhydride
+      predicate: has_application
+      object: Fuel additives
+    - subject:
+        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
+        name: Octadecenylsuccinic Anhydride
+      predicate: has_application
+      object: Lubricant additives
+    - subject:
+        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
+        name: Octadecenylsuccinic Anhydride
+      predicate: has_application
+      object: Pour point depressants
+    - subject:
+        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
+        name: Octadecenylsuccinic Anhydride
+      predicate: has_application
+      object: Corrosion inhibitors
+    - subject:
+        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
+        name: Octadecenylsuccinic Anhydride
+      predicate: has_application
+      object: Dispersants
+    - subject:
+        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
+        name: Octadecenylsuccinic Anhydride
+      predicate: has_application
+      object: Surfactant intermediates
+    - subject:
+        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
+        name: Octadecenylsuccinic Anhydride
+      predicate: has_application
+      object: Plasticizers
+    - subject:
+        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
+        name: Octadecenylsuccinic Anhydride
+      predicate: has_application
+      object: Epoxy formulations
+    - subject:
+        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
+        name: Octadecenylsuccinic Anhydride
+      predicate: has_application
+      object: Moisture control for leather goods
+    - subject:
+        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
+        name: Octadecenylsuccinic Anhydride
+      predicate: can_be_converted_to
+      object: acid amides
+    - subject:
+        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
+        name: Octadecenylsuccinic Anhydride
+      predicate: can_be_converted_to
+      object: esters
+    - subject:
+        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
+        name: Octadecenylsuccinic Anhydride
+      predicate: has_safety_hazard
+      object: mild primary skin irritant
+    - subject:
+        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
+        name: Octadecenylsuccinic Anhydride
+      predicate: has_storage_requirement
+      object: moisture-free environment
+    - subject:
+        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
+        name: Octadecenylsuccinic Anhydride
+      predicate: has_shelf_life
+      object: 24 months
+    - subject:
+        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
+        name: Octadecenylsuccinic Anhydride
+      predicate: is_available_from
+      object:
+        id: f47ac10b-58cc-4372-a567-0e02b2c3d528
+        name: Pasadena, TX
+    - subject:
+        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
+        name: Octadecenylsuccinic Anhydride
+      predicate: has_storage_guidance_in
+      object:
+        id: f47ac10b-58cc-4372-a567-0e02b2c3d529
+        name: Alkenylsuccinic Anhydride Storage Requirements
+    - subject:
+        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
+        name: Octadecenylsuccinic Anhydride
+      predicate: has_viscosity_at_temperature
+      object:
+        temperature_c: 20
+        viscosity_cps: 180
+    - subject:
+        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
+        name: Octadecenylsuccinic Anhydride
+      predicate: has_viscosity_at_temperature
+      object:
+        temperature_c: 40
+        viscosity_cps: 60
+    - subject:
+        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
+        name: Octadecenylsuccinic Anhydride
+      predicate: has_viscosity_at_temperature
+      object:
+        temperature_c: 60
+        viscosity_cps: 25
+    - subject:
+        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
+        name: Octadecenylsuccinic Anhydride
+      predicate: has_viscosity_at_temperature
+      object:
+        temperature_c: 80
+        viscosity_cps: 15
+    - subject:
+        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
+        name: Octadecenylsuccinic Anhydride
+      predicate: has_specific_gravity_at_temperature
+      object:
+        temperature_c: 0
+        specific_gravity_lbs_gal: 8.04
+    - subject:
+        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
+        name: Octadecenylsuccinic Anhydride
+      predicate: has_specific_gravity_at_temperature
+      object:
+        temperature_c: 24
+        specific_gravity_lbs_gal: 7.92
+    - subject:
+        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
+        name: Octadecenylsuccinic Anhydride
+      predicate: has_specific_gravity_at_temperature
+      object:
+        temperature_c: 60
+        specific_gravity_lbs_gal: 7.75
+knowledge_graph:
+  entities: []
+  kg_triples: []
