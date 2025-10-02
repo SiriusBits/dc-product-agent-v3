@@ -4,7 +4,9 @@ interface TestComponentProps {
   message?: string;
 }
 
-export default function TestComponent({ message = "React 19 is working!" }: TestComponentProps) {
+export default function TestComponent({
+  message = 'React 19 is working!',
+}: TestComponentProps) {
   const [count, setCount] = React.useState(0);
 
   return (

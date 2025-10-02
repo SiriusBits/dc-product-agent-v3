@@ -44,10 +44,10 @@ install-extractor: ## Install PDF extractor Python dependencies only
 # Development
 dev: ## Start all development servers
 	@echo "Starting development servers..."
-	turbo run dev
+	pnpm turbo run dev
 
 dev-backend: ## Start backend development server only
-	cd apps/backend && uv run uvicorn src.dc_agent.main:app --reload --host 0.0.0.0 --port 8000
+	cd apps/backend && uv run uvicorn src.dc_agent.main:app --reload --host 0.0.0.0 --port 8080
 
 dev-frontend: ## Start frontend development server only
 	cd apps/frontend && pnpm dev
@@ -58,7 +58,7 @@ dev-docker: ## Start development with Docker services
 
 # Building
 build: ## Build all applications
-	turbo run build
+	pnpm turbo run build
 
 build-backend: ## Build backend application
 	cd apps/backend && uv build
@@ -68,7 +68,7 @@ build-frontend: ## Build frontend application
 
 # Testing
 test: ## Run all tests
-	turbo run test
+	pnpm turbo run test
 
 test-backend: ## Run backend tests only
 	cd apps/backend && uv run pytest
@@ -80,17 +80,17 @@ test-extractor: ## Run PDF extractor tests only
 	cd apps/pdf-extractor && uv run pytest
 
 test-unit: ## Run unit tests only
-	turbo run test:unit
+	pnpm turbo run test:unit
 
 test-integration: ## Run integration tests only
-	turbo run test:integration
+	pnpm turbo run test:integration
 
 test-watch: ## Run tests in watch mode
 	cd apps/frontend && pnpm test:watch
 
 # Code quality
 lint: ## Run linting for all projects
-	turbo run lint
+	pnpm turbo run lint
 	@echo "Running Python linting..."
 	cd apps/backend && uv run ruff check .
 	cd apps/pdf-extractor && uv run ruff check .
@@ -110,7 +110,7 @@ format: ## Format all code
 	cd apps/pdf-extractor && uv run black .
 
 type-check: ## Run type checking
-	turbo run type-check
+	pnpm turbo run type-check
 	@echo "Running Python type checking..."
 	cd apps/backend && uv run mypy src/
 	cd apps/pdf-extractor && uv run mypy src/
@@ -153,7 +153,7 @@ extract-pdf: ## Extract data from a specific PDF (usage: make extract-pdf PDF=pa
 
 # Cleanup
 clean: ## Clean all build artifacts
-	turbo run clean
+	pnpm turbo run clean
 	rm -rf node_modules
 	rm -rf apps/*/node_modules
 	rm -rf packages/*/node_modules
@@ -181,15 +181,15 @@ check-deps: ## Check for dependency updates
 
 # Production
 prod-build: ## Build for production
-	NODE_ENV=production turbo run build
+	NODE_ENV=production pnpm turbo run build
 	cd apps/backend && uv build --wheel
 
 prod-test: ## Run production tests
-	NODE_ENV=production turbo run test
+	NODE_ENV=production pnpm turbo run test
 
 # Health checks
 health-check: ## Check if all services are healthy
 	@echo "Checking service health..."
-	@curl -f http://localhost:8000/health || echo "Backend not responding"
+	@curl -f http://localhost:8080/health || echo "Backend not responding"
 	@curl -f http://localhost:3000 || echo "Frontend not responding"
 	@docker-compose -f infrastructure/docker/docker-compose.yml ps
