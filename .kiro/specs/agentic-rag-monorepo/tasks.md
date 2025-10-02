@@ -1,0 +1,299 @@
+# Implementation Plan
+
+- [ ] 1. Set up monorepo structure and development environment
+  - Create Turbo Repo configuration with apps and packages structure
+  - Set up pnpm workspace configuration for Node.js dependencies
+  - Configure UV for Python package management across apps
+  - Create comprehensive Makefile with development commands
+  - Set up Docker Compose for local development infrastructure
+  - Configure external Ollama access for macOS development
+  - _Requirements: 1.1, 1.2, 1.3, 1.4, 1.5, 1.6_
+
+- [ ] 2. Migrate and integrate PDF Data Extractor Utility
+  - [ ] 2.1 Migrate existing codebase from external repository
+    - Copy PDF extractor code from `/Users/benjaminbykowski/projects/ai-apps/forks/qwen-dc-product/dc-product-agent`
+    - Restructure code to fit monorepo `apps/pdf-extractor/` structure
+    - Update import paths and module references for new structure
+    - _Requirements: 2.1, 2.2_
+  
+  - [ ] 2.2 Update package management and dependencies
+    - Convert existing requirements to UV pyproject.toml format
+    - Ensure compatibility with monorepo dependency management
+    - Update all Python package installation commands to use UV
+    - _Requirements: 2.3, 6.5_
+  
+  - [ ] 2.3 Preserve and validate existing functionality
+    - Run existing test suite to ensure functionality is preserved
+    - Validate PDF extraction and YAML/JSON processing capabilities
+    - Test schema validation and ingestion pipeline
+    - _Requirements: 2.4, 2.5, 2.6, 2.7, 2.8_
+
+- [ ] 3. Implement shared packages and type definitions
+  - [ ] 3.1 Create shared TypeScript types package
+    - Define API request/response interfaces
+    - Create product and document model types
+    - Implement knowledge graph entity and relationship types
+    - _Requirements: 1.3_
+  
+  - [ ] 3.2 Create shared JSON schemas package
+    - Migrate existing schemas from PDF extractor
+    - Add new schemas for API responses and frontend models
+    - Implement schema validation utilities
+    - _Requirements: 2.4, 11.3_
+
+- [ ] 4. Set up core infrastructure services
+  - [ ] 4.1 Configure Neo4j knowledge graph database
+    - Set up Neo4j container with appropriate plugins and configuration
+    - Configure Graphiti integration for entity management
+    - Create database initialization scripts
+    - _Requirements: 4.1, 4.2_
+  
+  - [ ] 4.2 Configure Chroma vector database
+    - Set up Chroma container with persistent storage
+    - Implement swappable vector database interface
+    - Create collection management utilities
+    - _Requirements: 3.1, 3.2_
+  
+  - [ ] 4.3 Set up optional Neon Postgres database
+    - Configure Postgres container for metadata and user data
+    - Create database schema and migration scripts
+    - Implement connection pooling and management
+    - _Requirements: 8.4_
+  
+  - [ ] 4.4 Configure n8n workflow automation
+    - Set up n8n container with persistent workflow storage
+    - Create basic workflow templates for data processing
+    - Configure webhook endpoints for automation triggers
+    - _Requirements: 9.1, 9.2_
+
+- [ ] 5. Implement FastAPI backend core services
+  - [ ] 5.1 Create FastAPI application structure
+    - Set up FastAPI app with proper middleware and CORS configuration
+    - Implement request/response models using Pydantic
+    - Create modular route organization for different API endpoints
+    - _Requirements: 6.1, 6.2, 6.3_
+  
+  - [ ] 5.2 Implement vector database service
+    - Create abstract VectorStore interface for swappable implementations
+    - Implement ChromaVectorStore with full CRUD operations
+    - Add document ingestion and similarity search capabilities
+    - _Requirements: 3.2, 3.3, 3.4, 3.5_
+  
+  - [ ] 5.3 Implement knowledge graph service
+    - Create KnowledgeGraphService using Neo4j and Graphiti
+    - Implement entity and relationship management operations
+    - Add graph traversal and relationship query capabilities
+    - _Requirements: 4.2, 4.3, 4.4, 4.5, 4.6_
+  
+  - [ ] 5.4 Create query router and analysis service
+    - Implement query classification logic for different query types
+    - Create routing strategies for vector vs knowledge graph retrieval
+    - Add entity extraction and intent analysis capabilities
+    - _Requirements: 5.1, 5.4_
+
+- [ ] 6. Implement hybrid retrieval system
+  - [ ] 6.1 Create hybrid retrieval service core
+    - Implement parallel execution of vector and knowledge graph searches
+    - Create result fusion algorithms for combining different source types
+    - Add configurable weighting and ranking mechanisms
+    - _Requirements: 5.2, 5.3, 5.5_
+  
+  - [ ] 6.2 Implement query-specific retrieval strategies
+    - Create specialized handlers for specification, application, comparison, and relationship queries
+    - Implement adaptive retrieval based on query analysis results
+    - Add confidence scoring and source attribution
+    - _Requirements: 5.4, 5.6_
+  
+  - [ ] 6.3 Add performance optimization and caching
+    - Implement Redis-based caching for frequent queries
+    - Add async processing for parallel retrieval operations
+    - Create connection pooling for database operations
+    - _Requirements: 5.5, 5.6_
+
+- [ ] 7. Create comprehensive API endpoints
+  - [ ] 7.1 Implement chat and conversational endpoints
+    - Create main chat endpoint with conversation management
+    - Implement query processing and response generation
+    - Add conversation history and context management
+    - _Requirements: 6.3, 7.4_
+  
+  - [ ] 7.2 Implement product browsing and search endpoints
+    - Create product listing and filtering endpoints
+    - Implement detailed product information retrieval
+    - Add product comparison and relationship endpoints
+    - _Requirements: 7.5_
+  
+  - [ ] 7.3 Implement knowledge graph query endpoints
+    - Create entity neighbor and relationship query endpoints
+    - Add graph traversal and exploration capabilities
+    - Implement graph visualization data endpoints
+    - _Requirements: 4.4, 4.5_
+  
+  - [ ]* 7.4 Add authentication and security middleware
+    - Implement JWT-based authentication system
+    - Add rate limiting and request validation
+    - Create input sanitization and security headers
+    - _Requirements: 6.4_
+
+- [ ] 8. Implement data ingestion and processing pipeline
+  - [ ] 8.1 Create document processing and embedding generation
+    - Implement chunking strategies for different document types
+    - Create embedding generation using external Ollama models
+    - Add metadata extraction and enrichment
+    - _Requirements: 3.3, 3.4, 3.5_
+  
+  - [ ] 8.2 Implement knowledge graph data ingestion
+    - Create entity and relationship extraction from processed documents
+    - Implement graph data validation and deduplication
+    - Add provenance tracking and source attribution
+    - _Requirements: 4.3, 4.5, 4.6_
+  
+  - [ ] 8.3 Create automated ingestion workflows
+    - Implement n8n workflows for automated data processing
+    - Create data refresh and reindexing automation
+    - Add quality monitoring and validation workflows
+    - _Requirements: 9.2, 9.3, 9.4_
+
+- [ ] 9. Implement Astro + React frontend application
+  - [ ] 9.1 Set up Astro application with React integration
+    - Create Astro project structure with TypeScript configuration
+    - Set up Tailwind CSS 4 and ShadCN component library
+    - Configure pnpm for dependency management
+    - _Requirements: 7.1, 7.2, 7.3, 7.6_
+  
+  - [ ] 9.2 Create core UI components using ShadCN
+    - Implement reusable components for chat interface
+    - Create product browsing and search components
+    - Build knowledge graph visualization components
+    - _Requirements: 7.3, 7.4, 7.5_
+  
+  - [ ] 9.3 Implement chat interface functionality
+    - Create conversational UI with message history
+    - Implement real-time query processing and response display
+    - Add source attribution and result visualization
+    - _Requirements: 7.4_
+  
+  - [ ] 9.4 Implement product browser and catalog
+    - Create searchable product catalog with filtering
+    - Implement detailed product view pages
+    - Add product comparison and relationship visualization
+    - _Requirements: 7.5_
+  
+  - [ ] 9.5 Add API integration and state management
+    - Implement API client with proper error handling
+    - Create React hooks for data fetching and state management
+    - Add loading states and error boundaries
+    - _Requirements: 7.6_
+
+- [ ] 10. Configure Context7 MCP integration
+  - [ ] 10.1 Set up MCP server configuration
+    - Create MCP configuration for Context7 integration
+    - Configure documentation access for all project frameworks
+    - Set up automatic documentation updates and synchronization
+    - _Requirements: 10.1, 10.2, 10.6_
+  
+  - [ ] 10.2 Implement documentation lookup capabilities
+    - Add Context7 integration for Docker, n8n, UV, Chroma, FastAPI documentation
+    - Include Neo4j, Graphiti, Astro, React, Tailwind CSS 4 documentation access
+    - Add Turbo Repo and ShadCN documentation integration
+    - _Requirements: 10.3, 10.4_
+  
+  - [ ] 10.3 Configure development environment integration
+    - Ensure compatibility with Kiro IDE MCP integration
+    - Add relevant documentation context for development tasks
+    - Test documentation access and context provision
+    - _Requirements: 10.4, 10.5_
+
+- [ ] 11. Implement comprehensive testing suite
+  - [ ] 11.1 Create backend unit and integration tests
+    - Write unit tests for all service classes and utilities
+    - Create integration tests for API endpoints with test databases
+    - Implement vector database and knowledge graph operation tests
+    - _Requirements: 11.1, 11.4, 6.6_
+  
+  - [ ] 11.2 Create frontend component and integration tests
+    - Write component tests for all React components using Vitest
+    - Create integration tests for user interaction flows
+    - Implement API communication and error handling tests
+    - _Requirements: 11.2, 11.4, 7.7_
+  
+  - [ ] 11.3 Implement data validation and schema tests
+    - Create comprehensive schema validation tests for all data structures
+    - Test PDF extraction and ingestion pipeline validation
+    - Implement knowledge graph data integrity tests
+    - _Requirements: 11.3, 2.5, 4.5_
+  
+  - [ ]* 11.4 Add performance and load testing
+    - Create performance tests for search and retrieval operations
+    - Implement load testing for concurrent user scenarios
+    - Add benchmarking for response time requirements
+    - _Requirements: 11.5_
+  
+  - [ ]* 11.5 Set up continuous integration and quality gates
+    - Configure GitHub Actions for automated testing
+    - Add code quality checks with ruff, black, mypy, ESLint, Prettier
+    - Implement test coverage reporting and quality metrics
+    - _Requirements: 11.6, 12.2_
+
+- [ ] 12. Configure development tools and workflow
+  - [ ] 12.1 Create comprehensive development commands
+    - Implement Makefile commands for all common development tasks
+    - Create unified commands for testing, linting, and building
+    - Add environment setup and data management commands
+    - _Requirements: 12.1, 12.3_
+  
+  - [ ] 12.2 Set up code quality and formatting tools
+    - Configure ruff, black, and mypy for Python code quality
+    - Set up ESLint and Prettier for TypeScript code formatting
+    - Integrate type checking and linting into development workflow
+    - _Requirements: 12.2, 6.6, 7.7_
+  
+  - [ ] 12.3 Configure Turbo Repo build orchestration
+    - Set up efficient build caching and dependency management
+    - Configure parallel execution for development and build tasks
+    - Optimize build performance for monorepo structure
+    - _Requirements: 12.4_
+  
+  - [ ] 12.4 Set up environment configuration management
+    - Create clear environment configuration for development and production
+    - Implement secure secrets management and configuration
+    - Add comprehensive logging and error handling
+    - _Requirements: 12.5, 12.6_
+
+- [ ] 13. Create deployment configuration and documentation
+  - [ ] 13.1 Prepare production Docker configuration
+    - Create optimized Dockerfiles for all applications
+    - Set up production docker-compose configuration
+    - Configure container orchestration for cloud deployment
+    - _Requirements: 8.3, 8.5_
+  
+  - [ ] 13.2 Create deployment and operations documentation
+    - Write comprehensive setup and deployment guides
+    - Create troubleshooting and maintenance documentation
+    - Document API endpoints and usage examples
+    - _Requirements: 8.5_
+  
+  - [ ] 13.3 Implement monitoring and observability
+    - Add application metrics and health check endpoints
+    - Configure logging and error tracking
+    - Implement performance monitoring and alerting
+    - _Requirements: 8.4_
+
+- [ ] 14. Integration testing and proof-of-concept validation
+  - [ ] 14.1 Perform end-to-end system testing
+    - Test complete user workflows from frontend to backend
+    - Validate data ingestion and retrieval accuracy
+    - Test hybrid retrieval system performance and relevance
+    - _Requirements: 11.4_
+  
+  - [ ] 14.2 Validate proof-of-concept with existing extracts
+    - Ingest existing PDF extracts into vector database and knowledge graph
+    - Test query accuracy and response quality with real data
+    - Validate knowledge graph relationships and entity recognition
+    - _Requirements: 2.7, 4.4, 5.6_
+  
+  - [ ] 14.3 Performance optimization and tuning
+    - Optimize query performance and response times
+    - Tune vector search and knowledge graph query parameters
+    - Implement caching strategies for improved performance
+    - _Requirements: 3.6, 5.5_
