@@ -1,0 +1,261 @@
+{
+  "name": "PDF Processing Workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "process-pdf",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "webhook-trigger",
+      "name": "PDF Upload Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [240, 300],
+      "webhookId": "pdf-processing-webhook"
+    },
+    {
+      "parameters": {
+        "functionCode": "// Extract PDF file information from webhook payload\nconst items = $input.all();\nconst pdfData = items[0].json;\n\n// Validate required fields\nif (!pdfData.filename || !pdfData.file_path) {\n  throw new Error('Missing required fields: filename or file_path');\n}\n\n// Prepare data for processing\nreturn {\n  json: {\n    filename: pdfData.filename,\n    file_path: pdfData.file_path,\n    processing_id: `proc_${Date.now()}`,\n    status: 'processing',\n    timestamp: new Date().toISOString()\n  }\n};"
+      },
+      "id": "validate-input",
+      "name": "Validate PDF Input",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:8000/api/extract/pdf",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "filename",
+              "value": "={{$json.filename}}"
+            },
+            {
+              "name": "file_path",
+              "value": "={{$json.file_path}}"
+            },
+            {
+              "name": "processing_id",
+              "value": "={{$json.processing_id}}"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 300000
+        }
+      },
+      "id": "extract-pdf",
+      "name": "Extract PDF Data",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:8000/api/ingest/vector",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "extraction_data",
+              "value": "={{$json}}"
+            },
+            {
+              "name": "collection_name",
+              "value": "technical_bulletins"
+            }
+          ]
+        }
+      },
+      "id": "ingest-vector",
+      "name": "Ingest to Vector DB",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [900, 200]
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:8000/api/ingest/knowledge-graph",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "extraction_data",
+              "value": "={{$json}}"
+            }
+          ]
+        }
+      },
+      "id": "ingest-kg",
+      "name": "Ingest to Knowledge Graph",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [900, 400]
+    },
+    {
+      "parameters": {
+        "functionCode": "// Combine results from vector and KG ingestion\nconst vectorResult = $input.first().json;\nconst kgResult = $input.last().json;\n\nreturn {\n  json: {\n    processing_id: vectorResult.processing_id || kgResult.processing_id,\n    status: 'completed',\n    vector_ingestion: {\n      success: vectorResult.success || false,\n      document_count: vectorResult.document_count || 0\n    },\n    kg_ingestion: {\n      success: kgResult.success || false,\n      entity_count: kgResult.entity_count || 0,\n      relationship_count: kgResult.relationship_count || 0\n    },\n    completed_at: new Date().toISOString()\n  }\n};"
+      },
+      "id": "combine-results",
+      "name": "Combine Results",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [1120, 300]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{$json}}"
+      },
+      "id": "webhook-response",
+      "name": "Return Response",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [1340, 300]
+    },
+    {
+      "parameters": {
+        "functionCode": "// Handle errors in the workflow\nconst error = $input.first().json;\n\nreturn {\n  json: {\n    status: 'error',\n    error_message: error.message || 'Unknown error occurred',\n    timestamp: new Date().toISOString()\n  }\n};"
+      },
+      "id": "error-handler",
+      "name": "Handle Errors",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [900, 600]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{$json}}",
+        "responseCode": 500
+      },
+      "id": "error-response",
+      "name": "Return Error Response",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [1120, 600]
+    }
+  ],
+  "connections": {
+    "PDF Upload Webhook": {
+      "main": [
+        [
+          {
+            "node": "Validate PDF Input",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validate PDF Input": {
+      "main": [
+        [
+          {
+            "node": "Extract PDF Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract PDF Data": {
+      "main": [
+        [
+          {
+            "node": "Ingest to Vector DB",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Ingest to Knowledge Graph",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ingest to Vector DB": {
+      "main": [
+        [
+          {
+            "node": "Combine Results",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ingest to Knowledge Graph": {
+      "main": [
+        [
+          {
+            "node": "Combine Results",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Combine Results": {
+      "main": [
+        [
+          {
+            "node": "Return Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "1",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "id": "pdf-processing-workflow",
+  "tags": [
+    {
+      "createdAt": "2024-01-01T00:00:00.000Z",
+      "updatedAt": "2024-01-01T00:00:00.000Z",
+      "id": "pdf-processing",
+      "name": "PDF Processing"
+    }
+  ]
+}

@@ -41,26 +41,26 @@
     - Implement schema validation utilities
     - _Requirements: 2.4, 11.3_
 
-- [ ] 4. Set up core infrastructure services
-  - [ ] 4.1 Configure Neo4j knowledge graph database
+- [x] 4. Set up core infrastructure services
+  - [x] 4.1 Configure Neo4j knowledge graph database
     - Set up Neo4j container with appropriate plugins and configuration
     - Configure Graphiti integration for entity management
     - Create database initialization scripts
     - _Requirements: 4.1, 4.2_
   
-  - [ ] 4.2 Configure Chroma vector database
+  - [x] 4.2 Configure Chroma vector database
     - Set up Chroma container with persistent storage
     - Implement swappable vector database interface
     - Create collection management utilities
     - _Requirements: 3.1, 3.2_
   
-  - [ ] 4.3 Set up optional Neon Postgres database
+  - [x] 4.3 Set up optional Neon Postgres database
     - Configure Postgres container for metadata and user data
     - Create database schema and migration scripts
     - Implement connection pooling and management
     - _Requirements: 8.4_
   
-  - [ ] 4.4 Configure n8n workflow automation
+  - [x] 4.4 Configure n8n workflow automation
     - Set up n8n container with persistent workflow storage
     - Create basic workflow templates for data processing
     - Configure webhook endpoints for automation triggers

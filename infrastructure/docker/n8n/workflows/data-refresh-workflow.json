@@ -1,0 +1,489 @@
+{
+  "name": "Data Refresh and Reindexing",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "days",
+              "daysInterval": 1
+            }
+          ]
+        },
+        "triggerAtHour": 2
+      },
+      "id": "daily-schedule",
+      "name": "Daily at 2 AM",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "refresh-data",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "manual-webhook",
+      "name": "Manual Refresh Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [240, 500],
+      "webhookId": "data-refresh-webhook"
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:8000/api/health/system",
+        "options": {
+          "timeout": 30000
+        }
+      },
+      "id": "check-system-health",
+      "name": "Check System Health",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [460, 400]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "health-check",
+              "leftValue": "={{$json.status}}",
+              "rightValue": "healthy",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "check-health-status",
+      "name": "System Healthy?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [680, 400]
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:8000/api/data/scan-changes",
+        "options": {
+          "timeout": 120000
+        }
+      },
+      "id": "scan-data-changes",
+      "name": "Scan for Data Changes",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [900, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "changes-found",
+              "leftValue": "={{$json.changes_found}}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "check-changes",
+      "name": "Changes Found?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [1120, 300]
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:8000/api/data/backup",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "backup_type",
+              "value": "incremental"
+            },
+            {
+              "name": "include_metadata",
+              "value": true
+            }
+          ]
+        },
+        "options": {
+          "timeout": 300000
+        }
+      },
+      "id": "backup-data",
+      "name": "Backup Current Data",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [1340, 200]
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:8000/api/vector/reindex",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "collections",
+              "value": "={{$json.changed_collections}}"
+            },
+            {
+              "name": "force_rebuild",
+              "value": false
+            }
+          ]
+        },
+        "options": {
+          "timeout": 600000
+        }
+      },
+      "id": "reindex-vector-db",
+      "name": "Reindex Vector Database",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [1340, 300]
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:8000/api/kg/refresh",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "entities",
+              "value": "={{$json.changed_entities}}"
+            },
+            {
+              "name": "rebuild_relationships",
+              "value": true
+            }
+          ]
+        },
+        "options": {
+          "timeout": 600000
+        }
+      },
+      "id": "refresh-knowledge-graph",
+      "name": "Refresh Knowledge Graph",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [1340, 400]
+    },
+    {
+      "parameters": {
+        "functionCode": "// Combine refresh results\nconst items = $input.all();\nconst backupResult = items.find(item => item.json.type === 'backup');\nconst vectorResult = items.find(item => item.json.type === 'vector_reindex');\nconst kgResult = items.find(item => item.json.type === 'kg_refresh');\n\nconst summary = {\n  refresh_id: `refresh_${Date.now()}`,\n  status: 'completed',\n  timestamp: new Date().toISOString(),\n  results: {\n    backup: {\n      success: backupResult?.json?.success || false,\n      backup_size: backupResult?.json?.backup_size || 0,\n      backup_location: backupResult?.json?.backup_location\n    },\n    vector_reindex: {\n      success: vectorResult?.json?.success || false,\n      collections_updated: vectorResult?.json?.collections_updated || 0,\n      documents_reindexed: vectorResult?.json?.documents_reindexed || 0\n    },\n    knowledge_graph: {\n      success: kgResult?.json?.success || false,\n      entities_updated: kgResult?.json?.entities_updated || 0,\n      relationships_updated: kgResult?.json?.relationships_updated || 0\n    }\n  },\n  overall_success: (backupResult?.json?.success && vectorResult?.json?.success && kgResult?.json?.success) || false\n};\n\nreturn { json: summary };"
+      },
+      "id": "combine-refresh-results",
+      "name": "Combine Refresh Results",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [1560, 300]
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:8000/api/notifications/send",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "type",
+              "value": "data_refresh_complete"
+            },
+            {
+              "name": "summary",
+              "value": "={{$json}}"
+            },
+            {
+              "name": "priority",
+              "value": "={{$json.overall_success ? 'low' : 'high'}}"
+            }
+          ]
+        }
+      },
+      "id": "send-notification",
+      "name": "Send Completion Notification",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [1780, 300]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{$json}}"
+      },
+      "id": "webhook-response",
+      "name": "Return Response",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [2000, 300]
+    },
+    {
+      "parameters": {
+        "functionCode": "// Handle system unhealthy scenario\nconst healthData = $input.first().json;\n\nreturn {\n  json: {\n    status: 'skipped',\n    reason: 'system_unhealthy',\n    health_status: healthData.status,\n    message: 'Data refresh skipped due to unhealthy system status',\n    timestamp: new Date().toISOString()\n  }\n};"
+      },
+      "id": "handle-unhealthy",
+      "name": "Handle Unhealthy System",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [900, 500]
+    },
+    {
+      "parameters": {
+        "functionCode": "// Handle no changes scenario\nconst scanData = $input.first().json;\n\nreturn {\n  json: {\n    status: 'skipped',\n    reason: 'no_changes',\n    last_scan: scanData.scan_timestamp,\n    message: 'No data changes detected, refresh skipped',\n    timestamp: new Date().toISOString()\n  }\n};"
+      },
+      "id": "handle-no-changes",
+      "name": "Handle No Changes",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [1340, 500]
+    }
+  ],
+  "connections": {
+    "Daily at 2 AM": {
+      "main": [
+        [
+          {
+            "node": "Check System Health",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Manual Refresh Webhook": {
+      "main": [
+        [
+          {
+            "node": "Check System Health",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check System Health": {
+      "main": [
+        [
+          {
+            "node": "System Healthy?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "System Healthy?": {
+      "main": [
+        [
+          {
+            "node": "Scan for Data Changes",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Handle Unhealthy System",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Scan for Data Changes": {
+      "main": [
+        [
+          {
+            "node": "Changes Found?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Changes Found?": {
+      "main": [
+        [
+          {
+            "node": "Backup Current Data",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Reindex Vector Database",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Refresh Knowledge Graph",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Handle No Changes",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Backup Current Data": {
+      "main": [
+        [
+          {
+            "node": "Combine Refresh Results",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Reindex Vector Database": {
+      "main": [
+        [
+          {
+            "node": "Combine Refresh Results",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Refresh Knowledge Graph": {
+      "main": [
+        [
+          {
+            "node": "Combine Refresh Results",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Combine Refresh Results": {
+      "main": [
+        [
+          {
+            "node": "Send Completion Notification",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Completion Notification": {
+      "main": [
+        [
+          {
+            "node": "Return Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Handle Unhealthy System": {
+      "main": [
+        [
+          {
+            "node": "Send Completion Notification",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Handle No Changes": {
+      "main": [
+        [
+          {
+            "node": "Send Completion Notification",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "1",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "id": "data-refresh-workflow",
+  "tags": [
+    {
+      "createdAt": "2024-01-01T00:00:00.000Z",
+      "updatedAt": "2024-01-01T00:00:00.000Z",
+      "id": "data-management",
+      "name": "Data Management"
+    }
+  ]
+}

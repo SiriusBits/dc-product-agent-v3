@@ -1,0 +1,289 @@
+{
+  "name": "Data Quality Monitoring",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 6
+            }
+          ]
+        }
+      },
+      "id": "schedule-trigger",
+      "name": "Every 6 Hours",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:8000/api/health/vector-db",
+        "options": {
+          "timeout": 30000
+        }
+      },
+      "id": "check-vector-db",
+      "name": "Check Vector DB Health",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [460, 200]
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:8000/api/health/knowledge-graph",
+        "options": {
+          "timeout": 30000
+        }
+      },
+      "id": "check-kg-db",
+      "name": "Check Knowledge Graph Health",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [460, 400]
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:8000/api/quality/validate-data",
+        "options": {
+          "timeout": 60000
+        }
+      },
+      "id": "validate-data",
+      "name": "Validate Data Quality",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "functionCode": "// Analyze health check results and data quality\nconst items = $input.all();\nconst vectorHealth = items.find(item => item.json.service === 'vector_db');\nconst kgHealth = items.find(item => item.json.service === 'knowledge_graph');\nconst dataQuality = items.find(item => item.json.type === 'data_quality');\n\nconst report = {\n  timestamp: new Date().toISOString(),\n  overall_status: 'healthy',\n  services: {\n    vector_db: {\n      status: vectorHealth?.json?.status || 'unknown',\n      document_count: vectorHealth?.json?.document_count || 0,\n      last_updated: vectorHealth?.json?.last_updated\n    },\n    knowledge_graph: {\n      status: kgHealth?.json?.status || 'unknown',\n      entity_count: kgHealth?.json?.entity_count || 0,\n      relationship_count: kgHealth?.json?.relationship_count || 0,\n      last_updated: kgHealth?.json?.last_updated\n    }\n  },\n  data_quality: {\n    validation_score: dataQuality?.json?.validation_score || 0,\n    issues_found: dataQuality?.json?.issues || [],\n    recommendations: dataQuality?.json?.recommendations || []\n  }\n};\n\n// Determine overall status\nif (report.services.vector_db.status !== 'healthy' || \n    report.services.knowledge_graph.status !== 'healthy' ||\n    report.data_quality.validation_score < 0.8) {\n  report.overall_status = 'degraded';\n}\n\nif (report.data_quality.issues_found.length > 10) {\n  report.overall_status = 'unhealthy';\n}\n\nreturn { json: report };"
+      },
+      "id": "analyze-health",
+      "name": "Analyze System Health",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [900, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "alert-condition",
+              "leftValue": "={{$json.overall_status}}",
+              "rightValue": "healthy",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "check-alerts",
+      "name": "Check if Alert Needed",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [1120, 300]
+    },
+    {
+      "parameters": {
+        "functionCode": "// Format alert message\nconst report = $input.first().json;\n\nconst alertMessage = {\n  subject: `DC Agent System Alert - Status: ${report.overall_status.toUpperCase()}`,\n  message: `System Health Report - ${report.timestamp}\\n\\n` +\n           `Overall Status: ${report.overall_status}\\n\\n` +\n           `Vector DB: ${report.services.vector_db.status} (${report.services.vector_db.document_count} documents)\\n` +\n           `Knowledge Graph: ${report.services.knowledge_graph.status} (${report.services.knowledge_graph.entity_count} entities)\\n` +\n           `Data Quality Score: ${report.data_quality.validation_score}\\n\\n` +\n           `Issues Found: ${report.data_quality.issues_found.length}\\n` +\n           (report.data_quality.issues_found.length > 0 ? \n             `- ${report.data_quality.issues_found.slice(0, 5).join('\\n- ')}\\n` : '') +\n           (report.data_quality.recommendations.length > 0 ? \n             `\\nRecommendations:\\n- ${report.data_quality.recommendations.join('\\n- ')}` : ''),\n  priority: report.overall_status === 'unhealthy' ? 'high' : 'medium'\n};\n\nreturn { json: alertMessage };"
+      },
+      "id": "format-alert",
+      "name": "Format Alert Message",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [1340, 200]
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:8000/api/notifications/send",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "type",
+              "value": "system_alert"
+            },
+            {
+              "name": "subject",
+              "value": "={{$json.subject}}"
+            },
+            {
+              "name": "message",
+              "value": "={{$json.message}}"
+            },
+            {
+              "name": "priority",
+              "value": "={{$json.priority}}"
+            }
+          ]
+        }
+      },
+      "id": "send-alert",
+      "name": "Send Alert Notification",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [1560, 200]
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:8000/api/metrics/system-health",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "report",
+              "value": "={{$json}}"
+            }
+          ]
+        }
+      },
+      "id": "log-metrics",
+      "name": "Log System Metrics",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [1340, 400]
+    }
+  ],
+  "connections": {
+    "Every 6 Hours": {
+      "main": [
+        [
+          {
+            "node": "Check Vector DB Health",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Check Knowledge Graph Health",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Validate Data Quality",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Vector DB Health": {
+      "main": [
+        [
+          {
+            "node": "Analyze System Health",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Knowledge Graph Health": {
+      "main": [
+        [
+          {
+            "node": "Analyze System Health",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validate Data Quality": {
+      "main": [
+        [
+          {
+            "node": "Analyze System Health",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analyze System Health": {
+      "main": [
+        [
+          {
+            "node": "Check if Alert Needed",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Log System Metrics",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check if Alert Needed": {
+      "main": [
+        [
+          {
+            "node": "Format Alert Message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Alert Message": {
+      "main": [
+        [
+          {
+            "node": "Send Alert Notification",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "1",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "id": "data-quality-monitoring",
+  "tags": [
+    {
+      "createdAt": "2024-01-01T00:00:00.000Z",
+      "updatedAt": "2024-01-01T00:00:00.000Z",
+      "id": "monitoring",
+      "name": "System Monitoring"
+    }
+  ]
+}
