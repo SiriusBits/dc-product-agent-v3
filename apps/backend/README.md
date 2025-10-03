@@ -33,6 +33,7 @@ uv run black .
 ## API Documentation
 
 When running, visit:
+
 - Swagger UI: http://localhost:8080/docs
 - ReDoc: http://localhost:8080/redoc
 - Health check: http://localhost:8080/health

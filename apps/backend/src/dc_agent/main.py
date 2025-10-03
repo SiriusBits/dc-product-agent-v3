@@ -2,14 +2,14 @@
 
 import logging
 import time
+from collections.abc import AsyncGenerator
 from contextlib import asynccontextmanager
-from typing import AsyncGenerator
 
-from fastapi import FastAPI, Request, HTTPException
+from fastapi import FastAPI, Request
+from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.trustedhost import TrustedHostMiddleware
 from fastapi.responses import JSONResponse
-from fastapi.exceptions import RequestValidationError
 from starlette.exceptions import HTTPException as StarletteHTTPException
 
 from .api import chat_router, health_router, kg_router, products_router
@@ -25,18 +25,18 @@ async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
     """Application lifespan manager."""
     # Startup
     logger.info("Starting Dixie Chemical Product Agent API v3.0.0")
-    
+
     # TODO: Initialize services
     # - Database connections
     # - Vector database connection
     # - Knowledge graph connection
     # - Cache connection
-    
+
     yield
-    
+
     # Shutdown
     logger.info("Shutting down Dixie Chemical Product Agent API")
-    
+
     # TODO: Cleanup services
     # - Close database connections
     # - Close vector database connection
@@ -51,13 +51,12 @@ app = FastAPI(
     docs_url="/docs",
     redoc_url="/redoc",
     openapi_url="/openapi.json",
-    lifespan=lifespan
+    lifespan=lifespan,
 )
 
 # Security middleware
 app.add_middleware(
-    TrustedHostMiddleware,
-    allowed_hosts=["*"]  # TODO: Configure for production
+    TrustedHostMiddleware, allowed_hosts=["*"]  # TODO: Configure for production
 )
 
 # CORS middleware
@@ -67,7 +66,7 @@ app.add_middleware(
         "http://localhost:3000",
         "http://127.0.0.1:3000",
         "http://localhost:4321",  # Astro dev server
-        "http://127.0.0.1:4321"
+        "http://127.0.0.1:4321",
     ],
     allow_credentials=True,
     allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
@@ -95,8 +94,8 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
         content=ApiError(
             error_code="VALIDATION_ERROR",
             message="Request validation failed",
-            details={"errors": exc.errors()}
-        ).dict()
+            details={"errors": exc.errors()},
+        ).dict(),
     )
 
 
@@ -108,8 +107,8 @@ async def http_exception_handler(request: Request, exc: StarletteHTTPException):
         content=ApiError(
             error_code="HTTP_ERROR",
             message=exc.detail,
-            details={"status_code": exc.status_code}
-        ).dict()
+            details={"status_code": exc.status_code},
+        ).dict(),
     )
 
 
@@ -122,8 +121,8 @@ async def general_exception_handler(request: Request, exc: Exception):
         content=ApiError(
             error_code="INTERNAL_ERROR",
             message="An internal server error occurred",
-            details={"type": type(exc).__name__}
-        ).dict()
+            details={"type": type(exc).__name__},
+        ).dict(),
     )
 
 
@@ -143,9 +142,9 @@ async def root() -> ApiResponse[dict]:
             "version": "3.0.0",
             "description": "Agentic RAG API for chemical product information",
             "docs_url": "/docs",
-            "health_url": "/api/health"
+            "health_url": "/api/health",
         },
-        message="Welcome to the Dixie Chemical Product Agent API"
+        message="Welcome to the Dixie Chemical Product Agent API",
     )
 
 
@@ -153,9 +152,5 @@ if __name__ == "__main__":
     import uvicorn
 
     uvicorn.run(
-        "dc_agent.main:app",
-        host="0.0.0.0",
-        port=8080,
-        reload=True,
-        log_level="info"
+        "dc_agent.main:app", host="0.0.0.0", port=8080, reload=True, log_level="info"
     )

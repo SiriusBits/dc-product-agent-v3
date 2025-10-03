@@ -16,12 +16,12 @@ graph TB
         UI[Astro + React Frontend]
         CLI[CLI Tools]
     end
-    
+
     subgraph "API Gateway Layer"
         API[FastAPI Backend]
         AUTH[Authentication Service]
     end
-    
+
     subgraph "Core Services Layer"
         QR[Query Router]
         HRS[Hybrid Retrieval Service]
@@ -29,20 +29,20 @@ graph TB
         KG[Knowledge Graph Service]
         EXT[Extraction Service]
     end
-    
+
     subgraph "Data Layer"
         CHROMA[Chroma Vector DB]
         NEO4J[Neo4j + Graphiti]
         POSTGRES[Neon Postgres]
         FILES[File Storage]
     end
-    
+
     subgraph "External Services"
         OLLAMA[Ollama Models]
         N8N[n8n Workflows]
         CTX7[Context7 MCP]
     end
-    
+
     UI --> API
     CLI --> API
     API --> AUTH
@@ -156,7 +156,7 @@ class QueryRouter:
     def analyze_query(self, query: str) -> QueryAnalysis:
         """Analyze query and return routing strategy"""
         pass
-    
+
     def get_retrieval_weights(self, analysis: QueryAnalysis) -> Dict[str, float]:
         """Return optimal weights for vector vs KG retrieval"""
         pass
@@ -183,19 +183,19 @@ class HybridRetrievalService:
         self.vector_service = vector_service
         self.kg_service = kg_service
         self.query_router = query_router
-    
+
     async def search(self, query: str, k: int = 10) -> List[RetrievalResult]:
         """Perform hybrid search combining vector and KG results"""
         # 1. Analyze query
         analysis = self.query_router.analyze_query(query)
-        
+
         # 2. Get retrieval weights
         weights = self.query_router.get_retrieval_weights(analysis)
-        
+
         # 3. Parallel retrieval
         vector_results = await self._vector_search(query, weights['vector'])
         kg_results = await self._kg_search(query, analysis.entities, weights['kg'])
-        
+
         # 4. Fusion and ranking
         return self._fuse_results(vector_results, kg_results, k)
 ```
@@ -213,12 +213,12 @@ class VectorStore(ABC):
     async def add_documents(self, documents: List[Dict[str, Any]]) -> None:
         """Add documents to the vector store"""
         pass
-    
+
     @abstractmethod
     async def similarity_search(self, query: str, k: int = 10) -> List[RetrievalResult]:
         """Perform similarity search"""
         pass
-    
+
     @abstractmethod
     async def delete_collection(self, collection_name: str) -> None:
         """Delete a collection"""
@@ -227,7 +227,7 @@ class VectorStore(ABC):
 class ChromaVectorStore(VectorStore):
     def __init__(self, client_settings: Dict[str, Any]):
         self.client = chromadb.Client(Settings(**client_settings))
-    
+
     async def add_documents(self, documents: List[Dict[str, Any]]) -> None:
         """Chroma-specific implementation"""
         pass
@@ -245,15 +245,15 @@ class KnowledgeGraphService:
     def __init__(self, neo4j_uri: str, neo4j_user: str, neo4j_password: str):
         self.driver = GraphDatabase.driver(neo4j_uri, auth=(neo4j_user, neo4j_password))
         self.graphiti = Graphiti(self.driver)
-    
+
     async def add_entities(self, entities: List[Dict[str, Any]]) -> None:
         """Add entities to the knowledge graph"""
         pass
-    
+
     async def find_related_entities(self, entity_name: str, max_depth: int = 2) -> List[Dict[str, Any]]:
         """Find entities related to the given entity"""
         pass
-    
+
     async def query_by_relationship(self, relationship_type: str, limit: int = 10) -> List[Dict[str, Any]]:
         """Query entities by relationship type"""
         pass
@@ -320,7 +320,7 @@ interface Product {
 interface ChatMessage {
   id: string;
   content: string;
-  role: 'user' | 'assistant';
+  role: "user" | "assistant";
   sources?: RetrievalResult[];
   timestamp: Date;
 }
@@ -334,7 +334,7 @@ export const ProductBrowser: React.FC = () => {
   // Product browsing with search and filters
 };
 
-export const KnowledgeGraphViewer: React.FC<{productId: string}> = () => {
+export const KnowledgeGraphViewer: React.FC<{ productId: string }> = () => {
   // Interactive knowledge graph visualization
 };
 ```
@@ -530,11 +530,11 @@ import redis
 class CacheService:
     def __init__(self, redis_client):
         self.redis = redis_client
-    
+
     async def get_cached_search(self, query_hash: str) -> Optional[List[SearchResult]]:
         """Get cached search results"""
         pass
-    
+
     async def cache_search_results(self, query_hash: str, results: List[SearchResult], ttl: int = 3600):
         """Cache search results with TTL"""
         pass
@@ -556,7 +556,7 @@ from concurrent.futures import ThreadPoolExecutor
 class AsyncProcessingService:
     def __init__(self, max_workers: int = 4):
         self.executor = ThreadPoolExecutor(max_workers=max_workers)
-    
+
     async def parallel_search(self, queries: List[str]) -> List[List[SearchResult]]:
         """Process multiple searches in parallel"""
         tasks = [self.search_single(query) for query in queries]
@@ -596,7 +596,7 @@ import re
 
 class QueryRequest(BaseModel):
     query: str
-    
+
     @validator('query')
     def validate_query(cls, v):
         if len(v.strip()) == 0:

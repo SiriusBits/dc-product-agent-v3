@@ -129,11 +129,11 @@ apps/frontend/
 
 ```typescript
 // Workspace packages
-import { ApiResponse } from '@repo/shared-types';
+import { ApiResponse } from "@repo/shared-types";
 
 // Relative imports
-import { Button } from '../components/Button';
-import type { ProductData } from './types';
+import { Button } from "../components/Button";
+import type { ProductData } from "./types";
 ```
 
 ### Python

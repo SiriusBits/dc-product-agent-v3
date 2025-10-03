@@ -1,8 +1,8 @@
 """Pydantic models for the DC Agent API."""
 
 from .api_models import *
-from .product_models import *
 from .kg_models import *
+from .product_models import *
 
 __all__ = [
     # API models
