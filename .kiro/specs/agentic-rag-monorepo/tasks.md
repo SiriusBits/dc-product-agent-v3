@@ -9,20 +9,20 @@
   - Configure external Ollama access for macOS development
   - _Requirements: 1.1, 1.2, 1.3, 1.4, 1.5, 1.6_
 
-- [ ] 2. Migrate and integrate PDF Data Extractor Utility
-  - [ ] 2.1 Migrate existing codebase from external repository
+- [x] 2. Migrate and integrate PDF Data Extractor Utility
+  - [x] 2.1 Migrate existing codebase from external repository
     - Copy PDF extractor code from `/Users/benjaminbykowski/projects/ai-apps/forks/qwen-dc-product/dc-product-agent`
     - Restructure code to fit monorepo `apps/pdf-extractor/` structure
     - Update import paths and module references for new structure
     - _Requirements: 2.1, 2.2_
   
-  - [ ] 2.2 Update package management and dependencies
+  - [x] 2.2 Update package management and dependencies
     - Convert existing requirements to UV pyproject.toml format
     - Ensure compatibility with monorepo dependency management
     - Update all Python package installation commands to use UV
     - _Requirements: 2.3, 6.5_
   
-  - [ ] 2.3 Preserve and validate existing functionality
+  - [x] 2.3 Preserve and validate existing functionality
     - Run existing test suite to ensure functionality is preserved
     - Validate PDF extraction and YAML/JSON processing capabilities
     - Test schema validation and ingestion pipeline
