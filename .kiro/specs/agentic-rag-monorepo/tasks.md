@@ -66,26 +66,26 @@
     - Configure webhook endpoints for automation triggers
     - _Requirements: 9.1, 9.2_
 
-- [ ] 5. Implement FastAPI backend core services
-  - [ ] 5.1 Create FastAPI application structure
+- [x] 5. Implement FastAPI backend core services
+  - [x] 5.1 Create FastAPI application structure
     - Set up FastAPI app with proper middleware and CORS configuration
     - Implement request/response models using Pydantic
     - Create modular route organization for different API endpoints
     - _Requirements: 6.1, 6.2, 6.3_
   
-  - [ ] 5.2 Implement vector database service
+  - [x] 5.2 Implement vector database service
     - Create abstract VectorStore interface for swappable implementations
     - Implement ChromaVectorStore with full CRUD operations
     - Add document ingestion and similarity search capabilities
     - _Requirements: 3.2, 3.3, 3.4, 3.5_
   
-  - [ ] 5.3 Implement knowledge graph service
+  - [x] 5.3 Implement knowledge graph service
     - Create KnowledgeGraphService using Neo4j and Graphiti
     - Implement entity and relationship management operations
     - Add graph traversal and relationship query capabilities
     - _Requirements: 4.2, 4.3, 4.4, 4.5, 4.6_
   
-  - [ ] 5.4 Create query router and analysis service
+  - [x] 5.4 Create query router and analysis service
     - Implement query classification logic for different query types
     - Create routing strategies for vector vs knowledge graph retrieval
     - Add entity extraction and intent analysis capabilities
