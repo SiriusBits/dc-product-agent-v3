@@ -1,0 +1,68 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.com/schemas/chat-request.schema.json",
+  "title": "Chat Request Schema",
+  "type": "object",
+  "properties": {
+    "query": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1000,
+      "description": "The user's query or question"
+    },
+    "conversation_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Optional conversation identifier for context"
+    },
+    "max_results": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 50,
+      "default": 10,
+      "description": "Maximum number of results to return"
+    },
+    "include_sources": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to include source attribution in response"
+    },
+    "query_options": {
+      "type": "object",
+      "properties": {
+        "vector_weight": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Weight for vector search results"
+        },
+        "kg_weight": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Weight for knowledge graph results"
+        },
+        "min_confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Minimum confidence threshold for results"
+        },
+        "max_depth": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5,
+          "description": "Maximum depth for knowledge graph traversal"
+        },
+        "include_images": {
+          "type": "boolean",
+          "default": false,
+          "description": "Whether to include image references in results"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "required": ["query"],
+  "additionalProperties": false
+}

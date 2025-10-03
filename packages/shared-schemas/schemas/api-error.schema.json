@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.com/schemas/api-error.schema.json",
+  "title": "API Error Schema",
+  "type": "object",
+  "properties": {
+    "error_code": {
+      "type": "string",
+      "description": "Machine-readable error code"
+    },
+    "message": {
+      "type": "string",
+      "description": "Human-readable error message"
+    },
+    "details": {
+      "type": "object",
+      "description": "Additional error details and context"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO 8601 timestamp when the error occurred"
+    },
+    "request_id": {
+      "type": "string",
+      "description": "Unique identifier for request tracing"
+    }
+  },
+  "required": ["error_code", "message", "timestamp", "request_id"],
+  "additionalProperties": false
+}

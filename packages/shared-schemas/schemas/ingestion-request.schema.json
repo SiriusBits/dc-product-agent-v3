@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.com/schemas/ingestion-request.schema.json",
+  "title": "Data Ingestion Request Schema",
+  "type": "object",
+  "properties": {
+    "file_path": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Path to the file to be ingested"
+    },
+    "document_type": {
+      "type": "string",
+      "enum": [
+        "technical_bulletin",
+        "safety_data_sheet",
+        "product_guide",
+        "specification",
+        "other"
+      ],
+      "default": "technical_bulletin",
+      "description": "Type of document being ingested"
+    },
+    "processing_options": {
+      "type": "object",
+      "properties": {
+        "extract_images": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether to extract and process images"
+        },
+        "generate_kg_data": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether to generate knowledge graph data"
+        },
+        "validate_extraction": {
+          "type": "boolean",
+          "default": true,
+          "description": "Whether to validate extracted data against schemas"
+        },
+        "chunk_strategy": {
+          "type": "string",
+          "enum": ["semantic", "fixed", "adaptive"],
+          "default": "semantic",
+          "description": "Strategy for chunking document content"
+        },
+        "embedding_model": {
+          "type": "string",
+          "description": "Embedding model to use for vector generation"
+        }
+      },
+      "additionalProperties": false
+    },
+    "force_reprocess": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to reprocess even if document already exists"
+    }
+  },
+  "required": ["file_path"],
+  "additionalProperties": false
+}

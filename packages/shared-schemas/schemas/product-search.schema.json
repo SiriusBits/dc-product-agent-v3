@@ -1,0 +1,83 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.com/schemas/product-search.schema.json",
+  "title": "Product Search Schema",
+  "type": "object",
+  "properties": {
+    "query": {
+      "type": "string",
+      "maxLength": 500,
+      "description": "Text query for product search"
+    },
+    "family": {
+      "type": "string",
+      "description": "Filter by product family"
+    },
+    "applications": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Filter by applications"
+    },
+    "properties": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/property_filter"
+      },
+      "description": "Filter by property values"
+    },
+    "limit": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 100,
+      "default": 20,
+      "description": "Maximum number of results to return"
+    },
+    "offset": {
+      "type": "integer",
+      "minimum": 0,
+      "default": 0,
+      "description": "Number of results to skip for pagination"
+    },
+    "sort_by": {
+      "type": "string",
+      "enum": ["name", "family", "relevance"],
+      "default": "relevance",
+      "description": "Field to sort results by"
+    },
+    "sort_order": {
+      "type": "string",
+      "enum": ["asc", "desc"],
+      "default": "desc",
+      "description": "Sort order"
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "property_filter": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Property name to filter by"
+        },
+        "operator": {
+          "type": "string",
+          "enum": ["eq", "gt", "lt", "gte", "lte", "range"],
+          "description": "Comparison operator"
+        },
+        "value": {
+          "oneOf": [{ "type": "number" }, { "type": "string" }],
+          "description": "Value to compare against"
+        },
+        "max_value": {
+          "type": "number",
+          "description": "Maximum value for range operator"
+        }
+      },
+      "required": ["name", "operator", "value"],
+      "additionalProperties": false
+    }
+  }
+}

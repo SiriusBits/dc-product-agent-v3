@@ -1,0 +1,104 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.com/schemas/derived-info-with-knowledge-graph-v2.schema.json",
+  "title": "Derived Information + Knowledge Graph Schema (IDs required)",
+  "type": "object",
+  "properties": {
+    "doc_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Same UUID as the base document; join key between layers."
+    },
+    "filename": {
+      "type": "string",
+      "description": "The name of the source PDF file."
+    },
+    "filepath": {
+      "type": ["string", "null"],
+      "description": "Original or canonical path to the related PDF (optional)."
+    },
+    "extraction_metadata": {
+      "type": "object",
+      "properties": {
+        "confidence_scores": {
+          "type": "object",
+          "additional_properties": {
+            "type": "number"
+          },
+          "description": "Per-area confidence (e.g., summary, personas, KG)."
+        },
+        "extractor_version": {
+          "type": "string",
+          "description": "Semantic/string version of the extractor used."
+        },
+        "extraction_date": {
+          "type": "string",
+          "format": "date-time",
+          "description": "RFC 3339 timestamp of when extraction occurred."
+        }
+      },
+      "required": ["extractor_version", "extraction_date"],
+      "description": "Extractor version, date, and confidence scores by area."
+    },
+    "derived_info": {
+      "type": "object",
+      "properties": {
+        "summary": {
+          "type": "string",
+          "description": "Concise product synopsis combining high-level sales + technical context."
+        },
+        "personas": {
+          "type": "object",
+          "properties": {
+            "sales_summary": {
+              "type": "string",
+              "description": "Short pitch for sales users (value props, where it wins)."
+            },
+            "technical_summary": {
+              "type": "string",
+              "description": "Short technical digest for engineers (properties, performance, caveats)."
+            }
+          },
+          "required": ["sales_summary", "technical_summary"],
+          "additional_properties": false,
+          "description": "Audience-targeted summaries (sales vs technical)."
+        },
+        "key_applications": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "unique_items": true,
+          "description": "Key applications distilled to unique values."
+        }
+      },
+      "additional_properties": false,
+      "description": "Summaries and persona-specific blurbs derived from the bulletin."
+    },
+    "knowledge_graph": {
+      "type": "object",
+      "properties": {
+        "entities": {
+          "type": "array",
+          "items": {
+            "$ref": "https://example.com/schemas/common-defs.schema.json#/$defs/entity"
+          },
+          "description": "Typed, deduplicated entities with IDs, canonical names, provenance, and metadata."
+        },
+        "kg_triples": {
+          "type": "array",
+          "items": {
+            "$ref": "https://example.com/schemas/common-defs.schema.json#/$defs/triple"
+          },
+          "description": "Subject–predicate–object facts; objects may be entity refs or property/value pairs."
+        }
+      },
+      "required": ["entities", "kg_triples"],
+      "additional_properties": false,
+      "description": "Entities and triples representing structured relationships."
+    }
+  },
+  "required": ["doc_id", "derived_info", "knowledge_graph"],
+  "additional_properties": false,
+  "description": "Derived analysis layer plus knowledge graph built on top of the base extraction."
+}

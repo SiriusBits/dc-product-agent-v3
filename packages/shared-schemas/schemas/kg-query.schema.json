@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.com/schemas/kg-query.schema.json",
+  "title": "Knowledge Graph Query Schema",
+  "type": "object",
+  "properties": {
+    "entity_name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Name of the entity to query"
+    },
+    "relationship_types": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Filter by specific relationship types"
+    },
+    "max_depth": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 5,
+      "default": 2,
+      "description": "Maximum depth for graph traversal"
+    },
+    "limit": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 100,
+      "default": 20,
+      "description": "Maximum number of related entities to return"
+    },
+    "include_properties": {
+      "type": "boolean",
+      "default": true,
+      "description": "Whether to include entity properties in response"
+    }
+  },
+  "required": ["entity_name"],
+  "additionalProperties": false
+}

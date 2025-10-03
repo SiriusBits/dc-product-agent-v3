@@ -89,3 +89,7 @@ make extract-pdf PDF=path/to/file.pdf  # Extract specific PDF
 - **Docker**: Required for infrastructure services
 - **UV**: Python package manager
 - **pnpm**: Node.js package manager
+
+### MCP Servers
+
+- **Context7**: MCP server for documentation access. ALWAYS refer to the latest documentation using Context7 tools.

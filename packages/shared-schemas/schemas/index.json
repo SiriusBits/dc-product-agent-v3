@@ -1,14 +1,124 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Shared Schemas Index",
-  "description": "Index of all shared JSON schemas",
+  "description": "Index of all shared JSON schemas for Dixie Chemical Product Agent",
   "type": "object",
   "properties": {
     "schemas": {
       "type": "array",
       "items": {
-        "type": "string"
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "file": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
       }
     }
-  }
+  },
+  "schemas": [
+    {
+      "name": "api-error",
+      "file": "api-error.schema.json",
+      "id": "https://example.com/schemas/api-error.schema.json",
+      "title": "API Error Schema",
+      "description": ""
+    },
+    {
+      "name": "api-response",
+      "file": "api-response.schema.json",
+      "id": "https://example.com/schemas/api-response.schema.json",
+      "title": "API Response Schema",
+      "description": ""
+    },
+    {
+      "name": "base-technical-bulletin-llm",
+      "file": "base-technical-bulletin-llm.schema.json",
+      "id": "https://example.com/schemas/base-technical-bulletin.schema.json",
+      "title": "Base Technical Bulletin Extraction Schema",
+      "description": "Source-of-truth extraction from the technical bulletin PDF."
+    },
+    {
+      "name": "chat-request",
+      "file": "chat-request.schema.json",
+      "id": "https://example.com/schemas/chat-request.schema.json",
+      "title": "Chat Request Schema",
+      "description": ""
+    },
+    {
+      "name": "chat-response",
+      "file": "chat-response.schema.json",
+      "id": "https://example.com/schemas/chat-response.schema.json",
+      "title": "Chat Response Schema",
+      "description": ""
+    },
+    {
+      "name": "chunk",
+      "file": "chunk.schema.json",
+      "id": "https://example.com/schemas/chunk.schema.json",
+      "title": "Embedding Chunk Schema",
+      "description": ""
+    },
+    {
+      "name": "common-defs",
+      "file": "common-defs.schema.json",
+      "id": "https://example.com/schemas/common-defs.schema.json",
+      "title": "Common Definitions for Technical Bulletin Schemas",
+      "description": "Shared $defs library for Base and Derived schemas."
+    },
+    {
+      "name": "derived-info",
+      "file": "derived-info.schema.json",
+      "id": "https://example.com/schemas/derived-info-with-knowledge-graph-v2.schema.json",
+      "title": "Derived Information + Knowledge Graph Schema (IDs required)",
+      "description": "Derived analysis layer plus knowledge graph built on top of the base extraction."
+    },
+    {
+      "name": "ingestion-request",
+      "file": "ingestion-request.schema.json",
+      "id": "https://example.com/schemas/ingestion-request.schema.json",
+      "title": "Data Ingestion Request Schema",
+      "description": ""
+    },
+    {
+      "name": "kg-entity",
+      "file": "kg-entity.schema.json",
+      "id": "https://example.com/schemas/kg-entity.schema.json",
+      "title": "KG Entity",
+      "description": ""
+    },
+    {
+      "name": "kg-query",
+      "file": "kg-query.schema.json",
+      "id": "https://example.com/schemas/kg-query.schema.json",
+      "title": "Knowledge Graph Query Schema",
+      "description": ""
+    },
+    {
+      "name": "kg-triple",
+      "file": "kg-triple.schema.json",
+      "id": "https://example.com/schemas/kg-triple.schema.json",
+      "title": "KG Triple",
+      "description": ""
+    },
+    {
+      "name": "product-search",
+      "file": "product-search.schema.json",
+      "id": "https://example.com/schemas/product-search.schema.json",
+      "title": "Product Search Schema",
+      "description": ""
+    }
+  ]
 }
