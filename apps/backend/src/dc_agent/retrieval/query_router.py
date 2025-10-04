@@ -1,478 +1,321 @@
-"""Query analysis and routing for optimal retrieval strategy."""
+"""Query analysis and routing for hybrid retrieval system."""
 
 import logging
 import re
-from dataclasses import dataclass
+from typing import Any
 
 from ..models.api_models import QueryAnalysis, QueryType
 
 logger = logging.getLogger(__name__)
 
 
-@dataclass
-class EntityMention:
-    """Represents a potential entity mention in a query."""
-
-    text: str
-    start: int
-    end: int
-    entity_type: str | None = None
-    confidence: float = 1.0
-
-
-@dataclass
-class QueryIntent:
-    """Represents the intent analysis of a query."""
-
-    primary_intent: QueryType
-    secondary_intents: list[QueryType]
-    confidence: float
-    reasoning: str
-
-
-class QueryAnalyzer:
-    """Analyzes queries to extract entities and determine intent."""
-
-    def __init__(self):
-        """Initialize query analyzer with patterns and rules."""
-        # Product name patterns (common chemical product naming conventions)
-        self.product_patterns = [
-            r"\b[A-Z]{2,4}[-\s]?\d{2,4}[A-Z]?\b",  # ASA-150, DCA 467, etc.
-            r"\b[A-Z]{3,6}\s*\d{2,4}[A-Z]?\b",  # MHHPA 301, etc.
-            r"\b[A-Z]+[-\s]?\d+[A-Z]*\b",  # General alphanumeric products
-        ]
-
-        # Property/specification keywords
-        self.property_keywords = [
-            "viscosity",
-            "density",
-            "temperature",
-            "melting point",
-            "boiling point",
-            "molecular weight",
-            "flash point",
-            "specific gravity",
-            "tensile strength",
-            "modulus",
-            "elongation",
-            "hardness",
-            "tg",
-            "glass transition",
-            "cure time",
-            "pot life",
-            "shelf life",
-            "color",
-            "appearance",
-        ]
-
-        # Application keywords
-        self.application_keywords = [
-            "coating",
-            "adhesive",
-            "composite",
-            "laminate",
-            "encapsulant",
-            "potting",
-            "casting",
-            "molding",
-            "aerospace",
-            "automotive",
-            "electronics",
-            "marine",
-            "construction",
-            "wind energy",
-        ]
-
-        # Comparison keywords
-        self.comparison_keywords = [
-            "compare",
-            "comparison",
-            "versus",
-            "vs",
-            "difference",
-            "better",
-            "alternative",
-            "substitute",
-            "similar",
-            "equivalent",
-            "replace",
-        ]
-
-        # Relationship keywords
-        self.relationship_keywords = [
-            "related",
-            "similar",
-            "compatible",
-            "works with",
-            "used with",
-            "recommended",
-            "suitable",
-            "alternative",
-            "equivalent",
-        ]
-
-        # Question words and patterns
-        self.question_patterns = [
-            r"\bwhat\s+is\b",
-            r"\bhow\s+(?:much|many|long|often)\b",
-            r"\bwhen\s+(?:should|can|do)\b",
-            r"\bwhere\s+(?:can|is|are)\b",
-            r"\bwhy\s+(?:is|are|should|would)\b",
-            r"\bwhich\s+(?:is|are|should|would)\b",
-        ]
-
-    def extract_entities(self, query: str) -> list[EntityMention]:
-        """Extract potential entity mentions from query.
-
-        Args:
-            query: Query text
-
-        Returns:
-            List of entity mentions
-        """
-        entities = []
-        query_lower = query.lower()
-
-        # Extract product names using patterns
-        for pattern in self.product_patterns:
-            matches = re.finditer(pattern, query, re.IGNORECASE)
-            for match in matches:
-                entities.append(
-                    EntityMention(
-                        text=match.group(),
-                        start=match.start(),
-                        end=match.end(),
-                        entity_type="PRODUCT",
-                        confidence=0.8,
-                    )
-                )
-
-        # Extract property mentions
-        for prop in self.property_keywords:
-            if prop in query_lower:
-                start = query_lower.find(prop)
-                entities.append(
-                    EntityMention(
-                        text=prop,
-                        start=start,
-                        end=start + len(prop),
-                        entity_type="PROPERTY",
-                        confidence=0.9,
-                    )
-                )
-
-        # Extract application mentions
-        for app in self.application_keywords:
-            if app in query_lower:
-                start = query_lower.find(app)
-                entities.append(
-                    EntityMention(
-                        text=app,
-                        start=start,
-                        end=start + len(app),
-                        entity_type="APPLICATION",
-                        confidence=0.9,
-                    )
-                )
-
-        # Remove overlapping entities (keep highest confidence)
-        entities = self._remove_overlapping_entities(entities)
-
-        return entities
-
-    def analyze_intent(self, query: str, entities: list[EntityMention]) -> QueryIntent:
-        """Analyze query intent based on text patterns and entities.
-
-        Args:
-            query: Query text
-            entities: Extracted entities
-
-        Returns:
-            Query intent analysis
-        """
-        query_lower = query.lower()
-
-        # Count different types of indicators
-        comparison_score = sum(
-            1 for keyword in self.comparison_keywords if keyword in query_lower
-        )
-        relationship_score = sum(
-            1 for keyword in self.relationship_keywords if keyword in query_lower
-        )
-
-        # Check for question patterns
-        question_score = sum(
-            1 for pattern in self.question_patterns if re.search(pattern, query_lower)
-        )
-
-        # Analyze entity types
-        product_entities = [e for e in entities if e.entity_type == "PRODUCT"]
-        property_entities = [e for e in entities if e.entity_type == "PROPERTY"]
-        application_entities = [e for e in entities if e.entity_type == "APPLICATION"]
-
-        # Determine primary intent
-        primary_intent = QueryType.GENERAL
-        confidence = 0.5
-        reasoning = "Default classification"
-        secondary_intents = []
-
-        # Comparison queries
-        if comparison_score > 0 and len(product_entities) >= 2:
-            primary_intent = QueryType.COMPARISON
-            confidence = 0.9
-            reasoning = (
-                f"Found comparison keywords and {len(product_entities)} products"
-            )
-        elif comparison_score > 0 and len(product_entities) == 1:
-            primary_intent = QueryType.COMPARISON
-            confidence = 0.7
-            reasoning = "Found comparison keywords with one product"
-            secondary_intents.append(QueryType.RELATIONSHIP)
-
-        # Relationship queries
-        elif relationship_score > 0:
-            primary_intent = QueryType.RELATIONSHIP
-            confidence = 0.8
-            reasoning = "Found relationship keywords"
-            if len(product_entities) > 0:
-                secondary_intents.append(QueryType.SPECIFICATION)
-
-        # Specification queries
-        elif len(property_entities) > 0 and len(product_entities) > 0:
-            primary_intent = QueryType.SPECIFICATION
-            confidence = 0.9
-            reasoning = f"Found {len(property_entities)} properties and {len(product_entities)} products"
-        elif len(property_entities) > 0:
-            primary_intent = QueryType.SPECIFICATION
-            confidence = 0.7
-            reasoning = f"Found {len(property_entities)} properties"
-            secondary_intents.append(QueryType.GENERAL)
-
-        # Application queries
-        elif len(application_entities) > 0:
-            primary_intent = QueryType.APPLICATION
-            confidence = 0.8
-            reasoning = f"Found {len(application_entities)} applications"
-            if len(product_entities) > 0:
-                secondary_intents.append(QueryType.SPECIFICATION)
-
-        # Product-specific queries
-        elif len(product_entities) > 0:
-            if question_score > 0:
-                primary_intent = QueryType.SPECIFICATION
-                confidence = 0.8
-                reasoning = f"Found question about {len(product_entities)} products"
-            else:
-                primary_intent = QueryType.GENERAL
-                confidence = 0.6
-                reasoning = (
-                    f"Found {len(product_entities)} products without clear intent"
-                )
-                secondary_intents.extend(
-                    [QueryType.SPECIFICATION, QueryType.APPLICATION]
-                )
-
-        # General queries with questions
-        elif question_score > 0:
-            primary_intent = QueryType.GENERAL
-            confidence = 0.7
-            reasoning = "Found question patterns"
-
-        return QueryIntent(
-            primary_intent=primary_intent,
-            secondary_intents=secondary_intents,
-            confidence=confidence,
-            reasoning=reasoning,
-        )
-
-    def _remove_overlapping_entities(
-        self, entities: list[EntityMention]
-    ) -> list[EntityMention]:
-        """Remove overlapping entity mentions, keeping highest confidence."""
-        if not entities:
-            return entities
-
-        # Sort by start position
-        entities.sort(key=lambda e: e.start)
-
-        filtered = []
-        for entity in entities:
-            # Check if this entity overlaps with any already filtered entity
-            overlaps = False
-            for existing in filtered:
-                if entity.start < existing.end and entity.end > existing.start:
-                    # Overlapping - keep the one with higher confidence
-                    if entity.confidence > existing.confidence:
-                        filtered.remove(existing)
-                        break
-                    else:
-                        overlaps = True
-                        break
-
-            if not overlaps:
-                filtered.append(entity)
-
-        return filtered
-
-
 class QueryRouter:
-    """Routes queries to optimal retrieval strategies based on analysis."""
+    """Analyzes queries and determines optimal retrieval strategies."""
 
     def __init__(self):
-        """Initialize query router."""
-        self.analyzer = QueryAnalyzer()
+        """Initialize query router with pattern matching rules."""
+        # Patterns for different query types
+        self.specification_patterns = [
+            r"what\s+is\s+the\s+(\w+)\s+of\s+(\w+)",
+            r"(\w+)\s+of\s+(\w+)",
+            r"properties\s+of\s+(\w+)",
+            r"specifications?\s+for\s+(\w+)",
+            r"viscosity|density|temperature|melting\s+point|boiling\s+point",
+            r"cas\s+number|molecular\s+weight|formula",
+        ]
 
-        # Default retrieval weights for different query types
-        self.default_weights = {
-            QueryType.SPECIFICATION: {"vector": 0.3, "kg": 0.7},
-            QueryType.APPLICATION: {"vector": 0.6, "kg": 0.4},
-            QueryType.COMPARISON: {"vector": 0.4, "kg": 0.6},
-            QueryType.RELATIONSHIP: {"vector": 0.2, "kg": 0.8},
-            QueryType.GENERAL: {"vector": 0.7, "kg": 0.3},
-        }
+        self.application_patterns = [
+            r"what\s+is\s+(\w+)\s+used\s+for",
+            r"applications?\s+of\s+(\w+)",
+            r"uses?\s+of\s+(\w+)",
+            r"where\s+can\s+i\s+use\s+(\w+)",
+            r"coatings?|adhesives?|composites?|electronics?",
+            r"automotive|aerospace|marine|construction",
+        ]
+
+        self.comparison_patterns = [
+            r"compare\s+(\w+)\s+(?:and|vs|versus)\s+(\w+)",
+            r"difference\s+between\s+(\w+)\s+and\s+(\w+)",
+            r"(\w+)\s+vs\s+(\w+)",
+            r"which\s+is\s+better\s+(\w+)\s+or\s+(\w+)",
+            r"alternatives?\s+to\s+(\w+)",
+        ]
+
+        self.relationship_patterns = [
+            r"similar\s+to\s+(\w+)",
+            r"related\s+to\s+(\w+)",
+            r"like\s+(\w+)",
+            r"equivalent\s+to\s+(\w+)",
+            r"substitute\s+for\s+(\w+)",
+            r"family\s+of\s+(\w+)",
+        ]
+
+        # Product name patterns (common chemical product naming)
+        self.product_patterns = [
+            r"\b[A-Z]{2,4}\s*\d+[A-Z]*\b",  # ASA 150, DCA 467, etc.
+            r"\b[A-Z]+\s*-\s*\d+[A-Z]*\b",  # AP-6G, etc.
+            r"\b[A-Z]{3,}\b",  # DDSA, MHHPA, etc.
+        ]
 
     def analyze_query(self, query: str) -> QueryAnalysis:
         """Analyze query and determine optimal retrieval strategy.
-
+        
         Args:
-            query: Query text
-
+            query: User query string
+            
         Returns:
-            Query analysis with routing strategy
+            Query analysis with type, entities, and strategy
         """
         try:
-            # Extract entities
-            entities = self.analyzer.extract_entities(query)
+            query_lower = query.lower().strip()
 
-            # Analyze intent
-            intent = self.analyzer.analyze_intent(query, entities)
+            # Extract potential product names/entities
+            entities = self._extract_entities(query)
 
-            # Get retrieval weights
-            weights = self.get_retrieval_weights(intent)
+            # Determine query type
+            query_type = self._classify_query_type(query_lower)
 
-            # Create suggested strategy
-            suggested_strategy = {
-                "vector_weight": weights["vector"],
-                "kg_weight": weights["kg"],
-                "max_results": self._get_max_results(intent.primary_intent),
-                "collections": self._get_target_collections(
-                    intent.primary_intent, entities
-                ),
-                "kg_relationship_types": self._get_kg_relationship_types(
-                    intent.primary_intent
-                ),
-                "reasoning": intent.reasoning,
-            }
+            # Calculate confidence based on pattern matches
+            confidence = self._calculate_confidence(query_lower, query_type)
 
-            return QueryAnalysis(
-                query_type=intent.primary_intent,
-                entities=[e.text for e in entities],
-                intent_confidence=intent.confidence,
-                suggested_strategy=suggested_strategy,
+            # Generate retrieval strategy
+            strategy = self._generate_strategy(query_type, entities, confidence)
+
+            analysis = QueryAnalysis(
+                query_type=query_type,
+                entities=entities,
+                intent_confidence=confidence,
+                suggested_strategy=strategy
             )
 
+            logger.info(f"Query analysis: type={query_type}, entities={entities}, confidence={confidence:.2f}")
+            return analysis
+
         except Exception as e:
-            logger.error(f"Failed to analyze query: {e}")
+            logger.error(f"Failed to analyze query '{query}': {e}")
             # Return default analysis
             return QueryAnalysis(
                 query_type=QueryType.GENERAL,
                 entities=[],
                 intent_confidence=0.5,
-                suggested_strategy={
-                    "vector_weight": 0.7,
-                    "kg_weight": 0.3,
-                    "max_results": 10,
-                    "collections": ["technical_bulletins"],
-                    "kg_relationship_types": None,
-                    "reasoning": "Default fallback due to analysis error",
-                },
+                suggested_strategy={"vector_weight": 0.7, "kg_weight": 0.3}
             )
 
-    def get_retrieval_weights(self, intent: QueryIntent) -> dict[str, float]:
-        """Get optimal retrieval weights for a query intent.
-
+    def get_retrieval_weights(self, analysis: QueryAnalysis) -> dict[str, float]:
+        """Get optimal weights for vector vs KG retrieval based on analysis.
+        
         Args:
-            intent: Query intent analysis
-
+            analysis: Query analysis result
+            
         Returns:
-            Dictionary with vector and kg weights
+            Dictionary with vector_weight and kg_weight
         """
-        base_weights = self.default_weights.get(
-            intent.primary_intent, {"vector": 0.5, "kg": 0.5}
-        )
+        try:
+            # Base weights by query type
+            weight_map = {
+                QueryType.SPECIFICATION: {"vector": 0.8, "kg": 0.2},
+                QueryType.APPLICATION: {"vector": 0.6, "kg": 0.4},
+                QueryType.COMPARISON: {"vector": 0.4, "kg": 0.6},
+                QueryType.RELATIONSHIP: {"vector": 0.2, "kg": 0.8},
+                QueryType.GENERAL: {"vector": 0.6, "kg": 0.4},
+            }
 
-        # Adjust weights based on confidence and secondary intents
-        vector_weight = base_weights["vector"]
-        kg_weight = base_weights["kg"]
+            base_weights = weight_map.get(analysis.query_type, {"vector": 0.5, "kg": 0.5})
 
-        # Lower confidence means more balanced approach
-        if intent.confidence < 0.7:
-            # Move towards more balanced weights
-            vector_weight = 0.4 + (vector_weight - 0.5) * 0.6
-            kg_weight = 0.4 + (kg_weight - 0.5) * 0.6
+            # Adjust based on confidence
+            confidence_factor = analysis.intent_confidence
 
-        # Adjust for secondary intents
-        if QueryType.SPECIFICATION in intent.secondary_intents:
-            kg_weight += 0.1
-            vector_weight -= 0.1
+            # Adjust based on number of entities found
+            entity_factor = min(len(analysis.entities) / 3.0, 1.0)  # More entities favor KG
 
-        if QueryType.APPLICATION in intent.secondary_intents:
-            vector_weight += 0.1
-            kg_weight -= 0.1
+            # Calculate final weights
+            kg_boost = entity_factor * 0.2  # Up to 20% boost for KG with more entities
+            vector_weight = base_weights["vector"] * confidence_factor + (1 - confidence_factor) * 0.5
+            kg_weight = base_weights["kg"] * confidence_factor + (1 - confidence_factor) * 0.5 + kg_boost
 
-        # Ensure weights sum to 1.0
-        total = vector_weight + kg_weight
-        if total > 0:
-            vector_weight /= total
-            kg_weight /= total
+            # Normalize to ensure they sum to 1
+            total = vector_weight + kg_weight
+            if total > 0:
+                vector_weight /= total
+                kg_weight /= total
+            else:
+                vector_weight, kg_weight = 0.5, 0.5
 
-        return {
-            "vector": max(0.1, min(0.9, vector_weight)),
-            "kg": max(0.1, min(0.9, kg_weight)),
-        }
+            return {
+                "vector_weight": round(vector_weight, 2),
+                "kg_weight": round(kg_weight, 2)
+            }
 
-    def _get_max_results(self, query_type: QueryType) -> int:
-        """Get maximum results for query type."""
-        result_limits = {
-            QueryType.SPECIFICATION: 15,
-            QueryType.APPLICATION: 20,
-            QueryType.COMPARISON: 10,
-            QueryType.RELATIONSHIP: 25,
-            QueryType.GENERAL: 10,
-        }
-        return result_limits.get(query_type, 10)
+        except Exception as e:
+            logger.error(f"Failed to calculate retrieval weights: {e}")
+            return {"vector_weight": 0.5, "kg_weight": 0.5}
 
-    def _get_target_collections(
-        self, query_type: QueryType, entities: list[EntityMention]
-    ) -> list[str]:
-        """Get target collections for search based on query type and entities."""
-        # Default collections
-        collections = ["technical_bulletins"]
+    def _extract_entities(self, query: str) -> list[str]:
+        """Extract potential product names and entities from query."""
+        entities = []
 
-        # Add specific collections based on query type
-        if query_type == QueryType.APPLICATION:
-            collections.extend(["application_guides"])
-        elif query_type == QueryType.SPECIFICATION:
-            collections.extend(["product_specifications"])
+        try:
+            # Find product name patterns
+            for pattern in self.product_patterns:
+                matches = re.findall(pattern, query, re.IGNORECASE)
+                entities.extend(matches)
 
-        # Add collections based on entities
-        has_safety_terms = any(
-            term in " ".join([e.text.lower() for e in entities])
-            for term in ["safety", "toxicity", "hazard", "msds", "sds"]
-        )
+            # Find quoted entities
+            quoted_matches = re.findall(r'"([^"]+)"', query)
+            entities.extend(quoted_matches)
 
-        if has_safety_terms:
-            collections.append("safety_data_sheets")
+            # Find capitalized words that might be product names
+            capitalized_words = re.findall(r'\b[A-Z][A-Z0-9-]*\b', query)
+            for word in capitalized_words:
+                if len(word) >= 2 and word not in ["AND", "OR", "NOT", "THE", "FOR", "WITH"]:
+                    entities.append(word)
 
-        return list(set(collections))  # Remove duplicates
+            # Remove duplicates and clean up
+            entities = list(set(entities))
+            entities = [e.strip() for e in entities if len(e.strip()) >= 2]
 
-    def _get_kg_relationship_types(self, query_type: QueryType) -> list[str] | None:
-        """Get relevant relationship types for knowledge graph queries."""
-        relationship_filters = {
-            QueryType.SPECIFICATION: ["has_property", "measured_as"],
-            QueryType.APPLICATION: ["used_in", "suitable_for", "recommended_for"],
-            QueryType.COMPARISON: ["similar_to", "alternative_to", "competes_with"],
-            QueryType.RELATIONSHIP: None,  # No filter - get all relationships
-            QueryType.GENERAL: None,
-        }
-        return relationship_filters.get(query_type)
+            return entities[:10]  # Limit to 10 entities
+
+        except Exception as e:
+            logger.error(f"Failed to extract entities from query: {e}")
+            return []
+
+    def _classify_query_type(self, query_lower: str) -> QueryType:
+        """Classify the query type based on patterns."""
+        try:
+            # Check specification patterns
+            for pattern in self.specification_patterns:
+                if re.search(pattern, query_lower):
+                    return QueryType.SPECIFICATION
+
+            # Check application patterns
+            for pattern in self.application_patterns:
+                if re.search(pattern, query_lower):
+                    return QueryType.APPLICATION
+
+            # Check comparison patterns
+            for pattern in self.comparison_patterns:
+                if re.search(pattern, query_lower):
+                    return QueryType.COMPARISON
+
+            # Check relationship patterns
+            for pattern in self.relationship_patterns:
+                if re.search(pattern, query_lower):
+                    return QueryType.RELATIONSHIP
+
+            # Default to general
+            return QueryType.GENERAL
+
+        except Exception as e:
+            logger.error(f"Failed to classify query type: {e}")
+            return QueryType.GENERAL
+
+    def _calculate_confidence(self, query_lower: str, query_type: QueryType) -> float:
+        """Calculate confidence score for the query classification."""
+        try:
+            confidence = 0.5  # Base confidence
+
+            # Get relevant patterns for the classified type
+            patterns = []
+            if query_type == QueryType.SPECIFICATION:
+                patterns = self.specification_patterns
+            elif query_type == QueryType.APPLICATION:
+                patterns = self.application_patterns
+            elif query_type == QueryType.COMPARISON:
+                patterns = self.comparison_patterns
+            elif query_type == QueryType.RELATIONSHIP:
+                patterns = self.relationship_patterns
+
+            # Count pattern matches
+            matches = 0
+            for pattern in patterns:
+                if re.search(pattern, query_lower):
+                    matches += 1
+
+            # Boost confidence based on matches
+            if matches > 0:
+                confidence = min(0.6 + (matches * 0.2), 1.0)
+
+            # Boost for specific keywords
+            high_confidence_keywords = {
+                QueryType.SPECIFICATION: ["viscosity", "density", "properties", "specifications", "cas"],
+                QueryType.APPLICATION: ["applications", "used for", "uses", "coatings", "adhesives"],
+                QueryType.COMPARISON: ["compare", "vs", "versus", "difference", "better"],
+                QueryType.RELATIONSHIP: ["similar", "related", "like", "equivalent", "substitute"],
+            }
+
+            keywords = high_confidence_keywords.get(query_type, [])
+            for keyword in keywords:
+                if keyword in query_lower:
+                    confidence = min(confidence + 0.1, 1.0)
+
+            return round(confidence, 2)
+
+        except Exception as e:
+            logger.error(f"Failed to calculate confidence: {e}")
+            return 0.5
+
+    def _generate_strategy(self, query_type: QueryType, entities: list[str], confidence: float) -> dict[str, Any]:
+        """Generate retrieval strategy based on analysis."""
+        try:
+            strategy = {
+                "query_type": query_type.value,
+                "parallel_search": True,
+                "fusion_algorithm": "weighted_score",
+            }
+
+            # Add type-specific parameters
+            if query_type == QueryType.SPECIFICATION:
+                strategy.update({
+                    "vector_collections": ["technical_bulletins", "properties"],
+                    "kg_entity_types": ["PRODUCT", "PROPERTY"],
+                    "kg_relationship_types": ["has_property", "measured_as"],
+                    "result_limit": 15,
+                })
+            elif query_type == QueryType.APPLICATION:
+                strategy.update({
+                    "vector_collections": ["technical_bulletins", "applications"],
+                    "kg_entity_types": ["PRODUCT", "APPLICATION"],
+                    "kg_relationship_types": ["used_in", "suitable_for"],
+                    "result_limit": 20,
+                })
+            elif query_type == QueryType.COMPARISON:
+                strategy.update({
+                    "vector_collections": ["technical_bulletins"],
+                    "kg_entity_types": ["PRODUCT"],
+                    "kg_relationship_types": ["similar_to", "competes_with", "has_property"],
+                    "result_limit": 25,
+                    "kg_max_depth": 2,
+                })
+            elif query_type == QueryType.RELATIONSHIP:
+                strategy.update({
+                    "vector_collections": ["technical_bulletins"],
+                    "kg_entity_types": ["PRODUCT", "FAMILY"],
+                    "kg_relationship_types": ["similar_to", "belongs_to_family", "manufactured_by"],
+                    "result_limit": 30,
+                    "kg_max_depth": 3,
+                })
+            else:  # GENERAL
+                strategy.update({
+                    "vector_collections": ["technical_bulletins"],
+                    "kg_entity_types": None,  # All types
+                    "kg_relationship_types": None,  # All types
+                    "result_limit": 20,
+                })
+
+            # Add confidence-based adjustments
+            if confidence > 0.8:
+                strategy["result_limit"] = int(strategy["result_limit"] * 0.8)  # Fewer results for high confidence
+            elif confidence < 0.4:
+                strategy["result_limit"] = int(strategy["result_limit"] * 1.2)  # More results for low confidence
+
+            # Add entity-specific parameters
+            if entities:
+                strategy["target_entities"] = entities
+                strategy["entity_boost"] = True
+
+            return strategy
+
+        except Exception as e:
+            logger.error(f"Failed to generate strategy: {e}")
+            return {"query_type": "general", "parallel_search": True}
