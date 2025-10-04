@@ -352,14 +352,14 @@ class HybridRetrievalService:
             remaining_slots = max_results
 
             # First, take top result from each source
-            for source, source_results in source_groups.items():
+            for _source, source_results in source_groups.items():
                 if remaining_slots > 0 and source_results:
                     diverse_results.append(source_results[0])
                     remaining_slots -= 1
 
             # Fill remaining slots with highest scoring results
             remaining_results = []
-            for source, source_results in source_groups.items():
+            for _source, source_results in source_groups.items():
                 remaining_results.extend(
                     source_results[1:]
                 )  # Skip first (already added)

@@ -343,7 +343,7 @@ class IngestionService:
         try:
             collections = await self.vector_service.list_collections()
 
-            total_documents = 0
+
             total_chunks = 0
             collection_stats = []
 

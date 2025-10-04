@@ -137,7 +137,7 @@ class ConnectionPool:
                 # Try to close the connection anyway
                 try:
                     await self._close_connection(conn)
-                except:
+                except Exception:
                     pass
 
     async def close(self) -> None:
