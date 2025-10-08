@@ -121,18 +121,18 @@
     - Create input sanitization and security headers
     - _Requirements: 6.4_
 
-- [ ] 8. Implement data ingestion and processing pipeline
-  - [ ] 8.1 Create document processing and embedding generation
+- [x] 8. Implement data ingestion and processing pipeline
+  - [x] 8.1 Create document processing and embedding generation
     - Implement chunking strategies for different document types
     - Create embedding generation using external Ollama models
     - Add metadata extraction and enrichment
     - _Requirements: 3.3, 3.4, 3.5_
-  - [ ] 8.2 Implement knowledge graph data ingestion
+  - [x] 8.2 Implement knowledge graph data ingestion
     - Create entity and relationship extraction from processed documents
     - Implement graph data validation and deduplication
     - Add provenance tracking and source attribution
     - _Requirements: 4.3, 4.5, 4.6_
-  - [ ] 8.3 Create automated ingestion workflows
+  - [x] 8.3 Create automated ingestion workflows
     - Implement n8n workflows for automated data processing
     - Create data refresh and reindexing automation
     - Add quality monitoring and validation workflows

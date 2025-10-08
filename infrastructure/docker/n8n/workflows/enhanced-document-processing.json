@@ -1,0 +1,382 @@
+{
+  "name": "Enhanced Document Processing Workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "process-document",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "webhook-trigger",
+      "name": "Document Processing Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [240, 400],
+      "webhookId": "enhanced-document-processing"
+    },
+    {
+      "parameters": {
+        "functionCode": "// Validate and prepare document processing request\nconst items = $input.all();\nconst requestData = items[0].json;\n\n// Validate required fields\nif (!requestData.filename && !requestData.document_data) {\n  throw new Error('Missing required fields: filename or document_data');\n}\n\n// Prepare processing configuration\nconst config = {\n  filename: requestData.filename,\n  document_data: requestData.document_data,\n  file_path: requestData.file_path,\n  processing_id: `proc_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,\n  \n  // Processing options\n  chunking_strategy: requestData.chunking_strategy || 'semantic',\n  chunk_size: requestData.chunk_size || 1000,\n  chunk_overlap: requestData.chunk_overlap || 200,\n  generate_embeddings: requestData.generate_embeddings !== false,\n  ingest_to_vector: requestData.ingest_to_vector !== false,\n  ingest_to_kg: requestData.ingest_to_kg !== false,\n  \n  // Collection settings\n  collection_name: requestData.collection_name || 'technical_bulletins',\n  overwrite: requestData.overwrite || false,\n  \n  // Metadata\n  status: 'processing',\n  started_at: new Date().toISOString(),\n  source: 'n8n_workflow'\n};\n\nreturn { json: config };"
+      },
+      "id": "validate-and-prepare",
+      "name": "Validate and Prepare",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [460, 400]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "has-document-data",
+              "leftValue": "={{$json.document_data}}",
+              "rightValue": "",
+              "operator": {
+                "type": "object",
+                "operation": "notEmpty"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "check-document-type",
+      "name": "Check Document Type",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [680, 400]
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:8000/api/ingest/document",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "X-Processing-ID",
+              "value": "={{$json.processing_id}}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "document",
+              "value": "={{$json.document_data}}"
+            },
+            {
+              "name": "collection_name",
+              "value": "={{$json.collection_name}}"
+            },
+            {
+              "name": "overwrite",
+              "value": "={{$json.overwrite}}"
+            },
+            {
+              "name": "chunking_strategy",
+              "value": "={{$json.chunking_strategy}}"
+            },
+            {
+              "name": "chunk_size",
+              "value": "={{$json.chunk_size}}"
+            },
+            {
+              "name": "chunk_overlap",
+              "value": "={{$json.chunk_overlap}}"
+            },
+            {
+              "name": "generate_embeddings",
+              "value": "={{$json.generate_embeddings}}"
+            },
+            {
+              "name": "ingest_to_kg",
+              "value": "={{$json.ingest_to_kg}}"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 600000
+        }
+      },
+      "id": "process-extracted-document",
+      "name": "Process Extracted Document",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [900, 300]
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:8000/api/extract/pdf",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "X-Processing-ID",
+              "value": "={{$json.processing_id}}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "filename",
+              "value": "={{$json.filename}}"
+            },
+            {
+              "name": "file_path",
+              "value": "={{$json.file_path}}"
+            },
+            {
+              "name": "processing_id",
+              "value": "={{$json.processing_id}}"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 600000
+        }
+      },
+      "id": "extract-and-process-pdf",
+      "name": "Extract and Process PDF",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [900, 500]
+    },
+    {
+      "parameters": {
+        "functionCode": "// Process the ingestion results and prepare response\nconst items = $input.all();\nconst result = items[0].json;\n\n// Extract key metrics\nconst response = {\n  processing_id: result.processing_id || $('Validate and Prepare').first().json.processing_id,\n  status: result.success ? 'completed' : 'failed',\n  \n  // Document processing results\n  document_id: result.document_id,\n  filename: result.filename,\n  collection: result.collection,\n  \n  // Vector processing results\n  chunks_created: result.chunks_created || 0,\n  chunking_strategy: result.chunking_strategy,\n  embeddings_generated: result.embeddings_generated || false,\n  \n  // Knowledge graph results\n  kg_ingestion: result.kg_ingestion || null,\n  \n  // Metadata enrichment\n  enrichment_summary: result.enrichment_summary || null,\n  \n  // Processing metadata\n  processing_time_ms: result.total_processing_time_ms || 0,\n  completed_at: new Date().toISOString(),\n  \n  // Quality metrics\n  quality_scores: {\n    completeness: result.enrichment_summary?.completeness_score || 0,\n    extraction_confidence: result.enrichment_summary?.extraction_confidence || 0,\n    data_richness: result.enrichment_summary?.data_richness_score || 0\n  }\n};\n\n// Add error information if processing failed\nif (!result.success && result.error) {\n  response.error = result.error;\n}\n\nreturn { json: response };"
+      },
+      "id": "format-response",
+      "name": "Format Response",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [1120, 400]
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:8000/api/webhooks/processing-complete",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "processing_result",
+              "value": "={{$json}}"
+            }
+          ]
+        },
+        "options": {
+          "ignoreHttpStatusErrors": true
+        }
+      },
+      "id": "notify-completion",
+      "name": "Notify Completion",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [1340, 400]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{$json}}"
+      },
+      "id": "webhook-response",
+      "name": "Return Response",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [1560, 400]
+    },
+    {
+      "parameters": {
+        "functionCode": "// Handle processing errors\nconst error = $input.first().json;\nconst originalData = $('Validate and Prepare').first().json;\n\nconst errorResponse = {\n  processing_id: originalData.processing_id,\n  status: 'error',\n  error_message: error.message || error.error || 'Unknown processing error',\n  error_details: error,\n  failed_at: new Date().toISOString(),\n  \n  // Include original request data for debugging\n  original_request: {\n    filename: originalData.filename,\n    chunking_strategy: originalData.chunking_strategy,\n    collection_name: originalData.collection_name\n  }\n};\n\nreturn { json: errorResponse };"
+      },
+      "id": "handle-error",
+      "name": "Handle Processing Error",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [1120, 600]
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:8000/api/webhooks/processing-error",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "error_result",
+              "value": "={{$json}}"
+            }
+          ]
+        },
+        "options": {
+          "ignoreHttpStatusErrors": true
+        }
+      },
+      "id": "notify-error",
+      "name": "Notify Error",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [1340, 600]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{$json}}",
+        "responseCode": 500
+      },
+      "id": "error-response",
+      "name": "Return Error Response",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [1560, 600]
+    }
+  ],
+  "connections": {
+    "Document Processing Webhook": {
+      "main": [
+        [
+          {
+            "node": "Validate and Prepare",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validate and Prepare": {
+      "main": [
+        [
+          {
+            "node": "Check Document Type",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Document Type": {
+      "main": [
+        [
+          {
+            "node": "Process Extracted Document",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Extract and Process PDF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Process Extracted Document": {
+      "main": [
+        [
+          {
+            "node": "Format Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract and Process PDF": {
+      "main": [
+        [
+          {
+            "node": "Format Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Response": {
+      "main": [
+        [
+          {
+            "node": "Notify Completion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Notify Completion": {
+      "main": [
+        [
+          {
+            "node": "Return Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "error-handling-workflow"
+  },
+  "versionId": "1",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "id": "enhanced-document-processing",
+  "tags": [
+    {
+      "createdAt": "2024-01-01T00:00:00.000Z",
+      "updatedAt": "2024-01-01T00:00:00.000Z",
+      "id": "document-processing",
+      "name": "Document Processing"
+    },
+    {
+      "createdAt": "2024-01-01T00:00:00.000Z",
+      "updatedAt": "2024-01-01T00:00:00.000Z",
+      "id": "automation",
+      "name": "Automation"
+    }
+  ]
+}

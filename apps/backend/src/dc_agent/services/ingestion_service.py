@@ -2,10 +2,13 @@
 
 import logging
 import time
-from typing import Any
+from typing import Any, Optional
 
 from ..models.api_models import RetrievalResult
 from ..models.product_models import BaseExtractionDocument
+from .document_processor import ChunkingStrategy, DocumentProcessor, EmbeddingConfig
+from .kg_ingestion_service import KGIngestionService
+from .metadata_enrichment import MetadataEnrichmentService
 from .vector_service import VectorService
 
 logger = logging.getLogger(__name__)
@@ -14,19 +17,34 @@ logger = logging.getLogger(__name__)
 class IngestionService:
     """Service for document ingestion and processing."""
 
-    def __init__(self, vector_service: VectorService):
+    def __init__(
+        self, 
+        vector_service: VectorService,
+        kg_ingestion_service: Optional[KGIngestionService] = None,
+        embedding_config: Optional[EmbeddingConfig] = None,
+    ):
         """Initialize ingestion service.
 
         Args:
             vector_service: Vector service for document storage
+            kg_ingestion_service: Knowledge graph ingestion service
+            embedding_config: Configuration for embedding generation
         """
         self.vector_service = vector_service
+        self.kg_ingestion_service = kg_ingestion_service
+        self.document_processor = DocumentProcessor(embedding_config)
+        self.metadata_enrichment = MetadataEnrichmentService()
 
     async def ingest_extraction_document(
         self,
         document: BaseExtractionDocument,
         collection_name: str = "technical_bulletins",
         overwrite: bool = False,
+        chunking_strategy: ChunkingStrategy = ChunkingStrategy.SEMANTIC,
+        chunk_size: int = 1000,
+        chunk_overlap: int = 200,
+        generate_embeddings: bool = True,
+        ingest_to_kg: bool = True,
     ) -> dict[str, Any]:
         """Ingest a pre-extracted document into the vector database.
 
@@ -34,6 +52,11 @@ class IngestionService:
             document: Extracted document to ingest
             collection_name: Target collection
             overwrite: Whether to overwrite existing document
+            chunking_strategy: Strategy for document chunking
+            chunk_size: Maximum chunk size in characters
+            chunk_overlap: Overlap between chunks in characters
+            generate_embeddings: Whether to generate embeddings
+            ingest_to_kg: Whether to ingest entities to knowledge graph
 
         Returns:
             Ingestion results
@@ -66,12 +89,60 @@ class IngestionService:
                     f"Deleted existing document {document.doc_id} for overwrite"
                 )
 
-            # Ingest the document
-            result = await self.vector_service.ingest_document(
-                document=document,
-                collection_name=collection_name,
-                chunk_strategy="semantic",
+            # Process document with enhanced chunking and embedding generation
+            async with self.document_processor as processor:
+                processed_doc = await processor.process_document(
+                    document=document,
+                    chunking_strategy=chunking_strategy,
+                    chunk_size=chunk_size,
+                    chunk_overlap=chunk_overlap,
+                    generate_embeddings=generate_embeddings,
+                )
+            
+            # Enrich metadata
+            enriched_metadata = self.metadata_enrichment.enrich_document_metadata(document)
+            
+            # Add enriched metadata to chunks
+            for chunk in processed_doc.chunks:
+                chunk.metadata.update({
+                    "completeness_score": enriched_metadata.completeness_score,
+                    "extraction_confidence": enriched_metadata.extraction_confidence,
+                    "data_richness_score": enriched_metadata.data_richness_score,
+                    "content_categories": enriched_metadata.content_categories,
+                    "property_categories": enriched_metadata.property_categories,
+                    "application_domains": enriched_metadata.application_domains,
+                    "keywords": enriched_metadata.keywords[:10],  # Limit for storage
+                })
+            
+            # Ingest processed chunks
+            success = await self.vector_service.vector_store.add_documents(
+                collection_name, processed_doc.chunks
             )
+            
+            # Ingest to knowledge graph if requested and service available
+            kg_result = None
+            if ingest_to_kg and self.kg_ingestion_service:
+                try:
+                    kg_result = await self.kg_ingestion_service.ingest_document_entities(
+                        document=document,
+                        validate_entities=True,
+                        deduplicate=True,
+                    )
+                except Exception as e:
+                    logger.error(f"Failed to ingest to knowledge graph: {e}")
+                    kg_result = {"success": False, "error": str(e)}
+            
+            result = {
+                "success": success,
+                "document_id": document.doc_id,
+                "filename": document.filename,
+                "collection": collection_name,
+                "chunks_created": len(processed_doc.chunks),
+                "chunking_strategy": chunking_strategy.value,
+                "embeddings_generated": generate_embeddings,
+                "enrichment_summary": self.metadata_enrichment.get_enrichment_summary(enriched_metadata),
+                "kg_ingestion": kg_result,
+            }
 
             processing_time = time.time() - start_time
             result["total_processing_time_ms"] = int(processing_time * 1000)

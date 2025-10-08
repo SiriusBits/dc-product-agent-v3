@@ -1,0 +1,296 @@
+{
+  "name": "Enhanced Data Quality Monitoring Workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "value": "0 */4 * * *"
+            }
+          ]
+        }
+      },
+      "id": "schedule-trigger",
+      "name": "Every 4 Hours",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [240, 400]
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:8000/api/health/vector",
+        "options": {}
+      },
+      "id": "check-vector-health",
+      "name": "Check Vector DB Health",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [460, 200]
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:8000/api/health/kg",
+        "options": {}
+      },
+      "id": "check-kg-health",
+      "name": "Check KG Health",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [460, 400]
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:8000/api/ingestion/stats",
+        "options": {}
+      },
+      "id": "get-ingestion-stats",
+      "name": "Get Ingestion Statistics",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [460, 600]
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:8000/api/kg/validate",
+        "options": {}
+      },
+      "id": "validate-kg-integrity",
+      "name": "Validate KG Integrity",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "functionCode": "// Comprehensive health and quality analysis\nconst vectorHealth = $('Check Vector DB Health').first().json;\nconst kgHealth = $('Check KG Health').first().json;\nconst ingestionStats = $('Get Ingestion Statistics').first().json;\nconst kgValidation = $('Validate KG Integrity').first().json;\n\nconst qualityReport = {\n  report_id: `quality_${Date.now()}`,\n  timestamp: new Date().toISOString(),\n  overall_status: 'healthy',\n  \n  // System health\n  system_health: {\n    vector_db: {\n      status: vectorHealth.status || 'unknown',\n      collections: vectorHealth.collections?.total_collections || 0,\n      total_chunks: vectorHealth.collections?.total_chunks || 0,\n      estimated_documents: vectorHealth.collections?.estimated_documents || 0,\n      issues: []\n    },\n    \n    knowledge_graph: {\n      status: kgHealth.status || 'unknown',\n      total_entities: kgHealth.total_entities || 0,\n      total_relationships: kgHealth.total_relationships || 0,\n      entity_types: Object.keys(kgHealth.entity_types || {}).length,\n      relationship_types: Object.keys(kgHealth.relationship_types || {}).length,\n      issues: []\n    }\n  },\n  \n  // Data quality metrics\n  data_quality: {\n    ingestion_stats: {\n      total_collections: ingestionStats.total_collections || 0,\n      total_chunks: ingestionStats.total_chunks || 0,\n      estimated_documents: ingestionStats.estimated_documents || 0,\n      last_ingestion: ingestionStats.timestamp || null\n    },\n    \n    kg_integrity: {\n      status: kgValidation.status || 'unknown',\n      orphaned_entities: 0,\n      duplicate_entities: 0,\n      missing_canonical_names: 0,\n      issues: kgValidation.issues || [],\n      warnings: kgValidation.warnings || []\n    }\n  },\n  \n  // Quality scores\n  quality_scores: {\n    data_completeness: 0,\n    data_consistency: 0,\n    system_reliability: 0,\n    overall_quality: 0\n  },\n  \n  alerts: [],\n  recommendations: []\n};\n\n// Analyze vector DB health\nif (vectorHealth.status !== 'healthy') {\n  qualityReport.overall_status = 'degraded';\n  qualityReport.system_health.vector_db.issues.push('Vector database not healthy');\n  qualityReport.alerts.push({\n    severity: 'error',\n    component: 'vector_db',\n    message: 'Vector database health check failed',\n    details: vectorHealth\n  });\n}\n\n// Analyze KG health\nif (kgHealth.status !== 'healthy') {\n  qualityReport.overall_status = 'degraded';\n  qualityReport.system_health.knowledge_graph.issues.push('Knowledge graph not healthy');\n  qualityReport.alerts.push({\n    severity: 'error',\n    component: 'knowledge_graph',\n    message: 'Knowledge graph health check failed',\n    details: kgHealth\n  });\n}\n\n// Calculate quality scores\nconst vectorHealthy = vectorHealth.status === 'healthy' ? 1 : 0;\nconst kgHealthy = kgHealth.status === 'healthy' ? 1 : 0;\nconst kgIntegrityHealthy = kgValidation.status === 'healthy' ? 1 : 0;\n\nqualityReport.quality_scores.system_reliability = (vectorHealthy + kgHealthy) / 2;\nqualityReport.quality_scores.data_consistency = kgIntegrityHealthy;\n\n// Data completeness based on expected volumes\nconst minExpectedChunks = 500;\nconst minExpectedEntities = 100;\nconst chunkCompleteness = Math.min(1, qualityReport.system_health.vector_db.total_chunks / minExpectedChunks);\nconst entityCompleteness = Math.min(1, qualityReport.system_health.knowledge_graph.total_entities / minExpectedEntities);\nqualityReport.quality_scores.data_completeness = (chunkCompleteness + entityCompleteness) / 2;\n\n// Overall quality score\nqualityReport.quality_scores.overall_quality = (\n  qualityReport.quality_scores.system_reliability * 0.4 +\n  qualityReport.quality_scores.data_consistency * 0.3 +\n  qualityReport.quality_scores.data_completeness * 0.3\n);\n\n// Round quality scores\nObject.keys(qualityReport.quality_scores).forEach(key => {\n  qualityReport.quality_scores[key] = Math.round(qualityReport.quality_scores[key] * 1000) / 1000;\n});\n\nreturn { json: qualityReport };"
+      },
+      "id": "analyze-quality",
+      "name": "Analyze Data Quality",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [900, 400]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "has-critical-alerts",
+              "leftValue": "={{$json.alerts.filter(a => a.severity === 'error').length}}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "id": "check-critical-alerts",
+      "name": "Check Critical Alerts",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [1120, 300]
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:8000/api/webhooks/critical-alert",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "X-Alert-Priority",
+              "value": "high"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "quality_report",
+              "value": "={{$json}}"
+            },
+            {
+              "name": "alert_type",
+              "value": "critical_system_issue"
+            }
+          ]
+        },
+        "options": {
+          "ignoreHttpStatusErrors": true
+        }
+      },
+      "id": "send-critical-alert",
+      "name": "Send Critical Alert",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [1340, 200]
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:8000/api/webhooks/quality-report",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "quality_report",
+              "value": "={{$json}}"
+            }
+          ]
+        },
+        "options": {
+          "ignoreHttpStatusErrors": true
+        }
+      },
+      "id": "log-quality-report",
+      "name": "Log Quality Report",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [1340, 500]
+    }
+  ],
+  "connections": {
+    "Every 4 Hours": {
+      "main": [
+        [
+          {
+            "node": "Check Vector DB Health",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Check KG Health",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Get Ingestion Statistics",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Vector DB Health": {
+      "main": [
+        [
+          {
+            "node": "Analyze Data Quality",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check KG Health": {
+      "main": [
+        [
+          {
+            "node": "Validate KG Integrity",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Ingestion Statistics": {
+      "main": [
+        [
+          {
+            "node": "Analyze Data Quality",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validate KG Integrity": {
+      "main": [
+        [
+          {
+            "node": "Analyze Data Quality",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analyze Data Quality": {
+      "main": [
+        [
+          {
+            "node": "Check Critical Alerts",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Log Quality Report",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Critical Alerts": {
+      "main": [
+        [
+          {
+            "node": "Send Critical Alert",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    }
+  },
+  "pinData": {},
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "versionId": "1",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "id": "enhanced-data-quality-monitoring",
+  "tags": [
+    {
+      "createdAt": "2024-01-01T00:00:00.000Z",
+      "updatedAt": "2024-01-01T00:00:00.000Z",
+      "id": "monitoring",
+      "name": "Monitoring"
+    },
+    {
+      "createdAt": "2024-01-01T00:00:00.000Z",
+      "updatedAt": "2024-01-01T00:00:00.000Z",
+      "id": "quality-assurance",
+      "name": "Quality Assurance"
+    }
+  ]
+}

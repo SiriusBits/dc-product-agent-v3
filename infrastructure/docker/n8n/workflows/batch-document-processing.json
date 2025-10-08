@@ -1,0 +1,433 @@
+{
+  "name": "Batch Document Processing Workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "batch-process",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "batch-webhook-trigger",
+      "name": "Batch Processing Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [240, 400],
+      "webhookId": "batch-document-processing"
+    },
+    {
+      "parameters": {
+        "functionCode": "// Validate and prepare batch processing request\nconst items = $input.all();\nconst requestData = items[0].json;\n\n// Validate required fields\nif (!requestData.documents || !Array.isArray(requestData.documents)) {\n  throw new Error('Missing or invalid documents array');\n}\n\nif (requestData.documents.length === 0) {\n  throw new Error('Documents array is empty');\n}\n\n// Prepare batch configuration\nconst batchConfig = {\n  batch_id: `batch_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,\n  documents: requestData.documents,\n  total_documents: requestData.documents.length,\n  \n  // Processing options (applied to all documents)\n  chunking_strategy: requestData.chunking_strategy || 'semantic',\n  chunk_size: requestData.chunk_size || 1000,\n  chunk_overlap: requestData.chunk_overlap || 200,\n  generate_embeddings: requestData.generate_embeddings !== false,\n  ingest_to_vector: requestData.ingest_to_vector !== false,\n  ingest_to_kg: requestData.ingest_to_kg !== false,\n  \n  // Batch options\n  collection_name: requestData.collection_name || 'technical_bulletins',\n  overwrite: requestData.overwrite || false,\n  continue_on_error: requestData.continue_on_error !== false,\n  max_concurrent: requestData.max_concurrent || 3,\n  \n  // Metadata\n  status: 'processing',\n  started_at: new Date().toISOString(),\n  source: 'n8n_batch_workflow'\n};\n\nreturn { json: batchConfig };"
+      },
+      "id": "validate-batch-request",
+      "name": "Validate Batch Request",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [460, 400]
+    },
+    {
+      "parameters": {
+        "functionCode": "// Split documents into individual processing items\nconst batchConfig = $input.first().json;\nconst documents = batchConfig.documents;\n\nconst processingItems = documents.map((doc, index) => ({\n  batch_id: batchConfig.batch_id,\n  document_index: index,\n  total_documents: batchConfig.total_documents,\n  \n  // Document data\n  filename: doc.filename,\n  document_data: doc.document_data,\n  file_path: doc.file_path,\n  \n  // Processing options\n  chunking_strategy: batchConfig.chunking_strategy,\n  chunk_size: batchConfig.chunk_size,\n  chunk_overlap: batchConfig.chunk_overlap,\n  generate_embeddings: batchConfig.generate_embeddings,\n  ingest_to_vector: batchConfig.ingest_to_vector,\n  ingest_to_kg: batchConfig.ingest_to_kg,\n  \n  // Collection settings\n  collection_name: batchConfig.collection_name,\n  overwrite: batchConfig.overwrite,\n  continue_on_error: batchConfig.continue_on_error,\n  \n  // Individual processing ID\n  processing_id: `${batchConfig.batch_id}_doc_${index}`\n}));\n\nreturn processingItems.map(item => ({ json: item }));"
+      },
+      "id": "split-documents",
+      "name": "Split Documents",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [680, 400]
+    },
+    {
+      "parameters": {
+        "batchSize": 3,
+        "options": {}
+      },
+      "id": "batch-limiter",
+      "name": "Limit Concurrent Processing",
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [900, 400]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "has-document-data",
+              "leftValue": "={{$json.document_data}}",
+              "rightValue": "",
+              "operator": {
+                "type": "object",
+                "operation": "notEmpty"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "check-document-source",
+      "name": "Check Document Source",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [1120, 400]
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:8000/api/ingest/document",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "X-Processing-ID",
+              "value": "={{$json.processing_id}}"
+            },
+            {
+              "name": "X-Batch-ID",
+              "value": "={{$json.batch_id}}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "document",
+              "value": "={{$json.document_data}}"
+            },
+            {
+              "name": "collection_name",
+              "value": "={{$json.collection_name}}"
+            },
+            {
+              "name": "overwrite",
+              "value": "={{$json.overwrite}}"
+            },
+            {
+              "name": "chunking_strategy",
+              "value": "={{$json.chunking_strategy}}"
+            },
+            {
+              "name": "chunk_size",
+              "value": "={{$json.chunk_size}}"
+            },
+            {
+              "name": "chunk_overlap",
+              "value": "={{$json.chunk_overlap}}"
+            },
+            {
+              "name": "generate_embeddings",
+              "value": "={{$json.generate_embeddings}}"
+            },
+            {
+              "name": "ingest_to_kg",
+              "value": "={{$json.ingest_to_kg}}"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 600000
+        }
+      },
+      "id": "process-extracted-doc",
+      "name": "Process Extracted Document",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [1340, 300]
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:8000/api/extract/pdf",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "X-Processing-ID",
+              "value": "={{$json.processing_id}}"
+            },
+            {
+              "name": "X-Batch-ID",
+              "value": "={{$json.batch_id}}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "filename",
+              "value": "={{$json.filename}}"
+            },
+            {
+              "name": "file_path",
+              "value": "={{$json.file_path}}"
+            },
+            {
+              "name": "processing_id",
+              "value": "={{$json.processing_id}}"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 600000
+        }
+      },
+      "id": "extract-and-process-pdf-batch",
+      "name": "Extract and Process PDF",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [1340, 500]
+    },
+    {
+      "parameters": {
+        "functionCode": "// Collect and format individual document results\nconst items = $input.all();\nconst batchConfig = $('Validate Batch Request').first().json;\n\nconst results = items.map(item => {\n  const result = item.json;\n  return {\n    processing_id: result.processing_id,\n    document_index: result.document_index || 0,\n    filename: result.filename,\n    success: result.success || false,\n    document_id: result.document_id,\n    chunks_created: result.chunks_created || 0,\n    kg_ingestion: result.kg_ingestion,\n    enrichment_summary: result.enrichment_summary,\n    processing_time_ms: result.total_processing_time_ms || 0,\n    error: result.error || null\n  };\n});\n\n// Calculate batch statistics\nconst successful = results.filter(r => r.success).length;\nconst failed = results.length - successful;\nconst totalChunks = results.reduce((sum, r) => sum + (r.chunks_created || 0), 0);\nconst totalProcessingTime = results.reduce((sum, r) => sum + (r.processing_time_ms || 0), 0);\n\n// Calculate quality metrics\nconst qualityScores = results\n  .filter(r => r.enrichment_summary)\n  .map(r => r.enrichment_summary);\n\nconst avgCompleteness = qualityScores.length > 0 \n  ? qualityScores.reduce((sum, s) => sum + (s.completeness_score || 0), 0) / qualityScores.length \n  : 0;\n\nconst avgConfidence = qualityScores.length > 0 \n  ? qualityScores.reduce((sum, s) => sum + (s.extraction_confidence || 0), 0) / qualityScores.length \n  : 0;\n\nconst batchResult = {\n  batch_id: batchConfig.batch_id,\n  status: failed === 0 ? 'completed' : (successful > 0 ? 'partial_success' : 'failed'),\n  \n  // Summary statistics\n  total_documents: batchConfig.total_documents,\n  successful_documents: successful,\n  failed_documents: failed,\n  total_chunks_created: totalChunks,\n  \n  // Processing metadata\n  total_processing_time_ms: totalProcessingTime,\n  avg_processing_time_ms: Math.round(totalProcessingTime / results.length),\n  completed_at: new Date().toISOString(),\n  \n  // Quality metrics\n  quality_metrics: {\n    avg_completeness_score: Math.round(avgCompleteness * 1000) / 1000,\n    avg_extraction_confidence: Math.round(avgConfidence * 1000) / 1000,\n    documents_with_quality_data: qualityScores.length\n  },\n  \n  // Individual results\n  document_results: results,\n  \n  // Configuration used\n  processing_config: {\n    chunking_strategy: batchConfig.chunking_strategy,\n    collection_name: batchConfig.collection_name,\n    generate_embeddings: batchConfig.generate_embeddings,\n    ingest_to_kg: batchConfig.ingest_to_kg\n  }\n};\n\nreturn { json: batchResult };"
+      },
+      "id": "aggregate-results",
+      "name": "Aggregate Batch Results",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [1560, 400]
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:8000/api/webhooks/batch-complete",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "batch_result",
+              "value": "={{$json}}"
+            }
+          ]
+        },
+        "options": {
+          "ignoreHttpStatusErrors": true
+        }
+      },
+      "id": "notify-batch-completion",
+      "name": "Notify Batch Completion",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [1780, 400]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{$json}}"
+      },
+      "id": "batch-response",
+      "name": "Return Batch Response",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [2000, 400]
+    },
+    {
+      "parameters": {
+        "functionCode": "// Handle batch processing errors\nconst error = $input.first().json;\nconst batchConfig = $('Validate Batch Request').first().json;\n\nconst errorResponse = {\n  batch_id: batchConfig.batch_id,\n  status: 'error',\n  error_message: error.message || error.error || 'Unknown batch processing error',\n  error_details: error,\n  failed_at: new Date().toISOString(),\n  \n  // Include batch configuration for debugging\n  batch_config: {\n    total_documents: batchConfig.total_documents,\n    collection_name: batchConfig.collection_name,\n    chunking_strategy: batchConfig.chunking_strategy\n  }\n};\n\nreturn { json: errorResponse };"
+      },
+      "id": "handle-batch-error",
+      "name": "Handle Batch Error",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [1560, 600]
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:8000/api/webhooks/batch-error",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "batch_error",
+              "value": "={{$json}}"
+            }
+          ]
+        },
+        "options": {
+          "ignoreHttpStatusErrors": true
+        }
+      },
+      "id": "notify-batch-error",
+      "name": "Notify Batch Error",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [1780, 600]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{$json}}",
+        "responseCode": 500
+      },
+      "id": "batch-error-response",
+      "name": "Return Batch Error Response",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [2000, 600]
+    }
+  ],
+  "connections": {
+    "Batch Processing Webhook": {
+      "main": [
+        [
+          {
+            "node": "Validate Batch Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validate Batch Request": {
+      "main": [
+        [
+          {
+            "node": "Split Documents",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Documents": {
+      "main": [
+        [
+          {
+            "node": "Limit Concurrent Processing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit Concurrent Processing": {
+      "main": [
+        [
+          {
+            "node": "Check Document Source",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Document Source": {
+      "main": [
+        [
+          {
+            "node": "Process Extracted Document",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Extract and Process PDF",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Process Extracted Document": {
+      "main": [
+        [
+          {
+            "node": "Aggregate Batch Results",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract and Process PDF": {
+      "main": [
+        [
+          {
+            "node": "Aggregate Batch Results",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate Batch Results": {
+      "main": [
+        [
+          {
+            "node": "Notify Batch Completion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Notify Batch Completion": {
+      "main": [
+        [
+          {
+            "node": "Return Batch Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner",
+    "errorWorkflow": "error-handling-workflow"
+  },
+  "versionId": "1",
+  "meta": {
+    "templateCredsSetupCompleted": true
+  },
+  "id": "batch-document-processing",
+  "tags": [
+    {
+      "createdAt": "2024-01-01T00:00:00.000Z",
+      "updatedAt": "2024-01-01T00:00:00.000Z",
+      "id": "batch-processing",
+      "name": "Batch Processing"
+    },
+    {
+      "createdAt": "2024-01-01T00:00:00.000Z",
+      "updatedAt": "2024-01-01T00:00:00.000Z",
+      "id": "automation",
+      "name": "Automation"
+    }
+  ]
+}
