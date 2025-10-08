@@ -7,14 +7,7 @@ import { screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import ChatInterface from '../ChatInterface';
 import type { ChatMessage } from '@/types';
-import {
-  render,
-  setupTest,
-  cleanupTest,
-  createMockUseChat,
-  createMockChatMessage,
-  createMockChatResponse,
-} from '@/test/test-utils';
+import { render, MockApiError } from '@/test/test-utils';
 
 // Mock the hooks
 vi.mock('@/hooks/useChat', () => ({
@@ -25,13 +18,11 @@ vi.mock('@/hooks/useConversations', () => ({
   useConversations: vi.fn(),
 }));
 
-import { apiClient } from '@/lib/api-client';
 import { useChat } from '@/hooks/useChat';
 import { useConversations } from '@/hooks/useConversations';
 
 const mockUseChat = vi.mocked(useChat);
 const mockUseConversations = vi.mocked(useConversations);
-const mockApiClient = vi.mocked(apiClient);
 
 describe('ChatInterface', () => {
   const mockMessages: ChatMessage[] = [
@@ -189,12 +180,11 @@ describe('ChatInterface', () => {
   });
 
   it('displays error message when there is an error', () => {
-    const mockError = new Error('Failed to send message');
-    mockError.name = 'ApiError';
+    const mockError = new MockApiError('Failed to send message', 500);
 
     mockUseChat.mockReturnValue({
       ...mockChatHook,
-      error: mockError as unknown,
+      error: mockError,
     });
 
     render(<ChatInterface />);

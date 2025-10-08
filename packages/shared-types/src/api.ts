@@ -1,6 +1,6 @@
 // API-related types for Dixie Chemical Product Agent
 
-import { KGEntity, ProductInfo, PropertySpecification } from './models';
+import type { KGEntity, ProductInfo, PropertySpecification } from "./models";
 
 // Base API response structure
 export interface ApiResponse<T = any> {
@@ -21,11 +21,11 @@ export interface ApiError {
 
 // Query and retrieval types
 export enum QueryType {
-  SPECIFICATION = 'specification',
-  APPLICATION = 'application', 
-  COMPARISON = 'comparison',
-  RELATIONSHIP = 'relationship',
-  GENERAL = 'general'
+  SPECIFICATION = "specification",
+  APPLICATION = "application",
+  COMPARISON = "comparison",
+  RELATIONSHIP = "relationship",
+  GENERAL = "general",
 }
 
 export interface QueryAnalysis {
@@ -38,7 +38,7 @@ export interface QueryAnalysis {
 export interface RetrievalResult {
   content: string;
   score: number;
-  source: 'vector' | 'kg' | 'hybrid';
+  source: "vector" | "kg" | "hybrid";
   metadata: Record<string, any>;
   provenance: Record<string, any>;
 }
@@ -72,7 +72,7 @@ export interface ChatResponse {
 export interface ChatMessage {
   id: string;
   content: string;
-  role: 'user' | 'assistant';
+  role: "user" | "assistant";
   sources?: RetrievalResult[];
   timestamp: Date;
   conversation_id: string;
@@ -124,13 +124,13 @@ export interface ProductSearchRequest {
   properties?: PropertyFilter[];
   limit?: number;
   offset?: number;
-  sort_by?: 'name' | 'family' | 'relevance';
-  sort_order?: 'asc' | 'desc';
+  sort_by?: "name" | "family" | "relevance";
+  sort_order?: "asc" | "desc";
 }
 
 export interface PropertyFilter {
   name: string;
-  operator: 'eq' | 'gt' | 'lt' | 'gte' | 'lte' | 'range';
+  operator: "eq" | "gt" | "lt" | "gte" | "lte" | "range";
   value: number | string;
   max_value?: number; // for range operator
 }
@@ -226,11 +226,11 @@ export interface ProductComparisonRequest {
 }
 
 export enum ComparisonAspect {
-  PROPERTIES = 'properties',
-  APPLICATIONS = 'applications',
-  PERFORMANCE = 'performance',
-  COST = 'cost',
-  AVAILABILITY = 'availability'
+  PROPERTIES = "properties",
+  APPLICATIONS = "applications",
+  PERFORMANCE = "performance",
+  COST = "cost",
+  AVAILABILITY = "availability",
 }
 
 export interface ProductComparisonResponse {
@@ -281,7 +281,7 @@ export interface ProcessingOptions {
   extract_images?: boolean;
   generate_kg_data?: boolean;
   validate_extraction?: boolean;
-  chunk_strategy?: 'semantic' | 'fixed' | 'adaptive';
+  chunk_strategy?: "semantic" | "fixed" | "adaptive";
   embedding_model?: string;
 }
 
@@ -295,23 +295,23 @@ export interface IngestionResponse {
 }
 
 export enum IngestionStatus {
-  QUEUED = 'queued',
-  PROCESSING = 'processing',
-  COMPLETED = 'completed',
-  FAILED = 'failed',
-  CANCELLED = 'cancelled'
+  QUEUED = "queued",
+  PROCESSING = "processing",
+  COMPLETED = "completed",
+  FAILED = "failed",
+  CANCELLED = "cancelled",
 }
 
 export interface ValidationResult {
   field: string;
-  status: 'valid' | 'warning' | 'error';
+  status: "valid" | "warning" | "error";
   message: string;
   confidence?: number;
 }
 
 // System status and health types
 export interface SystemStatus {
-  status: 'healthy' | 'degraded' | 'unhealthy';
+  status: "healthy" | "degraded" | "unhealthy";
   services: ServiceStatus[];
   version: string;
   uptime_seconds: number;
@@ -320,7 +320,7 @@ export interface SystemStatus {
 
 export interface ServiceStatus {
   name: string;
-  status: 'up' | 'down' | 'degraded';
+  status: "up" | "down" | "degraded";
   response_time_ms?: number;
   last_check: string;
   details?: Record<string, any>;

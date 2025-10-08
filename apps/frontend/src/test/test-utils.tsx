@@ -7,6 +7,7 @@ import type { ReactElement } from 'react';
 import { render } from '@testing-library/react';
 import type { RenderOptions } from '@testing-library/react';
 import { vi } from 'vitest';
+import type { QueryType } from '@repo/shared-types';
 
 // Mock React Router
 export const mockNavigate = vi.fn();
@@ -133,7 +134,9 @@ export class MockApiError extends Error {
   }
 
   static fromResponse(response: Response, errorData?: unknown): MockApiError {
-    const errorObj = errorData as unknown;
+    const errorObj = errorData as
+      | { message?: string; details?: unknown; request_id?: string }
+      | undefined;
     return new MockApiError(
       errorObj?.message || `HTTP ${response.status}: ${response.statusText}`,
       response.status,
@@ -221,7 +224,7 @@ export const createMockChatResponse = (overrides = {}) => ({
   sources: [createMockSearchResult()],
   conversation_id: 'conv-123',
   query_analysis: {
-    query_type: 'specification' as unknown,
+    query_type: 'specification' as QueryType,
     entities: ['ASA 150'],
     intent_confidence: 0.9,
     suggested_strategy: { vector_weight: 0.7, kg_weight: 0.3 },

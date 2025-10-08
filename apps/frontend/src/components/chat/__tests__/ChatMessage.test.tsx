@@ -7,12 +7,12 @@ import { screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ChatMessage } from '../ChatMessage';
 import type { ChatMessage as ChatMessageType } from '@/types';
-import { 
-  render, 
-  setupTest, 
-  cleanupTest, 
+import {
+  render,
+  setupTest,
+  cleanupTest,
   createMockChatMessage,
-  createMockSearchResult 
+  createMockSearchResult,
 } from '@/test/test-utils';
 
 describe('ChatMessage', () => {
@@ -45,7 +45,7 @@ describe('ChatMessage', () => {
         provenance: { document: 'ASA 150 Technical Bulletin' },
       },
     ],
-  };
+  });
 
   const mockErrorMessage: ChatMessageType = {
     id: '3',
@@ -58,14 +58,18 @@ describe('ChatMessage', () => {
   it('renders user message correctly', () => {
     render(<ChatMessage message={mockUserMessage} />);
 
-    expect(screen.getByText('What is the viscosity of ASA 150?')).toBeInTheDocument();
+    expect(
+      screen.getByText('What is the viscosity of ASA 150?')
+    ).toBeInTheDocument();
     expect(screen.getByText('10:00 AM')).toBeInTheDocument();
   });
 
   it('renders assistant message correctly', () => {
     render(<ChatMessage message={mockAssistantMessage} />);
 
-    expect(screen.getByText('ASA 150 has a viscosity of 150 cP at 25°C.')).toBeInTheDocument();
+    expect(
+      screen.getByText('ASA 150 has a viscosity of 150 cP at 25°C.')
+    ).toBeInTheDocument();
     expect(screen.getByText('10:00 AM')).toBeInTheDocument();
   });
 
@@ -115,7 +119,7 @@ describe('ChatMessage', () => {
 
   it('copies message content to clipboard', async () => {
     const user = userEvent.setup();
-    
+
     // Clipboard is already mocked in setupTest
 
     render(<ChatMessage message={mockUserMessage} />);
@@ -175,7 +179,9 @@ describe('ChatMessage', () => {
 
     // Click again to collapse
     await user.click(sourceItem);
-    expect(screen.queryByText('ASA 150 viscosity: 150 cP')).not.toBeInTheDocument();
+    expect(
+      screen.queryByText('ASA 150 viscosity: 150 cP')
+    ).not.toBeInTheDocument();
   });
 
   it('applies correct styling for user messages', () => {
@@ -265,10 +271,10 @@ describe('ChatMessage', () => {
   it('handles source click events', async () => {
     const user = userEvent.setup();
     const onSourceClick = vi.fn();
-    
+
     render(
-      <ChatMessage 
-        message={mockAssistantMessage} 
+      <ChatMessage
+        message={mockAssistantMessage}
         onSourceClick={onSourceClick}
       />
     );
@@ -276,7 +282,9 @@ describe('ChatMessage', () => {
     const sourceItem = screen.getByText('ASA 150 Technical Bulletin');
     await user.click(sourceItem);
 
-    expect(onSourceClick).toHaveBeenCalledWith(mockAssistantMessage.sources![0]);
+    expect(onSourceClick).toHaveBeenCalledWith(
+      mockAssistantMessage.sources![0]
+    );
   });
 
   it('displays confidence score with appropriate color coding', () => {
@@ -299,12 +307,12 @@ describe('ChatMessage', () => {
   it('handles keyboard navigation for interactive elements', async () => {
     const user = userEvent.setup();
     const onRetry = vi.fn();
-    
+
     render(<ChatMessage message={mockErrorMessage} onRetry={onRetry} />);
 
     const retryButton = screen.getByRole('button', { name: /retry/i });
     retryButton.focus();
-    
+
     await user.keyboard('{Enter}');
     expect(onRetry).toHaveBeenCalled();
   });
