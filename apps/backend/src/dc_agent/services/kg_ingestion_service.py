@@ -9,7 +9,7 @@ from pydantic import BaseModel
 
 from ..models.kg_models import DerivedInfo, KGEntity, KGTriple, KnowledgeGraph
 from ..models.product_models import BaseExtractionDocument, PropertySpecification
-from .kg_service import KnowledgeGraphService
+from ..kg.service import KnowledgeGraphService
 
 logger = logging.getLogger(__name__)
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Search, Filter, X } from 'lucide-react';
 import { 
   Card, 
@@ -30,16 +30,7 @@ export function ProductFilters({ onFiltersChange, loading, className }: ProductF
   const [sortBy, setSortBy] = useState<'name' | 'family' | 'relevance'>('relevance');
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
 
-  // Debounced search
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      handleFiltersChange();
-    }, 300);
-
-    return () => clearTimeout(timer);
-  }, [searchQuery, selectedFamily, selectedApplications, sortBy, sortOrder]);
-
-  const handleFiltersChange = () => {
+  const handleFiltersChange = useCallback(() => {
     const filters: ProductSearchParams = {
       query: searchQuery || undefined,
       family: selectedFamily || undefined,
@@ -51,7 +42,16 @@ export function ProductFilters({ onFiltersChange, loading, className }: ProductF
     };
 
     onFiltersChange(filters);
-  };
+  }, [searchQuery, selectedFamily, selectedApplications, sortBy, sortOrder, onFiltersChange]);
+
+  // Debounced search
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      handleFiltersChange();
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, [searchQuery, selectedFamily, selectedApplications, sortBy, sortOrder, handleFiltersChange]);
 
   const clearFilters = () => {
     setSearchQuery('');

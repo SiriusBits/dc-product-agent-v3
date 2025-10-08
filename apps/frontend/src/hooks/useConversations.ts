@@ -1,85 +1,88 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback } from 'react';
 import type { Conversation } from '@repo/shared-types';
 import { apiClient, ApiError } from '../lib/api-client';
+import { useApi, useApiQuery } from './useApi';
 
 interface UseConversationsReturn {
   conversations: Conversation[];
   isLoading: boolean;
-  error: string | null;
+  error: ApiError | null;
   loadConversations: () => Promise<void>;
   deleteConversation: (id: string) => Promise<void>;
   updateConversationTitle: (id: string, title: string) => Promise<void>;
+  retry: () => Promise<void>;
+  isRetryable: boolean;
 }
 
 export function useConversations(): UseConversationsReturn {
   const [conversations, setConversations] = useState<Conversation[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+
+  // Use API query hook to automatically load conversations on mount
+  const loadConversationsApi = useApiQuery(
+    () => apiClient.listConversations(),
+    [],
+    {
+      onSuccess: (data: Conversation[]) => {
+        setConversations(data);
+      },
+      retryOnMount: true,
+    }
+  );
+
+  // Use API hook for delete operations
+  const deleteConversationApi = useApi(apiClient.deleteConversation);
+
+  // Use API hook for title updates
+  const updateTitleApi = useApi(apiClient.updateConversationTitle);
 
   const loadConversations = useCallback(async () => {
-    setIsLoading(true);
-    setError(null);
+    await loadConversationsApi.execute();
+  }, [loadConversationsApi]);
 
-    try {
-      const data = await apiClient.listConversations();
-      setConversations(data);
-    } catch (err) {
-      if (err instanceof ApiError) {
-        setError(`Failed to load conversations: ${err.message}`);
-      } else {
-        setError('Failed to load conversations. Please try again.');
+  const deleteConversation = useCallback(
+    async (id: string) => {
+      await deleteConversationApi.execute(id);
+      if (deleteConversationApi.error) {
+        throw deleteConversationApi.error;
       }
-    } finally {
-      setIsLoading(false);
-    }
-  }, []);
-
-  const deleteConversation = useCallback(async (id: string) => {
-    try {
-      await apiClient.deleteConversation(id);
+      // Update local state on success
       setConversations((prev) => prev.filter((conv) => conv.id !== id));
-    } catch (err) {
-      if (err instanceof ApiError) {
-        throw new Error(`Failed to delete conversation: ${err.message}`);
-      } else {
-        throw new Error('Failed to delete conversation. Please try again.');
-      }
-    }
-  }, []);
+    },
+    [deleteConversationApi]
+  );
 
   const updateConversationTitle = useCallback(
     async (id: string, title: string) => {
-      try {
-        await apiClient.updateConversationTitle(id, title);
-        setConversations((prev) =>
-          prev.map((conv) => (conv.id === id ? { ...conv, title } : conv))
-        );
-      } catch (err) {
-        if (err instanceof ApiError) {
-          throw new Error(
-            `Failed to update conversation title: ${err.message}`
-          );
-        } else {
-          throw new Error(
-            'Failed to update conversation title. Please try again.'
-          );
-        }
+      await updateTitleApi.execute(id, title);
+      if (updateTitleApi.error) {
+        throw updateTitleApi.error;
       }
+      // Update local state on success
+      setConversations((prev) =>
+        prev.map((conv) => (conv.id === id ? { ...conv, title } : conv))
+      );
     },
-    []
+    [updateTitleApi]
   );
 
-  // Load conversations on mount
-  useEffect(() => {
-    loadConversations();
-  }, [loadConversations]);
+  const retry = useCallback(async () => {
+    await loadConversationsApi.retry();
+  }, [loadConversationsApi]);
 
   return {
     conversations,
-    isLoading,
-    error,
+    isLoading:
+      loadConversationsApi.loading ||
+      deleteConversationApi.loading ||
+      updateTitleApi.loading,
+    error:
+      loadConversationsApi.error ||
+      deleteConversationApi.error ||
+      updateTitleApi.error,
     loadConversations,
     deleteConversation,
     updateConversationTitle,
+    retry,
+    isRetryable: loadConversationsApi.isRetryable,
   };
 }

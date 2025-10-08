@@ -1,14 +1,14 @@
 
 import { useState, useCallback } from "react";
 import { AlertCircle, RefreshCw, Sidebar } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { useChat } from "@/hooks/useChat";
-import { useConversations } from "@/hooks/useConversations";
+import { Button } from "../ui/button";
+import { Card } from "../ui/card";
+import { useChat } from "../../hooks/useChat";
+import { useConversations } from "../../hooks/useConversations";
 import ChatHistory from "./ChatHistory";
 import ChatInput from "./ChatInput";
 import ConversationSidebar from "./ConversationSidebar";
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/utils";
 
 interface ChatInterfaceProps {
   className?: string;
@@ -114,7 +114,7 @@ export default function ChatInterface({ className }: ChatInterfaceProps) {
                 <AlertCircle className="h-4 w-4 text-destructive" />
                 <div className="flex-1">
                   <div className="text-sm font-medium text-destructive">
-                    {error || conversationsError}
+                    {error?.message || conversationsError?.message || 'An error occurred'}
                   </div>
                 </div>
                 {error && (

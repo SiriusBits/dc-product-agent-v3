@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useProductDetail } from '../../hooks/useProducts';
 import { ProductDetail } from './ProductDetail';
 
@@ -36,7 +36,7 @@ export default function ProductDetailPage({ productId }: ProductDetailPageProps)
       product={product}
       relatedProducts={relatedProducts}
       loading={loading}
-      error={error}
+      error={error?.message || null}
       onBack={handleBack}
       onViewProduct={handleViewProduct}
     />

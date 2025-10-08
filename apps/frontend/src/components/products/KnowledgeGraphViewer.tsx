@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Network, Zap, Search, X } from 'lucide-react';
 import { 
   Card, 
@@ -12,7 +12,7 @@ import {
   Loading
 } from '../ui';
 import { useKnowledgeGraph } from '../../hooks/useKnowledgeGraph';
-import type { GraphNode, GraphEdge, KGEntity } from '@repo/shared-types';
+import type { GraphNode, KGEntity } from '@repo/shared-types';
 
 export interface KnowledgeGraphViewerProps {
   productName?: string;
@@ -38,19 +38,19 @@ export function KnowledgeGraphViewer({
   const [searchEntity, setSearchEntity] = useState(productName || '');
   const [selectedNode, setSelectedNode] = useState<GraphNode | null>(null);
 
+  const handleSearch = useCallback(async (entityName?: string) => {
+    const searchTerm = entityName || searchEntity.trim();
+    if (!searchTerm) return;
+
+    await getEntityNeighbors(searchTerm, 2, 20);
+  }, [searchEntity, getEntityNeighbors]);
+
   useEffect(() => {
     if (productName) {
       setSearchEntity(productName);
       handleSearch(productName);
     }
-  }, [productName]);
-
-  const handleSearch = async (entityName?: string) => {
-    const searchTerm = entityName || searchEntity.trim();
-    if (!searchTerm) return;
-
-    await getEntityNeighbors(searchTerm, 2, 20);
-  };
+  }, [productName, handleSearch]);
 
   const handleNodeClick = (node: GraphNode) => {
     setSelectedNode(node);
@@ -215,7 +215,7 @@ export function KnowledgeGraphViewer({
         {/* Error Display */}
         {error && (
           <div className="p-3 border border-red-200 bg-red-50 rounded-lg">
-            <div className="text-sm text-red-600">{error}</div>
+            <div className="text-sm text-red-600">{error?.message || 'An error occurred'}</div>
           </div>
         )}
 

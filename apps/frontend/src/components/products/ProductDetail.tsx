@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { 
   ArrowLeft, 
   Beaker, 
@@ -281,7 +281,7 @@ export function ProductDetail({
                         const cat = prop.category || 'General';
                         if (!acc[cat]) acc[cat] = [];
                         return acc;
-                      }, {} as Record<string, any>)).slice(-1)[0] && <Separator className="my-4" />}
+                      }, {} as Record<string, unknown[]>)).slice(-1)[0] && <Separator className="my-4" />}
                     </div>
                   ))}
                 </div>

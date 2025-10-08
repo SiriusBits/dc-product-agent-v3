@@ -1,6 +1,6 @@
 
-import React, { useState, useEffect } from 'react';
-import { ArrowLeft, BarChart3 } from 'lucide-react';
+import { useState } from 'react';
+import { BarChart3 } from 'lucide-react';
 import { 
   Tabs,
   TabsList,
@@ -25,7 +25,7 @@ export default function ProductBrowser() {
   const {
     products,
     totalCount,
-    facets,
+
     loading: productsLoading,
     error: productsError,
     searchProducts,
@@ -70,7 +70,7 @@ export default function ProductBrowser() {
   };
 
   // Handle knowledge graph entity click
-  const handleEntityClick = (entity: any) => {
+  const handleEntityClick = (entity: import('@repo/shared-types').KGEntity) => {
     // Try to find a product with this entity name
     const matchingProduct = products.find(p => 
       p.name.toLowerCase().includes(entity.text.toLowerCase()) ||
@@ -152,7 +152,7 @@ export default function ProductBrowser() {
               <ProductList
                 products={products}
                 loading={productsLoading}
-                error={productsError}
+                error={productsError?.message || null}
                 totalCount={totalCount}
                 hasMore={hasMore}
                 onLoadMore={loadMore}
@@ -180,7 +180,7 @@ export default function ProductBrowser() {
               product={selectedProduct}
               relatedProducts={relatedProducts}
               loading={detailLoading}
-              error={detailError}
+              error={detailError?.message || null}
               onBack={handleBackToCatalog}
               onViewProduct={handleViewProduct}
               onCompareProduct={handleCompareProduct}
