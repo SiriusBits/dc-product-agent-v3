@@ -8,5 +8,6 @@
       "@/*": ["./src/*"],
       "@repo/shared-types": ["../../packages/shared-types/src"]
     }
-  }
+  },
+  "exclude": ["vitest.config.ts"]
 }

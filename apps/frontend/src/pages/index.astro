@@ -1,29 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import TestComponent from '../components/TestComponent.tsx';
+import WelcomeSection from '../components/WelcomeSection.tsx';
 
 const title = 'Dixie Chemical Product Agent';
 ---
 
-<Layout title={title}>
-  <main class="min-h-screen bg-background text-foreground">
-    <div class="container mx-auto px-4 py-8">
-      <h1 class="text-4xl font-bold text-center mb-8">
-        {title}
-      </h1>
-      <p class="text-center text-muted-foreground mb-8">
-        Intelligent search and question-answering for chemical product
-        information
-      </p>
-      <div class="text-center mb-8">
-        <p class="text-sm text-muted-foreground">
-          Version 3.0.0 - Development Mode
-        </p>
-      </div>
-
-      <div class="max-w-md mx-auto">
-        <TestComponent client:load />
-      </div>
-    </div>
-  </main>
+<Layout title={title} currentPage="chat">
+  <div class="container mx-auto px-4 py-8">
+    <WelcomeSection client:load />
+  </div>
 </Layout>

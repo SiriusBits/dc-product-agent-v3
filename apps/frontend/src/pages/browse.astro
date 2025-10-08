@@ -1,0 +1,12 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProductBrowser from '../components/products/ProductBrowser.tsx';
+
+const title = 'Browse Products - Dixie Chemical Product Agent';
+---
+
+<Layout title={title} currentPage="browse">
+  <div class="container mx-auto px-4 py-8">
+    <ProductBrowser client:load />
+  </div>
+</Layout>
