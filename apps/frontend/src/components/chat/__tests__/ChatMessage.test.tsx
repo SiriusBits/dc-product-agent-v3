@@ -2,21 +2,36 @@
  * @vitest-environment jsdom
  */
 
-import { describe, it, expect, vi } from 'vitest';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
+import { screen, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ChatMessage } from '../ChatMessage';
 import type { ChatMessage as ChatMessageType } from '@/types';
+import { 
+  render, 
+  setupTest, 
+  cleanupTest, 
+  createMockChatMessage,
+  createMockSearchResult 
+} from '@/test/test-utils';
 
 describe('ChatMessage', () => {
-  const mockUserMessage: ChatMessageType = {
+  beforeEach(() => {
+    setupTest();
+  });
+
+  afterEach(() => {
+    cleanupTest();
+  });
+
+  const mockUserMessage: ChatMessageType = createMockChatMessage({
     id: '1',
     content: 'What is the viscosity of ASA 150?',
     role: 'user',
     timestamp: new Date('2024-01-01T10:00:00Z'),
-  };
+  });
 
-  const mockAssistantMessage: ChatMessageType = {
+  const mockAssistantMessage: ChatMessageType = createMockChatMessage({
     id: '2',
     content: 'ASA 150 has a viscosity of 150 cP at 25°C.',
     role: 'assistant',
@@ -101,12 +116,7 @@ describe('ChatMessage', () => {
   it('copies message content to clipboard', async () => {
     const user = userEvent.setup();
     
-    // Mock clipboard API
-    Object.assign(navigator, {
-      clipboard: {
-        writeText: vi.fn(),
-      },
-    });
+    // Clipboard is already mocked in setupTest
 
     render(<ChatMessage message={mockUserMessage} />);
 

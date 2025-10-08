@@ -3,31 +3,18 @@
  */
 
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { screen, fireEvent, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ProductBrowser } from '@/components/products/ProductBrowser';
 import type { Product, ProductFamily } from '@/types';
-
-// Mock the API client
-vi.mock('@/lib/api-client', () => ({
-  apiClient: {
-    getProducts: vi.fn(),
-    searchProducts: vi.fn(),
-    getProduct: vi.fn(),
-    getProductFamilies: vi.fn(),
-    getApplications: vi.fn(),
-    compareProducts: vi.fn(),
-  },
-}));
-
-// Mock React Router
-vi.mock('react-router-dom', () => ({
-  useNavigate: () => vi.fn(),
-  useLocation: () => ({ pathname: '/products', search: '' }),
-  useSearchParams: () => [new URLSearchParams(), vi.fn()],
-}));
-
-import { apiClient } from '@/lib/api-client';
+import { 
+  render, 
+  setupTest, 
+  cleanupTest, 
+  mockApiClient,
+  mockSetSearchParams,
+  createMockProduct 
+} from '@/test/test-utils';
 
 const mockApiClient = vi.mocked(apiClient);
 
@@ -298,8 +285,7 @@ describe('Product Search Integration', () => {
     const user = userEvent.setup();
     const mockNavigate = vi.fn();
     
-    // Mock useNavigate
-    vi.mocked(require('react-router-dom').useNavigate).mockReturnValue(mockNavigate);
+    // Navigation is already mocked in setupTest
 
     render(<ProductBrowser />);
 
@@ -432,11 +418,8 @@ describe('Product Search Integration', () => {
     const user = userEvent.setup();
     const mockSetSearchParams = vi.fn();
     
-    // Mock useSearchParams
-    vi.mocked(require('react-router-dom').useSearchParams).mockReturnValue([
-      new URLSearchParams('q=ASA&family=ASA'),
-      mockSetSearchParams,
-    ]);
+    // Search params are already mocked in setupTest
+    mockSetSearchParams.mockClear();
 
     render(<ProductBrowser />);
 

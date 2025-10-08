@@ -11,7 +11,7 @@
     "astro": "astro",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "type-check": "astro check",
-    "test": "vitest --run",
+    "test": "vitest run",
     "test:watch": "vitest",
     "format": "prettier --write \"src/**/*.{astro,ts,tsx,js,jsx}\"",
     "clean": "rm -rf dist .astro"

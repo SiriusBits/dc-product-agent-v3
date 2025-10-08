@@ -6,25 +6,16 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { renderHook, act, waitFor } from '@testing-library/react';
 import { useProducts } from '../useProducts';
 import type { Product, ProductFamily } from '@/types';
-
-// Mock the API client
-vi.mock('@/lib/api-client', () => ({
-  apiClient: {
-    getProducts: vi.fn(),
-    getProduct: vi.fn(),
-    searchProducts: vi.fn(),
-    getProductFamilies: vi.fn(),
-    getApplications: vi.fn(),
-  },
-}));
-
-import { apiClient } from '@/lib/api-client';
-
-const mockApiClient = vi.mocked(apiClient);
+import {
+  mockApiClient,
+  setupTest,
+  cleanupTest,
+  createMockProduct,
+} from '@/test/test-utils';
 
 describe('useProducts', () => {
   const mockProducts: Product[] = [
-    {
+    createMockProduct({
       id: 'asa-150',
       name: 'ASA 150',
       shortName: 'ASA150',
@@ -44,8 +35,8 @@ describe('useProducts', () => {
       ],
       applications: ['Coatings', 'Adhesives'],
       keyBenefits: ['High viscosity', 'Good adhesion'],
-    },
-    {
+    }),
+    createMockProduct({
       id: 'dca-467',
       name: 'DCA 467',
       shortName: 'DCA467',
@@ -65,21 +56,28 @@ describe('useProducts', () => {
       ],
       applications: ['Epoxy Curing'],
       keyBenefits: ['Fast cure', 'High strength'],
-    },
+    }),
   ];
 
   const mockFamilies: ProductFamily[] = ['ASA', 'DCA', 'ECA'];
   const mockApplications = ['Coatings', 'Adhesives', 'Epoxy Curing'];
 
   beforeEach(() => {
-    vi.clearAllMocks();
-    mockApiClient.getProducts.mockResolvedValue(mockProducts);
+    setupTest();
+    mockApiClient.searchProducts.mockResolvedValue({
+      products: mockProducts,
+      total: mockProducts.length,
+      limit: 20,
+      offset: 0,
+      families: mockFamilies,
+      applications: mockApplications,
+    });
     mockApiClient.getProductFamilies.mockResolvedValue(mockFamilies);
-    mockApiClient.getApplications.mockResolvedValue(mockApplications);
+    mockApiClient.getProductApplications.mockResolvedValue(mockApplications);
   });
 
   afterEach(() => {
-    vi.clearAllMocks();
+    cleanupTest();
   });
 
   it('initializes with empty state', () => {

@@ -3,30 +3,17 @@
  */
 
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { screen, fireEvent, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ChatInterface } from '@/components/chat/ChatInterface';
 import type { ChatResponse } from '@/types';
-
-// Mock the API client
-vi.mock('@/lib/api-client', () => ({
-  apiClient: {
-    chat: vi.fn(),
-    getConversations: vi.fn(),
-    createConversation: vi.fn(),
-    deleteConversation: vi.fn(),
-  },
-}));
-
-// Mock React Router
-vi.mock('react-router-dom', () => ({
-  useNavigate: () => vi.fn(),
-  useLocation: () => ({ pathname: '/chat' }),
-}));
-
-import { apiClient } from '@/lib/api-client';
-
-const mockApiClient = vi.mocked(apiClient);
+import { 
+  render, 
+  setupTest, 
+  cleanupTest, 
+  mockApiClient,
+  createMockChatResponse 
+} from '@/test/test-utils';
 
 describe('Chat Flow Integration', () => {
   const mockChatResponse: ChatResponse = {
@@ -71,17 +58,15 @@ describe('Chat Flow Integration', () => {
   };
 
   beforeEach(() => {
-    vi.clearAllMocks();
-    localStorage.clear();
+    setupTest();
     
     // Mock successful API responses by default
-    mockApiClient.chat.mockResolvedValue(mockChatResponse);
-    mockApiClient.getConversations.mockResolvedValue([]);
-    mockApiClient.createConversation.mockResolvedValue({ id: 'new-conv-456' });
+    mockApiClient.sendMessage.mockResolvedValue(createMockChatResponse());
+    mockApiClient.listConversations.mockResolvedValue([]);
   });
 
   afterEach(() => {
-    vi.clearAllMocks();
+    cleanupTest();
   });
 
   it('completes full chat interaction flow', async () => {
@@ -227,12 +212,7 @@ describe('Chat Flow Integration', () => {
   it('handles message copying functionality', async () => {
     const user = userEvent.setup();
     
-    // Mock clipboard API
-    Object.assign(navigator, {
-      clipboard: {
-        writeText: vi.fn(),
-      },
-    });
+    // Clipboard is already mocked in setupTest
 
     render(<ChatInterface />);
 

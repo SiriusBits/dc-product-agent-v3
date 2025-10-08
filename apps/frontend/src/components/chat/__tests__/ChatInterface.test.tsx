@@ -3,17 +3,18 @@
  */
 
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { ChatInterface } from '../ChatInterface';
-import type { ChatMessage, ChatResponse } from '@/types';
-
-// Mock the API client
-vi.mock('@/lib/api-client', () => ({
-  apiClient: {
-    chat: vi.fn(),
-  },
-}));
+import ChatInterface from '../ChatInterface';
+import type { ChatMessage } from '@/types';
+import {
+  render,
+  setupTest,
+  cleanupTest,
+  createMockUseChat,
+  createMockChatMessage,
+  createMockChatResponse,
+} from '@/test/test-utils';
 
 // Mock the hooks
 vi.mock('@/hooks/useChat', () => ({
@@ -39,12 +40,14 @@ describe('ChatInterface', () => {
       content: 'What is the viscosity of ASA 150?',
       role: 'user',
       timestamp: new Date('2024-01-01T10:00:00Z'),
+      conversation_id: 'conv-123',
     },
     {
       id: '2',
       content: 'ASA 150 has a viscosity of 150 cP at 25°C.',
       role: 'assistant',
       timestamp: new Date('2024-01-01T10:00:01Z'),
+      conversation_id: 'conv-123',
       sources: [
         {
           content: 'ASA 150 viscosity: 150 cP',
@@ -61,9 +64,12 @@ describe('ChatInterface', () => {
     messages: mockMessages,
     isLoading: false,
     error: null,
+    conversationId: 'conv-123',
     sendMessage: vi.fn(),
     clearMessages: vi.fn(),
-    currentConversationId: 'conv-123',
+    loadConversation: vi.fn(),
+    retryLastMessage: vi.fn(),
+    isRetryable: false,
   };
 
   const mockConversationsHook = {
@@ -74,6 +80,9 @@ describe('ChatInterface', () => {
         lastMessage: 'ASA 150 has a viscosity of 150 cP at 25°C.',
         timestamp: new Date('2024-01-01T10:00:01Z'),
         messageCount: 2,
+        messages: mockMessages,
+        created_at: new Date('2024-01-01T10:00:00Z'),
+        updated_at: new Date('2024-01-01T10:00:01Z'),
       },
     ],
     isLoading: false,
@@ -81,6 +90,10 @@ describe('ChatInterface', () => {
     createConversation: vi.fn(),
     deleteConversation: vi.fn(),
     loadConversation: vi.fn(),
+    loadConversations: vi.fn(),
+    updateConversationTitle: vi.fn(),
+    retry: vi.fn(),
+    isRetryable: false,
   };
 
   beforeEach(() => {
@@ -95,14 +108,20 @@ describe('ChatInterface', () => {
   it('renders chat interface with messages', () => {
     render(<ChatInterface />);
 
-    expect(screen.getByText('What is the viscosity of ASA 150?')).toBeInTheDocument();
-    expect(screen.getByText('ASA 150 has a viscosity of 150 cP at 25°C.')).toBeInTheDocument();
+    expect(
+      screen.getByText('What is the viscosity of ASA 150?')
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText('ASA 150 has a viscosity of 150 cP at 25°C.')
+    ).toBeInTheDocument();
   });
 
   it('renders message input and send button', () => {
     render(<ChatInterface />);
 
-    expect(screen.getByPlaceholderText(/ask about chemical products/i)).toBeInTheDocument();
+    expect(
+      screen.getByPlaceholderText(/ask about chemical products/i)
+    ).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /send/i })).toBeInTheDocument();
   });
 
@@ -116,7 +135,9 @@ describe('ChatInterface', () => {
     await user.type(input, 'What is DCA 467 used for?');
     await user.click(sendButton);
 
-    expect(mockChatHook.sendMessage).toHaveBeenCalledWith('What is DCA 467 used for?');
+    expect(mockChatHook.sendMessage).toHaveBeenCalledWith(
+      'What is DCA 467 used for?'
+    );
   });
 
   it('sends message when Enter key is pressed', async () => {
@@ -168,9 +189,12 @@ describe('ChatInterface', () => {
   });
 
   it('displays error message when there is an error', () => {
+    const mockError = new Error('Failed to send message');
+    mockError.name = 'ApiError';
+
     mockUseChat.mockReturnValue({
       ...mockChatHook,
-      error: 'Failed to send message',
+      error: mockError as unknown,
     });
 
     render(<ChatInterface />);
@@ -201,7 +225,9 @@ describe('ChatInterface', () => {
     const conversationItem = screen.getByText('ASA 150 Questions');
     await user.click(conversationItem);
 
-    expect(mockConversationsHook.loadConversation).toHaveBeenCalledWith('conv-123');
+    expect(mockConversationsHook.loadConversation).toHaveBeenCalledWith(
+      'conv-123'
+    );
   });
 
   it('creates new conversation', async () => {
@@ -243,6 +269,7 @@ describe('ChatInterface', () => {
         content: 'New message',
         role: 'user' as const,
         timestamp: new Date(),
+        conversation_id: 'conv-123',
       },
     ];
 
@@ -260,7 +287,7 @@ describe('ChatInterface', () => {
 
   it('handles message retry on error', async () => {
     const user = userEvent.setup();
-    
+
     // Mock a failed message
     const messagesWithError = [
       ...mockMessages,
@@ -269,6 +296,7 @@ describe('ChatInterface', () => {
         content: 'Failed message',
         role: 'user' as const,
         timestamp: new Date(),
+        conversation_id: 'conv-123',
         error: 'Network error',
       },
     ];
@@ -302,6 +330,7 @@ describe('ChatInterface', () => {
         content: longMessage,
         role: 'user' as const,
         timestamp: new Date(),
+        conversation_id: 'conv-123',
       },
     ];
 
@@ -318,17 +347,14 @@ describe('ChatInterface', () => {
 
   it('supports message selection and copying', async () => {
     const user = userEvent.setup();
-    
-    // Mock clipboard API
-    Object.assign(navigator, {
-      clipboard: {
-        writeText: vi.fn(),
-      },
-    });
+
+    // Clipboard is already mocked in setupTest
 
     render(<ChatInterface />);
 
-    const message = screen.getByText('ASA 150 has a viscosity of 150 cP at 25°C.');
+    const message = screen.getByText(
+      'ASA 150 has a viscosity of 150 cP at 25°C.'
+    );
     await user.click(message);
 
     const copyButton = screen.getByRole('button', { name: /copy/i });
