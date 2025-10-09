@@ -206,12 +206,69 @@ export const createMockProduct = (overrides = {}) => ({
   ...overrides,
 });
 
+export const createMockProductDetail = (overrides = {}) => ({
+  id: 'asa-150',
+  name: 'ASA 150',
+  short_name: 'ASA150',
+  family: 'ASA',
+  cas_number: '12345-67-8',
+  applications: ['Coatings', 'Adhesives'],
+  key_properties: ['Viscosity: 150 cP', 'High adhesion'],
+  document_count: 1,
+  product_info: {
+    product_name: 'ASA 150',
+    product_short_name: 'ASA150',
+    product_family: 'ASA',
+    cas_number: '12345-67-8',
+    chemical_name: 'Alkenyl Succinic Anhydride 150',
+    synonyms: ['ASA-150'],
+  },
+  properties: [
+    {
+      category: 'Physical',
+      name: 'Viscosity',
+      value_string: '150 cP',
+      value_numeric: 150,
+      value_min: null,
+      value_max: null,
+      unit: 'cP',
+      test_method: 'ASTM D445',
+      page: 1,
+    },
+  ],
+  related_products: [],
+  knowledge_graph_entities: [],
+  documents: [
+    {
+      doc_id: 'asa-150-spec',
+      filename: 'ASA 150 Technical Bulletin.pdf',
+      document_type: 'Technical Bulletin',
+      manufacturer: 'Dixie Chemical',
+      extraction_date: '2024-01-01',
+      page_count: 4,
+      has_images: true,
+    },
+  ],
+  ...overrides,
+});
+
 export const createMockChatMessage = (overrides = {}) => ({
   id: '1',
   content: 'What is the viscosity of ASA 150?',
   role: 'user' as const,
   timestamp: new Date('2024-01-01T10:00:00Z'),
   conversation_id: 'conv-123',
+  sources: undefined,
+  ...overrides,
+});
+
+export const createMockConversation = (overrides = {}) => ({
+  id: 'conv-123',
+  messages: [createMockChatMessage()],
+  created_at: new Date('2024-01-01T09:00:00Z'),
+  updated_at: new Date('2024-01-01T10:00:00Z'),
+  title: 'Test Conversation',
+  metadata: {},
   ...overrides,
 });
 
@@ -310,19 +367,17 @@ export const setupTest = () => {
   // Reset mock implementations and set default values
   mockApiClient.sendMessage.mockResolvedValue(createMockChatResponse());
   mockApiClient.chat.mockResolvedValue(createMockChatResponse());
-  mockApiClient.getConversation.mockResolvedValue({
-    id: 'conv-123',
-    title: 'Test Conversation',
-    messages: [createMockChatMessage()],
-    created_at: new Date(),
-    updated_at: new Date(),
-  });
+  mockApiClient.getConversation.mockResolvedValue(createMockConversation());
   mockApiClient.listConversations.mockResolvedValue([]);
   mockApiClient.getConversations.mockResolvedValue([]);
-  mockApiClient.createConversation.mockResolvedValue({ id: 'new-conv' });
+  mockApiClient.createConversation.mockResolvedValue(
+    createMockConversation({ id: 'new-conv', messages: [] })
+  );
   mockApiClient.deleteConversation.mockResolvedValue(undefined);
   mockApiClient.updateConversationTitle.mockResolvedValue(undefined);
-  mockApiClient.getConversationMessages.mockResolvedValue([]);
+  mockApiClient.getConversationMessages.mockResolvedValue([
+    createMockChatMessage(),
+  ]);
 
   mockApiClient.searchProducts.mockResolvedValue({
     products: [createMockProduct()],
@@ -340,9 +395,17 @@ export const setupTest = () => {
     },
   });
   mockApiClient.getProducts.mockResolvedValue([createMockProduct()]);
-  mockApiClient.getProduct.mockResolvedValue(createMockProduct());
-  mockApiClient.getRelatedProducts.mockResolvedValue([]);
-  mockApiClient.compareProducts.mockResolvedValue({});
+  mockApiClient.getProduct.mockResolvedValue(createMockProductDetail());
+  mockApiClient.getRelatedProducts.mockResolvedValue([createMockProduct()]);
+  mockApiClient.compareProducts.mockResolvedValue({
+    products: [createMockProductDetail()],
+    comparison_matrix: {
+      aspects: [],
+      data: [],
+    },
+    recommendations: [],
+    analysis_summary: 'Comparison complete',
+  });
   mockApiClient.getProductFamilies.mockResolvedValue(['ASA', 'DCA', 'ECA']);
   mockApiClient.getProductApplications.mockResolvedValue([
     'Coatings',
@@ -357,14 +420,46 @@ export const setupTest = () => {
   });
 
   mockApiClient.queryKnowledgeGraph.mockResolvedValue({
-    entities: [],
+    central_entity: {
+      id: 'entity-1',
+      text: 'ASA 150',
+      type: 'Product',
+      canonical_name: 'ASA 150',
+      aliases: ['ASA-150'],
+      source_text: null,
+      provenance: {
+        document_id: 'asa-150-spec',
+        page: 1,
+      },
+      metadata: {},
+    },
+    related_entities: [],
     relationships: [],
-    query: '',
+    graph_data: {
+      nodes: [],
+      edges: [],
+    },
   });
   mockApiClient.getEntityNeighbors.mockResolvedValue({
-    entities: [],
+    central_entity: {
+      id: 'entity-1',
+      text: 'ASA 150',
+      type: 'Product',
+      canonical_name: 'ASA 150',
+      aliases: ['ASA-150'],
+      source_text: null,
+      provenance: {
+        document_id: 'asa-150-spec',
+        page: 1,
+      },
+      metadata: {},
+    },
+    related_entities: [],
     relationships: [],
-    query: '',
+    graph_data: {
+      nodes: [],
+      edges: [],
+    },
   });
 
   mockApiClient.getSystemStatus.mockResolvedValue({

@@ -2,7 +2,7 @@
 
 ## Milestone 1: Foundation - Test Infrastructure
 
-- [ ] 1. Update test utilities and mock helpers
+- [x] 1. Update test utilities and mock helpers
   - Enhance `createMockChatMessage` to support all ChatMessage properties including sources
   - Add `createMockConversation` helper function
   - Add `createMockProductDetail` helper function
@@ -21,7 +21,7 @@
   - Export function for use in components and tests
   - _Requirements: 1.2_
 
-- [ ]* 4. Verify test infrastructure
+- [ ] 4. Verify test infrastructure
   - Run test suite to establish baseline
   - Document any remaining infrastructure issues
   - _Requirements: 5.1_
@@ -63,7 +63,7 @@
   - Verify error styling is applied correctly in tests
   - _Requirements: 1.6_
 
-- [ ]* 11. Run ChatMessage tests
+- [ ] 11. Run ChatMessage tests
   - Execute ChatMessage test suite
   - Verify all 10 ChatMessage tests pass
   - _Requirements: 1.1, 1.2, 1.3, 1.4, 1.5, 1.6_
@@ -125,7 +125,7 @@
   - Format count appropriately (e.g., "Showing 5 of 50 products")
   - _Requirements: 2.3_
 
-- [ ]* 21. Run ProductBrowser tests
+- [ ] 21. Run ProductBrowser tests
   - Execute ProductBrowser test suite
   - Verify all 23 ProductBrowser tests pass
   - _Requirements: 2.1, 2.2, 2.3, 2.4, 2.5, 2.6_
@@ -159,7 +159,7 @@
   - Clear timers and intervals
   - _Requirements: 3.5_
 
-- [ ]* 26. Run hook tests
+- [ ] 26. Run hook tests
   - Execute useChat test suite
   - Execute useProducts test suite
   - Execute useConversations test suite
@@ -195,7 +195,7 @@
   - Verify loading states during API calls
   - _Requirements: 4.4_
 
-- [ ]* 31. Run full integration test suite
+- [ ] 31. Run full integration test suite
   - Execute all integration tests
   - Verify chat-flow tests pass
   - Verify product-search tests pass
@@ -220,7 +220,7 @@
   - Update README with testing guidelines
   - _Requirements: 5.5_
 
-- [ ]* 35. Code review and cleanup
+- [ ] 35. Code review and cleanup
   - Remove any debug code or console logs
   - Ensure consistent code style
   - Verify no unused imports or variables
