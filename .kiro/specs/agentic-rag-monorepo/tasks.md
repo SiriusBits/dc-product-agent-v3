@@ -333,53 +333,53 @@
     - Fix unused variable warnings in test files
     - _Requirements: 11.2_
 
-- [ ] 16. Fix chat flow integration test failures
-  - [ ] 16.1 Fix ChatInput component accessibility issues
+- [x] 16. Fix chat flow integration test failures
+  - [x] 16.1 Fix ChatInput component accessibility issues
     - Add proper aria-label or accessible name to send button in ChatInput component
     - Ensure button has proper role and name attributes for screen readers
     - Update button implementation to include "Send" text or aria-label
     - _Requirements: 11.2, 7.7_
-  - [ ] 16.2 Fix chat message loading and thinking state display
+  - [x] 16.2 Fix chat message loading and thinking state display
     - Implement proper loading state display with "thinking" text in ChatInterface
     - Add loading indicators during message processing
     - Ensure loading states are properly shown and hidden during chat interactions
     - _Requirements: 11.2, 7.4_
-  - [ ] 16.3 Fix source display and interaction functionality
+  - [x] 16.3 Fix source display and interaction functionality
     - Implement source display functionality in ChatMessage component
     - Add source expansion/collapse interaction handling
     - Ensure source metadata (confidence scores, source types) are properly displayed
     - _Requirements: 11.2, 7.4_
-  - [ ] 16.4 Fix conversation persistence and localStorage integration
+  - [x] 16.4 Fix conversation persistence and localStorage integration
     - Implement localStorage integration for conversation state persistence
     - Add proper message loading from localStorage on component mount
     - Ensure conversation ID persistence across page reloads
     - _Requirements: 11.2, 7.4_
-  - [ ] 16.5 Fix error handling and retry functionality
+  - [x] 16.5 Fix error handling and retry functionality
     - Implement proper error display and retry button functionality in ChatInterface
     - Add error state management and user feedback
     - Ensure retry functionality works correctly after API failures
     - _Requirements: 11.2, 7.4_
-  - [ ] 16.6 Fix conversation management functionality
+  - [x] 16.6 Fix conversation management functionality
     - Implement conversation sidebar with proper conversation loading
     - Add new conversation creation and conversation selection functionality
     - Fix conversation list display and interaction handling
     - _Requirements: 11.2, 7.4_
-  - [ ] 16.7 Fix message copying and interaction features
+  - [x] 16.7 Fix message copying and interaction features
     - Implement message copy functionality with proper clipboard integration
     - Add hover states and copy button display for messages
     - Ensure keyboard shortcuts (Ctrl+K) work correctly
     - _Requirements: 11.2, 7.4_
-  - [ ] 16.8 Fix API integration and mock alignment
+  - [x] 16.8 Fix API integration and mock alignment
     - Update API client to properly handle chat requests and responses
     - Fix mock API client to return proper response structures
     - Ensure API method names match between implementation and tests (chat vs sendMessage)
     - _Requirements: 11.2, 7.6_
-  - [ ] 16.9 Fix concurrent message handling and input state
+  - [x] 16.9 Fix concurrent message handling and input state
     - Implement proper input disabling during message processing
     - Add prevention of concurrent message sending
     - Ensure input state management works correctly during loading
     - _Requirements: 11.2, 7.4_
-  - [ ] 16.10 Fix markdown rendering and message formatting
+  - [x] 16.10 Fix markdown rendering and message formatting
     - Implement markdown rendering for assistant messages
     - Add proper text formatting for bold, italic, code, and lists
     - Ensure message content is properly formatted and displayed

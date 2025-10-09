@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef } from 'react';
+import { useState, useCallback, useRef, useEffect } from 'react';
 import type {
   ChatMessage,
   ChatRequest,
@@ -26,6 +26,11 @@ interface UseChatReturn {
   isRetryable: boolean;
 }
 
+const STORAGE_KEYS = {
+  MESSAGES: 'chat-messages',
+  CONVERSATION_ID: 'current-conversation-id',
+} as const;
+
 export function useChat(options: UseChatOptions = {}): UseChatReturn {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [conversationId, setConversationId] = useState<string | null>(
@@ -33,6 +38,57 @@ export function useChat(options: UseChatOptions = {}): UseChatReturn {
   );
 
   const lastQueryRef = useRef<string>('');
+
+  // Load messages and conversation ID from localStorage on mount
+  useEffect(() => {
+    try {
+      const savedMessages = localStorage.getItem(STORAGE_KEYS.MESSAGES);
+      const savedConversationId = localStorage.getItem(
+        STORAGE_KEYS.CONVERSATION_ID
+      );
+
+      if (savedMessages) {
+        const parsedMessages = JSON.parse(savedMessages);
+        // Convert timestamp strings back to Date objects
+        const messagesWithDates = parsedMessages.map((msg: any) => ({
+          ...msg,
+          timestamp: new Date(msg.timestamp),
+        }));
+        setMessages(messagesWithDates);
+      }
+
+      if (savedConversationId && !options.conversationId) {
+        setConversationId(savedConversationId);
+      }
+    } catch (error) {
+      console.error('Failed to load chat data from localStorage:', error);
+      // Clear corrupted data
+      localStorage.removeItem(STORAGE_KEYS.MESSAGES);
+      localStorage.removeItem(STORAGE_KEYS.CONVERSATION_ID);
+    }
+  }, [options.conversationId]);
+
+  // Save messages to localStorage whenever they change
+  useEffect(() => {
+    if (messages.length > 0) {
+      try {
+        localStorage.setItem(STORAGE_KEYS.MESSAGES, JSON.stringify(messages));
+      } catch (error) {
+        console.error('Failed to save messages to localStorage:', error);
+      }
+    }
+  }, [messages]);
+
+  // Save conversation ID to localStorage whenever it changes
+  useEffect(() => {
+    if (conversationId) {
+      try {
+        localStorage.setItem(STORAGE_KEYS.CONVERSATION_ID, conversationId);
+      } catch (error) {
+        console.error('Failed to save conversation ID to localStorage:', error);
+      }
+    }
+  }, [conversationId]);
 
   // Use the generic API hook for sending messages
   const sendMessageApi = useApi(apiClient.sendMessage, {
@@ -118,6 +174,14 @@ export function useChat(options: UseChatOptions = {}): UseChatReturn {
     sendMessageApi.reset();
     loadConversationApi.reset();
     lastQueryRef.current = '';
+
+    // Clear localStorage
+    try {
+      localStorage.removeItem(STORAGE_KEYS.MESSAGES);
+      localStorage.removeItem(STORAGE_KEYS.CONVERSATION_ID);
+    } catch (error) {
+      console.error('Failed to clear chat data from localStorage:', error);
+    }
   }, [sendMessageApi, loadConversationApi]);
 
   const loadConversation = useCallback(

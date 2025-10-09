@@ -105,10 +105,11 @@ describe('Chat Flow Integration', () => {
     expect(screen.getByText('ASA 150 Technical Bulletin')).toBeInTheDocument();
 
     // 7. Verify API was called correctly
-    expect(mockApiClient.chat).toHaveBeenCalledWith({
+    expect(mockApiClient.sendMessage).toHaveBeenCalledWith({
       query: 'What is the viscosity of ASA 150?',
       conversation_id: null,
       max_results: 10,
+      include_sources: true,
     });
 
     // 8. Input should be cleared after sending
@@ -134,7 +135,7 @@ describe('Chat Flow Integration', () => {
       answer: 'ASA 150 is used in coatings and adhesives applications.',
       conversation_id: 'conv-123', // Same conversation
     };
-    mockApiClient.chat.mockResolvedValueOnce(secondResponse);
+    mockApiClient.sendMessage.mockResolvedValueOnce(secondResponse);
 
     await user.type(input, 'What is it used for?');
     await user.click(screen.getByRole('button', { name: /send/i }));
@@ -148,10 +149,11 @@ describe('Chat Flow Integration', () => {
     });
 
     // Verify second call includes conversation ID
-    expect(mockApiClient.chat).toHaveBeenLastCalledWith({
+    expect(mockApiClient.sendMessage).toHaveBeenLastCalledWith({
       query: 'What is it used for?',
       conversation_id: 'conv-123',
       max_results: 10,
+      include_sources: true,
     });
   });
 
@@ -159,7 +161,7 @@ describe('Chat Flow Integration', () => {
     const user = userEvent.setup();
 
     // Mock API error
-    mockApiClient.chat.mockRejectedValueOnce(new Error('Network error'));
+    mockApiClient.sendMessage.mockRejectedValueOnce(new Error('Network error'));
 
     render(<ChatInterface />);
 
@@ -178,7 +180,7 @@ describe('Chat Flow Integration', () => {
     expect(retryButton).toBeInTheDocument();
 
     // Mock successful retry
-    mockApiClient.chat.mockResolvedValueOnce(mockChatResponse);
+    mockApiClient.sendMessage.mockResolvedValueOnce(mockChatResponse);
 
     // Click retry
     await user.click(retryButton);
@@ -270,7 +272,7 @@ describe('Chat Flow Integration', () => {
     await user.keyboard('{Enter}');
 
     await waitFor(() => {
-      expect(mockApiClient.chat).toHaveBeenCalled();
+      expect(mockApiClient.sendMessage).toHaveBeenCalled();
     });
 
     // Test Ctrl+K for new conversation
@@ -293,7 +295,7 @@ describe('Chat Flow Integration', () => {
         messageCount: 3,
       },
     ];
-    mockApiClient.getConversations.mockResolvedValue(existingConversations);
+    mockApiClient.listConversations.mockResolvedValue(existingConversations);
 
     render(<ChatInterface />);
 
@@ -335,7 +337,7 @@ describe('Chat Flow Integration', () => {
         answer: `Response ${i}`,
         conversation_id: 'conv-123',
       };
-      mockApiClient.chat.mockResolvedValueOnce(response);
+      mockApiClient.sendMessage.mockResolvedValueOnce(response);
 
       await user.type(input, `Question ${i}`);
       await user.click(screen.getByRole('button', { name: /send/i }));
@@ -357,7 +359,7 @@ describe('Chat Flow Integration', () => {
     const promise = new Promise<ChatResponse>((resolve) => {
       resolvePromise = resolve;
     });
-    mockApiClient.chat.mockReturnValue(promise);
+    mockApiClient.sendMessage.mockReturnValue(promise);
 
     render(<ChatInterface />);
 
@@ -418,10 +420,11 @@ describe('Chat Flow Integration', () => {
     await user.click(screen.getByRole('button', { name: /send/i }));
 
     // Verify conversation ID is maintained
-    expect(mockApiClient.chat).toHaveBeenCalledWith({
+    expect(mockApiClient.sendMessage).toHaveBeenCalledWith({
       query: 'New question',
       conversation_id: 'conv-123',
       max_results: 10,
+      include_sources: true,
     });
   });
 
@@ -433,7 +436,7 @@ describe('Chat Flow Integration', () => {
       answer:
         'ASA 150 has a **viscosity** of *150 cP* and is used in:\n\n1. Coatings\n2. Adhesives\n\n`ASTM D445` test method.',
     };
-    mockApiClient.chat.mockResolvedValue(responseWithMarkdown);
+    mockApiClient.sendMessage.mockResolvedValue(responseWithMarkdown);
 
     render(<ChatInterface />);
 

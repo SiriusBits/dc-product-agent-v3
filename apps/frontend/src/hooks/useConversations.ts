@@ -8,6 +8,7 @@ interface UseConversationsReturn {
   isLoading: boolean;
   error: ApiError | null;
   loadConversations: () => Promise<void>;
+  createConversation: () => Promise<Conversation | null>;
   deleteConversation: (id: string) => Promise<void>;
   updateConversationTitle: (id: string, title: string) => Promise<void>;
   retry: () => Promise<void>;
@@ -29,6 +30,9 @@ export function useConversations(): UseConversationsReturn {
     }
   );
 
+  // Use API hook for create operations
+  const createConversationApi = useApi(apiClient.createConversation);
+
   // Use API hook for delete operations
   const deleteConversationApi = useApi(apiClient.deleteConversation);
 
@@ -38,6 +42,16 @@ export function useConversations(): UseConversationsReturn {
   const loadConversations = useCallback(async () => {
     await loadConversationsApi.execute();
   }, [loadConversationsApi]);
+
+  const createConversation = useCallback(async () => {
+    const result = await createConversationApi.execute();
+    if (result && !createConversationApi.error) {
+      // Add new conversation to local state
+      setConversations((prev) => [result, ...prev]);
+      return result;
+    }
+    return null;
+  }, [createConversationApi]);
 
   const deleteConversation = useCallback(
     async (id: string) => {
@@ -73,13 +87,16 @@ export function useConversations(): UseConversationsReturn {
     conversations,
     isLoading:
       loadConversationsApi.loading ||
+      createConversationApi.loading ||
       deleteConversationApi.loading ||
       updateTitleApi.loading,
     error:
       loadConversationsApi.error ||
+      createConversationApi.error ||
       deleteConversationApi.error ||
       updateTitleApi.error,
     loadConversations,
+    createConversation,
     deleteConversation,
     updateConversationTitle,
     retry,
