@@ -1,16 +1,16 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Search, Filter, X } from 'lucide-react';
-import { 
-  Card, 
-  CardHeader, 
-  CardTitle, 
+import {
+  Card,
+  CardHeader,
+  CardTitle,
   CardContent,
   Input,
   Button,
   Select,
   MultiSelect,
   Badge,
-  Loading
+  Loading,
 } from '../ui';
 import { useProductFilters } from '../../hooks/useProducts';
 import type { ProductSearchParams } from '../../hooks/useProducts';
@@ -21,28 +21,51 @@ export interface ProductFiltersProps {
   className?: string;
 }
 
-export function ProductFilters({ onFiltersChange, loading, className }: ProductFiltersProps) {
-  const { families, applications, loading: filtersLoading } = useProductFilters();
-  
+export function ProductFilters({
+  onFiltersChange,
+  loading,
+  className,
+}: ProductFiltersProps) {
+  const {
+    families,
+    applications,
+    loading: filtersLoading,
+  } = useProductFilters();
+
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedFamily, setSelectedFamily] = useState('');
-  const [selectedApplications, setSelectedApplications] = useState<string[]>([]);
-  const [sortBy, setSortBy] = useState<'name' | 'family' | 'relevance'>('relevance');
+  const [selectedApplications, setSelectedApplications] = useState<string[]>(
+    []
+  );
+  const [sortBy, setSortBy] = useState<'name' | 'family' | 'relevance'>(
+    'relevance'
+  );
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
 
   const handleFiltersChange = useCallback(() => {
     const filters: ProductSearchParams = {
-      query: searchQuery || undefined,
+      query: searchQuery || '',
       family: selectedFamily || undefined,
-      applications: selectedApplications.length > 0 ? selectedApplications : undefined,
-      sort_by: sortBy,
-      sort_order: sortOrder,
-      limit: 20,
-      offset: 0,
+      applications: selectedApplications.length > 0 ? selectedApplications : [],
     };
 
+    // Only add sort parameters if they're not default values
+    if (sortBy && sortBy !== 'relevance') {
+      filters.sort_by = sortBy;
+    }
+    if (sortOrder && sortOrder !== 'desc') {
+      filters.sort_order = sortOrder;
+    }
+
     onFiltersChange(filters);
-  }, [searchQuery, selectedFamily, selectedApplications, sortBy, sortOrder, onFiltersChange]);
+  }, [
+    searchQuery,
+    selectedFamily,
+    selectedApplications,
+    sortBy,
+    sortOrder,
+    onFiltersChange,
+  ]);
 
   // Debounced search
   useEffect(() => {
@@ -51,7 +74,14 @@ export function ProductFilters({ onFiltersChange, loading, className }: ProductF
     }, 300);
 
     return () => clearTimeout(timer);
-  }, [searchQuery, selectedFamily, selectedApplications, sortBy, sortOrder, handleFiltersChange]);
+  }, [
+    searchQuery,
+    selectedFamily,
+    selectedApplications,
+    sortBy,
+    sortOrder,
+    handleFiltersChange,
+  ]);
 
   const clearFilters = () => {
     setSearchQuery('');
@@ -61,14 +91,15 @@ export function ProductFilters({ onFiltersChange, loading, className }: ProductF
     setSortOrder('desc');
   };
 
-  const hasActiveFilters = searchQuery || selectedFamily || selectedApplications.length > 0;
+  const hasActiveFilters =
+    searchQuery || selectedFamily || selectedApplications.length > 0;
 
-  const familyOptions = families.map(family => ({
+  const familyOptions = families.map((family) => ({
     value: family,
     label: family,
   }));
 
-  const applicationOptions = applications.map(app => ({
+  const applicationOptions = applications.map((app) => ({
     value: app,
     label: app,
   }));
@@ -108,9 +139,10 @@ export function ProductFilters({ onFiltersChange, loading, className }: ProductF
               size="sm"
               onClick={clearFilters}
               className="text-xs"
+              aria-label="Clear filters"
             >
               <X className="h-3 w-3 mr-1" />
-              Clear
+              Clear Filters
             </Button>
           )}
         </div>
@@ -133,19 +165,24 @@ export function ProductFilters({ onFiltersChange, loading, className }: ProductF
 
         {/* Product Family */}
         <div className="space-y-2">
-          <label className="text-sm font-medium">Product Family</label>
+          <label htmlFor="family-select" className="text-sm font-medium">
+            Family
+          </label>
           <Select
             options={[{ value: '', label: 'All Families' }, ...familyOptions]}
             value={selectedFamily}
             onValueChange={setSelectedFamily}
             placeholder="Select family..."
             disabled={loading}
+            aria-label="Family"
           />
         </div>
 
         {/* Applications */}
         <div className="space-y-2">
-          <label className="text-sm font-medium">Applications</label>
+          <label htmlFor="application-select" className="text-sm font-medium">
+            Application
+          </label>
           <MultiSelect
             options={applicationOptions}
             value={selectedApplications}
@@ -153,6 +190,7 @@ export function ProductFilters({ onFiltersChange, loading, className }: ProductF
             placeholder="Select applications..."
             disabled={loading}
             maxDisplay={2}
+            aria-label="Application"
           />
         </div>
 
@@ -163,7 +201,9 @@ export function ProductFilters({ onFiltersChange, loading, className }: ProductF
             <Select
               options={sortOptions}
               value={sortBy}
-              onValueChange={(value) => setSortBy(value as 'name' | 'family' | 'relevance')}
+              onValueChange={(value) =>
+                setSortBy(value as 'name' | 'family' | 'relevance')
+              }
               disabled={loading}
             />
           </div>
@@ -193,7 +233,7 @@ export function ProductFilters({ onFiltersChange, loading, className }: ProductF
                   Family: {selectedFamily}
                 </Badge>
               )}
-              {selectedApplications.map(app => (
+              {selectedApplications.map((app) => (
                 <Badge key={app} variant="secondary" className="text-xs">
                   App: {app}
                 </Badge>

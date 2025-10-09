@@ -1,13 +1,6 @@
-
 import { useState } from 'react';
 import { BarChart3 } from 'lucide-react';
-import { 
-  Tabs,
-  TabsList,
-  TabsTrigger,
-  TabsContent,
-  Button
-} from '../ui';
+import { Tabs, TabsList, TabsTrigger, TabsContent, Button } from '../ui';
 import { ProductFilters } from './ProductFilters';
 import { ProductList } from './ProductList';
 import { ProductDetail } from './ProductDetail';
@@ -15,9 +8,14 @@ import { KnowledgeGraphViewer } from './KnowledgeGraphViewer';
 import { useProducts, useProductDetail } from '../../hooks/useProducts';
 import type { ProductSearchParams } from '../../hooks/useProducts';
 
+// Import ProductList if not already imported
+export { ProductList } from './ProductList';
+
 export default function ProductBrowser() {
   const [activeTab, setActiveTab] = useState('catalog');
-  const [selectedProductId, setSelectedProductId] = useState<string | null>(null);
+  const [selectedProductId, setSelectedProductId] = useState<string | null>(
+    null
+  );
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [comparisonProducts, setComparisonProducts] = useState<string[]>([]);
 
@@ -63,20 +61,21 @@ export default function ProductBrowser() {
   // Handle product comparison
   const handleCompareProduct = (productId: string) => {
     if (comparisonProducts.includes(productId)) {
-      setComparisonProducts(prev => prev.filter(id => id !== productId));
+      setComparisonProducts((prev) => prev.filter((id) => id !== productId));
     } else if (comparisonProducts.length < 3) {
-      setComparisonProducts(prev => [...prev, productId]);
+      setComparisonProducts((prev) => [...prev, productId]);
     }
   };
 
   // Handle knowledge graph entity click
   const handleEntityClick = (entity: import('@repo/shared-types').KGEntity) => {
     // Try to find a product with this entity name
-    const matchingProduct = products.find(p => 
-      p.name.toLowerCase().includes(entity.text.toLowerCase()) ||
-      p.short_name?.toLowerCase().includes(entity.text.toLowerCase())
+    const matchingProduct = products.find(
+      (p) =>
+        p.name.toLowerCase().includes(entity.text.toLowerCase()) ||
+        p.short_name?.toLowerCase().includes(entity.text.toLowerCase())
     );
-    
+
     if (matchingProduct) {
       handleViewProduct(matchingProduct.id);
     }
@@ -129,20 +128,26 @@ export default function ProductBrowser() {
                     </Button>
                   </div>
                   <div className="space-y-2">
-                    {comparisonProducts.map(productId => {
-                      const product = products.find(p => p.id === productId);
+                    {comparisonProducts.map((productId) => {
+                      const product = products.find((p) => p.id === productId);
                       return product ? (
-                        <div key={productId} className="text-sm p-2 bg-background rounded border">
+                        <div
+                          key={productId}
+                          className="text-sm p-2 bg-background rounded border"
+                        >
                           {product.name}
                         </div>
                       ) : null;
                     })}
                   </div>
-                  {comparisonProducts.length >= 2 && (
-                    <Button className="w-full mt-3" size="sm">
-                      Compare Products
-                    </Button>
-                  )}
+                  <Button
+                    className="w-full mt-3"
+                    size="sm"
+                    disabled={comparisonProducts.length < 1}
+                    aria-label="Compare selected products"
+                  >
+                    Compare Products
+                  </Button>
                 </div>
               )}
             </div>
@@ -168,9 +173,7 @@ export default function ProductBrowser() {
 
         {/* Knowledge Graph Tab */}
         <TabsContent value="knowledge-graph">
-          <KnowledgeGraphViewer
-            onEntityClick={handleEntityClick}
-          />
+          <KnowledgeGraphViewer onEntityClick={handleEntityClick} />
         </TabsContent>
 
         {/* Product Detail Tab */}

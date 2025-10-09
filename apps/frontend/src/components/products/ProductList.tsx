@@ -1,11 +1,6 @@
-
+import { useEffect, useRef, useState } from 'react';
 import { ChevronDown, Grid, List } from 'lucide-react';
-import { 
-  Button,
-  Loading,
-  Card,
-  CardContent
-} from '../ui';
+import { Button, Loading, Card, CardContent } from '../ui';
 import { ProductCard } from './ProductCard';
 import type { ProductSummary } from '@repo/shared-types';
 
@@ -36,8 +31,94 @@ export function ProductList({
   selectedProducts = [],
   viewMode = 'grid',
   onViewModeChange,
-  className
+  className,
 }: ProductListProps) {
+  const [focusedIndex, setFocusedIndex] = useState<number>(-1);
+  const productRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Reset refs array when products change
+  useEffect(() => {
+    productRefs.current = productRefs.current.slice(0, products.length);
+  }, [products.length]);
+
+  // Handle keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (products.length === 0) return;
+
+      const columnsPerRow = viewMode === 'grid' ? 3 : 1;
+
+      switch (e.key) {
+        case 'ArrowDown':
+          e.preventDefault();
+          setFocusedIndex((prev) => {
+            const next = prev + columnsPerRow;
+            return next < products.length ? next : prev;
+          });
+          break;
+
+        case 'ArrowUp':
+          e.preventDefault();
+          setFocusedIndex((prev) => {
+            const next = prev - columnsPerRow;
+            return next >= 0 ? next : prev;
+          });
+          break;
+
+        case 'ArrowRight':
+          e.preventDefault();
+          if (viewMode === 'grid') {
+            setFocusedIndex((prev) => {
+              const next = prev + 1;
+              return next < products.length ? next : prev;
+            });
+          }
+          break;
+
+        case 'ArrowLeft':
+          e.preventDefault();
+          if (viewMode === 'grid') {
+            setFocusedIndex((prev) => {
+              const next = prev - 1;
+              return next >= 0 ? next : prev;
+            });
+          }
+          break;
+
+        case 'Enter':
+          e.preventDefault();
+          if (focusedIndex >= 0 && focusedIndex < products.length) {
+            onViewProduct(products[focusedIndex].id);
+          }
+          break;
+
+        case 'Home':
+          e.preventDefault();
+          setFocusedIndex(0);
+          break;
+
+        case 'End':
+          e.preventDefault();
+          setFocusedIndex(products.length - 1);
+          break;
+      }
+    };
+
+    const container = containerRef.current;
+    if (container) {
+      container.addEventListener('keydown', handleKeyDown);
+      return () => container.removeEventListener('keydown', handleKeyDown);
+    }
+  }, [products, focusedIndex, viewMode, onViewProduct]);
+
+  // Focus the product card when focusedIndex changes
+  useEffect(() => {
+    if (focusedIndex >= 0 && focusedIndex < productRefs.current.length) {
+      productRefs.current[focusedIndex]?.focus();
+    }
+  }, [focusedIndex]);
+
   if (error) {
     return (
       <Card className={className}>
@@ -63,17 +144,17 @@ export function ProductList({
   }
 
   return (
-    <div className={className}>
+    <div className={className} ref={containerRef} tabIndex={0}>
       {/* Header with results count and view mode toggle */}
       <div className="flex items-center justify-between mb-4">
         <div className="text-sm text-muted-foreground">
-          {loading && products.length === 0 ? (
-            'Loading products...'
-          ) : (
-            `Showing ${products.length} of ${totalCount} products`
-          )}
+          {loading && products.length === 0
+            ? 'Loading products...'
+            : products.length < totalCount
+              ? `Showing ${products.length} of ${totalCount} products`
+              : `${totalCount} ${totalCount === 1 ? 'product' : 'products'}`}
         </div>
-        
+
         {onViewModeChange && (
           <div className="flex items-center space-x-1 border rounded-md p-1">
             <Button
@@ -97,20 +178,32 @@ export function ProductList({
       </div>
 
       {/* Products Grid/List */}
-      <div className={
-        viewMode === 'grid' 
-          ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'
-          : 'space-y-4'
-      }>
-        {products.map((product) => (
-          <ProductCard
+      <div
+        className={
+          viewMode === 'grid'
+            ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'
+            : 'space-y-4'
+        }
+      >
+        {products.map((product, index) => (
+          <div
             key={product.id}
-            product={product}
-            onViewDetails={onViewProduct}
-            onCompare={onCompareProduct}
-            isSelected={selectedProducts.includes(product.id)}
-            className={viewMode === 'list' ? 'w-full' : ''}
-          />
+            ref={(el) => {
+              productRefs.current[index] = el;
+            }}
+            tabIndex={-1}
+            onFocus={() => setFocusedIndex(index)}
+            className="focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-lg"
+          >
+            <ProductCard
+              product={product}
+              onViewDetails={onViewProduct}
+              onCompare={onCompareProduct}
+              isSelected={selectedProducts.includes(product.id)}
+              showCompareCheckbox={!!onCompareProduct}
+              className={viewMode === 'list' ? 'w-full' : ''}
+            />
+          </div>
         ))}
       </div>
 

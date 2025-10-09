@@ -8,20 +8,33 @@ import userEvent from '@testing-library/user-event';
 import ProductBrowser from '../ProductBrowser';
 // ProductSummary type is used implicitly in mockProducts
 
-// Mock the hooks
-vi.mock('@/hooks/useProducts', () => ({
-  useProducts: vi.fn(),
-}));
+// Mock the hooks using importOriginal pattern for partial mocking
+vi.mock('@/hooks/useProducts', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('@/hooks/useProducts')>();
+  return {
+    ...actual,
+    useProducts: vi.fn(),
+    useProductDetail: vi.fn(),
+    useProductFilters: vi.fn(),
+    useProductComparison: vi.fn(),
+  };
+});
 
 vi.mock('@/hooks/useApi', () => ({
   useApi: vi.fn(),
 }));
 
-import { useProducts } from '@/hooks/useProducts';
+import {
+  useProducts,
+  useProductDetail,
+  useProductFilters,
+} from '@/hooks/useProducts';
 import { useApi } from '@/hooks/useApi';
 import { MockApiError } from '@/test/test-utils';
 
 const mockUseProducts = vi.mocked(useProducts);
+const mockUseProductDetail = vi.mocked(useProductDetail);
+const mockUseProductFilters = vi.mocked(useProductFilters);
 const mockUseApi = vi.mocked(useApi);
 
 describe('ProductBrowser', () => {
@@ -63,6 +76,24 @@ describe('ProductBrowser', () => {
 
   beforeEach(() => {
     mockUseProducts.mockReturnValue(mockProductsHook);
+    mockUseProductDetail.mockReturnValue({
+      product: null,
+      relatedProducts: [],
+      loading: false,
+      error: null,
+      loadProduct: vi.fn(),
+      retry: vi.fn(),
+      isRetryable: false,
+    });
+    mockUseProductFilters.mockReturnValue({
+      families: ['ASA', 'DCA', 'ECA', 'MHHPA'],
+      applications: ['Coatings', 'Adhesives', 'Epoxy Curing', 'Composites'],
+      loading: false,
+      error: null,
+      loadFilters: vi.fn(),
+      retry: vi.fn(),
+      isRetryable: false,
+    });
     mockUseApi.mockReturnValue({
       data: null,
       loading: false,

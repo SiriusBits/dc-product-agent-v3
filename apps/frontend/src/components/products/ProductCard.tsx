@@ -1,13 +1,13 @@
 import React from 'react';
 import { ExternalLink, Beaker, Tag, FileText } from 'lucide-react';
-import { 
-  Card, 
-  CardHeader, 
-  CardTitle, 
-  CardDescription, 
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
   CardContent,
   Badge,
-  Button
+  Button,
 } from '../ui';
 import type { ProductSummary } from '@repo/shared-types';
 
@@ -16,15 +16,17 @@ export interface ProductCardProps {
   onViewDetails: (productId: string) => void;
   onCompare?: (productId: string) => void;
   isSelected?: boolean;
+  showCompareCheckbox?: boolean;
   className?: string;
 }
 
-export function ProductCard({ 
-  product, 
-  onViewDetails, 
-  onCompare, 
+export function ProductCard({
+  product,
+  onViewDetails,
+  onCompare,
   isSelected,
-  className 
+  showCompareCheckbox = true,
+  className,
 }: ProductCardProps) {
   const handleViewDetails = () => {
     onViewDetails(product.id);
@@ -35,8 +37,13 @@ export function ProductCard({
     onCompare?.(product.id);
   };
 
+  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.stopPropagation();
+    onCompare?.(product.id);
+  };
+
   return (
-    <Card 
+    <Card
       className={`cursor-pointer transition-all hover:shadow-md ${
         isSelected ? 'ring-2 ring-primary' : ''
       } ${className}`}
@@ -44,15 +51,27 @@ export function ProductCard({
     >
       <CardHeader className="pb-3">
         <div className="flex items-start justify-between">
-          <div className="flex-1 min-w-0">
-            <CardTitle className="text-lg font-semibold truncate">
-              {product.name}
-            </CardTitle>
-            {product.short_name && product.short_name !== product.name && (
-              <CardDescription className="text-sm text-muted-foreground">
-                {product.short_name}
-              </CardDescription>
+          <div className="flex items-center space-x-2 flex-1 min-w-0">
+            {onCompare && showCompareCheckbox && (
+              <input
+                type="checkbox"
+                checked={isSelected}
+                onChange={handleCheckboxChange}
+                onClick={(e) => e.stopPropagation()}
+                className="h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary"
+                aria-label={`Compare ${product.name}`}
+              />
             )}
+            <div className="flex-1 min-w-0">
+              <CardTitle className="text-lg font-semibold truncate">
+                {product.name}
+              </CardTitle>
+              {product.short_name && product.short_name !== product.name && (
+                <CardDescription className="text-sm text-muted-foreground">
+                  {product.short_name}
+                </CardDescription>
+              )}
+            </div>
           </div>
           <Button
             variant="ghost"
@@ -124,15 +143,19 @@ export function ProductCard({
         <div className="flex items-center justify-between text-sm text-muted-foreground">
           <div className="flex items-center space-x-1">
             <FileText className="h-3 w-3" />
-            <span>{product.document_count} document{product.document_count !== 1 ? 's' : ''}</span>
+            <span>
+              {product.document_count} document
+              {product.document_count !== 1 ? 's' : ''}
+            </span>
           </div>
-          
-          {onCompare && (
+
+          {onCompare && !showCompareCheckbox && (
             <Button
               variant="outline"
               size="sm"
               onClick={handleCompare}
               className="text-xs"
+              aria-label={`Add ${product.name} to comparison`}
             >
               Compare
             </Button>

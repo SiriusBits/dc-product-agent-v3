@@ -1,6 +1,6 @@
-import * as React from "react";
-import { ChevronDown, Check } from "lucide-react";
-import { cn } from "../../lib/utils";
+import * as React from 'react';
+import { ChevronDown, Check } from 'lucide-react';
+import { cn } from '../../lib/utils';
 
 export interface SelectOption {
   value: string;
@@ -15,14 +15,28 @@ export interface SelectProps {
   onValueChange?: (value: string) => void;
   disabled?: boolean;
   className?: string;
+  'aria-label'?: string;
 }
 
 export const Select = React.forwardRef<HTMLButtonElement, SelectProps>(
-  ({ options, value, placeholder = "Select...", onValueChange, disabled, className }, ref) => {
+  (
+    {
+      options,
+      value,
+      placeholder = 'Select...',
+      onValueChange,
+      disabled,
+      className,
+      'aria-label': ariaLabel,
+    },
+    ref
+  ) => {
     const [isOpen, setIsOpen] = React.useState(false);
-    const [selectedValue, setSelectedValue] = React.useState(value || "");
+    const [selectedValue, setSelectedValue] = React.useState(value || '');
 
-    const selectedOption = options.find(option => option.value === selectedValue);
+    const selectedOption = options.find(
+      (option) => option.value === selectedValue
+    );
 
     const handleSelect = (optionValue: string) => {
       setSelectedValue(optionValue);
@@ -31,7 +45,7 @@ export const Select = React.forwardRef<HTMLButtonElement, SelectProps>(
     };
 
     React.useEffect(() => {
-      setSelectedValue(value || "");
+      setSelectedValue(value || '');
     }, [value]);
 
     return (
@@ -39,16 +53,18 @@ export const Select = React.forwardRef<HTMLButtonElement, SelectProps>(
         <button
           ref={ref}
           type="button"
+          role="combobox"
           className={cn(
-            "flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+            'flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
             className
           )}
           onClick={() => setIsOpen(!isOpen)}
           disabled={disabled}
           aria-expanded={isOpen}
           aria-haspopup="listbox"
+          aria-label={ariaLabel}
         >
-          <span className={cn(!selectedOption && "text-muted-foreground")}>
+          <span className={cn(!selectedOption && 'text-muted-foreground')}>
             {selectedOption ? selectedOption.label : placeholder}
           </span>
           <ChevronDown className="h-4 w-4 opacity-50" />
@@ -62,8 +78,8 @@ export const Select = React.forwardRef<HTMLButtonElement, SelectProps>(
                   key={option.value}
                   type="button"
                   className={cn(
-                    "relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-                    option.disabled && "pointer-events-none opacity-50"
+                    'relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground',
+                    option.disabled && 'pointer-events-none opacity-50'
                   )}
                   onClick={() => handleSelect(option.value)}
                   disabled={option.disabled}
@@ -84,7 +100,7 @@ export const Select = React.forwardRef<HTMLButtonElement, SelectProps>(
   }
 );
 
-Select.displayName = "Select";
+Select.displayName = 'Select';
 
 export interface MultiSelectProps {
   options: SelectOption[];
@@ -94,28 +110,38 @@ export interface MultiSelectProps {
   disabled?: boolean;
   className?: string;
   maxDisplay?: number;
+  'aria-label'?: string;
 }
 
-export const MultiSelect = React.forwardRef<HTMLButtonElement, MultiSelectProps>(
-  ({ 
-    options, 
-    value = [], 
-    placeholder = "Select...", 
-    onValueChange, 
-    disabled, 
-    className,
-    maxDisplay = 3
-  }, ref) => {
+export const MultiSelect = React.forwardRef<
+  HTMLButtonElement,
+  MultiSelectProps
+>(
+  (
+    {
+      options,
+      value = [],
+      placeholder = 'Select...',
+      onValueChange,
+      disabled,
+      className,
+      maxDisplay = 3,
+      'aria-label': ariaLabel,
+    },
+    ref
+  ) => {
     const [isOpen, setIsOpen] = React.useState(false);
     const [selectedValues, setSelectedValues] = React.useState<string[]>(value);
 
-    const selectedOptions = options.filter(option => selectedValues.includes(option.value));
+    const selectedOptions = options.filter((option) =>
+      selectedValues.includes(option.value)
+    );
 
     const handleSelect = (optionValue: string) => {
       const newValues = selectedValues.includes(optionValue)
-        ? selectedValues.filter(v => v !== optionValue)
+        ? selectedValues.filter((v) => v !== optionValue)
         : [...selectedValues, optionValue];
-      
+
       setSelectedValues(newValues);
       onValueChange?.(newValues);
     };
@@ -127,9 +153,12 @@ export const MultiSelect = React.forwardRef<HTMLButtonElement, MultiSelectProps>
     const displayText = React.useMemo(() => {
       if (selectedOptions.length === 0) return placeholder;
       if (selectedOptions.length <= maxDisplay) {
-        return selectedOptions.map(opt => opt.label).join(", ");
+        return selectedOptions.map((opt) => opt.label).join(', ');
       }
-      return `${selectedOptions.slice(0, maxDisplay).map(opt => opt.label).join(", ")} +${selectedOptions.length - maxDisplay}`;
+      return `${selectedOptions
+        .slice(0, maxDisplay)
+        .map((opt) => opt.label)
+        .join(', ')} +${selectedOptions.length - maxDisplay}`;
     }, [selectedOptions, placeholder, maxDisplay]);
 
     return (
@@ -137,16 +166,22 @@ export const MultiSelect = React.forwardRef<HTMLButtonElement, MultiSelectProps>
         <button
           ref={ref}
           type="button"
+          role="combobox"
           className={cn(
-            "flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+            'flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
             className
           )}
           onClick={() => setIsOpen(!isOpen)}
           disabled={disabled}
           aria-expanded={isOpen}
           aria-haspopup="listbox"
+          aria-label={ariaLabel}
         >
-          <span className={cn(selectedOptions.length === 0 && "text-muted-foreground")}>
+          <span
+            className={cn(
+              selectedOptions.length === 0 && 'text-muted-foreground'
+            )}
+          >
             {displayText}
           </span>
           <ChevronDown className="h-4 w-4 opacity-50" />
@@ -160,8 +195,8 @@ export const MultiSelect = React.forwardRef<HTMLButtonElement, MultiSelectProps>
                   key={option.value}
                   type="button"
                   className={cn(
-                    "relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
-                    option.disabled && "pointer-events-none opacity-50"
+                    'relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground',
+                    option.disabled && 'pointer-events-none opacity-50'
                   )}
                   onClick={() => handleSelect(option.value)}
                   disabled={option.disabled}
@@ -182,4 +217,4 @@ export const MultiSelect = React.forwardRef<HTMLButtonElement, MultiSelectProps>
   }
 );
 
-MultiSelect.displayName = "MultiSelect";
+MultiSelect.displayName = 'MultiSelect';
