@@ -344,11 +344,19 @@ export const waitForLoadingToFinish = () => {
   return new Promise((resolve) => setTimeout(resolve, 0));
 };
 
+// Create clipboard mock functions that can be spied on
+const clipboardWriteText = vi.fn().mockResolvedValue(undefined);
+const clipboardReadText = vi.fn().mockResolvedValue('');
+
 export const mockClipboard = () => {
+  // Reset the mocks
+  clipboardWriteText.mockClear();
+  clipboardReadText.mockClear();
+
   Object.defineProperty(navigator, 'clipboard', {
     value: {
-      writeText: vi.fn().mockResolvedValue(undefined),
-      readText: vi.fn().mockResolvedValue(''),
+      writeText: clipboardWriteText,
+      readText: clipboardReadText,
     },
     writable: true,
     configurable: true,

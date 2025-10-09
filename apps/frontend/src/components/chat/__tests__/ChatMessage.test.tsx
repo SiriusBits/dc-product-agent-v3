@@ -3,7 +3,7 @@
  */
 
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { screen } from '@testing-library/react';
+import { screen, fireEvent, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import ChatMessage from '../ChatMessage';
 import type { ChatMessage as ChatMessageType } from '@/types';
@@ -23,18 +23,25 @@ describe('ChatMessage', () => {
     cleanupTest();
   });
 
+  // Create dates in local time to avoid timezone issues
+  const createLocalDate = (hour: number, minute: number = 0) => {
+    const date = new Date();
+    date.setHours(hour, minute, 0, 0);
+    return date;
+  };
+
   const mockUserMessage: ChatMessageType = createMockChatMessage({
     id: '1',
     content: 'What is the viscosity of ASA 150?',
     role: 'user',
-    timestamp: new Date('2024-01-01T10:00:00Z'),
+    timestamp: createLocalDate(10, 0),
   });
 
   const mockAssistantMessage: ChatMessageType = createMockChatMessage({
     id: '2',
     content: 'ASA 150 has a viscosity of 150 cP at 25°C.',
     role: 'assistant',
-    timestamp: new Date('2024-01-01T10:00:01Z'),
+    timestamp: createLocalDate(10, 0),
     sources: [
       {
         content: 'ASA 150 viscosity: 150 cP',
@@ -52,6 +59,7 @@ describe('ChatMessage', () => {
     role: 'user',
     timestamp: new Date('2024-01-01T10:00:02Z'),
     conversation_id: 'conv-123',
+    metadata: { isError: true },
   };
 
   it('renders user message correctly', () => {
@@ -75,7 +83,7 @@ describe('ChatMessage', () => {
   it('displays sources for assistant messages', () => {
     render(<ChatMessage message={mockAssistantMessage} />);
 
-    expect(screen.getByText('Sources')).toBeInTheDocument();
+    expect(screen.getByText(/Sources \(1\)/)).toBeInTheDocument();
     expect(screen.getByText('ASA 150 Technical Bulletin')).toBeInTheDocument();
   });
 
@@ -83,7 +91,7 @@ describe('ChatMessage', () => {
     render(<ChatMessage message={mockAssistantMessage} />);
 
     expect(screen.getByText('95%')).toBeInTheDocument();
-    expect(screen.getByText('vector')).toBeInTheDocument();
+    expect(screen.getByText('VECTOR')).toBeInTheDocument();
   });
 
   it('renders error message', () => {
@@ -106,32 +114,51 @@ describe('ChatMessage', () => {
   });
 
   it('copies message content to clipboard', async () => {
-    const user = userEvent.setup();
-
-    // Clipboard is already mocked in setupTest
+    // Spy on the clipboard writeText method before rendering
+    const writeTextSpy = vi
+      .spyOn(navigator.clipboard, 'writeText')
+      .mockResolvedValue(undefined);
 
     render(<ChatMessage message={mockUserMessage} />);
 
     const messageContainer = screen.getByTestId('message-container');
-    await user.hover(messageContainer);
 
-    const copyButton = screen.getByRole('button', { name: /copy/i });
-    await user.click(copyButton);
+    // Trigger hover to show the copy button using fireEvent
+    fireEvent.mouseEnter(messageContainer);
 
-    expect(navigator.clipboard.writeText).toHaveBeenCalledWith(
-      'What is the viscosity of ASA 150?'
-    );
+    // Wait for the copy button to appear
+    const copyButton = await screen.findByRole('button', { name: /copy/i });
+
+    // Click the button using fireEvent
+    fireEvent.click(copyButton);
+
+    // Wait for the async clipboard operation
+    await waitFor(() => {
+      expect(writeTextSpy).toHaveBeenCalledWith(
+        'What is the viscosity of ASA 150?'
+      );
+    });
+
+    writeTextSpy.mockRestore();
   });
 
   it('formats timestamp correctly', () => {
+    // Create a date that will display as 2:30 PM in local time
+    const testDate = new Date('2024-01-01T14:30:00');
     const message = {
       ...mockUserMessage,
-      timestamp: new Date('2024-01-01T14:30:00Z'),
+      timestamp: testDate,
     };
 
     render(<ChatMessage message={message} />);
 
-    expect(screen.getByText('2:30 PM')).toBeInTheDocument();
+    // Verify the timestamp is formatted in 12-hour format
+    const expectedTime = testDate.toLocaleTimeString('en-US', {
+      hour: 'numeric',
+      minute: '2-digit',
+      hour12: true,
+    });
+    expect(screen.getByText(expectedTime)).toBeInTheDocument();
   });
 
   it('handles messages without sources', () => {
@@ -142,7 +169,7 @@ describe('ChatMessage', () => {
 
     render(<ChatMessage message={messageWithoutSources} />);
 
-    expect(screen.queryByText('Sources')).not.toBeInTheDocument();
+    expect(screen.queryByText(/Sources/)).not.toBeInTheDocument();
   });
 
   it('handles empty sources array', () => {
@@ -153,7 +180,7 @@ describe('ChatMessage', () => {
 
     render(<ChatMessage message={messageWithEmptySources} />);
 
-    expect(screen.queryByText('Sources')).not.toBeInTheDocument();
+    expect(screen.queryByText(/Sources/)).not.toBeInTheDocument();
   });
 
   it('expands and collapses source details', async () => {

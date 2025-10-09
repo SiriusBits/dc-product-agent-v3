@@ -19,7 +19,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
-import { cn } from '@/lib/utils';
+import { cn, formatTimestamp } from '@/lib/utils';
 import { renderMarkdown } from '@/lib/markdown';
 
 interface ChatMessageProps {
@@ -69,6 +69,12 @@ const SourceCard = memo(({ source, index }: SourceCardProps) => {
   const page = source.metadata?.page;
   const confidence = Math.round(source.score * 100);
 
+  const getConfidenceColor = (score: number) => {
+    if (score >= 90) return 'text-green-600';
+    if (score >= 70) return 'text-yellow-600';
+    return 'text-red-600';
+  };
+
   const handleToggleExpansion = () => {
     setIsExpanded(!isExpanded);
   };
@@ -88,8 +94,13 @@ const SourceCard = memo(({ source, index }: SourceCardProps) => {
             <Badge variant="outline" className="text-xs">
               {source.source.toUpperCase()}
             </Badge>
-            <span className="text-xs text-muted-foreground">
-              {confidence}% confidence
+            <span
+              className={cn(
+                'text-xs font-medium',
+                getConfidenceColor(confidence)
+              )}
+            >
+              {`${confidence}%`}
             </span>
           </div>
           <div className="flex items-center space-x-1">
@@ -143,6 +154,7 @@ const ChatMessage = memo(({ message, isLatest = false }: ChatMessageProps) => {
   const isUser = message.role === 'user';
   const hasSource = message.sources && message.sources.length > 0;
   const isPending = !message.content && message.role === 'assistant';
+  const isError = message.metadata?.isError === true;
 
   const handleCopy = async () => {
     try {
@@ -162,8 +174,11 @@ const ChatMessage = memo(({ message, isLatest = false }: ChatMessageProps) => {
         isUser ? 'justify-end' : 'justify-start',
         isLatest && !isUser
           ? 'animate-in slide-in-from-left-2 duration-300'
-          : ''
+          : '',
+        isError ? 'border border-red-200 rounded-lg bg-red-50/50' : ''
       )}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       {!isUser && (
         <div className="flex-shrink-0">
@@ -184,8 +199,6 @@ const ChatMessage = memo(({ message, isLatest = false }: ChatMessageProps) => {
             'relative group rounded-lg px-4 py-2 text-sm',
             isUser ? 'bg-primary text-primary-foreground ml-auto' : 'bg-muted'
           )}
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
         >
           {isPending ? (
             <div
@@ -214,11 +227,11 @@ const ChatMessage = memo(({ message, isLatest = false }: ChatMessageProps) => {
                   renderMarkdown(message.content)
                 )}
               </div>
-              {!isUser && message.content && (isHovered || isCopied) && (
+              {message.content && (isHovered || isCopied) && (
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="absolute -top-2 -right-2 h-6 w-6 bg-background border shadow-sm opacity-0 group-hover:opacity-100 transition-opacity"
+                  className="absolute -top-2 -right-2 h-6 w-6 bg-background border shadow-sm transition-opacity"
                   onClick={handleCopy}
                   aria-label="Copy message"
                 >
@@ -260,10 +273,7 @@ const ChatMessage = memo(({ message, isLatest = false }: ChatMessageProps) => {
         )}
 
         <div className="text-xs text-muted-foreground">
-          {new Date(message.timestamp).toLocaleTimeString([], {
-            hour: '2-digit',
-            minute: '2-digit',
-          })}
+          {formatTimestamp(new Date(message.timestamp))}
         </div>
       </div>
 

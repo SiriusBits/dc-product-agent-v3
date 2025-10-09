@@ -76,6 +76,7 @@ export interface ChatMessage {
   sources?: RetrievalResult[];
   timestamp: Date;
   conversation_id: string;
+  metadata?: Record<string, any>;
 }
 
 export interface Conversation {

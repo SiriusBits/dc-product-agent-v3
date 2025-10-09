@@ -1,11 +1,15 @@
 import '@testing-library/jest-dom';
 import { vi, beforeEach, afterEach } from 'vitest';
 
+// Create persistent mock functions for clipboard
+const clipboardWriteText = vi.fn().mockResolvedValue(undefined);
+const clipboardReadText = vi.fn().mockResolvedValue('');
+
 // Global mock for clipboard API
 Object.defineProperty(navigator, 'clipboard', {
   value: {
-    writeText: vi.fn().mockResolvedValue(undefined),
-    readText: vi.fn().mockResolvedValue(''),
+    writeText: clipboardWriteText,
+    readText: clipboardReadText,
   },
   writable: true,
   configurable: true,

@@ -33,37 +33,37 @@
   - Ensure attribute is present for both user and assistant messages
   - _Requirements: 1.1_
 
-- [ ] 6. Fix timestamp formatting in ChatMessage
+- [x] 6. Fix timestamp formatting in ChatMessage
   - Import and use centralized `formatTimestamp` utility
   - Replace any inline date formatting with utility function
   - Verify timestamp displays in 12-hour format
   - _Requirements: 1.2_
 
-- [ ] 7. Fix markdown rendering styles
+- [x] 7. Fix markdown rendering styles
   - Update markdown CSS to use `font-weight: bold` for strong tags
   - Add `.markdown-content strong { font-weight: bold; }` rule
   - Test that bold text renders with correct weight
   - _Requirements: 1.3_
 
-- [ ] 8. Fix confidence score rendering
+- [x] 8. Fix confidence score rendering
   - Consolidate confidence score into single text node (e.g., "95%")
   - Update source card component to render score without splitting
   - Ensure score is accessible via `getByText('95%')`
   - _Requirements: 1.4_
 
-- [ ] 9. Ensure copy button accessibility
+- [x] 9. Ensure copy button accessibility
   - Verify copy button has proper aria-label or accessible name
   - Ensure button is queryable via `getByRole('button', { name: /copy/i })`
   - Test hover behavior shows copy button
   - _Requirements: 1.5_
 
-- [ ] 10. Add error styling classes
+- [x] 10. Add error styling classes
   - Add `border-red-200` class to error message containers
   - Ensure error messages have distinct visual styling
   - Verify error styling is applied correctly in tests
   - _Requirements: 1.6_
 
-- [ ] 11. Run ChatMessage tests
+- [x] 11. Run ChatMessage tests
   - Execute ChatMessage test suite
   - Verify all 10 ChatMessage tests pass
   - _Requirements: 1.1, 1.2, 1.3, 1.4, 1.5, 1.6_
