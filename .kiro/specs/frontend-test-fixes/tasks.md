@@ -15,20 +15,20 @@
   - Add scrollIntoView mock for auto-scroll tests
   - _Requirements: 5.1, 5.2_
 
-- [ ] 3. Create centralized timestamp formatting utility
+- [x] 3. Create centralized timestamp formatting utility
   - Create `formatTimestamp` function in `apps/frontend/src/lib/utils.ts`
   - Implement 12-hour format with AM/PM (e.g., "2:30 PM")
   - Export function for use in components and tests
   - _Requirements: 1.2_
 
-- [ ] 4. Verify test infrastructure
+- [x] 4. Verify test infrastructure
   - Run test suite to establish baseline
   - Document any remaining infrastructure issues
   - _Requirements: 5.1_
 
 ## Milestone 2: ChatMessage Component Fixes
 
-- [ ] 5. Add data-testid attributes to ChatMessage
+- [x] 5. Add data-testid attributes to ChatMessage
   - Add `data-testid="message-container"` to main container div
   - Ensure attribute is present for both user and assistant messages
   - _Requirements: 1.1_

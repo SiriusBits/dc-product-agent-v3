@@ -156,6 +156,7 @@ const ChatMessage = memo(({ message, isLatest = false }: ChatMessageProps) => {
 
   return (
     <div
+      data-testid="message-container"
       className={cn(
         'flex gap-3 p-4',
         isUser ? 'justify-end' : 'justify-start',
