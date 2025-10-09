@@ -3,63 +3,65 @@
  */
 
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { screen, fireEvent, waitFor } from '@testing-library/react';
+import { screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { ChatInterface } from '@/components/chat/ChatInterface';
-import type { ChatResponse } from '@/types';
-import { 
-  render, 
-  setupTest, 
-  cleanupTest, 
+import ChatInterface from '@/components/chat/ChatInterface';
+import type { ChatResponse, QueryType } from '@/types';
+import {
+  render,
+  setupTest,
+  cleanupTest,
   mockApiClient,
-  createMockChatResponse 
+  createMockChatResponse,
 } from '@/test/test-utils';
 
 describe('Chat Flow Integration', () => {
   const mockChatResponse: ChatResponse = {
-    answer: 'ASA 150 has a viscosity of 150 cP at 25°C according to ASTM D445 test method.',
+    answer:
+      'ASA 150 has a viscosity of 150 cP at 25°C according to ASTM D445 test method.',
     sources: [
       {
         content: 'ASA 150 viscosity: 150 cP at 25°C, measured using ASTM D445',
         score: 0.95,
         source: 'vector',
-        metadata: { 
+        metadata: {
           doc_id: 'asa-150-spec',
           section: 'properties',
-          page: 2
+          page: 2,
         },
-        provenance: { 
+        provenance: {
           document: 'ASA 150 Technical Bulletin',
-          source_file: 'ASA_150_Technical_Bulletin.pdf'
+          source_file: 'ASA_150_Technical_Bulletin.pdf',
         },
       },
       {
         content: 'ASA 150 is commonly used in coatings applications',
         score: 0.87,
         source: 'kg',
-        metadata: { 
+        metadata: {
           entity_type: 'CHEMICAL',
-          relationship: 'used_in'
+          relationship: 'used_in',
         },
-        provenance: { 
+        provenance: {
           document: 'ASA Product Applications',
-          confidence: 0.9
+          confidence: 0.9,
         },
       },
     ],
-    conversationId: 'conv-123',
-    queryAnalysis: {
-      queryType: 'specification',
+    conversation_id: 'conv-123',
+    query_analysis: {
+      query_type: 'specification' as QueryType,
       entities: ['ASA 150'],
-      intentConfidence: 0.9,
+      intent_confidence: 0.9,
+      suggested_strategy: {},
     },
-    responseTimeMs: 250,
-    kgEnhanced: true,
+    response_time_ms: 250,
+    kg_enhanced: true,
   };
 
   beforeEach(() => {
     setupTest();
-    
+
     // Mock successful API responses by default
     mockApiClient.sendMessage.mockResolvedValue(createMockChatResponse());
     mockApiClient.listConversations.mockResolvedValue([]);
@@ -86,11 +88,17 @@ describe('Chat Flow Integration', () => {
 
     // 4. Wait for response to appear
     await waitFor(() => {
-      expect(screen.getByText('ASA 150 has a viscosity of 150 cP at 25°C according to ASTM D445 test method.')).toBeInTheDocument();
+      expect(
+        screen.getByText(
+          'ASA 150 has a viscosity of 150 cP at 25°C according to ASTM D445 test method.'
+        )
+      ).toBeInTheDocument();
     });
 
     // 5. Verify user message is displayed
-    expect(screen.getByText('What is the viscosity of ASA 150?')).toBeInTheDocument();
+    expect(
+      screen.getByText('What is the viscosity of ASA 150?')
+    ).toBeInTheDocument();
 
     // 6. Verify sources are displayed
     expect(screen.getByText('Sources')).toBeInTheDocument();
@@ -99,8 +107,8 @@ describe('Chat Flow Integration', () => {
     // 7. Verify API was called correctly
     expect(mockApiClient.chat).toHaveBeenCalledWith({
       query: 'What is the viscosity of ASA 150?',
-      conversationId: null,
-      maxResults: 10,
+      conversation_id: null,
+      max_results: 10,
     });
 
     // 8. Input should be cleared after sending
@@ -124,7 +132,7 @@ describe('Chat Flow Integration', () => {
     const secondResponse = {
       ...mockChatResponse,
       answer: 'ASA 150 is used in coatings and adhesives applications.',
-      conversationId: 'conv-123', // Same conversation
+      conversation_id: 'conv-123', // Same conversation
     };
     mockApiClient.chat.mockResolvedValueOnce(secondResponse);
 
@@ -132,23 +140,27 @@ describe('Chat Flow Integration', () => {
     await user.click(screen.getByRole('button', { name: /send/i }));
 
     await waitFor(() => {
-      expect(screen.getByText('ASA 150 is used in coatings and adhesives applications.')).toBeInTheDocument();
+      expect(
+        screen.getByText(
+          'ASA 150 is used in coatings and adhesives applications.'
+        )
+      ).toBeInTheDocument();
     });
 
     // Verify second call includes conversation ID
     expect(mockApiClient.chat).toHaveBeenLastCalledWith({
       query: 'What is it used for?',
-      conversationId: 'conv-123',
-      maxResults: 10,
+      conversation_id: 'conv-123',
+      max_results: 10,
     });
   });
 
   it('handles error states and retry functionality', async () => {
     const user = userEvent.setup();
-    
+
     // Mock API error
     mockApiClient.chat.mockRejectedValueOnce(new Error('Network error'));
-    
+
     render(<ChatInterface />);
 
     // Send message that will fail
@@ -198,7 +210,11 @@ describe('Chat Flow Integration', () => {
     await user.click(sourceItem);
 
     // Verify source content is expanded
-    expect(screen.getByText('ASA 150 viscosity: 150 cP at 25°C, measured using ASTM D445')).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        'ASA 150 viscosity: 150 cP at 25°C, measured using ASTM D445'
+      )
+    ).toBeInTheDocument();
 
     // Verify source metadata
     expect(screen.getByText('95%')).toBeInTheDocument(); // Score
@@ -206,12 +222,16 @@ describe('Chat Flow Integration', () => {
 
     // Click again to collapse
     await user.click(sourceItem);
-    expect(screen.queryByText('ASA 150 viscosity: 150 cP at 25°C, measured using ASTM D445')).not.toBeInTheDocument();
+    expect(
+      screen.queryByText(
+        'ASA 150 viscosity: 150 cP at 25°C, measured using ASTM D445'
+      )
+    ).not.toBeInTheDocument();
   });
 
   it('handles message copying functionality', async () => {
     const user = userEvent.setup();
-    
+
     // Clipboard is already mocked in setupTest
 
     render(<ChatInterface />);
@@ -234,7 +254,9 @@ describe('Chat Flow Integration', () => {
     await user.click(copyButton);
 
     // Verify clipboard was called
-    expect(navigator.clipboard.writeText).toHaveBeenCalledWith(mockChatResponse.answer);
+    expect(navigator.clipboard.writeText).toHaveBeenCalledWith(
+      mockChatResponse.answer
+    );
   });
 
   it('handles keyboard shortcuts', async () => {
@@ -242,7 +264,7 @@ describe('Chat Flow Integration', () => {
     render(<ChatInterface />);
 
     const input = screen.getByPlaceholderText(/ask about chemical products/i);
-    
+
     // Type message and press Enter to send
     await user.type(input, 'Test message');
     await user.keyboard('{Enter}');
@@ -260,7 +282,7 @@ describe('Chat Flow Integration', () => {
 
   it('handles conversation management', async () => {
     const user = userEvent.setup();
-    
+
     // Mock existing conversations
     const existingConversations = [
       {
@@ -297,7 +319,7 @@ describe('Chat Flow Integration', () => {
 
   it('handles long conversations with scrolling', async () => {
     const user = userEvent.setup();
-    
+
     // Mock scrollIntoView
     const scrollIntoViewMock = vi.fn();
     Element.prototype.scrollIntoView = scrollIntoViewMock;
@@ -311,7 +333,7 @@ describe('Chat Flow Integration', () => {
       const response = {
         ...mockChatResponse,
         answer: `Response ${i}`,
-        conversationId: 'conv-123',
+        conversation_id: 'conv-123',
       };
       mockApiClient.chat.mockResolvedValueOnce(response);
 
@@ -329,7 +351,7 @@ describe('Chat Flow Integration', () => {
 
   it('handles concurrent message sending prevention', async () => {
     const user = userEvent.setup();
-    
+
     // Mock slow API response
     let resolvePromise: (value: ChatResponse) => void;
     const promise = new Promise<ChatResponse>((resolve) => {
@@ -352,7 +374,7 @@ describe('Chat Flow Integration', () => {
 
     // Try to send another message (should be prevented)
     expect(input).toHaveValue(''); // Input should be cleared
-    
+
     // Resolve the first message
     resolvePromise!(mockChatResponse);
     await promise;
@@ -365,7 +387,7 @@ describe('Chat Flow Integration', () => {
 
   it('persists conversation state across page reloads', async () => {
     const user = userEvent.setup();
-    
+
     // Set up localStorage with existing messages
     const existingMessages = [
       {
@@ -398,17 +420,18 @@ describe('Chat Flow Integration', () => {
     // Verify conversation ID is maintained
     expect(mockApiClient.chat).toHaveBeenCalledWith({
       query: 'New question',
-      conversationId: 'conv-123',
-      maxResults: 10,
+      conversation_id: 'conv-123',
+      max_results: 10,
     });
   });
 
   it('handles message formatting and markdown rendering', async () => {
     const user = userEvent.setup();
-    
+
     const responseWithMarkdown = {
       ...mockChatResponse,
-      answer: 'ASA 150 has a **viscosity** of *150 cP* and is used in:\n\n1. Coatings\n2. Adhesives\n\n`ASTM D445` test method.',
+      answer:
+        'ASA 150 has a **viscosity** of *150 cP* and is used in:\n\n1. Coatings\n2. Adhesives\n\n`ASTM D445` test method.',
     };
     mockApiClient.chat.mockResolvedValue(responseWithMarkdown);
 

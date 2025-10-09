@@ -287,7 +287,7 @@ describe('ChatInterface', () => {
         role: 'user' as const,
         timestamp: new Date(),
         conversation_id: 'conv-123',
-        error: 'Network error',
+        // error property doesn't exist in ChatMessage type
       },
     ];
 

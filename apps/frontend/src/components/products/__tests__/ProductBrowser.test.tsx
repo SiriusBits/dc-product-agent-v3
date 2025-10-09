@@ -3,10 +3,10 @@
  */
 
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { ProductBrowser } from '../ProductBrowser';
-import type { Product, ProductFamily } from '@/types';
+import ProductBrowser from '../ProductBrowser';
+// ProductSummary type is used implicitly in mockProducts
 
 // Mock the hooks
 vi.mock('@/hooks/useProducts', () => ({
@@ -19,72 +19,59 @@ vi.mock('@/hooks/useApi', () => ({
 
 import { useProducts } from '@/hooks/useProducts';
 import { useApi } from '@/hooks/useApi';
+import { MockApiError } from '@/test/test-utils';
 
 const mockUseProducts = vi.mocked(useProducts);
 const mockUseApi = vi.mocked(useApi);
 
 describe('ProductBrowser', () => {
-  const mockProducts: Product[] = [
+  const mockProducts = [
     {
       id: 'asa-150',
       name: 'ASA 150',
-      shortName: 'ASA150',
-      family: 'ASA' as ProductFamily,
-      casNumber: '12345-67-8',
-      chemicalName: 'Alkenyl Succinic Anhydride 150',
-      synonyms: ['ASA-150'],
-      properties: [
-        {
-          category: 'Physical',
-          name: 'Viscosity',
-          valueString: '150 cP',
-          valueNumeric: 150,
-          unit: 'cP',
-          testMethod: 'ASTM D445',
-        },
-      ],
+      short_name: 'ASA150',
+      family: 'ASA',
+      cas_number: '12345-67-8',
       applications: ['Coatings', 'Adhesives'],
-      keyBenefits: ['High viscosity', 'Good adhesion'],
+      key_properties: ['Viscosity: 150 cP'],
+      document_count: 1,
     },
     {
       id: 'dca-467',
       name: 'DCA 467',
-      shortName: 'DCA467',
-      family: 'DCA' as ProductFamily,
-      casNumber: '98765-43-2',
-      chemicalName: 'Dicyandiamide 467',
-      synonyms: ['DCA-467'],
-      properties: [
-        {
-          category: 'Physical',
-          name: 'Melting Point',
-          valueString: '200°C',
-          valueNumeric: 200,
-          unit: '°C',
-          testMethod: 'DSC',
-        },
-      ],
+      short_name: 'DCA467',
+      family: 'DCA',
+      cas_number: '98765-43-2',
       applications: ['Epoxy Curing'],
-      keyBenefits: ['Fast cure', 'High strength'],
+      key_properties: ['Melting Point: 200°C'],
+      document_count: 1,
     },
   ];
 
   const mockProductsHook = {
     products: mockProducts,
-    isLoading: false,
+    totalCount: mockProducts.length,
+    facets: null,
+    loading: false,
     error: null,
     searchProducts: vi.fn(),
-    getProduct: vi.fn(),
-    families: ['ASA', 'DCA', 'ECA'] as ProductFamily[],
-    applications: ['Coatings', 'Adhesives', 'Epoxy Curing'],
+    loadMore: vi.fn(),
+    hasMore: false,
+    retry: vi.fn(),
+    isRetryable: false,
   };
 
   beforeEach(() => {
     mockUseProducts.mockReturnValue(mockProductsHook);
     mockUseApi.mockReturnValue({
-      isLoading: false,
+      data: null,
+      loading: false,
       error: null,
+      lastUpdated: null,
       execute: vi.fn(),
+      retry: vi.fn(),
+      reset: vi.fn(),
+      isRetryable: false,
     });
   });
 
@@ -123,7 +110,7 @@ describe('ProductBrowser', () => {
     await waitFor(() => {
       expect(mockProductsHook.searchProducts).toHaveBeenCalledWith({
         query: 'ASA',
-        families: [],
+        family: undefined,
         applications: [],
       });
     });
@@ -141,7 +128,7 @@ describe('ProductBrowser', () => {
 
     expect(mockProductsHook.searchProducts).toHaveBeenCalledWith({
       query: '',
-      families: ['ASA'],
+      family: 'ASA',
       applications: [],
     });
   });
@@ -150,7 +137,9 @@ describe('ProductBrowser', () => {
     const user = userEvent.setup();
     render(<ProductBrowser />);
 
-    const applicationSelect = screen.getByRole('combobox', { name: /application/i });
+    const applicationSelect = screen.getByRole('combobox', {
+      name: /application/i,
+    });
     await user.click(applicationSelect);
 
     const coatingsOption = screen.getByText('Coatings');
@@ -168,7 +157,9 @@ describe('ProductBrowser', () => {
 
     // Check ASA 150 card
     expect(screen.getByText('ASA 150')).toBeInTheDocument();
-    expect(screen.getByText('Alkenyl Succinic Anhydride 150')).toBeInTheDocument();
+    expect(
+      screen.getByText('Alkenyl Succinic Anhydride 150')
+    ).toBeInTheDocument();
     expect(screen.getByText('ASA')).toBeInTheDocument();
     expect(screen.getByText('Coatings')).toBeInTheDocument();
     expect(screen.getByText('Adhesives')).toBeInTheDocument();
@@ -183,7 +174,7 @@ describe('ProductBrowser', () => {
   it('navigates to product detail when card is clicked', async () => {
     const user = userEvent.setup();
     const mockNavigate = vi.fn();
-    
+
     // Mock navigation
     vi.mock('react-router-dom', () => ({
       useNavigate: () => mockNavigate,
@@ -200,7 +191,7 @@ describe('ProductBrowser', () => {
   it('shows loading state', () => {
     mockUseProducts.mockReturnValue({
       ...mockProductsHook,
-      isLoading: true,
+      loading: true,
     });
 
     render(<ProductBrowser />);
@@ -211,7 +202,7 @@ describe('ProductBrowser', () => {
   it('shows error state', () => {
     mockUseProducts.mockReturnValue({
       ...mockProductsHook,
-      error: 'Failed to load products',
+      error: new MockApiError('Failed to load products', 500),
     });
 
     render(<ProductBrowser />);
@@ -269,7 +260,9 @@ describe('ProductBrowser', () => {
 
     // Tab to application filter
     await user.keyboard('{Tab}');
-    expect(screen.getByRole('combobox', { name: /application/i })).toHaveFocus();
+    expect(
+      screen.getByRole('combobox', { name: /application/i })
+    ).toHaveFocus();
   });
 
   it('handles search debouncing', async () => {
@@ -277,9 +270,9 @@ describe('ProductBrowser', () => {
     render(<ProductBrowser />);
 
     const searchInput = screen.getByPlaceholderText(/search products/i);
-    
+
     // Type quickly
-    await user.type(searchInput, 'ASA', { delay: 50 });
+    await user.type(searchInput, 'ASA');
 
     // Should debounce and only call once after delay
     await waitFor(() => {
@@ -298,7 +291,9 @@ describe('ProductBrowser', () => {
 
     render(<ProductBrowser />);
 
-    const searchInput = screen.getByPlaceholderText(/search products/i) as HTMLInputElement;
+    const searchInput = screen.getByPlaceholderText(
+      /search products/i
+    ) as HTMLInputElement;
     expect(searchInput.value).toBe('ASA');
   });
 
@@ -355,7 +350,7 @@ describe('ProductBrowser', () => {
 
   it('handles pagination for large product lists', async () => {
     const user = userEvent.setup();
-    
+
     // Mock large product list
     const manyProducts = Array.from({ length: 50 }, (_, i) => ({
       ...mockProducts[0],
@@ -367,8 +362,9 @@ describe('ProductBrowser', () => {
       ...mockProductsHook,
       products: manyProducts,
       totalCount: 100,
-      currentPage: 1,
-      totalPages: 4,
+      hasMore: true,
+      loading: false,
+      facets: null,
     });
 
     render(<ProductBrowser />);
@@ -376,12 +372,7 @@ describe('ProductBrowser', () => {
     const nextPageButton = screen.getByRole('button', { name: /next page/i });
     await user.click(nextPageButton);
 
-    expect(mockProductsHook.searchProducts).toHaveBeenCalledWith({
-      query: '',
-      families: [],
-      applications: [],
-      page: 2,
-    });
+    expect(mockProductsHook.loadMore).toHaveBeenCalled();
   });
 
   it('shows comparison checkbox for products', () => {

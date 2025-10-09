@@ -302,68 +302,88 @@
     - Verify no remaining type or import issues
     - _Requirements: 11.2, 11.4_
 
-- [ ] 15. Fix TypeScript compilation errors in frontend tests
-  - [ ] 15.1 Fix component import issues
+- [x] 15. Fix TypeScript compilation errors in frontend tests
+  - [x] 15.1 Fix component import issues
     - Change `import { ChatMessage }` to `import ChatMessage` (default import) in ChatMessage.test.tsx
     - Change `import { ProductBrowser }` to `import ProductBrowser` (default import) in ProductBrowser.test.tsx
     - Change `import { ChatInterface }` to `import ChatInterface` (default import) in ChatInterface.test.tsx and chat-flow.test.tsx
     - _Requirements: 11.2_
-  - [ ] 15.2 Fix missing type exports and imports
+  - [x] 15.2 Fix missing type exports and imports
     - Add `Product` and `ProductFamily` type exports to `@/types` index file or import from `@repo/shared-types`
     - Remove `error` property from ChatMessage mock objects as it doesn't exist in the ChatMessage type
     - Fix `conversationId` to `conversation_id` in ChatResponse mock objects
     - _Requirements: 11.2, 7.7_
-  - [ ] 15.3 Fix hook interface mismatches in tests
+  - [x] 15.3 Fix hook interface mismatches in tests
     - Update useProducts test expectations to match actual hook interface (change `isLoading` to `loading`)
     - Remove references to non-existent properties like `families`, `applications`, `getProduct`, `familyCount`
     - Update ProductSearchParams to remove `families` property that doesn't exist
     - _Requirements: 11.2_
-  - [ ] 15.4 Fix API client mock interface issues
+  - [x] 15.4 Fix API client mock interface issues
     - Add missing API methods to mockApiClient: `chat`, `getProducts`, `getApplications`, `createConversation`, `getConversations`
     - Remove conflicting mockApiClient import in product-search.test.tsx
     - Fix apiClient import issue in product-search.test.tsx
     - _Requirements: 11.2_
-  - [ ] 15.5 Fix test utility and mock data issues
+  - [x] 15.5 Fix test utility and mock data issues
     - Update UseProductsResult mock objects to include all required properties: `totalCount`, `facets`, `loading`, `loadMore`
     - Fix error type assignments to use proper ApiError type instead of string
     - Remove invalid properties like `currentPage`, `delay` from test objects
     - _Requirements: 11.2_
-  - [ ] 15.6 Clean up unused imports and warnings
+  - [x] 15.6 Clean up unused imports and warnings
     - Remove unused imports: `fireEvent`, `createMockSearchResult`, `setupTest`, `cleanupTest`, etc.
     - Fix unused variable warnings in test files
     - _Requirements: 11.2_
 
-- [ ] 16. Fix frontend test runtime failures
-  - [ ] 16.1 Fix hook implementation mismatches
-    - Investigate why useChat and useProducts hooks return null instead of expected objects
-    - Update hook implementations to match test expectations or update test expectations
-    - Fix hook state management and return value structure
-    - _Requirements: 11.2_
-  - [ ] 16.2 Fix component rendering issues
-    - Fix "Element type is invalid" errors caused by undefined component imports
-    - Ensure all components are properly exported and imported
-    - Fix component prop type mismatches
-    - _Requirements: 11.2_
-  - [ ] 16.3 Fix test environment setup issues
-    - Fix scrollIntoView mock implementation in test environment
-    - Update DOM API mocks to match test expectations
-    - Fix clipboard API mocking for copy functionality tests
-    - _Requirements: 11.2_
-  - [ ] 16.4 Fix async test handling and timeouts
-    - Fix test timeouts in useProducts and chat integration tests
-    - Update async/await patterns in test implementations
-    - Fix promise handling in hook tests
-    - _Requirements: 11.2_
-  - [ ] 16.5 Fix test data and mock alignment
-    - Update test data structures to match actual component and hook interfaces
-    - Fix mock function implementations to return expected data structures
-    - Align test expectations with actual component behavior
-    - _Requirements: 11.2_
-  - [ ] 16.6 Fix integration test workflow issues
-    - Fix user interaction simulation in integration tests
-    - Update test assertions to match current component behavior
-    - Fix event handling and state updates in tests
-    - _Requirements: 11.2_
+- [ ] 16. Fix chat flow integration test failures
+  - [ ] 16.1 Fix ChatInput component accessibility issues
+    - Add proper aria-label or accessible name to send button in ChatInput component
+    - Ensure button has proper role and name attributes for screen readers
+    - Update button implementation to include "Send" text or aria-label
+    - _Requirements: 11.2, 7.7_
+  - [ ] 16.2 Fix chat message loading and thinking state display
+    - Implement proper loading state display with "thinking" text in ChatInterface
+    - Add loading indicators during message processing
+    - Ensure loading states are properly shown and hidden during chat interactions
+    - _Requirements: 11.2, 7.4_
+  - [ ] 16.3 Fix source display and interaction functionality
+    - Implement source display functionality in ChatMessage component
+    - Add source expansion/collapse interaction handling
+    - Ensure source metadata (confidence scores, source types) are properly displayed
+    - _Requirements: 11.2, 7.4_
+  - [ ] 16.4 Fix conversation persistence and localStorage integration
+    - Implement localStorage integration for conversation state persistence
+    - Add proper message loading from localStorage on component mount
+    - Ensure conversation ID persistence across page reloads
+    - _Requirements: 11.2, 7.4_
+  - [ ] 16.5 Fix error handling and retry functionality
+    - Implement proper error display and retry button functionality in ChatInterface
+    - Add error state management and user feedback
+    - Ensure retry functionality works correctly after API failures
+    - _Requirements: 11.2, 7.4_
+  - [ ] 16.6 Fix conversation management functionality
+    - Implement conversation sidebar with proper conversation loading
+    - Add new conversation creation and conversation selection functionality
+    - Fix conversation list display and interaction handling
+    - _Requirements: 11.2, 7.4_
+  - [ ] 16.7 Fix message copying and interaction features
+    - Implement message copy functionality with proper clipboard integration
+    - Add hover states and copy button display for messages
+    - Ensure keyboard shortcuts (Ctrl+K) work correctly
+    - _Requirements: 11.2, 7.4_
+  - [ ] 16.8 Fix API integration and mock alignment
+    - Update API client to properly handle chat requests and responses
+    - Fix mock API client to return proper response structures
+    - Ensure API method names match between implementation and tests (chat vs sendMessage)
+    - _Requirements: 11.2, 7.6_
+  - [ ] 16.9 Fix concurrent message handling and input state
+    - Implement proper input disabling during message processing
+    - Add prevention of concurrent message sending
+    - Ensure input state management works correctly during loading
+    - _Requirements: 11.2, 7.4_
+  - [ ] 16.10 Fix markdown rendering and message formatting
+    - Implement markdown rendering for assistant messages
+    - Add proper text formatting for bold, italic, code, and lists
+    - Ensure message content is properly formatted and displayed
+    - _Requirements: 11.2, 7.4_
 
 - [ ] 17. Integration testing and proof-of-concept validation
   - [ ] 17.1 Perform end-to-end system testing

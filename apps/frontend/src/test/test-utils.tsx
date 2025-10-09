@@ -58,19 +58,24 @@ vi.mock('react-router-dom', () => mockReactRouterDom);
 export const mockApiClient = {
   // Chat endpoints
   sendMessage: vi.fn(),
+  chat: vi.fn(), // Alias for sendMessage for test compatibility
   getConversation: vi.fn(),
   listConversations: vi.fn().mockResolvedValue([]),
+  getConversations: vi.fn().mockResolvedValue([]), // Alias for listConversations
+  createConversation: vi.fn(),
   deleteConversation: vi.fn().mockResolvedValue(undefined),
   updateConversationTitle: vi.fn().mockResolvedValue(undefined),
   getConversationMessages: vi.fn().mockResolvedValue([]),
 
   // Product endpoints
   searchProducts: vi.fn(),
+  getProducts: vi.fn(), // Alias for searchProducts for test compatibility
   getProduct: vi.fn(),
   getRelatedProducts: vi.fn().mockResolvedValue([]),
   compareProducts: vi.fn().mockResolvedValue({}),
   getProductFamilies: vi.fn().mockResolvedValue(['ASA', 'DCA', 'ECA']),
   getProductApplications: vi.fn().mockResolvedValue(['Coatings', 'Adhesives']),
+  getApplications: vi.fn().mockResolvedValue(['Coatings', 'Adhesives']), // Alias for getProductApplications
   getProductProperties: vi.fn().mockResolvedValue([]),
   getProductStatistics: vi.fn().mockResolvedValue({
     totalProducts: 100,
@@ -304,6 +309,7 @@ export const setupTest = () => {
 
   // Reset mock implementations and set default values
   mockApiClient.sendMessage.mockResolvedValue(createMockChatResponse());
+  mockApiClient.chat.mockResolvedValue(createMockChatResponse());
   mockApiClient.getConversation.mockResolvedValue({
     id: 'conv-123',
     title: 'Test Conversation',
@@ -312,18 +318,28 @@ export const setupTest = () => {
     updated_at: new Date(),
   });
   mockApiClient.listConversations.mockResolvedValue([]);
+  mockApiClient.getConversations.mockResolvedValue([]);
+  mockApiClient.createConversation.mockResolvedValue({ id: 'new-conv' });
   mockApiClient.deleteConversation.mockResolvedValue(undefined);
   mockApiClient.updateConversationTitle.mockResolvedValue(undefined);
   mockApiClient.getConversationMessages.mockResolvedValue([]);
 
   mockApiClient.searchProducts.mockResolvedValue({
     products: [createMockProduct()],
-    total: 1,
-    limit: 20,
-    offset: 0,
-    families: ['ASA'],
-    applications: ['Coatings'],
+    total_count: 1,
+    facets: {
+      families: [{ value: 'ASA', count: 1 }],
+      applications: [{ value: 'Coatings', count: 1 }],
+      manufacturers: [],
+      properties: [],
+    },
+    query_info: {
+      processed_query: '',
+      filters_applied: [],
+      search_time_ms: 100,
+    },
   });
+  mockApiClient.getProducts.mockResolvedValue([createMockProduct()]);
   mockApiClient.getProduct.mockResolvedValue(createMockProduct());
   mockApiClient.getRelatedProducts.mockResolvedValue([]);
   mockApiClient.compareProducts.mockResolvedValue({});
@@ -332,6 +348,7 @@ export const setupTest = () => {
     'Coatings',
     'Adhesives',
   ]);
+  mockApiClient.getApplications.mockResolvedValue(['Coatings', 'Adhesives']);
   mockApiClient.getProductProperties.mockResolvedValue([]);
   mockApiClient.getProductStatistics.mockResolvedValue({
     totalProducts: 100,

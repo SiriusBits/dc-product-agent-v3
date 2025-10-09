@@ -3,20 +3,20 @@
  */
 
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { screen, fireEvent, waitFor } from '@testing-library/react';
+import { screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { ProductBrowser } from '@/components/products/ProductBrowser';
+import ProductBrowser from '@/components/products/ProductBrowser';
 import type { Product, ProductFamily } from '@/types';
-import { 
-  render, 
-  setupTest, 
-  cleanupTest, 
+import {
+  render,
+  setupTest,
+  cleanupTest,
   mockApiClient,
   mockSetSearchParams,
-  createMockProduct 
+  createMockProduct,
 } from '@/test/test-utils';
 
-const mockApiClient = vi.mocked(apiClient);
+// mockApiClient is imported from test-utils
 
 describe('Product Search Integration', () => {
   const mockProducts: Product[] = [
@@ -94,11 +94,17 @@ describe('Product Search Integration', () => {
   ];
 
   const mockFamilies: ProductFamily[] = ['ASA', 'DCA', 'ECA'];
-  const mockApplications = ['Coatings', 'Adhesives', 'Sealants', 'Epoxy Curing', 'Powder Coatings'];
+  const mockApplications = [
+    'Coatings',
+    'Adhesives',
+    'Sealants',
+    'Epoxy Curing',
+    'Powder Coatings',
+  ];
 
   beforeEach(() => {
     vi.clearAllMocks();
-    
+
     // Default API responses
     mockApiClient.getProducts.mockResolvedValue(mockProducts);
     mockApiClient.getProductFamilies.mockResolvedValue(mockFamilies);
@@ -129,7 +135,7 @@ describe('Product Search Integration', () => {
     await user.type(searchInput, 'ASA');
 
     // Mock search results for ASA
-    const asaProducts = mockProducts.filter(p => p.name.includes('ASA'));
+    const asaProducts = mockProducts.filter((p) => p.name.includes('ASA'));
     mockApiClient.searchProducts.mockResolvedValue(asaProducts);
 
     await waitFor(() => {
@@ -157,12 +163,12 @@ describe('Product Search Integration', () => {
     // 1. Filter by family
     const familySelect = screen.getByRole('combobox', { name: /family/i });
     await user.click(familySelect);
-    
+
     const asaOption = screen.getByText('ASA');
     await user.click(asaOption);
 
     // Mock filtered results
-    const asaProducts = mockProducts.filter(p => p.family === 'ASA');
+    const asaProducts = mockProducts.filter((p) => p.family === 'ASA');
     mockApiClient.searchProducts.mockResolvedValue(asaProducts);
 
     await waitFor(() => {
@@ -174,15 +180,17 @@ describe('Product Search Integration', () => {
     });
 
     // 2. Add application filter
-    const applicationSelect = screen.getByRole('combobox', { name: /application/i });
+    const applicationSelect = screen.getByRole('combobox', {
+      name: /application/i,
+    });
     await user.click(applicationSelect);
-    
+
     const coatingsOption = screen.getByText('Coatings');
     await user.click(coatingsOption);
 
     // Mock results with both filters
-    const filteredProducts = mockProducts.filter(p => 
-      p.family === 'ASA' && p.applications.includes('Coatings')
+    const filteredProducts = mockProducts.filter(
+      (p) => p.family === 'ASA' && p.applications?.includes('Coatings')
     );
     mockApiClient.searchProducts.mockResolvedValue(filteredProducts);
 
@@ -219,7 +227,7 @@ describe('Product Search Integration', () => {
 
     // 1. Select products for comparison
     const checkboxes = screen.getAllByRole('checkbox');
-    
+
     // Select first two products
     await user.click(checkboxes[0]); // ASA 150
     await user.click(checkboxes[1]); // ASA 140
@@ -234,7 +242,10 @@ describe('Product Search Integration', () => {
 
     await user.click(compareButton);
 
-    expect(mockApiClient.compareProducts).toHaveBeenCalledWith(['asa-150', 'asa-140']);
+    expect(mockApiClient.compareProducts).toHaveBeenCalledWith([
+      'asa-150',
+      'asa-140',
+    ]);
 
     // 4. Verify comparison view (this would navigate to comparison page in real app)
     // For now, just verify the API was called
@@ -284,7 +295,7 @@ describe('Product Search Integration', () => {
   it('handles product detail navigation', async () => {
     const user = userEvent.setup();
     const mockNavigate = vi.fn();
-    
+
     // Navigation is already mocked in setupTest
 
     render(<ProductBrowser />);
@@ -294,7 +305,9 @@ describe('Product Search Integration', () => {
     });
 
     // Click on product card
-    const productCard = screen.getByText('ASA 150').closest('[data-testid="product-card"]');
+    const productCard = screen
+      .getByText('ASA 150')
+      .closest('[data-testid="product-card"]');
     await user.click(productCard!);
 
     expect(mockNavigate).toHaveBeenCalledWith('/products/asa-150');
@@ -348,7 +361,7 @@ describe('Product Search Integration', () => {
 
   it('handles pagination for large result sets', async () => {
     const user = userEvent.setup();
-    
+
     // Mock large product set
     const manyProducts = Array.from({ length: 50 }, (_, i) => ({
       ...mockProducts[0],
@@ -357,7 +370,7 @@ describe('Product Search Integration', () => {
     }));
 
     mockApiClient.getProducts.mockResolvedValue(manyProducts.slice(0, 20));
-    
+
     render(<ProductBrowser />);
 
     await waitFor(() => {
@@ -417,14 +430,16 @@ describe('Product Search Integration', () => {
   it('preserves search state in URL', async () => {
     const user = userEvent.setup();
     const mockSetSearchParams = vi.fn();
-    
+
     // Search params are already mocked in setupTest
     mockSetSearchParams.mockClear();
 
     render(<ProductBrowser />);
 
     // Should initialize with URL parameters
-    const searchInput = screen.getByPlaceholderText(/search products/i) as HTMLInputElement;
+    const searchInput = screen.getByPlaceholderText(
+      /search products/i
+    ) as HTMLInputElement;
     expect(searchInput.value).toBe('ASA');
 
     // Perform new search
@@ -452,7 +467,9 @@ describe('Product Search Integration', () => {
     expect(screen.getByRole('combobox', { name: /family/i })).toHaveFocus();
 
     await user.keyboard('{Tab}'); // Application filter
-    expect(screen.getByRole('combobox', { name: /application/i })).toHaveFocus();
+    expect(
+      screen.getByRole('combobox', { name: /application/i })
+    ).toHaveFocus();
 
     await user.keyboard('{Tab}'); // Sort select
     expect(screen.getByRole('combobox', { name: /sort by/i })).toHaveFocus();
@@ -468,7 +485,9 @@ describe('Product Search Integration', () => {
 
     // Verify properties are displayed
     expect(screen.getByText('Viscosity: 150 cP')).toBeInTheDocument();
-    expect(screen.getByText('Specific Gravity: 1.05 g/cm³')).toBeInTheDocument();
+    expect(
+      screen.getByText('Specific Gravity: 1.05 g/cm³')
+    ).toBeInTheDocument();
 
     // Verify applications are displayed
     expect(screen.getByText('Coatings')).toBeInTheDocument();
