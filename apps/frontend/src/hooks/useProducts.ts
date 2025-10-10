@@ -1,6 +1,5 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { apiClient, ApiError } from '../lib/api-client';
-import { useApi, useApiQuery } from './useApi';
 import type {
   ProductSearchResponse,
   ProductSummary,
@@ -11,6 +10,7 @@ import type {
 export interface ProductSearchParams {
   query?: string;
   family?: string;
+  families?: string[];
   applications?: string[];
   limit?: number;
   offset?: number;
@@ -23,12 +23,19 @@ export interface UseProductsResult {
   totalCount: number;
   facets: SearchFacets | null;
   loading: boolean;
-  error: ApiError | null;
+  error: string | null;
   searchProducts: (params: ProductSearchParams) => Promise<void>;
   loadMore: () => Promise<void>;
   hasMore: boolean;
   retry: () => Promise<void>;
   isRetryable: boolean;
+}
+
+// Simple cache implementation
+const searchCache = new Map<string, ProductSearchResponse>();
+
+function getCacheKey(params: ProductSearchParams): string {
+  return JSON.stringify(params);
 }
 
 export function useProducts(
@@ -37,29 +44,82 @@ export function useProducts(
   const [products, setProducts] = useState<ProductSummary[]>([]);
   const [totalCount, setTotalCount] = useState(0);
   const [facets, setFacets] = useState<SearchFacets | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [currentParams, setCurrentParams] =
     useState<ProductSearchParams>(initialParams);
   const [hasMore, setHasMore] = useState(true);
 
-  // Use API hook for search operations
-  const searchApi = useApi(apiClient.searchProducts, {
-    onSuccess: (response: ProductSearchResponse) => {
-      setProducts(response.products);
-      setTotalCount(response.total_count);
-      setFacets(response.facets);
-      setHasMore(response.products.length < response.total_count);
-    },
-  });
+  // Debouncing and request cancellation
+  const debounceTimeoutRef = useRef<NodeJS.Timeout | undefined>(undefined);
+  const lastSearchParamsRef = useRef<ProductSearchParams | null>(null);
+  const abortControllerRef = useRef<AbortController | null>(null);
 
-  // Use API hook for load more operations
-  const loadMoreApi = useApi(apiClient.searchProducts, {
-    onSuccess: (response: ProductSearchResponse) => {
-      setProducts((prev) => [...prev, ...response.products]);
-      setHasMore(
-        products.length + response.products.length < response.total_count
-      );
+  const executeSearch = useCallback(
+    async (params: ProductSearchParams, skipCache = false) => {
+      // Cancel any ongoing request
+      if (abortControllerRef.current) {
+        abortControllerRef.current.abort();
+      }
+      abortControllerRef.current = new AbortController();
+
+      setLoading(true);
+      setError(null);
+
+      try {
+        // Check cache first (unless skipping cache)
+        const cacheKey = getCacheKey(params);
+        const cachedResult = searchCache.get(cacheKey);
+
+        if (!skipCache && cachedResult) {
+          setProducts(cachedResult.products);
+          setTotalCount(cachedResult.total_count);
+          setFacets(cachedResult.facets);
+          setHasMore(cachedResult.products.length < cachedResult.total_count);
+          setLoading(false);
+          return;
+        }
+
+        // Transform params to match test expectations
+        const apiParams = {
+          query: params.query,
+          families:
+            params.families || (params.family ? [params.family] : undefined),
+          applications: params.applications,
+          limit: params.limit,
+          offset: params.offset,
+          sort_by: params.sort_by,
+          sort_order: params.sort_order,
+        };
+
+        const response = await apiClient.searchProducts(apiParams);
+
+        // Cache the result
+        searchCache.set(cacheKey, response);
+
+        setProducts(response.products);
+        setTotalCount(response.total_count);
+        setFacets(response.facets);
+        setHasMore(response.products.length < response.total_count);
+      } catch (err) {
+        // Don't set error if request was aborted
+        if (err instanceof Error && err.name === 'AbortError') {
+          return;
+        }
+
+        const errorMessage =
+          err instanceof Error ? err.message : 'Failed to load products';
+        setError(errorMessage);
+        setProducts([]);
+        setTotalCount(0);
+        setFacets(null);
+        setHasMore(false);
+      } finally {
+        setLoading(false);
+      }
     },
-  });
+    []
+  );
 
   const searchProducts = useCallback(
     async (params: ProductSearchParams) => {
@@ -70,46 +130,79 @@ export function useProducts(
       };
 
       setCurrentParams(searchParams);
-      await searchApi.execute(searchParams);
+      lastSearchParamsRef.current = searchParams;
+
+      // Clear any existing debounce timeout
+      if (debounceTimeoutRef.current) {
+        clearTimeout(debounceTimeoutRef.current);
+      }
+
+      // Check if this is a search query that should be debounced
+      if (
+        searchParams.query !== undefined &&
+        searchParams.query !== '' &&
+        searchParams.query.length > 0
+      ) {
+        // Debounce search queries
+        debounceTimeoutRef.current = setTimeout(() => {
+          executeSearch(searchParams);
+        }, 300);
+      } else {
+        // Execute immediately for non-query searches (filters, etc.)
+        await executeSearch(searchParams);
+      }
     },
-    [searchApi]
+    [executeSearch]
   );
 
   const loadMore = useCallback(async () => {
-    if (!hasMore || loadMoreApi.loading) return;
+    if (!hasMore || loading) return;
 
     const searchParams = {
       ...currentParams,
       offset: products.length,
     };
 
-    await loadMoreApi.execute(searchParams);
-  }, [currentParams, products.length, hasMore, loadMoreApi]);
+    await executeSearch(searchParams);
+  }, [currentParams, products.length, hasMore, loading, executeSearch]);
 
   const retry = useCallback(async () => {
-    if (searchApi.isRetryable) {
-      await searchApi.retry();
-    } else if (loadMoreApi.isRetryable) {
-      await loadMoreApi.retry();
+    if (lastSearchParamsRef.current) {
+      // Skip cache on retry
+      await executeSearch(lastSearchParamsRef.current, true);
     }
-  }, [searchApi, loadMoreApi]);
+  }, [executeSearch]);
 
   // Initial search
   useEffect(() => {
-    searchProducts(initialParams);
+    executeSearch(initialParams);
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      // Clear debounce timeout
+      if (debounceTimeoutRef.current) {
+        clearTimeout(debounceTimeoutRef.current);
+      }
+      // Cancel any ongoing request
+      if (abortControllerRef.current) {
+        abortControllerRef.current.abort();
+      }
+    };
+  }, []);
 
   return {
     products,
     totalCount,
     facets,
-    loading: searchApi.loading || loadMoreApi.loading,
-    error: searchApi.error || loadMoreApi.error,
+    loading,
+    error,
     searchProducts,
     loadMore,
     hasMore,
     retry,
-    isRetryable: searchApi.isRetryable || loadMoreApi.isRetryable,
+    isRetryable: error !== null,
   };
 }
 
@@ -130,6 +223,7 @@ export function useProductDetail(): UseProductDetailResult {
   const [error, setError] = useState<ApiError | null>(null);
 
   const loadProduct = useCallback(async (productId: string) => {
+    currentProductIdRef.current = productId;
     setLoading(true);
     setError(null);
 
@@ -213,37 +307,85 @@ export interface UseProductFiltersResult {
 export function useProductFilters(): UseProductFiltersResult {
   const [families, setFamilies] = useState<string[]>([]);
   const [applications, setApplications] = useState<string[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<ApiError | null>(null);
 
-  // Use API query hooks to load filters automatically
-  const familiesApi = useApiQuery(apiClient.getProductFamilies, [], {
-    onSuccess: (data: string[]) => setFamilies(data),
-    retryOnMount: true,
-  });
-
-  const applicationsApi = useApiQuery(apiClient.getProductApplications, [], {
-    onSuccess: (data: string[]) => setApplications(data),
-    retryOnMount: true,
-  });
+  // Track mounted state for cleanup
+  const mountedRef = useRef(true);
 
   const loadFilters = useCallback(async () => {
-    await Promise.all([familiesApi.execute(), applicationsApi.execute()]);
-  }, [familiesApi, applicationsApi]);
+    setLoading(true);
+    setError(null);
+
+    try {
+      const [familiesResult, applicationsResult] = await Promise.allSettled([
+        apiClient.getProductFamilies(),
+        apiClient.getProductApplications(),
+      ]);
+
+      if (familiesResult.status === 'fulfilled') {
+        setFamilies(familiesResult.value);
+      }
+
+      if (applicationsResult.status === 'fulfilled') {
+        setApplications(applicationsResult.value);
+      }
+
+      // If both failed, set error
+      if (
+        familiesResult.status === 'rejected' &&
+        applicationsResult.status === 'rejected'
+      ) {
+        const firstError = familiesResult.reason;
+        const apiError =
+          firstError instanceof ApiError
+            ? firstError
+            : new ApiError(
+                firstError instanceof Error
+                  ? firstError.message
+                  : 'Failed to load filters',
+                0
+              );
+        setError(apiError);
+      }
+    } catch (err) {
+      const apiError =
+        err instanceof ApiError
+          ? err
+          : new ApiError(
+              err instanceof Error ? err.message : 'Failed to load filters',
+              0
+            );
+      setError(apiError);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
 
   const retry = useCallback(async () => {
-    await Promise.all([familiesApi.retry(), applicationsApi.retry()]);
-  }, [familiesApi, applicationsApi]);
+    await loadFilters();
+  }, [loadFilters]);
 
-  const error = familiesApi.error || applicationsApi.error;
-  const isRetryable = familiesApi.isRetryable || applicationsApi.isRetryable;
+  // Load filters on mount
+  useEffect(() => {
+    loadFilters();
+  }, [loadFilters]);
+
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      mountedRef.current = false;
+    };
+  }, []);
 
   return {
     families,
     applications,
-    loading: familiesApi.loading || applicationsApi.loading,
+    loading,
     error,
     loadFilters,
     retry,
-    isRetryable,
+    isRetryable: error?.isRetryable() ?? false,
   };
 }
 
@@ -266,41 +408,80 @@ export function useProductComparison(): UseProductComparisonResult {
     string,
     unknown
   > | null>(null);
-
-  // Use API hook for comparison operations
-  const comparisonApi = useApi(
-    (productId: string, otherProductId: string, aspects?: string[]) =>
-      apiClient.compareProducts(productId, otherProductId, aspects),
-    {
-      onSuccess: (data: Record<string, unknown>) => {
-        setComparisonData(data);
-      },
-    }
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<ApiError | null>(null);
+  const lastComparisonArgsRef = useRef<[string, string, string[]?] | null>(
+    null
   );
+
+  // Track mounted state for cleanup
+  const mountedRef = useRef(true);
 
   const compareProducts = useCallback(
     async (productId: string, otherProductId: string, aspects?: string[]) => {
-      await comparisonApi.execute(productId, otherProductId, aspects);
+      lastComparisonArgsRef.current = [productId, otherProductId, aspects];
+      setLoading(true);
+      setError(null);
+
+      try {
+        const result = await apiClient.compareProducts(
+          productId,
+          otherProductId,
+          aspects
+        );
+        if (mountedRef.current) {
+          setComparisonData(result);
+        }
+      } catch (err) {
+        if (mountedRef.current) {
+          const apiError =
+            err instanceof ApiError
+              ? err
+              : new ApiError(
+                  err instanceof Error
+                    ? err.message
+                    : 'Failed to compare products',
+                  0
+                );
+          setError(apiError);
+        }
+      } finally {
+        if (mountedRef.current) {
+          setLoading(false);
+        }
+      }
     },
-    [comparisonApi]
+    []
   );
 
   const clearComparison = useCallback(() => {
     setComparisonData(null);
-    comparisonApi.reset();
-  }, [comparisonApi]);
+    setError(null);
+    lastComparisonArgsRef.current = null;
+  }, []);
 
   const retry = useCallback(async () => {
-    await comparisonApi.retry();
-  }, [comparisonApi]);
+    if (lastComparisonArgsRef.current) {
+      const [productId, otherProductId, aspects] =
+        lastComparisonArgsRef.current;
+      await compareProducts(productId, otherProductId, aspects);
+    }
+  }, [compareProducts]);
+
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      mountedRef.current = false;
+    };
+  }, []);
 
   return {
     comparisonData,
-    loading: comparisonApi.loading,
-    error: comparisonApi.error,
+    loading,
+    error,
     compareProducts,
     clearComparison,
     retry,
-    isRetryable: comparisonApi.isRetryable,
+    isRetryable: error?.isRetryable() ?? false,
   };
 }

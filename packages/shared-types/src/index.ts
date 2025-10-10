@@ -1,10 +1,13 @@
 // Shared TypeScript types for Dixie Chemical Product Agent
 
 // Export all API types
-export * from './api';
+export * from "./api";
 
-// Export all model types  
-export * from './models';
+// Explicitly export enums as values
+export { QueryType } from "./api";
+
+// Export all model types
+export * from "./models";
 
 // Re-export commonly used types for convenience
 export type {
@@ -14,7 +17,6 @@ export type {
   ChatRequest,
   ChatResponse,
   RetrievalResult,
-  QueryType,
   QueryAnalysis,
   ProductSummary,
   ProductDetail,
@@ -26,8 +28,8 @@ export type {
   ServiceStatus,
   IngestionRequest,
   IngestionResponse,
-  IngestionStatus
-} from './api';
+  IngestionStatus,
+} from "./api";
 
 export type {
   // Core model types
@@ -49,5 +51,5 @@ export type {
   EnhancedApplication,
   PropertyRelationship,
   CompetitiveAnalysis,
-  UsageRecommendation
-} from './models';
+  UsageRecommendation,
+} from "./models";

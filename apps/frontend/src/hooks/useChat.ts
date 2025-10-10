@@ -1,12 +1,6 @@
 import { useState, useCallback, useRef, useEffect } from 'react';
-import type {
-  ChatMessage,
-  ChatRequest,
-  ChatResponse,
-  Conversation,
-} from '@repo/shared-types';
+import type { ChatMessage, ChatRequest } from '@repo/shared-types';
 import { apiClient, ApiError } from '../lib/api-client';
-import { useApi } from './useApi';
 
 interface UseChatOptions {
   conversationId?: string;
@@ -36,8 +30,12 @@ export function useChat(options: UseChatOptions = {}): UseChatReturn {
   const [conversationId, setConversationId] = useState<string | null>(
     options.conversationId || null
   );
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<ApiError | null>(null);
 
   const lastQueryRef = useRef<string>('');
+  const abortControllerRef = useRef<AbortController | null>(null);
+  const pendingRequestsRef = useRef<Set<string>>(new Set());
 
   // Load messages and conversation ID from localStorage on mount
   useEffect(() => {
@@ -50,10 +48,12 @@ export function useChat(options: UseChatOptions = {}): UseChatReturn {
       if (savedMessages) {
         const parsedMessages = JSON.parse(savedMessages);
         // Convert timestamp strings back to Date objects
-        const messagesWithDates = parsedMessages.map((msg: any) => ({
-          ...msg,
-          timestamp: new Date(msg.timestamp),
-        }));
+        const messagesWithDates = parsedMessages.map(
+          (msg: ChatMessage & { timestamp: string }) => ({
+            ...msg,
+            timestamp: new Date(msg.timestamp),
+          })
+        );
         setMessages(messagesWithDates);
       }
 
@@ -90,60 +90,42 @@ export function useChat(options: UseChatOptions = {}): UseChatReturn {
     }
   }, [conversationId]);
 
-  // Use the generic API hook for sending messages
-  const sendMessageApi = useApi(apiClient.sendMessage, {
-    onSuccess: (response: ChatResponse) => {
-      // Update conversation ID if it was generated
-      if (!conversationId) {
-        setConversationId(response.conversation_id);
+  // Cleanup on unmount
+  useEffect(() => {
+    const abortController = abortControllerRef.current;
+    const pendingRequests = pendingRequestsRef.current;
+
+    return () => {
+      // Cancel any ongoing request
+      if (abortController) {
+        abortController.abort();
       }
-
-      // Create assistant message
-      const assistantMessage: ChatMessage = {
-        id: `response-${Date.now()}`,
-        content: response.answer,
-        role: 'assistant',
-        sources: response.sources,
-        timestamp: new Date(),
-        conversation_id: response.conversation_id,
-      };
-
-      // Update messages
-      setMessages((prev) => {
-        const updated = [...prev];
-        // Update user message with proper conversation ID
-        const lastUserMsgIndex = updated.length - 1;
-        if (
-          lastUserMsgIndex >= 0 &&
-          updated[lastUserMsgIndex].role === 'user'
-        ) {
-          updated[lastUserMsgIndex] = {
-            ...updated[lastUserMsgIndex],
-            conversation_id: response.conversation_id,
-          };
-        }
-        return [...updated, assistantMessage];
-      });
-    },
-    onError: () => {
-      // Remove the user message on error
-      setMessages((prev) => prev.slice(0, -1));
-    },
-  });
-
-  // Use the generic API hook for loading conversations
-  const loadConversationApi = useApi(apiClient.getConversation, {
-    onSuccess: (conversation: Conversation) => {
-      setMessages(conversation.messages);
-      setConversationId(conversation.id);
-    },
-  });
+      // Clear pending requests
+      pendingRequests.clear();
+    };
+  }, []);
 
   const sendMessage = useCallback(
     async (query: string) => {
-      if (!query.trim() || sendMessageApi.loading) return;
+      if (!query.trim()) return;
 
+      // Prevent concurrent requests with the same query
+      if (pendingRequestsRef.current.has(query)) {
+        return;
+      }
+
+      pendingRequestsRef.current.add(query);
       lastQueryRef.current = query;
+
+      // Clear any previous error when sending a new message
+      setError(null);
+      setIsLoading(true);
+
+      // Cancel any ongoing request
+      if (abortControllerRef.current) {
+        abortControllerRef.current.abort();
+      }
+      abortControllerRef.current = new AbortController();
 
       // Add user message immediately
       const userMessage: ChatMessage = {
@@ -156,24 +138,82 @@ export function useChat(options: UseChatOptions = {}): UseChatReturn {
 
       setMessages((prev) => [...prev, userMessage]);
 
-      const request: ChatRequest = {
-        query,
-        conversation_id: conversationId || undefined,
-        max_results: options.maxResults || 10,
-        include_sources: options.includeSource !== false,
-      };
+      try {
+        const request: ChatRequest = {
+          query,
+          conversation_id: conversationId || undefined,
+          max_results: options.maxResults || 10,
+          include_sources: options.includeSource !== false,
+        };
 
-      await sendMessageApi.execute(request);
+        const response = await apiClient.sendMessage(request);
+
+        // Update conversation ID if it was generated
+        if (!conversationId) {
+          setConversationId(response.conversation_id);
+        }
+
+        // Create assistant message
+        const assistantMessage: ChatMessage = {
+          id: `response-${Date.now()}`,
+          content: response.answer,
+          role: 'assistant',
+          sources: response.sources,
+          timestamp: new Date(),
+          conversation_id: response.conversation_id,
+        };
+
+        // Update messages
+        setMessages((prev) => {
+          const updated = [...prev];
+          // Update user message with proper conversation ID
+          const lastUserMsgIndex = updated.length - 1;
+          if (
+            lastUserMsgIndex >= 0 &&
+            updated[lastUserMsgIndex].role === 'user'
+          ) {
+            updated[lastUserMsgIndex] = {
+              ...updated[lastUserMsgIndex],
+              conversation_id: response.conversation_id,
+            };
+          }
+          return [...updated, assistantMessage];
+        });
+
+        setError(null);
+      } catch (err) {
+        const apiError =
+          err instanceof ApiError
+            ? err
+            : new ApiError(
+                err instanceof Error ? err.message : 'Unknown error',
+                0
+              );
+
+        setError(apiError);
+
+        // Remove the user message on error
+        setMessages((prev) => prev.slice(0, -1));
+      } finally {
+        setIsLoading(false);
+        pendingRequestsRef.current.delete(query);
+      }
     },
-    [conversationId, sendMessageApi, options.maxResults, options.includeSource]
+    [conversationId, options.maxResults, options.includeSource]
   );
 
   const clearMessages = useCallback(() => {
     setMessages([]);
     setConversationId(null);
-    sendMessageApi.reset();
-    loadConversationApi.reset();
+    setError(null);
+    setIsLoading(false);
     lastQueryRef.current = '';
+    pendingRequestsRef.current.clear();
+
+    // Cancel any ongoing request
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort();
+    }
 
     // Clear localStorage
     try {
@@ -182,32 +222,47 @@ export function useChat(options: UseChatOptions = {}): UseChatReturn {
     } catch (error) {
       console.error('Failed to clear chat data from localStorage:', error);
     }
-  }, [sendMessageApi, loadConversationApi]);
+  }, []);
 
-  const loadConversation = useCallback(
-    async (id: string) => {
-      await loadConversationApi.execute(id);
-    },
-    [loadConversationApi]
-  );
+  const loadConversation = useCallback(async (id: string) => {
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const conversation = await apiClient.getConversation(id);
+      setMessages(conversation.messages);
+      setConversationId(conversation.id);
+    } catch (err) {
+      const apiError =
+        err instanceof ApiError
+          ? err
+          : new ApiError(
+              err instanceof Error ? err.message : 'Unknown error',
+              0
+            );
+      setError(apiError);
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
 
   const retryLastMessage = useCallback(async () => {
-    if (lastQueryRef.current) {
+    if (lastQueryRef.current && !isLoading) {
       await sendMessage(lastQueryRef.current);
-    } else if (sendMessageApi.isRetryable) {
-      await sendMessageApi.retry();
     }
-  }, [sendMessage, sendMessageApi]);
+  }, [sendMessage, isLoading]);
+
+  const isRetryable = error?.isRetryable() ?? false;
 
   return {
     messages,
-    isLoading: sendMessageApi.loading || loadConversationApi.loading,
-    error: sendMessageApi.error || loadConversationApi.error,
+    isLoading,
+    error,
     conversationId,
     sendMessage,
     clearMessages,
     loadConversation,
     retryLastMessage,
-    isRetryable: sendMessageApi.isRetryable || loadConversationApi.isRetryable,
+    isRetryable,
   };
 }
