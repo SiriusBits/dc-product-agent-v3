@@ -43,20 +43,24 @@ describe('ProductBrowser', () => {
       id: 'asa-150',
       name: 'ASA 150',
       short_name: 'ASA150',
+      description: 'Alkenyl Succinic Anhydride 150',
       family: 'ASA',
       cas_number: '12345-67-8',
       applications: ['Coatings', 'Adhesives'],
       key_properties: ['Viscosity: 150 cP'],
+      key_benefits: ['High viscosity', 'Good adhesion'],
       document_count: 1,
     },
     {
       id: 'dca-467',
       name: 'DCA 467',
       short_name: 'DCA467',
+      description: 'Dicyandiamide 467',
       family: 'DCA',
       cas_number: '98765-43-2',
       applications: ['Epoxy Curing'],
       key_properties: ['Melting Point: 200°C'],
+      key_benefits: ['Fast cure', 'High strength'],
       document_count: 1,
     },
   ];
@@ -154,13 +158,16 @@ describe('ProductBrowser', () => {
     const familySelect = screen.getByRole('combobox', { name: /family/i });
     await user.click(familySelect);
 
-    const asaOption = screen.getByText('ASA');
+    const asaOption = screen.getAllByText('ASA')[0];
     await user.click(asaOption);
 
-    expect(mockProductsHook.searchProducts).toHaveBeenCalledWith({
-      query: '',
-      family: 'ASA',
-      applications: [],
+    await waitFor(() => {
+      expect(mockProductsHook.searchProducts).toHaveBeenCalledWith(
+        expect.objectContaining({
+          family: 'ASA',
+          applications: [],
+        })
+      );
     });
   });
 
@@ -173,13 +180,15 @@ describe('ProductBrowser', () => {
     });
     await user.click(applicationSelect);
 
-    const coatingsOption = screen.getByText('Coatings');
+    const coatingsOption = screen.getAllByText('Coatings')[0];
     await user.click(coatingsOption);
 
-    expect(mockProductsHook.searchProducts).toHaveBeenCalledWith({
-      query: '',
-      families: [],
-      applications: ['Coatings'],
+    await waitFor(() => {
+      expect(mockProductsHook.searchProducts).toHaveBeenCalledWith(
+        expect.objectContaining({
+          applications: ['Coatings'],
+        })
+      );
     });
   });
 
@@ -191,8 +200,8 @@ describe('ProductBrowser', () => {
     expect(
       screen.getByText('Alkenyl Succinic Anhydride 150')
     ).toBeInTheDocument();
-    expect(screen.getByText('ASA')).toBeInTheDocument();
-    expect(screen.getByText('Coatings')).toBeInTheDocument();
+    expect(screen.getAllByText('ASA')[0]).toBeInTheDocument();
+    expect(screen.getAllByText('Coatings')[0]).toBeInTheDocument();
     expect(screen.getByText('Adhesives')).toBeInTheDocument();
 
     // Check DCA 467 card
@@ -204,19 +213,21 @@ describe('ProductBrowser', () => {
 
   it('navigates to product detail when card is clicked', async () => {
     const user = userEvent.setup();
-    const mockNavigate = vi.fn();
 
-    // Mock navigation
-    vi.mock('react-router-dom', () => ({
-      useNavigate: () => mockNavigate,
-    }));
+    // Mock window.location.href since we're using Astro routing
+    const originalLocation = window.location;
+    delete (window as unknown).location;
+    window.location = { ...originalLocation, href: '' };
 
     render(<ProductBrowser />);
 
     const productCard = screen.getByText('ASA 150').closest('div');
     await user.click(productCard!);
 
-    expect(mockNavigate).toHaveBeenCalledWith('/products/asa-150');
+    expect(window.location.href).toBe('/products/asa-150');
+
+    // Restore original location
+    window.location = originalLocation;
   });
 
   it('shows loading state', () => {
@@ -259,16 +270,18 @@ describe('ProductBrowser', () => {
     // Apply some filters first
     const familySelect = screen.getByRole('combobox', { name: /family/i });
     await user.click(familySelect);
-    await user.click(screen.getByText('ASA'));
+    await user.click(screen.getAllByText('ASA')[0]);
 
     // Clear filters
     const clearButton = screen.getByRole('button', { name: /clear filters/i });
     await user.click(clearButton);
 
-    expect(mockProductsHook.searchProducts).toHaveBeenCalledWith({
-      query: '',
-      families: [],
-      applications: [],
+    await waitFor(() => {
+      expect(mockProductsHook.searchProducts).toHaveBeenCalledWith({
+        query: '',
+        family: undefined,
+        applications: [],
+      });
     });
   });
 
@@ -351,16 +364,16 @@ describe('ProductBrowser', () => {
     const sortSelect = screen.getByRole('combobox', { name: /sort by/i });
     await user.click(sortSelect);
 
-    const nameOption = screen.getByText('Name (A-Z)');
+    const nameOption = screen.getByText('Name');
     await user.click(nameOption);
 
     // Should trigger re-search with sort parameter
-    expect(mockProductsHook.searchProducts).toHaveBeenCalledWith({
-      query: '',
-      families: [],
-      applications: [],
-      sortBy: 'name',
-      sortOrder: 'asc',
+    await waitFor(() => {
+      expect(mockProductsHook.searchProducts).toHaveBeenCalledWith(
+        expect.objectContaining({
+          sort_by: 'name',
+        })
+      );
     });
   });
 

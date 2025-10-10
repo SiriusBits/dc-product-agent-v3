@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { BarChart3 } from 'lucide-react';
 import { Tabs, TabsList, TabsTrigger, TabsContent, Button } from '../ui';
 import { ProductFilters } from './ProductFilters';
@@ -11,6 +11,75 @@ import type { ProductSearchParams } from '../../hooks/useProducts';
 // Import ProductList if not already imported
 export { ProductList } from './ProductList';
 
+// URL state management utilities
+const getSearchParamsFromURL = (): ProductSearchParams => {
+  if (typeof window === 'undefined') return {};
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const params: ProductSearchParams = {};
+
+  const query = urlParams.get('q');
+  if (query) params.query = query;
+
+  const family = urlParams.get('family');
+  if (family) params.family = family;
+
+  const applications = urlParams.get('applications');
+  if (applications) {
+    params.applications = applications.split(',').filter(Boolean);
+  }
+
+  const sortBy = urlParams.get('sort_by') as 'name' | 'family' | 'relevance';
+  if (sortBy && ['name', 'family', 'relevance'].includes(sortBy)) {
+    params.sort_by = sortBy;
+  }
+
+  const sortOrder = urlParams.get('sort_order') as 'asc' | 'desc';
+  if (sortOrder && ['asc', 'desc'].includes(sortOrder)) {
+    params.sort_order = sortOrder;
+  }
+
+  return params;
+};
+
+const updateURLWithSearchParams = (params: ProductSearchParams) => {
+  if (typeof window === 'undefined') return;
+
+  const urlParams = new URLSearchParams(window.location.search);
+
+  // Clear existing search params
+  urlParams.delete('q');
+  urlParams.delete('family');
+  urlParams.delete('applications');
+  urlParams.delete('sort_by');
+  urlParams.delete('sort_order');
+
+  // Set new params
+  if (params.query) {
+    urlParams.set('q', params.query);
+  }
+
+  if (params.family) {
+    urlParams.set('family', params.family);
+  }
+
+  if (params.applications && params.applications.length > 0) {
+    urlParams.set('applications', params.applications.join(','));
+  }
+
+  if (params.sort_by && params.sort_by !== 'relevance') {
+    urlParams.set('sort_by', params.sort_by);
+  }
+
+  if (params.sort_order && params.sort_order !== 'desc') {
+    urlParams.set('sort_order', params.sort_order);
+  }
+
+  // Update URL without page reload
+  const newURL = `${window.location.pathname}${urlParams.toString() ? '?' + urlParams.toString() : ''}`;
+  window.history.replaceState({}, '', newURL);
+};
+
 export default function ProductBrowser() {
   const [activeTab, setActiveTab] = useState('catalog');
   const [selectedProductId, setSelectedProductId] = useState<string | null>(
@@ -19,37 +88,59 @@ export default function ProductBrowser() {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [comparisonProducts, setComparisonProducts] = useState<string[]>([]);
 
+  // Initialize search params from URL
+  const [initialSearchParams] = useState(() => getSearchParamsFromURL());
+  const [currentSearchParams, setCurrentSearchParams] =
+    useState<ProductSearchParams>(initialSearchParams);
+
   // Product search and listing
   const {
     products,
     totalCount,
-
     loading: productsLoading,
     error: productsError,
     searchProducts,
     loadMore,
     hasMore,
-  } = useProducts();
+  } = useProducts(initialSearchParams);
 
-  // Product detail
+  // Product detail (not used in current implementation, but kept for potential future use)
   const {
     product: selectedProduct,
     relatedProducts,
     loading: detailLoading,
     error: detailError,
-    loadProduct,
   } = useProductDetail();
 
   // Handle filter changes
-  const handleFiltersChange = (filters: ProductSearchParams) => {
-    searchProducts(filters);
-  };
+  const handleFiltersChange = useCallback(
+    (filters: ProductSearchParams) => {
+      // Update URL with new search params
+      updateURLWithSearchParams(filters);
+      // Update current search params state
+      setCurrentSearchParams(filters);
+      // Trigger search with new filters
+      searchProducts(filters);
+    },
+    [searchProducts]
+  );
+
+  // Handle browser back/forward navigation
+  useEffect(() => {
+    const handlePopState = () => {
+      const params = getSearchParamsFromURL();
+      setCurrentSearchParams(params);
+      searchProducts(params);
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, [searchProducts]);
 
   // Handle product selection
   const handleViewProduct = (productId: string) => {
-    setSelectedProductId(productId);
-    loadProduct(productId);
-    setActiveTab('detail');
+    // Navigate to product detail page using Astro routing
+    window.location.href = `/products/${productId}`;
   };
 
   // Handle back to catalog
@@ -109,6 +200,7 @@ export default function ProductBrowser() {
               <ProductFilters
                 onFiltersChange={handleFiltersChange}
                 loading={productsLoading}
+                initialValues={currentSearchParams}
               />
 
               {/* Comparison Panel */}
@@ -146,7 +238,7 @@ export default function ProductBrowser() {
                     disabled={comparisonProducts.length < 1}
                     aria-label="Compare selected products"
                   >
-                    Compare Products
+                    Compare
                   </Button>
                 </div>
               )}

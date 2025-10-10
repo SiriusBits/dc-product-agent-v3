@@ -93,10 +93,12 @@ export interface ProductSummary {
   id: string;
   name: string;
   short_name: string | null;
+  description?: string;
   family: string | null;
   cas_number: string | null;
   applications: string[];
   key_properties: string[];
+  key_benefits?: string[];
   document_count: number;
 }
 

@@ -19,12 +19,14 @@ export interface ProductFiltersProps {
   onFiltersChange: (filters: ProductSearchParams) => void;
   loading?: boolean;
   className?: string;
+  initialValues?: ProductSearchParams;
 }
 
 export function ProductFilters({
   onFiltersChange,
   loading,
   className,
+  initialValues = {},
 }: ProductFiltersProps) {
   const {
     families,
@@ -32,15 +34,28 @@ export function ProductFilters({
     loading: filtersLoading,
   } = useProductFilters();
 
-  const [searchQuery, setSearchQuery] = useState('');
-  const [selectedFamily, setSelectedFamily] = useState('');
+  const [searchQuery, setSearchQuery] = useState(initialValues.query || '');
+  const [selectedFamily, setSelectedFamily] = useState(
+    initialValues.family || ''
+  );
   const [selectedApplications, setSelectedApplications] = useState<string[]>(
-    []
+    initialValues.applications || []
   );
   const [sortBy, setSortBy] = useState<'name' | 'family' | 'relevance'>(
-    'relevance'
+    initialValues.sort_by || 'relevance'
   );
-  const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
+  const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>(
+    initialValues.sort_order || 'desc'
+  );
+
+  // Update state when initialValues change (for browser navigation)
+  useEffect(() => {
+    setSearchQuery(initialValues.query || '');
+    setSelectedFamily(initialValues.family || '');
+    setSelectedApplications(initialValues.applications || []);
+    setSortBy(initialValues.sort_by || 'relevance');
+    setSortOrder(initialValues.sort_order || 'desc');
+  }, [initialValues]);
 
   const handleFiltersChange = useCallback(() => {
     const filters: ProductSearchParams = {
@@ -205,6 +220,7 @@ export function ProductFilters({
                 setSortBy(value as 'name' | 'family' | 'relevance')
               }
               disabled={loading}
+              aria-label="Sort by"
             />
           </div>
           <div className="space-y-2">

@@ -86,7 +86,9 @@
   - Ensure all expected UI elements are rendered
   - Add search input with proper placeholder text
   - Add filter controls (family, application)
-  - Add clear filters button
+  - Add "Clear Filters" button in ProductFilters component
+  - Add sort dropdown with options (Name A-Z, etc.)
+  - Add proper aria-labels for view mode buttons ("Grid View" / "List View")
   - _Requirements: 2.3_
 
 - [x] 15. Implement product filtering
@@ -119,15 +121,54 @@
   - Ensure focus management works correctly
   - _Requirements: 2.3_
 
-- [x] 20. Add product count display
+- [x] 20. Add product count display and pagination
   - Show total product count in UI
   - Update count when filters are applied
   - Format count appropriately (e.g., "Showing 5 of 50 products")
+  - Add pagination controls with "Next Page" and "Previous Page" buttons
+  - Update "Load More" button to "Next Page" for consistency
   - _Requirements: 2.3_
 
 - [x] 21. Run ProductBrowser tests
   - Execute ProductBrowser test suite
   - Verify all 23 ProductBrowser tests pass
+  - _Requirements: 2.1, 2.2, 2.3, 2.4, 2.5, 2.6_
+
+- [x] 21.1 Fix ProductCard to display product benefits
+  - Add benefits section to ProductCard component
+  - Display benefits as badges or list items
+  - Ensure benefits are visible in both grid and list views
+  - _Requirements: 2.3_
+
+- [x] 21.2 Fix ProductCard to display enhanced properties
+  - Ensure key_properties array is properly displayed
+  - Format properties for readability
+  - Add proper styling for property display
+  - _Requirements: 2.3_
+
+- [x] 21.3 Add URL state management for search params
+  - Implement URL query parameter handling for search state
+  - Preserve search query, family, and application filters in URL
+  - Restore state from URL on component mount
+  - Update URL when filters change
+  - _Requirements: 2.5_
+
+- [x] 21.4 Fix compare button label
+  - Change "Compare Products" button label to "Compare"
+  - Ensure button is properly labeled for accessibility
+  - Update aria-label if needed
+  - _Requirements: 2.6_
+
+- [x] 21.5 Fix navigation to product detail
+  - Ensure product card click properly navigates to detail view
+  - Implement proper routing or tab switching
+  - Test navigation flow
+  - _Requirements: 2.2_
+
+- [x] 21.6 Re-run ProductBrowser tests
+  - Execute ProductBrowser test suite again
+  - Verify all 23 tests now pass
+  - Document any remaining issues
   - _Requirements: 2.1, 2.2, 2.3, 2.4, 2.5, 2.6_
 
 ## Milestone 4: Hook Implementation Fixes

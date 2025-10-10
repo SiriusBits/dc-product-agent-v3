@@ -11,6 +11,16 @@ import {
 } from '../ui';
 import type { ProductSummary } from '@repo/shared-types';
 
+// Utility function to format property text for better readability
+const formatProperty = (property: string): string => {
+  // Handle properties with colons (e.g., "Viscosity: 150 cP")
+  if (property.includes(':')) {
+    const [name, value] = property.split(':');
+    return `${name.trim()}: ${value.trim()}`;
+  }
+  return property;
+};
+
 export interface ProductCardProps {
   product: ProductSummary;
   onViewDetails: (productId: string) => void;
@@ -66,11 +76,18 @@ export function ProductCard({
               <CardTitle className="text-lg font-semibold truncate">
                 {product.name}
               </CardTitle>
-              {product.short_name && product.short_name !== product.name && (
+              {product.description && (
                 <CardDescription className="text-sm text-muted-foreground">
-                  {product.short_name}
+                  {product.description}
                 </CardDescription>
               )}
+              {product.short_name &&
+                product.short_name !== product.name &&
+                !product.description && (
+                  <CardDescription className="text-sm text-muted-foreground">
+                    {product.short_name}
+                  </CardDescription>
+                )}
             </div>
           </div>
           <Button
@@ -101,18 +118,47 @@ export function ProductCard({
       </CardHeader>
 
       <CardContent className="space-y-3">
+        {/* Key Benefits */}
+        {product.key_benefits && product.key_benefits.length > 0 && (
+          <div>
+            <h4 className="text-sm font-medium mb-2">Key Benefits</h4>
+            <div className="flex flex-wrap gap-1">
+              {product.key_benefits.slice(0, 3).map((benefit, index) => (
+                <Badge key={index} variant="default" className="text-xs">
+                  {benefit}
+                </Badge>
+              ))}
+              {product.key_benefits.length > 3 && (
+                <Badge variant="default" className="text-xs">
+                  +{product.key_benefits.length - 3} more
+                </Badge>
+              )}
+            </div>
+          </div>
+        )}
+
         {/* Key Properties */}
         {product.key_properties && product.key_properties.length > 0 && (
           <div>
-            <h4 className="text-sm font-medium mb-2">Key Properties</h4>
-            <div className="flex flex-wrap gap-1">
+            <h4 className="text-sm font-medium mb-2 text-gray-700">
+              Key Properties
+            </h4>
+            <div className="flex flex-wrap gap-1.5">
               {product.key_properties.slice(0, 3).map((property, index) => (
-                <Badge key={index} variant="outline" className="text-xs">
-                  {property}
+                <Badge
+                  key={index}
+                  variant="outline"
+                  className="text-xs font-medium bg-blue-50 border-blue-200 text-blue-800 hover:bg-blue-100 px-2 py-1"
+                  title={formatProperty(property)}
+                >
+                  {formatProperty(property)}
                 </Badge>
               ))}
               {product.key_properties.length > 3 && (
-                <Badge variant="outline" className="text-xs">
+                <Badge
+                  variant="outline"
+                  className="text-xs font-medium bg-gray-50 border-gray-200 text-gray-600 px-2 py-1"
+                >
                   +{product.key_properties.length - 3} more
                 </Badge>
               )}

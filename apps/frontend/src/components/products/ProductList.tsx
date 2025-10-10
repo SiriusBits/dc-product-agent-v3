@@ -162,6 +162,7 @@ export function ProductList({
               size="sm"
               onClick={() => onViewModeChange('grid')}
               className="h-8 w-8 p-0"
+              aria-label="Grid View"
             >
               <Grid className="h-4 w-4" />
             </Button>
@@ -170,6 +171,7 @@ export function ProductList({
               size="sm"
               onClick={() => onViewModeChange('list')}
               className="h-8 w-8 p-0"
+              aria-label="List View"
             >
               <List className="h-4 w-4" />
             </Button>
@@ -183,6 +185,9 @@ export function ProductList({
           viewMode === 'grid'
             ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'
             : 'space-y-4'
+        }
+        data-testid={
+          viewMode === 'list' ? 'product-list-view' : 'product-grid-view'
         }
       >
         {products.map((product, index) => (
@@ -228,7 +233,7 @@ export function ProductList({
             ) : (
               <>
                 <ChevronDown className="h-4 w-4" />
-                <span>Load More</span>
+                <span>Next Page</span>
               </>
             )}
           </Button>
