@@ -221,6 +221,7 @@ export function useProductDetail(): UseProductDetailResult {
   const [relatedProducts, setRelatedProducts] = useState<ProductSummary[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<ApiError | null>(null);
+  const currentProductIdRef = useRef<string | null>(null);
 
   const loadProduct = useCallback(async (productId: string) => {
     currentProductIdRef.current = productId;

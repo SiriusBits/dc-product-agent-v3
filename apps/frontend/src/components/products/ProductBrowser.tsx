@@ -249,7 +249,7 @@ export default function ProductBrowser() {
               <ProductList
                 products={products}
                 loading={productsLoading}
-                error={productsError?.message || null}
+                error={productsError}
                 totalCount={totalCount}
                 hasMore={hasMore}
                 onLoadMore={loadMore}

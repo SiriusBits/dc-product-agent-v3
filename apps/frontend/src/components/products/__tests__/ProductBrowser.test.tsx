@@ -30,7 +30,6 @@ import {
   useProductFilters,
 } from '@/hooks/useProducts';
 import { useApi } from '@/hooks/useApi';
-import { MockApiError } from '@/test/test-utils';
 
 const mockUseProducts = vi.mocked(useProducts);
 const mockUseProductDetail = vi.mocked(useProductDetail);
@@ -215,9 +214,12 @@ describe('ProductBrowser', () => {
     const user = userEvent.setup();
 
     // Mock window.location.href since we're using Astro routing
-    const originalLocation = window.location;
-    delete (window as unknown).location;
-    window.location = { ...originalLocation, href: '' };
+    const mockLocation = { ...window.location, href: '' };
+    Object.defineProperty(window, 'location', {
+      value: mockLocation,
+      writable: true,
+      configurable: true,
+    });
 
     render(<ProductBrowser />);
 
@@ -225,9 +227,6 @@ describe('ProductBrowser', () => {
     await user.click(productCard!);
 
     expect(window.location.href).toBe('/products/asa-150');
-
-    // Restore original location
-    window.location = originalLocation;
   });
 
   it('shows loading state', () => {
@@ -244,7 +243,7 @@ describe('ProductBrowser', () => {
   it('shows error state', () => {
     mockUseProducts.mockReturnValue({
       ...mockProductsHook,
-      error: new MockApiError('Failed to load products', 500),
+      error: 'Failed to load products',
     });
 
     render(<ProductBrowser />);
