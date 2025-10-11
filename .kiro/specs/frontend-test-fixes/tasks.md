@@ -198,7 +198,7 @@
   - Clear timers and intervals
   - _Requirements: 3.5_
 
-- [ ] 26. Run hook tests
+- [x] 26. Run hook tests
   - Execute useChat test suite
   - Execute useProducts test suite
   - Execute useConversations test suite
