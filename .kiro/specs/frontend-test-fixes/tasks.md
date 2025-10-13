@@ -207,14 +207,14 @@
 
 ## Milestone 5: Integration Test Fixes
 
-- [ ] 27. Fix ChatInterface integration tests
+- [x] 27. Fix ChatInterface integration tests
   - Ensure ChatInterface properly integrates useChat and useConversations
   - Fix message sending flow
   - Fix conversation switching flow
   - Fix keyboard shortcuts
   - _Requirements: 4.1, 4.3_
 
-- [ ] 28. Fix chat flow integration tests
+- [x] 28. Fix chat flow integration tests
   - Verify complete conversation flow works end-to-end
   - Test message sending, receiving, and display
   - Test source attribution display
