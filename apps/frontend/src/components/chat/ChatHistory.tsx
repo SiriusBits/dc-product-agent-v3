@@ -74,7 +74,7 @@ export default function ChatHistory({
         {isLoading && (
           <>
             <Separator className="mx-4" />
-            <div className="flex gap-3 p-4" data-testid="message-loading">
+            <div className="flex gap-3 p-4" data-testid="loading-spinner">
               <div className="flex-shrink-0">
                 <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
                   <div className="w-4 h-4 rounded-full bg-primary/20 animate-pulse" />

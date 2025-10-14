@@ -40,6 +40,10 @@ export default function ChatInterface({ className }: ChatInterfaceProps) {
     updateConversationTitle,
   } = useConversations();
 
+  // Defensive programming - handle undefined/null
+  const displayMessages = messages ?? [];
+  const displayConversations = conversations ?? [];
+
   const handleSelectConversation = useCallback(
     async (id: string) => {
       if (id !== conversationId) {
@@ -100,10 +104,13 @@ export default function ChatInterface({ className }: ChatInterfaceProps) {
   }, [handleNewConversation]);
 
   return (
-    <div className={cn('flex h-full bg-background', className)}>
+    <div
+      className={cn('flex h-full bg-background', className)}
+      data-testid="chat-interface"
+    >
       {showSidebar && (
         <ConversationSidebar
-          conversations={conversations}
+          conversations={displayConversations}
           currentConversationId={conversationId}
           isLoading={conversationsLoading}
           onSelectConversation={handleSelectConversation}
@@ -136,7 +143,7 @@ export default function ChatInterface({ className }: ChatInterfaceProps) {
               </div>
             </div>
 
-            {messages.length > 0 && (
+            {displayMessages.length > 0 && (
               <Button
                 variant="outline"
                 size="sm"
@@ -150,7 +157,7 @@ export default function ChatInterface({ className }: ChatInterfaceProps) {
 
         {/* Error Display */}
         {(error || conversationsError) && (
-          <div className="p-4">
+          <div className="p-4" data-testid="chat-error">
             <Card className="border-destructive/50 bg-destructive/5">
               <div className="p-4 flex items-center space-x-2">
                 <AlertCircle className="h-4 w-4 text-destructive" />
@@ -178,11 +185,13 @@ export default function ChatInterface({ className }: ChatInterfaceProps) {
         )}
 
         {/* Chat History */}
-        <ChatHistory
-          messages={messages}
-          isLoading={isLoading}
-          className="flex-1"
-        />
+        <div className="flex-1" data-testid="chat-messages">
+          <ChatHistory
+            messages={displayMessages}
+            isLoading={isLoading}
+            className="h-full"
+          />
+        </div>
 
         {/* Input Area */}
         <div className="border-t p-4">
