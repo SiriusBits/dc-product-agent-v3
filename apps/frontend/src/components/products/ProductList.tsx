@@ -121,7 +121,7 @@ export function ProductList({
 
   if (error) {
     return (
-      <Card className={className}>
+      <Card className={className} data-testid="product-error">
         <CardContent className="p-6 text-center">
           <div className="text-red-600 mb-2">Error loading products</div>
           <div className="text-sm text-muted-foreground">{error}</div>
@@ -132,7 +132,7 @@ export function ProductList({
 
   if (!loading && products.length === 0) {
     return (
-      <Card className={className}>
+      <Card className={className} data-testid="product-empty-state">
         <CardContent className="p-6 text-center">
           <div className="text-muted-foreground mb-2">No products found</div>
           <div className="text-sm text-muted-foreground">
@@ -214,7 +214,7 @@ export function ProductList({
 
       {/* Loading indicator for initial load */}
       {loading && products.length === 0 && (
-        <div className="py-8">
+        <div className="py-8" data-testid="product-loading">
           <Loading message="Loading products..." />
         </div>
       )}

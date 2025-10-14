@@ -104,6 +104,9 @@ export default function ProductBrowser() {
     hasMore,
   } = useProducts(initialSearchParams);
 
+  // Defensive programming - ensure products is always an array
+  const displayProducts = products ?? [];
+
   // Product detail (not used in current implementation, but kept for potential future use)
   const {
     product: selectedProduct,
@@ -173,7 +176,7 @@ export default function ProductBrowser() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto space-y-6">
+    <div className="max-w-7xl mx-auto space-y-6" data-testid="product-browser">
       {/* Header */}
       <div className="text-center space-y-4">
         <h1 className="text-3xl font-bold">Product Browser</h1>
@@ -246,19 +249,21 @@ export default function ProductBrowser() {
 
             {/* Product List */}
             <div className="lg:col-span-3">
-              <ProductList
-                products={products}
-                loading={productsLoading}
-                error={productsError}
-                totalCount={totalCount}
-                hasMore={hasMore}
-                onLoadMore={loadMore}
-                onViewProduct={handleViewProduct}
-                onCompareProduct={handleCompareProduct}
-                selectedProducts={comparisonProducts}
-                viewMode={viewMode}
-                onViewModeChange={setViewMode}
-              />
+              <div data-testid="product-list">
+                <ProductList
+                  products={displayProducts}
+                  loading={productsLoading}
+                  error={productsError}
+                  totalCount={totalCount}
+                  hasMore={hasMore}
+                  onLoadMore={loadMore}
+                  onViewProduct={handleViewProduct}
+                  onCompareProduct={handleCompareProduct}
+                  selectedProducts={comparisonProducts}
+                  viewMode={viewMode}
+                  onViewModeChange={setViewMode}
+                />
+              </div>
             </div>
           </div>
         </TabsContent>

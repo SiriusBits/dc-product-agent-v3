@@ -174,6 +174,8 @@ export function ProductFilters({
               onChange={(e) => setSearchQuery(e.target.value)}
               className="pl-10"
               disabled={loading}
+              data-testid="product-search-input"
+              aria-label="Search products"
             />
           </div>
         </div>
