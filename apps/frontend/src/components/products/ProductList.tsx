@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { ChevronDown, Grid, List } from 'lucide-react';
-import { Button, Loading, Card, CardContent } from '../ui';
+import { Button } from '../ui/button';
+import { Card, CardContent } from '../ui/card';
+import { LoadingSpinner, LoadingState } from '../ui/loading';
 import { ProductCard } from './ProductCard';
 import type { ProductSummary } from '@repo/shared-types';
 
@@ -215,7 +217,7 @@ export function ProductList({
       {/* Loading indicator for initial load */}
       {loading && products.length === 0 && (
         <div className="py-8" data-testid="product-loading">
-          <Loading message="Loading products..." />
+          <LoadingState message="Loading products..." />
         </div>
       )}
 
@@ -229,7 +231,7 @@ export function ProductList({
             className="flex items-center space-x-2"
           >
             {loading ? (
-              <Loading size="sm" />
+              <LoadingSpinner size="sm" />
             ) : (
               <>
                 <ChevronDown className="h-4 w-4" />
@@ -243,7 +245,7 @@ export function ProductList({
       {/* Loading indicator for load more */}
       {loading && products.length > 0 && (
         <div className="flex justify-center mt-4">
-          <Loading message="Loading more products..." size="sm" />
+          <LoadingState message="Loading more products..." size="sm" />
         </div>
       )}
     </div>

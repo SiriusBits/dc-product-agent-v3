@@ -1,5 +1,6 @@
 import { AlertTriangle, RefreshCw, WifiOff } from 'lucide-react';
-import { Alert, AlertDescription, AlertTitle, Button } from '../ui';
+import { Alert, AlertDescription, AlertTitle } from '../ui/alert';
+import { Button } from '../ui/button';
 import { ApiError } from '../../lib/api-client';
 
 interface ApiErrorDisplayProps {
@@ -9,11 +10,11 @@ interface ApiErrorDisplayProps {
   className?: string;
 }
 
-export function ApiErrorDisplay({ 
-  error, 
-  onRetry, 
+export function ApiErrorDisplay({
+  error,
+  onRetry,
   showDetails = false,
-  className 
+  className,
 }: ApiErrorDisplayProps) {
   const getErrorIcon = () => {
     if (error.isNetworkError()) {
@@ -60,7 +61,7 @@ export function ApiErrorDisplay({
     return error.message || 'An unexpected error occurred.';
   };
 
-  const getVariant = (): "default" | "destructive" => {
+  const getVariant = (): 'default' | 'destructive' => {
     if (error.isNetworkError() || error.status === 401) {
       return 'default';
     }
@@ -68,12 +69,16 @@ export function ApiErrorDisplay({
   };
 
   return (
-    <Alert variant={getVariant()} className={className}>
+    <Alert
+      variant={getVariant()}
+      className={className}
+      data-testid="api-error-display"
+    >
       {getErrorIcon()}
       <AlertTitle>{getErrorTitle()}</AlertTitle>
       <AlertDescription className="mt-2">
-        <p>{getErrorDescription()}</p>
-        
+        <p data-testid="error-message">{getErrorDescription()}</p>
+
         {showDetails && (
           <div className="mt-3 p-2 bg-muted rounded text-sm">
             <details>
@@ -81,16 +86,20 @@ export function ApiErrorDisplay({
                 Technical Details
               </summary>
               <div className="mt-2 space-y-1 text-xs">
-                <p><strong>Status:</strong> {error.status}</p>
+                <p>
+                  <strong>Status:</strong> {error.status}
+                </p>
                 {error.requestId && (
-                  <p><strong>Request ID:</strong> {error.requestId}</p>
+                  <p>
+                    <strong>Request ID:</strong> {error.requestId}
+                  </p>
                 )}
                 {error.details != null && (
                   <div>
                     <strong>Details:</strong>
                     <pre className="mt-1 whitespace-pre-wrap">
-                      {typeof error.details === 'string' 
-                        ? error.details 
+                      {typeof error.details === 'string'
+                        ? error.details
                         : JSON.stringify(error.details, null, 2)}
                     </pre>
                   </div>
@@ -106,6 +115,7 @@ export function ApiErrorDisplay({
             variant="outline"
             size="sm"
             className="mt-3 flex items-center gap-2"
+            data-testid="retry-button"
           >
             <RefreshCw className="h-4 w-4" />
             Try Again
@@ -119,21 +129,27 @@ export function ApiErrorDisplay({
 /**
  * Inline error display for smaller spaces
  */
-export function InlineApiError({ 
-  error, 
+export function InlineApiError({
+  error,
   onRetry,
-  className 
+  className,
 }: Omit<ApiErrorDisplayProps, 'showDetails'>) {
   return (
-    <div className={`flex items-center gap-2 text-sm text-destructive ${className}`}>
+    <div
+      className={`flex items-center gap-2 text-sm text-destructive ${className}`}
+      data-testid="inline-api-error"
+    >
       <AlertTriangle className="h-4 w-4 flex-shrink-0" />
-      <span className="flex-1">{error.message}</span>
+      <span className="flex-1" data-testid="error-message">
+        {error.message}
+      </span>
       {onRetry && error.isRetryable() && (
         <Button
           onClick={onRetry}
           variant="ghost"
           size="sm"
           className="h-6 px-2 text-xs"
+          data-testid="retry-button"
         >
           Retry
         </Button>

@@ -18,7 +18,10 @@ interface ErrorBoundaryProps {
   level?: 'page' | 'component' | 'critical';
 }
 
-export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
+export class ErrorBoundary extends Component<
+  ErrorBoundaryProps,
+  ErrorBoundaryState
+> {
   constructor(props: ErrorBoundaryProps) {
     super(props);
     this.state = {
@@ -83,23 +86,38 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
       const { error, errorInfo, errorId } = this.state;
 
       return (
-        <div className="flex items-center justify-center min-h-[200px] p-4">
+        <div
+          className="flex items-center justify-center min-h-[200px] p-4"
+          data-testid="error-boundary"
+        >
           <div className="max-w-md w-full">
             <Alert variant="destructive">
               <AlertTriangle className="h-4 w-4" />
               <AlertTitle>
-                {level === 'critical' ? 'Critical Error' : 
-                 level === 'page' ? 'Page Error' : 
-                 'Something went wrong'}
+                {level === 'critical'
+                  ? 'Critical Error'
+                  : level === 'page'
+                    ? 'Page Error'
+                    : 'Something went wrong'}
               </AlertTitle>
               <AlertDescription className="mt-2">
-                {level === 'critical' ? (
-                  <p>A critical error occurred that prevents the application from functioning properly.</p>
-                ) : level === 'page' ? (
-                  <p>This page encountered an error and cannot be displayed.</p>
-                ) : (
-                  <p>This component encountered an error and cannot be displayed.</p>
-                )}
+                <div data-testid="error-boundary-message">
+                  {level === 'critical' ? (
+                    <p>
+                      A critical error occurred that prevents the application
+                      from functioning properly.
+                    </p>
+                  ) : level === 'page' ? (
+                    <p>
+                      This page encountered an error and cannot be displayed.
+                    </p>
+                  ) : (
+                    <p>
+                      This component encountered an error and cannot be
+                      displayed.
+                    </p>
+                  )}
+                </div>
               </AlertDescription>
             </Alert>
 
@@ -110,8 +128,12 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
                     Error Details
                   </summary>
                   <div className="mt-2 text-xs font-mono">
-                    <p><strong>Error ID:</strong> {errorId}</p>
-                    <p><strong>Message:</strong> {error.message}</p>
+                    <p>
+                      <strong>Error ID:</strong> {errorId}
+                    </p>
+                    <p>
+                      <strong>Message:</strong> {error.message}
+                    </p>
                     {error.stack && (
                       <div className="mt-2">
                         <strong>Stack Trace:</strong>
@@ -139,17 +161,19 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
                 variant="outline"
                 size="sm"
                 className="flex items-center gap-2"
+                data-testid="error-boundary-retry"
               >
                 <RefreshCw className="h-4 w-4" />
                 Try Again
               </Button>
-              
+
               {level === 'page' && (
                 <Button
                   onClick={this.handleGoHome}
                   variant="default"
                   size="sm"
                   className="flex items-center gap-2"
+                  data-testid="error-boundary-home"
                 >
                   <Home className="h-4 w-4" />
                   Go Home
@@ -179,6 +203,6 @@ export function withErrorBoundary<P extends object>(
   );
 
   WrappedComponent.displayName = `withErrorBoundary(${Component.displayName || Component.name})`;
-  
+
   return WrappedComponent;
 }

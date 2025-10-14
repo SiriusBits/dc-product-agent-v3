@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { BarChart3 } from 'lucide-react';
-import { Tabs, TabsList, TabsTrigger, TabsContent, Button } from '../ui';
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '../ui/tabs';
+import { Button } from '../ui/button';
 import { ProductFilters } from './ProductFilters';
 import { ProductList } from './ProductList';
 import { ProductDetail } from './ProductDetail';

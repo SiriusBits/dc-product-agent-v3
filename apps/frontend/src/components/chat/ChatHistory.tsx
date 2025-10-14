@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import type { ChatMessage as ChatMessageType } from '@repo/shared-types';
-import { ScrollArea } from '@/components/ui/scroll-area';
-import { Separator } from '@/components/ui/separator';
+import { ScrollArea } from '../ui/scroll-area';
+import { Separator } from '../ui/separator';
 import ChatMessage from './ChatMessage';
 import { cn } from '@/lib/utils';
 
