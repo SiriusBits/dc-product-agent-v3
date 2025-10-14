@@ -8,6 +8,14 @@ import { render } from '@testing-library/react';
 import type { RenderOptions } from '@testing-library/react';
 import { vi } from 'vitest';
 import type { QueryType } from '@repo/shared-types';
+import {
+  createMockUseChatReturn,
+  createMockUseProductsReturn,
+  createMockUseConversationsReturn,
+  type MockUseChatReturn,
+  type MockUseProductsReturn,
+  type MockUseConversationsReturn,
+} from './standardized-mocks';
 
 // Mock React Router
 export const mockNavigate = vi.fn();
@@ -116,6 +124,7 @@ vi.mock('@/lib/api-client', () => ({
 // Direct hook mocking for better control
 export const mockUseChat = vi.fn();
 export const mockUseConversations = vi.fn();
+export const mockUseProducts = vi.fn();
 
 vi.mock('@/hooks/useChat', () => ({
   useChat: mockUseChat,
@@ -123,6 +132,10 @@ vi.mock('@/hooks/useChat', () => ({
 
 vi.mock('@/hooks/useConversations', () => ({
   useConversations: mockUseConversations,
+}));
+
+vi.mock('@/hooks/useProducts', () => ({
+  useProducts: mockUseProducts,
 }));
 
 // Custom render function
@@ -379,11 +392,112 @@ export const mockScrollIntoView = () => {
   Element.prototype.scrollIntoView = vi.fn();
 };
 
+// ============================================================================
+// Standardized Mock Setup Functions
+// ============================================================================
+
+/**
+ * Sets up all mocks with standardized defaults
+ * Call this in beforeEach to ensure consistent mock state
+ */
+export const setupMocks = (
+  options: {
+    useChat?: Partial<MockUseChatReturn>;
+    useProducts?: Partial<MockUseProductsReturn>;
+    useConversations?: Partial<MockUseConversationsReturn>;
+  } = {}
+) => {
+  // Reset all mocks
+  vi.clearAllMocks();
+
+  // Setup hook mocks with standardized factories
+  mockUseChat.mockReturnValue(createMockUseChatReturn(options.useChat));
+
+  mockUseProducts.mockReturnValue(
+    createMockUseProductsReturn(options.useProducts)
+  );
+
+  mockUseConversations.mockReturnValue(
+    createMockUseConversationsReturn(options.useConversations)
+  );
+
+  // Setup common mocks
+  mockClipboard();
+  mockScrollIntoView();
+
+  return {
+    mockUseChat,
+    mockUseProducts,
+    mockUseConversations,
+  };
+};
+
+/**
+ * Updates a specific hook mock with new return values
+ * Useful for testing state changes during a test
+ */
+export const updateMockHook = <
+  T extends 'useChat' | 'useProducts' | 'useConversations',
+>(
+  hookName: T,
+  returnValue: T extends 'useChat'
+    ? Partial<MockUseChatReturn>
+    : T extends 'useProducts'
+      ? Partial<MockUseProductsReturn>
+      : T extends 'useConversations'
+        ? Partial<MockUseConversationsReturn>
+        : never
+) => {
+  if (hookName === 'useChat') {
+    // Get current value by calling the mock
+    const currentValue = mockUseChat();
+    mockUseChat.mockReturnValue({
+      ...currentValue,
+      ...returnValue,
+    });
+  } else if (hookName === 'useProducts') {
+    // Get current value by calling the mock
+    const currentValue = mockUseProducts();
+    mockUseProducts.mockReturnValue({
+      ...currentValue,
+      ...returnValue,
+    });
+  } else if (hookName === 'useConversations') {
+    // Get current value by calling the mock
+    const currentValue = mockUseConversations();
+    mockUseConversations.mockReturnValue({
+      ...currentValue,
+      ...returnValue,
+    });
+  }
+};
+
+/**
+ * Resets all mocks to their default state
+ * Call this in afterEach to ensure test isolation
+ */
+export const resetMocks = () => {
+  vi.clearAllMocks();
+
+  // Reset to default values
+  mockUseChat.mockReturnValue(createMockUseChatReturn());
+  mockUseProducts.mockReturnValue(createMockUseProductsReturn());
+  mockUseConversations.mockReturnValue(createMockUseConversationsReturn());
+
+  // Clear storage
+  localStorage.clear();
+  sessionStorage.clear();
+
+  // Reset navigation mocks
+  mockNavigate.mockReset();
+  mockSetSearchParams.mockReset();
+};
+
 // Setup function for common test setup with enhanced mock control
 export const setupTest = (
   options: {
     enableControlledPromises?: boolean;
-    mockResponses?: Record<string, any>;
+    mockResponses?: Record<string, unknown>;
     delay?: number;
   } = {}
 ) => {
@@ -392,7 +506,7 @@ export const setupTest = (
 
   // Configure timing if specified
   const delay = options.delay || 0;
-  const mockImplementation = (value: any) => {
+  const mockImplementation = <T,>(value: T) => {
     if (delay > 0) {
       return new Promise((resolve) => setTimeout(() => resolve(value), delay));
     }
@@ -570,7 +684,8 @@ export const setupTest = (
         rejectPromise = reject;
       });
 
-      (mockApiClient[method] as unknown).mockReturnValue(promise);
+      const mockFn = mockApiClient[method] as ReturnType<typeof vi.fn>;
+      mockFn.mockReturnValue(promise);
 
       return {
         promise,
@@ -583,22 +698,15 @@ export const setupTest = (
 
 // Enhanced cleanup function with proper mock reset
 export const cleanupTest = () => {
-  vi.clearAllMocks();
+  // Use the standardized reset function
+  resetMocks();
 
-  // Reset all mock implementations to avoid interference between tests
+  // Reset all API client mock implementations
   Object.values(mockApiClient).forEach((mockFn) => {
     if (typeof mockFn === 'function' && 'mockReset' in mockFn) {
       mockFn.mockReset();
     }
   });
-
-  // Clear storage
-  localStorage.clear();
-  sessionStorage.clear();
-
-  // Reset navigation mocks
-  mockNavigate.mockReset();
-  mockSetSearchParams.mockReset();
 };
 
 // Enhanced utility for waiting for async operations with timeout
