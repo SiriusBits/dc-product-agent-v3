@@ -113,6 +113,18 @@ vi.mock('@/lib/api-client', () => ({
   ApiError: MockApiError,
 }));
 
+// Direct hook mocking for better control
+export const mockUseChat = vi.fn();
+export const mockUseConversations = vi.fn();
+
+vi.mock('@/hooks/useChat', () => ({
+  useChat: mockUseChat,
+}));
+
+vi.mock('@/hooks/useConversations', () => ({
+  useConversations: mockUseConversations,
+}));
+
 // Custom render function
 const AllTheProviders = ({ children }: { children: React.ReactNode }) => {
   return <>{children}</>;
@@ -367,119 +379,178 @@ export const mockScrollIntoView = () => {
   Element.prototype.scrollIntoView = vi.fn();
 };
 
-// Setup function for common test setup
-export const setupTest = () => {
+// Setup function for common test setup with enhanced mock control
+export const setupTest = (
+  options: {
+    enableControlledPromises?: boolean;
+    mockResponses?: Record<string, any>;
+    delay?: number;
+  } = {}
+) => {
   // Clear all mocks
   vi.clearAllMocks();
 
-  // Reset mock implementations and set default values
-  mockApiClient.sendMessage.mockResolvedValue(createMockChatResponse());
-  mockApiClient.chat.mockResolvedValue(createMockChatResponse());
-  mockApiClient.getConversation.mockResolvedValue(createMockConversation());
-  mockApiClient.listConversations.mockResolvedValue([]);
-  mockApiClient.getConversations.mockResolvedValue([]);
-  mockApiClient.createConversation.mockResolvedValue(
-    createMockConversation({ id: 'new-conv', messages: [] })
+  // Configure timing if specified
+  const delay = options.delay || 0;
+  const mockImplementation = (value: any) => {
+    if (delay > 0) {
+      return new Promise((resolve) => setTimeout(() => resolve(value), delay));
+    }
+    return Promise.resolve(value);
+  };
+
+  // Reset mock implementations with enhanced timing control
+  const chatResponse =
+    options.mockResponses?.chatResponse || createMockChatResponse();
+  const conversation =
+    options.mockResponses?.conversation || createMockConversation();
+  const conversations = options.mockResponses?.conversations || [];
+  const product = options.mockResponses?.product || createMockProduct();
+  const productDetail =
+    options.mockResponses?.productDetail || createMockProductDetail();
+
+  mockApiClient.sendMessage.mockImplementation(() =>
+    mockImplementation(chatResponse)
   );
-  mockApiClient.deleteConversation.mockResolvedValue(undefined);
-  mockApiClient.updateConversationTitle.mockResolvedValue(undefined);
-  mockApiClient.getConversationMessages.mockResolvedValue([
-    createMockChatMessage(),
-  ]);
+  mockApiClient.chat.mockImplementation(() => mockImplementation(chatResponse));
+  mockApiClient.getConversation.mockImplementation(() =>
+    mockImplementation(conversation)
+  );
+  mockApiClient.listConversations.mockImplementation(() =>
+    mockImplementation(conversations)
+  );
+  mockApiClient.getConversations.mockImplementation(() =>
+    mockImplementation(conversations)
+  );
+  mockApiClient.createConversation.mockImplementation(() =>
+    mockImplementation(createMockConversation({ id: 'new-conv', messages: [] }))
+  );
+  mockApiClient.deleteConversation.mockImplementation(() =>
+    mockImplementation(undefined)
+  );
+  mockApiClient.updateConversationTitle.mockImplementation(() =>
+    mockImplementation(undefined)
+  );
+  mockApiClient.getConversationMessages.mockImplementation(() =>
+    mockImplementation([createMockChatMessage()])
+  );
 
-  mockApiClient.searchProducts.mockResolvedValue({
-    products: [createMockProduct()],
-    total_count: 1,
-    facets: {
-      families: [{ value: 'ASA', count: 1 }],
-      applications: [{ value: 'Coatings', count: 1 }],
-      manufacturers: [],
-      properties: [],
-    },
-    query_info: {
-      processed_query: '',
-      filters_applied: [],
-      search_time_ms: 100,
-    },
-  });
-  mockApiClient.getProducts.mockResolvedValue([createMockProduct()]);
-  mockApiClient.getProduct.mockResolvedValue(createMockProductDetail());
-  mockApiClient.getRelatedProducts.mockResolvedValue([createMockProduct()]);
-  mockApiClient.compareProducts.mockResolvedValue({
-    products: [createMockProductDetail()],
-    comparison_matrix: {
-      aspects: [],
-      data: [],
-    },
-    recommendations: [],
-    analysis_summary: 'Comparison complete',
-  });
-  mockApiClient.getProductFamilies.mockResolvedValue(['ASA', 'DCA', 'ECA']);
-  mockApiClient.getProductApplications.mockResolvedValue([
-    'Coatings',
-    'Adhesives',
-  ]);
-  mockApiClient.getApplications.mockResolvedValue(['Coatings', 'Adhesives']);
-  mockApiClient.getProductProperties.mockResolvedValue([]);
-  mockApiClient.getProductStatistics.mockResolvedValue({
-    totalProducts: 100,
-    totalFamilies: 10,
-    totalApplications: 20,
-  });
-
-  mockApiClient.queryKnowledgeGraph.mockResolvedValue({
-    central_entity: {
-      id: 'entity-1',
-      text: 'ASA 150',
-      type: 'Product',
-      canonical_name: 'ASA 150',
-      aliases: ['ASA-150'],
-      source_text: null,
-      provenance: {
-        document_id: 'asa-150-spec',
-        page: 1,
+  mockApiClient.searchProducts.mockImplementation(() =>
+    mockImplementation({
+      products: [product],
+      total_count: 1,
+      facets: {
+        families: [{ value: 'ASA', count: 1 }],
+        applications: [{ value: 'Coatings', count: 1 }],
+        manufacturers: [],
+        properties: [],
       },
-      metadata: {},
-    },
-    related_entities: [],
-    relationships: [],
-    graph_data: {
-      nodes: [],
-      edges: [],
-    },
-  });
-  mockApiClient.getEntityNeighbors.mockResolvedValue({
-    central_entity: {
-      id: 'entity-1',
-      text: 'ASA 150',
-      type: 'Product',
-      canonical_name: 'ASA 150',
-      aliases: ['ASA-150'],
-      source_text: null,
-      provenance: {
-        document_id: 'asa-150-spec',
-        page: 1,
+      query_info: {
+        processed_query: '',
+        filters_applied: [],
+        search_time_ms: 100,
       },
-      metadata: {},
-    },
-    related_entities: [],
-    relationships: [],
-    graph_data: {
-      nodes: [],
-      edges: [],
-    },
-  });
+    })
+  );
+  mockApiClient.getProducts.mockImplementation(() =>
+    mockImplementation([product])
+  );
+  mockApiClient.getProduct.mockImplementation(() =>
+    mockImplementation(productDetail)
+  );
+  mockApiClient.getRelatedProducts.mockImplementation(() =>
+    mockImplementation([product])
+  );
+  mockApiClient.compareProducts.mockImplementation(() =>
+    mockImplementation({
+      products: [productDetail],
+      comparison_matrix: {
+        aspects: [],
+        data: [],
+      },
+      recommendations: [],
+      analysis_summary: 'Comparison complete',
+    })
+  );
+  mockApiClient.getProductFamilies.mockImplementation(() =>
+    mockImplementation(['ASA', 'DCA', 'ECA'])
+  );
+  mockApiClient.getProductApplications.mockImplementation(() =>
+    mockImplementation(['Coatings', 'Adhesives'])
+  );
+  mockApiClient.getApplications.mockImplementation(() =>
+    mockImplementation(['Coatings', 'Adhesives'])
+  );
+  mockApiClient.getProductProperties.mockImplementation(() =>
+    mockImplementation([])
+  );
+  mockApiClient.getProductStatistics.mockImplementation(() =>
+    mockImplementation({
+      totalProducts: 100,
+      totalFamilies: 10,
+      totalApplications: 20,
+    })
+  );
 
-  mockApiClient.getSystemStatus.mockResolvedValue({
-    status: 'healthy',
-    services: {
-      database: 'healthy',
-      vectorStore: 'healthy',
-      knowledgeGraph: 'healthy',
-    },
-    timestamp: new Date().toISOString(),
-  });
-  mockApiClient.checkHealth.mockResolvedValue(true);
+  mockApiClient.queryKnowledgeGraph.mockImplementation(() =>
+    mockImplementation({
+      central_entity: {
+        id: 'entity-1',
+        text: 'ASA 150',
+        type: 'Product',
+        canonical_name: 'ASA 150',
+        aliases: ['ASA-150'],
+        source_text: null,
+        provenance: {
+          document_id: 'asa-150-spec',
+          page: 1,
+        },
+        metadata: {},
+      },
+      related_entities: [],
+      relationships: [],
+      graph_data: {
+        nodes: [],
+        edges: [],
+      },
+    })
+  );
+  mockApiClient.getEntityNeighbors.mockImplementation(() =>
+    mockImplementation({
+      central_entity: {
+        id: 'entity-1',
+        text: 'ASA 150',
+        type: 'Product',
+        canonical_name: 'ASA 150',
+        aliases: ['ASA-150'],
+        source_text: null,
+        provenance: {
+          document_id: 'asa-150-spec',
+          page: 1,
+        },
+        metadata: {},
+      },
+      related_entities: [],
+      relationships: [],
+      graph_data: {
+        nodes: [],
+        edges: [],
+      },
+    })
+  );
+
+  mockApiClient.getSystemStatus.mockImplementation(() =>
+    mockImplementation({
+      status: 'healthy',
+      services: {
+        database: 'healthy',
+        vectorStore: 'healthy',
+        knowledgeGraph: 'healthy',
+      },
+      timestamp: new Date().toISOString(),
+    })
+  );
+  mockApiClient.checkHealth.mockImplementation(() => mockImplementation(true));
 
   mockNavigate.mockReset();
   mockSetSearchParams.mockReset();
@@ -487,11 +558,88 @@ export const setupTest = () => {
   // Setup common mocks
   mockClipboard();
   mockScrollIntoView();
+
+  return {
+    mockApiClient,
+    // Helper to create controlled promises for manual resolution
+    createControlledPromise: function <T>(method: keyof typeof mockApiClient) {
+      let resolvePromise: (value: T) => void;
+      let rejectPromise: (error: Error) => void;
+      const promise = new Promise<T>((resolve, reject) => {
+        resolvePromise = resolve;
+        rejectPromise = reject;
+      });
+
+      (mockApiClient[method] as unknown).mockReturnValue(promise);
+
+      return {
+        promise,
+        resolve: resolvePromise!,
+        reject: rejectPromise!,
+      };
+    },
+  };
 };
 
-// Cleanup function
+// Enhanced cleanup function with proper mock reset
 export const cleanupTest = () => {
   vi.clearAllMocks();
+
+  // Reset all mock implementations to avoid interference between tests
+  Object.values(mockApiClient).forEach((mockFn) => {
+    if (typeof mockFn === 'function' && 'mockReset' in mockFn) {
+      mockFn.mockReset();
+    }
+  });
+
+  // Clear storage
   localStorage.clear();
   sessionStorage.clear();
+
+  // Reset navigation mocks
+  mockNavigate.mockReset();
+  mockSetSearchParams.mockReset();
 };
+
+// Enhanced utility for waiting for async operations with timeout
+export const waitForAsyncOperations = async (timeout = 1000) => {
+  const start = Date.now();
+  while (Date.now() - start < timeout) {
+    await new Promise((resolve) => setTimeout(resolve, 10));
+    // Allow React to process updates
+    await new Promise((resolve) => setTimeout(resolve, 0));
+  }
+};
+
+// Enhanced utility for simulating network delays in tests
+export const simulateNetworkDelay = (ms: number) => {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+};
+
+// Enhanced utility for creating controlled async operations
+export function createControlledAsyncOperation<T>() {
+  let resolvePromise: (value: T) => void;
+  let rejectPromise: (error: Error) => void;
+  let isResolved = false;
+  let isRejected = false;
+
+  const promise = new Promise<T>((resolve, reject) => {
+    resolvePromise = (value: T) => {
+      isResolved = true;
+      resolve(value);
+    };
+    rejectPromise = (error: Error) => {
+      isRejected = true;
+      reject(error);
+    };
+  });
+
+  return {
+    promise,
+    resolve: resolvePromise!,
+    reject: rejectPromise!,
+    isResolved: () => isResolved,
+    isRejected: () => isRejected,
+    isPending: () => !isResolved && !isRejected,
+  };
+}

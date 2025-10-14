@@ -1,11 +1,11 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 import { AlertCircle, RefreshCw, Sidebar } from 'lucide-react';
 import { Button } from '../ui/button';
 import { Card } from '../ui/card';
 import { useChat } from '../../hooks/useChat';
 import { useConversations } from '../../hooks/useConversations';
 import ChatHistory from './ChatHistory';
-import ChatInput from './ChatInput';
+import ChatInput, { type ChatInputRef } from './ChatInput';
 import ConversationSidebar from './ConversationSidebar';
 import { cn } from '../../lib/utils';
 
@@ -15,6 +15,7 @@ interface ChatInterfaceProps {
 
 export default function ChatInterface({ className }: ChatInterfaceProps) {
   const [showSidebar, setShowSidebar] = useState(true);
+  const chatInputRef = useRef<ChatInputRef>(null);
 
   const {
     messages,
@@ -49,8 +50,11 @@ export default function ChatInterface({ className }: ChatInterfaceProps) {
   );
 
   const handleNewConversation = useCallback(async () => {
+    console.log('handleNewConversation called');
     try {
+      console.log('Calling createConversation...');
       const newConversation = await createConversation();
+      console.log('createConversation result:', newConversation);
       if (newConversation) {
         clearMessages();
         // The conversation will be automatically added to the list by useConversations
@@ -82,6 +86,10 @@ export default function ChatInterface({ className }: ChatInterfaceProps) {
       if (event.ctrlKey && event.key === 'k') {
         event.preventDefault();
         handleNewConversation();
+        // Focus the input after creating new conversation
+        setTimeout(() => {
+          chatInputRef.current?.focus();
+        }, 100);
       }
     };
 
@@ -180,6 +188,7 @@ export default function ChatInterface({ className }: ChatInterfaceProps) {
         <div className="border-t p-4">
           <div className="max-w-4xl mx-auto">
             <ChatInput
+              ref={chatInputRef}
               onSendMessage={sendMessage}
               isLoading={isLoading}
               disabled={!!error}

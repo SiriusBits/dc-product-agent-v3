@@ -13,6 +13,12 @@
     "type-check": "astro check",
     "test": "vitest run",
     "test:watch": "vitest",
+    "test:optimized": "node scripts/run-optimized-tests.js",
+    "test:fast": "PERF_MODE=fast node scripts/run-optimized-tests.js",
+    "test:thorough": "PERF_MODE=thorough node scripts/run-optimized-tests.js",
+    "test:perf": "PERF_MONITORING=true vitest run --reporter=verbose",
+    "test:integration": "vitest run src/test/integration --reporter=verbose",
+    "test:unit": "vitest run src/test/unit --reporter=verbose",
     "format": "prettier --write \"src/**/*.{astro,ts,tsx,js,jsx}\"",
     "clean": "rm -rf dist .astro"
   },
