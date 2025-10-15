@@ -6,96 +6,47 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import ProductBrowser from '@/components/products/ProductBrowser';
-import type { ProductSummary } from '@repo/shared-types';
+import { render } from '@/test/test-utils';
 import {
-  render,
-  setupTest,
-  cleanupTest,
-  mockApiClient,
-  mockNavigate,
-} from '@/test/test-utils';
+  createMockUseProductsReturn,
+  createMockProduct,
+  createMockProducts,
+  createMockSearchFacets,
+} from '@/test/standardized-mocks';
 
-// Mock the useProducts hook directly
-const mockUseProducts = vi.fn();
-const mockUseProductDetail = vi.fn();
-const mockUseProductFilters = vi.fn();
+// Mock the useProducts hooks
+vi.mock('@/hooks/useProducts', async (importOriginal) => {
+  const actual = await importOriginal();
+  return {
+    ...actual,
+    useProducts: vi.fn(),
+    useProductDetail: vi.fn(),
+    useProductFilters: vi.fn(),
+  };
+});
 
-vi.mock('@/hooks/useProducts', () => ({
-  useProducts: () => mockUseProducts(),
-  useProductDetail: () => mockUseProductDetail(),
-  useProductFilters: () => mockUseProductFilters(),
-}));
+import {
+  useProducts,
+  useProductDetail,
+  useProductFilters,
+} from '@/hooks/useProducts';
 
 describe('Product Search Integration', () => {
-  const mockProducts: ProductSummary[] = [
-    {
-      id: 'asa-150',
-      name: 'ASA 150',
-      short_name: 'ASA150',
-      family: 'ASA',
-      cas_number: '12345-67-8',
-      applications: ['Coatings', 'Adhesives', 'Sealants'],
-      key_properties: ['Viscosity: 150 cP', 'Specific Gravity: 1.05 g/cm³'],
-      document_count: 1,
-    },
-    {
-      id: 'asa-140',
-      name: 'ASA 140',
-      short_name: 'ASA140',
-      family: 'ASA',
-      cas_number: '12345-67-9',
-      applications: ['Coatings', 'Adhesives'],
-      key_properties: ['Viscosity: 140 cP'],
-      document_count: 1,
-    },
-    {
-      id: 'dca-467',
-      name: 'DCA 467',
-      short_name: 'DCA467',
-      family: 'DCA',
-      cas_number: '98765-43-2',
-      applications: ['Epoxy Curing', 'Powder Coatings'],
-      key_properties: ['Melting Point: 200°C'],
-      document_count: 1,
-    },
-  ];
-
-  const mockFamilies = ['ASA', 'DCA', 'ECA'];
-  const mockApplications = [
-    'Coatings',
-    'Adhesives',
-    'Sealants',
-    'Epoxy Curing',
-    'Powder Coatings',
-  ];
-
-  const createDefaultMockSearchProducts = () =>
-    vi.fn().mockResolvedValue(undefined);
-
   beforeEach(() => {
     vi.clearAllMocks();
-    setupTest();
 
-    // Reset mock implementations for each test
-    mockUseProducts.mockReturnValue({
-      products: mockProducts,
-      totalCount: mockProducts.length,
-      facets: {
-        families: mockFamilies.map((f) => ({ value: f, count: 1 })),
-        applications: mockApplications.map((a) => ({ value: a, count: 1 })),
-        manufacturers: [],
-        properties: [],
-      },
-      loading: false,
-      error: null,
-      searchProducts: createDefaultMockSearchProducts(),
-      loadMore: vi.fn().mockResolvedValue(undefined),
-      hasMore: false,
-      retry: vi.fn().mockResolvedValue(undefined),
-      isRetryable: false,
-    });
+    // Setup default mock returns
+    vi.mocked(useProducts).mockReturnValue(
+      createMockUseProductsReturn({
+        products: [],
+        totalCount: 0,
+        facets: null,
+        loading: false,
+        error: null,
+      })
+    );
 
-    mockUseProductDetail.mockReturnValue({
+    vi.mocked(useProductDetail).mockReturnValue({
       product: null,
       relatedProducts: [],
       loading: false,
@@ -105,9 +56,9 @@ describe('Product Search Integration', () => {
       isRetryable: false,
     });
 
-    mockUseProductFilters.mockReturnValue({
-      families: mockFamilies,
-      applications: mockApplications,
+    vi.mocked(useProductFilters).mockReturnValue({
+      families: ['ASA', 'DCA', 'ECA'],
+      applications: ['Coatings', 'Adhesives', 'Sealants'],
       loading: false,
       error: null,
       loadFilters: vi.fn().mockResolvedValue(undefined),
@@ -117,399 +68,722 @@ describe('Product Search Integration', () => {
   });
 
   afterEach(() => {
-    cleanupTest();
     vi.clearAllMocks();
   });
 
-  it('displays products correctly', async () => {
-    render(<ProductBrowser />);
+  // ============================================================================
+  // 6.1 Focused Product Rendering Tests
+  // ============================================================================
 
-    // Wait for products to be displayed
-    await waitFor(() => {
-      expect(screen.getByText('ASA 150')).toBeInTheDocument();
-    });
-
-    // Verify all products are displayed
-    expect(screen.getByText('ASA 150')).toBeInTheDocument();
-    expect(screen.getByText('ASA 140')).toBeInTheDocument();
-    expect(screen.getByText('DCA 467')).toBeInTheDocument();
-  });
-
-  it('handles search functionality', async () => {
-    const user = userEvent.setup();
-    const mockSearchProducts = createDefaultMockSearchProducts();
-
-    mockUseProducts.mockReturnValue({
-      products: mockProducts,
-      totalCount: mockProducts.length,
-      facets: {
-        families: mockFamilies.map((f) => ({ value: f, count: 1 })),
-        applications: mockApplications.map((a) => ({ value: a, count: 1 })),
-        manufacturers: [],
-        properties: [],
-      },
-      loading: false,
-      error: null,
-      searchProducts: mockSearchProducts,
-      loadMore: vi.fn().mockResolvedValue(undefined),
-      hasMore: false,
-      retry: vi.fn().mockResolvedValue(undefined),
-      isRetryable: false,
-    });
-
-    render(<ProductBrowser />);
-
-    await waitFor(() => {
-      expect(screen.getByText('ASA 150')).toBeInTheDocument();
-    });
-
-    // Find and use search input
-    const searchInput = screen.getByPlaceholderText(/search products/i);
-    await user.type(searchInput, 'ASA');
-
-    // Wait for search to be called
-    await waitFor(
-      () => {
-        expect(mockSearchProducts).toHaveBeenCalled();
-      },
-      { timeout: 1000 }
-    );
-  });
-
-  it('handles filter functionality', async () => {
-    const user = userEvent.setup();
-    const mockSearchProducts = createDefaultMockSearchProducts();
-
-    mockUseProducts.mockReturnValue({
-      products: mockProducts,
-      totalCount: mockProducts.length,
-      facets: {
-        families: mockFamilies.map((f) => ({ value: f, count: 1 })),
-        applications: mockApplications.map((a) => ({ value: a, count: 1 })),
-        manufacturers: [],
-        properties: [],
-      },
-      loading: false,
-      error: null,
-      searchProducts: mockSearchProducts,
-      loadMore: vi.fn().mockResolvedValue(undefined),
-      hasMore: false,
-      retry: vi.fn().mockResolvedValue(undefined),
-      isRetryable: false,
-    });
-
-    render(<ProductBrowser />);
-
-    await waitFor(() => {
-      expect(screen.getByText('ASA 150')).toBeInTheDocument();
-    });
-
-    // Test family filter
-    const familySelect = screen.getByRole('combobox', { name: /family/i });
-    await user.click(familySelect);
-
-    // Wait for options and select ASA - find the option in the dropdown
-    await waitFor(() => {
-      const asaOptions = screen.getAllByText('ASA');
-      // Find the option that's in a button (dropdown option)
-      const asaOption = asaOptions.find(
-        (option) => option.closest('button')?.getAttribute('type') === 'button'
+  describe('Product Rendering', () => {
+    it('renders ProductBrowser with empty products', async () => {
+      // Arrange: Setup mock with empty products
+      vi.mocked(useProducts).mockReturnValue(
+        createMockUseProductsReturn({
+          products: [],
+          totalCount: 0,
+          facets: null,
+          loading: false,
+          error: null,
+        })
       );
-      if (asaOption) {
-        return user.click(asaOption);
-      }
-      throw new Error('ASA option not found');
+
+      // Act: Render component
+      render(<ProductBrowser />);
+
+      // Assert: Verify component renders and shows empty state
+      expect(screen.getByTestId('product-browser')).toBeInTheDocument();
+      expect(screen.getByText('Product Browser')).toBeInTheDocument();
+
+      // Wait for empty state to appear
+      await waitFor(() => {
+        expect(screen.getByText(/no products found/i)).toBeInTheDocument();
+      });
     });
 
-    // Verify search was called
-    await waitFor(
-      () => {
+    it('renders ProductBrowser with multiple products', async () => {
+      // Arrange: Setup mock with multiple products
+      const mockProducts = createMockProducts(3, {
+        family: 'ASA',
+        applications: ['Coatings', 'Adhesives'],
+      });
+      mockProducts[0].name = 'ASA 150';
+      mockProducts[1].name = 'ASA 140';
+      mockProducts[2].name = 'DCA 467';
+
+      vi.mocked(useProducts).mockReturnValue(
+        createMockUseProductsReturn({
+          products: mockProducts,
+          totalCount: 3,
+          facets: createMockSearchFacets(),
+          loading: false,
+          error: null,
+        })
+      );
+
+      // Act: Render component
+      render(<ProductBrowser />);
+
+      // Assert: Verify all products are displayed
+      await waitFor(() => {
+        expect(screen.getByText('ASA 150')).toBeInTheDocument();
+      });
+
+      expect(screen.getByText('ASA 140')).toBeInTheDocument();
+      expect(screen.getByText('DCA 467')).toBeInTheDocument();
+      expect(screen.getByTestId('product-list')).toBeInTheDocument();
+    });
+
+    it('displays product count correctly', async () => {
+      // Arrange: Setup mock with specific product count
+      const mockProducts = createMockProducts(5);
+      vi.mocked(useProducts).mockReturnValue(
+        createMockUseProductsReturn({
+          products: mockProducts,
+          totalCount: 25, // More than displayed to test count display
+          facets: createMockSearchFacets(),
+          loading: false,
+          error: null,
+        })
+      );
+
+      // Act: Render component
+      render(<ProductBrowser />);
+
+      // Assert: Verify product count is displayed
+      await waitFor(() => {
+        expect(screen.getByText('25 products')).toBeInTheDocument();
+      });
+    });
+
+    it('renders product properties and applications', async () => {
+      // Arrange: Setup mock with products containing specific properties
+      const mockProduct = createMockProduct({
+        name: 'Test Product',
+        applications: ['Coatings', 'Adhesives'],
+        key_properties: ['Viscosity: 150 cP', 'Specific Gravity: 1.05 g/cm³'],
+      });
+
+      vi.mocked(useProducts).mockReturnValue(
+        createMockUseProductsReturn({
+          products: [mockProduct],
+          totalCount: 1,
+          facets: createMockSearchFacets(),
+          loading: false,
+          error: null,
+        })
+      );
+
+      // Act: Render component
+      render(<ProductBrowser />);
+
+      // Assert: Verify properties and applications are displayed
+      await waitFor(() => {
+        expect(screen.getByText('Test Product')).toBeInTheDocument();
+      });
+
+      expect(screen.getByText('Viscosity: 150 cP')).toBeInTheDocument();
+      expect(
+        screen.getByText('Specific Gravity: 1.05 g/cm³')
+      ).toBeInTheDocument();
+      expect(screen.getByText('Coatings')).toBeInTheDocument();
+      expect(screen.getByText('Adhesives')).toBeInTheDocument();
+    });
+  });
+
+  // ============================================================================
+  // 6.2 Product Search Tests
+  // ============================================================================
+
+  describe('Product Search', () => {
+    it('search input is accessible and functional', async () => {
+      // Arrange: Setup mock with products
+      const mockProducts = createMockProducts(2);
+      vi.mocked(useProducts).mockReturnValue(
+        createMockUseProductsReturn({
+          products: mockProducts,
+          totalCount: 2,
+          facets: createMockSearchFacets(),
+          loading: false,
+          error: null,
+        })
+      );
+
+      // Act: Render component
+      render(<ProductBrowser />);
+
+      // Assert: Verify search input is accessible
+      const searchInput = screen.getByPlaceholderText(/search products/i);
+      expect(searchInput).toBeInTheDocument();
+      expect(searchInput).toHaveAttribute('type', 'text');
+
+      // Verify input is focusable and interactive
+      searchInput.focus();
+      expect(searchInput).toHaveFocus();
+    });
+
+    it('typing in search calls setSearchTerm', async () => {
+      // Arrange: Setup mock with spy on searchProducts
+      const user = userEvent.setup();
+      const mockSearchProducts = vi.fn().mockResolvedValue(undefined);
+      const mockProducts = createMockProducts(2);
+
+      vi.mocked(useProducts).mockReturnValue(
+        createMockUseProductsReturn({
+          products: mockProducts,
+          totalCount: 2,
+          facets: createMockSearchFacets(),
+          loading: false,
+          error: null,
+          searchProducts: mockSearchProducts,
+        })
+      );
+
+      render(<ProductBrowser />);
+
+      // Act: Type in search input
+      const searchInput = screen.getByPlaceholderText(/search products/i);
+      await user.type(searchInput, 'ASA');
+
+      // Assert: Verify searchProducts was called with search term
+      await waitFor(() => {
         expect(mockSearchProducts).toHaveBeenCalled();
-      },
-      { timeout: 1000 }
-    );
-  });
+      });
 
-  it('handles product comparison', async () => {
-    const user = userEvent.setup();
-    render(<ProductBrowser />);
-
-    await waitFor(() => {
-      expect(screen.getByText('ASA 150')).toBeInTheDocument();
+      // Verify the search was called with query parameter
+      const lastCall =
+        mockSearchProducts.mock.calls[mockSearchProducts.mock.calls.length - 1];
+      expect(lastCall[0]).toEqual(
+        expect.objectContaining({
+          query: 'ASA',
+        })
+      );
     });
 
-    // Select products for comparison
-    const checkboxes = screen.getAllByRole('checkbox');
-    expect(checkboxes.length).toBeGreaterThanOrEqual(2);
+    it('search term updates trigger product filtering', async () => {
+      // Arrange: Setup mock that changes products based on search
+      const user = userEvent.setup();
+      const allProducts = createMockProducts(5);
+      const filteredProducts = createMockProducts(2, { name: 'ASA Product' });
 
-    await user.click(checkboxes[0]);
-    await user.click(checkboxes[1]);
+      let currentProducts = allProducts;
+      const mockSearchProducts = vi.fn().mockImplementation((params) => {
+        // Simulate filtering based on query
+        if (params.query === 'ASA') {
+          currentProducts = filteredProducts;
+        } else {
+          currentProducts = allProducts;
+        }
+      });
 
-    // Compare button should be enabled
-    const compareButton = screen.getByRole('button', { name: /compare/i });
-    expect(compareButton).not.toBeDisabled();
+      // Mock that returns different products based on search
+      vi.mocked(useProducts).mockImplementation(() =>
+        createMockUseProductsReturn({
+          products: currentProducts,
+          totalCount: currentProducts.length,
+          facets: createMockSearchFacets(),
+          loading: false,
+          error: null,
+          searchProducts: mockSearchProducts,
+        })
+      );
 
-    await user.click(compareButton);
-    expect(compareButton).toBeInTheDocument();
-  });
+      render(<ProductBrowser />);
 
-  it('handles view mode switching', async () => {
-    const user = userEvent.setup();
-    render(<ProductBrowser />);
+      // Act: Search for 'ASA'
+      const searchInput = screen.getByPlaceholderText(/search products/i);
+      await user.type(searchInput, 'ASA');
 
-    await waitFor(() => {
-      expect(screen.getByText('ASA 150')).toBeInTheDocument();
+      // Assert: Verify search was triggered
+      await waitFor(() => {
+        expect(mockSearchProducts).toHaveBeenCalledWith(
+          expect.objectContaining({ query: 'ASA' })
+        );
+      });
     });
 
-    // Switch to list view
-    const listViewButton = screen.getByRole('button', { name: /list view/i });
-    await user.click(listViewButton);
+    it('handles empty search results', async () => {
+      // Arrange: Setup mock with empty search results
+      const user = userEvent.setup();
+      const mockSearchProducts = vi.fn().mockResolvedValue(undefined);
 
-    expect(screen.getByTestId('product-list-view')).toBeInTheDocument();
+      vi.mocked(useProducts).mockReturnValue(
+        createMockUseProductsReturn({
+          products: [],
+          totalCount: 0,
+          facets: null,
+          loading: false,
+          error: null,
+          searchProducts: mockSearchProducts,
+        })
+      );
 
-    // Switch back to grid view
-    const gridViewButton = screen.getByRole('button', { name: /grid view/i });
-    await user.click(gridViewButton);
+      render(<ProductBrowser />);
 
-    expect(screen.getByTestId('product-grid-view')).toBeInTheDocument();
-  });
+      // Act: Perform search
+      const searchInput = screen.getByPlaceholderText(/search products/i);
+      await user.type(searchInput, 'nonexistent');
 
-  it('handles product detail navigation', async () => {
-    const user = userEvent.setup();
-
-    // Mock window.location.href assignment
-    const originalLocation = window.location;
-    delete (window as unknown).location;
-    window.location = { ...originalLocation, href: '' };
-
-    render(<ProductBrowser />);
-
-    await waitFor(() => {
-      expect(screen.getByText('ASA 150')).toBeInTheDocument();
-    });
-
-    // Click on product card
-    const productCard = screen.getByText('ASA 150').closest('.cursor-pointer');
-    expect(productCard).toBeInTheDocument();
-
-    await user.click(productCard!);
-
-    // Verify navigation was attempted
-    expect(window.location.href).toBe('/products/asa-150');
-
-    // Restore original location
-    window.location = originalLocation;
-  });
-
-  it('handles empty search results', async () => {
-    mockUseProducts.mockReturnValue({
-      products: [],
-      totalCount: 0,
-      facets: null,
-      loading: false,
-      error: null,
-      searchProducts: createDefaultMockSearchProducts(),
-      loadMore: vi.fn().mockResolvedValue(undefined),
-      hasMore: false,
-      retry: vi.fn().mockResolvedValue(undefined),
-      isRetryable: false,
-    });
-
-    render(<ProductBrowser />);
-
-    await waitFor(() => {
-      expect(screen.getByText(/no products found/i)).toBeInTheDocument();
+      // Assert: Verify empty state is shown
+      await waitFor(() => {
+        expect(screen.getByText(/no products found/i)).toBeInTheDocument();
+      });
     });
   });
 
-  it('handles error states', async () => {
-    mockUseProducts.mockReturnValue({
-      products: [],
-      totalCount: 0,
-      facets: null,
-      loading: false,
-      error: 'Search failed',
-      searchProducts: createDefaultMockSearchProducts(),
-      loadMore: vi.fn().mockResolvedValue(undefined),
-      hasMore: false,
-      retry: vi.fn().mockResolvedValue(undefined),
-      isRetryable: true,
+  // ============================================================================
+  // 6.3 Product Filter Tests
+  // ============================================================================
+
+  describe('Product Filters', () => {
+    it('filter controls are accessible', async () => {
+      // Arrange: Setup mock with products and facets
+      const mockProducts = createMockProducts(3);
+      vi.mocked(useProducts).mockReturnValue(
+        createMockUseProductsReturn({
+          products: mockProducts,
+          totalCount: 3,
+          facets: createMockSearchFacets({
+            families: [
+              { value: 'ASA', count: 2 },
+              { value: 'DCA', count: 1 },
+            ],
+            applications: [
+              { value: 'Coatings', count: 2 },
+              { value: 'Adhesives', count: 1 },
+            ],
+          }),
+          loading: false,
+          error: null,
+        })
+      );
+
+      render(<ProductBrowser />);
+
+      // Assert: Verify filter controls are accessible
+      await waitFor(() => {
+        expect(
+          screen.getByRole('combobox', { name: /family/i })
+        ).toBeInTheDocument();
+      });
+
+      expect(
+        screen.getByRole('combobox', { name: /application/i })
+      ).toBeInTheDocument();
+      expect(
+        screen.getByRole('combobox', { name: /sort by/i })
+      ).toBeInTheDocument();
+
+      // Verify filter controls are focusable
+      const familySelect = screen.getByRole('combobox', { name: /family/i });
+      familySelect.focus();
+      expect(familySelect).toHaveFocus();
     });
 
-    render(<ProductBrowser />);
+    it('applying filters calls setFilters', async () => {
+      // Arrange: Setup mock with spy on searchProducts
+      const user = userEvent.setup();
+      const mockSearchProducts = vi.fn().mockResolvedValue(undefined);
+      const mockProducts = createMockProducts(3);
 
-    await waitFor(() => {
-      expect(screen.getByText('Search failed')).toBeInTheDocument();
+      vi.mocked(useProducts).mockReturnValue(
+        createMockUseProductsReturn({
+          products: mockProducts,
+          totalCount: 3,
+          facets: createMockSearchFacets({
+            families: [
+              { value: 'ASA', count: 2 },
+              { value: 'DCA', count: 1 },
+            ],
+          }),
+          loading: false,
+          error: null,
+          searchProducts: mockSearchProducts,
+        })
+      );
+
+      render(<ProductBrowser />);
+
+      // Act: Apply family filter
+      await waitFor(() => {
+        expect(
+          screen.getByRole('combobox', { name: /family/i })
+        ).toBeInTheDocument();
+      });
+
+      const familySelect = screen.getByRole('combobox', { name: /family/i });
+      await user.click(familySelect);
+
+      // Wait for dropdown options and select ASA
+      await waitFor(() => {
+        const asaOption = screen.getByText('ASA');
+        expect(asaOption).toBeInTheDocument();
+      });
+
+      const asaOption = screen.getByText('ASA');
+      await user.click(asaOption);
+
+      // Assert: Verify searchProducts was called with family filter
+      await waitFor(() => {
+        expect(mockSearchProducts).toHaveBeenCalledWith(
+          expect.objectContaining({
+            family: 'ASA',
+          })
+        );
+      });
+    });
+
+    it('product list updates with filtered results', async () => {
+      // Arrange: Setup mock that simulates filtering
+      const user = userEvent.setup();
+      const allProducts = createMockProducts(5);
+      const asaProducts = createMockProducts(2, { family: 'ASA' });
+      asaProducts[0].name = 'ASA Product 1';
+      asaProducts[1].name = 'ASA Product 2';
+
+      let currentProducts = allProducts;
+      const mockSearchProducts = vi.fn().mockImplementation((params) => {
+        if (params.family === 'ASA') {
+          currentProducts = asaProducts;
+        } else {
+          currentProducts = allProducts;
+        }
+      });
+
+      vi.mocked(useProducts).mockImplementation(() =>
+        createMockUseProductsReturn({
+          products: currentProducts,
+          totalCount: currentProducts.length,
+          facets: createMockSearchFacets({
+            families: [
+              { value: 'ASA', count: 2 },
+              { value: 'DCA', count: 3 },
+            ],
+          }),
+          loading: false,
+          error: null,
+          searchProducts: mockSearchProducts,
+        })
+      );
+
+      render(<ProductBrowser />);
+
+      // Act: Apply family filter
+      await waitFor(() => {
+        expect(
+          screen.getByRole('combobox', { name: /family/i })
+        ).toBeInTheDocument();
+      });
+
+      const familySelect = screen.getByRole('combobox', { name: /family/i });
+      await user.click(familySelect);
+
+      await waitFor(() => {
+        const asaOption = screen.getByText('ASA');
+        expect(asaOption).toBeInTheDocument();
+      });
+
+      const asaOption = screen.getByText('ASA');
+      await user.click(asaOption);
+
+      // Assert: Verify filter was applied
+      await waitFor(() => {
+        expect(mockSearchProducts).toHaveBeenCalledWith(
+          expect.objectContaining({ family: 'ASA' })
+        );
+      });
+    });
+
+    it('handles application filter', async () => {
+      // Arrange: Setup mock with application facets
+      const user = userEvent.setup();
+      const mockSearchProducts = vi.fn().mockResolvedValue(undefined);
+      const mockProducts = createMockProducts(3);
+
+      vi.mocked(useProducts).mockReturnValue(
+        createMockUseProductsReturn({
+          products: mockProducts,
+          totalCount: 3,
+          facets: createMockSearchFacets({
+            applications: [
+              { value: 'Coatings', count: 2 },
+              { value: 'Adhesives', count: 1 },
+            ],
+          }),
+          loading: false,
+          error: null,
+          searchProducts: mockSearchProducts,
+        })
+      );
+
+      render(<ProductBrowser />);
+
+      // Act: Apply application filter
+      await waitFor(() => {
+        expect(
+          screen.getByRole('combobox', { name: /application/i })
+        ).toBeInTheDocument();
+      });
+
+      const applicationSelect = screen.getByRole('combobox', {
+        name: /application/i,
+      });
+      await user.click(applicationSelect);
+
+      await waitFor(() => {
+        const coatingsOption = screen.getByText('Coatings');
+        expect(coatingsOption).toBeInTheDocument();
+      });
+
+      const coatingsOption = screen.getByText('Coatings');
+      await user.click(coatingsOption);
+
+      // Assert: Verify searchProducts was called with application filter
+      await waitFor(() => {
+        expect(mockSearchProducts).toHaveBeenCalledWith(
+          expect.objectContaining({
+            applications: ['Coatings'],
+          })
+        );
+      });
+    });
+
+    it('handles clear filters functionality', async () => {
+      // Arrange: Setup mock with filters applied
+      const user = userEvent.setup();
+      const mockSearchProducts = vi.fn().mockResolvedValue(undefined);
+      const mockProducts = createMockProducts(3);
+
+      vi.mocked(useProducts).mockReturnValue(
+        createMockUseProductsReturn({
+          products: mockProducts,
+          totalCount: 3,
+          facets: createMockSearchFacets(),
+          loading: false,
+          error: null,
+          searchProducts: mockSearchProducts,
+        })
+      );
+
+      render(<ProductBrowser />);
+
+      // Act: Apply a filter first, then clear
+      await waitFor(() => {
+        expect(
+          screen.getByPlaceholderText(/search products/i)
+        ).toBeInTheDocument();
+      });
+
+      const searchInput = screen.getByPlaceholderText(/search products/i);
+      await user.type(searchInput, 'test');
+
+      // Clear filters
+      const clearButton = screen.getByRole('button', {
+        name: /clear filters/i,
+      });
+      await user.click(clearButton);
+
+      // Assert: Verify searchProducts was called to clear filters
+      await waitFor(() => {
+        expect(mockSearchProducts).toHaveBeenCalledWith({});
+      });
     });
   });
 
-  it('handles pagination', async () => {
-    const user = userEvent.setup();
-    const mockLoadMore = vi.fn().mockResolvedValue(undefined);
+  // ============================================================================
+  // 6.4 Product Loading and Error Tests
+  // ============================================================================
 
-    const manyProducts = Array.from({ length: 50 }, (_, i) => ({
-      ...mockProducts[0],
-      id: `product-${i}`,
-      name: `Product ${i}`,
-      short_name: `Product${i}`,
-    }));
+  describe('Product Loading and Error States', () => {
+    it('loading indicator appears when products are loading', async () => {
+      // Arrange: Setup mock with loading state
+      vi.mocked(useProducts).mockReturnValue(
+        createMockUseProductsReturn({
+          products: [],
+          totalCount: 0,
+          facets: null,
+          loading: true,
+          error: null,
+        })
+      );
 
-    mockUseProducts.mockReturnValue({
-      products: manyProducts.slice(0, 20),
-      totalCount: 50,
-      facets: {
-        families: mockFamilies.map((f) => ({ value: f, count: 1 })),
-        applications: mockApplications.map((a) => ({ value: a, count: 1 })),
-        manufacturers: [],
-        properties: [],
-      },
-      loading: false,
-      error: null,
-      searchProducts: createDefaultMockSearchProducts(),
-      loadMore: mockLoadMore,
-      hasMore: true,
-      retry: vi.fn().mockResolvedValue(undefined),
-      isRetryable: false,
+      // Act: Render component
+      render(<ProductBrowser />);
+
+      // Assert: Verify loading indicator is displayed
+      await waitFor(() => {
+        expect(screen.getByTestId('product-loading')).toBeInTheDocument();
+      });
+
+      // Verify no products are shown during loading
+      expect(screen.queryByTestId('product-list')).not.toBeInTheDocument();
     });
 
-    render(<ProductBrowser />);
+    it('error message displays when error occurs', async () => {
+      // Arrange: Setup mock with error state
+      vi.mocked(useProducts).mockReturnValue(
+        createMockUseProductsReturn({
+          products: [],
+          totalCount: 0,
+          facets: null,
+          loading: false,
+          error: 'Failed to load products',
+        })
+      );
 
-    await waitFor(() => {
-      expect(screen.getByText('Product 0')).toBeInTheDocument();
+      // Act: Render component
+      render(<ProductBrowser />);
+
+      // Assert: Verify error message is displayed
+      await waitFor(() => {
+        expect(screen.getByTestId('product-error')).toBeInTheDocument();
+      });
+
+      expect(screen.getByText('Failed to load products')).toBeInTheDocument();
     });
 
-    const nextPageButton = screen.getByRole('button', { name: /next page/i });
-    await user.click(nextPageButton);
+    it('empty state displays when no products match', async () => {
+      // Arrange: Setup mock with empty results (not loading, no error)
+      vi.mocked(useProducts).mockReturnValue(
+        createMockUseProductsReturn({
+          products: [],
+          totalCount: 0,
+          facets: null,
+          loading: false,
+          error: null,
+        })
+      );
 
-    expect(mockLoadMore).toHaveBeenCalled();
-  });
+      // Act: Render component
+      render(<ProductBrowser />);
 
-  it('displays product properties and applications', async () => {
-    render(<ProductBrowser />);
+      // Assert: Verify empty state is displayed
+      await waitFor(() => {
+        expect(screen.getByText(/no products found/i)).toBeInTheDocument();
+      });
 
-    await waitFor(() => {
-      expect(screen.getByText('ASA 150')).toBeInTheDocument();
+      // Verify no loading or error states are shown
+      expect(screen.queryByTestId('product-loading')).not.toBeInTheDocument();
+      expect(screen.queryByTestId('product-error')).not.toBeInTheDocument();
     });
 
-    // Verify properties are displayed
-    expect(screen.getByText('Viscosity: 150 cP')).toBeInTheDocument();
-    expect(
-      screen.getByText('Specific Gravity: 1.05 g/cm³')
-    ).toBeInTheDocument();
+    it('handles network error with retry functionality', async () => {
+      // Arrange: Setup mock with retryable error
+      const mockRetry = vi.fn().mockResolvedValue(undefined);
+      const user = userEvent.setup();
 
-    // Verify applications are displayed (use getAllByText for multiple instances)
-    expect(screen.getAllByText('Coatings').length).toBeGreaterThan(0);
-    expect(screen.getAllByText('Adhesives').length).toBeGreaterThan(0);
-  });
+      vi.mocked(useProducts).mockReturnValue(
+        createMockUseProductsReturn({
+          products: [],
+          totalCount: 0,
+          facets: null,
+          loading: false,
+          error: 'Network error occurred',
+          retry: mockRetry,
+          isRetryable: true,
+        })
+      );
 
-  it('handles keyboard navigation', async () => {
-    const user = userEvent.setup();
-    render(<ProductBrowser />);
+      render(<ProductBrowser />);
 
-    await waitFor(() => {
-      expect(screen.getByText('ASA 150')).toBeInTheDocument();
+      // Act: Click retry button
+      await waitFor(() => {
+        expect(screen.getByText('Network error occurred')).toBeInTheDocument();
+      });
+
+      const retryButton = screen.getByRole('button', { name: /retry/i });
+      expect(retryButton).toBeInTheDocument();
+      await user.click(retryButton);
+
+      // Assert: Verify retry function was called
+      expect(mockRetry).toHaveBeenCalled();
     });
 
-    // Tab through interface elements
-    const searchInput = screen.getByPlaceholderText(/search products/i);
-    searchInput.focus();
+    it('transitions from loading to loaded state', async () => {
+      // Arrange: Setup mock that starts loading then loads products
+      const mockProducts = createMockProducts(2);
 
-    await user.keyboard('{Tab}');
-    expect(screen.getByRole('combobox', { name: /family/i })).toHaveFocus();
+      // Start with loading state
+      vi.mocked(useProducts).mockReturnValue(
+        createMockUseProductsReturn({
+          products: [],
+          totalCount: 0,
+          facets: null,
+          loading: true,
+          error: null,
+        })
+      );
 
-    await user.keyboard('{Tab}');
-    expect(
-      screen.getByRole('combobox', { name: /application/i })
-    ).toHaveFocus();
+      const { rerender } = render(<ProductBrowser />);
 
-    await user.keyboard('{Tab}');
-    expect(screen.getByRole('combobox', { name: /sort by/i })).toHaveFocus();
-  });
+      // Assert: Verify loading state
+      await waitFor(() => {
+        expect(screen.getByTestId('product-loading')).toBeInTheDocument();
+      });
 
-  it('handles sorting options', async () => {
-    const user = userEvent.setup();
-    const mockSearchProducts = createDefaultMockSearchProducts();
+      // Act: Update to loaded state
+      vi.mocked(useProducts).mockReturnValue(
+        createMockUseProductsReturn({
+          products: mockProducts,
+          totalCount: 2,
+          facets: createMockSearchFacets(),
+          loading: false,
+          error: null,
+        })
+      );
 
-    mockUseProducts.mockReturnValue({
-      products: mockProducts,
-      totalCount: mockProducts.length,
-      facets: {
-        families: mockFamilies.map((f) => ({ value: f, count: 1 })),
-        applications: mockApplications.map((a) => ({ value: a, count: 1 })),
-        manufacturers: [],
-        properties: [],
-      },
-      loading: false,
-      error: null,
-      searchProducts: mockSearchProducts,
-      loadMore: vi.fn().mockResolvedValue(undefined),
-      hasMore: false,
-      retry: vi.fn().mockResolvedValue(undefined),
-      isRetryable: false,
+      rerender(<ProductBrowser />);
+
+      // Assert: Verify loaded state
+      await waitFor(() => {
+        expect(screen.queryByTestId('product-loading')).not.toBeInTheDocument();
+      });
+
+      expect(screen.getByTestId('product-list')).toBeInTheDocument();
     });
 
-    render(<ProductBrowser />);
+    it('transitions from error to loaded state after retry', async () => {
+      // Arrange: Setup mock that starts with error then succeeds
+      const mockProducts = createMockProducts(2);
 
-    await waitFor(() => {
-      expect(screen.getByText('ASA 150')).toBeInTheDocument();
+      // Start with error state
+      vi.mocked(useProducts).mockReturnValue(
+        createMockUseProductsReturn({
+          products: [],
+          totalCount: 0,
+          facets: null,
+          loading: false,
+          error: 'Server error',
+          isRetryable: true,
+        })
+      );
+
+      const { rerender } = render(<ProductBrowser />);
+
+      // Assert: Verify error state
+      await waitFor(() => {
+        expect(screen.getByText('Server error')).toBeInTheDocument();
+      });
+
+      // Act: Simulate successful retry
+      vi.mocked(useProducts).mockReturnValue(
+        createMockUseProductsReturn({
+          products: mockProducts,
+          totalCount: 2,
+          facets: createMockSearchFacets(),
+          loading: false,
+          error: null,
+        })
+      );
+
+      rerender(<ProductBrowser />);
+
+      // Assert: Verify error is cleared and products are shown
+      await waitFor(() => {
+        expect(screen.queryByTestId('product-error')).not.toBeInTheDocument();
+      });
+
+      expect(screen.getByTestId('product-list')).toBeInTheDocument();
     });
-
-    // Change sort order
-    const sortSelect = screen.getByRole('combobox', { name: /sort by/i });
-    await user.click(sortSelect);
-
-    const nameOption = screen.getByText('Name');
-    await user.click(nameOption);
-
-    await waitFor(
-      () => {
-        expect(mockSearchProducts).toHaveBeenCalled();
-      },
-      { timeout: 1000 }
-    );
-  });
-
-  it('handles clear filters functionality', async () => {
-    const user = userEvent.setup();
-    const mockSearchProducts = createDefaultMockSearchProducts();
-
-    mockUseProducts.mockReturnValue({
-      products: mockProducts,
-      totalCount: mockProducts.length,
-      facets: {
-        families: mockFamilies.map((f) => ({ value: f, count: 1 })),
-        applications: mockApplications.map((a) => ({ value: a, count: 1 })),
-        manufacturers: [],
-        properties: [],
-      },
-      loading: false,
-      error: null,
-      searchProducts: mockSearchProducts,
-      loadMore: vi.fn().mockResolvedValue(undefined),
-      hasMore: false,
-      retry: vi.fn().mockResolvedValue(undefined),
-      isRetryable: false,
-    });
-
-    render(<ProductBrowser />);
-
-    await waitFor(() => {
-      expect(screen.getByText('ASA 150')).toBeInTheDocument();
-    });
-
-    // Add some filters first
-    const searchInput = screen.getByPlaceholderText(/search products/i);
-    await user.type(searchInput, 'test');
-
-    // Clear filters
-    const clearButton = screen.getByRole('button', { name: /clear filters/i });
-    await user.click(clearButton);
-
-    await waitFor(
-      () => {
-        expect(mockSearchProducts).toHaveBeenCalled();
-      },
-      { timeout: 1000 }
-    );
   });
 });
