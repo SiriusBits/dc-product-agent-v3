@@ -26,6 +26,7 @@ export default function ChatInterface({ className }: ChatInterfaceProps) {
     clearMessages,
     loadConversation,
     retryLastMessage,
+    isRetryable,
   } = useChat({
     maxResults: 10,
     includeSource: true,
@@ -168,7 +169,7 @@ export default function ChatInterface({ className }: ChatInterfaceProps) {
                       'An error occurred'}
                   </div>
                 </div>
-                {error && (
+                {error && isRetryable && (
                   <Button
                     variant="outline"
                     size="sm"
