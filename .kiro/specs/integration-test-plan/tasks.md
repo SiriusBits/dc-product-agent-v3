@@ -109,32 +109,32 @@
   - Test error boundary reset functionality
   - _Requirements: 3.1, 3.6_
 
-- [ ] 5. Update chat flow integration tests
+- [x] 5. Update chat flow integration tests
   - Rewrite chat flow tests to use standardized mocks
   - Add tests for all chat states (empty, loading, error, populated)
   - Ensure tests use proper async handling and queries
   - Verify message sending and display functionality
   - _Requirements: 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7_
 
-- [ ] 5.1 Create focused chat rendering test
+- [x] 5.1 Create focused chat rendering test
   - Test ChatInterface renders with empty messages
   - Test ChatInterface renders with multiple messages
   - Test messages display correct content and metadata
   - _Requirements: 1.2, 1.6_
 
-- [ ] 5.2 Create chat interaction test
+- [x] 5.2 Create chat interaction test
   - Test sending a message calls sendMessage function
   - Test message input clears after sending
   - Test send button is disabled during loading
   - _Requirements: 1.3, 1.4_
 
-- [ ] 5.3 Create chat error handling test
+- [x] 5.3 Create chat error handling test
   - Test error message displays when error occurs
   - Test retry button appears for retryable errors
   - Test retry button calls retryLastMessage
   - _Requirements: 1.5_
 
-- [ ] 5.4 Create chat loading state test
+- [x] 5.4 Create chat loading state test
   - Test loading indicator appears when isLoading is true
   - Test loading indicator disappears when loading completes
   - Test input is disabled during loading
