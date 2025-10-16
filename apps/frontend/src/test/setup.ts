@@ -1,4 +1,7 @@
 import '@testing-library/jest-dom';
 
-// Import optimized test setup which handles all performance and reliability improvements
+// Import enhanced test infrastructure which provides comprehensive test reliability improvements
+import './enhanced-test-infrastructure';
+
+// Import optimized test setup for additional performance improvements
 import './optimized-setup';

@@ -677,17 +677,14 @@ describe('Chat Flow Integration', () => {
 
     it('shows loading state during message sending', async () => {
       // Arrange: Setup with mock that simulates loading during send
-      let isLoading = false;
       const mockSendMessage = vi.fn().mockImplementation(async () => {
         // Simulate loading state during send
-        isLoading = true;
         updateMockHook('useChat', { isLoading: true });
 
         // Simulate async operation
         await new Promise((resolve) => setTimeout(resolve, 100));
 
         // Complete loading
-        isLoading = false;
         updateMockHook('useChat', {
           isLoading: false,
           messages: [
