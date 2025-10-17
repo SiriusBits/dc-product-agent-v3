@@ -1,307 +1,412 @@
 /**
- * Enhanced test setup with direct hook mocking strategy
- * This replaces API client mocking with direct hook mocking for better test control
+ * Enhanced Test Setup with ReactiveHookMock Infrastructure
+ *
+ * This module provides a comprehensive test setup function that creates
+ * reactive mocks for all major hooks and registers them with the MockRegistry.
+ * It replaces the old enhanced-setup.ts with the new reactive mock approach.
  */
 
+import { vi, afterEach } from 'vitest';
+import { cleanup, render } from '@testing-library/react';
+import type { RenderResult } from '@testing-library/react';
 import React from 'react';
-import { vi, beforeEach, afterEach } from 'vitest';
-import { cleanup } from '@testing-library/react';
-import {
-  mockUseChat,
-  mockUseConversations,
-  setupHookMocks,
-  cleanupHookMocks,
-  mockHookControls,
-  getMockHookState,
-  type MockHookControls,
-} from './enhanced-hook-mocks';
+import { ReactiveHookMock, mockRegistry } from './reactive-mocks';
+import type {
+  ChatMessage,
+  Conversation,
+  ProductSummary,
+  SearchFacets,
+} from '@repo/shared-types';
+import { ApiError } from '@/lib/api-client';
 
-// Mock the actual hooks directly
-vi.mock('@/hooks/useChat', () => ({
-  useChat: mockUseChat,
-}));
+// ============================================================================
+// Type Definitions
+// ============================================================================
 
-vi.mock('@/hooks/useConversations', () => ({
-  useConversations: mockUseConversations,
-}));
-
-// Mock other dependencies that might interfere with tests
-vi.mock('react-router-dom', () => ({
-  useNavigate: () => vi.fn(),
-  useLocation: () => ({ pathname: '/', search: '' }),
-  useSearchParams: () => [new URLSearchParams(), vi.fn()],
-  BrowserRouter: ({ children }: { children: React.ReactNode }) => children,
-  Routes: ({ children }: { children: React.ReactNode }) => children,
-  Route: ({ children }: { children: React.ReactNode }) => children,
-  Link: ({
-    children,
-    to,
-    ...props
-  }: {
-    children: React.ReactNode;
-    to: string;
-    [key: string]: any;
-  }) => React.createElement('a', { href: to, ...props }, children),
-  NavLink: ({
-    children,
-    to,
-    ...props
-  }: {
-    children: React.ReactNode;
-    to: string;
-    [key: string]: unknown;
-  }) => React.createElement('a', { href: to, ...props }, children),
-}));
-
-// Mock clipboard API
-const mockClipboard = () => {
-  const writeText = vi.fn().mockResolvedValue(undefined);
-  const readText = vi.fn().mockResolvedValue('');
-
-  Object.defineProperty(navigator, 'clipboard', {
-    value: { writeText, readText },
-    writable: true,
-    configurable: true,
-  });
-
-  return { writeText, readText };
-};
-
-// Mock scrollIntoView
-const mockScrollIntoView = () => {
-  Element.prototype.scrollIntoView = vi.fn();
-};
-
-// Mock localStorage
-const mockLocalStorage = () => {
-  const storage = new Map<string, string>();
-
-  Object.defineProperty(window, 'localStorage', {
-    value: {
-      getItem: vi.fn((key: string) => storage.get(key) || null),
-      setItem: vi.fn((key: string, value: string) => storage.set(key, value)),
-      removeItem: vi.fn((key: string) => storage.delete(key)),
-      clear: vi.fn(() => storage.clear()),
-      length: 0,
-      key: vi.fn(),
-    },
-    writable: true,
-    configurable: true,
-  });
-
-  return window.localStorage;
-};
-
-// Mock sessionStorage
-const mockSessionStorage = () => {
-  const storage = new Map<string, string>();
-
-  Object.defineProperty(window, 'sessionStorage', {
-    value: {
-      getItem: vi.fn((key: string) => storage.get(key) || null),
-      setItem: vi.fn((key: string, value: string) => storage.set(key, value)),
-      removeItem: vi.fn((key: string) => storage.delete(key)),
-      clear: vi.fn(() => storage.clear()),
-      length: 0,
-      key: vi.fn(),
-    },
-    writable: true,
-    configurable: true,
-  });
-
-  return window.sessionStorage;
-};
-
-// Enhanced test setup options
-export interface EnhancedTestSetupOptions {
-  // Hook-specific options
-  initialMessages?: Parameters<typeof setupHookMocks>[0]['initialMessages'];
-  initialConversations?: Parameters<
-    typeof setupHookMocks
-  >[0]['initialConversations'];
-  initialConversationId?: Parameters<
-    typeof setupHookMocks
-  >[0]['initialConversationId'];
-
-  // Timing control options
-  loadingDelays?: Record<string, number>;
-  asyncDelays?: Record<string, number>;
-
-  // Mock behavior options
-  enableControlledPromises?: boolean;
-  simulateSlowNetwork?: boolean;
-  networkDelayMs?: number;
-
-  // Storage options
-  initialLocalStorage?: Record<string, string>;
-  initialSessionStorage?: Record<string, string>;
+/**
+ * Mock state for useChat hook
+ */
+interface MockUseChatState {
+  messages: ChatMessage[];
+  isLoading: boolean;
+  error: ApiError | null;
+  conversationId: string | null;
+  sendMessage: ReturnType<typeof vi.fn>;
+  clearMessages: ReturnType<typeof vi.fn>;
+  loadConversation: ReturnType<typeof vi.fn>;
+  retryLastMessage: ReturnType<typeof vi.fn>;
+  isRetryable: boolean;
 }
 
-// Global test setup state
-let testSetupState: {
-  clipboard: ReturnType<typeof mockClipboard>;
-  localStorage: Storage;
-  sessionStorage: Storage;
-  hookControls: MockHookControls;
-} | null = null;
+/**
+ * Mock state for useProducts hook
+ */
+interface MockUseProductsState {
+  products: ProductSummary[];
+  totalCount: number;
+  facets: SearchFacets | null;
+  loading: boolean;
+  error: string | null;
+  searchProducts: ReturnType<typeof vi.fn>;
+  loadMore: ReturnType<typeof vi.fn>;
+  hasMore: boolean;
+  retry: ReturnType<typeof vi.fn>;
+  isRetryable: boolean;
+}
 
-// Enhanced setup function
-export const setupEnhancedTest = (options: EnhancedTestSetupOptions = {}) => {
-  // Setup mocks
-  const clipboard = mockClipboard();
-  mockScrollIntoView();
-  const localStorage = mockLocalStorage();
-  const sessionStorage = mockSessionStorage();
+/**
+ * Mock state for useConversations hook
+ */
+interface MockUseConversationsState {
+  conversations: Conversation[];
+  isLoading: boolean;
+  error: ApiError | null;
+  loadConversations: ReturnType<typeof vi.fn>;
+  createConversation: ReturnType<typeof vi.fn>;
+  deleteConversation: ReturnType<typeof vi.fn>;
+  updateConversationTitle: ReturnType<typeof vi.fn>;
+  retry: ReturnType<typeof vi.fn>;
+  isRetryable: boolean;
+}
 
-  // Setup initial storage data
-  if (options.initialLocalStorage) {
-    Object.entries(options.initialLocalStorage).forEach(([key, value]) => {
-      localStorage.setItem(key, value);
-    });
-  }
+/**
+ * Setup options for configuring test environment
+ */
+export interface SetupOptions {
+  // Initial state overrides
+  initialChatMessages?: ChatMessage[];
+  initialConversations?: Conversation[];
+  initialProducts?: ProductSummary[];
+  initialConversationId?: string | null;
 
-  if (options.initialSessionStorage) {
-    Object.entries(options.initialSessionStorage).forEach(([key, value]) => {
-      sessionStorage.setItem(key, value);
-    });
-  }
+  // Loading states
+  chatLoading?: boolean;
+  productsLoading?: boolean;
+  conversationsLoading?: boolean;
 
-  // Setup hook mocks with options
-  const { mockHookControls: hookControls } = setupHookMocks({
-    initialMessages: options.initialMessages,
-    initialConversations: options.initialConversations,
-    initialConversationId: options.initialConversationId,
-    loadingDelays: options.loadingDelays,
-    asyncDelays: options.asyncDelays,
-  });
+  // Error states
+  chatError?: ApiError | null;
+  productsError?: string | null;
+  conversationsError?: ApiError | null;
 
-  // Apply network simulation if requested
-  if (options.simulateSlowNetwork && options.networkDelayMs) {
-    hookControls.setAsyncDelay(
-      'useChat',
-      'sendMessage',
-      options.networkDelayMs
-    );
-    hookControls.setAsyncDelay(
-      'useConversations',
-      'loadConversations',
-      options.networkDelayMs
-    );
-    hookControls.setAsyncDelay(
-      'useConversations',
-      'createConversation',
-      options.networkDelayMs
-    );
-  }
+  // Mock behavior options
+  enableAutoCleanup?: boolean;
+  mockLocalStorage?: boolean;
+  mockSessionStorage?: boolean;
+}
 
-  // Store setup state for cleanup
-  testSetupState = {
-    clipboard,
-    localStorage,
-    sessionStorage,
-    hookControls,
+/**
+ * Test context returned by setupTest
+ */
+export interface TestContext {
+  // Mock instances for direct manipulation
+  chatMock: ReactiveHookMock<MockUseChatState>;
+  productsMock: ReactiveHookMock<MockUseProductsState>;
+  conversationsMock: ReactiveHookMock<MockUseConversationsState>;
+
+  // Helper functions for common updates
+  updateChat: (updates: Partial<MockUseChatState>) => Promise<void>;
+  updateProducts: (updates: Partial<MockUseProductsState>) => Promise<void>;
+  updateConversations: (
+    updates: Partial<MockUseConversationsState>
+  ) => Promise<void>;
+
+  // Enhanced render function with automatic cleanup
+  renderComponent: (component: React.ReactElement) => RenderResult;
+
+  // Storage mocks (if enabled)
+  localStorage?: Storage;
+  sessionStorage?: Storage;
+}
+
+// ============================================================================
+// Default State Factories
+// ============================================================================
+
+/**
+ * Creates default useChat mock state
+ */
+function createDefaultChatState(options: SetupOptions = {}): MockUseChatState {
+  return {
+    messages: options.initialChatMessages || [],
+    isLoading: options.chatLoading || false,
+    error: options.chatError || null,
+    conversationId: options.initialConversationId || null,
+    sendMessage: vi.fn(),
+    clearMessages: vi.fn(),
+    loadConversation: vi.fn(),
+    retryLastMessage: vi.fn(),
+    isRetryable: false,
   };
+}
+
+/**
+ * Creates default useProducts mock state
+ */
+function createDefaultProductsState(
+  options: SetupOptions = {}
+): MockUseProductsState {
+  return {
+    products: options.initialProducts || [],
+    totalCount: options.initialProducts?.length || 0,
+    facets: null,
+    loading: options.productsLoading || false,
+    error: options.productsError || null,
+    searchProducts: vi.fn(),
+    loadMore: vi.fn(),
+    hasMore: false,
+    retry: vi.fn(),
+    isRetryable: false,
+  };
+}
+
+/**
+ * Creates default useConversations mock state
+ */
+function createDefaultConversationsState(
+  options: SetupOptions = {}
+): MockUseConversationsState {
+  return {
+    conversations: options.initialConversations || [],
+    isLoading: options.conversationsLoading || false,
+    error: options.conversationsError || null,
+    loadConversations: vi.fn(),
+    createConversation: vi.fn(),
+    deleteConversation: vi.fn(),
+    updateConversationTitle: vi.fn(),
+    retry: vi.fn(),
+    isRetryable: false,
+  };
+}
+
+// ============================================================================
+// Storage Mocks
+// ============================================================================
+
+/**
+ * Creates a mock localStorage implementation
+ */
+function createMockLocalStorage(): Storage {
+  const storage = new Map<string, string>();
 
   return {
-    // Mock controls
-    hookControls,
-    clipboard,
-    localStorage,
-    sessionStorage,
-
-    // State accessors
-    getMockState: getMockHookState,
-
-    // Utility functions
-    simulateNetworkDelay: hookControls.simulateNetworkDelay,
-    createControlledPromise: hookControls.createControlledPromise,
-
-    // Quick setup helpers
-    setMessages: hookControls.setMessages,
-    setConversations: hookControls.setConversations,
-    setLoading: hookControls.setLoading,
-    setError: hookControls.setError,
-    simulateSuccess: hookControls.simulateSuccess,
-    simulateError: hookControls.simulateError,
+    getItem: vi.fn((key: string) => storage.get(key) || null),
+    setItem: vi.fn((key: string, value: string) => storage.set(key, value)),
+    removeItem: vi.fn((key: string) => storage.delete(key)),
+    clear: vi.fn(() => storage.clear()),
+    length: 0,
+    key: vi.fn(),
   };
-};
+}
 
-// Enhanced cleanup function
-export const cleanupEnhancedTest = () => {
-  // Cleanup React Testing Library
-  cleanup();
+/**
+ * Creates a mock sessionStorage implementation
+ */
+function createMockSessionStorage(): Storage {
+  const storage = new Map<string, string>();
 
-  // Cleanup hook mocks
-  cleanupHookMocks();
+  return {
+    getItem: vi.fn((key: string) => storage.get(key) || null),
+    setItem: vi.fn((key: string, value: string) => storage.set(key, value)),
+    removeItem: vi.fn((key: string) => storage.delete(key)),
+    clear: vi.fn(() => storage.clear()),
+    length: 0,
+    key: vi.fn(),
+  };
+}
 
-  // Clear storage
-  if (testSetupState) {
-    testSetupState.localStorage.clear();
-    testSetupState.sessionStorage.clear();
+// ============================================================================
+// Main Setup Function
+// ============================================================================
+
+/**
+ * Enhanced test setup function using ReactiveHookMock infrastructure
+ *
+ * Creates reactive mocks for useChat, useProducts, and useConversations hooks,
+ * registers them with the MockRegistry, and provides helper functions for
+ * common test operations.
+ *
+ * @param options - Configuration options for the test setup
+ * @returns TestContext with mock instances and helper functions
+ *
+ * @example
+ * ```typescript
+ * const { updateChat, renderComponent } = setupTest({
+ *   initialChatMessages: [{ id: '1', content: 'Hello', role: 'user', timestamp: new Date() }],
+ *   chatLoading: false
+ * });
+ *
+ * // Update chat state and trigger re-renders
+ * await updateChat({ isLoading: true });
+ *
+ * // Render component with automatic cleanup
+ * const { getByTestId } = renderComponent(<ChatInterface />);
+ * ```
+ */
+export function setupTest(options: SetupOptions = {}): TestContext {
+  // Create reactive mocks with initial state
+  const chatMock = new ReactiveHookMock(createDefaultChatState(options));
+  const productsMock = new ReactiveHookMock(
+    createDefaultProductsState(options)
+  );
+  const conversationsMock = new ReactiveHookMock(
+    createDefaultConversationsState(options)
+  );
+
+  // Register mocks with the registry
+  mockRegistry.register('useChat', chatMock);
+  mockRegistry.register('useProducts', productsMock);
+  mockRegistry.register('useConversations', conversationsMock);
+
+  // Create storage mocks if requested
+  let localStorage: Storage | undefined;
+  let sessionStorage: Storage | undefined;
+
+  if (options.mockLocalStorage) {
+    localStorage = createMockLocalStorage();
+    Object.defineProperty(window, 'localStorage', {
+      value: localStorage,
+      writable: true,
+      configurable: true,
+    });
   }
 
-  // Clear all mocks
-  vi.clearAllMocks();
+  if (options.mockSessionStorage) {
+    sessionStorage = createMockSessionStorage();
+    Object.defineProperty(window, 'sessionStorage', {
+      value: sessionStorage,
+      writable: true,
+      configurable: true,
+    });
+  }
 
-  // Reset setup state
-  testSetupState = null;
-};
+  // Helper functions for common updates
+  const updateChat = async (updates: Partial<MockUseChatState>) => {
+    await chatMock.updateValue(updates);
+  };
 
-// Auto-setup for tests (can be imported to automatically setup/cleanup)
-export const useEnhancedTestSetup = (
-  options: EnhancedTestSetupOptions = {}
-) => {
-  let setupResult: ReturnType<typeof setupEnhancedTest>;
+  const updateProducts = async (updates: Partial<MockUseProductsState>) => {
+    await productsMock.updateValue(updates);
+  };
 
-  beforeEach(() => {
-    setupResult = setupEnhancedTest(options);
-  });
+  const updateConversations = async (
+    updates: Partial<MockUseConversationsState>
+  ) => {
+    await conversationsMock.updateValue(updates);
+  };
 
-  afterEach(() => {
-    cleanupEnhancedTest();
-  });
+  // Enhanced render function with automatic cleanup tracking
+  const renderedComponents: RenderResult[] = [];
 
-  return () => setupResult;
-};
+  const renderComponent = (component: React.ReactElement): RenderResult => {
+    const result = render(component);
+    renderedComponents.push(result);
+    return result;
+  };
 
-// Utility functions for common test scenarios
-export const createChatFlowTestSetup = () => {
-  return setupEnhancedTest({
+  // Set up automatic cleanup if enabled (default: true)
+  if (options.enableAutoCleanup !== false) {
+    afterEach(() => {
+      // Cleanup all rendered components
+      renderedComponents.forEach((result) => {
+        if (result.unmount) {
+          try {
+            result.unmount();
+          } catch (error) {
+            // Ignore unmount errors
+          }
+        }
+      });
+      renderedComponents.length = 0;
+
+      // Reset all mocks to initial state
+      mockRegistry.resetAll();
+
+      // Clear storage mocks
+      if (localStorage) {
+        localStorage.clear();
+      }
+      if (sessionStorage) {
+        sessionStorage.clear();
+      }
+
+      // Standard cleanup
+      cleanup();
+      vi.clearAllMocks();
+    });
+  }
+
+  return {
+    chatMock,
+    productsMock,
+    conversationsMock,
+    updateChat,
+    updateProducts,
+    updateConversations,
+    renderComponent,
+    localStorage,
+    sessionStorage,
+  };
+}
+
+// ============================================================================
+// Specialized Setup Functions
+// ============================================================================
+
+/**
+ * Setup for chat flow tests with common chat scenarios
+ */
+export function setupChatFlowTest(
+  options: Partial<SetupOptions> = {}
+): TestContext {
+  return setupTest({
+    initialChatMessages: [],
     initialConversations: [],
-    loadingDelays: {
-      useConversations: 100, // Small delay to simulate loading
-    },
-    asyncDelays: {
-      'useChat.sendMessage': 200,
-      'useConversations.createConversation': 150,
-    },
+    chatLoading: false,
+    conversationsLoading: false,
+    mockLocalStorage: true,
+    ...options,
   });
-};
+}
 
-export const createErrorTestSetup = () => {
-  return setupEnhancedTest({
-    initialConversations: [],
-    // No delays for error tests to make them faster
+/**
+ * Setup for product search tests with common product scenarios
+ */
+export function setupProductSearchTest(
+  options: Partial<SetupOptions> = {}
+): TestContext {
+  return setupTest({
+    initialProducts: [],
+    productsLoading: false,
+    mockSessionStorage: true,
+    ...options,
   });
-};
+}
 
-export const createSlowNetworkTestSetup = () => {
-  return setupEnhancedTest({
-    simulateSlowNetwork: true,
-    networkDelayMs: 1000,
-    initialConversations: [],
+/**
+ * Setup for error handling tests with error states
+ */
+export function setupErrorTest(
+  options: Partial<SetupOptions> = {}
+): TestContext {
+  return setupTest({
+    chatError: new ApiError('Test chat error', 500),
+    productsError: 'Test products error',
+    conversationsError: new ApiError('Test conversations error', 500),
+    ...options,
   });
-};
+}
 
-export const createPerformanceTestSetup = () => {
-  return setupEnhancedTest({
-    // Minimal delays for performance testing
-    loadingDelays: {
-      useConversations: 10,
-    },
-    asyncDelays: {
-      'useChat.sendMessage': 50,
-      'useConversations.createConversation': 30,
-    },
+/**
+ * Setup for loading state tests
+ */
+export function setupLoadingTest(
+  options: Partial<SetupOptions> = {}
+): TestContext {
+  return setupTest({
+    chatLoading: true,
+    productsLoading: true,
+    conversationsLoading: true,
+    ...options,
   });
-};
+}
