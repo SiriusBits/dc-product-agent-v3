@@ -252,6 +252,162 @@ describe('ProductBrowser', () => {
     expect(screen.getByText('Failed to load products')).toBeInTheDocument();
   });
 
+  // New tests for conditional rendering logic (Requirements 2.1, 2.2, 2.3)
+  describe('Conditional rendering logic', () => {
+    it('shows only error state when error exists', () => {
+      mockUseProducts.mockReturnValue({
+        ...mockProductsHook,
+        error: 'Network error',
+        loading: true, // Even with loading=true, error should take precedence
+        products: mockProducts, // Even with products, error should take precedence
+      });
+
+      render(<ProductBrowser />);
+
+      // Should show error
+      expect(screen.getByTestId('api-error-display')).toBeInTheDocument();
+      expect(screen.getByText('Network error')).toBeInTheDocument();
+
+      // Should NOT show loading or product list
+      expect(
+        screen.queryByTestId('product-loading-spinner')
+      ).not.toBeInTheDocument();
+      expect(screen.queryByText('ASA 150')).not.toBeInTheDocument();
+    });
+
+    it('shows only loading state when loading and no products exist', () => {
+      mockUseProducts.mockReturnValue({
+        ...mockProductsHook,
+        loading: true,
+        products: [], // No products
+        error: null,
+      });
+
+      render(<ProductBrowser />);
+
+      // Should show loading
+      expect(screen.getByTestId('product-loading-spinner')).toBeInTheDocument();
+
+      // Should NOT show error or product list
+      expect(screen.queryByTestId('api-error-display')).not.toBeInTheDocument();
+      expect(screen.queryByText('ASA 150')).not.toBeInTheDocument();
+    });
+
+    it('shows product list when no error and not in initial loading state', () => {
+      mockUseProducts.mockReturnValue({
+        ...mockProductsHook,
+        loading: false,
+        products: mockProducts,
+        error: null,
+      });
+
+      render(<ProductBrowser />);
+
+      // Should show product list
+      expect(screen.getByText('ASA 150')).toBeInTheDocument();
+      expect(screen.getByText('DCA 467')).toBeInTheDocument();
+
+      // Should NOT show error or loading
+      expect(screen.queryByTestId('api-error-display')).not.toBeInTheDocument();
+      expect(
+        screen.queryByTestId('product-loading-spinner')
+      ).not.toBeInTheDocument();
+    });
+
+    it('shows product list even when loading if products already exist', () => {
+      mockUseProducts.mockReturnValue({
+        ...mockProductsHook,
+        loading: true, // Loading more products
+        products: mockProducts, // But already have some products
+        error: null,
+      });
+
+      render(<ProductBrowser />);
+
+      // Should show product list (not initial loading)
+      expect(screen.getByText('ASA 150')).toBeInTheDocument();
+      expect(screen.getByText('DCA 467')).toBeInTheDocument();
+
+      // Should NOT show loading spinner (since products exist)
+      expect(
+        screen.queryByTestId('product-loading-spinner')
+      ).not.toBeInTheDocument();
+
+      // Should NOT show error
+      expect(screen.queryByTestId('api-error-display')).not.toBeInTheDocument();
+    });
+
+    it('passes null error to ProductList when error is handled above', () => {
+      mockUseProducts.mockReturnValue({
+        ...mockProductsHook,
+        error: 'Network error',
+        products: [],
+      });
+
+      render(<ProductBrowser />);
+
+      // Error should be handled by ApiErrorDisplay, not passed to ProductList
+      expect(screen.getByTestId('api-error-display')).toBeInTheDocument();
+
+      // ProductList should not be rendered when there's an error
+      expect(screen.queryByTestId('product-list')).not.toBeInTheDocument();
+    });
+  });
+
+  // New tests for ApiErrorDisplay integration (Requirements 2.2, 2.3)
+  describe('ApiErrorDisplay integration', () => {
+    it('displays error with retry functionality', () => {
+      const mockRetry = vi.fn();
+      mockUseProducts.mockReturnValue({
+        ...mockProductsHook,
+        error: 'Network error',
+        retry: mockRetry,
+        isRetryable: true,
+      });
+
+      render(<ProductBrowser />);
+
+      expect(screen.getByTestId('api-error-display')).toBeInTheDocument();
+      expect(screen.getByText('Network error')).toBeInTheDocument();
+      expect(screen.getByTestId('retry-button')).toBeInTheDocument();
+    });
+
+    it('calls searchProducts when retry is clicked', async () => {
+      const user = userEvent.setup();
+      const mockRetry = vi.fn();
+      const mockSearchProducts = vi.fn();
+
+      mockUseProducts.mockReturnValue({
+        ...mockProductsHook,
+        error: 'Network error',
+        retry: mockRetry,
+        isRetryable: true,
+        searchProducts: mockSearchProducts,
+      });
+
+      render(<ProductBrowser />);
+
+      const retryButton = screen.getByTestId('retry-button');
+      await user.click(retryButton);
+
+      expect(mockSearchProducts).toHaveBeenCalled();
+    });
+
+    it('uses context-specific test ID for loading state', () => {
+      mockUseProducts.mockReturnValue({
+        ...mockProductsHook,
+        loading: true,
+        products: [],
+        error: null,
+      });
+
+      render(<ProductBrowser />);
+
+      // Should use product-specific loading spinner test ID
+      expect(screen.getByTestId('product-loading-spinner')).toBeInTheDocument();
+    });
+  });
+
   it('shows empty state when no products found', () => {
     mockUseProducts.mockReturnValue({
       ...mockProductsHook,
@@ -281,6 +437,77 @@ describe('ProductBrowser', () => {
         query: '',
         family: undefined,
         applications: [],
+      });
+    });
+  });
+
+  // New tests for ProductFilters clear functionality (Requirements 2.4)
+  describe('ProductFilters clear functionality', () => {
+    it('passes empty object when clearing filters instead of default values', async () => {
+      const user = userEvent.setup();
+      const mockSearchProducts = vi.fn();
+
+      mockUseProducts.mockReturnValue({
+        ...mockProductsHook,
+        searchProducts: mockSearchProducts,
+      });
+
+      render(<ProductBrowser />);
+
+      // Apply some filters first
+      const familySelect = screen.getByRole('combobox', { name: /family/i });
+      await user.click(familySelect);
+      await user.click(screen.getAllByText('ASA')[0]);
+
+      // Clear the mock calls from filter application
+      mockSearchProducts.mockClear();
+
+      // Clear filters
+      const clearButton = screen.getByRole('button', {
+        name: /clear filters/i,
+      });
+      await user.click(clearButton);
+
+      await waitFor(() => {
+        // Should pass empty object {}, not default values
+        expect(mockSearchProducts).toHaveBeenCalledWith({});
+      });
+    });
+
+    it('accepts clearing flag parameter in handleFiltersChange', async () => {
+      const user = userEvent.setup();
+      const mockSearchProducts = vi.fn();
+
+      mockUseProducts.mockReturnValue({
+        ...mockProductsHook,
+        searchProducts: mockSearchProducts,
+      });
+
+      render(<ProductBrowser />);
+
+      // Apply a filter first
+      const familySelect = screen.getByRole('combobox', { name: /family/i });
+      await user.click(familySelect);
+      await user.click(screen.getAllByText('ASA')[0]);
+
+      // Verify filter was applied
+      await waitFor(() => {
+        expect(mockSearchProducts).toHaveBeenCalledWith(
+          expect.objectContaining({ family: 'ASA' })
+        );
+      });
+
+      mockSearchProducts.mockClear();
+
+      // Clear filters - this should call handleFiltersChange with clearing flag
+      const clearButton = screen.getByRole('button', {
+        name: /clear filters/i,
+      });
+      await user.click(clearButton);
+
+      await waitFor(() => {
+        // Should pass empty object when clearing
+        expect(mockSearchProducts).toHaveBeenCalledWith({});
       });
     });
   });
