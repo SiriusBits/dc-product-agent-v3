@@ -201,7 +201,7 @@ export default function ChatInterface({ className }: ChatInterfaceProps) {
               ref={chatInputRef}
               onSendMessage={sendMessage}
               isLoading={isLoading}
-              disabled={!!error}
+              disabled={isLoading || !!error}
               placeholder="Ask about chemical products, properties, applications..."
             />
             <div className="mt-2 text-xs text-muted-foreground text-center">

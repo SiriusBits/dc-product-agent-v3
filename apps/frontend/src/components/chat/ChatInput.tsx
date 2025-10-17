@@ -5,6 +5,7 @@ import {
   useImperativeHandle,
   forwardRef,
   type KeyboardEvent,
+  type FormEvent,
 } from 'react';
 import { Send, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -45,7 +46,7 @@ const ChatInput = forwardRef<ChatInputRef, ChatInputProps>(
 
     const handleSubmit = useCallback(async () => {
       const trimmedMessage = message.trim();
-      if (!trimmedMessage || isLoading || disabled) return;
+      if (!trimmedMessage || disabled) return;
 
       setMessage('');
       try {
@@ -57,7 +58,15 @@ const ChatInput = forwardRef<ChatInputRef, ChatInputProps>(
 
       // Focus back to input
       inputRef.current?.focus();
-    }, [message, onSendMessage, isLoading, disabled]);
+    }, [message, onSendMessage, disabled]);
+
+    const handleFormSubmit = useCallback(
+      (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        handleSubmit();
+      },
+      [handleSubmit]
+    );
 
     const handleKeyDown = useCallback(
       (e: KeyboardEvent<HTMLTextAreaElement>) => {
@@ -70,10 +79,13 @@ const ChatInput = forwardRef<ChatInputRef, ChatInputProps>(
       [handleSubmit]
     );
 
-    const canSend = message.trim().length > 0 && !isLoading && !disabled;
+    const canSend = message.trim().length > 0 && !disabled;
 
     return (
-      <div className={cn('flex items-end space-x-2', className)}>
+      <form
+        onSubmit={handleFormSubmit}
+        className={cn('flex items-end space-x-2', className)}
+      >
         <div className="flex-1 relative">
           <Textarea
             ref={inputRef}
@@ -81,7 +93,7 @@ const ChatInput = forwardRef<ChatInputRef, ChatInputProps>(
             onChange={(e) => setMessage(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder={placeholder}
-            disabled={disabled || isLoading}
+            disabled={disabled}
             className="pr-12 min-h-[44px] max-h-[200px] resize-none"
             maxLength={1000}
             rows={1}
@@ -101,7 +113,7 @@ const ChatInput = forwardRef<ChatInputRef, ChatInputProps>(
         </div>
 
         <Button
-          onClick={handleSubmit}
+          type="submit"
           disabled={!canSend}
           size="icon"
           className="flex-shrink-0"
@@ -115,7 +127,7 @@ const ChatInput = forwardRef<ChatInputRef, ChatInputProps>(
           )}
           <span className="sr-only">Send</span>
         </Button>
-      </div>
+      </form>
     );
   }
 );

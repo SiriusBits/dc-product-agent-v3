@@ -98,13 +98,15 @@ export function ProductFilters({
     handleFiltersChange,
   ]);
 
-  const clearFilters = () => {
+  const clearFilters = useCallback(() => {
     setSearchQuery('');
     setSelectedFamily('');
     setSelectedApplications([]);
     setSortBy('relevance');
     setSortOrder('desc');
-  };
+    // Directly call onFiltersChange with empty object when clearing
+    onFiltersChange({});
+  }, [onFiltersChange]);
 
   const hasActiveFilters =
     searchQuery || selectedFamily || selectedApplications.length > 0;

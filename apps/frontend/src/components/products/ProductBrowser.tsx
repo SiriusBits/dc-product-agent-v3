@@ -2,6 +2,8 @@ import { useState, useEffect, useCallback } from 'react';
 import { BarChart3 } from 'lucide-react';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '../ui/tabs';
 import { Button } from '../ui/button';
+import { LoadingState } from '../ui/loading';
+import { ApiErrorDisplay } from '../error/ApiErrorDisplay';
 import { ProductFilters } from './ProductFilters';
 import { ProductList } from './ProductList';
 import { ProductDetail } from './ProductDetail';
@@ -250,21 +252,49 @@ export default function ProductBrowser() {
 
             {/* Product List */}
             <div className="lg:col-span-3">
-              <div data-testid="product-list">
-                <ProductList
-                  products={displayProducts}
-                  loading={productsLoading}
-                  error={productsError}
-                  totalCount={totalCount}
-                  hasMore={hasMore}
-                  onLoadMore={loadMore}
-                  onViewProduct={handleViewProduct}
-                  onCompareProduct={handleCompareProduct}
-                  selectedProducts={comparisonProducts}
-                  viewMode={viewMode}
-                  onViewModeChange={setViewMode}
-                />
-              </div>
+              {productsError ? (
+                // Show error state when productsError exists
+                <div data-testid="product-error">
+                  {typeof productsError === 'string' ? (
+                    <div className="text-destructive p-4 space-y-3">
+                      <p>{productsError}</p>
+                      <button
+                        onClick={() => searchProducts(currentSearchParams)}
+                        className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 px-3"
+                      >
+                        Retry
+                      </button>
+                    </div>
+                  ) : (
+                    <ApiErrorDisplay
+                      error={productsError}
+                      onRetry={() => searchProducts(currentSearchParams)}
+                    />
+                  )}
+                </div>
+              ) : productsLoading && displayProducts.length === 0 ? (
+                // Show loading state when productsLoading is true and no products exist
+                <div data-testid="product-loading">
+                  <LoadingState message="Loading products..." />
+                </div>
+              ) : (
+                // Show product list only when no error and not in initial loading state
+                <div data-testid="product-list">
+                  <ProductList
+                    products={displayProducts}
+                    loading={false}
+                    error={null}
+                    totalCount={totalCount}
+                    hasMore={hasMore}
+                    onLoadMore={loadMore}
+                    onViewProduct={handleViewProduct}
+                    onCompareProduct={handleCompareProduct}
+                    selectedProducts={comparisonProducts}
+                    viewMode={viewMode}
+                    onViewModeChange={setViewMode}
+                  />
+                </div>
+              )}
             </div>
           </div>
         </TabsContent>
