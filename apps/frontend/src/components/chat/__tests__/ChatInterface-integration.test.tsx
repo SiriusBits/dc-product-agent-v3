@@ -114,7 +114,7 @@ describe('ChatInterface - Integration Tests', () => {
       expect(screen.getByTestId('chat-messages')).toBeInTheDocument();
     });
 
-    it('should have data-testid="loading-spinner" when loading', () => {
+    it('should have data-testid="chat-loading-spinner" when loading', () => {
       vi.mocked(useChat).mockReturnValue({
         messages: [],
         isLoading: true,
@@ -128,7 +128,7 @@ describe('ChatInterface - Integration Tests', () => {
       });
 
       render(<ChatInterface />);
-      expect(screen.getByTestId('loading-spinner')).toBeInTheDocument();
+      expect(screen.getByTestId('chat-loading-spinner')).toBeInTheDocument();
     });
 
     it('should have data-testid="chat-error" when error occurs', () => {
@@ -245,13 +245,15 @@ describe('ChatInterface - Integration Tests', () => {
       });
 
       render(<ChatInterface />);
-      expect(screen.getByTestId('loading-spinner')).toBeInTheDocument();
+      expect(screen.getByTestId('chat-loading-spinner')).toBeInTheDocument();
       expect(screen.getByText(/thinking/i)).toBeInTheDocument();
     });
 
     it('should not display loading indicator when isLoading is false', () => {
       render(<ChatInterface />);
-      expect(screen.queryByTestId('loading-spinner')).not.toBeInTheDocument();
+      expect(
+        screen.queryByTestId('chat-loading-spinner')
+      ).not.toBeInTheDocument();
     });
   });
 

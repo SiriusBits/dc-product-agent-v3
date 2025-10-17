@@ -114,7 +114,9 @@ describe('Component Hierarchy Integration', () => {
 
         // Assert: Verify loading spinner is displayed
         await waitFor(() => {
-          expect(screen.getByTestId('loading-spinner')).toBeInTheDocument();
+          expect(
+            screen.getByTestId('chat-loading-spinner')
+          ).toBeInTheDocument();
         });
       });
 

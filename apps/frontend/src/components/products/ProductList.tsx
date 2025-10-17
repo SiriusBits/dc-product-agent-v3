@@ -231,7 +231,7 @@ export function ProductList({
             className="flex items-center space-x-2"
           >
             {loading ? (
-              <LoadingSpinner size="sm" />
+              <LoadingSpinner size="sm" testId="product-list-loading-spinner" />
             ) : (
               <>
                 <ChevronDown className="h-4 w-4" />

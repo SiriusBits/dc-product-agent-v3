@@ -233,11 +233,12 @@ describe('ProductBrowser', () => {
     mockUseProducts.mockReturnValue({
       ...mockProductsHook,
       loading: true,
+      products: [], // Need empty products array for loading state to show
     });
 
     render(<ProductBrowser />);
 
-    expect(screen.getByTestId('loading-spinner')).toBeInTheDocument();
+    expect(screen.getByTestId('product-loading-spinner')).toBeInTheDocument();
   });
 
   it('shows error state', () => {

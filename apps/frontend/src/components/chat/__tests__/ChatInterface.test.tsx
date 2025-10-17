@@ -302,6 +302,7 @@ describe('ChatInterface', () => {
     mockUseChat.mockReturnValue({
       ...mockChatHook,
       error: mockError,
+      isRetryable: true,
     });
 
     render(<ChatInterface />);

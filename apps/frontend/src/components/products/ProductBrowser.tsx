@@ -275,7 +275,10 @@ export default function ProductBrowser() {
               ) : productsLoading && displayProducts.length === 0 ? (
                 // Show loading state when productsLoading is true and no products exist
                 <div data-testid="product-loading">
-                  <LoadingState message="Loading products..." />
+                  <LoadingState
+                    message="Loading products..."
+                    testId="product-loading-spinner"
+                  />
                 </div>
               ) : (
                 // Show product list only when no error and not in initial loading state

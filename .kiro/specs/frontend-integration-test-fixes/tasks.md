@@ -53,31 +53,31 @@
   - Ensure empty object {} is passed when clearing instead of default values
   - _Requirements: 2.4_
 
-- [ ] 3. Fix ApiErrorDisplay button text consistency (Low Impact - ~3 tests)
+- [-] 3. Fix ApiErrorDisplay button text consistency (Low Impact - ~3 tests)
   - Update retry button text from "Try Again" to "Retry"
   - Ensure consistent button text across all error display modes
   - Verify InlineApiError already uses correct "Retry" text
   - _Requirements: 3.1, 3.2_
 
-- [ ] 3.1 Update ApiErrorDisplay retry button text
+- [x] 3.1 Update ApiErrorDisplay retry button text
   - Change button text from "Try Again" to "Retry" in main error display
   - Maintain existing button functionality and styling
   - Keep RefreshCw icon and data-testid attributes unchanged
   - _Requirements: 3.1_
 
-- [ ] 4. Resolve test ID conflicts (Low Impact - ~3 tests)
+- [x] 4. Resolve test ID conflicts (Low Impact - ~3 tests)
   - Add testId prop to LoadingSpinner component
   - Update LoadingState to pass testId through to LoadingSpinner
   - Use context-specific test IDs in ProductBrowser and other components
   - _Requirements: 4.1, 4.2, 4.3_
 
-- [ ] 4.1 Add configurable test IDs to LoadingSpinner
+- [x] 4.1 Add configurable test IDs to LoadingSpinner
   - Add optional testId prop to LoadingSpinnerProps interface
   - Update LoadingSpinner to use testId prop or default to "loading-spinner"
   - Maintain backward compatibility for existing usage
   - _Requirements: 4.1, 4.2_
 
-- [ ] 4.2 Update LoadingState to support custom test IDs
+- [x] 4.2 Update LoadingState to support custom test IDs
   - Add optional testId prop to LoadingStateProps interface
   - Pass testId through to LoadingSpinner component
   - Update ProductBrowser to use "product-loading-spinner" test ID

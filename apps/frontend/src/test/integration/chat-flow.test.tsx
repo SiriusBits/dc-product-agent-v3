@@ -560,7 +560,7 @@ describe('Chat Flow Integration', () => {
 
       // Assert: Verify loading indicator is displayed in ChatHistory
       await waitFor(() => {
-        const loadingElement = screen.getByTestId('loading-spinner');
+        const loadingElement = screen.getByTestId('chat-loading-spinner');
         expect(loadingElement).toBeInTheDocument();
       });
     });
@@ -581,7 +581,7 @@ describe('Chat Flow Integration', () => {
 
       // Verify loading is initially shown
       await waitFor(() => {
-        const loadingElement = screen.getByTestId('loading-spinner');
+        const loadingElement = screen.getByTestId('chat-loading-spinner');
         expect(loadingElement).toBeInTheDocument();
       });
 
@@ -599,7 +599,7 @@ describe('Chat Flow Integration', () => {
 
       // Assert: Loading indicator should disappear
       await waitFor(() => {
-        const loadingElement = screen.queryByTestId('loading-spinner');
+        const loadingElement = screen.queryByTestId('chat-loading-spinner');
         expect(loadingElement).not.toBeInTheDocument();
       });
 

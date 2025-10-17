@@ -5,11 +5,13 @@ import { cn } from '../../lib/utils';
 interface LoadingSpinnerProps {
   size?: 'sm' | 'md' | 'lg';
   className?: string;
+  testId?: string;
 }
 
 export function LoadingSpinner({
   size = 'md',
   className,
+  testId = 'loading-spinner',
 }: LoadingSpinnerProps) {
   const sizeClasses = {
     sm: 'h-4 w-4',
@@ -19,7 +21,7 @@ export function LoadingSpinner({
 
   return (
     <Loader2
-      data-testid="loading-spinner"
+      data-testid={testId}
       className={cn('animate-spin', sizeClasses[size], className)}
     />
   );
@@ -29,18 +31,20 @@ interface LoadingStateProps {
   message?: string;
   size?: 'sm' | 'md' | 'lg';
   className?: string;
+  testId?: string;
 }
 
 export function LoadingState({
   message = 'Loading...',
   size = 'md',
   className,
+  testId,
 }: LoadingStateProps) {
   return (
     <div
       className={cn('flex items-center justify-center gap-2 p-4', className)}
     >
-      <LoadingSpinner size={size} />
+      <LoadingSpinner size={size} testId={testId} />
       <span className="text-muted-foreground">{message}</span>
     </div>
   );

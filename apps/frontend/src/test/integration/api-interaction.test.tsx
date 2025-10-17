@@ -264,7 +264,7 @@ describe('API Interaction Tests', () => {
 
       // Verify loading state is shown
       await waitFor(() => {
-        expect(screen.getByTestId('loading-spinner')).toBeInTheDocument();
+        expect(screen.getByTestId('chat-chat-loading-spinner')).toBeInTheDocument();
       });
 
       // Verify input is disabled
@@ -1097,7 +1097,9 @@ describe('API Interaction Tests', () => {
         // Verify loading indicators are active
         await waitFor(() => {
           // Check if loading spinner is present
-          expect(screen.getByTestId('loading-spinner')).toBeInTheDocument();
+          expect(
+            screen.getByTestId('chat-chat-loading-spinner')
+          ).toBeInTheDocument();
         });
 
         // Verify input is disabled during loading
@@ -1164,7 +1166,9 @@ describe('API Interaction Tests', () => {
 
         // Verify chat loading state
         await waitFor(() => {
-          expect(screen.getByTestId('loading-spinner')).toBeInTheDocument();
+          expect(
+            screen.getByTestId('chat-chat-loading-spinner')
+          ).toBeInTheDocument();
         });
 
         // Verify input is disabled
@@ -1198,7 +1202,9 @@ describe('API Interaction Tests', () => {
 
         // Verify loading state is active
         await waitFor(() => {
-          expect(screen.getByTestId('loading-spinner')).toBeInTheDocument();
+          expect(
+            screen.getByTestId('chat-chat-loading-spinner')
+          ).toBeInTheDocument();
         });
 
         // Update to success state
@@ -1215,7 +1221,7 @@ describe('API Interaction Tests', () => {
         // Verify loading state is cleared
         await waitFor(() => {
           expect(
-            screen.queryByTestId('loading-spinner')
+            screen.queryByTestId('chat-loading-spinner')
           ).not.toBeInTheDocument();
         });
 
@@ -1330,7 +1336,7 @@ describe('API Interaction Tests', () => {
 
         // Verify loading state
         await waitFor(() => {
-          expect(screen.getByTestId('loading-spinner')).toBeInTheDocument();
+          expect(screen.getByTestId('chat-loading-spinner')).toBeInTheDocument();
         });
 
         // Update to error state
@@ -1347,7 +1353,7 @@ describe('API Interaction Tests', () => {
         // Verify loading state is cleared
         await waitFor(() => {
           expect(
-            screen.queryByTestId('loading-spinner')
+            screen.queryByTestId('chat-loading-spinner')
           ).not.toBeInTheDocument();
         });
 
@@ -1462,7 +1468,7 @@ describe('API Interaction Tests', () => {
 
         // Verify loading state
         await waitFor(() => {
-          expect(screen.getByTestId('loading-spinner')).toBeInTheDocument();
+          expect(screen.getByTestId('chat-loading-spinner')).toBeInTheDocument();
         });
 
         // Switch back to not loading
@@ -1477,7 +1483,7 @@ describe('API Interaction Tests', () => {
         // Verify loading state is cleared
         await waitFor(() => {
           expect(
-            screen.queryByTestId('loading-spinner')
+            screen.queryByTestId('chat-loading-spinner')
           ).not.toBeInTheDocument();
         });
       });
@@ -1505,7 +1511,7 @@ describe('API Interaction Tests', () => {
 
         // Verify both components show loading
         await waitFor(() => {
-          expect(screen.getByTestId('loading-spinner')).toBeInTheDocument();
+          expect(screen.getByTestId('chat-loading-spinner')).toBeInTheDocument();
           expect(screen.getByTestId('product-loading')).toBeInTheDocument();
         });
 
@@ -1559,7 +1565,7 @@ describe('API Interaction Tests', () => {
 
         // Verify loading state during retry
         await waitFor(() => {
-          expect(screen.getByTestId('loading-spinner')).toBeInTheDocument();
+          expect(screen.getByTestId('chat-loading-spinner')).toBeInTheDocument();
         });
 
         expect(mockRetry).toHaveBeenCalledTimes(1);

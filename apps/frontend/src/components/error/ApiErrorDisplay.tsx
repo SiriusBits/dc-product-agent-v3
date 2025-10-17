@@ -118,7 +118,7 @@ export function ApiErrorDisplay({
             data-testid="retry-button"
           >
             <RefreshCw className="h-4 w-4" />
-            Try Again
+            Retry
           </Button>
         )}
       </AlertDescription>
