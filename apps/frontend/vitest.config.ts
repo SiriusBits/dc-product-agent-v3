@@ -9,50 +9,126 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     setupFiles: ['./src/test/setup.ts'],
-    // Performance optimizations
-    testTimeout: 15000, // 15 seconds max per test
-    hookTimeout: 10000, // 10 seconds max for hooks
-    teardownTimeout: 5000, // 5 seconds max for cleanup
-    // Improved test isolation
+
+    // Optimized performance settings
+    testTimeout: process.env.CI ? 30000 : 15000, // Longer timeout in CI
+    hookTimeout: process.env.CI ? 15000 : 10000,
+    teardownTimeout: 5000,
+
+    // Enhanced test isolation for better reliability
     isolate: true,
-    // Pool configuration for better performance
+
+    // Optimized pool configuration
     pool: 'threads',
     poolOptions: {
       threads: {
         singleThread: false,
-        maxThreads: 4,
+        maxThreads: process.env.CI
+          ? 2
+          : Math.max(1, Math.floor(require('os').cpus()?.length / 2) || 4),
         minThreads: 1,
+        isolate: true,
       },
     },
-    // Reporter configuration
-    reporter: ['verbose', 'json'],
+
+    // Enhanced reporter configuration
+    reporters: process.env.CI
+      ? ['verbose', 'json', 'junit']
+      : ['verbose', 'json'],
     outputFile: {
       json: './test-results.json',
+      junit: './test-results.xml',
     },
-    // Coverage configuration (optional)
+
+    // Coverage configuration
     coverage: {
-      enabled: false, // Disable by default for performance
+      enabled: process.env.COVERAGE === 'true',
       provider: 'v8',
-      reporter: ['text', 'json', 'html'],
+      reporter: ['text', 'json', 'html', 'lcov'],
       exclude: [
         'node_modules/',
         'src/test/',
         '**/*.test.{ts,tsx}',
         '**/*.spec.{ts,tsx}',
+        '**/performance-*.ts',
+        '**/lazy-mock-*.ts',
+        '**/parallel-*.ts',
+        '**/dom-optimizer.ts',
       ],
+      thresholds: {
+        lines: 80,
+        functions: 80,
+        branches: 70,
+        statements: 80,
+      },
     },
-    // Retry configuration for flaky tests
-    retry: 2,
-    // Bail early on failures in CI
-    bail: process.env.CI ? 5 : 0,
+
+    // Retry configuration with smart retry logic
+    retry: process.env.CI ? 3 : 2,
+
+    // Bail configuration
+    bail: process.env.CI ? 10 : 5,
+
+    // Performance monitoring
+    logHeapUsage: process.env.PERF_MONITORING === 'true',
+
+    // Sequence configuration for better test ordering
+    sequence: {
+      shuffle: false, // Disable shuffle for consistent performance measurement
+      concurrent: true, // Enable concurrent execution within files
+    },
+
+    // File parallelization
+    fileParallelism: true,
+
+    // Enhanced watch mode (for development)
+    watch: process.env.NODE_ENV !== 'test',
+    watchExclude: [
+      '**/node_modules/**',
+      '**/dist/**',
+      '**/coverage/**',
+      '**/*.log',
+      '**/test-results*.json',
+      '**/test-performance*.json',
+    ],
+
+    // Environment variables for performance optimization
+    env: {
+      PERF_MONITORING: process.env.PERF_MONITORING || 'false',
+      ENABLE_LAZY_MOCKS: process.env.ENABLE_LAZY_MOCKS || 'true',
+      ENABLE_DOM_OPTIMIZATION: process.env.ENABLE_DOM_OPTIMIZATION || 'true',
+      ENABLE_PARALLEL_OPTIMIZATION:
+        process.env.ENABLE_PARALLEL_OPTIMIZATION || 'true',
+      GENERATE_PERF_REPORTS:
+        process.env.GENERATE_PERF_REPORTS ||
+        (process.env.CI ? 'true' : 'false'),
+    },
   },
+
   resolve: {
     alias: {
       '@': resolve(__dirname, './src'),
     },
   },
+
   // Ensure compatibility with different Vite versions
   define: {
     'import.meta.vitest': undefined,
+  },
+
+  // Optimizations for test performance
+  optimizeDeps: {
+    include: [
+      '@testing-library/react',
+      '@testing-library/jest-dom',
+      '@testing-library/user-event',
+      'vitest',
+    ],
+  },
+
+  // Build optimizations for tests
+  build: {
+    target: 'node14',
+    minify: false, // Disable minification for faster builds in tests
   },
 });

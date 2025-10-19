@@ -1,6 +1,15 @@
 /**
  * Enhanced hook mocks for direct hook mocking strategy
  * This replaces API client mocking with direct hook mocking for better test control
+ *
+ * ⚠️  DEPRECATED: This file is deprecated and will be removed in a future version.
+ * Please migrate to the new unified test infrastructure:
+ *
+ * - Use `ReactiveHookMock` from '@/test/reactive-mocks' instead
+ * - Use `setupTest()` from '@/test/enhanced-setup' for test setup
+ * - See MIGRATION-GUIDE.md for detailed migration instructions
+ *
+ * @deprecated Use @/test/reactive-mocks and @/test/enhanced-setup instead
  */
 
 import { vi } from 'vitest';

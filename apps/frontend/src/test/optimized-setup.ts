@@ -1,6 +1,15 @@
 /**
  * Optimized Test Setup
  * Integrates performance manager, isolation manager, and optimized mocks
+ *
+ * ⚠️  DEPRECATED: This file is deprecated and will be removed in a future version.
+ * Please migrate to the new unified test infrastructure:
+ *
+ * - Use `setupTest()` from '@/test/enhanced-setup' instead
+ * - Performance optimization is built into the new infrastructure
+ * - See MIGRATION-GUIDE.md for detailed migration instructions
+ *
+ * @deprecated Use @/test/enhanced-setup instead
  */
 
 import '@testing-library/jest-dom';

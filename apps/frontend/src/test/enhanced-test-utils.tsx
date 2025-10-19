@@ -1,6 +1,16 @@
 /**
  * Enhanced test utilities for direct hook mocking strategy
  * Provides React Testing Library utilities with enhanced hook mocking support
+ *
+ * ⚠️  DEPRECATED: This file is deprecated and will be removed in a future version.
+ * Please migrate to the new unified test infrastructure:
+ *
+ * - Use `setupTest()` from '@/test/enhanced-setup' instead
+ * - Use `renderComponent()` from the test context instead of `render()`
+ * - Use data factories from '@/test/standardized-mocks' instead
+ * - See MIGRATION-GUIDE.md for detailed migration instructions
+ *
+ * @deprecated Use @/test/enhanced-setup instead
  */
 
 import React from 'react';
@@ -235,6 +245,9 @@ const TestWrapper: React.FC<TestWrapperProps> = ({ children }) => {
 };
 
 // Enhanced render function
+/**
+ * @deprecated Use renderComponent() from setupTest() context instead
+ */
 const customRender = (
   ui: ReactElement,
   options?: Omit<RenderOptions, 'wrapper'>

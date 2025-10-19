@@ -1,9 +1,9 @@
 /**
- * Enhanced Test Setup with ReactiveHookMock Infrastructure
+ * Enhanced Test Setup with ReactiveHookMock Infrastructure and Performance Optimization
  *
  * This module provides a comprehensive test setup function that creates
  * reactive mocks for all major hooks and registers them with the MockRegistry.
- * It replaces the old enhanced-setup.ts with the new reactive mock approach.
+ * It includes performance optimization features for better test execution speed.
  */
 
 import { vi, afterEach } from 'vitest';
@@ -11,6 +11,9 @@ import { cleanup, render } from '@testing-library/react';
 import type { RenderResult } from '@testing-library/react';
 import React from 'react';
 import { ReactiveHookMock, mockRegistry } from './reactive-mocks';
+import { setupPerformanceTest } from './performance-setup';
+import { lazyMockSystem, getMock, returnMock } from './lazy-mock-system';
+import { optimizedScreen, withDOMOptimization } from './dom-optimizer';
 import type {
   ChatMessage,
   Conversation,
@@ -93,6 +96,13 @@ export interface SetupOptions {
   enableAutoCleanup?: boolean;
   mockLocalStorage?: boolean;
   mockSessionStorage?: boolean;
+
+  // Performance optimization options
+  enablePerformanceOptimization?: boolean;
+  enableLazyMocks?: boolean;
+  enableDOMOptimization?: boolean;
+  testName?: string;
+  preloadQueries?: Array<{ type: string; value: string }>;
 }
 
 /**
@@ -117,6 +127,10 @@ export interface TestContext {
   // Storage mocks (if enabled)
   localStorage?: Storage;
   sessionStorage?: Storage;
+
+  // Performance optimization utilities
+  optimizedScreen?: typeof optimizedScreen;
+  performanceCleanup?: () => void;
 }
 
 // ============================================================================
@@ -220,38 +234,65 @@ function createMockSessionStorage(): Storage {
 // ============================================================================
 
 /**
- * Enhanced test setup function using ReactiveHookMock infrastructure
+ * Enhanced test setup function using ReactiveHookMock infrastructure with performance optimization
  *
  * Creates reactive mocks for useChat, useProducts, and useConversations hooks,
  * registers them with the MockRegistry, and provides helper functions for
- * common test operations.
+ * common test operations. Includes performance optimization features.
  *
  * @param options - Configuration options for the test setup
  * @returns TestContext with mock instances and helper functions
  *
  * @example
  * ```typescript
- * const { updateChat, renderComponent } = setupTest({
+ * const { updateChat, renderComponent, optimizedScreen } = setupTest({
  *   initialChatMessages: [{ id: '1', content: 'Hello', role: 'user', timestamp: new Date() }],
- *   chatLoading: false
+ *   chatLoading: false,
+ *   enablePerformanceOptimization: true,
+ *   testName: 'ChatInterface test'
  * });
  *
  * // Update chat state and trigger re-renders
  * await updateChat({ isLoading: true });
  *
- * // Render component with automatic cleanup
+ * // Render component with automatic cleanup and optimization
  * const { getByTestId } = renderComponent(<ChatInterface />);
+ *
+ * // Use optimized screen queries
+ * const element = optimizedScreen.getByTestId('chat-input');
  * ```
  */
 export function setupTest(options: SetupOptions = {}): TestContext {
-  // Create reactive mocks with initial state
-  const chatMock = new ReactiveHookMock(createDefaultChatState(options));
-  const productsMock = new ReactiveHookMock(
-    createDefaultProductsState(options)
-  );
-  const conversationsMock = new ReactiveHookMock(
-    createDefaultConversationsState(options)
-  );
+  // Setup performance monitoring if enabled
+  let performanceCleanup: (() => void) | undefined;
+
+  if (options.enablePerformanceOptimization !== false && options.testName) {
+    const { cleanup } = setupPerformanceTest(options.testName);
+    performanceCleanup = cleanup;
+  }
+
+  // Create reactive mocks with initial state (use lazy mocks if enabled)
+  let chatMock: ReactiveHookMock<MockUseChatState>;
+  let productsMock: ReactiveHookMock<MockUseProductsState>;
+  let conversationsMock: ReactiveHookMock<MockUseConversationsState>;
+
+  if (options.enableLazyMocks !== false) {
+    // Use lazy mock system for better performance
+    chatMock = new ReactiveHookMock(() => getMock<MockUseChatState>('useChat'));
+    productsMock = new ReactiveHookMock(() =>
+      getMock<MockUseProductsState>('useProducts')
+    );
+    conversationsMock = new ReactiveHookMock(() =>
+      getMock<MockUseConversationsState>('useConversations')
+    );
+  } else {
+    // Use traditional mock creation
+    chatMock = new ReactiveHookMock(createDefaultChatState(options));
+    productsMock = new ReactiveHookMock(createDefaultProductsState(options));
+    conversationsMock = new ReactiveHookMock(
+      createDefaultConversationsState(options)
+    );
+  }
 
   // Register mocks with the registry
   mockRegistry.register('useChat', chatMock);
@@ -295,13 +336,21 @@ export function setupTest(options: SetupOptions = {}): TestContext {
     await conversationsMock.updateValue(updates);
   };
 
-  // Enhanced render function with automatic cleanup tracking
+  // Enhanced render function with automatic cleanup tracking and DOM optimization
   const renderedComponents: RenderResult[] = [];
 
   const renderComponent = (component: React.ReactElement): RenderResult => {
-    const result = render(component);
-    renderedComponents.push(result);
-    return result;
+    if (options.enableDOMOptimization !== false) {
+      return withDOMOptimization(() => {
+        const result = render(component);
+        renderedComponents.push(result);
+        return result;
+      }, options.preloadQueries);
+    } else {
+      const result = render(component);
+      renderedComponents.push(result);
+      return result;
+    }
   };
 
   // Set up automatic cleanup if enabled (default: true)
@@ -322,12 +371,24 @@ export function setupTest(options: SetupOptions = {}): TestContext {
       // Reset all mocks to initial state
       mockRegistry.resetAll();
 
+      // Return lazy mocks to pool if enabled
+      if (options.enableLazyMocks !== false) {
+        returnMock('useChat', chatMock.getCurrentValue());
+        returnMock('useProducts', productsMock.getCurrentValue());
+        returnMock('useConversations', conversationsMock.getCurrentValue());
+      }
+
       // Clear storage mocks
       if (localStorage) {
         localStorage.clear();
       }
       if (sessionStorage) {
         sessionStorage.clear();
+      }
+
+      // Performance cleanup
+      if (performanceCleanup) {
+        performanceCleanup();
       }
 
       // Standard cleanup
@@ -346,6 +407,9 @@ export function setupTest(options: SetupOptions = {}): TestContext {
     renderComponent,
     localStorage,
     sessionStorage,
+    optimizedScreen:
+      options.enableDOMOptimization !== false ? optimizedScreen : undefined,
+    performanceCleanup,
   };
 }
 

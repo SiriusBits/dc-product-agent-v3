@@ -4,9 +4,8 @@
 
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { screen, waitFor } from '@testing-library/react';
-import { render } from '@/test/test-utils';
+import { render, createMockUseProductsReturn } from '@/test';
 import ProductBrowser from '@/components/products/ProductBrowser';
-import { createMockUseProductsReturn } from '@/test/standardized-mocks';
 
 // Mock each hook individually
 vi.mock('@/hooks/useProducts', () => {

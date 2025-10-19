@@ -1,12 +1,21 @@
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { screen, fireEvent, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
 import ChatInput from '../ChatInput';
+import { setupTest, typeIntoInput, submitForm } from '@/test';
 
 describe('ChatInput', () => {
+  let testContext: ReturnType<typeof setupTest>;
+
+  beforeEach(() => {
+    testContext = setupTest();
+  });
+
   it('renders with placeholder text', () => {
     const mockOnSendMessage = vi.fn();
-    render(<ChatInput onSendMessage={mockOnSendMessage} />);
+    testContext.renderComponent(
+      <ChatInput onSendMessage={mockOnSendMessage} />
+    );
 
     expect(
       screen.getByPlaceholderText(/Ask about chemical products/)
@@ -15,13 +24,15 @@ describe('ChatInput', () => {
 
   it('calls onSendMessage when form is submitted', async () => {
     const mockOnSendMessage = vi.fn().mockResolvedValue(undefined);
-    render(<ChatInput onSendMessage={mockOnSendMessage} />);
+    testContext.renderComponent(
+      <ChatInput onSendMessage={mockOnSendMessage} />
+    );
 
     const input = screen.getByPlaceholderText(/Ask about chemical products/);
     const button = screen.getByRole('button');
 
-    fireEvent.change(input, { target: { value: 'Test message' } });
-    fireEvent.click(button);
+    await typeIntoInput(input, 'Test message');
+    await userEvent.setup().click(button);
 
     await waitFor(() => {
       expect(mockOnSendMessage).toHaveBeenCalledWith('Test message');
@@ -30,15 +41,17 @@ describe('ChatInput', () => {
 
   it('clears input after sending message', async () => {
     const mockOnSendMessage = vi.fn().mockResolvedValue(undefined);
-    render(<ChatInput onSendMessage={mockOnSendMessage} />);
+    testContext.renderComponent(
+      <ChatInput onSendMessage={mockOnSendMessage} />
+    );
 
     const input = screen.getByPlaceholderText(
       /Ask about chemical products/
     ) as HTMLInputElement;
     const button = screen.getByRole('button');
 
-    fireEvent.change(input, { target: { value: 'Test message' } });
-    fireEvent.click(button);
+    await typeIntoInput(input, 'Test message');
+    await userEvent.setup().click(button);
 
     await waitFor(() => {
       expect(input.value).toBe('');
@@ -47,7 +60,9 @@ describe('ChatInput', () => {
 
   it('shows loading state when isLoading is true', () => {
     const mockOnSendMessage = vi.fn();
-    render(<ChatInput onSendMessage={mockOnSendMessage} isLoading={true} />);
+    testContext.renderComponent(
+      <ChatInput onSendMessage={mockOnSendMessage} isLoading={true} />
+    );
 
     expect(screen.getByRole('button')).toBeDisabled();
   });
@@ -56,7 +71,7 @@ describe('ChatInput', () => {
   describe('Form submission behavior', () => {
     it('wraps input in form element for proper form submission', () => {
       const mockOnSendMessage = vi.fn();
-      const { container } = render(
+      const { container } = testContext.renderComponent(
         <ChatInput onSendMessage={mockOnSendMessage} />
       );
 
@@ -67,14 +82,14 @@ describe('ChatInput', () => {
 
     it('prevents default form behavior on submit', async () => {
       const mockOnSendMessage = vi.fn().mockResolvedValue(undefined);
-      const { container } = render(
+      const { container } = testContext.renderComponent(
         <ChatInput onSendMessage={mockOnSendMessage} />
       );
 
       const form = container.querySelector('form');
       const input = screen.getByPlaceholderText(/Ask about chemical products/);
 
-      fireEvent.change(input, { target: { value: 'Test message' } });
+      await typeIntoInput(input, 'Test message');
 
       const submitEvent = new Event('submit', {
         bubbles: true,
@@ -88,14 +103,15 @@ describe('ChatInput', () => {
     });
 
     it('submits form when Enter key is pressed', async () => {
-      const user = userEvent.setup();
       const mockOnSendMessage = vi.fn().mockResolvedValue(undefined);
-      render(<ChatInput onSendMessage={mockOnSendMessage} />);
+      testContext.renderComponent(
+        <ChatInput onSendMessage={mockOnSendMessage} />
+      );
 
       const input = screen.getByPlaceholderText(/Ask about chemical products/);
 
-      await user.type(input, 'Test message');
-      await user.keyboard('{Enter}');
+      await typeIntoInput(input, 'Test message');
+      await userEvent.setup().keyboard('{Enter}');
 
       await waitFor(() => {
         expect(mockOnSendMessage).toHaveBeenCalledWith('Test message');
@@ -103,17 +119,18 @@ describe('ChatInput', () => {
     });
 
     it('allows new line with Shift+Enter', async () => {
-      const user = userEvent.setup();
       const mockOnSendMessage = vi.fn();
-      render(<ChatInput onSendMessage={mockOnSendMessage} />);
+      testContext.renderComponent(
+        <ChatInput onSendMessage={mockOnSendMessage} />
+      );
 
       const input = screen.getByPlaceholderText(
         /Ask about chemical products/
       ) as HTMLTextAreaElement;
 
-      await user.type(input, 'Line 1');
-      await user.keyboard('{Shift>}{Enter}{/Shift}');
-      await user.type(input, 'Line 2');
+      await typeIntoInput(input, 'Line 1', { clearFirst: false });
+      await userEvent.setup().keyboard('{Shift>}{Enter}{/Shift}');
+      await typeIntoInput(input, 'Line 2', { clearFirst: false });
 
       expect(input.value).toBe('Line 1\nLine 2');
       expect(mockOnSendMessage).not.toHaveBeenCalled();
@@ -121,7 +138,9 @@ describe('ChatInput', () => {
 
     it('has submit button type for proper form submission', () => {
       const mockOnSendMessage = vi.fn();
-      render(<ChatInput onSendMessage={mockOnSendMessage} />);
+      testContext.renderComponent(
+        <ChatInput onSendMessage={mockOnSendMessage} />
+      );
 
       const button = screen.getByRole('button');
       expect(button).toHaveAttribute('type', 'submit');
@@ -132,7 +151,9 @@ describe('ChatInput', () => {
   describe('Disabled state handling', () => {
     it('disables textarea when disabled prop is true', () => {
       const mockOnSendMessage = vi.fn();
-      render(<ChatInput onSendMessage={mockOnSendMessage} disabled={true} />);
+      testContext.renderComponent(
+        <ChatInput onSendMessage={mockOnSendMessage} disabled={true} />
+      );
 
       const input = screen.getByPlaceholderText(/Ask about chemical products/);
       expect(input).toBeDisabled();
@@ -140,7 +161,9 @@ describe('ChatInput', () => {
 
     it('disables button when disabled prop is true', () => {
       const mockOnSendMessage = vi.fn();
-      render(<ChatInput onSendMessage={mockOnSendMessage} disabled={true} />);
+      testContext.renderComponent(
+        <ChatInput onSendMessage={mockOnSendMessage} disabled={true} />
+      );
 
       const button = screen.getByRole('button');
       expect(button).toBeDisabled();
@@ -150,7 +173,7 @@ describe('ChatInput', () => {
       const mockOnSendMessage = vi.fn();
 
       // Test with disabled=false and isLoading=true
-      const { rerender } = render(
+      const { rerender } = testContext.renderComponent(
         <ChatInput
           onSendMessage={mockOnSendMessage}
           disabled={false}
@@ -181,22 +204,29 @@ describe('ChatInput', () => {
     });
 
     it('prevents message sending when disabled', async () => {
-      const user = userEvent.setup();
       const mockOnSendMessage = vi.fn();
-      render(<ChatInput onSendMessage={mockOnSendMessage} disabled={true} />);
+      testContext.renderComponent(
+        <ChatInput onSendMessage={mockOnSendMessage} disabled={true} />
+      );
 
       const input = screen.getByPlaceholderText(/Ask about chemical products/);
 
-      // Try to type and submit
-      await user.type(input, 'Test message');
-      await user.keyboard('{Enter}');
+      // Try to type and submit (should fail because input is disabled)
+      try {
+        await typeIntoInput(input, 'Test message');
+        await userEvent.setup().keyboard('{Enter}');
+      } catch (error) {
+        // Expected to fail because input is disabled
+      }
 
       expect(mockOnSendMessage).not.toHaveBeenCalled();
     });
 
     it('shows proper disabled styling', () => {
       const mockOnSendMessage = vi.fn();
-      render(<ChatInput onSendMessage={mockOnSendMessage} disabled={true} />);
+      testContext.renderComponent(
+        <ChatInput onSendMessage={mockOnSendMessage} disabled={true} />
+      );
 
       const input = screen.getByPlaceholderText(/Ask about chemical products/);
       const button = screen.getByRole('button');
@@ -217,7 +247,9 @@ describe('ChatInput', () => {
   describe('Loading state display', () => {
     it('shows loading spinner when isLoading is true', () => {
       const mockOnSendMessage = vi.fn();
-      render(<ChatInput onSendMessage={mockOnSendMessage} isLoading={true} />);
+      testContext.renderComponent(
+        <ChatInput onSendMessage={mockOnSendMessage} isLoading={true} />
+      );
 
       // Look for the Loader2 icon (loading spinner)
       const spinner = screen.getByRole('button').querySelector('.animate-spin');
@@ -226,7 +258,9 @@ describe('ChatInput', () => {
 
     it('shows send icon when not loading', () => {
       const mockOnSendMessage = vi.fn();
-      render(<ChatInput onSendMessage={mockOnSendMessage} isLoading={false} />);
+      testContext.renderComponent(
+        <ChatInput onSendMessage={mockOnSendMessage} isLoading={false} />
+      );
 
       // Look for the Send icon
       const sendIcon = screen.getByRole('button').querySelector('svg');

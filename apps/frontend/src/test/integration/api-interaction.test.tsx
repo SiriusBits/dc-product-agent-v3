@@ -2,19 +2,19 @@
  * @vitest-environment jsdom
  */
 
-import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { screen, waitFor } from '@testing-library/react';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { screen, waitFor, act, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { renderHook, act } from '@testing-library/react';
+
 import { useChat } from '@/hooks/useChat';
 import { useProducts } from '@/hooks/useProducts';
 import { useConversations } from '@/hooks/useConversations';
-import { apiClient, ApiError } from '@/lib/api-client';
 import ChatInterface from '@/components/chat/ChatInterface';
 import ProductBrowser from '@/components/products/ProductBrowser';
 import { ApiErrorDisplay } from '@/components/error/ApiErrorDisplay';
-import { render } from '@/test/enhanced-test-utils';
 import {
+  setupTest,
+  typeIntoInput,
   createMockUseChatReturn,
   createMockUseProductsReturn,
   createMockUseConversationsReturn,
@@ -22,12 +22,12 @@ import {
   createMockMessage,
   createMockProduct,
   createMockConversation,
-} from '@/test/standardized-mocks';
-import type {
-  ChatResponse,
-  ProductSearchResponse,
-  Conversation,
-} from '@repo/shared-types';
+} from '@/test';
+
+// NOTE: render is imported from @testing-library/react above - DO NOT import from astro:content
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const __PREVENT_ASTRO_RENDER_IMPORT__ =
+  'render already imported from @testing-library/react';
 
 // Mock the hooks to use standardized mocks
 vi.mock('@/hooks/useChat');
@@ -88,14 +88,20 @@ vi.mock('@/lib/api-client', () => {
       this.name = 'ApiError';
     }
 
-    static fromResponse(response: Response, errorData?: any): MockApiError {
+    static fromResponse(response: Response, errorData?: unknown): MockApiError {
+      const errorObj = errorData as {
+        message?: string;
+        details?: unknown;
+        request_id?: string;
+      } | null;
+
       const message =
-        errorData?.message || `HTTP ${response.status}: ${response.statusText}`;
+        errorObj?.message || `HTTP ${response.status}: ${response.statusText}`;
       return new MockApiError(
         message,
         response.status,
-        errorData?.details,
-        errorData?.request_id
+        errorObj?.details,
+        errorObj?.request_id
       );
     }
 
@@ -153,8 +159,23 @@ Object.defineProperty(window, 'localStorage', {
 });
 
 describe('API Interaction Tests', () => {
+  let testContext: ReturnType<typeof setupTest>;
+
   beforeEach(() => {
-    vi.clearAllMocks();
+    testContext = setupTest({
+      enableAutoCleanup: true,
+      mockLocalStorage: true,
+    });
+
+    // Mock the hooks to use our reactive mocks
+    vi.mocked(useChat).mockImplementation(testContext.chatMock.getMock());
+    vi.mocked(useProducts).mockImplementation(
+      testContext.productsMock.getMock()
+    );
+    vi.mocked(useConversations).mockImplementation(
+      testContext.conversationsMock.getMock()
+    );
+
     mockLocalStorage.getItem.mockReturnValue(null);
 
     // Mock DOM APIs
@@ -169,10 +190,6 @@ describe('API Interaction Tests', () => {
     });
   });
 
-  afterEach(() => {
-    vi.clearAllMocks();
-  });
-
   describe('Chat API Interactions', () => {
     it('displays messages correctly when chat succeeds', async () => {
       const mockMessages = [
@@ -180,19 +197,19 @@ describe('API Interaction Tests', () => {
         createMockMessage({ content: 'Test response', role: 'assistant' }),
       ];
 
-      vi.mocked(useChat).mockReturnValue(
-        createMockUseChatReturn({
-          messages: mockMessages,
-          isLoading: false,
-          error: null,
-        })
-      );
+      await testContext.updateChat({
+        messages: mockMessages,
+        isLoading: false,
+        error: null,
+      });
 
-      vi.mocked(useConversations).mockReturnValue(
-        createMockUseConversationsReturn()
-      );
+      await testContext.updateConversations({
+        conversations: [],
+        isLoading: false,
+        error: null,
+      });
 
-      render(<ChatInterface />);
+      testContext.renderComponent(<ChatInterface />);
 
       // Verify messages are displayed
       expect(screen.getByText('Test query')).toBeInTheDocument();
@@ -264,7 +281,9 @@ describe('API Interaction Tests', () => {
 
       // Verify loading state is shown
       await waitFor(() => {
-        expect(screen.getByTestId('chat-chat-loading-spinner')).toBeInTheDocument();
+        expect(
+          screen.getByTestId('chat-chat-loading-spinner')
+        ).toBeInTheDocument();
       });
 
       // Verify input is disabled
@@ -275,25 +294,27 @@ describe('API Interaction Tests', () => {
     it('calls sendMessage when user sends a message', async () => {
       const mockSendMessage = vi.fn().mockResolvedValue(undefined);
 
-      vi.mocked(useChat).mockReturnValue(
-        createMockUseChatReturn({
-          sendMessage: mockSendMessage,
-          isLoading: false,
-          messages: [],
-        })
+      await testContext.updateChat({
+        sendMessage: mockSendMessage,
+        isLoading: false,
+        messages: [],
+      });
+
+      await testContext.updateConversations({
+        conversations: [],
+        isLoading: false,
+        error: null,
+      });
+
+      const { getByPlaceholderText, getByRole } = testContext.renderComponent(
+        <ChatInterface />
       );
 
-      vi.mocked(useConversations).mockReturnValue(
-        createMockUseConversationsReturn()
-      );
+      // Type and send a message using enhanced input utilities
+      const input = getByPlaceholderText(/ask about chemical products/i);
+      const sendButton = getByRole('button', { name: /send/i });
 
-      render(<ChatInterface />);
-
-      // Type and send a message
-      const input = screen.getByPlaceholderText(/ask about chemical products/i);
-      const sendButton = screen.getByRole('button', { name: /send/i });
-
-      await userEvent.type(input, 'Test message');
+      await typeIntoInput(input, 'Test message');
       await userEvent.click(sendButton);
 
       // Verify sendMessage was called
@@ -308,16 +329,14 @@ describe('API Interaction Tests', () => {
         createMockProduct({ name: 'DCA 221', family: 'DCA' }),
       ];
 
-      vi.mocked(useProducts).mockReturnValue(
-        createMockUseProductsReturn({
-          products: mockProducts,
-          totalCount: 2,
-          loading: false,
-          error: null,
-        })
-      );
+      await testContext.updateProducts({
+        products: mockProducts,
+        totalCount: 2,
+        loading: false,
+        error: null,
+      });
 
-      render(<ProductBrowser />);
+      testContext.renderComponent(<ProductBrowser />);
 
       // Verify products are displayed
       expect(screen.getByText('ASA 150')).toBeInTheDocument();
@@ -561,13 +580,6 @@ describe('API Interaction Tests', () => {
 
     describe('Error Details Accessibility', () => {
       it('makes error details accessible when showDetails is enabled', async () => {
-        const detailedError = createMockApiError(
-          'Validation failed',
-          422,
-          { field: 'query', reason: 'too short' },
-          'req-123'
-        );
-
         vi.mocked(useProducts).mockReturnValue(
           createMockUseProductsReturn({
             error: 'Validation failed',
@@ -613,10 +625,7 @@ describe('API Interaction Tests', () => {
 
         // Test with ApiErrorDisplay component directly
         const { container } = render(
-          <ApiErrorDisplay
-            error={errorWithRequestId as unknown}
-            showDetails={true}
-          />
+          <ApiErrorDisplay error={errorWithRequestId} showDetails={true} />
         );
 
         // Check if request ID is shown in details
@@ -648,11 +657,6 @@ describe('API Interaction Tests', () => {
       });
 
       it('handles network errors in product browser', async () => {
-        const networkError = createMockApiError(
-          'Network error: Please check your connection and try again.',
-          0
-        );
-
         vi.mocked(useProducts).mockReturnValue(
           createMockUseProductsReturn({
             error: 'Network error: Please check your connection and try again.',
@@ -668,16 +672,6 @@ describe('API Interaction Tests', () => {
       });
 
       it('handles validation errors with detailed messages', async () => {
-        const validationError = createMockApiError(
-          'Validation failed: Query must be at least 3 characters',
-          422,
-          {
-            field: 'query',
-            constraint: 'minLength',
-            value: 'ab',
-          }
-        );
-
         vi.mocked(useProducts).mockReturnValue(
           createMockUseProductsReturn({
             error: 'Validation failed: Query must be at least 3 characters',
@@ -1336,7 +1330,9 @@ describe('API Interaction Tests', () => {
 
         // Verify loading state
         await waitFor(() => {
-          expect(screen.getByTestId('chat-loading-spinner')).toBeInTheDocument();
+          expect(
+            screen.getByTestId('chat-loading-spinner')
+          ).toBeInTheDocument();
         });
 
         // Update to error state
@@ -1468,7 +1464,9 @@ describe('API Interaction Tests', () => {
 
         // Verify loading state
         await waitFor(() => {
-          expect(screen.getByTestId('chat-loading-spinner')).toBeInTheDocument();
+          expect(
+            screen.getByTestId('chat-loading-spinner')
+          ).toBeInTheDocument();
         });
 
         // Switch back to not loading
@@ -1511,7 +1509,9 @@ describe('API Interaction Tests', () => {
 
         // Verify both components show loading
         await waitFor(() => {
-          expect(screen.getByTestId('chat-loading-spinner')).toBeInTheDocument();
+          expect(
+            screen.getByTestId('chat-loading-spinner')
+          ).toBeInTheDocument();
           expect(screen.getByTestId('product-loading')).toBeInTheDocument();
         });
 
@@ -1565,7 +1565,9 @@ describe('API Interaction Tests', () => {
 
         // Verify loading state during retry
         await waitFor(() => {
-          expect(screen.getByTestId('chat-loading-spinner')).toBeInTheDocument();
+          expect(
+            screen.getByTestId('chat-loading-spinner')
+          ).toBeInTheDocument();
         });
 
         expect(mockRetry).toHaveBeenCalledTimes(1);

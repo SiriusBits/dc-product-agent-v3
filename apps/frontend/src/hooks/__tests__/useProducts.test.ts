@@ -4,6 +4,7 @@
 
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { renderHook, act, waitFor } from '@testing-library/react';
+import { waitForDebounce } from '@/test';
 import { useProducts } from '../useProducts';
 import type { ProductSummary } from '@repo/shared-types';
 
@@ -295,21 +296,22 @@ describe('useProducts', () => {
       expect(result.current.loading).toBe(false);
     });
 
-    // Multiple rapid searches (note: current implementation doesn't debounce)
-    await act(async () => {
-      await result.current.searchProducts({ query: 'A' });
-    });
+    // Test debounced search operations using enhanced utility with fake timers
+    vi.useFakeTimers();
 
-    await act(async () => {
-      await result.current.searchProducts({ query: 'AS' });
-    });
+    try {
+      await waitForDebounce(async () => {
+        await act(async () => {
+          await result.current.searchProducts({ query: 'ASA' });
+        });
+      }, 500);
 
-    await act(async () => {
-      await result.current.searchProducts({ query: 'ASA' });
-    });
-
-    // Should call API for initial load + 3 searches (no debouncing in current implementation)
-    expect(mockApiClient.searchProducts).toHaveBeenCalledTimes(4);
+      // Should call API for initial load + 1 debounced search
+      expect(mockApiClient.searchProducts).toHaveBeenCalledTimes(2);
+      expect(result.current.products).toEqual(searchResults.products);
+    } finally {
+      vi.useRealTimers();
+    }
   });
 
   it('handles concurrent search requests', async () => {

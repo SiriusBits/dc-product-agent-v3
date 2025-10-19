@@ -7,24 +7,69 @@ import { screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import ChatInterface from '@/components/chat/ChatInterface';
 import {
-  render,
-  setupMocks,
-  resetMocks,
-  updateMockHook,
-} from '@/test/test-utils';
-import {
+  setupTest,
+  typeIntoInput,
+  submitForm,
   createMockMessage,
   createMockConversation,
   createMockApiError,
-} from '@/test/standardized-mocks';
+} from '@/test';
+
+// Mock the hooks to use our reactive infrastructure
+vi.mock('@/hooks/useChat', () => ({
+  useChat: vi.fn(),
+}));
+vi.mock('@/hooks/useConversations', () => ({
+  useConversations: vi.fn(),
+}));
+
+// Import the mocked hooks
+import { useChat } from '@/hooks/useChat';
+import { useConversations } from '@/hooks/useConversations';
+import { render } from 'astro:content';
+import { setupMocks } from '../test-utils';
+import { render } from 'astro:content';
+import { setupMocks } from '../test-utils';
+import { render } from 'astro:content';
+import { setupMocks } from '../test-utils';
+import { render } from 'astro:content';
+import { setupMocks } from '../test-utils';
+import { updateMockHook } from '../test-utils';
+import { updateMockHook } from '../test-utils';
+import { updateMockHook } from '../test-utils';
+import { render } from 'astro:content';
+import { setupMocks } from '../test-utils';
+import { render } from 'astro:content';
+import { setupMocks } from '../test-utils';
+import { render } from 'astro:content';
+import { setupMocks } from '../test-utils';
+import { render } from 'astro:content';
+import { setupMocks } from '../test-utils';
+import { render } from 'astro:content';
+import { setupMocks } from '../test-utils';
+import { render } from 'astro:content';
+import { setupMocks } from '../test-utils';
+import { render } from 'astro:content';
+import { setupMocks } from '../test-utils';
+import { render } from 'astro:content';
+import { setupMocks } from '../test-utils';
+import { render } from 'astro:content';
+import { setupMocks } from '../test-utils';
 
 describe('Chat Flow Integration', () => {
-  beforeEach(() => {
-    setupMocks();
-  });
+  let testContext: ReturnType<typeof setupTest>;
 
-  afterEach(() => {
-    resetMocks();
+  beforeEach(() => {
+    testContext = setupTest({
+      enableAutoCleanup: true,
+      mockLocalStorage: true,
+    });
+
+    // Set up the mocked hooks to use our reactive mocks
+    vi.mocked(useChat).mockImplementation(testContext.chatMock.getMock());
+    vi.mocked(useConversations).mockImplementation(
+      testContext.conversationsMock.getMock()
+    );
   });
 
   // ============================================================================
@@ -33,31 +78,31 @@ describe('Chat Flow Integration', () => {
 
   describe('Chat Rendering', () => {
     it('renders ChatInterface with empty messages', async () => {
-      // Arrange: Setup with empty messages
-      setupMocks({
-        useChat: {
-          messages: [],
-          isLoading: false,
-          error: null,
-          conversationId: null,
-        },
-        useConversations: {
-          conversations: [],
-          isLoading: false,
-          error: null,
-        },
+      // Arrange: Setup with empty messages (already set by default)
+      await testContext.updateChat({
+        messages: [],
+        isLoading: false,
+        error: null,
+        conversationId: null,
+      });
+
+      await testContext.updateConversations({
+        conversations: [],
+        isLoading: false,
+        error: null,
       });
 
       // Act: Render component
-      render(<ChatInterface />);
+      const { getByTestId, getByPlaceholderText, getByRole, getByText } =
+        testContext.renderComponent(<ChatInterface />);
 
       // Assert: Verify basic elements are present
-      expect(screen.getByTestId('chat-interface')).toBeInTheDocument();
-      expect(screen.getByTestId('chat-messages')).toBeInTheDocument();
+      expect(getByTestId('chat-interface')).toBeInTheDocument();
+      expect(getByTestId('chat-messages')).toBeInTheDocument();
       expect(
-        screen.getByPlaceholderText(/ask about chemical products/i)
+        getByPlaceholderText(/ask about chemical products/i)
       ).toBeInTheDocument();
-      expect(screen.getByRole('button', { name: /send/i })).toBeInTheDocument();
+      expect(getByRole('button', { name: /send/i })).toBeInTheDocument();
 
       // Assert: Verify empty state (no messages displayed)
       const messageContainers = screen.queryAllByTestId('message-container');
@@ -65,9 +110,7 @@ describe('Chat Flow Integration', () => {
 
       // Assert: Verify welcome section or empty state is shown
       // (This depends on the ChatHistory component implementation)
-      expect(
-        screen.getByText('Chemical Product Assistant')
-      ).toBeInTheDocument();
+      expect(getByText('Chemical Product Assistant')).toBeInTheDocument();
     });
 
     it('renders ChatInterface with multiple messages', async () => {
@@ -101,28 +144,27 @@ describe('Chat Flow Integration', () => {
         }),
       ];
 
-      setupMocks({
-        useChat: {
-          messages: mockMessages,
-          isLoading: false,
-          error: null,
-          conversationId: 'conv-123',
-        },
-        useConversations: {
-          conversations: [
-            createMockConversation({
-              id: 'conv-123',
-              title: 'ASA 150 Questions',
-              messages: mockMessages,
-            }),
-          ],
-          isLoading: false,
-          error: null,
-        },
+      await testContext.updateChat({
+        messages: mockMessages,
+        isLoading: false,
+        error: null,
+        conversationId: 'conv-123',
+      });
+
+      await testContext.updateConversations({
+        conversations: [
+          createMockConversation({
+            id: 'conv-123',
+            title: 'ASA 150 Questions',
+            messages: mockMessages,
+          }),
+        ],
+        isLoading: false,
+        error: null,
       });
 
       // Act: Render component
-      render(<ChatInterface />);
+      testContext.renderComponent(<ChatInterface />);
 
       // Assert: Verify all messages are displayed
       await waitFor(() => {
@@ -220,25 +262,24 @@ describe('Chat Flow Integration', () => {
     it('sends a message and calls sendMessage function', async () => {
       // Arrange: Setup with mock sendMessage function
       const mockSendMessage = vi.fn().mockResolvedValue(undefined);
-      setupMocks({
-        useChat: {
-          messages: [],
-          isLoading: false,
-          error: null,
-          sendMessage: mockSendMessage,
-          conversationId: null,
-        },
+      await testContext.updateChat({
+        messages: [],
+        isLoading: false,
+        error: null,
+        sendMessage: mockSendMessage,
+        conversationId: null,
       });
 
-      const user = userEvent.setup();
-      render(<ChatInterface />);
+      const { getByPlaceholderText, getByRole } = testContext.renderComponent(
+        <ChatInterface />
+      );
 
-      // Act: Type message and send
-      const input = screen.getByPlaceholderText(/ask about chemical products/i);
-      const sendButton = screen.getByRole('button', { name: /send/i });
+      // Act: Type message and send using enhanced input utilities
+      const input = getByPlaceholderText(/ask about chemical products/i);
+      const sendButton = getByRole('button', { name: /send/i });
 
-      await user.type(input, 'What is the viscosity of ASA 150?');
-      await user.click(sendButton);
+      await typeIntoInput(input, 'What is the viscosity of ASA 150?');
+      await userEvent.setup().click(sendButton);
 
       // Assert: Verify sendMessage was called with correct content
       expect(mockSendMessage).toHaveBeenCalledWith(
@@ -330,23 +371,30 @@ describe('Chat Flow Integration', () => {
     it('handles Enter key to send message', async () => {
       // Arrange: Setup with mock sendMessage function
       const mockSendMessage = vi.fn().mockResolvedValue(undefined);
-      setupMocks({
-        useChat: {
-          messages: [],
-          isLoading: false,
-          error: null,
-          sendMessage: mockSendMessage,
-          conversationId: null,
-        },
+      await testContext.updateChat({
+        messages: [],
+        isLoading: false,
+        error: null,
+        sendMessage: mockSendMessage,
+        conversationId: null,
       });
 
-      const user = userEvent.setup();
-      render(<ChatInterface />);
+      const { getByPlaceholderText } = testContext.renderComponent(
+        <ChatInterface />
+      );
 
-      // Act: Type message and press Enter
-      const input = screen.getByPlaceholderText(/ask about chemical products/i);
-      await user.type(input, 'Test message');
-      await user.keyboard('{Enter}');
+      // Act: Type message and press Enter using form submission utility
+      const input = getByPlaceholderText(/ask about chemical products/i);
+      await typeIntoInput(input, 'Test message');
+
+      // Find the form and submit via Enter key
+      const form = input.closest('form');
+      if (form) {
+        await submitForm(form, { viaEnterKey: true });
+      } else {
+        // Fallback to direct keyboard event
+        await userEvent.setup().keyboard('{Enter}');
+      }
 
       // Assert: Verify sendMessage was called
       expect(mockSendMessage).toHaveBeenCalledWith('Test message');
@@ -365,18 +413,16 @@ describe('Chat Flow Integration', () => {
     it('displays error message when error occurs', async () => {
       // Arrange: Setup with error state
       const mockError = createMockApiError('Network connection failed', 0);
-      setupMocks({
-        useChat: {
-          messages: [],
-          isLoading: false,
-          error: mockError,
-          sendMessage: vi.fn(),
-          conversationId: null,
-        },
+      await testContext.updateChat({
+        messages: [],
+        isLoading: false,
+        error: mockError,
+        sendMessage: vi.fn(),
+        conversationId: null,
       });
 
       // Act: Render component
-      render(<ChatInterface />);
+      testContext.renderComponent(<ChatInterface />);
 
       // Assert: Verify error is displayed
       await waitFor(() => {
@@ -445,19 +491,17 @@ describe('Chat Flow Integration', () => {
       // Arrange: Setup with retryable error and mock retry function
       const mockError = createMockApiError('Network timeout', 408);
       const mockRetryLastMessage = vi.fn().mockResolvedValue(undefined);
-      setupMocks({
-        useChat: {
-          messages: [],
-          isLoading: false,
-          error: mockError,
-          sendMessage: vi.fn(),
-          retryLastMessage: mockRetryLastMessage,
-          conversationId: null,
-        },
+      await testContext.updateChat({
+        messages: [],
+        isLoading: false,
+        error: mockError,
+        sendMessage: vi.fn(),
+        retryLastMessage: mockRetryLastMessage,
+        conversationId: null,
+        isRetryable: true,
       });
 
-      const user = userEvent.setup();
-      render(<ChatInterface />);
+      testContext.renderComponent(<ChatInterface />);
 
       // Act: Click retry button
       await waitFor(() => {
@@ -467,7 +511,7 @@ describe('Chat Flow Integration', () => {
       });
 
       const retryButton = screen.getByRole('button', { name: /retry/i });
-      await user.click(retryButton);
+      await userEvent.setup().click(retryButton);
 
       // Assert: Verify retryLastMessage was called
       expect(mockRetryLastMessage).toHaveBeenCalledTimes(1);
@@ -499,19 +543,17 @@ describe('Chat Flow Integration', () => {
       const mockError = createMockApiError('Temporary failure', 500);
       const mockRetryLastMessage = vi.fn().mockResolvedValue(undefined);
 
-      setupMocks({
-        useChat: {
-          messages: [],
-          isLoading: false,
-          error: mockError,
-          sendMessage: vi.fn(),
-          retryLastMessage: mockRetryLastMessage,
-          conversationId: null,
-        },
+      await testContext.updateChat({
+        messages: [],
+        isLoading: false,
+        error: mockError,
+        sendMessage: vi.fn(),
+        retryLastMessage: mockRetryLastMessage,
+        conversationId: null,
+        isRetryable: true,
       });
 
-      const user = userEvent.setup();
-      render(<ChatInterface />);
+      testContext.renderComponent(<ChatInterface />);
 
       // Verify error is initially displayed
       await waitFor(() => {
@@ -519,14 +561,14 @@ describe('Chat Flow Integration', () => {
       });
 
       // Act: Simulate successful retry by updating mock to clear error
-      updateMockHook('useChat', {
+      await testContext.updateChat({
         error: null,
         isLoading: false,
       });
 
       // Click retry button
       const retryButton = screen.getByRole('button', { name: /retry/i });
-      await user.click(retryButton);
+      await userEvent.setup().click(retryButton);
 
       // Assert: Error should be cleared and input should be enabled
       await waitFor(() => {
@@ -545,18 +587,16 @@ describe('Chat Flow Integration', () => {
   describe('Chat Loading State', () => {
     it('shows loading indicator when isLoading is true', async () => {
       // Arrange: Setup with loading state
-      setupMocks({
-        useChat: {
-          messages: [],
-          isLoading: true,
-          error: null,
-          sendMessage: vi.fn(),
-          conversationId: null,
-        },
+      await testContext.updateChat({
+        messages: [],
+        isLoading: true,
+        error: null,
+        sendMessage: vi.fn(),
+        conversationId: null,
       });
 
       // Act: Render component
-      render(<ChatInterface />);
+      testContext.renderComponent(<ChatInterface />);
 
       // Assert: Verify loading indicator is displayed in ChatHistory
       await waitFor(() => {
@@ -567,17 +607,15 @@ describe('Chat Flow Integration', () => {
 
     it('hides loading indicator when loading completes', async () => {
       // Arrange: Setup with initial loading state
-      setupMocks({
-        useChat: {
-          messages: [],
-          isLoading: true,
-          error: null,
-          sendMessage: vi.fn(),
-          conversationId: null,
-        },
+      await testContext.updateChat({
+        messages: [],
+        isLoading: true,
+        error: null,
+        sendMessage: vi.fn(),
+        conversationId: null,
       });
 
-      render(<ChatInterface />);
+      testContext.renderComponent(<ChatInterface />);
 
       // Verify loading is initially shown
       await waitFor(() => {
@@ -586,7 +624,7 @@ describe('Chat Flow Integration', () => {
       });
 
       // Act: Update mock to simulate loading completion
-      updateMockHook('useChat', {
+      await testContext.updateChat({
         isLoading: false,
         messages: [
           createMockMessage({

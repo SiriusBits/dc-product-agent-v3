@@ -4,6 +4,7 @@
 
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { renderHook, act } from '@testing-library/react';
+import { waitForDebounce } from '@/test';
 
 // Mock the API client
 vi.mock('@/lib/api-client', () => ({
@@ -336,6 +337,28 @@ describe('useChat', () => {
 
     // Should have handled both messages (though second one might be ignored due to concurrent protection)
     expect(result.current.messages.length).toBeGreaterThanOrEqual(2);
+  });
+
+  it('handles debounced operations correctly', async () => {
+    mockApiClient.sendMessage.mockResolvedValue(createMockChatResponse());
+
+    const { result } = renderHook(() => useChat());
+
+    // Test debounced operation using enhanced utility with fake timers
+    vi.useFakeTimers();
+
+    try {
+      await waitForDebounce(async () => {
+        await act(async () => {
+          await result.current.sendMessage('Debounced message');
+        });
+      }, 300);
+
+      expect(result.current.messages).toHaveLength(2);
+      expect(result.current.messages[0].content).toBe('Debounced message');
+    } finally {
+      vi.useRealTimers();
+    }
   });
 
   it('formats timestamps correctly', async () => {

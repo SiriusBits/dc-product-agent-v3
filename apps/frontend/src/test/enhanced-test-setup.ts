@@ -1,5 +1,14 @@
 /**
  * Enhanced test setup with direct hook mocking for input handling tests
+ *
+ * ⚠️  DEPRECATED: This file is deprecated and will be removed in a future version.
+ * Please migrate to the new unified test infrastructure:
+ *
+ * - Use `setupTest()` from '@/test/enhanced-setup' instead of `setupEnhancedTest()`
+ * - Use reactive mock infrastructure for better React integration
+ * - See MIGRATION-GUIDE.md for detailed migration instructions
+ *
+ * @deprecated Use @/test/enhanced-setup instead
  */
 
 import { vi } from 'vitest';

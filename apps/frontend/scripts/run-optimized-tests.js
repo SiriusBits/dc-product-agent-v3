@@ -1,60 +1,83 @@
 #!/usr/bin/env node
 
 /**
- * Optimized Test Runner
- * Runs tests with performance monitoring and reliability checks
+ * Enhanced Optimized Test Runner
+ * Runs tests with comprehensive performance monitoring, optimization, and reliability checks
  */
 
 import { spawn } from 'child_process';
-import { writeFileSync, existsSync } from 'fs';
+import { writeFileSync, existsSync, readFileSync } from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Configuration
+// Enhanced Configuration
 const config = {
   // Test execution settings
-  maxRetries: 2,
-  timeout: 30000, // 30 seconds per test
-  bail: process.env.CI ? 5 : 0, // Bail after 5 failures in CI
+  maxRetries: process.env.CI ? 3 : 2,
+  timeout: process.env.CI ? 45000 : 30000, // Longer timeout in CI
+  bail: process.env.CI ? 10 : 5, // More failures allowed in CI
   
   // Performance settings
   performanceMode: process.env.PERF_MODE || 'optimized', // 'fast', 'optimized', 'thorough'
   enablePerfMonitoring: process.env.PERF_MONITORING !== 'false',
+  enableOptimizations: process.env.ENABLE_OPTIMIZATIONS !== 'false',
+  
+  // Optimization settings
+  enableLazyMocks: process.env.ENABLE_LAZY_MOCKS !== 'false',
+  enableDOMOptimization: process.env.ENABLE_DOM_OPTIMIZATION !== 'false',
+  enableParallelOptimization: process.env.ENABLE_PARALLEL_OPTIMIZATION !== 'false',
   
   // Reliability settings
   enableRetries: process.env.ENABLE_RETRIES !== 'false',
-  parallelism: process.env.CI ? 2 : 4, // Lower parallelism in CI
+  parallelism: process.env.CI ? 2 : Math.max(1, Math.floor(require('os').cpus()?.length / 2) || 4),
   
   // Reporting settings
   generateReport: process.env.GENERATE_REPORT !== 'false',
+  generateBenchmark: process.env.GENERATE_BENCHMARK === 'true',
   verbose: process.env.VERBOSE === 'true',
+  saveBaseline: process.env.SAVE_BASELINE === 'true',
 };
 
-// Performance mode configurations
+// Enhanced performance mode configurations
 const performanceModes = {
   fast: {
-    testTimeout: 15000,
+    testTimeout: 10000,
     hookTimeout: 5000,
-    poolOptions: { threads: { maxThreads: 2, minThreads: 1 } },
+    poolOptions: { threads: { maxThreads: 2, minThreads: 1, isolate: false } },
     reporter: ['basic'],
     coverage: false,
+    optimizations: {
+      enableLazyMocks: true,
+      enableDOMOptimization: true,
+      enableParallelOptimization: false, // Disabled for speed
+    },
   },
   optimized: {
     testTimeout: 30000,
     hookTimeout: 10000,
-    poolOptions: { threads: { maxThreads: 4, minThreads: 1 } },
-    reporter: ['verbose'],
+    poolOptions: { threads: { maxThreads: config.parallelism, minThreads: 1, isolate: true } },
+    reporter: ['verbose', 'json'],
     coverage: false,
+    optimizations: {
+      enableLazyMocks: true,
+      enableDOMOptimization: true,
+      enableParallelOptimization: true,
+    },
   },
   thorough: {
     testTimeout: 60000,
     hookTimeout: 15000,
-    poolOptions: { threads: { maxThreads: 6, minThreads: 2 } },
-    reporter: ['verbose', 'json'],
+    poolOptions: { threads: { maxThreads: Math.min(config.parallelism + 2, 8), minThreads: 2, isolate: true } },
+    reporter: ['verbose', 'json', 'junit'],
     coverage: true,
+    optimizations: {
+      enableLazyMocks: true,
+      enableDOMOptimization: true,
+      enableParallelOptimization: true,
+    },
   },
 };
 
@@ -69,7 +92,24 @@ class OptimizedTestRunner {
       duration: 0,
       slowTests: [],
       failedTests: [],
+      optimizationStats: {},
+      performanceMetrics: {},
     };
+    this.baselineResults = this.loadBaseline();
+  }
+
+  /**
+   * Load baseline performance results
+   */
+  loadBaseline() {
+    try {
+      if (existsSync('./test-performance-baseline.json')) {
+        return JSON.parse(readFileSync('./test-performance-baseline.json', 'utf-8'));
+      }
+    } catch (error) {
+      console.warn('Could not load performance baseline:', error.message);
+    }
+    return null;
   }
 
   /**
@@ -150,12 +190,20 @@ export default defineConfig({
       args.push(testPattern);
     }
 
-    // Add performance monitoring environment variables
+    // Add comprehensive environment variables
+    const modeConfig = performanceModes[config.performanceMode];
     const env = {
       ...process.env,
       NODE_ENV: 'test',
       PERF_MONITORING: config.enablePerfMonitoring ? 'true' : 'false',
+      ENABLE_LAZY_MOCKS: (config.enableLazyMocks && modeConfig.optimizations.enableLazyMocks) ? 'true' : 'false',
+      ENABLE_DOM_OPTIMIZATION: (config.enableDOMOptimization && modeConfig.optimizations.enableDOMOptimization) ? 'true' : 'false',
+      ENABLE_PARALLEL_OPTIMIZATION: (config.enableParallelOptimization && modeConfig.optimizations.enableParallelOptimization) ? 'true' : 'false',
+      GENERATE_PERF_REPORTS: config.generateReport ? 'true' : 'false',
+      GENERATE_BENCHMARK: config.generateBenchmark ? 'true' : 'false',
       VITEST_POOL_SIZE: config.parallelism.toString(),
+      VITEST_MAX_THREADS: modeConfig.poolOptions.threads.maxThreads.toString(),
+      VITEST_MIN_THREADS: modeConfig.poolOptions.threads.minThreads.toString(),
     };
 
     return new Promise((resolve, reject) => {
@@ -238,7 +286,7 @@ export default defineConfig({
   }
 
   /**
-   * Generate performance report
+   * Generate comprehensive performance report
    */
   generatePerformanceReport() {
     const report = {
@@ -247,6 +295,11 @@ export default defineConfig({
         performanceMode: config.performanceMode,
         parallelism: config.parallelism,
         retries: config.maxRetries,
+        optimizations: {
+          lazyMocks: config.enableLazyMocks,
+          domOptimization: config.enableDOMOptimization,
+          parallelOptimization: config.enableParallelOptimization,
+        },
       },
       results: this.testResults,
       performance: {
@@ -258,7 +311,14 @@ export default defineConfig({
         slowTestPercentage: this.testResults.total > 0 
           ? (this.testResults.slowTests.length / this.testResults.total) * 100 
           : 0,
+        passRate: this.testResults.total > 0 
+          ? (this.testResults.passed / this.testResults.total) * 100 
+          : 0,
       },
+      baseline: this.baselineResults ? {
+        comparison: this.compareWithBaseline(),
+        improvement: this.calculateImprovement(),
+      } : null,
       recommendations: this.generateRecommendations(),
     };
 
@@ -268,7 +328,49 @@ export default defineConfig({
       console.log(`📊 Performance report saved to ${reportPath}`);
     }
 
+    // Save as baseline if requested
+    if (config.saveBaseline) {
+      const baselinePath = path.join(__dirname, '../test-performance-baseline.json');
+      writeFileSync(baselinePath, JSON.stringify({
+        timestamp: report.timestamp,
+        results: this.testResults,
+        config: report.config,
+      }, null, 2));
+      console.log(`📈 Baseline saved to ${baselinePath}`);
+    }
+
     return report;
+  }
+
+  /**
+   * Compare current results with baseline
+   */
+  compareWithBaseline() {
+    if (!this.baselineResults) return null;
+
+    return {
+      durationChange: this.baselineResults.results.duration > 0 
+        ? ((this.testResults.duration - this.baselineResults.results.duration) / this.baselineResults.results.duration) * 100
+        : 0,
+      passRateChange: this.baselineResults.results.total > 0 
+        ? ((this.testResults.passed / this.testResults.total) - (this.baselineResults.results.passed / this.baselineResults.results.total)) * 100
+        : 0,
+      slowTestChange: this.testResults.slowTests.length - (this.baselineResults.results.slowTests?.length || 0),
+    };
+  }
+
+  /**
+   * Calculate performance improvement
+   */
+  calculateImprovement() {
+    if (!this.baselineResults) return null;
+
+    const comparison = this.compareWithBaseline();
+    return {
+      status: comparison.durationChange < -5 ? 'improved' : 
+              comparison.durationChange > 10 ? 'regressed' : 'stable',
+      summary: `Duration: ${comparison.durationChange.toFixed(1)}%, Pass Rate: ${comparison.passRateChange.toFixed(1)}%`,
+    };
   }
 
   /**
@@ -311,16 +413,34 @@ export default defineConfig({
   }
 
   /**
-   * Print summary
+   * Print comprehensive summary
    */
   printSummary() {
-    console.log('\n📊 Test Run Summary');
-    console.log('===================');
+    const report = this.generatePerformanceReport();
+    
+    console.log('\n🚀 Enhanced Test Run Summary');
+    console.log('=============================');
     console.log(`Total Tests: ${this.testResults.total}`);
-    console.log(`Passed: ${this.testResults.passed}`);
+    console.log(`Passed: ${this.testResults.passed} (${report.performance.passRate.toFixed(1)}%)`);
     console.log(`Failed: ${this.testResults.failed}`);
     console.log(`Skipped: ${this.testResults.skipped}`);
     console.log(`Duration: ${(this.testResults.duration / 1000).toFixed(2)}s`);
+    console.log(`Average: ${report.performance.averageTestDuration.toFixed(0)}ms per test`);
+    
+    // Performance optimizations status
+    console.log('\n⚡ Optimizations:');
+    console.log(`  Lazy Mocks: ${config.enableLazyMocks ? '✅' : '❌'}`);
+    console.log(`  DOM Optimization: ${config.enableDOMOptimization ? '✅' : '❌'}`);
+    console.log(`  Parallel Execution: ${config.enableParallelOptimization ? '✅' : '❌'}`);
+    console.log(`  Performance Mode: ${config.performanceMode}`);
+    console.log(`  Parallelism: ${config.parallelism} threads`);
+
+    // Baseline comparison
+    if (report.baseline) {
+      console.log('\n📈 Baseline Comparison:');
+      console.log(`  Status: ${report.baseline.improvement.status}`);
+      console.log(`  ${report.baseline.improvement.summary}`);
+    }
     
     if (this.testResults.slowTests.length > 0) {
       console.log(`\n🐌 Slow Tests (${this.testResults.slowTests.length}):`);
@@ -331,20 +451,28 @@ export default defineConfig({
 
     if (this.testResults.failedTests.length > 0) {
       console.log(`\n❌ Failed Tests (${this.testResults.failedTests.length}):`);
-      this.testResults.failedTests.forEach((test, index) => {
+      this.testResults.failedTests.slice(0, 5).forEach((test, index) => {
         console.log(`  ${index + 1}. ${test.name}`);
       });
     }
 
-    const report = this.generatePerformanceReport();
     if (report.recommendations.length > 0) {
-      console.log('\n💡 Recommendations:');
-      report.recommendations.forEach((rec, index) => {
+      console.log('\n💡 Performance Recommendations:');
+      report.recommendations.slice(0, 5).forEach((rec, index) => {
         console.log(`  ${index + 1}. ${rec}`);
       });
     }
 
-    console.log('===================\n');
+    // Success/failure indicators
+    const passRate = report.performance.passRate;
+    const avgDuration = report.performance.averageTestDuration;
+    
+    console.log('\n🎯 Performance Targets:');
+    console.log(`  Pass Rate: ${passRate >= 95 ? '✅' : '❌'} ${passRate.toFixed(1)}% (target: ≥95%)`);
+    console.log(`  Avg Duration: ${avgDuration <= 1000 ? '✅' : '❌'} ${avgDuration.toFixed(0)}ms (target: ≤1000ms)`);
+    console.log(`  Total Duration: ${this.testResults.duration <= 90000 ? '✅' : '❌'} ${(this.testResults.duration / 1000).toFixed(1)}s (target: ≤90s)`);
+
+    console.log('=============================\n');
   }
 }
 

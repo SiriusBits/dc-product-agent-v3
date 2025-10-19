@@ -2,12 +2,13 @@
  * @vitest-environment jsdom
  */
 
-import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import ChatInterface from '../ChatInterface';
 import type { ChatMessage } from '@/types';
-import { render, MockApiError } from '@/test/test-utils';
+import { setupTest, typeIntoInput, submitForm } from '@/test';
+import { ApiError } from '@/lib/api-client';
 
 // Mock the hooks
 vi.mock('@/hooks/useChat', () => ({
@@ -51,67 +52,40 @@ describe('ChatInterface', () => {
     },
   ];
 
-  const mockChatHook = {
-    messages: mockMessages,
-    isLoading: false,
-    error: null,
-    conversationId: 'conv-123',
-    sendMessage: vi.fn(),
-    clearMessages: vi.fn(),
-    loadConversation: vi.fn(),
-    retryLastMessage: vi.fn(),
-    isRetryable: false,
-  };
-
-  const mockConversationsHook = {
-    conversations: [
-      {
-        id: 'conv-123',
-        title: 'ASA 150 Questions',
-        lastMessage: 'ASA 150 has a viscosity of 150 cP at 25°C.',
-        timestamp: new Date('2024-01-01T10:00:01Z'),
-        messageCount: 2,
-        messages: mockMessages,
-        created_at: new Date('2024-01-01T10:00:00Z'),
-        updated_at: new Date('2024-01-01T10:00:01Z'),
-      },
-    ],
-    isLoading: false,
-    error: null,
-    createConversation: vi.fn(),
-    deleteConversation: vi.fn(),
-    loadConversation: vi.fn(),
-    loadConversations: vi.fn(),
-    updateConversationTitle: vi.fn(),
-    retry: vi.fn(),
-    isRetryable: false,
-  };
+  let testContext: ReturnType<typeof setupTest>;
 
   beforeEach(() => {
-    // Reset all mocks
-    vi.clearAllMocks();
+    // Setup test with reactive mocks
+    testContext = setupTest({
+      initialChatMessages: mockMessages,
+      initialConversationId: 'conv-123',
+      initialConversations: [
+        {
+          id: 'conv-123',
+          title: 'ASA 150 Questions',
+          lastMessage: 'ASA 150 has a viscosity of 150 cP at 25°C.',
+          timestamp: new Date('2024-01-01T10:00:01Z'),
+          messageCount: 2,
+          messages: mockMessages,
+          created_at: new Date('2024-01-01T10:00:00Z'),
+          updated_at: new Date('2024-01-01T10:00:01Z'),
+        },
+      ],
+      chatLoading: false,
+      conversationsLoading: false,
+      chatError: null,
+      conversationsError: null,
+    });
 
-    // Setup default mock return values
-    mockUseChat.mockReturnValue(mockChatHook);
-    mockUseConversations.mockReturnValue(mockConversationsHook);
-
-    // Reset mock function implementations
-    mockChatHook.sendMessage.mockReset();
-    mockChatHook.clearMessages.mockReset();
-    mockChatHook.loadConversation.mockReset();
-    mockChatHook.retryLastMessage.mockReset();
-    mockConversationsHook.createConversation.mockReset();
-    mockConversationsHook.deleteConversation.mockReset();
-    mockConversationsHook.loadConversation.mockReset();
-    mockConversationsHook.updateConversationTitle.mockReset();
-  });
-
-  afterEach(() => {
-    vi.clearAllMocks();
+    // Connect mocks to hook implementations
+    mockUseChat.mockImplementation(testContext.chatMock.getMock());
+    mockUseConversations.mockImplementation(
+      testContext.conversationsMock.getMock()
+    );
   });
 
   it('renders chat interface with messages', () => {
-    render(<ChatInterface />);
+    testContext.renderComponent(<ChatInterface />);
 
     expect(
       screen.getByText('What is the viscosity of ASA 150?')
@@ -122,7 +96,7 @@ describe('ChatInterface', () => {
   });
 
   it('renders message input and send button', () => {
-    render(<ChatInterface />);
+    testContext.renderComponent(<ChatInterface />);
 
     expect(
       screen.getByPlaceholderText(/ask about chemical products/i)
@@ -131,49 +105,47 @@ describe('ChatInterface', () => {
   });
 
   it('sends message when form is submitted', async () => {
-    const user = userEvent.setup();
-    render(<ChatInterface />);
+    testContext.renderComponent(<ChatInterface />);
 
     const input = screen.getByPlaceholderText(/ask about chemical products/i);
     const sendButton = screen.getByRole('button', { name: /send/i });
 
-    await user.type(input, 'What is DCA 467 used for?');
-    await user.click(sendButton);
+    await typeIntoInput(input, 'What is DCA 467 used for?');
+    await userEvent.setup().click(sendButton);
 
-    expect(mockChatHook.sendMessage).toHaveBeenCalledWith(
+    const currentState = testContext.chatMock.getCurrentValue();
+    expect(currentState.sendMessage).toHaveBeenCalledWith(
       'What is DCA 467 used for?'
     );
   });
 
   it('sends message when Enter key is pressed', async () => {
-    const user = userEvent.setup();
-    render(<ChatInterface />);
+    testContext.renderComponent(<ChatInterface />);
 
     const input = screen.getByPlaceholderText(/ask about chemical products/i);
 
-    await user.type(input, 'Test message');
-    await user.keyboard('{Enter}');
+    await typeIntoInput(input, 'Test message');
+    await userEvent.setup().keyboard('{Enter}');
 
-    expect(mockChatHook.sendMessage).toHaveBeenCalledWith('Test message');
+    const currentState = testContext.chatMock.getCurrentValue();
+    expect(currentState.sendMessage).toHaveBeenCalledWith('Test message');
   });
 
   it('does not send empty messages', async () => {
-    const user = userEvent.setup();
-    render(<ChatInterface />);
+    testContext.renderComponent(<ChatInterface />);
 
     const sendButton = screen.getByRole('button', { name: /send/i });
-    await user.click(sendButton);
+    await userEvent.setup().click(sendButton);
 
-    expect(mockChatHook.sendMessage).not.toHaveBeenCalled();
+    const currentState = testContext.chatMock.getCurrentValue();
+    expect(currentState.sendMessage).not.toHaveBeenCalled();
   });
 
-  it('disables input and button when loading', () => {
-    mockUseChat.mockReturnValue({
-      ...mockChatHook,
-      isLoading: true,
-    });
+  it('disables input and button when loading', async () => {
+    testContext.renderComponent(<ChatInterface />);
 
-    render(<ChatInterface />);
+    // Update to loading state
+    await testContext.updateChat({ isLoading: true });
 
     const input = screen.getByPlaceholderText(/ask about chemical products/i);
     const sendButton = screen.getByRole('button', { name: /send/i });
@@ -182,93 +154,84 @@ describe('ChatInterface', () => {
     expect(sendButton).toBeDisabled();
   });
 
-  it('shows loading indicator when sending message', () => {
-    mockUseChat.mockReturnValue({
-      ...mockChatHook,
-      isLoading: true,
-    });
+  it('shows loading indicator when sending message', async () => {
+    testContext.renderComponent(<ChatInterface />);
 
-    render(<ChatInterface />);
+    // Update to loading state
+    await testContext.updateChat({ isLoading: true });
 
     expect(screen.getByText(/thinking/i)).toBeInTheDocument();
   });
 
-  it('displays error message when there is an error', () => {
-    const mockError = new MockApiError('Failed to send message', 500);
+  it('displays error message when there is an error', async () => {
+    testContext.renderComponent(<ChatInterface />);
 
-    mockUseChat.mockReturnValue({
-      ...mockChatHook,
-      error: mockError,
-    });
-
-    render(<ChatInterface />);
+    const mockError = new ApiError('Failed to send message', 500);
+    await testContext.updateChat({ error: mockError });
 
     expect(screen.getByText('Failed to send message')).toBeInTheDocument();
   });
 
   it('clears messages when new chat button is clicked', async () => {
-    const user = userEvent.setup();
-    render(<ChatInterface />);
+    testContext.renderComponent(<ChatInterface />);
 
     const newChatButton = screen.getByRole('button', { name: /new chat/i });
-    await user.click(newChatButton);
+    await userEvent.setup().click(newChatButton);
 
-    expect(mockConversationsHook.createConversation).toHaveBeenCalled();
+    const currentState = testContext.conversationsMock.getCurrentValue();
+    expect(currentState.createConversation).toHaveBeenCalled();
   });
 
   it('shows conversation sidebar', () => {
-    render(<ChatInterface />);
+    testContext.renderComponent(<ChatInterface />);
 
     expect(screen.getByText('ASA 150 Questions')).toBeInTheDocument();
   });
 
   it('handles conversation selection', async () => {
-    const user = userEvent.setup();
+    // Update to different conversation ID to test selection logic
+    await testContext.updateChat({ conversationId: 'different-conv' });
 
-    // Mock a different conversation ID to test the selection logic
-    mockUseChat.mockReturnValue({
-      ...mockChatHook,
-      conversationId: 'different-conv',
-    });
-
-    render(<ChatInterface />);
+    testContext.renderComponent(<ChatInterface />);
 
     const conversationItem = screen.getByText('ASA 150 Questions');
-    await user.click(conversationItem);
+    await userEvent.setup().click(conversationItem);
 
-    expect(mockChatHook.loadConversation).toHaveBeenCalledWith('conv-123');
+    const currentState = testContext.chatMock.getCurrentValue();
+    expect(currentState.loadConversation).toHaveBeenCalledWith('conv-123');
   });
 
   it('creates new conversation', async () => {
-    const user = userEvent.setup();
-    render(<ChatInterface />);
+    testContext.renderComponent(<ChatInterface />);
 
     const newChatButton = screen.getByRole('button', { name: /new chat/i });
-    await user.click(newChatButton);
+    await userEvent.setup().click(newChatButton);
 
-    expect(mockConversationsHook.createConversation).toHaveBeenCalled();
+    const currentState = testContext.conversationsMock.getCurrentValue();
+    expect(currentState.createConversation).toHaveBeenCalled();
   });
 
   it('displays source information for assistant messages', () => {
-    render(<ChatInterface />);
+    testContext.renderComponent(<ChatInterface />);
 
     expect(screen.getByText('ASA 150 Technical Bulletin')).toBeInTheDocument();
   });
 
   it('handles keyboard shortcuts', async () => {
-    const user = userEvent.setup();
-    render(<ChatInterface />);
+    testContext.renderComponent(<ChatInterface />);
 
     // Test Ctrl+K for new conversation
-    await user.keyboard('{Control>}k{/Control}');
-    expect(mockConversationsHook.createConversation).toHaveBeenCalled();
+    await userEvent.setup().keyboard('{Control>}k{/Control}');
+
+    const currentState = testContext.conversationsMock.getCurrentValue();
+    expect(currentState.createConversation).toHaveBeenCalled();
   });
 
   it('auto-scrolls to bottom when new message is added', async () => {
     const scrollIntoViewMock = vi.fn();
     Element.prototype.scrollIntoView = scrollIntoViewMock;
 
-    const { rerender } = render(<ChatInterface />);
+    testContext.renderComponent(<ChatInterface />);
 
     // Add a new message
     const newMessages = [
@@ -282,12 +245,7 @@ describe('ChatInterface', () => {
       },
     ];
 
-    mockUseChat.mockReturnValue({
-      ...mockChatHook,
-      messages: newMessages,
-    });
-
-    rerender(<ChatInterface />);
+    await testContext.updateChat({ messages: newMessages });
 
     await waitFor(() => {
       expect(scrollIntoViewMock).toHaveBeenCalled();
@@ -295,33 +253,31 @@ describe('ChatInterface', () => {
   });
 
   it('handles message retry on error', async () => {
-    const user = userEvent.setup();
+    testContext.renderComponent(<ChatInterface />);
 
     // Mock an error state
-    const mockError = new MockApiError('Failed to send message', 500);
-    mockUseChat.mockReturnValue({
-      ...mockChatHook,
+    const mockError = new ApiError('Failed to send message', 500);
+    await testContext.updateChat({
       error: mockError,
       isRetryable: true,
     });
 
-    render(<ChatInterface />);
-
     const retryButton = screen.getByRole('button', { name: /retry/i });
-    await user.click(retryButton);
+    await userEvent.setup().click(retryButton);
 
-    expect(mockChatHook.retryLastMessage).toHaveBeenCalled();
+    const currentState = testContext.chatMock.getCurrentValue();
+    expect(currentState.retryLastMessage).toHaveBeenCalled();
   });
 
   it('formats timestamps correctly', () => {
-    render(<ChatInterface />);
+    testContext.renderComponent(<ChatInterface />);
 
     // Check that timestamps are displayed in the conversation sidebar
     // The messages themselves are rendered by ChatHistory/ChatMessage components
     expect(screen.getByText('1/1/2024')).toBeInTheDocument();
   });
 
-  it('handles long messages with proper text wrapping', () => {
+  it('handles long messages with proper text wrapping', async () => {
     const longMessage = 'A'.repeat(1000);
     const messagesWithLongText = [
       {
@@ -333,21 +289,16 @@ describe('ChatInterface', () => {
       },
     ];
 
-    mockUseChat.mockReturnValue({
-      ...mockChatHook,
-      messages: messagesWithLongText,
-    });
+    testContext.renderComponent(<ChatInterface />);
 
-    render(<ChatInterface />);
+    await testContext.updateChat({ messages: messagesWithLongText });
 
     const messageElement = screen.getByText(longMessage);
     expect(messageElement).toBeInTheDocument();
   });
 
   it('supports message selection and copying', async () => {
-    const user = userEvent.setup();
-
-    render(<ChatInterface />);
+    testContext.renderComponent(<ChatInterface />);
 
     // Find the assistant message text
     const assistantMessage = screen.getByText(
@@ -361,7 +312,7 @@ describe('ChatInterface', () => {
     expect(messageContainer).toBeInTheDocument();
 
     // Hover over the message container to make the copy button visible
-    await user.hover(messageContainer!);
+    await userEvent.setup().hover(messageContainer!);
 
     // Wait for hover state
     await new Promise((resolve) => setTimeout(resolve, 100));

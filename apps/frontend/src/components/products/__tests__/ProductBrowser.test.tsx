@@ -2,11 +2,12 @@
  * @vitest-environment jsdom
  */
 
-import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { render, screen, waitFor } from '@testing-library/react';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import ProductBrowser from '../ProductBrowser';
-// ProductSummary type is used implicitly in mockProducts
+import { setupTest, typeIntoInput, waitForDebounce } from '@/test';
+import { ApiError } from '@/lib/api-client';
 
 // Mock the hooks using importOriginal pattern for partial mocking
 vi.mock('@/hooks/useProducts', async (importOriginal) => {
@@ -30,8 +31,6 @@ import {
   useProductFilters,
 } from '@/hooks/useProducts';
 import { useApi } from '@/hooks/useApi';
-import { ApiError } from '@/lib/api-client';
-import { ApiError } from '@/lib/api-client';
 
 const mockUseProducts = vi.mocked(useProducts);
 const mockUseProductDetail = vi.mocked(useProductDetail);
@@ -66,21 +65,19 @@ describe('ProductBrowser', () => {
     },
   ];
 
-  const mockProductsHook = {
-    products: mockProducts,
-    totalCount: mockProducts.length,
-    facets: null,
-    loading: false,
-    error: null,
-    searchProducts: vi.fn(),
-    loadMore: vi.fn(),
-    hasMore: false,
-    retry: vi.fn(),
-    isRetryable: false,
-  };
+  let testContext: ReturnType<typeof setupTest>;
 
   beforeEach(() => {
-    mockUseProducts.mockReturnValue(mockProductsHook);
+    // Setup test with reactive mocks
+    testContext = setupTest({
+      initialProducts: mockProducts,
+      productsLoading: false,
+      productsError: null,
+    });
+
+    // Connect mocks to hook implementations
+    mockUseProducts.mockImplementation(testContext.productsMock.getMock());
+
     mockUseProductDetail.mockReturnValue({
       product: null,
       relatedProducts: [],
@@ -90,6 +87,7 @@ describe('ProductBrowser', () => {
       retry: vi.fn(),
       isRetryable: false,
     });
+
     mockUseProductFilters.mockReturnValue({
       families: ['ASA', 'DCA', 'ECA', 'MHHPA'],
       applications: ['Coatings', 'Adhesives', 'Epoxy Curing', 'Composites'],
@@ -99,6 +97,7 @@ describe('ProductBrowser', () => {
       retry: vi.fn(),
       isRetryable: false,
     });
+
     mockUseApi.mockReturnValue({
       data: null,
       loading: false,
@@ -111,12 +110,8 @@ describe('ProductBrowser', () => {
     });
   });
 
-  afterEach(() => {
-    vi.clearAllMocks();
-  });
-
   it('renders product browser with product list', () => {
-    render(<ProductBrowser />);
+    testContext.renderComponent(<ProductBrowser />);
 
     expect(screen.getByText('Product Catalog')).toBeInTheDocument();
     expect(screen.getByText('ASA 150')).toBeInTheDocument();
@@ -124,27 +119,27 @@ describe('ProductBrowser', () => {
   });
 
   it('renders search input', () => {
-    render(<ProductBrowser />);
+    testContext.renderComponent(<ProductBrowser />);
 
     expect(screen.getByPlaceholderText(/search products/i)).toBeInTheDocument();
   });
 
   it('renders filter controls', () => {
-    render(<ProductBrowser />);
+    testContext.renderComponent(<ProductBrowser />);
 
     expect(screen.getByText('Family')).toBeInTheDocument();
     expect(screen.getByText('Application')).toBeInTheDocument();
   });
 
   it('performs search when search input changes', async () => {
-    const user = userEvent.setup();
-    render(<ProductBrowser />);
+    testContext.renderComponent(<ProductBrowser />);
 
     const searchInput = screen.getByPlaceholderText(/search products/i);
-    await user.type(searchInput, 'ASA');
+    await typeIntoInput(searchInput, 'ASA');
 
-    await waitFor(() => {
-      expect(mockProductsHook.searchProducts).toHaveBeenCalledWith({
+    await waitForDebounce(async () => {
+      const currentState = testContext.productsMock.getCurrentValue();
+      expect(currentState.searchProducts).toHaveBeenCalledWith({
         query: 'ASA',
         family: undefined,
         applications: [],
@@ -153,17 +148,17 @@ describe('ProductBrowser', () => {
   });
 
   it('filters products by family', async () => {
-    const user = userEvent.setup();
-    render(<ProductBrowser />);
+    testContext.renderComponent(<ProductBrowser />);
 
     const familySelect = screen.getByRole('combobox', { name: /family/i });
-    await user.click(familySelect);
+    await userEvent.setup().click(familySelect);
 
     const asaOption = screen.getAllByText('ASA')[0];
-    await user.click(asaOption);
+    await userEvent.setup().click(asaOption);
 
     await waitFor(() => {
-      expect(mockProductsHook.searchProducts).toHaveBeenCalledWith(
+      const currentState = testContext.productsMock.getCurrentValue();
+      expect(currentState.searchProducts).toHaveBeenCalledWith(
         expect.objectContaining({
           family: 'ASA',
           applications: [],
@@ -173,19 +168,19 @@ describe('ProductBrowser', () => {
   });
 
   it('filters products by application', async () => {
-    const user = userEvent.setup();
-    render(<ProductBrowser />);
+    testContext.renderComponent(<ProductBrowser />);
 
     const applicationSelect = screen.getByRole('combobox', {
       name: /application/i,
     });
-    await user.click(applicationSelect);
+    await userEvent.setup().click(applicationSelect);
 
     const coatingsOption = screen.getAllByText('Coatings')[0];
-    await user.click(coatingsOption);
+    await userEvent.setup().click(coatingsOption);
 
     await waitFor(() => {
-      expect(mockProductsHook.searchProducts).toHaveBeenCalledWith(
+      const currentState = testContext.productsMock.getCurrentValue();
+      expect(currentState.searchProducts).toHaveBeenCalledWith(
         expect.objectContaining({
           applications: ['Coatings'],
         })
@@ -194,7 +189,7 @@ describe('ProductBrowser', () => {
   });
 
   it('displays product cards with correct information', () => {
-    render(<ProductBrowser />);
+    testContext.renderComponent(<ProductBrowser />);
 
     // Check ASA 150 card
     expect(screen.getByText('ASA 150')).toBeInTheDocument();
@@ -213,8 +208,6 @@ describe('ProductBrowser', () => {
   });
 
   it('navigates to product detail when card is clicked', async () => {
-    const user = userEvent.setup();
-
     // Mock window.location.href since we're using Astro routing
     const mockLocation = { ...window.location, href: '' };
     Object.defineProperty(window, 'location', {
@@ -223,34 +216,33 @@ describe('ProductBrowser', () => {
       configurable: true,
     });
 
-    render(<ProductBrowser />);
+    testContext.renderComponent(<ProductBrowser />);
 
     const productCard = screen.getByText('ASA 150').closest('div');
-    await user.click(productCard!);
+    await userEvent.setup().click(productCard!);
 
     expect(window.location.href).toBe('/products/asa-150');
   });
 
-  it('shows loading state', () => {
-    mockUseProducts.mockReturnValue({
-      ...mockProductsHook,
+  it('shows loading state', async () => {
+    testContext.renderComponent(<ProductBrowser />);
+
+    // Update to loading state with empty products
+    await testContext.updateProducts({
       loading: true,
       products: [], // Need empty products array for loading state to show
     });
 
-    render(<ProductBrowser />);
-
     expect(screen.getByTestId('product-loading-spinner')).toBeInTheDocument();
   });
 
-  it('shows error state', () => {
-    const mockError = new ApiError('Failed to load products', 500);
-    mockUseProducts.mockReturnValue({
-      ...mockProductsHook,
-      error: mockError,
-    });
+  it('shows error state', async () => {
+    testContext.renderComponent(<ProductBrowser />);
 
-    render(<ProductBrowser />);
+    // Update to error state
+    await testContext.updateProducts({
+      error: 'Failed to load products',
+    });
 
     expect(screen.getByTestId('api-error-display')).toBeInTheDocument();
     expect(screen.getByTestId('error-message')).toBeInTheDocument();
@@ -258,16 +250,15 @@ describe('ProductBrowser', () => {
 
   // New tests for conditional rendering logic (Requirements 2.1, 2.2, 2.3)
   describe('Conditional rendering logic', () => {
-    it('shows only error state when error exists', () => {
-      const mockError = new ApiError('Network error', 0); // Network error
-      mockUseProducts.mockReturnValue({
-        ...mockProductsHook,
-        error: mockError,
+    it('shows only error state when error exists', async () => {
+      testContext.renderComponent(<ProductBrowser />);
+
+      // Update to error state with loading and products (error should take precedence)
+      await testContext.updateProducts({
+        error: 'Network error',
         loading: true, // Even with loading=true, error should take precedence
         products: mockProducts, // Even with products, error should take precedence
       });
-
-      render(<ProductBrowser />);
 
       // Should show error
       expect(screen.getByTestId('api-error-display')).toBeInTheDocument();
@@ -280,15 +271,15 @@ describe('ProductBrowser', () => {
       expect(screen.queryByText('ASA 150')).not.toBeInTheDocument();
     });
 
-    it('shows only loading state when loading and no products exist', () => {
-      mockUseProducts.mockReturnValue({
-        ...mockProductsHook,
+    it('shows only loading state when loading and no products exist', async () => {
+      testContext.renderComponent(<ProductBrowser />);
+
+      // Update to loading state with no products
+      await testContext.updateProducts({
         loading: true,
         products: [], // No products
         error: null,
       });
-
-      render(<ProductBrowser />);
 
       // Should show loading
       expect(screen.getByTestId('product-loading-spinner')).toBeInTheDocument();
@@ -298,15 +289,15 @@ describe('ProductBrowser', () => {
       expect(screen.queryByText('ASA 150')).not.toBeInTheDocument();
     });
 
-    it('shows product list when no error and not in initial loading state', () => {
-      mockUseProducts.mockReturnValue({
-        ...mockProductsHook,
+    it('shows product list when no error and not in initial loading state', async () => {
+      testContext.renderComponent(<ProductBrowser />);
+
+      // Update to normal state with products
+      await testContext.updateProducts({
         loading: false,
         products: mockProducts,
         error: null,
       });
-
-      render(<ProductBrowser />);
 
       // Should show product list
       expect(screen.getByText('ASA 150')).toBeInTheDocument();
@@ -319,15 +310,15 @@ describe('ProductBrowser', () => {
       ).not.toBeInTheDocument();
     });
 
-    it('shows product list even when loading if products already exist', () => {
-      mockUseProducts.mockReturnValue({
-        ...mockProductsHook,
+    it('shows product list even when loading if products already exist', async () => {
+      testContext.renderComponent(<ProductBrowser />);
+
+      // Update to loading state but with existing products
+      await testContext.updateProducts({
         loading: true, // Loading more products
         products: mockProducts, // But already have some products
         error: null,
       });
-
-      render(<ProductBrowser />);
 
       // Should show product list (not initial loading)
       expect(screen.getByText('ASA 150')).toBeInTheDocument();
@@ -342,15 +333,14 @@ describe('ProductBrowser', () => {
       expect(screen.queryByTestId('api-error-display')).not.toBeInTheDocument();
     });
 
-    it('passes null error to ProductList when error is handled above', () => {
-      const mockError = new ApiError('Network error', 0);
-      mockUseProducts.mockReturnValue({
-        ...mockProductsHook,
-        error: mockError,
+    it('passes null error to ProductList when error is handled above', async () => {
+      testContext.renderComponent(<ProductBrowser />);
+
+      // Update to error state
+      await testContext.updateProducts({
+        error: 'Network error',
         products: [],
       });
-
-      render(<ProductBrowser />);
 
       // Error should be handled by ApiErrorDisplay, not passed to ProductList
       expect(screen.getByTestId('api-error-display')).toBeInTheDocument();
@@ -362,17 +352,14 @@ describe('ProductBrowser', () => {
 
   // New tests for ApiErrorDisplay integration (Requirements 2.2, 2.3)
   describe('ApiErrorDisplay integration', () => {
-    it('displays error with retry functionality', () => {
-      const mockRetry = vi.fn();
-      const mockError = new ApiError('Network error', 0); // Network error is retryable
-      mockUseProducts.mockReturnValue({
-        ...mockProductsHook,
-        error: mockError,
-        retry: mockRetry,
+    it('displays error with retry functionality', async () => {
+      testContext.renderComponent(<ProductBrowser />);
+
+      // Update to error state with retry functionality
+      await testContext.updateProducts({
+        error: 'Network error',
         isRetryable: true,
       });
-
-      render(<ProductBrowser />);
 
       expect(screen.getByTestId('api-error-display')).toBeInTheDocument();
       expect(screen.getByTestId('error-message')).toBeInTheDocument();
@@ -380,68 +367,62 @@ describe('ProductBrowser', () => {
     });
 
     it('calls searchProducts when retry is clicked', async () => {
-      const user = userEvent.setup();
-      const mockRetry = vi.fn();
-      const mockSearchProducts = vi.fn();
-      const mockError = new ApiError('Network error', 0);
+      testContext.renderComponent(<ProductBrowser />);
 
-      mockUseProducts.mockReturnValue({
-        ...mockProductsHook,
-        error: mockError,
-        retry: mockRetry,
+      // Update to error state with retry functionality
+      await testContext.updateProducts({
+        error: 'Network error',
         isRetryable: true,
-        searchProducts: mockSearchProducts,
       });
 
-      render(<ProductBrowser />);
-
       const retryButton = screen.getByTestId('retry-button');
-      await user.click(retryButton);
+      await userEvent.setup().click(retryButton);
 
-      expect(mockSearchProducts).toHaveBeenCalled();
+      const currentState = testContext.productsMock.getCurrentValue();
+      expect(currentState.searchProducts).toHaveBeenCalled();
     });
 
-    it('uses context-specific test ID for loading state', () => {
-      mockUseProducts.mockReturnValue({
-        ...mockProductsHook,
+    it('uses context-specific test ID for loading state', async () => {
+      testContext.renderComponent(<ProductBrowser />);
+
+      // Update to loading state
+      await testContext.updateProducts({
         loading: true,
         products: [],
         error: null,
       });
-
-      render(<ProductBrowser />);
 
       // Should use product-specific loading spinner test ID
       expect(screen.getByTestId('product-loading-spinner')).toBeInTheDocument();
     });
   });
 
-  it('shows empty state when no products found', () => {
-    mockUseProducts.mockReturnValue({
-      ...mockProductsHook,
+  it('shows empty state when no products found', async () => {
+    testContext.renderComponent(<ProductBrowser />);
+
+    // Update to empty state
+    await testContext.updateProducts({
       products: [],
     });
-
-    render(<ProductBrowser />);
 
     expect(screen.getByText(/no products found/i)).toBeInTheDocument();
   });
 
   it('clears filters when clear button is clicked', async () => {
-    const user = userEvent.setup();
-    render(<ProductBrowser />);
+    testContext.renderComponent(<ProductBrowser />);
 
     // Apply some filters first
     const familySelect = screen.getByRole('combobox', { name: /family/i });
-    await user.click(familySelect);
-    await user.click(screen.getAllByText('ASA')[0]);
+    await userEvent.setup().click(familySelect);
+    await userEvent.setup().click(screen.getAllByText('ASA')[0]);
 
     // Clear filters
     const clearButton = screen.getByRole('button', { name: /clear filters/i });
-    await user.click(clearButton);
+    await userEvent.setup().click(clearButton);
 
     await waitFor(() => {
-      expect(mockProductsHook.searchProducts).toHaveBeenCalledWith({
+      const currentState = testContext.productsMock.getCurrentValue();
+      expect(currentState.searchProducts).toHaveBeenCalledWith({
         query: '',
         family: undefined,
         applications: [],
@@ -452,110 +433,96 @@ describe('ProductBrowser', () => {
   // New tests for ProductFilters clear functionality (Requirements 2.4)
   describe('ProductFilters clear functionality', () => {
     it('passes empty object when clearing filters instead of default values', async () => {
-      const user = userEvent.setup();
-      const mockSearchProducts = vi.fn();
-
-      mockUseProducts.mockReturnValue({
-        ...mockProductsHook,
-        searchProducts: mockSearchProducts,
-      });
-
-      render(<ProductBrowser />);
+      testContext.renderComponent(<ProductBrowser />);
 
       // Apply some filters first
       const familySelect = screen.getByRole('combobox', { name: /family/i });
-      await user.click(familySelect);
-      await user.click(screen.getAllByText('ASA')[0]);
+      await userEvent.setup().click(familySelect);
+      await userEvent.setup().click(screen.getAllByText('ASA')[0]);
 
       // Clear the mock calls from filter application
-      mockSearchProducts.mockClear();
+      const currentState = testContext.productsMock.getCurrentValue();
+      currentState.searchProducts.mockClear();
 
       // Clear filters
       const clearButton = screen.getByRole('button', {
         name: /clear filters/i,
       });
-      await user.click(clearButton);
+      await userEvent.setup().click(clearButton);
 
       await waitFor(() => {
         // Should pass empty object {}, not default values
-        expect(mockSearchProducts).toHaveBeenCalledWith({});
+        expect(currentState.searchProducts).toHaveBeenCalledWith({});
       });
     });
 
     it('accepts clearing flag parameter in handleFiltersChange', async () => {
-      const user = userEvent.setup();
-      const mockSearchProducts = vi.fn();
-
-      mockUseProducts.mockReturnValue({
-        ...mockProductsHook,
-        searchProducts: mockSearchProducts,
-      });
-
-      render(<ProductBrowser />);
+      testContext.renderComponent(<ProductBrowser />);
 
       // Apply a filter first
       const familySelect = screen.getByRole('combobox', { name: /family/i });
-      await user.click(familySelect);
-      await user.click(screen.getAllByText('ASA')[0]);
+      await userEvent.setup().click(familySelect);
+      await userEvent.setup().click(screen.getAllByText('ASA')[0]);
 
       // Verify filter was applied
       await waitFor(() => {
-        expect(mockSearchProducts).toHaveBeenCalledWith(
+        const currentState = testContext.productsMock.getCurrentValue();
+        expect(currentState.searchProducts).toHaveBeenCalledWith(
           expect.objectContaining({ family: 'ASA' })
         );
       });
 
-      mockSearchProducts.mockClear();
+      const currentState = testContext.productsMock.getCurrentValue();
+      currentState.searchProducts.mockClear();
 
       // Clear filters - this should call handleFiltersChange with clearing flag
       const clearButton = screen.getByRole('button', {
         name: /clear filters/i,
       });
-      await user.click(clearButton);
+      await userEvent.setup().click(clearButton);
 
       await waitFor(() => {
         // Should pass empty object when clearing
-        expect(mockSearchProducts).toHaveBeenCalledWith({});
+        expect(currentState.searchProducts).toHaveBeenCalledWith({});
       });
     });
   });
 
   it('displays product count', () => {
-    render(<ProductBrowser />);
+    testContext.renderComponent(<ProductBrowser />);
 
     expect(screen.getByText('2 products')).toBeInTheDocument();
   });
 
   it('supports keyboard navigation', async () => {
-    const user = userEvent.setup();
-    render(<ProductBrowser />);
+    testContext.renderComponent(<ProductBrowser />);
 
     const searchInput = screen.getByPlaceholderText(/search products/i);
     searchInput.focus();
 
     // Tab to family filter
-    await user.keyboard('{Tab}');
+    await userEvent.setup().keyboard('{Tab}');
     expect(screen.getByRole('combobox', { name: /family/i })).toHaveFocus();
 
     // Tab to application filter
-    await user.keyboard('{Tab}');
+    await userEvent.setup().keyboard('{Tab}');
     expect(
       screen.getByRole('combobox', { name: /application/i })
     ).toHaveFocus();
   });
 
   it('handles search debouncing', async () => {
-    const user = userEvent.setup();
-    render(<ProductBrowser />);
+    testContext.renderComponent(<ProductBrowser />);
 
     const searchInput = screen.getByPlaceholderText(/search products/i);
 
     // Type quickly
-    await user.type(searchInput, 'ASA');
+    await typeIntoInput(searchInput, 'ASA');
 
     // Should debounce and only call once after delay
-    await waitFor(() => {
-      expect(mockProductsHook.searchProducts).toHaveBeenCalledTimes(1);
+    await waitForDebounce(async () => {
+      const currentState = testContext.productsMock.getCurrentValue();
+      expect(currentState.searchProducts).toHaveBeenCalledTimes(1);
     });
   });
 

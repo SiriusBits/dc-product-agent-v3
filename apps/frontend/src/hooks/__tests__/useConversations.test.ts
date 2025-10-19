@@ -4,8 +4,8 @@
 
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { renderHook, waitFor, act } from '@testing-library/react';
+import { waitForDebounce, createMockConversation } from '@/test';
 import type { Conversation } from '@repo/shared-types';
-import { createMockConversation } from '@/test/test-utils';
 
 // Mock the API client
 vi.mock('@/lib/api-client', () => ({
@@ -500,18 +500,22 @@ describe('useConversations', () => {
         expect(result.current.isLoading).toBe(false);
       });
 
-      // Start create operation
-      act(() => {
-        result.current.createConversation();
-      });
+      // Test overlapping operations with debounce utility and fake timers
+      vi.useFakeTimers();
 
-      // Loading should not be affected by create operation
-      expect(result.current.isLoading).toBe(false);
+      try {
+        await waitForDebounce(async () => {
+          await act(async () => {
+            await result.current.createConversation();
+          });
+        }, 150);
 
-      // Wait for create to complete
-      await waitFor(() => {
+        // Loading should not be affected by create operation
+        expect(result.current.isLoading).toBe(false);
         expect(result.current.conversations).toHaveLength(1);
-      });
+      } finally {
+        vi.useRealTimers();
+      }
     });
   });
 

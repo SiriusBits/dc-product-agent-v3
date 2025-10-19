@@ -1,7 +1,8 @@
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { ApiErrorDisplay, InlineApiError } from '../ApiErrorDisplay';
+import { setupTest } from '@/test';
 
 // Mock ApiError class for testing
 class MockApiError extends Error {
@@ -33,13 +34,21 @@ class MockApiError extends Error {
 }
 
 describe('ApiErrorDisplay', () => {
+  let testContext: ReturnType<typeof setupTest>;
+
+  beforeEach(() => {
+    testContext = setupTest();
+  });
+
   // New tests for button text consistency (Requirements 3.1)
   describe('Button text consistency', () => {
     it('displays "Retry" text consistently for retryable errors', () => {
       const mockError = new MockApiError('Network error', 0);
       const mockOnRetry = vi.fn();
 
-      render(<ApiErrorDisplay error={mockError} onRetry={mockOnRetry} />);
+      testContext.renderComponent(
+        <ApiErrorDisplay error={mockError} onRetry={mockOnRetry} />
+      );
 
       const retryButton = screen.getByTestId('retry-button');
       expect(retryButton).toHaveTextContent('Retry');
@@ -50,20 +59,23 @@ describe('ApiErrorDisplay', () => {
       const mockError = new MockApiError('Bad request', 400);
       const mockOnRetry = vi.fn();
 
-      render(<ApiErrorDisplay error={mockError} onRetry={mockOnRetry} />);
+      testContext.renderComponent(
+        <ApiErrorDisplay error={mockError} onRetry={mockOnRetry} />
+      );
 
       expect(screen.queryByTestId('retry-button')).not.toBeInTheDocument();
     });
 
     it('calls retry handler when retry button is clicked', async () => {
-      const user = userEvent.setup();
       const mockError = new MockApiError('Server error', 500);
       const mockOnRetry = vi.fn();
 
-      render(<ApiErrorDisplay error={mockError} onRetry={mockOnRetry} />);
+      testContext.renderComponent(
+        <ApiErrorDisplay error={mockError} onRetry={mockOnRetry} />
+      );
 
       const retryButton = screen.getByTestId('retry-button');
-      await user.click(retryButton);
+      await userEvent.setup().click(retryButton);
 
       expect(mockOnRetry).toHaveBeenCalledTimes(1);
     });
@@ -72,7 +84,9 @@ describe('ApiErrorDisplay', () => {
       const mockError = new MockApiError('Network error', 0);
       const mockOnRetry = vi.fn();
 
-      render(<ApiErrorDisplay error={mockError} onRetry={mockOnRetry} />);
+      testContext.renderComponent(
+        <ApiErrorDisplay error={mockError} onRetry={mockOnRetry} />
+      );
 
       const retryButton = screen.getByTestId('retry-button');
 
@@ -91,35 +105,35 @@ describe('ApiErrorDisplay', () => {
   describe('Error display modes', () => {
     it('shows appropriate error title for network errors', () => {
       const mockError = new MockApiError('Network error', 0);
-      render(<ApiErrorDisplay error={mockError} />);
+      testContext.renderComponent(<ApiErrorDisplay error={mockError} />);
 
       expect(screen.getByText('Connection Error')).toBeInTheDocument();
     });
 
     it('shows appropriate error title for server errors', () => {
       const mockError = new MockApiError('Internal server error', 500);
-      render(<ApiErrorDisplay error={mockError} />);
+      testContext.renderComponent(<ApiErrorDisplay error={mockError} />);
 
       expect(screen.getByText('Server Error')).toBeInTheDocument();
     });
 
     it('shows appropriate error title for 404 errors', () => {
       const mockError = new MockApiError('Not found', 404);
-      render(<ApiErrorDisplay error={mockError} />);
+      testContext.renderComponent(<ApiErrorDisplay error={mockError} />);
 
       expect(screen.getByText('Not Found')).toBeInTheDocument();
     });
 
     it('shows appropriate error title for 403 errors', () => {
       const mockError = new MockApiError('Forbidden', 403);
-      render(<ApiErrorDisplay error={mockError} />);
+      testContext.renderComponent(<ApiErrorDisplay error={mockError} />);
 
       expect(screen.getByText('Access Denied')).toBeInTheDocument();
     });
 
     it('shows appropriate error title for 401 errors', () => {
       const mockError = new MockApiError('Unauthorized', 401);
-      render(<ApiErrorDisplay error={mockError} />);
+      testContext.renderComponent(<ApiErrorDisplay error={mockError} />);
 
       expect(screen.getByText('Authentication Required')).toBeInTheDocument();
     });
@@ -209,7 +223,9 @@ describe('InlineApiError', () => {
       const mockError = new MockApiError('Network error', 0);
       const mockOnRetry = vi.fn();
 
-      render(<InlineApiError error={mockError} onRetry={mockOnRetry} />);
+      testContext.renderComponent(
+        <InlineApiError error={mockError} onRetry={mockOnRetry} />
+      );
 
       const retryButton = screen.getByTestId('retry-button');
       expect(retryButton).toHaveTextContent('Retry');
@@ -220,20 +236,23 @@ describe('InlineApiError', () => {
       const mockError = new MockApiError('Bad request', 400);
       const mockOnRetry = vi.fn();
 
-      render(<InlineApiError error={mockError} onRetry={mockOnRetry} />);
+      testContext.renderComponent(
+        <InlineApiError error={mockError} onRetry={mockOnRetry} />
+      );
 
       expect(screen.queryByTestId('retry-button')).not.toBeInTheDocument();
     });
 
     it('calls retry handler when inline retry button is clicked', async () => {
-      const user = userEvent.setup();
       const mockError = new MockApiError('Server error', 500);
       const mockOnRetry = vi.fn();
 
-      render(<InlineApiError error={mockError} onRetry={mockOnRetry} />);
+      testContext.renderComponent(
+        <InlineApiError error={mockError} onRetry={mockOnRetry} />
+      );
 
       const retryButton = screen.getByTestId('retry-button');
-      await user.click(retryButton);
+      await userEvent.setup().click(retryButton);
 
       expect(mockOnRetry).toHaveBeenCalledTimes(1);
     });
@@ -242,7 +261,9 @@ describe('InlineApiError', () => {
       const mockError = new MockApiError('Network error', 0);
       const mockOnRetry = vi.fn();
 
-      render(<InlineApiError error={mockError} onRetry={mockOnRetry} />);
+      testContext.renderComponent(
+        <InlineApiError error={mockError} onRetry={mockOnRetry} />
+      );
 
       const container = screen.getByTestId('inline-api-error');
       expect(container).toHaveClass('flex', 'items-center', 'gap-2');
@@ -255,7 +276,7 @@ describe('InlineApiError', () => {
   describe('Inline error display', () => {
     it('shows error message in inline format', () => {
       const mockError = new MockApiError('Network connection failed', 0);
-      render(<InlineApiError error={mockError} />);
+      testContext.renderComponent(<InlineApiError error={mockError} />);
 
       expect(screen.getByText('Network connection failed')).toBeInTheDocument();
       expect(screen.getByTestId('inline-api-error')).toBeInTheDocument();
@@ -263,7 +284,7 @@ describe('InlineApiError', () => {
 
     it('shows alert triangle icon', () => {
       const mockError = new MockApiError('Error', 500);
-      render(<InlineApiError error={mockError} />);
+      testContext.renderComponent(<InlineApiError error={mockError} />);
 
       const icon = screen.getByTestId('inline-api-error').querySelector('svg');
       expect(icon).toBeInTheDocument();
@@ -271,7 +292,9 @@ describe('InlineApiError', () => {
 
     it('applies custom className', () => {
       const mockError = new MockApiError('Error', 500);
-      render(<InlineApiError error={mockError} className="custom-class" />);
+      testContext.renderComponent(
+        <InlineApiError error={mockError} className="custom-class" />
+      );
 
       const container = screen.getByTestId('inline-api-error');
       expect(container).toHaveClass('custom-class');

@@ -10,7 +10,7 @@ import type {
   ChatMessage as ChatMessageType,
   RetrievalResult,
 } from '@repo/shared-types';
-import { render } from '@/test/enhanced-test-utils';
+import { render } from '@/test';
 
 describe('Source Interaction and Expansion', () => {
   const mockSources: RetrievalResult[] = [

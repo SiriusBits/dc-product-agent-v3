@@ -1,5 +1,14 @@
 /**
  * Test utilities for frontend testing
+ *
+ * ⚠️  DEPRECATED: This file is deprecated and will be removed in a future version.
+ * Please migrate to the new unified test infrastructure:
+ *
+ * - Use `setupTest()` from '@/test/enhanced-setup' instead of `setupMocks()`
+ * - Use reactive mock updates with `updateChat()`, `updateProducts()`, etc.
+ * - See MIGRATION-GUIDE.md for detailed migration instructions
+ *
+ * @deprecated Use @/test/enhanced-setup instead
  */
 
 import React from 'react';
@@ -399,6 +408,8 @@ export const mockScrollIntoView = () => {
 /**
  * Sets up all mocks with standardized defaults
  * Call this in beforeEach to ensure consistent mock state
+ *
+ * @deprecated Use setupTest() from '@/test/enhanced-setup' instead
  */
 export const setupMocks = (
   options: {
@@ -435,6 +446,8 @@ export const setupMocks = (
 /**
  * Updates a specific hook mock with new return values
  * Useful for testing state changes during a test
+ *
+ * @deprecated Use reactive mock updates from setupTest() context instead
  */
 export const updateMockHook = <
   T extends 'useChat' | 'useProducts' | 'useConversations',
@@ -494,6 +507,9 @@ export const resetMocks = () => {
 };
 
 // Setup function for common test setup with enhanced mock control
+/**
+ * @deprecated Use setupTest() from '@/test/enhanced-setup' instead
+ */
 export const setupTest = (
   options: {
     enableControlledPromises?: boolean;

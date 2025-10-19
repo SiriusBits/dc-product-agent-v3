@@ -6,13 +6,15 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import ProductBrowser from '@/components/products/ProductBrowser';
-import { render } from '@/test/test-utils';
 import {
+  setupTest,
+  typeIntoInput,
   createMockUseProductsReturn,
   createMockProduct,
   createMockProducts,
   createMockSearchFacets,
-} from '@/test/standardized-mocks';
+  render,
+} from '@/test';
 
 // Mock the useProducts hooks
 vi.mock('@/hooks/useProducts', async (importOriginal) => {
@@ -32,18 +34,19 @@ import {
 } from '@/hooks/useProducts';
 
 describe('Product Search Integration', () => {
-  beforeEach(() => {
-    vi.clearAllMocks();
+  let testContext: ReturnType<typeof setupTest>;
 
-    // Setup default mock returns
-    vi.mocked(useProducts).mockReturnValue(
-      createMockUseProductsReturn({
-        products: [],
-        totalCount: 0,
-        facets: null,
-        loading: false,
-        error: null,
-      })
+  beforeEach(() => {
+    testContext = setupTest({
+      enableAutoCleanup: true,
+      mockSessionStorage: true,
+      initialProducts: [],
+      productsLoading: false,
+    });
+
+    // Setup default mock returns using reactive mocks
+    vi.mocked(useProducts).mockImplementation(
+      testContext.productsMock.getMock()
     );
 
     vi.mocked(useProductDetail).mockReturnValue({
@@ -67,33 +70,29 @@ describe('Product Search Integration', () => {
     });
   });
 
-  afterEach(() => {
-    vi.clearAllMocks();
-  });
-
   // ============================================================================
   // 6.1 Focused Product Rendering Tests
   // ============================================================================
 
   describe('Product Rendering', () => {
     it('renders ProductBrowser with empty products', async () => {
-      // Arrange: Setup mock with empty products
-      vi.mocked(useProducts).mockReturnValue(
-        createMockUseProductsReturn({
-          products: [],
-          totalCount: 0,
-          facets: null,
-          loading: false,
-          error: null,
-        })
-      );
+      // Arrange: Setup mock with empty products (already set by default)
+      await testContext.updateProducts({
+        products: [],
+        totalCount: 0,
+        facets: null,
+        loading: false,
+        error: null,
+      });
 
       // Act: Render component
-      render(<ProductBrowser />);
+      const { getByTestId, getByText } = testContext.renderComponent(
+        <ProductBrowser />
+      );
 
       // Assert: Verify component renders and shows empty state
-      expect(screen.getByTestId('product-browser')).toBeInTheDocument();
-      expect(screen.getByText('Product Browser')).toBeInTheDocument();
+      expect(getByTestId('product-browser')).toBeInTheDocument();
+      expect(getByText('Product Browser')).toBeInTheDocument();
 
       // Wait for empty state to appear
       await waitFor(() => {
@@ -111,27 +110,27 @@ describe('Product Search Integration', () => {
       mockProducts[1].name = 'ASA 140';
       mockProducts[2].name = 'DCA 467';
 
-      vi.mocked(useProducts).mockReturnValue(
-        createMockUseProductsReturn({
-          products: mockProducts,
-          totalCount: 3,
-          facets: createMockSearchFacets(),
-          loading: false,
-          error: null,
-        })
-      );
+      await testContext.updateProducts({
+        products: mockProducts,
+        totalCount: 3,
+        facets: createMockSearchFacets(),
+        loading: false,
+        error: null,
+      });
 
       // Act: Render component
-      render(<ProductBrowser />);
+      const { getByText, getByTestId } = testContext.renderComponent(
+        <ProductBrowser />
+      );
 
       // Assert: Verify all products are displayed
       await waitFor(() => {
-        expect(screen.getByText('ASA 150')).toBeInTheDocument();
+        expect(getByText('ASA 150')).toBeInTheDocument();
       });
 
-      expect(screen.getByText('ASA 140')).toBeInTheDocument();
-      expect(screen.getByText('DCA 467')).toBeInTheDocument();
-      expect(screen.getByTestId('product-list')).toBeInTheDocument();
+      expect(getByText('ASA 140')).toBeInTheDocument();
+      expect(getByText('DCA 467')).toBeInTheDocument();
+      expect(getByTestId('product-list')).toBeInTheDocument();
     });
 
     it('displays product count correctly', async () => {
@@ -224,26 +223,25 @@ describe('Product Search Integration', () => {
 
     it('typing in search calls setSearchTerm', async () => {
       // Arrange: Setup mock with spy on searchProducts
-      const user = userEvent.setup();
       const mockSearchProducts = vi.fn().mockResolvedValue(undefined);
       const mockProducts = createMockProducts(2);
 
-      vi.mocked(useProducts).mockReturnValue(
-        createMockUseProductsReturn({
-          products: mockProducts,
-          totalCount: 2,
-          facets: createMockSearchFacets(),
-          loading: false,
-          error: null,
-          searchProducts: mockSearchProducts,
-        })
+      await testContext.updateProducts({
+        products: mockProducts,
+        totalCount: 2,
+        facets: createMockSearchFacets(),
+        loading: false,
+        error: null,
+        searchProducts: mockSearchProducts,
+      });
+
+      const { getByPlaceholderText } = testContext.renderComponent(
+        <ProductBrowser />
       );
 
-      render(<ProductBrowser />);
-
-      // Act: Type in search input
-      const searchInput = screen.getByPlaceholderText(/search products/i);
-      await user.type(searchInput, 'ASA');
+      // Act: Type in search input using enhanced input utility
+      const searchInput = getByPlaceholderText(/search products/i);
+      await typeIntoInput(searchInput, 'ASA');
 
       // Assert: Verify searchProducts was called with search term
       await waitFor(() => {
