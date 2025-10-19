@@ -30,6 +30,8 @@ import {
   useProductFilters,
 } from '@/hooks/useProducts';
 import { useApi } from '@/hooks/useApi';
+import { ApiError } from '@/lib/api-client';
+import { ApiError } from '@/lib/api-client';
 
 const mockUseProducts = vi.mocked(useProducts);
 const mockUseProductDetail = vi.mocked(useProductDetail);
@@ -242,22 +244,25 @@ describe('ProductBrowser', () => {
   });
 
   it('shows error state', () => {
+    const mockError = new ApiError('Failed to load products', 500);
     mockUseProducts.mockReturnValue({
       ...mockProductsHook,
-      error: 'Failed to load products',
+      error: mockError,
     });
 
     render(<ProductBrowser />);
 
-    expect(screen.getByText('Failed to load products')).toBeInTheDocument();
+    expect(screen.getByTestId('api-error-display')).toBeInTheDocument();
+    expect(screen.getByTestId('error-message')).toBeInTheDocument();
   });
 
   // New tests for conditional rendering logic (Requirements 2.1, 2.2, 2.3)
   describe('Conditional rendering logic', () => {
     it('shows only error state when error exists', () => {
+      const mockError = new ApiError('Network error', 0); // Network error
       mockUseProducts.mockReturnValue({
         ...mockProductsHook,
-        error: 'Network error',
+        error: mockError,
         loading: true, // Even with loading=true, error should take precedence
         products: mockProducts, // Even with products, error should take precedence
       });
@@ -266,7 +271,7 @@ describe('ProductBrowser', () => {
 
       // Should show error
       expect(screen.getByTestId('api-error-display')).toBeInTheDocument();
-      expect(screen.getByText('Network error')).toBeInTheDocument();
+      expect(screen.getByTestId('error-message')).toBeInTheDocument();
 
       // Should NOT show loading or product list
       expect(
@@ -338,9 +343,10 @@ describe('ProductBrowser', () => {
     });
 
     it('passes null error to ProductList when error is handled above', () => {
+      const mockError = new ApiError('Network error', 0);
       mockUseProducts.mockReturnValue({
         ...mockProductsHook,
-        error: 'Network error',
+        error: mockError,
         products: [],
       });
 
@@ -358,9 +364,10 @@ describe('ProductBrowser', () => {
   describe('ApiErrorDisplay integration', () => {
     it('displays error with retry functionality', () => {
       const mockRetry = vi.fn();
+      const mockError = new ApiError('Network error', 0); // Network error is retryable
       mockUseProducts.mockReturnValue({
         ...mockProductsHook,
-        error: 'Network error',
+        error: mockError,
         retry: mockRetry,
         isRetryable: true,
       });
@@ -368,7 +375,7 @@ describe('ProductBrowser', () => {
       render(<ProductBrowser />);
 
       expect(screen.getByTestId('api-error-display')).toBeInTheDocument();
-      expect(screen.getByText('Network error')).toBeInTheDocument();
+      expect(screen.getByTestId('error-message')).toBeInTheDocument();
       expect(screen.getByTestId('retry-button')).toBeInTheDocument();
     });
 
@@ -376,10 +383,11 @@ describe('ProductBrowser', () => {
       const user = userEvent.setup();
       const mockRetry = vi.fn();
       const mockSearchProducts = vi.fn();
+      const mockError = new ApiError('Network error', 0);
 
       mockUseProducts.mockReturnValue({
         ...mockProductsHook,
-        error: 'Network error',
+        error: mockError,
         retry: mockRetry,
         isRetryable: true,
         searchProducts: mockSearchProducts,

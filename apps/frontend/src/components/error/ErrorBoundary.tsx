@@ -164,7 +164,7 @@ export class ErrorBoundary extends Component<
                 data-testid="error-boundary-retry"
               >
                 <RefreshCw className="h-4 w-4" />
-                Try Again
+                Retry
               </Button>
 
               {level === 'page' && (

@@ -125,6 +125,7 @@ interface LoadingOverlayProps {
   message?: string;
   children: React.ReactNode;
   className?: string;
+  testId?: string;
 }
 
 export function LoadingOverlay({
@@ -132,6 +133,7 @@ export function LoadingOverlay({
   message = 'Loading...',
   children,
   className,
+  testId = 'loading-overlay-spinner',
 }: LoadingOverlayProps) {
   return (
     <div className={cn('relative', className)}>
@@ -139,7 +141,7 @@ export function LoadingOverlay({
       {isLoading && (
         <div className="absolute inset-0 bg-background/80 backdrop-blur-sm flex items-center justify-center z-50">
           <div className="flex items-center gap-2 bg-background border rounded-lg p-4 shadow-lg">
-            <LoadingSpinner />
+            <LoadingSpinner testId={testId} />
             <span className="text-sm">{message}</span>
           </div>
         </div>
@@ -154,11 +156,13 @@ interface ProgressiveLoadingProps {
     completed: boolean;
   }>;
   className?: string;
+  testId?: string;
 }
 
 export function ProgressiveLoading({
   stages,
   className,
+  testId = 'progressive-loading-spinner',
 }: ProgressiveLoadingProps) {
   const currentStage = stages.findIndex((stage) => !stage.completed);
   const progress =
@@ -185,7 +189,7 @@ export function ProgressiveLoading({
             {stage.completed ? (
               <div className="h-2 w-2 bg-green-500 rounded-full" />
             ) : index === currentStage ? (
-              <LoadingSpinner size="sm" />
+              <LoadingSpinner size="sm" testId={`${testId}-stage-${index}`} />
             ) : (
               <div className="h-2 w-2 bg-muted rounded-full" />
             )}

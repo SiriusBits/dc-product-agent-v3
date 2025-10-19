@@ -84,6 +84,18 @@ describe('ErrorBoundary', () => {
     expect(screen.getByTestId('error-boundary-retry')).toBeInTheDocument();
   });
 
+  it('displays "Retry" button text consistently', () => {
+    render(
+      <ErrorBoundary>
+        <ThrowError shouldThrow={true} />
+      </ErrorBoundary>
+    );
+
+    const retryButton = screen.getByTestId('error-boundary-retry');
+    expect(retryButton).toHaveTextContent('Retry');
+    expect(retryButton).not.toHaveTextContent('Try Again');
+  });
+
   it('calls custom error handler when provided', () => {
     const onError = vi.fn();
 

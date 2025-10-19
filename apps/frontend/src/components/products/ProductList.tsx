@@ -217,7 +217,10 @@ export function ProductList({
       {/* Loading indicator for initial load */}
       {loading && products.length === 0 && (
         <div className="py-8" data-testid="product-loading">
-          <LoadingState message="Loading products..." />
+          <LoadingState
+            message="Loading products..."
+            testId="product-list-loading-spinner"
+          />
         </div>
       )}
 

@@ -253,7 +253,7 @@ export default function ProductBrowser() {
             {/* Product List */}
             <div className="lg:col-span-3">
               {productsError ? (
-                // Show error state when productsError exists
+                // Show error state when productsError exists - takes precedence over loading and products
                 <div data-testid="product-error">
                   {typeof productsError === 'string' ? (
                     <div className="text-destructive p-4 space-y-3">
@@ -261,6 +261,7 @@ export default function ProductBrowser() {
                       <button
                         onClick={() => searchProducts(currentSearchParams)}
                         className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 px-3"
+                        data-testid="retry-button"
                       >
                         Retry
                       </button>
@@ -273,7 +274,7 @@ export default function ProductBrowser() {
                   )}
                 </div>
               ) : productsLoading && displayProducts.length === 0 ? (
-                // Show loading state when productsLoading is true and no products exist
+                // Show loading state only when loading and no products exist
                 <div data-testid="product-loading">
                   <LoadingState
                     message="Loading products..."
@@ -281,7 +282,7 @@ export default function ProductBrowser() {
                   />
                 </div>
               ) : (
-                // Show product list only when no error and not in initial loading state
+                // Show product list when no error and not in initial loading state
                 <div data-testid="product-list">
                   <ProductList
                     products={displayProducts}
