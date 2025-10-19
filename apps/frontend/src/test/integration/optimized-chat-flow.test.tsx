@@ -6,37 +6,52 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import ChatInterface from '@/components/chat/ChatInterface';
-import { render } from '@/test/enhanced-test-utils';
-import {
-  setupOptimizedMocks,
-  cleanupOptimizedMocks,
-  createOptimizedChatMessage,
-  createOptimizedConversation,
-} from '@/test/optimized-mocks';
-import { optimizedTestUtils } from '@/test/optimized-setup';
+import { setupTest } from '@/test/enhanced-setup';
 import { ApiError } from '@/lib/api-client';
+import { optimizedTestUtils } from '../optimized-setup';
+import { render } from 'astro:content';
+import { render } from 'astro:content';
+import { optimizedTestUtils } from '../optimized-setup';
+import { optimizedTestUtils } from '../optimized-setup';
+import { render } from 'astro:content';
+import { setupOptimizedMocks } from '../optimized-mocks';
+import { createOptimizedChatMessage } from '../optimized-mocks';
+import { optimizedTestUtils } from '../optimized-setup';
+import { optimizedTestUtils } from '../optimized-setup';
+import { render } from 'astro:content';
+import { optimizedTestUtils } from '../optimized-setup';
+import { render } from 'astro:content';
+import { optimizedTestUtils } from '../optimized-setup';
+import { optimizedTestUtils } from '../optimized-setup';
+import { render } from 'astro:content';
+import { optimizedTestUtils } from '../optimized-setup';
+import { optimizedTestUtils } from '../optimized-setup';
+import { optimizedTestUtils } from '../optimized-setup';
+import { render } from 'astro:content';
+import { optimizedTestUtils } from '../optimized-setup';
+import { optimizedTestUtils } from '../optimized-setup';
+import { render } from 'astro:content';
+import { setupOptimizedMocks } from '../optimized-mocks';
+import { optimizedTestUtils } from '../optimized-setup';
+import { render } from 'astro:content';
+import { setupOptimizedMocks } from '../optimized-mocks';
+import { createOptimizedChatMessage } from '../optimized-mocks';
+import { createOptimizedConversation } from '../optimized-mocks';
+import { optimizedTestUtils } from '../optimized-setup';
+import { render } from 'astro:content';
+import { optimizedTestUtils } from '../optimized-setup';
+import { render } from 'astro:content';
 
 describe('Optimized Chat Flow Integration', () => {
-  let testHelpers: ReturnType<typeof setupOptimizedMocks>;
-  let testDuration: ReturnType<typeof optimizedTestUtils.measureTestDuration>;
+  let testContext: ReturnType<typeof setupTest>;
 
   beforeEach(() => {
-    testDuration = optimizedTestUtils.measureTestDuration('chat-flow-test');
-
-    testHelpers = setupOptimizedMocks({
-      config: {
-        enableFastMode: true,
-        defaultDelay: 15, // Very fast for performance testing
-        maxDelay: 50,
-        enableRetries: false, // Disable retries for faster failure
-      },
+    testContext = setupTest({
+      enablePerformanceOptimizations: true,
     });
   });
 
   afterEach(() => {
-    const duration = testDuration.end();
-    cleanupOptimizedMocks();
-
     // Log performance stats for slow tests
     if (duration > 3000) {
       console.log('Performance stats:', testHelpers.getPerformanceStats());

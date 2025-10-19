@@ -704,9 +704,11 @@ export async function retryWithBackoff<T>(
         break;
       }
 
-      console.debug(
-        `${operationName} failed (attempt ${attempt + 1}), retrying in ${currentDelay}ms`
-      );
+      if (process.env.VERBOSE_TESTS) {
+        console.debug(
+          `${operationName} failed (attempt ${attempt + 1}), retrying in ${currentDelay}ms`
+        );
+      }
       await delay(currentDelay);
       currentDelay *= backoffFactor;
     }

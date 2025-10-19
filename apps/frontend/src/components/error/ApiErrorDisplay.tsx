@@ -43,9 +43,20 @@ export function ApiErrorDisplay({
   };
 
   const getErrorDescription = () => {
-    if (error.isNetworkError()) {
-      return 'Unable to connect to the server. Please check your internet connection and try again.';
+    // For validation errors and specific error messages, show the actual message
+    if (error.message && (error.status === 400 || error.status === 422)) {
+      return error.message;
     }
+
+    // For network errors, show the actual message if it's meaningful, otherwise use generic
+    if (error.isNetworkError()) {
+      return error.message &&
+        error.message !==
+          'Network error: Please check your connection and try again.'
+        ? error.message
+        : 'Unable to connect to the server. Please check your internet connection and try again.';
+    }
+
     if (error.isServerError()) {
       return 'The server encountered an error. Please try again in a few moments.';
     }

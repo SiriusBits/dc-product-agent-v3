@@ -23,9 +23,7 @@ export default defineConfig({
     poolOptions: {
       threads: {
         singleThread: false,
-        maxThreads: process.env.CI
-          ? 2
-          : Math.max(1, Math.floor(require('os').cpus()?.length / 2) || 4),
+        maxThreads: process.env.CI ? 2 : 4,
         minThreads: 1,
         isolate: true,
       },
@@ -83,14 +81,6 @@ export default defineConfig({
 
     // Enhanced watch mode (for development)
     watch: process.env.NODE_ENV !== 'test',
-    watchExclude: [
-      '**/node_modules/**',
-      '**/dist/**',
-      '**/coverage/**',
-      '**/*.log',
-      '**/test-results*.json',
-      '**/test-performance*.json',
-    ],
 
     // Environment variables for performance optimization
     env: {

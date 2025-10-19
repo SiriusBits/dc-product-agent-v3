@@ -56,8 +56,6 @@ export class TestPerformanceOptimizer {
    * Initialize all performance optimizations
    */
   private initializeOptimizations(): void {
-    console.log('🚀 Initializing performance optimizations...');
-
     if (this.config.enableLazyMockInit) {
       this.setupLazyMockInitialization();
     }
@@ -89,8 +87,6 @@ export class TestPerformanceOptimizer {
     if (this.config.enableBatchOperations) {
       this.setupBatchOperations();
     }
-
-    console.log('✅ Performance optimizations initialized');
   }
 
   /**
@@ -110,8 +106,6 @@ export class TestPerformanceOptimizer {
         // Mock factory not registered, skip
       }
     });
-
-    console.log('🔧 Lazy mock initialization optimized');
   }
 
   /**
@@ -176,8 +170,6 @@ export class TestPerformanceOptimizer {
     testPatterns.forEach((pattern) => {
       parallelOptimizer.registerTest(pattern);
     });
-
-    console.log('⚡ Parallel execution optimization configured');
   }
 
   /**
@@ -196,7 +188,6 @@ export class TestPerformanceOptimizer {
     ];
 
     domOptimizer.preloadQueries(commonQueries);
-    console.log('🎯 DOM optimization configured');
   }
 
   /**
@@ -210,8 +201,6 @@ export class TestPerformanceOptimizer {
     setInterval(() => {
       lazyMockSystem.cleanupExpiredMocks(30000); // 30 seconds
     }, 60000); // Every minute
-
-    console.log('🏊 Mock pooling optimization configured');
   }
 
   /**
@@ -241,8 +230,6 @@ export class TestPerformanceOptimizer {
         clearInterval(cacheWarmingInterval);
       });
     }
-
-    console.log('🧠 Smart caching optimization configured');
   }
 
   /**
@@ -289,8 +276,6 @@ export class TestPerformanceOptimizer {
         }
       }) as any;
     };
-
-    console.log('🔄 Operation reduction optimization configured');
   }
 
   /**
@@ -321,8 +306,6 @@ export class TestPerformanceOptimizer {
         bench.end();
       }
     } as any;
-
-    console.log('🏭 Mock creation optimization configured');
   }
 
   /**
@@ -360,8 +343,6 @@ export class TestPerformanceOptimizer {
         mutationTimeout = setTimeout(processMutationBatch, 0);
       }
     };
-
-    console.log('📦 Batch operations optimization configured');
   }
 
   /**
@@ -492,36 +473,17 @@ export class TestPerformanceOptimizer {
   printOptimizationSummary(): void {
     const report = this.generateOptimizationReport();
 
-    console.log('\n🚀 Performance Optimization Summary');
-    console.log('====================================');
-    console.log(
-      `Optimizations Enabled: ${report.summary.optimizationsEnabled}/${report.summary.totalOptimizations}`
-    );
-    console.log(`Estimated Speedup: ${report.summary.estimatedSpeedup}`);
-    console.log(`Memory Reduction: ${report.summary.memoryReduction}`);
-
-    console.log('\n📊 Optimization Details:');
-    console.log(
-      `  Lazy Mocks: ${report.details.lazyMocks.enabled ? '✅' : '❌'} (${report.details.lazyMocks.poolHitRate.toFixed(1)}% hit rate)`
-    );
-    console.log(
-      `  Parallel Execution: ${report.details.parallelExecution.enabled ? '✅' : '❌'} (${report.details.parallelExecution.estimatedSpeedup.toFixed(1)}x speedup)`
-    );
-    console.log(
-      `  DOM Optimization: ${report.details.domOptimization.enabled ? '✅' : '❌'} (${report.details.domOptimization.cacheHitRate.toFixed(1)}% cache hit rate)`
-    );
-    console.log(
-      `  Batch Operations: ${report.details.batchOperations.enabled ? '✅' : '❌'} (${report.details.batchOperations.operationsBatched} operations batched)`
-    );
-
-    if (report.recommendations.length > 0) {
-      console.log('\n💡 Top Recommendations:');
-      report.recommendations.slice(0, 3).forEach((rec, index) => {
-        console.log(`  ${index + 1}. ${rec}`);
-      });
+    // Only log summary in verbose mode
+    if (process.env.VERBOSE_TESTS || process.env.PERF_MONITORING) {
+      console.log('\n🚀 Performance Optimization Summary');
+      console.log('====================================');
+      console.log(
+        `Optimizations Enabled: ${report.summary.optimizationsEnabled}/${report.summary.totalOptimizations}`
+      );
+      console.log(`Estimated Speedup: ${report.summary.estimatedSpeedup}`);
+      console.log(`Memory Reduction: ${report.summary.memoryReduction}`);
+      console.log('====================================\n');
     }
-
-    console.log('====================================\n');
   }
 
   /**

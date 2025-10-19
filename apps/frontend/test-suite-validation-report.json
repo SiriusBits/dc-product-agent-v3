@@ -1,0 +1,169 @@
+{
+  "timestamp": "2025-10-19T05:10:28.775Z",
+  "validationConfig": {
+    "runs": 10,
+    "targetPassRate": 95,
+    "targetExecutionTime": 90000,
+    "minPassingTests": 664,
+    "maxFlakiness": 0
+  },
+  "summary": {
+    "totalRuns": 10,
+    "successfulRuns": 0,
+    "failedRuns": 10,
+    "averagePassRate": 0,
+    "averageExecutionTime": 436.6,
+    "flakyTests": {},
+    "consistentFailures": {},
+    "performanceMetrics": {
+      "fastest": 390,
+      "slowest": 557,
+      "totalTests": 0,
+      "totalPassed": 0,
+      "totalFailed": 0
+    }
+  },
+  "totalValidationTime": 22389,
+  "results": [
+    {
+      "runNumber": 1,
+      "exitCode": 1,
+      "duration": 557,
+      "total": 0,
+      "passed": 0,
+      "failed": 0,
+      "skipped": 0,
+      "passRate": 0,
+      "failedTests": [],
+      "slowTests": [],
+      "success": false
+    },
+    {
+      "runNumber": 2,
+      "exitCode": 1,
+      "duration": 495,
+      "total": 0,
+      "passed": 0,
+      "failed": 0,
+      "skipped": 0,
+      "passRate": 0,
+      "failedTests": [],
+      "slowTests": [],
+      "success": false
+    },
+    {
+      "runNumber": 3,
+      "exitCode": 1,
+      "duration": 406,
+      "total": 0,
+      "passed": 0,
+      "failed": 0,
+      "skipped": 0,
+      "passRate": 0,
+      "failedTests": [],
+      "slowTests": [],
+      "success": false
+    },
+    {
+      "runNumber": 4,
+      "exitCode": 1,
+      "duration": 421,
+      "total": 0,
+      "passed": 0,
+      "failed": 0,
+      "skipped": 0,
+      "passRate": 0,
+      "failedTests": [],
+      "slowTests": [],
+      "success": false
+    },
+    {
+      "runNumber": 5,
+      "exitCode": 1,
+      "duration": 410,
+      "total": 0,
+      "passed": 0,
+      "failed": 0,
+      "skipped": 0,
+      "passRate": 0,
+      "failedTests": [],
+      "slowTests": [],
+      "success": false
+    },
+    {
+      "runNumber": 6,
+      "exitCode": 1,
+      "duration": 400,
+      "total": 0,
+      "passed": 0,
+      "failed": 0,
+      "skipped": 0,
+      "passRate": 0,
+      "failedTests": [],
+      "slowTests": [],
+      "success": false
+    },
+    {
+      "runNumber": 7,
+      "exitCode": 1,
+      "duration": 471,
+      "total": 0,
+      "passed": 0,
+      "failed": 0,
+      "skipped": 0,
+      "passRate": 0,
+      "failedTests": [],
+      "slowTests": [],
+      "success": false
+    },
+    {
+      "runNumber": 8,
+      "exitCode": 1,
+      "duration": 390,
+      "total": 0,
+      "passed": 0,
+      "failed": 0,
+      "skipped": 0,
+      "passRate": 0,
+      "failedTests": [],
+      "slowTests": [],
+      "success": false
+    },
+    {
+      "runNumber": 9,
+      "exitCode": 1,
+      "duration": 417,
+      "total": 0,
+      "passed": 0,
+      "failed": 0,
+      "skipped": 0,
+      "passRate": 0,
+      "failedTests": [],
+      "slowTests": [],
+      "success": false
+    },
+    {
+      "runNumber": 10,
+      "exitCode": 1,
+      "duration": 399,
+      "total": 0,
+      "passed": 0,
+      "failed": 0,
+      "skipped": 0,
+      "passRate": 0,
+      "failedTests": [],
+      "slowTests": [],
+      "success": false
+    }
+  ],
+  "validation": {
+    "passRateTarget": false,
+    "executionTimeTarget": true,
+    "minPassingTestsTarget": false,
+    "flakinessTarget": true,
+    "overallSuccess": false
+  },
+  "recommendations": [
+    "Pass rate 0.0% is below target 95%. Focus on fixing consistently failing tests."
+  ]
+}

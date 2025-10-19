@@ -201,7 +201,9 @@ export class TestPerformanceMonitor {
 
     try {
       writeFileSync(this.reportPath, JSON.stringify(report, null, 2));
-      console.log(`📊 Performance report saved to ${this.reportPath}`);
+      if (process.env.VERBOSE_TESTS) {
+        console.log(`📊 Performance report saved to ${this.reportPath}`);
+      }
     } catch (error) {
       console.error('Failed to save performance report:', error);
     }
@@ -213,31 +215,36 @@ export class TestPerformanceMonitor {
   printSummary(): void {
     const report = this.generateReport();
 
-    console.log('\n📊 Test Performance Summary');
-    console.log('================================');
-    console.log(`Total Tests: ${report.totalTests}`);
-    console.log(`Total Duration: ${(report.totalDuration / 1000).toFixed(2)}s`);
-    console.log(`Average Duration: ${report.averageDuration.toFixed(0)}ms`);
-    console.log(
-      `Slow Tests (>${this.thresholds.normal}ms): ${report.slowTests.length}`
-    );
-    console.log(
-      `Fast Tests (<${this.thresholds.fast}ms): ${report.fastTests.length}`
-    );
-    console.log(`Failed Tests: ${report.failedTests.length}`);
+    // Only show detailed performance summary if requested
+    if (process.env.PERF_MONITORING || process.env.VERBOSE_TESTS) {
+      console.log('\n📊 Test Performance Summary');
+      console.log('================================');
+      console.log(`Total Tests: ${report.totalTests}`);
+      console.log(
+        `Total Duration: ${(report.totalDuration / 1000).toFixed(2)}s`
+      );
+      console.log(`Average Duration: ${report.averageDuration.toFixed(0)}ms`);
+      console.log(
+        `Slow Tests (>${this.thresholds.normal}ms): ${report.slowTests.length}`
+      );
+      console.log(
+        `Fast Tests (<${this.thresholds.fast}ms): ${report.fastTests.length}`
+      );
+      console.log(`Failed Tests: ${report.failedTests.length}`);
 
-    if (report.slowTests.length > 0) {
-      console.log('\n🐌 Slowest Tests:');
-      report.slowTests.slice(0, 5).forEach((test, index) => {
-        console.log(`  ${index + 1}. ${test.testName}: ${test.duration}ms`);
-      });
-    }
+      if (report.slowTests.length > 0) {
+        console.log('\n🐌 Slowest Tests:');
+        report.slowTests.slice(0, 5).forEach((test, index) => {
+          console.log(`  ${index + 1}. ${test.testName}: ${test.duration}ms`);
+        });
+      }
 
-    if (report.fastTests.length > 0) {
-      console.log('\n⚡ Fastest Tests:');
-      report.fastTests.slice(0, 5).forEach((test, index) => {
-        console.log(`  ${index + 1}. ${test.testName}: ${test.duration}ms`);
-      });
+      if (report.fastTests.length > 0) {
+        console.log('\n⚡ Fastest Tests:');
+        report.fastTests.slice(0, 5).forEach((test, index) => {
+          console.log(`  ${index + 1}. ${test.testName}: ${test.duration}ms`);
+        });
+      }
     }
 
     if (report.recommendations.length > 0) {

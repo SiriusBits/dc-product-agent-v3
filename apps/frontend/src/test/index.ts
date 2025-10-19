@@ -113,56 +113,12 @@ export {
 export { userEvent } from '@testing-library/user-event';
 
 // ============================================================================
-// Deprecated Utilities (with warnings)
+// Migration Notice
 // ============================================================================
 
-/**
- * @deprecated Use setupTest() from '@/test/enhanced-setup' instead
- * This function is provided for backward compatibility only.
- */
-export { setupMocks } from './test-utils';
-
-/**
- * @deprecated Use reactive mock updates from setupTest() context instead
- * This function is provided for backward compatibility only.
- */
-export { updateMockHook } from './test-utils';
-
-/**
- * @deprecated Use renderComponent() from setupTest() context instead
- * This function is provided for backward compatibility only.
- */
-export { render as deprecatedRender } from './enhanced-test-utils';
-
-// ============================================================================
-// Migration Helpers
-// ============================================================================
-
-/**
- * Helper function to detect usage of deprecated utilities
- * Logs warnings when deprecated functions are used
- */
-export const checkForDeprecatedUsage = () => {
-  const stack = new Error().stack;
-
-  if (stack?.includes('setupMocks')) {
-    console.warn(
-      '⚠️  DEPRECATED: setupMocks() is deprecated. Use setupTest() from @/test/enhanced-setup instead. See MIGRATION-GUIDE.md for details.'
-    );
-  }
-
-  if (stack?.includes('updateMockHook')) {
-    console.warn(
-      '⚠️  DEPRECATED: updateMockHook() is deprecated. Use reactive mock updates from setupTest() context instead. See MIGRATION-GUIDE.md for details.'
-    );
-  }
-
-  if (stack?.includes('enhanced-test-utils')) {
-    console.warn(
-      '⚠️  DEPRECATED: enhanced-test-utils is deprecated. Use setupTest() from @/test/enhanced-setup instead. See MIGRATION-GUIDE.md for details.'
-    );
-  }
-};
+// Deprecated utilities have been removed.
+// Use setupTest() from '@/test/enhanced-setup' for all new tests.
+// See MIGRATION-EXAMPLES.md for migration guidance.
 
 // ============================================================================
 // Utility Types

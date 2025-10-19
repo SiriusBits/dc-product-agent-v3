@@ -69,16 +69,12 @@ beforeAll(() => {
 
   // Setup error handling
   setupErrorHandling();
-
-  console.log('🚀 Optimized test environment initialized');
 });
 
 // Global cleanup
 afterAll(() => {
   testIsolationManager.destroy();
   testPerformanceManager.reset();
-
-  console.log('✅ Optimized test environment cleaned up');
 });
 
 // Per-test setup
@@ -110,7 +106,7 @@ afterEach(() => {
       ([_, count]) => count > 5 // More than 5 operations might indicate inefficiency
     );
 
-    if (slowOperations.length > 0) {
+    if (slowOperations.length > 0 && process.env.VERBOSE_TESTS) {
       console.debug('📊 Performance stats:', {
         slowOperations,
         activeTimers: stats.activeTimers,
