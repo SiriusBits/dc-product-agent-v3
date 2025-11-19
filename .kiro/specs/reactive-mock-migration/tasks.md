@@ -136,7 +136,7 @@
 
 #### Acceptance Criteria
 
-- [ ] Pass rate improved by at least 5% (to ~60%)
+- [x] Pass rate improved by at least 5% (to ~60%)
 - [ ] No regressions in previously passing tests
 - [ ] Execution time maintained under 90 seconds
 - [ ] Phase 1 results documented

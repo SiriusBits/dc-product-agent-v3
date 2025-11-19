@@ -3,24 +3,19 @@
  */
 
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { screen, waitFor, cleanup } from '@testing-library/react';
+import { screen, waitFor, cleanup, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import ChatInterface from '@/components/chat/ChatInterface';
-import { setupTest } from '@/test/enhanced-setup';
+import {
+  createTestSetup,
+  createReactiveMockImplementation,
+} from '@/test/reactive-mock-helpers';
 import type { ChatMessage } from '@repo/shared-types';
 
-// Mock the hooks to use our reactive infrastructure
-vi.mock('@/hooks/useChat', () => ({
-  useChat: vi.fn(),
-}));
-
-vi.mock('@/hooks/useConversations', () => ({
-  useConversations: vi.fn(),
-}));
-
-vi.mock('@/hooks/useProducts', () => ({
-  useProducts: vi.fn(),
-}));
+// Mock the hooks
+vi.mock('@/hooks/useChat');
+vi.mock('@/hooks/useConversations');
+vi.mock('@/hooks/useProducts');
 
 import { useChat } from '@/hooks/useChat';
 import { useConversations } from '@/hooks/useConversations';
@@ -29,17 +24,17 @@ import { useProducts } from '@/hooks/useProducts';
 describe.sequential(
   'Loading Indicators - Appear and Disappear Correctly',
   () => {
-    let testContext: ReturnType<typeof setupTest>;
+    let chatMock: ReturnType<typeof createTestSetup>['chatMock'];
+    let conversationsMock: ReturnType<
+      typeof createTestSetup
+    >['conversationsMock'];
+    let productsMock: ReturnType<typeof createTestSetup>['productsMock'];
+    let updateChat: ReturnType<typeof createTestSetup>['updateChat'];
 
     beforeEach(() => {
       // Ensure clean slate before each test
       cleanup();
-
-      // Clear and reset all mocks
       vi.clearAllMocks();
-      vi.mocked(useChat).mockReset();
-      vi.mocked(useConversations).mockReset();
-      vi.mocked(useProducts).mockReset();
 
       // Mock DOM APIs
       Element.prototype.scrollIntoView = vi.fn();
@@ -52,36 +47,46 @@ describe.sequential(
         configurable: true,
       });
 
-      // Setup test with reactive mocks
-      testContext = setupTest({
-        initialChatMessages: [],
-        initialConversations: [],
-        initialProducts: [],
-        chatLoading: false,
-        productsLoading: false,
-        conversationsLoading: false,
-        chatError: null,
-        productsError: null,
-        conversationsError: null,
-        enableAutoCleanup: false,
-        enableLazyMocks: false,
-        enablePerformanceOptimization: false,
-        enableDOMOptimization: false,
-      });
+      // Create reactive mocks using the helper
+      const setup = createTestSetup();
+      chatMock = setup.chatMock;
+      conversationsMock = setup.conversationsMock;
+      productsMock = setup.productsMock;
+      updateChat = setup.updateChat;
 
-      // Connect mocks to hook implementations
-      vi.mocked(useChat).mockImplementation(testContext.chatMock.getMock());
+      // Connect mocks to hooks using the helper function
+      vi.mocked(useChat).mockImplementation(
+        createReactiveMockImplementation(chatMock)
+      );
       vi.mocked(useConversations).mockImplementation(
-        testContext.conversationsMock.getMock()
+        createReactiveMockImplementation(conversationsMock)
       );
       vi.mocked(useProducts).mockImplementation(
-        testContext.productsMock.getMock()
+        createReactiveMockImplementation(productsMock)
       );
     });
 
     afterEach(() => {
       cleanup();
       vi.clearAllMocks();
+    });
+
+    it('sanity check - mocks return correct values', () => {
+      // Verify all mocks are properly set up
+      const chatValue = vi.mocked(useChat)();
+      const conversationsValue = vi.mocked(useConversations)();
+      const productsValue = vi.mocked(useProducts)();
+
+      expect(chatValue).toBeDefined();
+      expect(chatValue.messages).toEqual([]);
+      expect(chatValue.isLoading).toBe(false);
+      expect(typeof chatValue.sendMessage).toBe('function');
+
+      expect(conversationsValue).toBeDefined();
+      expect(conversationsValue.conversations).toEqual([]);
+
+      expect(productsValue).toBeDefined();
+      expect(productsValue.products).toEqual([]);
     });
 
     it('loading indicator appears when sending message and disappears when complete', async () => {
@@ -92,7 +97,7 @@ describe.sequential(
         .fn()
         .mockImplementation(async (content: string) => {
           // Set loading state - this should show the loading indicator
-          await testContext.updateChat({
+          await updateChat({
             isLoading: true,
             error: null,
           });
@@ -115,7 +120,7 @@ describe.sequential(
             timestamp: new Date(),
           };
 
-          await testContext.updateChat({
+          await updateChat({
             isLoading: false,
             messages: [newMessage, responseMessage],
             error: null,
@@ -123,12 +128,12 @@ describe.sequential(
         });
 
       // Set initial state with the mock send function
-      await testContext.updateChat({
+      await updateChat({
         sendMessage: mockSendMessage,
       });
 
       // Render component
-      testContext.renderComponent(<ChatInterface />);
+      render(<ChatInterface />);
 
       // Get input and send button
       const input = screen.getByPlaceholderText(/ask about chemical products/i);
@@ -165,19 +170,33 @@ describe.sequential(
 
     it('loading indicator appears immediately when isLoading is set to true', async () => {
       // Set loading state BEFORE rendering
-      await testContext.updateChat({
+      await updateChat({
         isLoading: true,
       });
 
+      // Debug: Verify mock is returning correct value
+      const mockValue = vi.mocked(useChat)();
+      console.log('Mock isLoading:', mockValue.isLoading);
+      console.log('Mock functions:', Object.keys(mockValue));
+      expect(mockValue.isLoading).toBe(true);
+
       // Render component
-      testContext.renderComponent(<ChatInterface />);
+      let container;
+      try {
+        const result = render(<ChatInterface />);
+        container = result.container;
+        console.log('Rendered HTML length:', container.innerHTML.length);
+      } catch (error) {
+        console.error('Render error:', error);
+        throw error;
+      }
 
       // VERIFY: Loading indicator is immediately visible
       const loadingSpinner = screen.getByTestId('chat-loading-spinner');
       expect(loadingSpinner).toBeInTheDocument();
 
       // Clear loading state
-      await testContext.updateChat({
+      await updateChat({
         isLoading: false,
       });
 
@@ -190,18 +209,18 @@ describe.sequential(
 
     it('loading indicator disappears immediately when isLoading is set to false', async () => {
       // Start with loading state
-      await testContext.updateChat({
+      await updateChat({
         isLoading: true,
       });
 
       // Render component
-      testContext.renderComponent(<ChatInterface />);
+      render(<ChatInterface />);
 
       // Verify loading indicator is visible
       expect(screen.getByTestId('chat-loading-spinner')).toBeInTheDocument();
 
       // Clear loading state
-      await testContext.updateChat({
+      await updateChat({
         isLoading: false,
       });
 
@@ -222,7 +241,7 @@ describe.sequential(
       const mockSendMessage = vi
         .fn()
         .mockImplementation(async (content: string) => {
-          await testContext.updateChat({ isLoading: true });
+          await updateChat({ isLoading: true });
           await new Promise((resolve) => setTimeout(resolve, 200));
 
           const newMessage: ChatMessage = {
@@ -232,14 +251,14 @@ describe.sequential(
             timestamp: new Date(),
           };
 
-          await testContext.updateChat({
+          await updateChat({
             isLoading: false,
             messages: [newMessage],
           });
         });
 
-      await testContext.updateChat({ sendMessage: mockSendMessage });
-      testContext.renderComponent(<ChatInterface />);
+      await updateChat({ sendMessage: mockSendMessage });
+      render(<ChatInterface />);
 
       const input = screen.getByPlaceholderText(/ask about chemical products/i);
       const sendButton = screen.getByRole('button', { name: /send/i });
@@ -268,7 +287,7 @@ describe.sequential(
 
     it('handles multiple loading state transitions correctly', async () => {
       // Render component
-      testContext.renderComponent(<ChatInterface />);
+      render(<ChatInterface />);
 
       // Initially no loading indicator
       expect(
@@ -276,7 +295,7 @@ describe.sequential(
       ).not.toBeInTheDocument();
 
       // Set loading state
-      await testContext.updateChat({ isLoading: true });
+      await updateChat({ isLoading: true });
 
       // VERIFY: Loading indicator appears
       await waitFor(() => {
@@ -284,7 +303,7 @@ describe.sequential(
       });
 
       // Clear loading state
-      await testContext.updateChat({ isLoading: false });
+      await updateChat({ isLoading: false });
 
       // VERIFY: Loading indicator disappears
       await waitFor(() => {
@@ -294,7 +313,7 @@ describe.sequential(
       });
 
       // Set loading state again
-      await testContext.updateChat({ isLoading: true });
+      await updateChat({ isLoading: true });
 
       // VERIFY: Loading indicator appears again
       await waitFor(() => {
@@ -302,7 +321,7 @@ describe.sequential(
       });
 
       // Clear loading state again
-      await testContext.updateChat({ isLoading: false });
+      await updateChat({ isLoading: false });
 
       // VERIFY: Loading indicator disappears again
       await waitFor(() => {
