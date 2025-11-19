@@ -29,7 +29,7 @@ import { useProducts } from '@/hooks/useProducts';
 
 describe('Loading State Management Fixes', () => {
   let chatMock: ReactiveHookMock<any>;
-  let conversationsMock: ReactiveHookMock<any>;
+  let conversationsMock: ReactiveHookMock<unknown>;
   let productsMock: ReactiveHookMock<unknown>;
 
   beforeEach(() => {
@@ -74,10 +74,12 @@ describe('Loading State Management Fixes', () => {
       clearSearch: vi.fn(),
     });
 
-    // Set up the mocks
-    vi.mocked(useChat).mockImplementation(chatMock.getMock());
-    vi.mocked(useConversations).mockImplementation(conversationsMock.getMock());
-    vi.mocked(useProducts).mockImplementation(productsMock.getMock());
+    // Set up the mocks - useChat is called with options, so we need to ignore parameters
+    vi.mocked(useChat).mockImplementation(() => chatMock.getMock()());
+    vi.mocked(useConversations).mockImplementation(() =>
+      conversationsMock.getMock()()
+    );
+    vi.mocked(useProducts).mockImplementation(() => productsMock.getMock()());
   });
 
   afterEach(() => {

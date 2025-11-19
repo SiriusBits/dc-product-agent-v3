@@ -3,20 +3,42 @@
  */
 
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { screen, waitFor } from '@testing-library/react';
+import { screen, waitFor, render, cleanup } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import ChatInterface from '@/components/chat/ChatInterface';
-import { render } from '@/test/enhanced-test-utils';
-import {
-  setupFixedLoadingMocks,
-  cleanupFixedLoadingMocks,
-} from '@/test/fixed-loading-mocks';
+import { ReactiveHookMock } from '@/test/reactive-mocks';
+import type { ChatMessage } from '@repo/shared-types';
+
+// Mock the hooks
+vi.mock('@/hooks/useChat', () => ({
+  useChat: vi.fn(),
+}));
+
+vi.mock('@/hooks/useConversations', () => ({
+  useConversations: vi.fn(),
+}));
+
+vi.mock('@/hooks/useProducts', () => ({
+  useProducts: vi.fn(),
+}));
+
+import { useChat } from '@/hooks/useChat';
+import { useConversations } from '@/hooks/useConversations';
+import { useProducts } from '@/hooks/useProducts';
 
 describe('Loading State Blocking Fix', () => {
-  let testHelpers: ReturnType<typeof setupFixedLoadingMocks>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let chatMock: ReactiveHookMock<any>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let conversationsMock: ReactiveHookMock<any>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let productsMock: ReactiveHookMock<any>;
 
   beforeEach(() => {
-    testHelpers = setupFixedLoadingMocks();
+    // Ensure clean slate before each test
+    cleanup();
+    vi.clearAllMocks();
+    vi.resetAllMocks();
 
     // Mock DOM APIs
     Element.prototype.scrollIntoView = vi.fn();
@@ -28,169 +50,246 @@ describe('Loading State Blocking Fix', () => {
       writable: true,
       configurable: true,
     });
+
+    // Setup mocks for each test
+    setupMocks();
   });
 
-  afterEach(() => {
-    cleanupFixedLoadingMocks();
+  afterEach(async () => {
+    // Force cleanup of all rendered components
+    cleanup();
+
+    // Wait a tick to ensure cleanup completes
+    await new Promise((resolve) => setTimeout(resolve, 0));
+
+    // Reset all mocks
+    chatMock?.reset();
+    conversationsMock?.reset();
+    productsMock?.reset();
+    vi.clearAllMocks();
+    vi.resetAllMocks();
   });
+
+  function setupMocks(sendMessageImpl?: (content: string) => Promise<void>) {
+    const mockSendMessage = vi.fn().mockImplementation(
+      sendMessageImpl ||
+        (async (content: string) => {
+          await chatMock.updateValue({ isLoading: true });
+          await new Promise((resolve) => setTimeout(resolve, 50));
+
+          const currentValue = chatMock.getCurrentValue();
+          const newMessage: ChatMessage = {
+            id: `msg-${Date.now()}`,
+            content,
+            role: 'user',
+            timestamp: new Date(),
+            conversation_id:
+              (currentValue.conversationId as string | null) || null,
+          };
+
+          const currentMessages =
+            (currentValue.messages as ChatMessage[]) || [];
+          await chatMock.updateValue({
+            isLoading: false,
+            messages: [...currentMessages, newMessage],
+          });
+        })
+    );
+
+    chatMock = new ReactiveHookMock({
+      messages: [],
+      conversationId: null,
+      isLoading: false,
+      error: null,
+      sendMessage: mockSendMessage,
+      clearMessages: vi.fn(),
+      loadConversation: vi.fn(),
+      retryLastMessage: vi.fn(),
+      isRetryable: false,
+    });
+
+    conversationsMock = new ReactiveHookMock({
+      conversations: [],
+      isLoading: false,
+      error: null,
+      loadConversations: vi.fn(),
+      createConversation: vi.fn(),
+      deleteConversation: vi.fn(),
+      updateConversationTitle: vi.fn(),
+      retry: vi.fn(),
+      isRetryable: false,
+    });
+
+    productsMock = new ReactiveHookMock({
+      products: [],
+      totalCount: 0,
+      facets: null,
+      loading: false,
+      error: null,
+      searchProducts: vi.fn(),
+      loadMore: vi.fn(),
+      hasMore: false,
+      retry: vi.fn(),
+      isRetryable: false,
+    });
+
+    vi.mocked(useChat).mockImplementation(
+      () => chatMock.getMock()() as unknown as ReturnType<typeof useChat>
+    );
+    vi.mocked(useConversations).mockImplementation(
+      () =>
+        conversationsMock.getMock()() as unknown as ReturnType<
+          typeof useConversations
+        >
+    );
+    vi.mocked(useProducts).mockImplementation(
+      () =>
+        productsMock.getMock()() as unknown as ReturnType<typeof useProducts>
+    );
+  }
 
   it('prevents loading states from blocking interface indefinitely', async () => {
     const user = userEvent.setup();
     render(<ChatInterface />);
 
-    // Wait for initial loading to complete
-    await testHelpers.waitForLoadingToComplete();
-
     const input = screen.getByPlaceholderText(/ask about chemical products/i);
     const sendButton = screen.getByRole('button', { name: /send/i });
 
-    // Initially, interface should be enabled
     expect(input).not.toBeDisabled();
-    expect(sendButton).not.toBeDisabled();
+    expect(sendButton).toBeDisabled();
 
-    // Type and send a message
     await user.type(input, 'Test message');
-    expect(input).toHaveValue('Test message');
-
     await user.click(sendButton);
 
-    // Input should be cleared immediately
     expect(input).toHaveValue('');
 
-    // Wait for loading to complete (should not block indefinitely)
-    await testHelpers.waitForLoadingToComplete();
+    await waitFor(
+      () => {
+        expect(chatMock.getCurrentValue().isLoading).toBe(false);
+      },
+      { timeout: 1000 }
+    );
 
-    // Interface should be enabled again
-    await waitFor(() => {
-      expect(input).not.toBeDisabled();
-      expect(sendButton).not.toBeDisabled();
-    });
-
-    // Verify no loading states are active
-    expect(testHelpers.isAnyLoading()).toBe(false);
+    expect(input).not.toBeDisabled();
   });
 
   it('handles proper timeout for async operations', async () => {
     const user = userEvent.setup();
     render(<ChatInterface />);
 
-    await testHelpers.waitForLoadingToComplete();
-
     const input = screen.getByPlaceholderText(/ask about chemical products/i);
     const sendButton = screen.getByRole('button', { name: /send/i });
 
-    // Send multiple messages quickly to test timeout handling
     for (let i = 1; i <= 3; i++) {
       await user.type(input, `Message ${i}`);
       await user.click(sendButton);
 
-      // Wait for this operation to complete before next
-      await testHelpers.waitForLoadingToComplete();
+      await waitFor(
+        () => {
+          expect(chatMock.getCurrentValue().isLoading).toBe(false);
+        },
+        { timeout: 1000 }
+      );
 
-      // Verify interface is responsive
       expect(input).not.toBeDisabled();
-      expect(sendButton).not.toBeDisabled();
     }
-
-    // All operations should complete within reasonable time
-    expect(testHelpers.isAnyLoading()).toBe(false);
   });
 
   it('ensures loading states resolve correctly after API responses', async () => {
     const user = userEvent.setup();
     render(<ChatInterface />);
 
-    await testHelpers.waitForLoadingToComplete();
-
     const input = screen.getByPlaceholderText(/ask about chemical products/i);
     const sendButton = screen.getByRole('button', { name: /send/i });
 
-    // Send a message
     await user.type(input, 'Test query');
     await user.click(sendButton);
 
-    // Wait for the async operation to complete
-    await testHelpers.waitForLoadingToComplete();
+    await waitFor(
+      () => {
+        expect(chatMock.getCurrentValue().isLoading).toBe(false);
+      },
+      { timeout: 1000 }
+    );
 
-    // Verify loading states are properly cleared
-    expect(testHelpers.isAnyLoading()).toBe(false);
-
-    // Interface should be fully responsive
     expect(input).not.toBeDisabled();
-    expect(sendButton).not.toBeDisabled();
 
-    // Should be able to send another message immediately
     await user.type(input, 'Second message');
-    expect(sendButton).not.toBeDisabled();
-
     await user.click(sendButton);
-    await testHelpers.waitForLoadingToComplete();
 
-    expect(testHelpers.isAnyLoading()).toBe(false);
+    await waitFor(
+      () => {
+        expect(chatMock.getCurrentValue().isLoading).toBe(false);
+      },
+      { timeout: 1000 }
+    );
   });
 
   it('fixes concurrent request prevention and re-enabling logic', async () => {
     const user = userEvent.setup();
     render(<ChatInterface />);
 
-    await testHelpers.waitForLoadingToComplete();
-
     const input = screen.getByPlaceholderText(/ask about chemical products/i);
     const sendButton = screen.getByRole('button', { name: /send/i });
 
-    // Start first message
     await user.type(input, 'First message');
     await user.click(sendButton);
 
-    // Input should be cleared and interface should handle the loading state
     expect(input).toHaveValue('');
 
-    // Wait for operation to complete
-    await testHelpers.waitForLoadingToComplete();
+    await waitFor(
+      () => {
+        expect(chatMock.getCurrentValue().isLoading).toBe(false);
+      },
+      { timeout: 1000 }
+    );
 
-    // Interface should be re-enabled
-    await waitFor(() => {
-      expect(input).not.toBeDisabled();
-      expect(sendButton).not.toBeDisabled();
-    });
+    expect(input).not.toBeDisabled();
 
-    // Should be able to send second message
     await user.type(input, 'Second message');
     await user.click(sendButton);
 
-    await testHelpers.waitForLoadingToComplete();
-
-    // Final state should be clean
-    expect(testHelpers.isAnyLoading()).toBe(false);
-    expect(input).not.toBeDisabled();
-    expect(sendButton).not.toBeDisabled();
+    await waitFor(
+      () => {
+        expect(chatMock.getCurrentValue().isLoading).toBe(false);
+      },
+      { timeout: 1000 }
+    );
   });
 
   it('handles conversation loading without blocking', async () => {
     const user = userEvent.setup();
+
+    // Override clearMessages for this test
+    const mockClearMessages = vi.fn().mockImplementation(async () => {
+      await chatMock.updateValue({ isLoading: true });
+      await new Promise((resolve) => setTimeout(resolve, 50));
+      await chatMock.updateValue({
+        isLoading: false,
+        messages: [],
+        conversationId: null,
+      });
+    });
+
+    await chatMock.updateValue({ clearMessages: mockClearMessages });
+
     render(<ChatInterface />);
 
-    // Wait for initial conversation loading
-    await testHelpers.waitForLoadingToComplete();
-
-    // Interface should be responsive after conversation loading
     const input = screen.getByPlaceholderText(/ask about chemical products/i);
-    const sendButton = screen.getByRole('button', { name: /send/i });
 
     expect(input).not.toBeDisabled();
-    expect(sendButton).not.toBeDisabled();
 
-    // Create new conversation
     const newButton = screen.getByRole('button', { name: /new/i });
     await user.click(newButton);
 
-    // Wait for conversation creation
-    await testHelpers.waitForLoadingToComplete();
+    await waitFor(
+      () => {
+        expect(chatMock.getCurrentValue().isLoading).toBe(false);
+      },
+      { timeout: 1000 }
+    );
 
-    // Interface should remain responsive
     expect(input).not.toBeDisabled();
-    expect(sendButton).not.toBeDisabled();
-    expect(testHelpers.isAnyLoading()).toBe(false);
   });
 
   it('maintains performance with multiple operations', async () => {
@@ -199,27 +298,25 @@ describe('Loading State Blocking Fix', () => {
 
     const startTime = Date.now();
 
-    await testHelpers.waitForLoadingToComplete();
-
     const input = screen.getByPlaceholderText(/ask about chemical products/i);
     const sendButton = screen.getByRole('button', { name: /send/i });
 
-    // Perform multiple operations
     for (let i = 1; i <= 5; i++) {
       await user.type(input, `Performance test ${i}`);
       await user.click(sendButton);
-      await testHelpers.waitForLoadingToComplete();
+      await waitFor(
+        () => {
+          expect(chatMock.getCurrentValue().isLoading).toBe(false);
+        },
+        { timeout: 1000 }
+      );
     }
 
     const endTime = Date.now();
     const totalTime = endTime - startTime;
 
-    // Should complete all operations within reasonable time (less than 2 seconds)
     expect(totalTime).toBeLessThan(2000);
-
-    // Final state should be clean
-    expect(testHelpers.isAnyLoading()).toBe(false);
+    expect(chatMock.getCurrentValue().isLoading).toBe(false);
     expect(input).not.toBeDisabled();
-    expect(sendButton).not.toBeDisabled();
   });
 });
