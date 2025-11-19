@@ -3,10 +3,10 @@
  */
 
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { screen, waitFor, render } from '@testing-library/react';
+import { screen, waitFor, cleanup } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import ChatInterface from '@/components/chat/ChatInterface';
-import { ReactiveHookMock } from '@/test/reactive-mocks';
+import { setupTest } from '@/test/enhanced-setup';
 import { ApiError } from '@/lib/api-client';
 import type { ChatMessage, Conversation } from '@repo/shared-types';
 
@@ -27,12 +27,19 @@ import { useChat } from '@/hooks/useChat';
 import { useConversations } from '@/hooks/useConversations';
 import { useProducts } from '@/hooks/useProducts';
 
-describe('Loading State Management Fixes', () => {
-  let chatMock: ReactiveHookMock<any>;
-  let conversationsMock: ReactiveHookMock<unknown>;
-  let productsMock: ReactiveHookMock<unknown>;
+describe.sequential('Loading State Management Fixes', () => {
+  let testContext: ReturnType<typeof setupTest>;
 
   beforeEach(() => {
+    // Ensure clean slate before each test
+    cleanup();
+
+    // Clear and reset all mocks
+    vi.clearAllMocks();
+    vi.mocked(useChat).mockReset();
+    vi.mocked(useConversations).mockReset();
+    vi.mocked(useProducts).mockReset();
+
     // Mock DOM APIs
     Element.prototype.scrollIntoView = vi.fn();
     Object.defineProperty(navigator, 'clipboard', {
@@ -44,48 +51,38 @@ describe('Loading State Management Fixes', () => {
       configurable: true,
     });
 
-    // Create reactive mocks directly
-    chatMock = new ReactiveHookMock({
-      messages: [],
-      conversationId: null,
-      isLoading: false,
-      error: null,
-      sendMessage: vi.fn(),
-      clearMessages: vi.fn(),
-      retryLastMessage: vi.fn(),
-      isRetryable: false,
+    // Setup test with reactive mocks using the proper infrastructure
+    testContext = setupTest({
+      initialChatMessages: [],
+      initialConversations: [],
+      initialProducts: [],
+      chatLoading: false,
+      productsLoading: false,
+      conversationsLoading: false,
+      chatError: null,
+      productsError: null,
+      conversationsError: null,
+      enableAutoCleanup: false,
+      enableLazyMocks: false,
+      enablePerformanceOptimization: false,
+      enableDOMOptimization: false,
     });
 
-    conversationsMock = new ReactiveHookMock({
-      conversations: [],
-      isLoading: false,
-      error: null,
-      loadConversations: vi.fn(),
-      createConversation: vi.fn(),
-      deleteConversation: vi.fn(),
-      loadConversation: vi.fn(),
-    });
-
-    productsMock = new ReactiveHookMock({
-      products: [],
-      isLoading: false,
-      error: null,
-      searchProducts: vi.fn(),
-      clearSearch: vi.fn(),
-    });
-
-    // Set up the mocks - useChat is called with options, so we need to ignore parameters
-    vi.mocked(useChat).mockImplementation(() => chatMock.getMock()());
-    vi.mocked(useConversations).mockImplementation(() =>
-      conversationsMock.getMock()()
+    // Connect mocks to hook implementations BEFORE any rendering
+    vi.mocked(useChat).mockImplementation(() =>
+      testContext.chatMock.getMock()()
     );
-    vi.mocked(useProducts).mockImplementation(() => productsMock.getMock()());
+    vi.mocked(useConversations).mockImplementation(() =>
+      testContext.conversationsMock.getMock()()
+    );
+    vi.mocked(useProducts).mockImplementation(() =>
+      testContext.productsMock.getMock()()
+    );
   });
 
   afterEach(() => {
-    chatMock?.reset();
-    conversationsMock?.reset();
-    productsMock?.reset();
+    // Manual cleanup after each test
+    cleanup();
     vi.clearAllMocks();
   });
 
@@ -93,12 +90,21 @@ describe('Loading State Management Fixes', () => {
     it('properly manages loading states during message sending', async () => {
       const user = userEvent.setup();
 
-      // Set up mock send function that simulates loading
+      // Set up mock send function that simulates loading with proper state transitions
       const mockSendMessage = vi
         .fn()
         .mockImplementation(async (content: string) => {
-          // Set loading state
-          await chatMock.updateValue({
+          // First, add the user message and set loading state
+          const userMessage: ChatMessage = {
+            id: 'msg-1',
+            content,
+            role: 'user',
+            timestamp: new Date(),
+            conversation_id: null,
+          };
+
+          await testContext.chatMock.updateValue({
+            messages: [userMessage],
             isLoading: true,
             error: null,
           });
@@ -106,30 +112,24 @@ describe('Loading State Management Fixes', () => {
           // Simulate async operation
           await new Promise((resolve) => setTimeout(resolve, 100));
 
-          // Complete loading with new message
-          const newMessage: ChatMessage = {
-            id: 'msg-1',
-            content,
-            role: 'user',
-            timestamp: new Date(),
-          };
-
+          // Complete loading with assistant response
           const responseMessage: ChatMessage = {
             id: 'msg-2',
             content: 'Response to: ' + content,
             role: 'assistant',
             timestamp: new Date(),
+            conversation_id: null,
           };
 
-          await chatMock.updateValue({
+          await testContext.chatMock.updateValue({
             isLoading: false,
-            messages: [newMessage, responseMessage],
+            messages: [userMessage, responseMessage],
             error: null,
           });
         });
 
       // Set initial state
-      await chatMock.updateValue({
+      await testContext.chatMock.updateValue({
         messages: [],
         conversationId: null,
         isLoading: false,
@@ -137,8 +137,7 @@ describe('Loading State Management Fixes', () => {
         sendMessage: mockSendMessage,
       });
 
-      const { rerender } = render(<ChatInterface />);
-      rerender(<ChatInterface />);
+      testContext.renderComponent(<ChatInterface />);
 
       const input = screen.getByPlaceholderText(/ask about chemical products/i);
       const sendButton = screen.getByRole('button', { name: /send/i });
@@ -157,18 +156,24 @@ describe('Loading State Management Fixes', () => {
       // Send the message
       await user.click(sendButton);
 
-      // During loading, input and button should be disabled
+      // During loading, loading indicator should appear (after user message is added)
       await waitFor(
         () => {
+          expect(
+            screen.getByTestId('chat-loading-spinner')
+          ).toBeInTheDocument();
           expect(input).toBeDisabled();
           expect(sendButton).toBeDisabled();
         },
         { timeout: 500 }
       );
 
-      // Wait for loading to complete
+      // Wait for loading to complete - loading indicator should disappear
       await waitFor(
         () => {
+          expect(
+            screen.queryByTestId('chat-loading-spinner')
+          ).not.toBeInTheDocument();
           expect(input).not.toBeDisabled();
           expect(sendButton).not.toBeDisabled();
         },
@@ -192,8 +197,17 @@ describe('Loading State Management Fixes', () => {
       const mockSendMessage = vi
         .fn()
         .mockImplementation(async (content: string) => {
-          // Set loading state
-          await chatMock.updateValue({
+          // Add user message and set loading state
+          const userMessage: ChatMessage = {
+            id: 'msg-1',
+            content,
+            role: 'user',
+            timestamp: new Date(),
+            conversation_id: null,
+          };
+
+          await testContext.chatMock.updateValue({
+            messages: [userMessage],
             isLoading: true,
             error: null,
           });
@@ -202,22 +216,15 @@ describe('Loading State Management Fixes', () => {
           await new Promise((resolve) => setTimeout(resolve, 50));
 
           // Complete loading
-          await chatMock.updateValue({
+          await testContext.chatMock.updateValue({
             isLoading: false,
-            messages: [
-              {
-                id: 'msg-1',
-                content,
-                role: 'user',
-                timestamp: new Date(),
-              },
-            ],
+            messages: [userMessage],
             error: null,
           });
         });
 
       // Set initial state
-      await chatMock.updateValue({
+      await testContext.chatMock.updateValue({
         messages: [],
         conversationId: null,
         isLoading: false,
@@ -225,8 +232,8 @@ describe('Loading State Management Fixes', () => {
         sendMessage: mockSendMessage,
       });
 
-      const { rerender } = render(<ChatInterface />);
-      rerender(<ChatInterface />);
+      testContext.renderComponent(<ChatInterface />);
+      
 
       const input = screen.getByPlaceholderText(/ask about chemical products/i);
       const sendButton = screen.getByRole('button', { name: /send/i });
@@ -234,15 +241,19 @@ describe('Loading State Management Fixes', () => {
       await user.type(input, 'Test message');
       await user.click(sendButton);
 
-      // Verify loading state is active
+      // Verify loading indicator appears
       await waitFor(() => {
+        expect(screen.getByTestId('chat-loading-spinner')).toBeInTheDocument();
         expect(input).toBeDisabled();
         expect(sendButton).toBeDisabled();
       });
 
-      // Wait for operation to complete within timeout
+      // Wait for operation to complete within timeout - loading indicator should disappear
       await waitFor(
         () => {
+          expect(
+            screen.queryByTestId('chat-loading-spinner')
+          ).not.toBeInTheDocument();
           expect(input).not.toBeDisabled();
           expect(sendButton).not.toBeDisabled();
         },
@@ -257,8 +268,17 @@ describe('Loading State Management Fixes', () => {
       const mockSendMessage = vi
         .fn()
         .mockImplementation(async (content: string) => {
-          // Set loading state
-          await chatMock.updateValue({
+          // Add user message and set loading state
+          const userMessage: ChatMessage = {
+            id: `msg-${Date.now()}`,
+            content,
+            role: 'user',
+            timestamp: new Date(),
+            conversation_id: null,
+          };
+
+          await testContext.chatMock.updateValue({
+            messages: [userMessage],
             isLoading: true,
             error: null,
           });
@@ -266,23 +286,25 @@ describe('Loading State Management Fixes', () => {
           // Simulate longer async operation
           await new Promise((resolve) => setTimeout(resolve, 200));
 
+          // Add response message
+          const responseMessage: ChatMessage = {
+            id: `msg-${Date.now()}-response`,
+            content: 'Response to: ' + content,
+            role: 'assistant',
+            timestamp: new Date(),
+            conversation_id: null,
+          };
+
           // Complete loading
-          await chatMock.updateValue({
+          await testContext.chatMock.updateValue({
             isLoading: false,
-            messages: [
-              {
-                id: 'msg-1',
-                content,
-                role: 'user',
-                timestamp: new Date(),
-              },
-            ],
+            messages: [userMessage, responseMessage],
             error: null,
           });
         });
 
       // Set initial state
-      await chatMock.updateValue({
+      await testContext.chatMock.updateValue({
         messages: [],
         conversationId: null,
         isLoading: false,
@@ -290,8 +312,8 @@ describe('Loading State Management Fixes', () => {
         sendMessage: mockSendMessage,
       });
 
-      const { rerender } = render(<ChatInterface />);
-      rerender(<ChatInterface />);
+      testContext.renderComponent(<ChatInterface />);
+      
 
       const input = screen.getByPlaceholderText(/ask about chemical products/i);
       const sendButton = screen.getByRole('button', { name: /send/i });
@@ -336,6 +358,8 @@ describe('Loading State Management Fixes', () => {
           title: 'Existing Conversation',
           created_at: new Date(),
           updated_at: new Date(),
+          messages: [],
+          metadata: {},
         },
       ];
 
@@ -343,7 +367,7 @@ describe('Loading State Management Fixes', () => {
         .fn()
         .mockImplementation(async (id: string) => {
           // Set loading state
-          await chatMock.updateValue({
+          await testContext.chatMock.updateValue({
             isLoading: true,
             error: null,
           });
@@ -352,7 +376,7 @@ describe('Loading State Management Fixes', () => {
           await new Promise((resolve) => setTimeout(resolve, 100));
 
           // Complete loading with conversation messages
-          await chatMock.updateValue({
+          await testContext.chatMock.updateValue({
             isLoading: false,
             conversationId: id,
             messages: [
@@ -361,6 +385,7 @@ describe('Loading State Management Fixes', () => {
                 content: 'Previous message',
                 role: 'user',
                 timestamp: new Date(),
+                conversation_id: id,
               },
             ],
             error: null,
@@ -368,22 +393,22 @@ describe('Loading State Management Fixes', () => {
         });
 
       // Set initial state with conversations
-      await conversationsMock.updateValue({
+      await testContext.conversationsMock.updateValue({
         conversations: existingConversations,
         isLoading: false,
         error: null,
         loadConversation: mockLoadConversation,
       });
 
-      await chatMock.updateValue({
+      await testContext.chatMock.updateValue({
         messages: [],
         conversationId: null,
         isLoading: false,
         error: null,
       });
 
-      const { rerender } = render(<ChatInterface />);
-      rerender(<ChatInterface />);
+      testContext.renderComponent(<ChatInterface />);
+      
 
       // Conversation should appear in sidebar
       await waitFor(() => {
@@ -408,7 +433,7 @@ describe('Loading State Management Fixes', () => {
 
       const mockClearMessages = vi.fn().mockImplementation(async () => {
         // Set loading state
-        await chatMock.updateValue({
+        await testContext.chatMock.updateValue({
           isLoading: true,
           error: null,
         });
@@ -417,7 +442,7 @@ describe('Loading State Management Fixes', () => {
         await new Promise((resolve) => setTimeout(resolve, 50));
 
         // Complete loading
-        await chatMock.updateValue({
+        await testContext.chatMock.updateValue({
           isLoading: false,
           messages: [],
           conversationId: null,
@@ -426,7 +451,7 @@ describe('Loading State Management Fixes', () => {
       });
 
       // Set initial state
-      await chatMock.updateValue({
+      await testContext.chatMock.updateValue({
         messages: [],
         conversationId: null,
         isLoading: false,
@@ -434,8 +459,8 @@ describe('Loading State Management Fixes', () => {
         clearMessages: mockClearMessages,
       });
 
-      const { rerender } = render(<ChatInterface />);
-      rerender(<ChatInterface />);
+      testContext.renderComponent(<ChatInterface />);
+      
 
       // Click new conversation button
       const newButton = screen.getByRole('button', { name: /new/i });
@@ -459,9 +484,9 @@ describe('Loading State Management Fixes', () => {
       // Set up mock send function that simulates error
       const mockSendMessage = vi
         .fn()
-        .mockImplementation(async (content: string) => {
+        .mockImplementation(async (_content: string) => {
           // Set loading state
-          await chatMock.updateValue({
+          await testContext.chatMock.updateValue({
             isLoading: true,
             error: null,
           });
@@ -470,14 +495,14 @@ describe('Loading State Management Fixes', () => {
           await new Promise((resolve) => setTimeout(resolve, 100));
 
           // Set error state and clear loading
-          await chatMock.updateValue({
+          await testContext.chatMock.updateValue({
             isLoading: false,
             error: new ApiError('Network error', 0),
           });
         });
 
       // Set initial state
-      await chatMock.updateValue({
+      await testContext.chatMock.updateValue({
         messages: [],
         conversationId: null,
         isLoading: false,
@@ -485,8 +510,8 @@ describe('Loading State Management Fixes', () => {
         sendMessage: mockSendMessage,
       });
 
-      const { rerender } = render(<ChatInterface />);
-      rerender(<ChatInterface />);
+      testContext.renderComponent(<ChatInterface />);
+      
 
       const input = screen.getByPlaceholderText(/ask about chemical products/i);
       const sendButton = screen.getByRole('button', { name: /send/i });
@@ -512,16 +537,16 @@ describe('Loading State Management Fixes', () => {
       // Set up mock send function that simulates timeout
       const mockSendMessage = vi
         .fn()
-        .mockImplementation(async (content: string) => {
+        .mockImplementation(async (_content: string) => {
           // Set loading state
-          await chatMock.updateValue({
+          await testContext.chatMock.updateValue({
             isLoading: true,
             error: null,
           });
 
           // Simulate timeout - loading should clear after timeout
           setTimeout(async () => {
-            await chatMock.updateValue({
+            await testContext.chatMock.updateValue({
               isLoading: false,
               error: new ApiError('Request timeout', 408),
             });
@@ -529,7 +554,7 @@ describe('Loading State Management Fixes', () => {
         });
 
       // Set initial state
-      await chatMock.updateValue({
+      await testContext.chatMock.updateValue({
         messages: [],
         conversationId: null,
         isLoading: false,
@@ -537,8 +562,8 @@ describe('Loading State Management Fixes', () => {
         sendMessage: mockSendMessage,
       });
 
-      const { rerender } = render(<ChatInterface />);
-      rerender(<ChatInterface />);
+      testContext.renderComponent(<ChatInterface />);
+      
 
       const input = screen.getByPlaceholderText(/ask about chemical products/i);
       const sendButton = screen.getByRole('button', { name: /send/i });
@@ -562,14 +587,14 @@ describe('Loading State Management Fixes', () => {
       const user = userEvent.setup();
 
       const mockClearMessages = vi.fn().mockImplementation(async () => {
-        await chatMock.updateValue({
+        await testContext.chatMock.updateValue({
           isLoading: true,
           error: null,
         });
 
         await new Promise((resolve) => setTimeout(resolve, 50));
 
-        await chatMock.updateValue({
+        await testContext.chatMock.updateValue({
           isLoading: false,
           messages: [],
           conversationId: null,
@@ -580,14 +605,14 @@ describe('Loading State Management Fixes', () => {
       const mockSendMessage = vi
         .fn()
         .mockImplementation(async (content: string) => {
-          await chatMock.updateValue({
+          await testContext.chatMock.updateValue({
             isLoading: true,
             error: null,
           });
 
           await new Promise((resolve) => setTimeout(resolve, 100));
 
-          await chatMock.updateValue({
+          await testContext.chatMock.updateValue({
             isLoading: false,
             messages: [
               {
@@ -595,6 +620,7 @@ describe('Loading State Management Fixes', () => {
                 content,
                 role: 'user',
                 timestamp: new Date(),
+                conversation_id: null,
               },
             ],
             error: null,
@@ -602,7 +628,7 @@ describe('Loading State Management Fixes', () => {
         });
 
       // Set initial state
-      await chatMock.updateValue({
+      await testContext.chatMock.updateValue({
         messages: [],
         conversationId: null,
         isLoading: false,
@@ -611,8 +637,8 @@ describe('Loading State Management Fixes', () => {
         sendMessage: mockSendMessage,
       });
 
-      const { rerender } = render(<ChatInterface />);
-      rerender(<ChatInterface />);
+      testContext.renderComponent(<ChatInterface />);
+      
 
       // Start multiple operations
       const newChatButton = screen.getByRole('button', { name: /new/i });
@@ -641,14 +667,14 @@ describe('Loading State Management Fixes', () => {
       const mockSendMessage = vi
         .fn()
         .mockImplementation(async (content: string) => {
-          await chatMock.updateValue({
+          await testContext.chatMock.updateValue({
             isLoading: true,
             error: null,
           });
 
           await new Promise((resolve) => setTimeout(resolve, 200));
 
-          await chatMock.updateValue({
+          await testContext.chatMock.updateValue({
             isLoading: false,
             messages: [
               {
@@ -656,6 +682,7 @@ describe('Loading State Management Fixes', () => {
                 content,
                 role: 'user',
                 timestamp: new Date(),
+                conversation_id: null,
               },
             ],
             error: null,
@@ -663,7 +690,7 @@ describe('Loading State Management Fixes', () => {
         });
 
       // Set initial state
-      await chatMock.updateValue({
+      await testContext.chatMock.updateValue({
         messages: [],
         conversationId: null,
         isLoading: false,
@@ -671,8 +698,8 @@ describe('Loading State Management Fixes', () => {
         sendMessage: mockSendMessage,
       });
 
-      const { rerender } = render(<ChatInterface />);
-      rerender(<ChatInterface />);
+      testContext.renderComponent(<ChatInterface />);
+      
 
       const input = screen.getByPlaceholderText(/ask about chemical products/i);
       const sendButton = screen.getByRole('button', { name: /send/i });
@@ -688,7 +715,7 @@ describe('Loading State Management Fixes', () => {
       });
 
       // Force re-render
-      rerender(<ChatInterface />);
+      
 
       // Loading state should persist across re-render
       expect(input).toBeDisabled();
@@ -712,36 +739,39 @@ describe('Loading State Management Fixes', () => {
       const mockSendMessage = vi
         .fn()
         .mockImplementation(async (content: string) => {
-          await chatMock.updateValue({
+          const userMessage: ChatMessage = {
+            id: 'msg-1',
+            content,
+            role: 'user',
+            timestamp: new Date(),
+            conversation_id: null,
+          };
+
+          await testContext.chatMock.updateValue({
+            messages: [userMessage],
             isLoading: true,
             error: null,
           });
 
           await new Promise((resolve) => setTimeout(resolve, 100));
 
-          const newMessage: ChatMessage = {
-            id: 'msg-1',
-            content,
-            role: 'user',
-            timestamp: new Date(),
-          };
-
           const responseMessage: ChatMessage = {
             id: 'msg-2',
             content: 'Response to: ' + content,
             role: 'assistant',
             timestamp: new Date(),
+            conversation_id: null,
           };
 
-          await chatMock.updateValue({
+          await testContext.chatMock.updateValue({
             isLoading: false,
-            messages: [newMessage, responseMessage],
+            messages: [userMessage, responseMessage],
             error: null,
           });
         });
 
       // Set initial state
-      await chatMock.updateValue({
+      await testContext.chatMock.updateValue({
         messages: [],
         conversationId: null,
         isLoading: false,
@@ -749,8 +779,8 @@ describe('Loading State Management Fixes', () => {
         sendMessage: mockSendMessage,
       });
 
-      const { rerender } = render(<ChatInterface />);
-      rerender(<ChatInterface />);
+      testContext.renderComponent(<ChatInterface />);
+      
 
       const startTime = Date.now();
 
@@ -787,41 +817,43 @@ describe('Loading State Management Fixes', () => {
       const mockSendMessage = vi
         .fn()
         .mockImplementation(async (content: string) => {
-          await chatMock.updateValue({
+          messageCount++;
+          const userMessage: ChatMessage = {
+            id: `msg-${messageCount}`,
+            content,
+            role: 'user',
+            timestamp: new Date(),
+            conversation_id: null,
+          };
+
+          const currentMessages =
+            testContext.chatMock.getCurrentValue().messages || [];
+
+          await testContext.chatMock.updateValue({
+            messages: [...currentMessages, userMessage],
             isLoading: true,
             error: null,
           });
 
           await new Promise((resolve) => setTimeout(resolve, 50));
 
-          messageCount++;
-          const newMessage: ChatMessage = {
-            id: `msg-${messageCount}`,
-            content,
-            role: 'user',
-            timestamp: new Date(),
-          };
-
           const responseMessage: ChatMessage = {
             id: `msg-${messageCount + 100}`,
             content: 'Response to: ' + content,
             role: 'assistant',
             timestamp: new Date(),
+            conversation_id: null,
           };
 
-          await chatMock.updateValue({
+          await testContext.chatMock.updateValue({
             isLoading: false,
-            messages: [
-              ...(chatMock.getValue().messages || []),
-              newMessage,
-              responseMessage,
-            ],
+            messages: [...currentMessages, userMessage, responseMessage],
             error: null,
           });
         });
 
       // Set initial state
-      await chatMock.updateValue({
+      await testContext.chatMock.updateValue({
         messages: [],
         conversationId: null,
         isLoading: false,
@@ -829,8 +861,8 @@ describe('Loading State Management Fixes', () => {
         sendMessage: mockSendMessage,
       });
 
-      const { rerender } = render(<ChatInterface />);
-      rerender(<ChatInterface />);
+      testContext.renderComponent(<ChatInterface />);
+      
 
       const input = screen.getByPlaceholderText(/ask about chemical products/i);
       const sendButton = screen.getByRole('button', { name: /send/i });

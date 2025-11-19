@@ -56,6 +56,30 @@ describe('Loading State Blocking Fix', () => {
   });
 
   afterEach(async () => {
+    // Force clear any active loading states first
+    try {
+      if (chatMock) {
+        const currentState = chatMock.getCurrentValue();
+        if (currentState.isLoading) {
+          await chatMock.updateValue({ isLoading: false });
+        }
+      }
+      if (conversationsMock) {
+        const currentState = conversationsMock.getCurrentValue();
+        if (currentState.isLoading) {
+          await conversationsMock.updateValue({ isLoading: false });
+        }
+      }
+      if (productsMock) {
+        const currentState = productsMock.getCurrentValue();
+        if (currentState.loading) {
+          await productsMock.updateValue({ loading: false });
+        }
+      }
+    } catch (error) {
+      // Ignore errors during cleanup
+    }
+
     // Force cleanup of all rendered components
     cleanup();
 
@@ -66,7 +90,10 @@ describe('Loading State Blocking Fix', () => {
     chatMock?.reset();
     conversationsMock?.reset();
     productsMock?.reset();
+
+    // Clear all mocks and timers
     vi.clearAllMocks();
+    vi.clearAllTimers();
     vi.resetAllMocks();
   });
 

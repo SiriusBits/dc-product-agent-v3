@@ -410,10 +410,22 @@ export const setupEnhancedLoadingMocks = (
   };
 };
 
-// Cleanup function
+// Cleanup function with comprehensive loading state cleanup
 export const cleanupEnhancedLoadingMocks = () => {
-  vi.clearAllMocks();
+  // Force clear all loading states first
+  if (loadingManager) {
+    loadingManager.forceResetLoadingStates();
+    loadingManager.clearAll();
+  }
+
+  // Clear all loading states from the global manager
   clearAllLoadingStates();
+
+  // Clear all mocks and timers
+  vi.clearAllMocks();
+  vi.clearAllTimers();
+
+  // Reinitialize state
   initializeState();
 };
 

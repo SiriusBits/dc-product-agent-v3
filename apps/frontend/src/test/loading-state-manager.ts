@@ -152,21 +152,55 @@ export class LoadingStateManager {
 
   /**
    * Clear all promises and loading states
+   * This is the primary cleanup method that should be called after each test
    */
   clearAll(): void {
-    // Clear all timeouts
+    // Clear all timeouts first to prevent any pending operations
     this.timeouts.forEach((timeout) => clearTimeout(timeout));
     this.timeouts.clear();
 
-    // Reject all pending promises
+    // Reject all pending promises to ensure they don't hang
     this.activePromises.forEach((promise, key) => {
       if (promise.isPending) {
-        promise.reject(new Error(`Operation cancelled: ${key}`));
+        try {
+          promise.reject(
+            new Error(`Operation cancelled during cleanup: ${key}`)
+          );
+        } catch (error) {
+          // Ignore errors during cleanup - promise may already be settled
+        }
       }
     });
 
+    // Clear all collections
     this.activePromises.clear();
     this.loadingStates.clear();
+  }
+
+  /**
+   * Force clear all loading states immediately
+   * Useful for emergency cleanup when tests are stuck
+   */
+  forceResetLoadingStates(): void {
+    this.loadingStates.forEach((_, key) => {
+      this.loadingStates.set(key, false);
+    });
+  }
+
+  /**
+   * Get all active loading operations for debugging
+   */
+  getActiveOperations(): string[] {
+    return Array.from(this.loadingStates.entries())
+      .filter(([_, isLoading]) => isLoading)
+      .map(([key]) => key);
+  }
+
+  /**
+   * Check if there are any pending operations that might cause issues
+   */
+  hasPendingOperations(): boolean {
+    return this.activePromises.size > 0 || this.isAnyLoading();
   }
 
   /**
@@ -324,3 +358,27 @@ export const isAnyOperationLoading = () => loadingStateManager.isAnyLoading();
 
 export const getLoadingState = (key: string) =>
   loadingStateManager.isLoading(key);
+
+/**
+ * Comprehensive cleanup function for loading states
+ * Should be called in afterEach hooks to ensure proper cleanup
+ */
+export const cleanupLoadingStates = () => {
+  loadingStateManager.forceResetLoadingStates();
+  loadingStateManager.clearAll();
+};
+
+/**
+ * Emergency cleanup for stuck loading states
+ * Use this when tests are hanging due to loading states
+ */
+export const emergencyCleanupLoadingStates = () => {
+  console.warn('Emergency cleanup of loading states triggered');
+  loadingStateManager.forceResetLoadingStates();
+  loadingStateManager.clearAll();
+
+  // Also clear any global timers that might be keeping things alive
+  if (typeof vi !== 'undefined') {
+    vi.clearAllTimers();
+  }
+};

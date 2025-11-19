@@ -566,11 +566,25 @@ export const setupFixedLoadingMocks = (
   };
 };
 
-// Cleanup function
+// Cleanup function with proper loading state cleanup
 export const cleanupFixedLoadingMocks = () => {
+  // Force clear any active loading states before cleanup
+  if (mockState) {
+    mockState.chat.isLoading = false;
+    mockState.conversations.isLoading = false;
+  }
+
+  // Clear all mocks and timers
   vi.clearAllMocks();
+  vi.clearAllTimers();
+
+  // Reset error simulations
   simulatedErrors = {};
+
+  // Reinitialize state
   initializeState();
+
+  // Clear mock state references
   mockChatState = null;
   mockConversationsState = null;
 };

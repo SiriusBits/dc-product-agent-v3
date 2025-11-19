@@ -355,7 +355,30 @@ export function setupTest(options: SetupOptions = {}): TestContext {
 
   // Set up automatic cleanup if enabled (default: true)
   if (options.enableAutoCleanup !== false) {
-    afterEach(() => {
+    afterEach(async () => {
+      // First, ensure all loading states are cleared to prevent hanging
+      // This is critical for preventing tests from blocking indefinitely
+      try {
+        // Force clear any active loading states
+        const chatState = chatMock.getCurrentValue();
+        const productsState = productsMock.getCurrentValue();
+        const conversationsState = conversationsMock.getCurrentValue();
+
+        // Clear loading states if they're still active
+        if (chatState.isLoading) {
+          await chatMock.updateValue({ isLoading: false });
+        }
+        if (productsState.loading) {
+          await productsMock.updateValue({ loading: false });
+        }
+        if (conversationsState.isLoading) {
+          await conversationsMock.updateValue({ isLoading: false });
+        }
+      } catch (error) {
+        // Ignore errors during loading state cleanup
+        console.warn('Error clearing loading states during cleanup:', error);
+      }
+
       // Cleanup all rendered components
       renderedComponents.forEach((result) => {
         if (result.unmount) {
@@ -394,6 +417,9 @@ export function setupTest(options: SetupOptions = {}): TestContext {
       // Standard cleanup
       cleanup();
       vi.clearAllMocks();
+
+      // Clear all timers to prevent any pending operations
+      vi.clearAllTimers();
     });
   }
 
