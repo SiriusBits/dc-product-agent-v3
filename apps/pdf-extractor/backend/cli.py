@@ -44,6 +44,9 @@ def _iter_pdf_paths(inputs: Sequence[str]) -> List[Path]:
 
 def _default_schema_dir() -> Optional[Path]:
     candidates = [
+        # Local development path (monorepo root -> packages/shared-schemas)
+        Path(__file__).resolve().parent.parent.parent.parent / "packages" / "shared-schemas" / "src" / "schemas",
+        # Fallback paths
         Path.cwd() / "reference" / "gold" / "schema",
         Path(__file__).resolve().parent.parent / "reference" / "gold" / "schema",
     ]
