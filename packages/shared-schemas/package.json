@@ -1,6 +1,6 @@
 {
     "name": "@dc-product-agent/shared-schemas",
-    "version": "0.0.0",
+    "version": "0.0.1",
     "main": "./dist/index.js",
     "types": "./dist/index.d.ts",
     "scripts": {
@@ -9,6 +9,6 @@
         "clean": "rm -rf dist"
     },
     "devDependencies": {
-        "typescript": "^5.0.0"
+        "typescript": "^5.9.3"
     }
 }
