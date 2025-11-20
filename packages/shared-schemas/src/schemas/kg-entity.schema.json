@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/kg-entity.schema.json",
+  "title": "KG Entity",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "format": "uuid" },
+    "text": { "type": "string" },
+    "type": { "type": "string" },
+    "canonical_name": { "type": ["string", "null"] },
+    "aliases": { "type": "array", "items": { "type": "string" } },
+    "source_text": { "type": ["string", "null"] },
+    "provenance": {
+      "type": "object",
+      "properties": {
+        "document_id": { "type": "string" },
+        "page": { "type": ["integer", "null"] }
+      },
+      "additionalProperties": true
+    },
+    "metadata": { "type": "object" }
+  },
+  "required": ["id", "text", "type"],
+  "additionalProperties": false
+}
