@@ -1,0 +1,12 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Counter from '../components/Counter';
+---
+
+<Layout title="Dixie Chemical Product Agent">
+	<main className="container mx-auto p-4">
+		<h1 className="text-4xl font-bold mb-4 text-blue-600">Dixie Chemical Product Agent v3</h1>
+		<p className="mb-4">Welcome to the new frontend!</p>
+		<Counter client:load />
+	</main>
+</Layout>
