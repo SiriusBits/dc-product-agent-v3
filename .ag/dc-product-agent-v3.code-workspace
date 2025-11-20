@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../../../forks/qwen-dc-product/dc-product-agent"
+		}
+	],
+	"settings": {}
+}
