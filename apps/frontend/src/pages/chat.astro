@@ -1,0 +1,10 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { ChatContainer } from '../components/chat/ChatContainer';
+---
+
+<Layout title="Chat - Dixie Product Agent">
+  <main className="container mx-auto px-4">
+    <ChatContainer client:load />
+  </main>
+</Layout>
