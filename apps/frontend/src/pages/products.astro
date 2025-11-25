@@ -1,0 +1,10 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { ProductBrowser } from '../components/products/ProductBrowser';
+---
+
+<Layout title="Products - Dixie Product Agent">
+  <main>
+    <ProductBrowser client:load />
+  </main>
+</Layout>
