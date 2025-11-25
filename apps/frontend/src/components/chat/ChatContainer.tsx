@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { MessageList } from './MessageList';
 import { ChatInput } from './ChatInput';
+import { api } from '../../lib/api';
 
 interface Message {
     id: string;
@@ -28,16 +29,26 @@ export const ChatContainer: React.FC = () => {
         setMessages((prev) => [...prev, userMsg]);
         setIsLoading(true);
 
-        // Simulate API call
-        setTimeout(() => {
+        try {
+            const response = await api.query(content); // Assuming 'api' is defined elsewhere or imported
+
             const assistantMsg: Message = {
                 id: (Date.now() + 1).toString(),
                 role: 'assistant',
-                content: `I received your message: "${content}". This is a placeholder response.`,
+                content: response.answer,
             };
             setMessages((prev) => [...prev, assistantMsg]);
+        } catch (error) {
+            console.error('Error sending message:', error);
+            const errorMsg: Message = {
+                id: (Date.now() + 1).toString(),
+                role: 'assistant',
+                content: 'Sorry, I encountered an error while processing your request.',
+            };
+            setMessages((prev) => [...prev, errorMsg]);
+        } finally {
             setIsLoading(false);
-        }, 1000);
+        }
     };
 
     return (
