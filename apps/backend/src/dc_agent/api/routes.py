@@ -4,25 +4,35 @@ from dc_agent.models.api import QueryRequest, QueryResponse, IngestRequest, Sour
 
 router = APIRouter()
 
+from dc_agent.vector.chroma import ChromaVectorStore
+
+# Initialize stores
+vector_store = ChromaVectorStore()
+
 @router.post("/query", response_model=QueryResponse)
 async def query_endpoint(request: QueryRequest):
     """
     Process a natural language query and return an answer with sources.
     """
-    # Placeholder logic for now
-    # In a real implementation, this would call the Retrieval Service
+    # Query Vector DB
+    results = vector_store.query(request.query, n_results=request.top_k)
     
-    mock_sources = [
-        Source(
-            id="doc1",
-            content="This is a relevant document about the query.",
-            metadata={"source": "technical_bulletin_1.pdf"}
-        )
-    ]
+    sources = []
+    if results and results.get("ids"):
+        ids = results["ids"][0]
+        documents = results["documents"][0]
+        metadatas = results["metadatas"][0]
+        
+        for i, doc_id in enumerate(ids):
+            sources.append(Source(
+                id=doc_id,
+                content=documents[i],
+                metadata=metadatas[i] or {}
+            ))
     
     return QueryResponse(
-        answer=f"This is a placeholder answer for the query: '{request.query}'",
-        sources=mock_sources
+        answer=f"Found {len(sources)} relevant documents for your query: '{request.query}'",
+        sources=sources
     )
 
 @router.post("/ingest")
@@ -33,10 +43,19 @@ async def ingest_endpoint(request: IngestRequest):
     # Placeholder logic
     return {"status": "ingestion_started", "message": "Ingestion process initiated."}
 
+from dc_agent.kg.neo4j import Neo4jKGStore
+
+kg_store = Neo4jKGStore()
+
 @router.get("/documents")
 async def list_documents():
     """
-    List available documents in the system.
+    List available documents/products in the system.
     """
-    # Placeholder logic
-    return {"documents": ["doc1", "doc2", "doc3"]}
+    try:
+        results = kg_store.query_graph("MATCH (p:Product) RETURN p.name as name, p.filename as filename")
+        documents = [f"{r['name']} ({r['filename']})" for r in results]
+        return {"documents": documents}
+    except Exception as e:
+        # Fallback if KG fails
+        return {"documents": [], "error": str(e)}

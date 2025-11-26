@@ -1,4 +1,4 @@
-import React, { useState, KeyboardEvent } from 'react';
+import React, { useState } from 'react';
 
 interface ChatInputProps {
     onSend: (message: string) => void;
@@ -15,7 +15,7 @@ export const ChatInput: React.FC<ChatInputProps> = ({ onSend, disabled }) => {
         }
     };
 
-    const handleKeyDown = (e: KeyboardEvent<HTMLTextAreaElement>) => {
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
         if (e.key === 'Enter' && !e.shiftKey) {
             e.preventDefault();
             handleSend();
