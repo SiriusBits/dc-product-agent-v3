@@ -29,9 +29,9 @@ pnpm-debug.log*
 .DS_Store
 
 # Data
-backend/data/chroma/
-backend/data/product_knowledge_graph/
-backend/data/raw_pdfs/
+apps/backend/data/chroma/
+apps/backend/data/product_knowledge_graph/
+apps/backend/data/raw_pdfs/
 data/chroma/
 data/product_knowledge_graph/
 data/raw_pdfs/
@@ -54,3 +54,10 @@ pnpm-debug.log*
 
 # Turbo
 .turbo/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+*.s3db
+*.sl3
