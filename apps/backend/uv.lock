@@ -325,6 +325,11 @@ dev = [
     { name = "pytest" },
 ]
 
+[package.dev-dependencies]
+dev = [
+    { name = "requests" },
+]
+
 [package.metadata]
 requires-dist = [
     { name = "chromadb", specifier = ">=0.4.22" },
@@ -337,6 +342,9 @@ requires-dist = [
     { name = "uvicorn", extras = ["standard"], specifier = ">=0.27.0" },
 ]
 provides-extras = ["dev"]
+
+[package.metadata.requires-dev]
+dev = [{ name = "requests", specifier = ">=2.32.5" }]
 
 [[package]]
 name = "distro"

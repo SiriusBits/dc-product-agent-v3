@@ -25,3 +25,8 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/dc_agent"]
+
+[dependency-groups]
+dev = [
+    "requests>=2.32.5",
+]
