@@ -1,0 +1,589 @@
+{
+  "doc_id": "bba57d5e-1507-54eb-a4a8-1f28e2b4c91d",
+  "filename": "ASA_150_Technical_Bulletin.pdf",
+  "source_filepath": "data/raw_pdfs/ASA_150_Technical_Bulletin.pdf",
+  "filepath": "data/pdf_extracts/v1/pdfs/ASA_150_Technical_Bulletin.pdf",
+  "document_file_metadata": {
+    "document_title": "ASA_150_Technical_Bulletin.pdf",
+    "copyright_status": "Unknown",
+    "created": "8/4/17, 8:09:22 PM UTC",
+    "modified": "8/4/17, 8:09:22 PM UTC",
+    "application": "Muhimbi PDF Converter Services - www.muhimbi.com",
+    "advanced": {
+      "pdf_producer": "Muhimbi PDF Converter Services - www.muhimbi.com",
+      "pdf_version": "1.5",
+      "location": "/Users/benjaminbykowski/projects/ai-apps/forks/qwen-dc-product/dc-product-agent/data/raw_pdfs/ASA_150_Technical_Bulletin.pdf",
+      "file_size": "260.07 KB (266,309 Bytes)",
+      "page_size": "8.50 x 11.00 in",
+      "number_of_pages": 3,
+      "tagged_pdf": "No",
+      "fast_web_view": "No"
+    }
+  },
+  "source_file_hash": {
+    "sha256": "1e3fab15d8b77c16b6d0ef5cfd8bad47ef9f92c139eda023238624b58edb3820"
+  },
+  "document_type": "Product Technical Bulletin",
+  "manufacturer": "Dixie Chemical",
+  "contact_info": {
+    "address": "10601 Bay Area Blvd. Pasadena, TX 77507",
+    "phone": "(281) 474-3271",
+    "fax": "(281) 291-3384",
+    "email": "info@dixiechemicalgroup.com"
+  },
+  "product_info": {
+    "product_name": "ASA 150",
+    "product_short_name": "ASA 150",
+    "product_family": "Alkenylsuccinic Anhydride",
+    "cas_number": "68784-12-3",
+    "chemical_name": "2,5-Furandione,dihydro-,mono-C15-20-alkenyl derivs",
+    "synonyms": [
+      "ASA 150",
+      "Alkenylsuccinic anhydride",
+      "HDSA/ODSA blend"
+    ]
+  },
+  "registrations": [
+    {
+      "authority": "REACh",
+      "jurisdiction": "EU",
+      "registration_number": "01-2119533117-46",
+      "registration_name": "2,5-Furandione,dihydro-,mono-C15-20-alkenyl derivs",
+      "cas_number": "68784-12-3",
+      "status": "registered",
+      "effective_date": null,
+      "notes": "REACh registered as a component"
+    }
+  ],
+  "key_benefits": [
+    "Easy to handle",
+    "Can be employed in both cationic starch and polymer emulsion systems",
+    "Used as corrosion inhibitors in metal working fluids",
+    "Used in fuel and lubricant additives",
+    "Find use as intermediates for surfactants",
+    "Available with or without surfactant",
+    "Two types of surfactant available (DOSS or phosphate ester)"
+  ],
+  "applications_text": "ASA 150 is an alkenylsuccinic anhydride (ASA) based on C16-C18 alpha-olefin. The material is a blend of hexadecenylsuccinic anhydride (HDSA) and octadecenylsuccinic anhydride (ODSA). ASAs such as ASA 150 are commonly used as alkaline paper sizing agents. These products are easy to handle and can be employed in both cationic starch and polymer emulsion systems. ASAs are also used in a variety of other products. In metal working fluids, ASAs are utilized as corrosion inhibitors. ASAs are often used in fuel and lubricant additives including pour point depressants, corrosion inhibitors and dispersants. ASAs find use as intermediates for surfactants and can also be converted to acid amides and esters. Other suggested applications are in plasticizers, epoxies, and moisture control for leather goods.",
+  "applications": [
+    "Alkaline paper sizing agents",
+    "Cationic starch systems",
+    "Polymer emulsion systems",
+    "Corrosion inhibitors in metal working fluids",
+    "Pour point depressants in fuel and lubricant additives",
+    "Dispersants in fuel and lubricant additives",
+    "Intermediates for surfactants",
+    "Acid amides and esters production",
+    "Plasticizers",
+    "Epoxy applications",
+    "Moisture control for leather goods"
+  ],
+  "properties_and_specifications": [
+    {
+      "category": "Typical",
+      "name": "HDSA Content",
+      "unit": "%",
+      "value_string": "40-60",
+      "value_numeric": null,
+      "value_min": 40,
+      "value_max": 60,
+      "test_method": "D-150M",
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Typical",
+      "name": "ODSA Content",
+      "unit": "%",
+      "value_string": "40-60",
+      "value_numeric": null,
+      "value_min": 40,
+      "value_max": 60,
+      "test_method": "D-150M",
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Typical",
+      "name": "Physical Appearance",
+      "unit": null,
+      "value_string": "Yellow to amber liquid",
+      "value_numeric": null,
+      "value_min": null,
+      "value_max": null,
+      "test_method": "D-104",
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Typical",
+      "name": "Gardner Color",
+      "unit": null,
+      "value_string": "10 Max",
+      "value_numeric": null,
+      "value_min": null,
+      "value_max": 10,
+      "test_method": "D-150G",
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Typical",
+      "name": "Residual Olefin",
+      "unit": "%",
+      "value_string": "3 Max",
+      "value_numeric": null,
+      "value_min": null,
+      "value_max": 3,
+      "test_method": "D-150M",
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Typical",
+      "name": "Free Acid",
+      "unit": "%",
+      "value_string": "2 Max",
+      "value_numeric": null,
+      "value_min": null,
+      "value_max": 2,
+      "test_method": "D-150L",
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Typical",
+      "name": "Maleic Anhydride",
+      "unit": "%",
+      "value_string": "0.1 Max",
+      "value_numeric": null,
+      "value_min": null,
+      "value_max": 0.1,
+      "test_method": "D-150M",
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Typical",
+      "name": "Neutralization Number",
+      "unit": "mg KOH/g",
+      "value_string": "325 - 360",
+      "value_numeric": null,
+      "value_min": 325,
+      "value_max": 360,
+      "test_method": "D-150I",
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Typical",
+      "name": "Pour Point",
+      "unit": "\u00b0C",
+      "value_string": "-36",
+      "value_numeric": -36,
+      "value_min": null,
+      "value_max": null,
+      "test_method": "ASTM D97",
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Typical",
+      "name": "Freeze Point",
+      "unit": "\u00b0C",
+      "value_string": "-21",
+      "value_numeric": -21,
+      "value_min": null,
+      "value_max": null,
+      "test_method": "ASTM 1015",
+      "page": 1,
+      "notes": null
+    }
+  ],
+  "epoxy_resin_properties": null,
+  "typical_properties": {
+    "table_name": "Typical Properties",
+    "page": 1,
+    "data_type": "typical_properties",
+    "description": "ASA 150 is an alkenylsuccinic anhydride based on C16-C18 alpha-olefin used as alkaline paper sizing agents, corrosion inhibitors in metal working fluids, and fuel and lubricant additives.",
+    "row_count": 10,
+    "data": [
+      {
+        "name": "HDSA Content",
+        "unit": "%",
+        "value_string": "40-60",
+        "value_min": 40,
+        "value_max": 60,
+        "value_numeric": null,
+        "test_method": "D-150M"
+      },
+      {
+        "name": "ODSA Content",
+        "unit": "%",
+        "value_string": "40-60",
+        "value_min": 40,
+        "value_max": 60,
+        "value_numeric": null,
+        "test_method": "D-150M"
+      },
+      {
+        "name": "Physical Appearance",
+        "unit": null,
+        "value_string": "Yellow to amber liquid",
+        "value_min": null,
+        "value_max": null,
+        "value_numeric": null,
+        "test_method": "D-104"
+      },
+      {
+        "name": "Gardner Color",
+        "unit": null,
+        "value_string": "10 Max",
+        "value_min": null,
+        "value_max": 10,
+        "value_numeric": null,
+        "test_method": "D-150G"
+      },
+      {
+        "name": "Residual Olefin",
+        "unit": "%",
+        "value_string": "3 Max",
+        "value_min": null,
+        "value_max": 3,
+        "value_numeric": null,
+        "test_method": "D-150M"
+      },
+      {
+        "name": "Free Acid",
+        "unit": "%",
+        "value_string": "2 Max",
+        "value_min": null,
+        "value_max": 2,
+        "value_numeric": null,
+        "test_method": "D-150L"
+      },
+      {
+        "name": "Maleic Anhydride",
+        "unit": "%",
+        "value_string": "0.1 Max",
+        "value_min": null,
+        "value_max": 0.1,
+        "value_numeric": null,
+        "test_method": "D-150M"
+      },
+      {
+        "name": "Neutralization Number",
+        "unit": "mg KOH/g",
+        "value_string": "325 - 360",
+        "value_min": 325,
+        "value_max": 360,
+        "value_numeric": null,
+        "test_method": "D-150I"
+      },
+      {
+        "name": "Pour Point",
+        "unit": "\u00b0C",
+        "value_string": "-36",
+        "value_min": null,
+        "value_max": null,
+        "value_numeric": -36,
+        "test_method": "ASTM D97"
+      },
+      {
+        "name": "Freeze Point",
+        "unit": "\u00b0C",
+        "value_string": "-21",
+        "value_min": null,
+        "value_max": null,
+        "value_numeric": -21,
+        "test_method": "ASTM 1015"
+      }
+    ],
+    "notes": null
+  },
+  "other_tables": [
+    {
+      "table_name": "Typical Properties",
+      "page": 1,
+      "data_type": "typical_properties",
+      "description": "ASA 150 is an alkenylsuccinic anhydride based on C16-C18 alpha-olefin used as alkaline paper sizing agents, corrosion inhibitors in metal working fluids, and fuel and lubricant additives.",
+      "row_count": 10,
+      "data": [
+        {
+          "name": "HDSA Content",
+          "unit": "%",
+          "value_string": "40-60",
+          "value_min": 40,
+          "value_max": 60,
+          "value_numeric": null,
+          "test_method": "D-150M"
+        },
+        {
+          "name": "ODSA Content",
+          "unit": "%",
+          "value_string": "40-60",
+          "value_min": 40,
+          "value_max": 60,
+          "value_numeric": null,
+          "test_method": "D-150M"
+        },
+        {
+          "name": "Physical Appearance",
+          "unit": null,
+          "value_string": "Yellow to amber liquid",
+          "value_min": null,
+          "value_max": null,
+          "value_numeric": null,
+          "test_method": "D-104"
+        },
+        {
+          "name": "Gardner Color",
+          "unit": null,
+          "value_string": "10 Max",
+          "value_min": null,
+          "value_max": 10,
+          "value_numeric": null,
+          "test_method": "D-150G"
+        },
+        {
+          "name": "Residual Olefin",
+          "unit": "%",
+          "value_string": "3 Max",
+          "value_min": null,
+          "value_max": 3,
+          "value_numeric": null,
+          "test_method": "D-150M"
+        },
+        {
+          "name": "Free Acid",
+          "unit": "%",
+          "value_string": "2 Max",
+          "value_min": null,
+          "value_max": 2,
+          "value_numeric": null,
+          "test_method": "D-150L"
+        },
+        {
+          "name": "Maleic Anhydride",
+          "unit": "%",
+          "value_string": "0.1 Max",
+          "value_min": null,
+          "value_max": 0.1,
+          "value_numeric": null,
+          "test_method": "D-150M"
+        },
+        {
+          "name": "Neutralization Number",
+          "unit": "mg KOH/g",
+          "value_string": "325 - 360",
+          "value_min": 325,
+          "value_max": 360,
+          "value_numeric": null,
+          "test_method": "D-150I"
+        },
+        {
+          "name": "Pour Point",
+          "unit": "\u00b0C",
+          "value_string": "-36",
+          "value_min": null,
+          "value_max": null,
+          "value_numeric": -36,
+          "test_method": "ASTM D97"
+        },
+        {
+          "name": "Freeze Point",
+          "unit": "\u00b0C",
+          "value_string": "-21",
+          "value_min": null,
+          "value_max": null,
+          "value_numeric": -21,
+          "test_method": "ASTM 1015"
+        }
+      ]
+    }
+  ],
+  "formulation_data": [],
+  "toxicity_data": [],
+  "sections": [
+    {
+      "name": "Applications",
+      "page": 2,
+      "text": "ASA 150 is an alkenylsuccinic anhydride (ASA) based on C16-C18 alpha-olefin. The material is a blend of hexadecenylsuccinic anhydride (HDSA) and octadecenylsuccinic anhydride (ODSA). ASAs such as ASA 150 are commonly used as alkaline paper sizing agents. These products are easy to handle and can be employed in both cationic starch and polymer emulsion systems. ASAs are also used in a variety of other products. In metal working fluids, ASAs are utilized as corrosion inhibitors. ASAs are often used in fuel and lubricant additives including pour point depressants, corrosion inhibitors and dispersants. ASAs find use as intermediates for surfactants and can also be converted to acid amides and esters. Other suggested applications are in plasticizers, epoxies, and moisture control for leather goods. Dixie's ASA 150 is available with or without surfactant. Two types of surfactant are available, dioctylsulfo-succinate (DOSS) or phosphate ester."
+    },
+    {
+      "name": "Registration",
+      "page": 3,
+      "text": "ASA 150 is REACh registered as a component under the name 2,5-Furandione,dihydro-,mono-C15-20-alkenyl derivs. The CASRN is 68784-12-3 and the REACh registry number is 01-2119533117-46. In the US, CASRN 32072-96-1 is typically used for HDSA and CASRN 28777-98-2 is typically used for ODSA."
+    },
+    {
+      "name": "Handling & Storage",
+      "page": 3,
+      "text": "ASA 150 must be stored out of contact with moisture to avoid hydrolysis of the anhydride to the acid. When properly stored, ASA 150 has a shelf life of 24 months. ASA storage tanks may be constructed of mild steel, 304 or 316 stainless steel. If protection from atmospheric moisture is difficult then 304 or 316 are preferred due to the formation of corrosive acids by the interaction of ASA with water. For more information on the design of bulk storage for ASA products, consult the Dixie Chemical brochure \"Alkenylsuccinic Anhydride Storage Requirements.\""
+    },
+    {
+      "name": "Health Hazards",
+      "page": 3,
+      "text": "Read and understand the relevant Safety Data Sheets (SDS) for all products before use. ASA 150 is a skin sensitizer. Avoid contact with skin, eyes and clothing. Use only with adequate ventilation. In case of contact, immediately flush skin or eyes with plenty of water for at least 15 minutes; for eyes, get medical attention. Wash contaminated clothing before reuse."
+    },
+    {
+      "name": "Availability",
+      "page": 3,
+      "text": "ASA 150 is available from Dixie Chemical in Pasadena, TX. Contact your Dixie representative for details."
+    }
+  ],
+  "images": [
+    {
+      "filename": "asa150_specific_gravity_temperature.png",
+      "page": 1,
+      "type": "graph",
+      "description": "Specific Gravity vs Temperature. \u2014 Specific Gravity decreases with Temperature. Specific Gravity range 45.0\u2013615.0 lbs/gal; Temperature range 0.0\u201360.0 \u00b0C",
+      "title": "Specific Gravity as a Function of Temperature",
+      "x_axis": {
+        "label": "Temperature",
+        "unit": "\u00b0C"
+      },
+      "y_axis": {
+        "label": "Specific Gravity",
+        "unit": "lbs/gal"
+      },
+      "graph_data": [
+        {
+          "x": 0,
+          "y": 615
+        },
+        {
+          "x": 5,
+          "y": 600
+        },
+        {
+          "x": 10,
+          "y": 520
+        },
+        {
+          "x": 15,
+          "y": 420
+        },
+        {
+          "x": 20,
+          "y": 320
+        },
+        {
+          "x": 25,
+          "y": 250
+        },
+        {
+          "x": 30,
+          "y": 200
+        },
+        {
+          "x": 35,
+          "y": 160
+        },
+        {
+          "x": 40,
+          "y": 120
+        },
+        {
+          "x": 45,
+          "y": 90
+        },
+        {
+          "x": 50,
+          "y": 70
+        },
+        {
+          "x": 55,
+          "y": 55
+        },
+        {
+          "x": 60,
+          "y": 45
+        }
+      ],
+      "notes": null
+    },
+    {
+      "filename": "asa150_viscosity_temperature.png",
+      "page": 2,
+      "type": "graph",
+      "description": "Viscosity vs Temperature. \u2014 Viscosity decreases with Temperature. Viscosity range 7.86\u20138.1 cPs; Temperature range 0.0\u201360.0 \u00b0C",
+      "title": "Viscosity as a Function of Temperature",
+      "x_axis": {
+        "label": "Temperature",
+        "unit": "\u00b0C"
+      },
+      "y_axis": {
+        "label": "Viscosity",
+        "unit": "cPs"
+      },
+      "graph_data": [
+        {
+          "x": 0,
+          "y": 8.1
+        },
+        {
+          "x": 5,
+          "y": 8.08
+        },
+        {
+          "x": 10,
+          "y": 8.06
+        },
+        {
+          "x": 15,
+          "y": 8.04
+        },
+        {
+          "x": 20,
+          "y": 8.02
+        },
+        {
+          "x": 25,
+          "y": 8.0
+        },
+        {
+          "x": 30,
+          "y": 7.98
+        },
+        {
+          "x": 35,
+          "y": 7.96
+        },
+        {
+          "x": 40,
+          "y": 7.94
+        },
+        {
+          "x": 45,
+          "y": 7.92
+        },
+        {
+          "x": 50,
+          "y": 7.9
+        },
+        {
+          "x": 55,
+          "y": 7.88
+        },
+        {
+          "x": 60,
+          "y": 7.86
+        }
+      ],
+      "notes": null
+    }
+  ],
+  "document_footnotes": {},
+  "extraction_metadata": {
+    "confidence_scores": {
+      "product_info": 100,
+      "properties": 100,
+      "other_tables": 100,
+      "sections": 100,
+      "images": 100,
+      "overall": 100
+    },
+    "extractor_version": "dev",
+    "extraction_date": "2025-08-27T15:10:00-04:00"
+  }
+}

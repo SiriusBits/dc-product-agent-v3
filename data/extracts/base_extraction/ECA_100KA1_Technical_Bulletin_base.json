@@ -1,0 +1,753 @@
+{
+  "doc_id": "83a60b03-9915-5818-9135-1da5dc896ed9",
+  "filename": "ECA_100KA1_Technical_Bulletin.pdf",
+  "source_filepath": "data/raw_pdfs/ECA_100KA1_Technical_Bulletin.pdf",
+  "filepath": "data/pdf_extracts/v1/pdfs/ECA_100KA1_Technical_Bulletin.pdf",
+  "document_file_metadata": {
+    "document_title": "ECA_100KA1_Technical_Bulletin.pdf",
+    "copyright_status": "Unknown",
+    "created": "4/21/20, 10:28:12 PM UTC",
+    "modified": "4/21/20, 10:28:12 PM UTC",
+    "application": "Muhimbi PDF Converter Services - www.muhimbi.com",
+    "advanced": {
+      "pdf_producer": "Muhimbi PDF Converter Services - www.muhimbi.com",
+      "pdf_version": "1.5",
+      "location": "/Users/benjaminbykowski/projects/ai-apps/forks/qwen-dc-product/dc-product-agent/data/raw_pdfs/ECA_100KA1_Technical_Bulletin.pdf",
+      "file_size": "248.41 KB (254,367 Bytes)",
+      "page_size": "8.50 x 11.00 in",
+      "number_of_pages": 3,
+      "tagged_pdf": "No",
+      "fast_web_view": "No"
+    }
+  },
+  "source_file_hash": {
+    "sha256": "287b6bae39fb2ae91bbccf07991e84187a93fd7eb64ec9ec7dea5c4d91236d31"
+  },
+  "document_type": "Product Technical Bulletin",
+  "manufacturer": "Dixie Chemical",
+  "contact_info": {
+    "address": "10601 Bay Area Blvd. Pasadena, TX 77507",
+    "phone": "(281) 474-3271",
+    "fax": "(281) 291-3384",
+    "email": "info@dixiechemicalgroup.com"
+  },
+  "product_info": {
+    "product_name": "Epoxy Curing Agent 100KA1",
+    "product_short_name": "ECA 100KA1",
+    "product_family": "Epoxy Curing Agent",
+    "cas_number": null,
+    "chemical_name": null,
+    "synonyms": []
+  },
+  "registrations": [],
+  "key_benefits": [
+    "Pre-catalyzed for faster cure",
+    "Non-crystallizing",
+    "Excellent electrical properties",
+    "Good UV resistance",
+    "Good alkaline resistance",
+    "Low viscosity"
+  ],
+  "applications_text": "ECA 100KA1 is a pre-catalyzed version of methylhexahydrophthalic anhydride (MHHPA). It is a non-crystallizing anhydride curing agent for epoxy resins. ECA 100KA1 is used in epoxy laminating and filament winding applications. It is also used in electrical encapsulation applications where its excellent electrical properties are utilized. ECA 100KA1 is used in applications requiring UV resistance and alkaline resistance. It is used with a variety of epoxy resins including bisphenol A, bisphenol F, cycloaliphatic, novolac, and glycidyl ester epoxy resins.",
+  "applications": [
+    "Epoxy laminating",
+    "Filament winding applications",
+    "Electrical encapsulation",
+    "Applications requiring UV resistance",
+    "Applications requiring alkaline resistance",
+    "Curing agent for bisphenol A epoxy resins",
+    "Curing agent for bisphenol F epoxy resins",
+    "Curing agent for cycloaliphatic epoxy resins",
+    "Curing agent for novolac epoxy resins",
+    "Curing agent for glycidyl ester epoxy resins"
+  ],
+  "properties_and_specifications": [
+    {
+      "category": "Typical",
+      "name": "Physical Appearance",
+      "unit": null,
+      "value_string": "Clear, colorless to pale yellow liquid",
+      "value_numeric": null,
+      "value_min": null,
+      "value_max": null,
+      "test_method": "D-104 (Visual)",
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Typical",
+      "name": "Gardner Color",
+      "unit": null,
+      "value_string": "2 Max",
+      "value_numeric": null,
+      "value_min": null,
+      "value_max": 2,
+      "test_method": "D-150G",
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Typical",
+      "name": "Specific Gravity @ 25\u00b0C",
+      "unit": "g/cc",
+      "value_string": "1.20-1.22",
+      "value_numeric": null,
+      "value_min": 1.2,
+      "value_max": 1.22,
+      "test_method": "D-102 (ASTM D 4052)",
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Typical",
+      "name": "Viscosity @ 25\u00b0C",
+      "unit": "cPs",
+      "value_string": "60-80",
+      "value_numeric": null,
+      "value_min": 60,
+      "value_max": 80,
+      "test_method": "D-150V",
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Typical",
+      "name": "Anhydride Content",
+      "unit": "%",
+      "value_string": "95 Min",
+      "value_numeric": null,
+      "value_min": 95,
+      "value_max": null,
+      "test_method": "D-150M",
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Typical",
+      "name": "Acid Content",
+      "unit": "%",
+      "value_string": "0.5 Max",
+      "value_numeric": null,
+      "value_min": null,
+      "value_max": 0.5,
+      "test_method": "D-150M",
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Typical",
+      "name": "Moisture",
+      "unit": "%",
+      "value_string": "0.1 Max",
+      "value_numeric": null,
+      "value_min": null,
+      "value_max": 0.1,
+      "test_method": "D-150M",
+      "page": 1,
+      "notes": null
+    }
+  ],
+  "epoxy_resin_properties": null,
+  "typical_properties": {
+    "table_name": "Typical Properties",
+    "page": 1,
+    "data_type": "typical_properties",
+    "description": "ECA 100KA1 is a pre-catalyzed version of methylhexahydrophthalic anhydride (MHHPA). It is a non-crystallizing anhydride curing agent for epoxy resins used in laminating, filament winding, and electrical encapsulation applications.",
+    "row_count": 7,
+    "data": [
+      {
+        "name": "Physical Appearance",
+        "unit": null,
+        "value_string": "Clear, colorless to pale yellow liquid",
+        "value_min": null,
+        "value_max": null,
+        "value_numeric": null,
+        "test_method": "D-104 (Visual)"
+      },
+      {
+        "name": "Gardner Color",
+        "unit": null,
+        "value_string": "2 Max",
+        "value_min": null,
+        "value_max": 2,
+        "value_numeric": null,
+        "test_method": "D-150G"
+      },
+      {
+        "name": "Specific Gravity @ 25\u00b0C",
+        "unit": "g/cc",
+        "value_string": "1.20-1.22",
+        "value_min": 1.2,
+        "value_max": 1.22,
+        "value_numeric": null,
+        "test_method": "D-102 (ASTM D 4052)"
+      },
+      {
+        "name": "Viscosity @ 25\u00b0C",
+        "unit": "cPs",
+        "value_string": "60-80",
+        "value_min": 60,
+        "value_max": 80,
+        "value_numeric": null,
+        "test_method": "D-150V"
+      },
+      {
+        "name": "Anhydride Content",
+        "unit": "%",
+        "value_string": "95 Min",
+        "value_min": 95,
+        "value_max": null,
+        "value_numeric": null,
+        "test_method": "D-150M"
+      },
+      {
+        "name": "Acid Content",
+        "unit": "%",
+        "value_string": "0.5 Max",
+        "value_min": null,
+        "value_max": 0.5,
+        "value_numeric": null,
+        "test_method": "D-150M"
+      },
+      {
+        "name": "Moisture",
+        "unit": "%",
+        "value_string": "0.1 Max",
+        "value_min": null,
+        "value_max": 0.1,
+        "value_numeric": null,
+        "test_method": "D-150M"
+      }
+    ],
+    "notes": {}
+  },
+  "other_tables": [
+    {
+      "table_name": "Formulation Examples",
+      "page": 1,
+      "data_type": "formulation_data",
+      "description": "Formulation examples for ECA 100KA1 with various epoxy resins including bisphenol A, bisphenol F, cycloaliphatic, novolac, and glycidyl ester types.",
+      "row_count": 6,
+      "data": [
+        {
+          "parameter": "Epoxy Resin",
+          "unit": null,
+          "values": [
+            {
+              "column_name": "D.E.R. 331",
+              "value_string": "D.E.R. 331",
+              "value_numeric": null,
+              "value_min": null,
+              "value_max": null
+            },
+            {
+              "column_name": "D.E.R. 354",
+              "value_string": "D.E.R. 354",
+              "value_numeric": null,
+              "value_min": null,
+              "value_max": null
+            },
+            {
+              "column_name": "D.E.R. 732",
+              "value_string": "D.E.R. 732",
+              "value_numeric": null,
+              "value_min": null,
+              "value_max": null
+            },
+            {
+              "column_name": "ERL 4221",
+              "value_string": "ERL 4221",
+              "value_numeric": null,
+              "value_min": null,
+              "value_max": null
+            },
+            {
+              "column_name": "D.E.N. 438",
+              "value_string": "D.E.N. 438",
+              "value_numeric": null,
+              "value_min": null,
+              "value_max": null
+            },
+            {
+              "column_name": "Heloxy 71",
+              "value_string": "Heloxy 71",
+              "value_numeric": null,
+              "value_min": null,
+              "value_max": null
+            }
+          ]
+        },
+        {
+          "parameter": "Epoxy Type",
+          "unit": null,
+          "values": [
+            {
+              "column_name": "D.E.R. 331",
+              "value_string": "Bisphenol A",
+              "value_numeric": null,
+              "value_min": null,
+              "value_max": null
+            },
+            {
+              "column_name": "D.E.R. 354",
+              "value_string": "Bisphenol F",
+              "value_numeric": null,
+              "value_min": null,
+              "value_max": null
+            },
+            {
+              "column_name": "D.E.R. 732",
+              "value_string": "Polyglycol",
+              "value_numeric": null,
+              "value_min": null,
+              "value_max": null
+            },
+            {
+              "column_name": "ERL 4221",
+              "value_string": "Cycloaliphatic",
+              "value_numeric": null,
+              "value_min": null,
+              "value_max": null
+            },
+            {
+              "column_name": "D.E.N. 438",
+              "value_string": "Novolac",
+              "value_numeric": null,
+              "value_min": null,
+              "value_max": null
+            },
+            {
+              "column_name": "Heloxy 71",
+              "value_string": "Glycidyl Ester",
+              "value_numeric": null,
+              "value_min": null,
+              "value_max": null
+            }
+          ]
+        },
+        {
+          "parameter": "Epoxy Equivalent Weight",
+          "unit": "g/eq",
+          "values": [
+            {
+              "column_name": "D.E.R. 331",
+              "value_string": "186",
+              "value_numeric": 186,
+              "value_min": null,
+              "value_max": null
+            },
+            {
+              "column_name": "D.E.R. 354",
+              "value_string": "167",
+              "value_numeric": 167,
+              "value_min": null,
+              "value_max": null
+            },
+            {
+              "column_name": "D.E.R. 732",
+              "value_string": "320",
+              "value_numeric": 320,
+              "value_min": null,
+              "value_max": null
+            },
+            {
+              "column_name": "ERL 4221",
+              "value_string": "133",
+              "value_numeric": 133,
+              "value_min": null,
+              "value_max": null
+            },
+            {
+              "column_name": "D.E.N. 438",
+              "value_string": "176",
+              "value_numeric": 176,
+              "value_min": null,
+              "value_max": null
+            },
+            {
+              "column_name": "Heloxy 71",
+              "value_string": "148",
+              "value_numeric": 148,
+              "value_min": null,
+              "value_max": null
+            }
+          ]
+        },
+        {
+          "parameter": "Epoxy",
+          "unit": "pbw",
+          "values": [
+            {
+              "column_name": "D.E.R. 331",
+              "value_string": "100",
+              "value_numeric": 100,
+              "value_min": null,
+              "value_max": null
+            },
+            {
+              "column_name": "D.E.R. 354",
+              "value_string": "100",
+              "value_numeric": 100,
+              "value_min": null,
+              "value_max": null
+            },
+            {
+              "column_name": "D.E.R. 732",
+              "value_string": "100",
+              "value_numeric": 100,
+              "value_min": null,
+              "value_max": null
+            },
+            {
+              "column_name": "ERL 4221",
+              "value_string": "100",
+              "value_numeric": 100,
+              "value_min": null,
+              "value_max": null
+            },
+            {
+              "column_name": "D.E.N. 438",
+              "value_string": "100",
+              "value_numeric": 100,
+              "value_min": null,
+              "value_max": null
+            },
+            {
+              "column_name": "Heloxy 71",
+              "value_string": "100",
+              "value_numeric": 100,
+              "value_min": null,
+              "value_max": null
+            }
+          ]
+        },
+        {
+          "parameter": "ECA 100KA1",
+          "unit": "pbw",
+          "values": [
+            {
+              "column_name": "D.E.R. 331",
+              "value_string": "90",
+              "value_numeric": 90,
+              "value_min": null,
+              "value_max": null
+            },
+            {
+              "column_name": "D.E.R. 354",
+              "value_string": "80",
+              "value_numeric": 80,
+              "value_min": null,
+              "value_max": null
+            },
+            {
+              "column_name": "D.E.R. 732",
+              "value_string": "155",
+              "value_numeric": 155,
+              "value_min": null,
+              "value_max": null
+            },
+            {
+              "column_name": "ERL 4221",
+              "value_string": "65",
+              "value_numeric": 65,
+              "value_min": null,
+              "value_max": null
+            },
+            {
+              "column_name": "D.E.N. 438",
+              "value_string": "85",
+              "value_numeric": 85,
+              "value_min": null,
+              "value_max": null
+            },
+            {
+              "column_name": "Heloxy 71",
+              "value_string": "72",
+              "value_numeric": 72,
+              "value_min": null,
+              "value_max": null
+            }
+          ]
+        },
+        {
+          "parameter": "Cure Schedule",
+          "unit": null,
+          "values": [
+            {
+              "column_name": "D.E.R. 331",
+              "value_string": "2 hr @ 80\u00b0C + 2 hr @ 150\u00b0C",
+              "value_numeric": null,
+              "value_min": null,
+              "value_max": null
+            },
+            {
+              "column_name": "D.E.R. 354",
+              "value_string": "2 hr @ 80\u00b0C + 2 hr @ 150\u00b0C",
+              "value_numeric": null,
+              "value_min": null,
+              "value_max": null
+            },
+            {
+              "column_name": "D.E.R. 732",
+              "value_string": "2 hr @ 80\u00b0C + 2 hr @ 150\u00b0C",
+              "value_numeric": null,
+              "value_min": null,
+              "value_max": null
+            },
+            {
+              "column_name": "ERL 4221",
+              "value_string": "2 hr @ 80\u00b0C + 2 hr @ 150\u00b0C",
+              "value_numeric": null,
+              "value_min": null,
+              "value_max": null
+            },
+            {
+              "column_name": "D.E.N. 438",
+              "value_string": "2 hr @ 80\u00b0C + 2 hr @ 150\u00b0C",
+              "value_numeric": null,
+              "value_min": null,
+              "value_max": null
+            },
+            {
+              "column_name": "Heloxy 71",
+              "value_string": "2 hr @ 80\u00b0C + 2 hr @ 150\u00b0C",
+              "value_numeric": null,
+              "value_min": null,
+              "value_max": null
+            }
+          ]
+        }
+      ],
+      "notes": {}
+    },
+    {
+      "table_name": "Typical Properties",
+      "page": 1,
+      "data_type": "typical_properties",
+      "description": "ECA 100KA1 is a pre-catalyzed version of methylhexahydrophthalic anhydride (MHHPA). It is a non-crystallizing anhydride curing agent for epoxy resins used in laminating, filament winding, and electrical encapsulation applications.",
+      "row_count": 7,
+      "data": [
+        {
+          "name": "Physical Appearance",
+          "unit": null,
+          "value_string": "Clear, colorless to pale yellow liquid",
+          "value_min": null,
+          "value_max": null,
+          "value_numeric": null,
+          "test_method": "D-104 (Visual)"
+        },
+        {
+          "name": "Gardner Color",
+          "unit": null,
+          "value_string": "2 Max",
+          "value_min": null,
+          "value_max": 2,
+          "value_numeric": null,
+          "test_method": "D-150G"
+        },
+        {
+          "name": "Specific Gravity @ 25\u00b0C",
+          "unit": "g/cc",
+          "value_string": "1.20-1.22",
+          "value_min": 1.2,
+          "value_max": 1.22,
+          "value_numeric": null,
+          "test_method": "D-102 (ASTM D 4052)"
+        },
+        {
+          "name": "Viscosity @ 25\u00b0C",
+          "unit": "cPs",
+          "value_string": "60-80",
+          "value_min": 60,
+          "value_max": 80,
+          "value_numeric": null,
+          "test_method": "D-150V"
+        },
+        {
+          "name": "Anhydride Content",
+          "unit": "%",
+          "value_string": "95 Min",
+          "value_min": 95,
+          "value_max": null,
+          "value_numeric": null,
+          "test_method": "D-150M"
+        },
+        {
+          "name": "Acid Content",
+          "unit": "%",
+          "value_string": "0.5 Max",
+          "value_min": null,
+          "value_max": 0.5,
+          "value_numeric": null,
+          "test_method": "D-150M"
+        },
+        {
+          "name": "Moisture",
+          "unit": "%",
+          "value_string": "0.1 Max",
+          "value_min": null,
+          "value_max": 0.1,
+          "value_numeric": null,
+          "test_method": "D-150M"
+        }
+      ]
+    }
+  ],
+  "formulation_data": [
+    {
+      "epoxy_type": "Bisphenol A",
+      "phr": null,
+      "viscosity_at_25c_cp": null,
+      "gel_time_min": null,
+      "tg_c": null,
+      "cure_schedule": "2 hr @ 80\u00b0C + 2 hr @ 150\u00b0C",
+      "page": null,
+      "source_table": null,
+      "notes": null,
+      "epoxy_resin": "D.E.R. 331",
+      "epoxy_equivalent_weight": 186,
+      "epoxy_amount": 100,
+      "anhydride_amount": 90
+    },
+    {
+      "epoxy_type": "Bisphenol F",
+      "phr": null,
+      "viscosity_at_25c_cp": null,
+      "gel_time_min": null,
+      "tg_c": null,
+      "cure_schedule": "2 hr @ 80\u00b0C + 2 hr @ 150\u00b0C",
+      "page": null,
+      "source_table": null,
+      "notes": null,
+      "epoxy_resin": "D.E.R. 354",
+      "epoxy_equivalent_weight": 167,
+      "epoxy_amount": 100,
+      "anhydride_amount": 80
+    },
+    {
+      "epoxy_type": "Polyglycol",
+      "phr": null,
+      "viscosity_at_25c_cp": null,
+      "gel_time_min": null,
+      "tg_c": null,
+      "cure_schedule": "2 hr @ 80\u00b0C + 2 hr @ 150\u00b0C",
+      "page": null,
+      "source_table": null,
+      "notes": null,
+      "epoxy_resin": "D.E.R. 732",
+      "epoxy_equivalent_weight": 320,
+      "epoxy_amount": 100,
+      "anhydride_amount": 155
+    },
+    {
+      "epoxy_type": "Cycloaliphatic",
+      "phr": null,
+      "viscosity_at_25c_cp": null,
+      "gel_time_min": null,
+      "tg_c": null,
+      "cure_schedule": "2 hr @ 80\u00b0C + 2 hr @ 150\u00b0C",
+      "page": null,
+      "source_table": null,
+      "notes": null,
+      "epoxy_resin": "ERL 4221",
+      "epoxy_equivalent_weight": 133,
+      "epoxy_amount": 100,
+      "anhydride_amount": 65
+    },
+    {
+      "epoxy_type": "Novolac",
+      "phr": null,
+      "viscosity_at_25c_cp": null,
+      "gel_time_min": null,
+      "tg_c": null,
+      "cure_schedule": "2 hr @ 80\u00b0C + 2 hr @ 150\u00b0C",
+      "page": null,
+      "source_table": null,
+      "notes": null,
+      "epoxy_resin": "D.E.N. 438",
+      "epoxy_equivalent_weight": 176,
+      "epoxy_amount": 100,
+      "anhydride_amount": 85
+    },
+    {
+      "epoxy_type": "Glycidyl Ester",
+      "phr": null,
+      "viscosity_at_25c_cp": null,
+      "gel_time_min": null,
+      "tg_c": null,
+      "cure_schedule": "2 hr @ 80\u00b0C + 2 hr @ 150\u00b0C",
+      "page": null,
+      "source_table": null,
+      "notes": null,
+      "epoxy_resin": "Heloxy 71",
+      "epoxy_equivalent_weight": 148,
+      "epoxy_amount": 100,
+      "anhydride_amount": 72
+    }
+  ],
+  "toxicity_data": [
+    {
+      "metric": "skin_irritation",
+      "species": "human",
+      "route": "dermal",
+      "value": null,
+      "unit": null,
+      "test_method": null,
+      "conditions": null,
+      "page": 2,
+      "source_text": "ECA 100KA1 is a skin and eye irritant. Avoid contact with skin, eyes and clothing. Use only with adequate ventilation. In case of contact, immediately flush skin or eyes with plenty of water for at least 15 minutes; for eyes, get medical attention. Wash contaminated clothing before reuse."
+    },
+    {
+      "metric": "eye_irritation",
+      "species": "human",
+      "route": "ocular",
+      "value": null,
+      "unit": null,
+      "test_method": null,
+      "conditions": null,
+      "page": 2,
+      "source_text": "ECA 100KA1 is a skin and eye irritant. Avoid contact with skin, eyes and clothing. Use only with adequate ventilation. In case of contact, immediately flush skin or eyes with plenty of water for at least 15 minutes; for eyes, get medical attention. Wash contaminated clothing before reuse."
+    }
+  ],
+  "sections": [
+    {
+      "name": "Applications",
+      "page": 1,
+      "text": "ECA 100KA1 is a pre-catalyzed version of methylhexahydrophthalic anhydride (MHHPA). It is a non-crystallizing anhydride curing agent for epoxy resins. ECA 100KA1 is used in epoxy laminating and filament winding applications. It is also used in electrical encapsulation applications where its excellent electrical properties are utilized. ECA 100KA1 is used in applications requiring UV resistance and alkaline resistance. It is used with a variety of epoxy resins including bisphenol A, bisphenol F, cycloaliphatic, novolac, and glycidyl ester epoxy resins."
+    },
+    {
+      "name": "Formulation Examples",
+      "page": 1,
+      "text": "The following formulations are provided as examples. The anhydride level is calculated at 0.85 moles of anhydride per epoxy equivalent. The cure schedule is 2 hours at 80\u00b0C followed by 2 hours at 150\u00b0C."
+    },
+    {
+      "name": "Handling & Storage",
+      "page": 2,
+      "text": "ECA 100KA1 must be stored out of contact with moisture to avoid hydrolysis of the anhydride to the acid. When properly stored, ECA 100KA1 has a shelf life of 12 months."
+    },
+    {
+      "name": "Health Hazards",
+      "page": 2,
+      "text": "Read and understand the relevant Safety Data Sheets (SDS) for all products before use. ECA 100KA1 is a skin and eye irritant. Avoid contact with skin, eyes and clothing. Use only with adequate ventilation. In case of contact, immediately flush skin or eyes with plenty of water for at least 15 minutes; for eyes, get medical attention. Wash contaminated clothing before reuse."
+    },
+    {
+      "name": "Availability",
+      "page": 2,
+      "text": "ECA 100KA1 is available from Dixie Chemical in Pasadena, TX. Contact your Dixie representative for details."
+    }
+  ],
+  "images": [],
+  "document_footnotes": {},
+  "extraction_metadata": {
+    "confidence_scores": {
+      "product_info": 100,
+      "properties": 100,
+      "other_tables": 100,
+      "sections": 100,
+      "images": 100,
+      "overall": 100
+    },
+    "extractor_version": "dev",
+    "extraction_date": "2025-08-26T19:55:00-04:00"
+  }
+}

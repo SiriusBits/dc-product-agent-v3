@@ -1,0 +1,484 @@
+{
+  "doc_id": "5359594f-f966-50c7-b353-3cc6a5be21d4",
+  "filename": "ECA_1000L_Technical_Bulletin.pdf",
+  "source_filepath": "data/raw_pdfs/ECA_1000L_Technical_Bulletin.pdf",
+  "filepath": "data/pdf_extracts/v1/pdfs/ECA_1000L_Technical_Bulletin.pdf",
+  "document_file_metadata": {
+    "document_title": "ECA 100",
+    "author": [
+      "John F. Kill"
+    ],
+    "copyright_status": "Unknown",
+    "created": "5/19/25, 7:53:40 PM UTC",
+    "modified": "5/19/25, 7:53:40 PM UTC",
+    "application": "Microsoft\u00ae Word for Microsoft 365",
+    "advanced": {
+      "pdf_producer": "Microsoft\u00ae Word for Microsoft 365",
+      "pdf_version": "1.7",
+      "location": "/Users/benjaminbykowski/projects/ai-apps/forks/qwen-dc-product/dc-product-agent/data/raw_pdfs/ECA_1000L_Technical_Bulletin.pdf",
+      "file_size": "444.22 KB (454,881 Bytes)",
+      "page_size": "8.50 x 11.00 in",
+      "number_of_pages": 3,
+      "tagged_pdf": "No",
+      "fast_web_view": "No"
+    }
+  },
+  "source_file_hash": {
+    "sha256": "ae59954b722bee6554e756aa7ff2cb7d994a62c4640e2c4915a9e66195dc164a"
+  },
+  "document_type": "Product Technical Bulletin",
+  "manufacturer": "Dixie Chemical",
+  "contact_info": {
+    "address": "10601 Bay Area Blvd. Pasadena, TX 77507",
+    "phone": "(281) 474-3271",
+    "fax": null,
+    "email": "info@dixiechemicalgroup.com"
+  },
+  "product_info": {
+    "product_name": "Epoxy Curing Agent 1000L",
+    "product_short_name": "ECA 1000L",
+    "product_family": "Epoxy Curing Agent",
+    "cas_number": "34090-76-1",
+    "chemical_name": "Methyltetrahydrophthalic Anhydride",
+    "synonyms": [
+      "MTHPA"
+    ]
+  },
+  "registrations": [],
+  "key_benefits": [
+    "Excellent physical and electrical properties",
+    "Performs well in demanding applications",
+    "Suitable for filament winding",
+    "Suitable for pultrusion",
+    "Suitable for lamination",
+    "Suitable for electrical encapsulating",
+    "Suitable for insulating",
+    "Suitable for casting",
+    "Suitable for potting"
+  ],
+  "applications_text": "ECA 1000L is a clear light to yellow liquid with a pour point at about -27\u00b0C. It is used in converting epoxy resins to highly crosslinked polymers with excellent physical and electrical properties. ECA 1000L performs well when used in demanding applications, such as filament winding, pultrusion, and other forms of lamination, as well as electrical encapsulating, insulating, casting, and potting.",
+  "applications": [
+    "Converting epoxy resins to highly crosslinked polymers",
+    "Filament winding",
+    "Pultrusion",
+    "Lamination",
+    "Electrical encapsulating",
+    "Insulating",
+    "Casting",
+    "Potting"
+  ],
+  "properties_and_specifications": [
+    {
+      "category": "Typical",
+      "name": "Molecular Weight",
+      "unit": null,
+      "value_string": "166",
+      "value_numeric": 166,
+      "value_min": null,
+      "value_max": null,
+      "test_method": "NA",
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Typical",
+      "name": "Appearance",
+      "unit": null,
+      "value_string": "Clear light to yellow liquid",
+      "value_numeric": null,
+      "value_min": null,
+      "value_max": null,
+      "test_method": "D-104 (Visual)",
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Typical",
+      "name": "Pour Point, \u00b0C",
+      "unit": "\u00b0C",
+      "value_string": "-27",
+      "value_numeric": -27,
+      "value_min": null,
+      "value_max": null,
+      "test_method": "ASTM D-97",
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Specification",
+      "name": "MTHPA, %",
+      "unit": "%",
+      "value_string": "99 min.",
+      "value_numeric": null,
+      "value_min": 99,
+      "value_max": null,
+      "test_method": "D-160",
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Specification",
+      "name": "MAN, %",
+      "unit": "%",
+      "value_string": "0.1 max.",
+      "value_numeric": null,
+      "value_min": null,
+      "value_max": 0.1,
+      "test_method": "D-160",
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Specification",
+      "name": "Volatiles, ppm",
+      "unit": "ppm",
+      "value_string": "100 max.",
+      "value_numeric": null,
+      "value_min": null,
+      "value_max": 100,
+      "test_method": "D-160A",
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Specification",
+      "name": "Free Acid, %",
+      "unit": "%",
+      "value_string": "2.0 max.",
+      "value_numeric": null,
+      "value_min": null,
+      "value_max": 2.0,
+      "test_method": "D-160B-2",
+      "page": 1,
+      "notes": null
+    }
+  ],
+  "epoxy_resin_properties": null,
+  "typical_properties": {
+    "table_name": "Typical Properties",
+    "page": 1,
+    "data_type": "typical_properties",
+    "description": "ECA 1000L is a clear light to yellow liquid with a pour point at about -27\u00b0C. It is used in converting epoxy resins to highly crosslinked polymers with excellent physical and electrical properties.",
+    "row_count": 7,
+    "data": [
+      {
+        "name": "Molecular Weight",
+        "unit": null,
+        "value_string": "166",
+        "value_min": null,
+        "value_max": null,
+        "value_numeric": 166,
+        "test_method": "NA"
+      },
+      {
+        "name": "Appearance",
+        "unit": null,
+        "value_string": "Clear light to yellow liquid",
+        "value_min": null,
+        "value_max": null,
+        "value_numeric": null,
+        "test_method": "D-104 (Visual)"
+      },
+      {
+        "name": "Pour Point, \u00b0C",
+        "unit": "\u00b0C",
+        "value_string": "-27",
+        "value_min": null,
+        "value_max": null,
+        "value_numeric": -27,
+        "test_method": "ASTM D-97"
+      },
+      {
+        "name": "MTHPA, %",
+        "unit": "%",
+        "value_string": "99 min.",
+        "value_min": 99,
+        "value_max": null,
+        "value_numeric": null,
+        "test_method": "D-160"
+      },
+      {
+        "name": "MAN, %",
+        "unit": "%",
+        "value_string": "0.1 max.",
+        "value_min": null,
+        "value_max": 0.1,
+        "value_numeric": null,
+        "test_method": "D-160"
+      },
+      {
+        "name": "Volatiles, ppm",
+        "unit": "ppm",
+        "value_string": "100 max.",
+        "value_min": null,
+        "value_max": 100,
+        "value_numeric": null,
+        "test_method": "D-160A"
+      },
+      {
+        "name": "Free Acid, %",
+        "unit": "%",
+        "value_string": "2.0 max.",
+        "value_min": null,
+        "value_max": 2.0,
+        "value_numeric": null,
+        "test_method": "D-160B-2"
+      }
+    ],
+    "notes": {}
+  },
+  "other_tables": [
+    {
+      "table_name": "Formulation Example",
+      "page": 2,
+      "data_type": "formulation_data",
+      "description": "ECA 1000L was formulated with a variety of epoxy resins. The samples were formulated with 100 parts of epoxy resin, 83-116 parts ECA 1000L, and 1 part 1-Methylimidazole. Viscosity was measured at 25\u00b0C, and gel time was measured at 100\u00b0C. Samples were cured for 1 hour at 120\u00b0C, followed by a post-cure of 1 hour at 220\u00b0C, and glass transition temperatures were measured using a differential scanning calorimeter.",
+      "row_count": 5,
+      "data": [
+        {
+          "epoxy type": "Standard BPA Liquid Epoxy",
+          "eca 1000_l, phr": 84,
+          "viscosity @ 25 \u00b0c, c_p": 590,
+          "gel _time, min": 32,
+          "tg, \u00b0c": 139
+        },
+        {
+          "epoxy type": "Low Viscosity BPA Liquid",
+          "eca 1000_l, phr": 87,
+          "viscosity @ 25 \u00b0c, c_p": 500,
+          "gel _time, min": 34,
+          "tg, \u00b0c": 141
+        },
+        {
+          "epoxy type": "Cycloaliphatic Epoxy",
+          "eca 1000_l, phr": 116,
+          "viscosity @ 25 \u00b0c, c_p": 90,
+          "gel _time, min": 41,
+          "tg, \u00b0c": 220
+        },
+        {
+          "epoxy type": "Epoxy Phenol Novolac",
+          "eca 1000_l, phr": 92,
+          "viscosity @ 25 \u00b0c, c_p": 770,
+          "gel _time, min": 33,
+          "tg, \u00b0c": 137
+        },
+        {
+          "epoxy type": "Epoxy BPA Novolac",
+          "eca 1000_l, phr": 83,
+          "viscosity @ 25 \u00b0c, c_p": 1630,
+          "gel _time, min": 27,
+          "tg, \u00b0c": 148
+        }
+      ],
+      "notes": {
+        "1": "Shyodu Hot Pot (100g @ 100\u00b0C)",
+        "2": "Cured 1 hr @ 120\u00b0C and 1 hr @ 220\u00b0C. Analyzed in DSC: 40\u00b0C/min to 250\u00b0C"
+      }
+    },
+    {
+      "table_name": "Typical Properties",
+      "page": 1,
+      "data_type": "typical_properties",
+      "description": "ECA 1000L is a clear light to yellow liquid with a pour point at about -27\u00b0C. It is used in converting epoxy resins to highly crosslinked polymers with excellent physical and electrical properties.",
+      "row_count": 7,
+      "data": [
+        {
+          "name": "Molecular Weight",
+          "unit": null,
+          "value_string": "166",
+          "value_min": null,
+          "value_max": null,
+          "value_numeric": 166,
+          "test_method": "NA"
+        },
+        {
+          "name": "Appearance",
+          "unit": null,
+          "value_string": "Clear light to yellow liquid",
+          "value_min": null,
+          "value_max": null,
+          "value_numeric": null,
+          "test_method": "D-104 (Visual)"
+        },
+        {
+          "name": "Pour Point, \u00b0C",
+          "unit": "\u00b0C",
+          "value_string": "-27",
+          "value_min": null,
+          "value_max": null,
+          "value_numeric": -27,
+          "test_method": "ASTM D-97"
+        },
+        {
+          "name": "MTHPA, %",
+          "unit": "%",
+          "value_string": "99 min.",
+          "value_min": 99,
+          "value_max": null,
+          "value_numeric": null,
+          "test_method": "D-160"
+        },
+        {
+          "name": "MAN, %",
+          "unit": "%",
+          "value_string": "0.1 max.",
+          "value_min": null,
+          "value_max": 0.1,
+          "value_numeric": null,
+          "test_method": "D-160"
+        },
+        {
+          "name": "Volatiles, ppm",
+          "unit": "ppm",
+          "value_string": "100 max.",
+          "value_min": null,
+          "value_max": 100,
+          "value_numeric": null,
+          "test_method": "D-160A"
+        },
+        {
+          "name": "Free Acid, %",
+          "unit": "%",
+          "value_string": "2.0 max.",
+          "value_min": null,
+          "value_max": 2.0,
+          "value_numeric": null,
+          "test_method": "D-160B-2"
+        }
+      ]
+    }
+  ],
+  "formulation_data": [
+    {
+      "epoxy_type": "Standard BPA Liquid Epoxy",
+      "phr": 84,
+      "viscosity_at_25c_cp": null,
+      "gel_time_min": 32,
+      "tg_c": null,
+      "cure_schedule": null,
+      "page": null,
+      "source_table": null,
+      "notes": null,
+      "viscosity_c_p": 590,
+      "cured_tg_c": 139
+    },
+    {
+      "epoxy_type": "Low Viscosity BPA Liquid",
+      "phr": 87,
+      "viscosity_at_25c_cp": null,
+      "gel_time_min": 34,
+      "tg_c": null,
+      "cure_schedule": null,
+      "page": null,
+      "source_table": null,
+      "notes": null,
+      "viscosity_c_p": 500,
+      "cured_tg_c": 141
+    },
+    {
+      "epoxy_type": "Cycloaliphatic Epoxy",
+      "phr": 116,
+      "viscosity_at_25c_cp": null,
+      "gel_time_min": 41,
+      "tg_c": null,
+      "cure_schedule": null,
+      "page": null,
+      "source_table": null,
+      "notes": null,
+      "viscosity_c_p": 90,
+      "cured_tg_c": 220
+    },
+    {
+      "epoxy_type": "Epoxy Phenol Novolac",
+      "phr": 92,
+      "viscosity_at_25c_cp": null,
+      "gel_time_min": 33,
+      "tg_c": null,
+      "cure_schedule": null,
+      "page": null,
+      "source_table": null,
+      "notes": null,
+      "viscosity_c_p": 770,
+      "cured_tg_c": 137
+    },
+    {
+      "epoxy_type": "Epoxy BPA Novolac",
+      "phr": 83,
+      "viscosity_at_25c_cp": null,
+      "gel_time_min": 27,
+      "tg_c": null,
+      "cure_schedule": null,
+      "page": null,
+      "source_table": null,
+      "notes": null,
+      "viscosity_c_p": 1630,
+      "cured_tg_c": 148
+    }
+  ],
+  "toxicity_data": [
+    {
+      "metric": "skin irritation",
+      "species": "human",
+      "route": "dermal",
+      "value": null,
+      "unit": null,
+      "test_method": null,
+      "conditions": null,
+      "page": 3,
+      "source_text": "These anhydrides are primary skin and eye irritants. Avoid contact with skin, eyes, and clothing. Use only with adequate ventilation."
+    },
+    {
+      "metric": "eye irritation",
+      "species": "human",
+      "route": "ocular",
+      "value": null,
+      "unit": null,
+      "test_method": null,
+      "conditions": null,
+      "page": 3,
+      "source_text": "These anhydrides are primary skin and eye irritants. Avoid contact with skin, eyes, and clothing. Use only with adequate ventilation."
+    }
+  ],
+  "sections": [
+    {
+      "name": "Applications",
+      "page": 1,
+      "text": "ECA 1000L is a clear light to yellow liquid with a pour point at about -27\u00b0C. It is used in converting epoxy resins to highly crosslinked polymers with excellent physical and electrical properties. ECA 1000L performs well when used in demanding applications, such as filament winding, pultrusion, and other forms of lamination, as well as electrical encapsulating, insulating, casting, and potting.\n\nFor more information on the use of anhydrides like ECA 1000L as epoxy curing agents, please consult the Technical Bulletin, \"Formulating Anhydride-Cured Epoxy Systems\", available from Dixie Chemical."
+    },
+    {
+      "name": "Formulation Example",
+      "page": 2,
+      "text": "ECA 1000L was formulated with a variety of epoxy resins. The samples were formulated with 100 parts of epoxy resin, 83-116 parts ECA 1000L, and 1 part 1-Methylimidazole. Viscosity was measured at 25\u00b0C, and gel time was measured at 100\u00b0C. Samples were cured for 1 hour at 120\u00b0C, followed by a post-cure of 1 hour at 220\u00b0C, and glass transition temperatures were measured using a differential scanning calorimeter. The following table summarizes these results:"
+    },
+    {
+      "name": "Handling & Storage",
+      "page": 2,
+      "text": "ECA 1000L will react with water to form diacids. This is normally undesirable, so ECA 1000L should be stored in such a way that it is carefully protected from moisture contamination.\n\nFor more details on the design of bulk storage for ECA 1000L, consult the Dixie Chemical Company brochure \"Epoxy Curing Agent Storage Requirements.\""
+    },
+    {
+      "name": "Health Hazards",
+      "page": 3,
+      "text": "Read and understand the relevant Safety Data Sheets (SDS) for all products before use. These anhydrides are primary skin and eye irritants. Avoid contact with skin, eyes, and clothing. Use only with adequate ventilation. In case of contact, follow the procedures outlined in the SDS. Generally, these procedures include immediately flushing the affected skin or eyes with copious amounts of water for at least 15 minutes. In the case of eye contact, get medical attention. Wash contaminated clothing before reuse.\n\nFollow the recommendations in the SDS for personal protective equipment when handling these materials. At a minimum, these procedures typically include protective chemical goggles, impenetrable gloves, and measures to avoid breathing chemical vapors."
+    },
+    {
+      "name": "Availability",
+      "page": 3,
+      "text": "ECA 1000L is available from Dixie Chemical in Pasadena, Texas. Contact your Dixie Chemical Company representative for details."
+    }
+  ],
+  "images": [],
+  "document_footnotes": {},
+  "extraction_metadata": {
+    "confidence_scores": {
+      "product_info": 100,
+      "properties": 100,
+      "other_tables": 100,
+      "sections": 100,
+      "images": 100,
+      "overall": 100
+    },
+    "extractor_version": "dev",
+    "extraction_date": "2025-08-26T17:45:00-04:00"
+  }
+}

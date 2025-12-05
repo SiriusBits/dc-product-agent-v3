@@ -9,8 +9,16 @@ export interface QueryResponse {
     sources: Source[];
 }
 
+export interface Product {
+    id: string;
+    name: string;
+    description: string;
+    filename: string;
+    category: string;
+}
+
 export interface DocumentsResponse {
-    documents: string[];
+    documents: Product[];
 }
 
 export const api = {

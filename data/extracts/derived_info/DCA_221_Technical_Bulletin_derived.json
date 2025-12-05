@@ -1,0 +1,2752 @@
+{
+  "doc_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5",
+  "filename": "DCA_221_Technical_Bulletin.pdf",
+  "filepath": "data/pdf_extracts/v1/pdfs/DCA_221_Technical_Bulletin.pdf",
+  "extraction_metadata": {
+    "confidence_scores": {
+      "summary": 100,
+      "personas": 100,
+      "key_applications": 100,
+      "knowledge_graph": 100,
+      "overall": 100
+    },
+    "extractor_version": "dev",
+    "extraction_date": "2025-08-28T16:53:00-04:00"
+  },
+  "derived_info": {
+    "summary": "DCA 221 (Polyglycoldiamine) is a high-performance curing agent for epoxy resin systems that provides exceptional impact resistance, thermal shock resistance, and electrical properties. With its low viscosity and permanent flexibility, DCA 221 is ideal for demanding applications including adhesives, electrical potting and encapsulation, tooling compounds, and troweling compounds. The product offers excellent adhesion to metals and maintains superior electrical characteristics up to 60°C, making it particularly valuable for moderate temperature electrical service applications. Comprehensive formulation data shows performance across castings, flexible compounds, flooring applications, and adhesives with detailed electrical property comparisons.",
+    "personas": {
+      "sales_summary": "DCA 221 delivers premium performance in high-impact epoxy applications with built-in flexibility and excellent electrical properties. Key selling points include superior steel-to-steel and aluminum-to-aluminum adhesion, low temperature thermal shock resistance, and versatile application across adhesives, potting compounds, and coatings. The product's light color and low viscosity provide processing advantages, while its proven electrical performance to 60°C opens opportunities in electrical and electronic markets. Multiple formulation examples demonstrate versatility from high-impact castings to flexible compounds and flooring applications.",
+      "technical_summary": "DCA 221 is a polyglycoldiamine curing agent (CAS 4246-51-9) with specific gravity 1.000-1.020 g/cc, viscosity 9.5-15.8 cps at 25°C, and flash point 331°F. Provides 98.0% min purity with amine equivalent 8.60-9.16 MEQ/g. Formulations achieve flexural strengths up to 12,800 psi, tensile strengths to 8,880 psi, and Izod impact values of 1.5+ ft-lb/in. Electrical properties include dielectric strength up to 517 V/mil and volume resistivity >6x10⁷ megohm-cm at 23°C. Comprehensive comparison data shows superior performance vs commercial diethylene triamine in electrical applications with detailed dissipation factor measurements."
+    },
+    "key_applications": [
+      "Curing agent in performance epoxy resin systems",
+      "High-impact resistance adhesives",
+      "Electrical potting and encapsulation",
+      "Tooling compounds",
+      "Troweling compounds for flooring",
+      "Coatings with extended working time",
+      "Flexible epoxy compounds",
+      "Metal-to-metal bonding applications",
+      "Moderate temperature electrical service",
+      "Impregnation applications",
+      "High impact resistance castings",
+      "Highly flexible compounds"
+    ]
+  },
+  "knowledge_graph": {
+    "entities": [
+      {
+        "id": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "text": "DCA 221",
+        "type": "PRODUCT_NAME",
+        "canonical_name": "Dixie Chemical Amine 221",
+        "aliases": [
+          "DCA 221",
+          "Polyglycoldiamine",
+          "Dixie Chemical Amine 221"
+        ],
+        "source_text": "Dixie Chemical Amine 221 (DCA 221) Polyglycoldiamine",
+        "provenance": {
+          "page": 1,
+          "spans": [
+            {
+              "start": 0,
+              "end": 45
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "metadata": {
+          "manufacturer": "Dixie Chemical",
+          "product_family": "Polyglycoldiamine"
+        }
+      },
+      {
+        "id": "fa25fe8e-de28-5b86-84b9-e83871bd43af",
+        "text": "4246-51-9",
+        "type": "CAS_NUMBER",
+        "canonical_name": "4246-51-9",
+        "aliases": [],
+        "source_text": "CASRN 4246-51-9",
+        "provenance": {
+          "page": 1,
+          "spans": [
+            {
+              "start": 46,
+              "end": 61
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "metadata": {}
+      },
+      {
+        "id": "5c8c3af1-dca5-567c-b98a-ee3c7e169662",
+        "text": "Polyglycoldiamine",
+        "type": "CHEMICAL",
+        "canonical_name": "Polyglycoldiamine",
+        "aliases": [
+          "DCA 221"
+        ],
+        "source_text": "Polyglycoldiamine",
+        "provenance": {
+          "page": 1,
+          "spans": [
+            {
+              "start": 30,
+              "end": 47
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "metadata": {
+          "cas_number": "4246-51-9"
+        }
+      },
+      {
+        "id": "b09080d8-e77c-53fb-91ef-080973bf9ad7",
+        "text": "Dixie Chemical",
+        "type": "ORGANIZATION",
+        "canonical_name": "Dixie Chemical",
+        "aliases": [],
+        "source_text": "DIXIE CHEMICAL",
+        "provenance": {
+          "page": 1,
+          "spans": [
+            {
+              "start": 0,
+              "end": 14
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "metadata": {
+          "address": "10601 Bay Area Blvd. Pasadena, TX 77507",
+          "phone": "(281) 474-3271"
+        }
+      },
+      {
+        "id": "26df4cb1-288f-5a49-84ca-eb73f79a6cdf",
+        "text": "Bis-A, Type II",
+        "type": "CHEMICAL",
+        "canonical_name": "Bis-A, Type II",
+        "aliases": [
+          "Bisphenol A-based resin"
+        ],
+        "source_text": "Bis-A, Type II",
+        "provenance": {
+          "page": 2,
+          "spans": [
+            {
+              "start": 0,
+              "end": 14
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "metadata": {}
+      },
+      {
+        "id": "555285c9-9469-51b2-821a-5ed14513511e",
+        "text": "Butyl Glycidyl Ether",
+        "type": "CHEMICAL",
+        "canonical_name": "Butyl Glycidyl Ether",
+        "aliases": [],
+        "source_text": "Butyl Glycidyl Ether",
+        "provenance": {
+          "page": 2,
+          "spans": [
+            {
+              "start": 0,
+              "end": 20
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "metadata": {}
+      },
+      {
+        "id": "2b5ef1c3-344c-5e51-bd6b-7dc1d8b592da",
+        "text": "Triphenyl Phosphite",
+        "type": "CHEMICAL",
+        "canonical_name": "Triphenyl Phosphite",
+        "aliases": [],
+        "source_text": "Triphenyl Phosphite",
+        "provenance": {
+          "page": 2,
+          "spans": [
+            {
+              "start": 0,
+              "end": 19
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "metadata": {}
+      },
+      {
+        "id": "e485dd6c-ed74-567e-a595-ba54dd1e93dc",
+        "text": "Union Carbide A-187 Silane",
+        "type": "CHEMICAL",
+        "canonical_name": "Union Carbide A-187 Silane",
+        "aliases": [
+          "A-187 Silane"
+        ],
+        "source_text": "Union Carbide® A-187 Silane",
+        "provenance": {
+          "page": 3,
+          "spans": [
+            {
+              "start": 0,
+              "end": 27
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "metadata": {}
+      },
+      {
+        "id": "df7eb969-5f77-540a-85ca-d4e528f7515d",
+        "text": "EH-30",
+        "type": "CHEMICAL",
+        "canonical_name": "EH-30",
+        "aliases": [],
+        "source_text": "EH-30 or DMP-30",
+        "provenance": {
+          "page": 3,
+          "spans": [
+            {
+              "start": 0,
+              "end": 5
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "metadata": {}
+      },
+      {
+        "id": "da5ce65f-e0d9-5592-9ebf-bf8da0778d48",
+        "text": "DMP-30",
+        "type": "CHEMICAL",
+        "canonical_name": "DMP-30",
+        "aliases": [],
+        "source_text": "EH-30 or DMP-30",
+        "provenance": {
+          "page": 3,
+          "spans": [
+            {
+              "start": 9,
+              "end": 15
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "metadata": {}
+      },
+      {
+        "id": "04d301dd-b297-5984-a9be-5f7a15736e24",
+        "text": "Glycol ether solvent",
+        "type": "CHEMICAL",
+        "canonical_name": "Glycol ether solvent",
+        "aliases": [],
+        "source_text": "Glycol ether solvent",
+        "provenance": {
+          "page": 3,
+          "spans": [
+            {
+              "start": 0,
+              "end": 20
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "metadata": {}
+      },
+      {
+        "id": "50043066-bf99-5838-9143-1f5c7af82b28",
+        "text": "Titanium Dioxide",
+        "type": "CHEMICAL",
+        "canonical_name": "Titanium Dioxide",
+        "aliases": [],
+        "source_text": "Titanium Dioxide",
+        "provenance": {
+          "page": 3,
+          "spans": [
+            {
+              "start": 0,
+              "end": 16
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "metadata": {}
+      },
+      {
+        "id": "43282232-4ded-56f4-afd2-f3a108b546fe",
+        "text": "Red Iron Oxide",
+        "type": "CHEMICAL",
+        "canonical_name": "Red Iron Oxide",
+        "aliases": [],
+        "source_text": "Red Iron Oxide",
+        "provenance": {
+          "page": 3,
+          "spans": [
+            {
+              "start": 0,
+              "end": 14
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "metadata": {}
+      },
+      {
+        "id": "98448af9-3b92-5a55-82a7-2f5254bee3df",
+        "text": "Silica, 100 mesh",
+        "type": "CHEMICAL",
+        "canonical_name": "Silica, 100 mesh",
+        "aliases": [],
+        "source_text": "Silica, 100 mesh",
+        "provenance": {
+          "page": 3,
+          "spans": [
+            {
+              "start": 0,
+              "end": 16
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "metadata": {}
+      },
+      {
+        "id": "ef07d8fb-79c4-5c11-a55f-7f84550bd04a",
+        "text": "Mineral Filler",
+        "type": "CHEMICAL",
+        "canonical_name": "Mineral Filler",
+        "aliases": [],
+        "source_text": "Mineral Filler",
+        "provenance": {
+          "page": 3,
+          "spans": [
+            {
+              "start": 0,
+              "end": 14
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "metadata": {}
+      },
+      {
+        "id": "ea6995f7-4e35-5fc0-b794-fa0ccd4499c9",
+        "text": "Thixotrope",
+        "type": "CHEMICAL",
+        "canonical_name": "Thixotrope",
+        "aliases": [],
+        "source_text": "Thixotrope",
+        "provenance": {
+          "page": 3,
+          "spans": [
+            {
+              "start": 0,
+              "end": 10
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "metadata": {}
+      },
+      {
+        "id": "27fcefd9-9efe-5eee-9b45-f0e793341a9c",
+        "text": "Commercial Grade Diethylene Triamine",
+        "type": "CHEMICAL",
+        "canonical_name": "Commercial Grade Diethylene Triamine",
+        "aliases": [
+          "Diethylene Triamine"
+        ],
+        "source_text": "Commercial Grade Diethylene Triamine",
+        "provenance": {
+          "page": 6,
+          "spans": [
+            {
+              "start": 0,
+              "end": 36
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "metadata": {}
+      },
+      {
+        "id": "98a57e5b-6645-5297-b433-34a91601b018",
+        "text": "curing agent",
+        "type": "CHEMICAL_FUNCTION",
+        "canonical_name": "curing agent",
+        "aliases": [
+          "hardener"
+        ],
+        "source_text": "DCA 221 is used as a curing agent in performance epoxy resins systems",
+        "provenance": {
+          "page": 1,
+          "spans": [
+            {
+              "start": 21,
+              "end": 33
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "metadata": {}
+      },
+      {
+        "id": "f4d63001-6b19-5c21-b276-f7fee7c83094",
+        "text": "reactive diluent",
+        "type": "CHEMICAL_FUNCTION",
+        "canonical_name": "reactive diluent",
+        "aliases": [],
+        "source_text": "As a hardener and reactive diluent",
+        "provenance": {
+          "page": 4,
+          "spans": [
+            {
+              "start": 18,
+              "end": 34
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "metadata": {}
+      }
+    ],
+    "kg_triples": [
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "has_cas_number",
+        "object": "fa25fe8e-de28-5b86-84b9-e83871bd43af",
+        "source_text": "Dixie Chemical Amine 221 (DCA 221) Polyglycoldiamine CASRN 4246-51-9",
+        "provenance": {
+          "page": 1,
+          "spans": [
+            {
+              "start": 0,
+              "end": 70
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "is_chemical_type",
+        "object": "5c8c3af1-dca5-567c-b98a-ee3c7e169662",
+        "source_text": "DCA 221 Polyglycoldiamine",
+        "provenance": {
+          "page": 1,
+          "spans": [
+            {
+              "start": 0,
+              "end": 25
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "manufactured_by",
+        "object": "b09080d8-e77c-53fb-91ef-080973bf9ad7",
+        "source_text": "DIXIE CHEMICAL",
+        "provenance": {
+          "page": 1,
+          "spans": [
+            {
+              "start": 0,
+              "end": 14
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "functions_as",
+        "object": "98a57e5b-6645-5297-b433-34a91601b018",
+        "source_text": "DCA 221 is used as a curing agent in performance epoxy resins systems",
+        "provenance": {
+          "page": 1,
+          "spans": [
+            {
+              "start": 0,
+              "end": 70
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "functions_as",
+        "object": "f4d63001-6b19-5c21-b276-f7fee7c83094",
+        "source_text": "As a hardener and reactive diluent",
+        "provenance": {
+          "page": 4,
+          "spans": [
+            {
+              "start": 0,
+              "end": 34
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "has_specific_gravity_min",
+        "object": {
+          "property": "specific_gravity_min",
+          "value": 1.0
+        },
+        "source_text": "Specific Gravity@25°C, g/cc 1.000-1.020",
+        "provenance": {
+          "page": 1,
+          "spans": [
+            {
+              "start": 0,
+              "end": 40
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "has_specific_gravity_max",
+        "object": {
+          "property": "specific_gravity_max",
+          "value": 1.02
+        },
+        "source_text": "Specific Gravity@25°C, g/cc 1.000-1.020",
+        "provenance": {
+          "page": 1,
+          "spans": [
+            {
+              "start": 0,
+              "end": 40
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "has_apha_color_max",
+        "object": {
+          "property": "apha_color_max",
+          "value": 100
+        },
+        "source_text": "APHA Color, Pt-Co 100 Max.",
+        "provenance": {
+          "page": 1,
+          "spans": [
+            {
+              "start": 0,
+              "end": 27
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "has_appearance",
+        "object": {
+          "property": "appearance",
+          "value": "Clear Liquid, Slight Odor"
+        },
+        "source_text": "Appearance/Odor Clear Liquid, Slight Odor",
+        "provenance": {
+          "page": 1,
+          "spans": [
+            {
+              "start": 0,
+              "end": 42
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "has_purity_min",
+        "object": {
+          "property": "purity_min",
+          "value": 98.0
+        },
+        "source_text": "DCA 221, % 98.0 Min",
+        "provenance": {
+          "page": 1,
+          "spans": [
+            {
+              "start": 0,
+              "end": 19
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "has_water_content_max",
+        "object": {
+          "property": "water_content_max",
+          "value": 0.5
+        },
+        "source_text": "Water, % 0.5 Max",
+        "provenance": {
+          "page": 1,
+          "spans": [
+            {
+              "start": 0,
+              "end": 16
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "has_viscosity_min_at_25c",
+        "object": {
+          "property": "viscosity_min_at_25c",
+          "value": 9.5
+        },
+        "source_text": "Viscosity @ 25 °C, cps 9.5-15.8",
+        "provenance": {
+          "page": 1,
+          "spans": [
+            {
+              "start": 0,
+              "end": 32
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "has_viscosity_max_at_25c",
+        "object": {
+          "property": "viscosity_max_at_25c",
+          "value": 15.8
+        },
+        "source_text": "Viscosity @ 25 °C, cps 9.5-15.8",
+        "provenance": {
+          "page": 1,
+          "spans": [
+            {
+              "start": 0,
+              "end": 32
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "has_amine_equivalent_min",
+        "object": {
+          "property": "amine_equivalent_min",
+          "value": 8.6
+        },
+        "source_text": "Amine Equivalent, MEQ/g 8.60-9.16",
+        "provenance": {
+          "page": 1,
+          "spans": [
+            {
+              "start": 0,
+              "end": 34
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "has_amine_equivalent_max",
+        "object": {
+          "property": "amine_equivalent_max",
+          "value": 9.16
+        },
+        "source_text": "Amine Equivalent, MEQ/g 8.60-9.16",
+        "provenance": {
+          "page": 1,
+          "spans": [
+            {
+              "start": 0,
+              "end": 34
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "has_flash_point",
+        "object": {
+          "property": "flash_point",
+          "value": 331
+        },
+        "source_text": "Flash Point, PMCC, ASTM D93 331°F",
+        "provenance": {
+          "page": 1,
+          "spans": [
+            {
+              "start": 0,
+              "end": 33
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "formulated_with_bis_a_type_ii_high_impact",
+        "object": {
+          "property": "bis_a_type_ii_amount_high_impact",
+          "value": 100
+        },
+        "source_text": "Bis-A, Type II 100 pbw",
+        "provenance": {
+          "page": 2,
+          "spans": [
+            {
+              "start": 0,
+              "end": 23
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "formulated_with_polyglycoldiamine_high_impact",
+        "object": {
+          "property": "polyglycoldiamine_amount_high_impact",
+          "value": 29
+        },
+        "source_text": "Polyglycoldiamine 29 pbw",
+        "provenance": {
+          "page": 2,
+          "spans": [
+            {
+              "start": 0,
+              "end": 24
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "achieves_pot_life_high_impact",
+        "object": {
+          "property": "pot_life_high_impact",
+          "value": 40
+        },
+        "source_text": "Pot Life (100g.-mass) 40 min.",
+        "provenance": {
+          "page": 2,
+          "spans": [
+            {
+              "start": 0,
+              "end": 30
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "achieves_flexural_strength_high_impact",
+        "object": {
+          "property": "flexural_strength_high_impact",
+          "value": 12300
+        },
+        "source_text": "Flexural Strength at 25°C 12,300 psi",
+        "provenance": {
+          "page": 2,
+          "spans": [
+            {
+              "start": 0,
+              "end": 37
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "achieves_tensile_strength_high_impact",
+        "object": {
+          "property": "tensile_strength_high_impact",
+          "value": 8500
+        },
+        "source_text": "Tensile Strength at 25°C 8,500 psi",
+        "provenance": {
+          "page": 2,
+          "spans": [
+            {
+              "start": 0,
+              "end": 35
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "achieves_tensile_elongation_high_impact",
+        "object": {
+          "property": "tensile_elongation_high_impact",
+          "value": 3.5
+        },
+        "source_text": "Tensile Elongation 3.5%",
+        "provenance": {
+          "page": 2,
+          "spans": [
+            {
+              "start": 0,
+              "end": 23
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "achieves_izod_impact_high_impact",
+        "object": {
+          "property": "izod_impact_high_impact",
+          "value": 1.5
+        },
+        "source_text": "Izod Impact, ft-lb/in. notch 1.5",
+        "provenance": {
+          "page": 2,
+          "spans": [
+            {
+              "start": 0,
+              "end": 33
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "achieves_gardner_impact_high_impact",
+        "object": {
+          "property": "gardner_impact_high_impact",
+          "value": 130
+        },
+        "source_text": "Gardner Impact, 6-mil film 130 in-lb",
+        "provenance": {
+          "page": 2,
+          "spans": [
+            {
+              "start": 0,
+              "end": 37
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "achieves_heat_deflection_temp_high_impact",
+        "object": {
+          "property": "heat_deflection_temp_high_impact",
+          "value": 55
+        },
+        "source_text": "Heat Deflection Temperature 55°C",
+        "provenance": {
+          "page": 2,
+          "spans": [
+            {
+              "start": 0,
+              "end": 32
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "formulated_with_bis_a_type_ii_flexible",
+        "object": {
+          "property": "bis_a_type_ii_amount_flexible",
+          "value": 88
+        },
+        "source_text": "Bis-A, Type II 88 pbw",
+        "provenance": {
+          "page": 2,
+          "spans": [
+            {
+              "start": 0,
+              "end": 22
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "formulated_with_butyl_glycidyl_ether_flexible",
+        "object": {
+          "property": "butyl_glycidyl_ether_amount_flexible",
+          "value": 2
+        },
+        "source_text": "Butyl Glycidyl Ether 2 pbw",
+        "provenance": {
+          "page": 2,
+          "spans": [
+            {
+              "start": 0,
+              "end": 27
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "formulated_with_triphenyl_phosphite_flexible",
+        "object": {
+          "property": "triphenyl_phosphite_amount_flexible",
+          "value": 10
+        },
+        "source_text": "Triphenyl Phosphite 10 pbw",
+        "provenance": {
+          "page": 2,
+          "spans": [
+            {
+              "start": 0,
+              "end": 27
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "formulated_with_polyglocoldiamine_flexible",
+        "object": {
+          "property": "polyglocoldiamine_amount_flexible",
+          "value": 26
+        },
+        "source_text": "Polyglocoldiamine 26 pbw",
+        "provenance": {
+          "page": 2,
+          "spans": [
+            {
+              "start": 0,
+              "end": 24
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "achieves_pot_life_flexible",
+        "object": {
+          "property": "pot_life_flexible",
+          "value": 40
+        },
+        "source_text": "Pot Life (100 g-mass) 40 min.",
+        "provenance": {
+          "page": 2,
+          "spans": [
+            {
+              "start": 0,
+              "end": 30
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "formulated_with_bis_a_type_ii_troweling_part_a",
+        "object": {
+          "property": "bis_a_type_ii_amount_troweling_part_a",
+          "value": 100
+        },
+        "source_text": "Bis-A, Type II 100 pbw",
+        "provenance": {
+          "page": 3,
+          "spans": [
+            {
+              "start": 0,
+              "end": 23
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "formulated_with_glycol_ether_solvent_troweling_part_a",
+        "object": {
+          "property": "glycol_ether_solvent_amount_troweling_part_a",
+          "value": 10
+        },
+        "source_text": "Glycol ether solvent 10 pbw",
+        "provenance": {
+          "page": 3,
+          "spans": [
+            {
+              "start": 0,
+              "end": 28
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "formulated_with_titanium_dioxide_troweling_part_a",
+        "object": {
+          "property": "titanium_dioxide_amount_troweling_part_a",
+          "value": 10
+        },
+        "source_text": "Titanium Dioxide 10 pbw",
+        "provenance": {
+          "page": 3,
+          "spans": [
+            {
+              "start": 0,
+              "end": 24
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "formulated_with_red_iron_oxide_troweling_part_a",
+        "object": {
+          "property": "red_iron_oxide_amount_troweling_part_a",
+          "value": 5
+        },
+        "source_text": "Red Iron Oxide 5 pbw",
+        "provenance": {
+          "page": 3,
+          "spans": [
+            {
+              "start": 0,
+              "end": 20
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "formulated_with_silica_troweling_part_a",
+        "object": {
+          "property": "silica_amount_troweling_part_a",
+          "value": 500
+        },
+        "source_text": "Silica, 100 mesh 500 pbw",
+        "provenance": {
+          "page": 3,
+          "spans": [
+            {
+              "start": 0,
+              "end": 25
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "formulated_with_polyglycoldiamine_troweling_part_b",
+        "object": {
+          "property": "polyglycoldiamine_amount_troweling_part_b",
+          "value": 15
+        },
+        "source_text": "Polyglycoldiamine 15 pbw",
+        "provenance": {
+          "page": 3,
+          "spans": [
+            {
+              "start": 0,
+              "end": 24
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "formulated_with_accelerator_troweling_part_b",
+        "object": {
+          "property": "accelerator_amount_troweling_part_b",
+          "value": 5
+        },
+        "source_text": "EH-30 or DMP-30 5 pbw",
+        "provenance": {
+          "page": 3,
+          "spans": [
+            {
+              "start": 0,
+              "end": 22
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "formulated_with_bis_a_type_ii_adhesive_standard",
+        "object": {
+          "property": "bis_a_type_ii_amount_adhesive_standard",
+          "value": 100
+        },
+        "source_text": "Bis-A, Type II 100pbw",
+        "provenance": {
+          "page": 3,
+          "spans": [
+            {
+              "start": 0,
+              "end": 22
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "formulated_with_bis_a_type_ii_adhesive_silane",
+        "object": {
+          "property": "bis_a_type_ii_amount_adhesive_silane",
+          "value": 100
+        },
+        "source_text": "Bis-A, Type II 100 pbw",
+        "provenance": {
+          "page": 3,
+          "spans": [
+            {
+              "start": 0,
+              "end": 23
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "formulated_with_polyglycoldiamine_adhesive_standard",
+        "object": {
+          "property": "polyglycoldiamine_amount_adhesive_standard",
+          "value": 29
+        },
+        "source_text": "Polyglycoldiamine 29 pbw",
+        "provenance": {
+          "page": 3,
+          "spans": [
+            {
+              "start": 0,
+              "end": 24
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "formulated_with_polyglycoldiamine_adhesive_silane",
+        "object": {
+          "property": "polyglycoldiamine_amount_adhesive_silane",
+          "value": 29
+        },
+        "source_text": "Polyglycoldiamine 29 pbw",
+        "provenance": {
+          "page": 3,
+          "spans": [
+            {
+              "start": 0,
+              "end": 24
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "enhanced_with_silane_adhesive",
+        "object": {
+          "property": "silane_amount_adhesive",
+          "value": 1.3
+        },
+        "source_text": "Union Carbide® A-187 Silane 1.3 pbw",
+        "provenance": {
+          "page": 3,
+          "spans": [
+            {
+              "start": 0,
+              "end": 36
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "formulated_with_mineral_filler_adhesive_standard",
+        "object": {
+          "property": "mineral_filler_amount_adhesive_standard",
+          "value": 30
+        },
+        "source_text": "Mineral Filler 30",
+        "provenance": {
+          "page": 3,
+          "spans": [
+            {
+              "start": 0,
+              "end": 17
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "formulated_with_mineral_filler_adhesive_silane",
+        "object": {
+          "property": "mineral_filler_amount_adhesive_silane",
+          "value": 30
+        },
+        "source_text": "Mineral Filler 30",
+        "provenance": {
+          "page": 3,
+          "spans": [
+            {
+              "start": 0,
+              "end": 17
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "formulated_with_thixotrope_adhesive_standard",
+        "object": {
+          "property": "thixotrope_amount_adhesive_standard",
+          "value": 5
+        },
+        "source_text": "Thixotrope 5 pbw",
+        "provenance": {
+          "page": 3,
+          "spans": [
+            {
+              "start": 0,
+              "end": 16
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "formulated_with_thixotrope_adhesive_silane",
+        "object": {
+          "property": "thixotrope_amount_adhesive_silane",
+          "value": 5
+        },
+        "source_text": "Thixotrope 5 pbw",
+        "provenance": {
+          "page": 3,
+          "spans": [
+            {
+              "start": 0,
+              "end": 16
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "achieves_lap_shear_strength_adhesive_standard",
+        "object": {
+          "property": "lap_shear_strength_adhesive_standard",
+          "value": 2000
+        },
+        "source_text": "Lap Shear Strength, Al-Al 2,000 psi",
+        "provenance": {
+          "page": 3,
+          "spans": [
+            {
+              "start": 0,
+              "end": 36
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "achieves_lap_shear_strength_adhesive_silane",
+        "object": {
+          "property": "lap_shear_strength_adhesive_silane",
+          "value": 3590
+        },
+        "source_text": "Lap Shear Strength, Al-Al 3,590 psi",
+        "provenance": {
+          "page": 3,
+          "spans": [
+            {
+              "start": 0,
+              "end": 36
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "achieves_lap_shear_strength_water_immersion_standard",
+        "object": {
+          "property": "lap_shear_strength_water_immersion_standard",
+          "value": 2434
+        },
+        "source_text": "After 7 days immersion 100°F water 2,434 psi",
+        "provenance": {
+          "page": 3,
+          "spans": [
+            {
+              "start": 0,
+              "end": 46
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "achieves_lap_shear_strength_water_immersion_silane",
+        "object": {
+          "property": "lap_shear_strength_water_immersion_silane",
+          "value": 3520
+        },
+        "source_text": "After 7 days immersion 100°F water 3,520 psi",
+        "provenance": {
+          "page": 3,
+          "spans": [
+            {
+              "start": 0,
+              "end": 46
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "achieves_heat_distortion_temp_room_cure",
+        "object": {
+          "property": "heat_distortion_temp_room_cure",
+          "value": 66
+        },
+        "source_text": "Heat Distortion Temperature 66°C",
+        "provenance": {
+          "page": 4,
+          "spans": [
+            {
+              "start": 0,
+              "end": 32
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "achieves_heat_distortion_temp_postcured",
+        "object": {
+          "property": "heat_distortion_temp_postcured",
+          "value": 70
+        },
+        "source_text": "Heat Distortion Temperature 70°C",
+        "provenance": {
+          "page": 4,
+          "spans": [
+            {
+              "start": 0,
+              "end": 32
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "achieves_rockwell_hardness_room_cure",
+        "object": {
+          "property": "rockwell_hardness_room_cure",
+          "value": 51
+        },
+        "source_text": "Rockwell hardness (M Scale) 51",
+        "provenance": {
+          "page": 4,
+          "spans": [
+            {
+              "start": 0,
+              "end": 31
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "achieves_rockwell_hardness_postcured",
+        "object": {
+          "property": "rockwell_hardness_postcured",
+          "value": 57
+        },
+        "source_text": "Rockwell hardness (M Scale) 57",
+        "provenance": {
+          "page": 4,
+          "spans": [
+            {
+              "start": 0,
+              "end": 31
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "achieves_izod_impact_room_cure",
+        "object": {
+          "property": "izod_impact_room_cure",
+          "value": 1.53
+        },
+        "source_text": "Izod Impact 1.53 ft/lb/inch",
+        "provenance": {
+          "page": 4,
+          "spans": [
+            {
+              "start": 0,
+              "end": 28
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "achieves_izod_impact_postcured",
+        "object": {
+          "property": "izod_impact_postcured",
+          "value": 1.49
+        },
+        "source_text": "Izod Impact 1.49 ft/lb/inch",
+        "provenance": {
+          "page": 4,
+          "spans": [
+            {
+              "start": 0,
+              "end": 28
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "achieves_flexural_strength_23c_room_cure",
+        "object": {
+          "property": "flexural_strength_23c_room_cure",
+          "value": 12800
+        },
+        "source_text": "Flexural Strength at 23°C 12,800 psi",
+        "provenance": {
+          "page": 4,
+          "spans": [
+            {
+              "start": 0,
+              "end": 37
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "achieves_flexural_strength_23c_postcured",
+        "object": {
+          "property": "flexural_strength_23c_postcured",
+          "value": 12300
+        },
+        "source_text": "Flexural Strength at 23°C 12,300 psi",
+        "provenance": {
+          "page": 4,
+          "spans": [
+            {
+              "start": 0,
+              "end": 37
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "achieves_flexural_modulus_room_cure",
+        "object": {
+          "property": "flexural_modulus_room_cure",
+          "value": 0.4
+        },
+        "source_text": "Flexural Modulus 0.40 psi x 10-6",
+        "provenance": {
+          "page": 4,
+          "spans": [
+            {
+              "start": 0,
+              "end": 33
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "achieves_flexural_modulus_postcured",
+        "object": {
+          "property": "flexural_modulus_postcured",
+          "value": 0.36
+        },
+        "source_text": "Flexural Modulus 0.36 psi x 10-6",
+        "provenance": {
+          "page": 4,
+          "spans": [
+            {
+              "start": 0,
+              "end": 33
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "achieves_tensile_strength_23c_room_cure",
+        "object": {
+          "property": "tensile_strength_23c_room_cure",
+          "value": 8880
+        },
+        "source_text": "Tensile Strength at 23°C 8,880 psi",
+        "provenance": {
+          "page": 4,
+          "spans": [
+            {
+              "start": 0,
+              "end": 35
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "achieves_tensile_strength_23c_postcured",
+        "object": {
+          "property": "tensile_strength_23c_postcured",
+          "value": 8500
+        },
+        "source_text": "Tensile Strength at 23°C 8,500 psi",
+        "provenance": {
+          "page": 4,
+          "spans": [
+            {
+              "start": 0,
+              "end": 35
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "achieves_tensile_modulus_room_cure",
+        "object": {
+          "property": "tensile_modulus_room_cure",
+          "value": 0.39
+        },
+        "source_text": "Tensile Modulus 0.39 pst x 10-6",
+        "provenance": {
+          "page": 4,
+          "spans": [
+            {
+              "start": 0,
+              "end": 32
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "achieves_tensile_modulus_postcured",
+        "object": {
+          "property": "tensile_modulus_postcured",
+          "value": 0.29
+        },
+        "source_text": "Tensile Modulus 0.29 pst x 10-6",
+        "provenance": {
+          "page": 4,
+          "spans": [
+            {
+              "start": 0,
+              "end": 32
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "achieves_gardner_impact_room_cure",
+        "object": {
+          "property": "gardner_impact_room_cure",
+          "value": 130
+        },
+        "source_text": "Gardner Impact on 6-mil films 130 inch-lb passed",
+        "provenance": {
+          "page": 4,
+          "spans": [
+            {
+              "start": 0,
+              "end": 49
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "achieves_gardner_impact_postcured",
+        "object": {
+          "property": "gardner_impact_postcured",
+          "value": 130
+        },
+        "source_text": "Gardner Impact on 6-mil films 130 inch-lb passed",
+        "provenance": {
+          "page": 4,
+          "spans": [
+            {
+              "start": 0,
+              "end": 49
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "has_arc_resistance",
+        "object": {
+          "property": "arc_resistance",
+          "value": 110
+        },
+        "source_text": "Arc Resistance 110 seconds",
+        "provenance": {
+          "page": 5,
+          "spans": [
+            {
+              "start": 0,
+              "end": 26
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "has_dielectric_strength_st_23c",
+        "object": {
+          "property": "dielectric_strength_st_23c",
+          "value": 496
+        },
+        "source_text": "Dielectric Strength, S/T at 23°C 496 Volts/mil",
+        "provenance": {
+          "page": 5,
+          "spans": [
+            {
+              "start": 0,
+              "end": 47
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "has_dielectric_strength_ss_23c",
+        "object": {
+          "property": "dielectric_strength_ss_23c",
+          "value": 462
+        },
+        "source_text": "Dielectric Strength, S/S at 23°C 462 Volts/mil",
+        "provenance": {
+          "page": 5,
+          "spans": [
+            {
+              "start": 0,
+              "end": 47
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "has_dielectric_strength_st_60c",
+        "object": {
+          "property": "dielectric_strength_st_60c",
+          "value": 517
+        },
+        "source_text": "Dielectric Strength, S/T at 60°C 517 Volts/mil",
+        "provenance": {
+          "page": 5,
+          "spans": [
+            {
+              "start": 0,
+              "end": 47
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "has_dielectric_strength_ss_60c",
+        "object": {
+          "property": "dielectric_strength_ss_60c",
+          "value": 439
+        },
+        "source_text": "Dielectric Strength, S/S at 60°C 439 Volts/mil",
+        "provenance": {
+          "page": 5,
+          "spans": [
+            {
+              "start": 0,
+              "end": 47
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "has_volume_resistivity_23c",
+        "object": {
+          "property": "volume_resistivity_23c",
+          "value": ">6 x 107"
+        },
+        "source_text": "Volume Resistivity at 23°C, 50% R.H. >6 x 107 megohm-cm",
+        "provenance": {
+          "page": 5,
+          "spans": [
+            {
+              "start": 0,
+              "end": 57
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "has_volume_resistivity_60c",
+        "object": {
+          "property": "volume_resistivity_60c",
+          "value": ">2 x 107"
+        },
+        "source_text": "Volume Resistivity at 60°C >2 x 107 megohm-cm",
+        "provenance": {
+          "page": 5,
+          "spans": [
+            {
+              "start": 0,
+              "end": 47
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "has_surface_resistivity_23c",
+        "object": {
+          "property": "surface_resistivity_23c",
+          "value": ">2 x 107"
+        },
+        "source_text": "Surface Resistivity at 23°C, 50% R.H. >2 x 107 megohms",
+        "provenance": {
+          "page": 5,
+          "spans": [
+            {
+              "start": 0,
+              "end": 56
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "has_dielectric_constant_23c_60hz",
+        "object": {
+          "property": "dielectric_constant_23c_60hz",
+          "value": 4.99
+        },
+        "source_text": "Dielectric Constant at 23°C, 60 cycles 4.99",
+        "provenance": {
+          "page": 5,
+          "spans": [
+            {
+              "start": 0,
+              "end": 44
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "has_dielectric_constant_23c_1khz",
+        "object": {
+          "property": "dielectric_constant_23c_1khz",
+          "value": 4.94
+        },
+        "source_text": "Dielectric Constant at 23°C, 103 cycles 4.94",
+        "provenance": {
+          "page": 5,
+          "spans": [
+            {
+              "start": 0,
+              "end": 45
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "has_dielectric_constant_23c_1mhz",
+        "object": {
+          "property": "dielectric_constant_23c_1mhz",
+          "value": 3.9
+        },
+        "source_text": "Dielectric Constant at 23°C, 106 cycles 3.90",
+        "provenance": {
+          "page": 5,
+          "spans": [
+            {
+              "start": 0,
+              "end": 45
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "has_dielectric_constant_60c_60hz",
+        "object": {
+          "property": "dielectric_constant_60c_60hz",
+          "value": 5.12
+        },
+        "source_text": "Dielectric Constant at 60°C, 60 cycles 5.12",
+        "provenance": {
+          "page": 5,
+          "spans": [
+            {
+              "start": 0,
+              "end": 44
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "has_dielectric_constant_60c_1khz",
+        "object": {
+          "property": "dielectric_constant_60c_1khz",
+          "value": 5.08
+        },
+        "source_text": "Dielectric Constant at 60°C, 103 cycles 5.08",
+        "provenance": {
+          "page": 5,
+          "spans": [
+            {
+              "start": 0,
+              "end": 45
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "has_dielectric_constant_60c_1mhz",
+        "object": {
+          "property": "dielectric_constant_60c_1mhz",
+          "value": 4.44
+        },
+        "source_text": "Dielectric Constant at 60°C, 106 cycles 4.44",
+        "provenance": {
+          "page": 5,
+          "spans": [
+            {
+              "start": 0,
+              "end": 45
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "has_arc_resistance_comparison",
+        "object": {
+          "property": "arc_resistance_comparison",
+          "value": 110
+        },
+        "source_text": "Arc Resistance 110 Seconds",
+        "provenance": {
+          "page": 6,
+          "spans": [
+            {
+              "start": 0,
+              "end": 26
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "has_dielectric_strength_st_23c_comparison",
+        "object": {
+          "property": "dielectric_strength_st_23c_comparison",
+          "value": 496
+        },
+        "source_text": "Dielectric Strength, S/T at 23°C 496 volts/mil",
+        "provenance": {
+          "page": 6,
+          "spans": [
+            {
+              "start": 0,
+              "end": 47
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "has_dielectric_strength_ss_23c_comparison",
+        "object": {
+          "property": "dielectric_strength_ss_23c_comparison",
+          "value": 462
+        },
+        "source_text": "Dielectric Strength, S/S at 23°C 462 volts/mil",
+        "provenance": {
+          "page": 6,
+          "spans": [
+            {
+              "start": 0,
+              "end": 47
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "has_dielectric_strength_st_60c_comparison",
+        "object": {
+          "property": "dielectric_strength_st_60c_comparison",
+          "value": 517
+        },
+        "source_text": "Dielectric Strength, S/T at 60°C 517 volts/mil",
+        "provenance": {
+          "page": 6,
+          "spans": [
+            {
+              "start": 0,
+              "end": 47
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "has_dielectric_strength_ss_60c_comparison",
+        "object": {
+          "property": "dielectric_strength_ss_60c_comparison",
+          "value": 439
+        },
+        "source_text": "Dielectric Strength, S/S at 60°C 439 volts/mil",
+        "provenance": {
+          "page": 6,
+          "spans": [
+            {
+              "start": 0,
+              "end": 47
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "has_volume_resistivity_23c_comparison",
+        "object": {
+          "property": "volume_resistivity_23c_comparison",
+          "value": ">6 x 107"
+        },
+        "source_text": "Volume Resistivity at 23°C, 50% RH >6 x 107 Megohm-cm",
+        "provenance": {
+          "page": 6,
+          "spans": [
+            {
+              "start": 0,
+              "end": 55
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "has_volume_resistivity_60c_comparison",
+        "object": {
+          "property": "volume_resistivity_60c_comparison",
+          "value": ">2.6 x 107"
+        },
+        "source_text": "Volume Resistivity at 60°C, 50% RH >2.6 x 107 Megohm-cm",
+        "provenance": {
+          "page": 6,
+          "spans": [
+            {
+              "start": 0,
+              "end": 57
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "has_surface_resistivity_23c_comparison",
+        "object": {
+          "property": "surface_resistivity_23c_comparison",
+          "value": "> 2 x 107"
+        },
+        "source_text": "Surface Resistivity, 50% RH @ 23°C > 2 x 107 Megohms",
+        "provenance": {
+          "page": 6,
+          "spans": [
+            {
+              "start": 0,
+              "end": 54
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "has_dielectric_constant_23c_60hz_comparison",
+        "object": {
+          "property": "dielectric_constant_23c_60hz_comparison",
+          "value": 4.99
+        },
+        "source_text": "Dielectric Constant at 23°C, 60 cycles 4.99",
+        "provenance": {
+          "page": 6,
+          "spans": [
+            {
+              "start": 0,
+              "end": 44
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "has_dielectric_constant_23c_1khz_comparison",
+        "object": {
+          "property": "dielectric_constant_23c_1khz_comparison",
+          "value": 4.94
+        },
+        "source_text": "Dielectric Constant at 23°C, 103 cycles 4.94",
+        "provenance": {
+          "page": 6,
+          "spans": [
+            {
+              "start": 0,
+              "end": 45
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "has_dielectric_constant_23c_1mhz_comparison",
+        "object": {
+          "property": "dielectric_constant_23c_1mhz_comparison",
+          "value": 3.9
+        },
+        "source_text": "Dielectric Constant at 23°C, 106 cycles 3.90",
+        "provenance": {
+          "page": 6,
+          "spans": [
+            {
+              "start": 0,
+              "end": 45
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "has_dielectric_constant_60c_60hz_comparison",
+        "object": {
+          "property": "dielectric_constant_60c_60hz_comparison",
+          "value": 5.12
+        },
+        "source_text": "Dielectric Constant at 60°C, 60 cycles 5.12",
+        "provenance": {
+          "page": 6,
+          "spans": [
+            {
+              "start": 0,
+              "end": 44
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "has_dielectric_constant_60c_1khz_comparison",
+        "object": {
+          "property": "dielectric_constant_60c_1khz_comparison",
+          "value": 5.08
+        },
+        "source_text": "Dielectric Constant at 60°C, 103 cycles 5.08",
+        "provenance": {
+          "page": 6,
+          "spans": [
+            {
+              "start": 0,
+              "end": 45
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "has_dielectric_constant_60c_1mhz_comparison",
+        "object": {
+          "property": "dielectric_constant_60c_1mhz_comparison",
+          "value": 4.44
+        },
+        "source_text": "Dielectric Constant at 60°C, 106 cycles 4.44",
+        "provenance": {
+          "page": 6,
+          "spans": [
+            {
+              "start": 0,
+              "end": 45
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "has_dissipation_factor_23c_60hz_comparison",
+        "object": {
+          "property": "dissipation_factor_23c_60hz_comparison",
+          "value": 0.0038
+        },
+        "source_text": "Dissipation Factor at 23°C, 60 cycles 0.0038",
+        "provenance": {
+          "page": 6,
+          "spans": [
+            {
+              "start": 0,
+              "end": 45
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "has_dissipation_factor_23c_1khz_comparison",
+        "object": {
+          "property": "dissipation_factor_23c_1khz_comparison",
+          "value": 0.0011
+        },
+        "source_text": "Dissipation Factor at 23°C, 103 cycles 0.0011",
+        "provenance": {
+          "page": 6,
+          "spans": [
+            {
+              "start": 0,
+              "end": 46
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "has_dissipation_factor_23c_1mhz_comparison",
+        "object": {
+          "property": "dissipation_factor_23c_1mhz_comparison",
+          "value": 0.0547
+        },
+        "source_text": "Dissipation Factor at 23°C, 106 cycles 0.0547",
+        "provenance": {
+          "page": 6,
+          "spans": [
+            {
+              "start": 0,
+              "end": 46
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "has_dissipation_factor_60c_60hz_comparison",
+        "object": {
+          "property": "dissipation_factor_60c_60hz_comparison",
+          "value": 0.0079
+        },
+        "source_text": "Dissipation Factor at 60°C, 60 cycles 0.0079",
+        "provenance": {
+          "page": 6,
+          "spans": [
+            {
+              "start": 0,
+              "end": 45
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "has_dissipation_factor_60c_1khz_comparison",
+        "object": {
+          "property": "dissipation_factor_60c_1khz_comparison",
+          "value": 0.005
+        },
+        "source_text": "Dissipation Factor at 60°C, 103 cycles 0.0050",
+        "provenance": {
+          "page": 6,
+          "spans": [
+            {
+              "start": 0,
+              "end": 46
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
+        "predicate": "has_dissipation_factor_60c_1mhz_comparison",
+        "object": {
+          "property": "dissipation_factor_60c_1mhz_comparison",
+          "value": 0.0554
+        },
+        "source_text": "Dissipation Factor at 60°C, 106 cycles 0.0554",
+        "provenance": {
+          "page": 6,
+          "spans": [
+            {
+              "start": 0,
+              "end": 46
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "27fcefd9-9efe-5eee-9b45-f0e793341a9c",
+        "predicate": "has_arc_resistance_comparison",
+        "object": {
+          "property": "arc_resistance_triamine",
+          "value": 110
+        },
+        "source_text": "Arc Resistance 110 Seconds",
+        "provenance": {
+          "page": 6,
+          "spans": [
+            {
+              "start": 0,
+              "end": 26
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "27fcefd9-9efe-5eee-9b45-f0e793341a9c",
+        "predicate": "has_dielectric_strength_st_23c_comparison",
+        "object": {
+          "property": "dielectric_strength_st_23c_triamine",
+          "value": 420
+        },
+        "source_text": "Dielectric Strength, S/T at 23°C 420 volts/mil",
+        "provenance": {
+          "page": 6,
+          "spans": [
+            {
+              "start": 0,
+              "end": 47
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "27fcefd9-9efe-5eee-9b45-f0e793341a9c",
+        "predicate": "has_volume_resistivity_23c_comparison",
+        "object": {
+          "property": "volume_resistivity_23c_triamine",
+          "value": "2 x 1016"
+        },
+        "source_text": "Volume Resistivity at 23°C, 50% RH 2 x 1016 Megohm-cm",
+        "provenance": {
+          "page": 6,
+          "spans": [
+            {
+              "start": 0,
+              "end": 55
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "27fcefd9-9efe-5eee-9b45-f0e793341a9c",
+        "predicate": "has_volume_resistivity_60c_comparison",
+        "object": {
+          "property": "volume_resistivity_60c_triamine",
+          "value": "6 x 1014"
+        },
+        "source_text": "Volume Resistivity at 60°C, 50% RH 6 x 1014 Megohm-cm",
+        "provenance": {
+          "page": 6,
+          "spans": [
+            {
+              "start": 0,
+              "end": 55
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "27fcefd9-9efe-5eee-9b45-f0e793341a9c",
+        "predicate": "has_surface_resistivity_23c_comparison",
+        "object": {
+          "property": "surface_resistivity_23c_triamine",
+          "value": ">2 x107"
+        },
+        "source_text": "Surface Resistivity, 50% RH @ 23°C >2 x107 Megohms",
+        "provenance": {
+          "page": 6,
+          "spans": [
+            {
+              "start": 0,
+              "end": 52
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "27fcefd9-9efe-5eee-9b45-f0e793341a9c",
+        "predicate": "has_dielectric_constant_23c_60hz_comparison",
+        "object": {
+          "property": "dielectric_constant_23c_60hz_triamine",
+          "value": 4.4
+        },
+        "source_text": "Dielectric Constant at 23°C, 60 cycles 4.4",
+        "provenance": {
+          "page": 6,
+          "spans": [
+            {
+              "start": 0,
+              "end": 43
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "27fcefd9-9efe-5eee-9b45-f0e793341a9c",
+        "predicate": "has_dielectric_constant_23c_1khz_comparison",
+        "object": {
+          "property": "dielectric_constant_23c_1khz_triamine",
+          "value": 4.2
+        },
+        "source_text": "Dielectric Constant at 23°C, 103 cycles 4.2",
+        "provenance": {
+          "page": 6,
+          "spans": [
+            {
+              "start": 0,
+              "end": 44
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "27fcefd9-9efe-5eee-9b45-f0e793341a9c",
+        "predicate": "has_dielectric_constant_23c_1mhz_comparison",
+        "object": {
+          "property": "dielectric_constant_23c_1mhz_triamine",
+          "value": 4.2
+        },
+        "source_text": "Dielectric Constant at 23°C, 106 cycles 4.2",
+        "provenance": {
+          "page": 6,
+          "spans": [
+            {
+              "start": 0,
+              "end": 44
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "27fcefd9-9efe-5eee-9b45-f0e793341a9c",
+        "predicate": "has_dielectric_constant_60c_60hz_comparison",
+        "object": {
+          "property": "dielectric_constant_60c_60hz_triamine",
+          "value": 4.9
+        },
+        "source_text": "Dielectric Constant at 60°C, 60 cycles 4.9",
+        "provenance": {
+          "page": 6,
+          "spans": [
+            {
+              "start": 0,
+              "end": 43
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "27fcefd9-9efe-5eee-9b45-f0e793341a9c",
+        "predicate": "has_dielectric_constant_60c_1khz_comparison",
+        "object": {
+          "property": "dielectric_constant_60c_1khz_triamine",
+          "value": 4.4
+        },
+        "source_text": "Dielectric Constant at 60°C, 103 cycles 4.4",
+        "provenance": {
+          "page": 6,
+          "spans": [
+            {
+              "start": 0,
+              "end": 44
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "27fcefd9-9efe-5eee-9b45-f0e793341a9c",
+        "predicate": "has_dielectric_constant_60c_1mhz_comparison",
+        "object": {
+          "property": "dielectric_constant_60c_1mhz_triamine",
+          "value": 4.5
+        },
+        "source_text": "Dielectric Constant at 60°C, 106 cycles 4.5",
+        "provenance": {
+          "page": 6,
+          "spans": [
+            {
+              "start": 0,
+              "end": 44
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "27fcefd9-9efe-5eee-9b45-f0e793341a9c",
+        "predicate": "has_dissipation_factor_23c_60hz_comparison",
+        "object": {
+          "property": "dissipation_factor_23c_60hz_triamine",
+          "value": 0.03
+        },
+        "source_text": "Dissipation Factor at 23°C, 60 cycles 0.03",
+        "provenance": {
+          "page": 6,
+          "spans": [
+            {
+              "start": 0,
+              "end": 43
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "27fcefd9-9efe-5eee-9b45-f0e793341a9c",
+        "predicate": "has_dissipation_factor_23c_1khz_comparison",
+        "object": {
+          "property": "dissipation_factor_23c_1khz_triamine",
+          "value": 0.04
+        },
+        "source_text": "Dissipation Factor at 23°C, 103 cycles 0.04",
+        "provenance": {
+          "page": 6,
+          "spans": [
+            {
+              "start": 0,
+              "end": 44
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "27fcefd9-9efe-5eee-9b45-f0e793341a9c",
+        "predicate": "has_dissipation_factor_23c_1mhz_comparison",
+        "object": {
+          "property": "dissipation_factor_23c_1mhz_triamine",
+          "value": 0.01
+        },
+        "source_text": "Dissipation Factor at 23°C, 106 cycles 0.01",
+        "provenance": {
+          "page": 6,
+          "spans": [
+            {
+              "start": 0,
+              "end": 44
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "27fcefd9-9efe-5eee-9b45-f0e793341a9c",
+        "predicate": "has_dissipation_factor_60c_60hz_comparison",
+        "object": {
+          "property": "dissipation_factor_60c_60hz_triamine",
+          "value": 0.016
+        },
+        "source_text": "Dissipation Factor at 60°C, 60 cycles 0.016",
+        "provenance": {
+          "page": 6,
+          "spans": [
+            {
+              "start": 0,
+              "end": 44
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "27fcefd9-9efe-5eee-9b45-f0e793341a9c",
+        "predicate": "has_dissipation_factor_60c_1khz_comparison",
+        "object": {
+          "property": "dissipation_factor_60c_1khz_triamine",
+          "value": 0.01
+        },
+        "source_text": "Dissipation Factor at 60°C, 103 cycles 0.01",
+        "provenance": {
+          "page": 6,
+          "spans": [
+            {
+              "start": 0,
+              "end": 44
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      },
+      {
+        "subject": "27fcefd9-9efe-5eee-9b45-f0e793341a9c",
+        "predicate": "has_dissipation_factor_60c_1mhz_comparison",
+        "object": {
+          "property": "dissipation_factor_60c_1mhz_triamine",
+          "value": 0.01
+        },
+        "source_text": "Dissipation Factor at 60°C, 106 cycles 0.01",
+        "provenance": {
+          "page": 6,
+          "spans": [
+            {
+              "start": 0,
+              "end": 44
+            }
+          ],
+          "document_id": "ef807a17-2891-537a-bb0d-e2cd6060a0f5"
+        },
+        "confidence": 1.0
+      }
+    ]
+  },
+  "document_type": "Product Technical Bulletin"
+}

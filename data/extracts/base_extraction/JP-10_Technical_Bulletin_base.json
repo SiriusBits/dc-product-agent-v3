@@ -1,0 +1,360 @@
+{
+  "doc_id": "ac3e1e84-8691-5273-bbc7-d0cf1fe5851b",
+  "filename": "JP-10_Technical_Bulletin.pdf",
+  "source_filepath": "data/raw_pdfs/JP-10_Technical_Bulletin.pdf",
+  "filepath": "data/pdf_extracts/v1/pdfs/JP-10_Technical_Bulletin.pdf",
+  "document_file_metadata": {
+    "document_title": "ECA 100KA Technical Bulletin",
+    "author": [
+      "John F. Kill"
+    ],
+    "copyright_status": "Unknown",
+    "created": "2/16/24, 6:45:31 PM UTC",
+    "modified": "2/16/24, 6:45:31 PM UTC",
+    "application": "Microsoft\u00ae Word for Microsoft 365",
+    "advanced": {
+      "pdf_producer": "Microsoft\u00ae Word for Microsoft 365",
+      "pdf_version": "1.7",
+      "location": "/Users/benjaminbykowski/projects/ai-apps/forks/qwen-dc-product/dc-product-agent/data/raw_pdfs/JP-10_Technical_Bulletin.pdf",
+      "file_size": "276.42 KB (283,053 Bytes)",
+      "page_size": "8.50 x 11.00 in",
+      "number_of_pages": 2,
+      "tagged_pdf": "No",
+      "fast_web_view": "No"
+    }
+  },
+  "source_file_hash": {
+    "sha256": "d0436980d600ab41010d9e112794b2470d868723a9c031a83ee015b321b09f48"
+  },
+  "document_type": "Product Technical Bulletin",
+  "manufacturer": "Dixie Functional Additives",
+  "contact_info": {
+    "address": "10601 Bay Area Blvd. Pasadena, TX 77507",
+    "phone": "(281) 474-3271",
+    "fax": "(281) 291-3384",
+    "email": "info@dixiechemicalgroup.com"
+  },
+  "product_info": {
+    "product_name": "JP-10",
+    "product_short_name": "JP-10",
+    "product_family": "Jet Fuel",
+    "cas_number": "2825-82-3",
+    "chemical_name": "Octahydro-1H-4,7-methanoindene",
+    "synonyms": []
+  },
+  "registrations": [],
+  "key_benefits": [
+    "High Energy Density",
+    "Low Freezing Point"
+  ],
+  "applications_text": "JP-10 is a jet fuel and a gas turbine fuel for missiles. Its high energy density and low freezing point make it ideal for military aerospace applications.",
+  "applications": [
+    "Jet fuel",
+    "Gas turbine fuel for missiles",
+    "Military aerospace applications"
+  ],
+  "properties_and_specifications": [
+    {
+      "category": "Typical",
+      "name": "Appearance",
+      "unit": null,
+      "value_string": "Clear Colorless Liquid",
+      "value_numeric": null,
+      "value_min": null,
+      "value_max": null,
+      "test_method": null,
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Typical",
+      "name": "Total JP-10",
+      "unit": "%",
+      "value_string": "98.5 - 100",
+      "value_numeric": null,
+      "value_min": 98.5,
+      "value_max": 100,
+      "test_method": null,
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Typical",
+      "name": "Flash Point",
+      "unit": "\u00b0C",
+      "value_string": "55 - 65",
+      "value_numeric": null,
+      "value_min": 55,
+      "value_max": 65,
+      "test_method": null,
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Typical",
+      "name": "Heat of Combustion",
+      "unit": "MJ/kg",
+      "value_string": "42.1 min",
+      "value_numeric": null,
+      "value_min": 42.1,
+      "value_max": null,
+      "test_method": null,
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Typical",
+      "name": "Kinematic Viscosity @-18\u00b0C",
+      "unit": "cSt",
+      "value_string": "< 10",
+      "value_numeric": null,
+      "value_min": null,
+      "value_max": 10,
+      "test_method": null,
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Typical",
+      "name": "Kinematic Viscosity @-54\u00b0C",
+      "unit": "cSt",
+      "value_string": "< 40",
+      "value_numeric": null,
+      "value_min": null,
+      "value_max": 40,
+      "test_method": null,
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Typical",
+      "name": "Specific Gravity 60/60F",
+      "unit": null,
+      "value_string": "0.934 -0.943",
+      "value_numeric": null,
+      "value_min": 0.934,
+      "value_max": 0.943,
+      "test_method": null,
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Typical",
+      "name": "Saybolt Color",
+      "unit": null,
+      "value_string": "25 +",
+      "value_numeric": null,
+      "value_min": 25,
+      "value_max": null,
+      "test_method": null,
+      "page": 1,
+      "notes": null
+    }
+  ],
+  "epoxy_resin_properties": null,
+  "typical_properties": {
+    "table_name": "Typical Properties",
+    "page": 1,
+    "data_type": "typical_properties",
+    "description": "JP-10 is a jet fuel and a gas turbine fuel for missiles with high energy density and low freezing point, making it ideal for military aerospace applications.",
+    "row_count": 8,
+    "data": [
+      {
+        "name": "Appearance",
+        "unit": null,
+        "value_string": "Clear Colorless Liquid",
+        "value_min": null,
+        "value_max": null,
+        "value_numeric": null,
+        "test_method": null
+      },
+      {
+        "name": "Total JP-10",
+        "unit": "%",
+        "value_string": "98.5 - 100",
+        "value_min": 98.5,
+        "value_max": 100,
+        "value_numeric": null,
+        "test_method": null
+      },
+      {
+        "name": "Flash Point",
+        "unit": "\u00b0C",
+        "value_string": "55 - 65",
+        "value_min": 55,
+        "value_max": 65,
+        "value_numeric": null,
+        "test_method": null
+      },
+      {
+        "name": "Heat of Combustion",
+        "unit": "MJ/kg",
+        "value_string": "42.1 min",
+        "value_min": 42.1,
+        "value_max": null,
+        "value_numeric": 42.1,
+        "test_method": null
+      },
+      {
+        "name": "Kinematic Viscosity @-18\u00b0C",
+        "unit": "cSt",
+        "value_string": "< 10",
+        "value_min": null,
+        "value_max": 10,
+        "value_numeric": null,
+        "test_method": null
+      },
+      {
+        "name": "Kinematic Viscosity @-54\u00b0C",
+        "unit": "cSt",
+        "value_string": "< 40",
+        "value_min": null,
+        "value_max": 40,
+        "value_numeric": null,
+        "test_method": null
+      },
+      {
+        "name": "Specific Gravity 60/60F",
+        "unit": null,
+        "value_string": "0.934 -0.943",
+        "value_min": 0.934,
+        "value_max": 0.943,
+        "value_numeric": null,
+        "test_method": null
+      },
+      {
+        "name": "Saybolt Color",
+        "unit": null,
+        "value_string": "25 +",
+        "value_min": 25,
+        "value_max": null,
+        "value_numeric": null,
+        "test_method": null
+      }
+    ],
+    "notes": {
+      "1": "These are not specifications"
+    }
+  },
+  "other_tables": [
+    {
+      "table_name": "Typical Properties",
+      "page": 1,
+      "data_type": "typical_properties",
+      "description": "JP-10 is a jet fuel and a gas turbine fuel for missiles with high energy density and low freezing point, making it ideal for military aerospace applications.",
+      "row_count": 8,
+      "data": [
+        {
+          "name": "Appearance",
+          "unit": null,
+          "value_string": "Clear Colorless Liquid",
+          "value_min": null,
+          "value_max": null,
+          "value_numeric": null,
+          "test_method": null
+        },
+        {
+          "name": "Total JP-10",
+          "unit": "%",
+          "value_string": "98.5 - 100",
+          "value_min": 98.5,
+          "value_max": 100,
+          "value_numeric": null,
+          "test_method": null
+        },
+        {
+          "name": "Flash Point",
+          "unit": "\u00b0C",
+          "value_string": "55 - 65",
+          "value_min": 55,
+          "value_max": 65,
+          "value_numeric": null,
+          "test_method": null
+        },
+        {
+          "name": "Heat of Combustion",
+          "unit": "MJ/kg",
+          "value_string": "42.1 min",
+          "value_min": 42.1,
+          "value_max": null,
+          "value_numeric": 42.1,
+          "test_method": null
+        },
+        {
+          "name": "Kinematic Viscosity @-18\u00b0C",
+          "unit": "cSt",
+          "value_string": "< 10",
+          "value_min": null,
+          "value_max": 10,
+          "value_numeric": null,
+          "test_method": null
+        },
+        {
+          "name": "Kinematic Viscosity @-54\u00b0C",
+          "unit": "cSt",
+          "value_string": "< 40",
+          "value_min": null,
+          "value_max": 40,
+          "value_numeric": null,
+          "test_method": null
+        },
+        {
+          "name": "Specific Gravity 60/60F",
+          "unit": null,
+          "value_string": "0.934 -0.943",
+          "value_min": 0.934,
+          "value_max": 0.943,
+          "value_numeric": null,
+          "test_method": null
+        },
+        {
+          "name": "Saybolt Color",
+          "unit": null,
+          "value_string": "25 +",
+          "value_min": 25,
+          "value_max": null,
+          "value_numeric": null,
+          "test_method": null
+        }
+      ]
+    }
+  ],
+  "formulation_data": [],
+  "toxicity_data": [],
+  "sections": [
+    {
+      "name": "Applications",
+      "page": 1,
+      "text": "JP-10 is a jet fuel and a gas turbine fuel for missiles. Its high energy density and low freezing point make it ideal for military aerospace applications."
+    },
+    {
+      "name": "Handling & Storage",
+      "page": 1,
+      "text": "JP-10 is very stable under normal conditions. It should be stored away from moisture, high temperatures, ignition sources, or oxidizing materials."
+    },
+    {
+      "name": "Health Hazards",
+      "page": 1,
+      "text": "Avoid contact with skin, eyes, and clothing. Use only with adequate ventilation. In case of contact, immediately flush the affected skin or eyes with copious amounts of water for at least 15 minutes. In the case of eye contact, get medical attention. Wash contaminated clothing before reuse.\n\nThe minimum personal protective equipment when handling these materials typically includes protective chemical goggles, impenetrable gloves, and measures to avoid breathing chemical vapors."
+    },
+    {
+      "name": "Availability",
+      "page": 2,
+      "text": "JP-10 is available from Dixie Chemical Company, Inc.'s plant in Pasadena, Texas. Contact your Dixie Chemical Company representative for details."
+    }
+  ],
+  "images": [],
+  "document_footnotes": {},
+  "extraction_metadata": {
+    "confidence_scores": {
+      "product_info": 100,
+      "properties": 100,
+      "other_tables": 100,
+      "sections": 100,
+      "images": 100,
+      "overall": 100
+    },
+    "extractor_version": "dev",
+    "extraction_date": "2025-08-26T17:30:00-04:00"
+  }
+}

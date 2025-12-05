@@ -53,8 +53,17 @@ async def list_documents():
     List available documents/products in the system.
     """
     try:
-        results = kg_store.query_graph("MATCH (p:Product) RETURN p.name as name, p.filename as filename")
-        documents = [f"{r['name']} ({r['filename']})" for r in results]
+        results = kg_store.query_graph("MATCH (p:PRODUCT_NAME) RETURN p.id as id, p.name as name, p.description as description, p.filename as filename")
+        documents = [
+            {
+                "id": r["id"],
+                "name": r["name"],
+                "description": r.get("description", "No description available."),
+                "filename": r["filename"],
+                "category": "Technical Bulletin" # Default category for now
+            }
+            for r in results
+        ]
         return {"documents": documents}
     except Exception as e:
         # Fallback if KG fails

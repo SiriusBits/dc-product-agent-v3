@@ -1,0 +1,561 @@
+{
+  "doc_id": "e0c59870-2030-5186-a3e7-fb62547957af",
+  "filename": "ODSA_Technical_Bulletin.pdf",
+  "source_filepath": "data/raw_pdfs/ODSA_Technical_Bulletin.pdf",
+  "filepath": "data/pdf_extracts/v1/pdfs/ODSA_Technical_Bulletin.pdf",
+  "document_file_metadata": {
+    "document_title": "ODSA_Technical_Bulletin.pdf",
+    "copyright_status": "Unknown",
+    "created": "8/4/17, 8:04:09 PM UTC",
+    "modified": "8/4/17, 8:04:09 PM UTC",
+    "application": "Muhimbi PDF Converter Services - www.muhimbi.com",
+    "advanced": {
+      "pdf_producer": "Muhimbi PDF Converter Services - www.muhimbi.com",
+      "pdf_version": "1.5",
+      "location": "/Users/benjaminbykowski/projects/ai-apps/forks/qwen-dc-product/dc-product-agent/data/raw_pdfs/ODSA_Technical_Bulletin.pdf",
+      "file_size": "116.33 KB (119,124 Bytes)",
+      "page_size": "8.50 x 11.00 in",
+      "number_of_pages": 3,
+      "tagged_pdf": "No",
+      "fast_web_view": "No"
+    }
+  },
+  "source_file_hash": {
+    "sha256": "c1120014106fb4ca61daed8464ae4791fd7b37ed9d3625e17a476b3634c1c2d0"
+  },
+  "document_type": "Product Technical Bulletin",
+  "manufacturer": "Dixie Chemical",
+  "contact_info": {
+    "address": "10601 Bay Area Blvd. Pasadena, TX 77507",
+    "phone": "(281) 474-3271",
+    "fax": "(281) 291-3384",
+    "email": "info@dixiechemicalgroup.com"
+  },
+  "product_info": {
+    "product_name": "Octadecenylsuccinic Anhydride",
+    "product_short_name": "ODSA",
+    "product_family": "Alkenylsuccinic Anhydride",
+    "cas_number": "28777-98-2",
+    "chemical_name": "Octadecenylsuccinic Anhydride",
+    "synonyms": [
+      "ASA"
+    ]
+  },
+  "registrations": [
+    {
+      "authority": "REACh",
+      "jurisdiction": "EU",
+      "registration_number": "01-2119533117-46",
+      "registration_name": "2,5-Furandione,dihydro-,mono-C15-20-alkenyl derivs",
+      "cas_number": "68784-12-3",
+      "status": "registered",
+      "effective_date": null,
+      "notes": "In the US, CASRN 28777-98-2 is typically used for ODSA."
+    }
+  ],
+  "key_benefits": [
+    "Versatile molecule with multiple applications",
+    "Effective alkaline paper sizing agent",
+    "Useful in fuel and lubricant additives",
+    "Can be converted to acid amides and esters"
+  ],
+  "applications_text": "ODSA is an alkenyl succinic anhydride (ASA) based on C18 alpha-olefin. This versatile molecule is often used as an alkaline paper sizing agent. ODSA is also used in fuel and lubricant additives including pour point depressants, corrosion inhibitors and dispersants. ASAs find use as intermediates for surfactants and can also be converted to acid amides and esters. Other suggested uses are in plasticizers, epoxies, and moisture control for leather goods.",
+  "applications": [
+    "Alkaline paper sizing agent",
+    "Fuel additives",
+    "Lubricant additives",
+    "Pour point depressants",
+    "Corrosion inhibitors",
+    "Dispersants",
+    "Surfactant intermediates",
+    "Plasticizers",
+    "Epoxies",
+    "Moisture control for leather goods"
+  ],
+  "properties_and_specifications": [
+    {
+      "category": "Typical",
+      "name": "Physical Appearance",
+      "unit": null,
+      "value_string": "Amber colored liquid, mild odor",
+      "value_numeric": null,
+      "value_min": null,
+      "value_max": null,
+      "test_method": "D-104 (Visual)",
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Typical",
+      "name": "Specific gravity @ 25 \u00b0C",
+      "unit": "g/cc",
+      "value_string": "0.945-0.965",
+      "value_numeric": null,
+      "value_min": 0.945,
+      "value_max": 0.965,
+      "test_method": "D-102 (ASTM D 4052)",
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Typical",
+      "name": "Gardner Color",
+      "unit": null,
+      "value_string": "10 Max",
+      "value_numeric": null,
+      "value_min": null,
+      "value_max": 10,
+      "test_method": "D-150G",
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Typical",
+      "name": "HDSA",
+      "unit": "%",
+      "value_string": "Report",
+      "value_numeric": null,
+      "value_min": null,
+      "value_max": null,
+      "test_method": "D-150M",
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Typical",
+      "name": "Residual Olefin",
+      "unit": "%",
+      "value_string": "3.0 Max",
+      "value_numeric": null,
+      "value_min": null,
+      "value_max": 3.0,
+      "test_method": "D-150M",
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Typical",
+      "name": "ODSA",
+      "unit": "%",
+      "value_string": "90.0 Min",
+      "value_numeric": null,
+      "value_min": 90.0,
+      "value_max": null,
+      "test_method": "D-150M",
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Typical",
+      "name": "Free Acid",
+      "unit": "%",
+      "value_string": "2.0 Max",
+      "value_numeric": null,
+      "value_min": null,
+      "value_max": 2.0,
+      "test_method": "D-150M",
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Typical",
+      "name": "Neutralization",
+      "unit": "mg KOH/g",
+      "value_string": "305-335",
+      "value_numeric": null,
+      "value_min": 305,
+      "value_max": 335,
+      "test_method": "D-150I",
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Typical",
+      "name": "Pour Point",
+      "unit": "\u00b0C",
+      "value_string": "-15",
+      "value_numeric": -15,
+      "value_min": null,
+      "value_max": null,
+      "test_method": "ASTM D97",
+      "page": 1,
+      "notes": null
+    },
+    {
+      "category": "Typical",
+      "name": "Freeze Point",
+      "unit": "\u00b0C",
+      "value_string": "-21",
+      "value_numeric": -21,
+      "value_min": null,
+      "value_max": null,
+      "test_method": "ASTM D1015",
+      "page": 1,
+      "notes": null
+    }
+  ],
+  "epoxy_resin_properties": null,
+  "typical_properties": {
+    "table_name": "Typical Properties",
+    "page": 1,
+    "data_type": "typical_properties",
+    "description": "ODSA is an alkenyl succinic anhydride (ASA) based on C18 alpha-olefin. This versatile molecule is often used as an alkaline paper sizing agent, in fuel and lubricant additives, and as an intermediate for surfactants.",
+    "row_count": 10,
+    "data": [
+      {
+        "name": "Physical Appearance",
+        "unit": null,
+        "value_string": "Amber colored liquid, mild odor",
+        "value_min": null,
+        "value_max": null,
+        "value_numeric": null,
+        "test_method": "D-104 (Visual)"
+      },
+      {
+        "name": "Specific gravity @ 25 \u00b0C",
+        "unit": "g/cc",
+        "value_string": "0.945-0.965",
+        "value_min": 0.945,
+        "value_max": 0.965,
+        "value_numeric": null,
+        "test_method": "D-102 (ASTM D 4052)"
+      },
+      {
+        "name": "Gardner Color",
+        "unit": null,
+        "value_string": "10 Max",
+        "value_min": null,
+        "value_max": 10,
+        "value_numeric": null,
+        "test_method": "D-150G"
+      },
+      {
+        "name": "HDSA",
+        "unit": "%",
+        "value_string": "Report",
+        "value_min": null,
+        "value_max": null,
+        "value_numeric": null,
+        "test_method": "D-150M"
+      },
+      {
+        "name": "Residual Olefin",
+        "unit": "%",
+        "value_string": "3.0 Max",
+        "value_min": null,
+        "value_max": 3.0,
+        "value_numeric": null,
+        "test_method": "D-150M"
+      },
+      {
+        "name": "ODSA",
+        "unit": "%",
+        "value_string": "90.0 Min",
+        "value_min": 90.0,
+        "value_max": null,
+        "value_numeric": null,
+        "test_method": "D-150M"
+      },
+      {
+        "name": "Free Acid",
+        "unit": "%",
+        "value_string": "2.0 Max",
+        "value_min": null,
+        "value_max": 2.0,
+        "value_numeric": null,
+        "test_method": "D-150M"
+      },
+      {
+        "name": "Neutralization",
+        "unit": "mg KOH/g",
+        "value_string": "305-335",
+        "value_min": 305,
+        "value_max": 335,
+        "value_numeric": null,
+        "test_method": "D-150I"
+      },
+      {
+        "name": "Pour Point",
+        "unit": "\u00b0C",
+        "value_string": "-15",
+        "value_min": null,
+        "value_max": null,
+        "value_numeric": -15,
+        "test_method": "ASTM D97"
+      },
+      {
+        "name": "Freeze Point",
+        "unit": "\u00b0C",
+        "value_string": "-21",
+        "value_min": null,
+        "value_max": null,
+        "value_numeric": -21,
+        "test_method": "ASTM D1015"
+      }
+    ],
+    "notes": {}
+  },
+  "other_tables": [
+    {
+      "table_name": "Typical Properties",
+      "page": 1,
+      "data_type": "typical_properties",
+      "description": "ODSA is an alkenyl succinic anhydride (ASA) based on C18 alpha-olefin. This versatile molecule is often used as an alkaline paper sizing agent, in fuel and lubricant additives, and as an intermediate for surfactants.",
+      "row_count": 10,
+      "data": [
+        {
+          "name": "Physical Appearance",
+          "unit": null,
+          "value_string": "Amber colored liquid, mild odor",
+          "value_min": null,
+          "value_max": null,
+          "value_numeric": null,
+          "test_method": "D-104 (Visual)"
+        },
+        {
+          "name": "Specific gravity @ 25 \u00b0C",
+          "unit": "g/cc",
+          "value_string": "0.945-0.965",
+          "value_min": 0.945,
+          "value_max": 0.965,
+          "value_numeric": null,
+          "test_method": "D-102 (ASTM D 4052)"
+        },
+        {
+          "name": "Gardner Color",
+          "unit": null,
+          "value_string": "10 Max",
+          "value_min": null,
+          "value_max": 10,
+          "value_numeric": null,
+          "test_method": "D-150G"
+        },
+        {
+          "name": "HDSA",
+          "unit": "%",
+          "value_string": "Report",
+          "value_min": null,
+          "value_max": null,
+          "value_numeric": null,
+          "test_method": "D-150M"
+        },
+        {
+          "name": "Residual Olefin",
+          "unit": "%",
+          "value_string": "3.0 Max",
+          "value_min": null,
+          "value_max": 3.0,
+          "value_numeric": null,
+          "test_method": "D-150M"
+        },
+        {
+          "name": "ODSA",
+          "unit": "%",
+          "value_string": "90.0 Min",
+          "value_min": 90.0,
+          "value_max": null,
+          "value_numeric": null,
+          "test_method": "D-150M"
+        },
+        {
+          "name": "Free Acid",
+          "unit": "%",
+          "value_string": "2.0 Max",
+          "value_min": null,
+          "value_max": 2.0,
+          "value_numeric": null,
+          "test_method": "D-150M"
+        },
+        {
+          "name": "Neutralization",
+          "unit": "mg KOH/g",
+          "value_string": "305-335",
+          "value_min": 305,
+          "value_max": 335,
+          "value_numeric": null,
+          "test_method": "D-150I"
+        },
+        {
+          "name": "Pour Point",
+          "unit": "\u00b0C",
+          "value_string": "-15",
+          "value_min": null,
+          "value_max": null,
+          "value_numeric": -15,
+          "test_method": "ASTM D97"
+        },
+        {
+          "name": "Freeze Point",
+          "unit": "\u00b0C",
+          "value_string": "-21",
+          "value_min": null,
+          "value_max": null,
+          "value_numeric": -21,
+          "test_method": "ASTM D1015"
+        }
+      ]
+    }
+  ],
+  "formulation_data": [],
+  "toxicity_data": [
+    {
+      "metric": "skin_irritation",
+      "species": "human",
+      "route": "dermal",
+      "value": null,
+      "unit": null,
+      "test_method": null,
+      "conditions": null,
+      "page": 3,
+      "source_text": "ODSA is a mild primary skin irritant. Avoid contact with skin, eyes and clothing. Use only with adequate ventilation. In case of contact, immediately flush skin or eyes with plenty of water for at least 15 minutes; for eyes, get medical attention. Wash contaminated clothing before reuse."
+    }
+  ],
+  "sections": [
+    {
+      "name": "Applications",
+      "page": 2,
+      "text": "ODSA is an alkenyl succinic anhydride (ASA) based on C18 alpha-olefin. This versatile molecule is often used as an alkaline paper sizing agent. ODSA is also used in fuel and lubricant additives including pour point depressants, corrosion inhibitors and dispersants. ASAs find use as intermediates for surfactants and can also be converted to acid amides and esters. Other suggested uses are in plasticizers, epoxies, and moisture control for leather goods."
+    },
+    {
+      "name": "Registration",
+      "page": 2,
+      "text": "ODSA is REACh registered as a component under the name 2,5-Furandione,dihydro-,mono-C15-20-alkenyl derivs. The CASRN is 68784-12-3 and the REACh registry number is 01-2119533117-46. In the US, CASRN 28777-98-2 is typically used for ODSA."
+    },
+    {
+      "name": "Handling & Storage",
+      "page": 3,
+      "text": "ODSA must be stored out of contact with moisture to avoid hydrolysis of the anhydride to the acid. When properly stored, ODSA has a shelf life of 24 months.\n\nFor more details on the design of bulk storage for ODSA and similar products, consult the Dixie Chemical brochure \"Alkenylsuccinic Anhydride Storage Requirements.\""
+    },
+    {
+      "name": "Health Hazards",
+      "page": 3,
+      "text": "Read and understand the relevant Safety Data Sheets (SDS) for all products before use. ODSA is a mild primary skin irritant. Avoid contact with skin, eyes and clothing. Use only with adequate ventilation. In case of contact, immediately flush skin or eyes with plenty of water for at least 15 minutes; for eyes, get medical attention. Wash contaminated clothing before reuse."
+    },
+    {
+      "name": "Availability",
+      "page": 3,
+      "text": "ODSA is available from Dixie Chemical in Pasadena, TX. Contact your Dixie representative for details."
+    }
+  ],
+  "images": [
+    {
+      "filename": "odsa_viscosity_temperature_cropped.png",
+      "page": 1,
+      "type": "graph",
+      "description": "Viscosity vs Temperature. \u2014 Viscosity decreases with Temperature. Viscosity range 15.0\u2013180.0 cPs; Temperature range 20.0\u201380.0 \u00b0C",
+      "title": "Viscosity as a Function of Temperature",
+      "x_axis": {
+        "label": "Temperature",
+        "unit": "\u00b0C"
+      },
+      "y_axis": {
+        "label": "Viscosity",
+        "unit": "cPs"
+      },
+      "graph_data": [
+        {
+          "x": 20,
+          "y": 180
+        },
+        {
+          "x": 25,
+          "y": 140
+        },
+        {
+          "x": 30,
+          "y": 110
+        },
+        {
+          "x": 35,
+          "y": 85
+        },
+        {
+          "x": 40,
+          "y": 65
+        },
+        {
+          "x": 45,
+          "y": 50
+        },
+        {
+          "x": 50,
+          "y": 40
+        },
+        {
+          "x": 55,
+          "y": 32
+        },
+        {
+          "x": 60,
+          "y": 25
+        },
+        {
+          "x": 70,
+          "y": 18
+        },
+        {
+          "x": 80,
+          "y": 15
+        }
+      ],
+      "notes": null
+    },
+    {
+      "filename": "odsa_specific_gravity_temperature_cropped.png",
+      "page": 2,
+      "type": "graph",
+      "description": "Specific Gravity vs Temperature. \u2014 Specific Gravity decreases with Temperature. Specific Gravity range 7.75\u20138.04 lbs/gal; Temperature range 0.0\u201360.0 \u00b0C",
+      "title": "Specific Gravity as a Function of Temperature",
+      "x_axis": {
+        "label": "Temperature",
+        "unit": "\u00b0C"
+      },
+      "y_axis": {
+        "label": "Specific Gravity",
+        "unit": "lbs/gal"
+      },
+      "graph_data": [
+        {
+          "x": 0,
+          "y": 8.04
+        },
+        {
+          "x": 10,
+          "y": 8.0
+        },
+        {
+          "x": 24,
+          "y": 7.92
+        },
+        {
+          "x": 38,
+          "y": 7.84
+        },
+        {
+          "x": 52,
+          "y": 7.78
+        },
+        {
+          "x": 60,
+          "y": 7.75
+        }
+      ],
+      "notes": null
+    }
+  ],
+  "document_footnotes": {
+    "1": "Alkenylsuccinic Anhydride Storage Requirements, available from Dixie Chemical Company."
+  },
+  "extraction_metadata": {
+    "confidence_scores": {
+      "product_info": 100,
+      "properties": 100,
+      "other_tables": 100,
+      "sections": 100,
+      "images": 100,
+      "overall": 100
+    },
+    "extractor_version": "dev",
+    "extraction_date": "2025-08-26T19:50:00-04:00"
+  }
+}
