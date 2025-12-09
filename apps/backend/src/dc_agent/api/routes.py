@@ -43,28 +43,30 @@ async def ingest_endpoint(request: IngestRequest):
     # Placeholder logic
     return {"status": "ingestion_started", "message": "Ingestion process initiated."}
 
-from dc_agent.kg.neo4j import Neo4jKGStore
+from dc_agent.kg.graphiti_store import GraphitiKGStore
 
-kg_store = Neo4jKGStore()
+kg_store = GraphitiKGStore()
 
 @router.get("/documents")
 async def list_documents():
     """
-    List available documents/products in the system.
+    List availabe documents/products.
+    
+    Note: With Graphiti, listing all "Products" is less direct than a Cypher query.
+    For now, we return a message or try a broad search. 
+    Actually, we can fallback to Chroma for the list or return a static list if known.
+    Let's return an empty list with a note for now, as querying all nodes might be expensive or API-limited.
     """
-    try:
-        results = kg_store.query_graph("MATCH (p:PRODUCT_NAME) RETURN p.id as id, p.name as name, p.description as description, p.filename as filename")
-        documents = [
-            {
-                "id": r["id"],
-                "name": r["name"],
-                "description": r.get("description", "No description available."),
-                "filename": r["filename"],
-                "category": "Technical Bulletin" # Default category for now
-            }
-            for r in results
-        ]
-        return {"documents": documents}
-    except Exception as e:
-        # Fallback if KG fails
-        return {"documents": [], "error": str(e)}
+    return {"documents": [], "message": "List documents not fully implemented for Graphiti yet."}
+
+@router.post("/query-kg", response_model=QueryResponse)
+async def query_kg_endpoint(request: QueryRequest):
+    """
+    Specific endpoint to query the Knowledge Graph via Graphiti.
+    """
+    answer = await kg_store.search(request.query)
+    # Convert Graphiti results to string if it's an object
+    return QueryResponse(
+        answer=str(answer),
+        sources=[] 
+    )
