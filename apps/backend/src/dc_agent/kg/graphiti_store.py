@@ -28,15 +28,16 @@ class GraphitiKGStore:
             llm_client=llm_client
         )
 
-    def close(self):
-        self.client.close()
+    async def close(self):
+        await self.client.close()
 
-    async def add_episode(self, name: str, text: str, source_url: str = ""):
+    async def add_episode(self, name: str, text: str, source_description: str, reference_time: str):
         """Add an episode to the graph."""
         await self.client.add_episode(
             name=name,
             episode_body=text,
-            source_url=source_url
+            source_description=source_description,
+            reference_time=reference_time
         )
 
     async def search(self, query: str) -> str:

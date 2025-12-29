@@ -32,9 +32,9 @@ This phase focuses on getting the existing 17 processed products into the databa
             - Extract text chunks from `base_extraction` (e.g., `applications_text`, `key_benefits`, `product_info`).
             - Generate embeddings and add to Chroma.
         - **Knowledge Graph**:
-            - Extract entities and relationships from `derived_info` (which follows the KG schema).
-            - Execute Cypher queries to populate Neo4j.
-    - **Idempotency**: Ensure the script can be run multiple times without duplicating data (use `MERGE` in Cypher, check IDs in Chroma).
+            - Use `GraphitiKGStore` to ingest the aggregated text content as an "episode".
+            - Graphiti automatically handles the extraction of entities and relationships from the text.
+    - **Idempotency**: Ensure the script can be run multiple times without duplicating data (managed by Graphiti and Chroma IDs).
 
 ### Phase 2: Extraction Pipeline Implementation
 This phase implements the workflow for processing *new* PDFs.

@@ -15,8 +15,13 @@ class Settings(BaseSettings):
 
     # Ollama Configuration
     OLLAMA_BASE_URL: str = "http://localhost:11434"
-    OLLAMA_EMBEDDING_MODEL: str = "nomic-embed-text" 
-    OLLAMA_LLM_MODEL: str = "llama3"
+    OLLAMA_EMBEDDING_MODEL: str = "nomic-embed-text:latest" 
+    OLLAMA_LLM_MODEL: str = "llama3.1:8b"
+
+    # External Provider API Keys
+    OPENAI_API_KEY: str | None = None
+    GEMINI_API_KEY: str | None = None
+    ANTHROPIC_API_KEY: str | None = None
 
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
 

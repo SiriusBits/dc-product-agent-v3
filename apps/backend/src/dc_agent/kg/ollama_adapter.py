@@ -47,14 +47,42 @@ class OllamaEmbedder(EmbedderClient):
             embeddings.append(self.create(text))
         return embeddings
 
+class DummyTracer:
+    def start_span(self, name, **kwargs):
+        return self
+    
+    def __enter__(self):
+        return self
+    
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        pass
+
+    def end(self, **kwargs):
+        pass
+
+    def add_attributes(self, *args, **kwargs):
+        pass
+
+    def set_status(self, *args, **kwargs):
+        pass
+
+    def add_event(self, *args, **kwargs):
+        pass
+
+    def record_exception(self, *args, **kwargs):
+        pass
+
 class OllamaLLMClient(LLMClient):
     """Ollama implementation of LLMClient."""
     
     def __init__(self, base_url: str, model: str):
         self.base_url = base_url
         self.model = model
+        self.max_tokens = 4096
+        self.tracer = DummyTracer()
+        self.cache_enabled = False
 
-    def generate_response(
+    async def _generate_response(
         self,
         messages: List[Message],
         response_model: Optional[Type[BaseModel]] = None,
@@ -83,8 +111,8 @@ class OllamaLLMClient(LLMClient):
             # if the prompt doesn't already allow it. 
             # Graphiti likely handles the prompt engineering for JSON schemas.
             
-        with httpx.Client(timeout=120.0) as client:
-            response = client.post(f"{self.base_url}/api/chat", json=payload)
+        async with httpx.AsyncClient(timeout=120.0) as client:
+            response = await client.post(f"{self.base_url}/api/chat", json=payload)
             response.raise_for_status()
             result = response.json()
             

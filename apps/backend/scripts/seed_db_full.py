@@ -100,17 +100,25 @@ async def seed_full_async():
             # --- Graphiti Ingestion ---
             # We feed the full content as an episode
             print(f"Ingesting {product_name} into Graphiti...")
+            # Use a dummy timestamp or current time if not available in data
+            # Format: 'YYYY-MM-DDTHH:MM:SS'
+            from datetime import datetime
+            current_time = datetime.now().isoformat()
+            
             await kg_store.add_episode(
                 name=product_name,
                 text=full_content,
-                source_url=filename
+                source_description=f"Technical Bulletin for {product_name} ({filename})",
+                reference_time=current_time
             )
 
         except Exception as e:
+            import traceback
+            traceback.print_exc()
             print(f"Error processing {derived_file.name}: {e}")
 
     print("Seeding complete.")
-    kg_store.close()
+    await kg_store.close()
 
 def seed_full():
     asyncio.run(seed_full_async())
