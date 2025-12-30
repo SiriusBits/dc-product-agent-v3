@@ -50,14 +50,15 @@ kg_store = GraphitiKGStore()
 @router.get("/documents")
 async def list_documents():
     """
-    List availabe documents/products.
+    List available documents/products.
     
-    Note: With Graphiti, listing all "Products" is less direct than a Cypher query.
-    For now, we return a message or try a broad search. 
-    Actually, we can fallback to Chroma for the list or return a static list if known.
-    Let's return an empty list with a note for now, as querying all nodes might be expensive or API-limited.
+    Returns a list of unique product names found in the Vector Store.
     """
-    return {"documents": [], "message": "List documents not fully implemented for Graphiti yet."}
+    try:
+        products = vector_store.list_unique_products()
+        return {"documents": products, "count": len(products)}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 @router.post("/query-kg", response_model=QueryResponse)
 async def query_kg_endpoint(request: QueryRequest):

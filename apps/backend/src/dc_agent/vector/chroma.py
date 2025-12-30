@@ -30,3 +30,16 @@ class ChromaVectorStore(VectorStore):
     def delete_document(self, doc_id: str) -> None:
         """Delete a document from the vector store."""
         self.collection.delete(ids=[doc_id])
+
+    def list_unique_products(self) -> List[str]:
+        """List all unique product names in the vector store."""
+        # Get all metadata (limit could be an issue if dataset is huge, but for 17 products it's fine)
+        result = self.collection.get(include=["metadatas"])
+        
+        products = set()
+        if result["metadatas"]:
+            for metadata in result["metadatas"]:
+                if metadata and "product_name" in metadata:
+                    products.add(metadata["product_name"])
+        
+        return sorted(list(products))

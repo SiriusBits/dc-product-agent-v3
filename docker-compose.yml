@@ -20,6 +20,23 @@ services:
     volumes:
       - neo4j-data:/data
 
+  # Workflow Automation
+  n8n:
+    image: n8nio/n8n:latest
+    ports:
+      - "5678:5678"
+    environment:
+      - N8N_BASIC_AUTH_ACTIVE=false
+      - N8N_HOST=localhost
+      - WEBHOOK_URL=http://localhost:5678/
+      - GENERIC_TIMEZONE=America/New_York
+    volumes:
+      - n8n-data:/home/node/.n8n
+    depends_on:
+      - chroma
+      - neo4j
+
 volumes:
   chroma-data:
   neo4j-data:
+  n8n-data:
