@@ -14,7 +14,7 @@ class OllamaEmbedder(EmbedderClient):
         self.base_url = base_url
         self.model = model
 
-    def create(self, input_data: Union[str, List[str], Any]) -> List[float]:
+    async def create(self, input_data: Union[str, List[str], Any]) -> List[float]:
         """Create an embedding for a single input."""
         if isinstance(input_data, list):
             # If list of strings, assume single item for 'create' or handle appropriately?
@@ -30,21 +30,21 @@ class OllamaEmbedder(EmbedderClient):
         else:
             text = str(input_data)
 
-        response = httpx.post(
-            f"{self.base_url}/api/embeddings",
-            json={"model": self.model, "prompt": text},
-            timeout=60.0
-        )
-        response.raise_for_status()
-        return response.json()["embedding"]
+        async with httpx.AsyncClient(timeout=60.0) as client:
+            response = await client.post(
+                f"{self.base_url}/api/embeddings",
+                json={"model": self.model, "prompt": text}
+            )
+            response.raise_for_status()
+            return response.json()["embedding"]
 
-    def create_batch(self, input_data_list: List[str]) -> List[List[float]]:
+    async def create_batch(self, input_data_list: List[str]) -> List[List[float]]:
         """Create embeddings for a batch of inputs."""
         # Ollama doesn't have a native batch endpoint that is standard across versions,
         # so we loop sequentially for now. Parallelize if needed.
         embeddings = []
         for text in input_data_list:
-            embeddings.append(self.create(text))
+            embeddings.append(await self.create(text))
         return embeddings
 
 class DummyTracer:
@@ -82,6 +82,19 @@ class OllamaLLMClient(LLMClient):
         self.tracer = DummyTracer()
         self.cache_enabled = False
 
+    def _clean_json(self, content: str) -> str:
+        """Clean JSON content from Markdown code blocks."""
+        # Remove markdown code blocks
+        if "```" in content:
+            # Try to match json block
+            import re
+            match = re.search(r"```(?:json)?\s*(.*?)\s*```", content, re.DOTALL)
+            if match:
+                return match.group(1)
+            # Fallback for just removing backticks if regex fails for some reason
+            content = content.replace("```json", "").replace("```", "")
+        return content.strip()
+
     async def _generate_response(
         self,
         messages: List[Message],
@@ -107,33 +120,27 @@ class OllamaLLMClient(LLMClient):
         
         if response_model:
             payload["format"] = "json"
-            # We might need to append instructions to the last message to ensure JSON structure
-            # if the prompt doesn't already allow it. 
-            # Graphiti likely handles the prompt engineering for JSON schemas.
             
-        async with httpx.AsyncClient(timeout=120.0) as client:
+        async with httpx.AsyncClient(timeout=300.0) as client:
             response = await client.post(f"{self.base_url}/api/chat", json=payload)
             response.raise_for_status()
             result = response.json()
             
             content = result["message"]["content"]
+            print(f"DEBUG: Ollama raw content: {content[:500]}...") 
             
             if response_model:
                 try:
-                    # Parse JSON content and validate against model
-                    data = json.loads(content)
+                    # Clean and parse JSON
+                    cleaned_content = self._clean_json(content)
+                    data = json.loads(cleaned_content)
                     validated = response_model.model_validate(data)
                     return validated.model_dump()
                 except Exception as e:
                     print(f"Failed to parse/validate JSON from Ollama: {e}")
-                    # Fallback or raise? Graphiti expects dict.
+                    print(f"Cleaned content was: {cleaned_content[:500]}...")
                     return {} 
             
-            # If no response model, return dict with content (or whatever Graphiti expects)
-            # The signature says -> Dict[str, Any]. 
-            # Usually unstructured returns might be wrapped differently. 
-            # Let's inspect typical return for unstructured. 
-            # Assuming just the content for now.
             return {"content": content}
 
     def set_tracer(self, tracer: Any) -> None:

@@ -38,7 +38,7 @@ async def seed_full_async():
     derived_files = list(derived_dir.glob("*.json"))
     print(f"Found {len(derived_files)} derived info files.")
 
-    for derived_file in derived_files:
+    for derived_file in derived_files[:1]:
         try:
             # Load Derived Info
             with open(derived_file, "r") as f:

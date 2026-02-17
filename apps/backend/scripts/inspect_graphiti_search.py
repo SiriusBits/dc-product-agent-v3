@@ -20,7 +20,7 @@ async def main():
         results = await store.search(query)
         print(f"Result Type: {type(results)}")
         print(f"Result Str: {str(results)}")
-        print(f"Result Dir: {dir(results)}")
+        # print(f"Result Dir: {dir(results)}")
     except Exception as e:
         print(f"Error: {e}")
     finally:

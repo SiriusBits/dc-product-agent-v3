@@ -42,8 +42,6 @@ class GraphitiKGStore:
 
     async def search(self, query: str) -> str:
         """Search the graph."""
-        # Search returns a SearchResults object, which we probably want to format or return as is.
-        # Let's inspect what it returns or just return it. 
-        # For the API response, we probably want the text answer or facts.
+        # Search returns a SearchResults object or list of edges.
         results = await self.client.search(query)
         return results
