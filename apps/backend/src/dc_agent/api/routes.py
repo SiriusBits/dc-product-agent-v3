@@ -1,6 +1,12 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Request
 from typing import List
 from dc_agent.models.api import QueryRequest, QueryResponse, IngestRequest, Source
+from dc_agent.models.products import (
+    ProductListResponse,
+    ProductDetail,
+    ProductPdfResponse,
+)
+from dc_agent.services.products import get_product_service
 
 router = APIRouter()
 
@@ -71,3 +77,67 @@ async def query_kg_endpoint(request: QueryRequest):
         answer=str(answer),
         sources=[] 
     )
+
+
+# Product endpoints
+@router.get("/products", response_model=ProductListResponse)
+async def list_products():
+    """
+    List all products with summary information.
+    
+    Returns a list of all products including:
+    - Product name and short name
+    - Product family and CAS number
+    - AI-generated summary
+    - Key applications
+    """
+    product_service = get_product_service()
+    return product_service.get_all_products()
+
+
+@router.get("/products/{product_id}", response_model=ProductDetail)
+async def get_product(product_id: str):
+    """
+    Get full details for a specific product.
+    
+    Args:
+        product_id: The document ID (UUID) of the product
+        
+    Returns:
+        Complete product information including properties, specifications,
+        sections, and derived AI analysis.
+    """
+    product_service = get_product_service()
+    product = product_service.get_product_by_id(product_id)
+    
+    if not product:
+        raise HTTPException(status_code=404, detail=f"Product not found: {product_id}")
+    
+    return product
+
+
+@router.get("/products/{product_id}/pdf", response_model=ProductPdfResponse)
+async def get_product_pdf(product_id: str, request: Request):
+    """
+    Get the PDF URL for a product's technical bulletin.
+    
+    Args:
+        product_id: The document ID (UUID) of the product
+        
+    Returns:
+        PDF URL and metadata for the product's technical bulletin.
+    """
+    product_service = get_product_service()
+    
+    # Build base URL from request
+    base_url = str(request.base_url).rstrip("/")
+    
+    pdf_info = product_service.get_product_pdf(product_id, base_url)
+    
+    if not pdf_info:
+        raise HTTPException(
+            status_code=404, 
+            detail=f"PDF not found for product: {product_id}"
+        )
+    
+    return pdf_info
