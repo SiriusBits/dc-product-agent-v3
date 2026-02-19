@@ -39,7 +39,7 @@ class ChromaVectorStore(VectorStore):
         products = set()
         if result["metadatas"]:
             for metadata in result["metadatas"]:
-                if metadata and "product_name" in metadata:
-                    products.add(metadata["product_name"])
+                if metadata and "product" in metadata:
+                    products.add(metadata["product"])
         
         return sorted(list(products))

@@ -9,7 +9,7 @@ from dc_agent.kg.neo4j import Neo4jKGStore
 def ingest_reference_data():
     # Paths
     root_dir = Path(__file__).resolve().parent.parent.parent.parent
-    derived_info_dir = root_dir / "reference" / "derived_info"
+    derived_info_dir = root_dir / "data" / "extracts" / "derived_info"
     
     if not derived_info_dir.exists():
         print(f"Derived info directory not found: {derived_info_dir}")

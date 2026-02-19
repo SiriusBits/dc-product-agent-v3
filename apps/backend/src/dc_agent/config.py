@@ -9,7 +9,7 @@ class Settings(BaseSettings):
     CHROMA_COLLECTION_NAME: str = "product_documents"
 
     # Neo4j Configuration
-    NEO4J_URI: str = "bolt://localhost:7687"
+    NEO4J_URI: str = "bolt://127.0.0.1:7687"
     NEO4J_USER: str = "neo4j"
     NEO4J_PASSWORD: str = "password"
 
