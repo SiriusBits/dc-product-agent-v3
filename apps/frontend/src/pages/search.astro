@@ -1,0 +1,10 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { SearchContainer } from '../components/search/SearchContainer';
+
+export const prerender = true;
+---
+
+<Layout title="Search - Dixie Product Agent" hideNav={true}>
+  <SearchContainer client:load />
+</Layout>

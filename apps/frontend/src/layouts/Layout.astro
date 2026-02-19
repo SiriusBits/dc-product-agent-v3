@@ -3,22 +3,70 @@ import '../styles/global.css';
 
 interface Props {
 	title: string;
+	hideNav?: boolean;
 }
 
-const { title } = Astro.props;
+const { title, hideNav = false } = Astro.props;
+const pathname = Astro.url.pathname;
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
+		<meta name="description" content="Dixie Chemical Product Agent - Search and explore chemical product documentation" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body>
+	<body class="min-h-screen bg-gray-50 dark:bg-gray-900">
+		{!hideNav && (
+			<nav class="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+				<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+					<div class="flex items-center justify-between h-16">
+						<a href="/" class="text-xl font-bold text-blue-600 dark:text-blue-400">
+							DC Product Agent
+						</a>
+						<div class="flex gap-6">
+							<a 
+								href="/search" 
+								class:list={[
+									"text-sm font-medium transition-colors",
+									pathname === "/search" || pathname === "/search/"
+										? "text-blue-600 dark:text-blue-400"
+										: "text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
+								]}
+							>
+								Search
+							</a>
+							<a 
+								href="/products" 
+								class:list={[
+									"text-sm font-medium transition-colors",
+									pathname.startsWith("/products")
+										? "text-blue-600 dark:text-blue-400"
+										: "text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
+								]}
+							>
+								Products
+							</a>
+							<a 
+								href="/chat" 
+								class:list={[
+									"text-sm font-medium transition-colors",
+									pathname === "/chat" || pathname === "/chat/"
+										? "text-blue-600 dark:text-blue-400"
+										: "text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
+								]}
+							>
+								Chat
+							</a>
+						</div>
+					</div>
+				</div>
+			</nav>
+		)}
 		<slot />
 	</body>
 </html>
