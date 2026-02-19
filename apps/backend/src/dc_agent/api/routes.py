@@ -6,7 +6,9 @@ from dc_agent.models.products import (
     ProductDetail,
     ProductPdfResponse,
 )
+from dc_agent.models.search import SearchRequest, SearchResponse
 from dc_agent.services.products import get_product_service
+from dc_agent.services.search import get_search_service
 
 router = APIRouter()
 
@@ -52,6 +54,25 @@ async def ingest_endpoint(request: IngestRequest):
 from dc_agent.kg.graphiti_store import GraphitiKGStore
 
 kg_store = GraphitiKGStore()
+
+
+@router.post("/search", response_model=SearchResponse)
+async def search_endpoint(request: SearchRequest):
+    """
+    Perform semantic search over product documents.
+    
+    Returns search results with product attribution including:
+    - Product ID and name
+    - Section name and chunk type
+    - Relevance score (0-1, higher is more relevant)
+    - Text content of matching chunks
+    """
+    search_service = get_search_service()
+    return search_service.semantic_search(
+        query=request.query,
+        top_k=request.top_k,
+    )
+
 
 @router.get("/documents")
 async def list_documents():
