@@ -8,6 +8,7 @@ from dc_agent.models.products import (
 )
 from dc_agent.models.search import SearchRequest, SearchResponse
 from dc_agent.models.chat import ChatRequest, ChatResponse
+from dc_agent.models.llm import AVAILABLE_MODELS, ModelListResponse
 from dc_agent.services.products import get_product_service
 from dc_agent.services.search import get_search_service
 from dc_agent.services.chat import get_chat_service
@@ -166,6 +167,17 @@ async def get_product_pdf(product_id: str, request: Request):
     return pdf_info
 
 
+# Model listing endpoint
+@router.get("/models", response_model=ModelListResponse)
+async def list_models():
+    """
+    List available LLM models for chat generation.
+    
+    Returns all configured models grouped by provider (Ollama, OpenAI, Anthropic).
+    """
+    return ModelListResponse(models=AVAILABLE_MODELS, count=len(AVAILABLE_MODELS))
+
+
 # Chat endpoint
 @router.post("/chat", response_model=ChatResponse)
 async def chat_endpoint(request: ChatRequest):
@@ -174,11 +186,12 @@ async def chat_endpoint(request: ChatRequest):
     
     This endpoint uses RAG (Retrieval-Augmented Generation) to:
     1. Search for relevant product information based on the query
-    2. Use an LLM to generate a contextual response
+    2. Use the selected LLM to generate a contextual response
     3. Return the answer with cited sources
     
     Args:
-        request: ChatRequest containing the message and optional conversation history
+        request: ChatRequest containing the message, optional conversation history,
+                 and optional model_id to select the generation model.
         
     Returns:
         ChatResponse with the generated answer, cited sources, and conversation ID
@@ -190,8 +203,14 @@ async def chat_endpoint(request: ChatRequest):
             query=request.message,
             conversation_history=request.conversation_history,
             conversation_id=request.conversation_id,
+            model_id=request.model_id,
         )
         return response
+    except ValueError as e:
+        raise HTTPException(
+            status_code=400,
+            detail=str(e),
+        )
     except RuntimeError as e:
         raise HTTPException(
             status_code=503,

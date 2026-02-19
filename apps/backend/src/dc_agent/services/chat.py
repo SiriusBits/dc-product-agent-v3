@@ -4,9 +4,6 @@ import logging
 import uuid
 from typing import List, Optional
 
-import httpx
-
-from dc_agent.config import settings
 from dc_agent.models.chat import (
     ChatMessage,
     ChatResponse,
@@ -14,43 +11,38 @@ from dc_agent.models.chat import (
 )
 from dc_agent.models.search import SearchResult
 from dc_agent.services.search import SearchService, get_search_service
+from dc_agent.services.llm import LLMService, get_llm_service
 from dc_agent.retrieval.rag import RAGPipeline
 
 logger = logging.getLogger(__name__)
 
 
 class ChatService:
-    """Service for chat-based Q&A using RAG with Ollama LLM.
+    """Service for chat-based Q&A using RAG with a pluggable LLM backend.
     
     This service:
     1. Retrieves relevant context from the vector store via SearchService
     2. Formats the context for the LLM
-    3. Calls Ollama to generate a response
+    3. Calls the selected LLM model to generate a response
     4. Returns the answer with cited sources
     """
     
     def __init__(
         self,
         search_service: Optional[SearchService] = None,
-        ollama_host: Optional[str] = None,
-        ollama_model: Optional[str] = None,
+        llm_service: Optional[LLMService] = None,
     ):
         """Initialize the ChatService.
         
         Args:
             search_service: SearchService instance. If not provided, uses singleton.
-            ollama_host: Ollama API host URL. Defaults to OLLAMA_BASE_URL setting.
-            ollama_model: Ollama model name. Defaults to OLLAMA_LLM_MODEL setting.
+            llm_service: LLMService instance. If not provided, uses singleton.
         """
         self._search_service = search_service or get_search_service()
-        self._ollama_host = ollama_host or settings.OLLAMA_BASE_URL
-        self._ollama_model = ollama_model or settings.OLLAMA_LLM_MODEL
+        self._llm_service = llm_service or get_llm_service()
         self._rag_pipeline = RAGPipeline()
         
-        logger.info(
-            f"ChatService initialized with Ollama at {self._ollama_host} "
-            f"using model {self._ollama_model}"
-        )
+        logger.info("ChatService initialized with pluggable LLM backend")
     
     @property
     def search_service(self) -> SearchService:
@@ -58,43 +50,9 @@ class ChatService:
         return self._search_service
     
     @property
-    def ollama_host(self) -> str:
-        """Get the Ollama host URL."""
-        return self._ollama_host
-    
-    @property
-    def ollama_model(self) -> str:
-        """Get the Ollama model name."""
-        return self._ollama_model
-    
-    async def _call_ollama(self, messages: List[dict]) -> str:
-        """Call Ollama API to generate a response.
-        
-        Args:
-            messages: List of message dictionaries with role and content.
-            
-        Returns:
-            Generated response text.
-            
-        Raises:
-            httpx.HTTPError: If the Ollama API call fails.
-        """
-        payload = {
-            "model": self._ollama_model,
-            "messages": messages,
-            "stream": False,
-        }
-        
-        async with httpx.AsyncClient(timeout=120.0) as client:
-            logger.debug(f"Calling Ollama at {self._ollama_host}/api/chat")
-            response = await client.post(
-                f"{self._ollama_host}/api/chat",
-                json=payload,
-            )
-            response.raise_for_status()
-            result = response.json()
-            
-            return result["message"]["content"]
+    def llm_service(self) -> LLMService:
+        """Get the underlying LLM service."""
+        return self._llm_service
     
     async def chat(
         self,
@@ -102,6 +60,7 @@ class ChatService:
         conversation_history: Optional[List[ChatMessage]] = None,
         conversation_id: Optional[str] = None,
         top_k: int = 5,
+        model_id: Optional[str] = None,
     ) -> ChatResponse:
         """Process a chat query and return an answer with sources.
         
@@ -110,11 +69,12 @@ class ChatService:
             conversation_history: Optional list of previous messages for context.
             conversation_id: Optional ID to continue an existing conversation.
             top_k: Number of context chunks to retrieve (default: 5).
+            model_id: Optional model identifier to use for generation.
             
         Returns:
             ChatResponse with the answer, sources, and conversation ID.
         """
-        logger.info(f"Processing chat query: '{query[:100]}...' with top_k={top_k}")
+        logger.info(f"Processing chat query: '{query[:100]}...' with top_k={top_k}, model_id={model_id}")
         
         # Generate or use provided conversation ID
         conv_id = conversation_id or str(uuid.uuid4())
@@ -145,12 +105,12 @@ class ChatService:
             conversation_history=conversation_history,
         )
         
-        # Step 4: Call Ollama to generate response
+        # Step 4: Call LLM to generate response
         try:
-            answer = await self._call_ollama(messages)
-            logger.info("Successfully generated response from Ollama")
-        except httpx.HTTPError as e:
-            logger.error(f"Failed to call Ollama: {e}")
+            answer = await self._llm_service.generate(messages, model_id=model_id)
+            logger.info(f"Successfully generated response using model {model_id or 'default'}")
+        except (ValueError, RuntimeError) as e:
+            logger.error(f"Failed to generate LLM response: {e}")
             raise RuntimeError(f"Failed to generate response: {e}") from e
         
         # Step 5: Extract sources from search results

@@ -22,6 +22,7 @@ export interface ChatRequest {
     message: string;
     conversation_history?: ChatMessage[];
     conversation_id?: string;
+    model_id?: string;
 }
 
 export interface CitedSource {
@@ -36,6 +37,22 @@ export interface ChatResponse {
     answer: string;
     sources: CitedSource[];
     conversation_id: string;
+}
+
+// Model selection interfaces
+export type ModelProvider = 'ollama' | 'openai' | 'anthropic';
+
+export interface ModelInfo {
+    id: string;
+    name: string;
+    provider: ModelProvider;
+    model_id: string;
+    description: string;
+}
+
+export interface ModelListResponse {
+    models: ModelInfo[];
+    count: number;
 }
 
 // Legacy interface for backwards compatibility
@@ -242,15 +259,27 @@ export const api = {
         return response.json();
     },
 
+    async getModels(): Promise<ModelListResponse> {
+        const response = await fetch('/api/v1/models');
+
+        if (!response.ok) {
+            throw new Error('Failed to fetch available models');
+        }
+
+        return response.json();
+    },
+
     async chat(
         message: string,
         conversationHistory?: ChatMessage[],
-        conversationId?: string
+        conversationId?: string,
+        modelId?: string
     ): Promise<ChatResponse> {
         const requestBody: ChatRequest = {
             message,
             conversation_history: conversationHistory,
             conversation_id: conversationId,
+            model_id: modelId,
         };
 
         const response = await fetch('/api/v1/chat', {
