@@ -1,0 +1,18 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { ProductDetail } from '../../components/products/ProductDetail';
+
+// This page uses client-side data fetching, so disable prerendering
+export const prerender = false;
+
+const { id } = Astro.params;
+
+// Ensure id is a string (Astro params can be string | undefined)
+const productId = id ?? '';
+---
+
+<Layout title="Product Details - Dixie Product Agent">
+  <main>
+    <ProductDetail client:load productId={productId} />
+  </main>
+</Layout>
