@@ -10,6 +10,34 @@ export interface QueryResponse {
     sources: Source[];
 }
 
+// Chat-related interfaces
+export type MessageRole = 'user' | 'assistant' | 'system';
+
+export interface ChatMessage {
+    role: MessageRole;
+    content: string;
+}
+
+export interface ChatRequest {
+    message: string;
+    conversation_history?: ChatMessage[];
+    conversation_id?: string;
+}
+
+export interface CitedSource {
+    product_name: string;
+    section: string;
+    relevance: number;
+    chunk_text?: string;
+    product_id?: string;
+}
+
+export interface ChatResponse {
+    answer: string;
+    sources: CitedSource[];
+    conversation_id: string;
+}
+
 // Legacy interface for backwards compatibility
 export interface Product {
     id: string;
@@ -209,6 +237,35 @@ export const api = {
 
         if (!response.ok) {
             throw new Error('Failed to perform search');
+        }
+
+        return response.json();
+    },
+
+    async chat(
+        message: string,
+        conversationHistory?: ChatMessage[],
+        conversationId?: string
+    ): Promise<ChatResponse> {
+        const requestBody: ChatRequest = {
+            message,
+            conversation_history: conversationHistory,
+            conversation_id: conversationId,
+        };
+
+        const response = await fetch('/api/v1/chat', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(requestBody),
+        });
+
+        if (!response.ok) {
+            if (response.status === 503) {
+                throw new Error('Chat service is currently unavailable. Please try again later.');
+            }
+            throw new Error('Failed to send chat message');
         }
 
         return response.json();
