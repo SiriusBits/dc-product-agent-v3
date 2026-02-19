@@ -1,7 +1,9 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { MessageList, type Message } from './MessageList';
 import { ChatInput } from './ChatInput';
-import { api, type ChatMessage } from '../../lib/api';
+import { api, type ChatMessage, type ModelInfo } from '../../lib/api';
+
+const DEFAULT_MODEL_ID = 'ollama/qwen2.5:14b';
 
 export const ChatContainer: React.FC = () => {
     const [messages, setMessages] = useState<Message[]>([
@@ -14,6 +16,30 @@ export const ChatContainer: React.FC = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const conversationIdRef = useRef<string | undefined>(undefined);
+
+    // Model selection state
+    const [models, setModels] = useState<ModelInfo[]>([]);
+    const [selectedModelId, setSelectedModelId] = useState<string>(DEFAULT_MODEL_ID);
+
+    // Fetch available models on mount
+    useEffect(() => {
+        const fetchModels = async () => {
+            try {
+                const response = await api.getModels();
+                setModels(response.models);
+                // If the default model isn't in the list, fall back to the first one
+                if (response.models.length > 0) {
+                    const ids = response.models.map((m) => m.id);
+                    if (!ids.includes(selectedModelId)) {
+                        setSelectedModelId(response.models[0].id);
+                    }
+                }
+            } catch (err) {
+                console.error('Failed to fetch models:', err);
+            }
+        };
+        fetchModels();
+    }, []);
 
     // Build conversation history from messages (excluding the initial greeting)
     const buildConversationHistory = (msgs: Message[]): ChatMessage[] => {
@@ -45,7 +71,8 @@ export const ChatContainer: React.FC = () => {
             const response = await api.chat(
                 content,
                 conversationHistory,
-                conversationIdRef.current
+                conversationIdRef.current,
+                selectedModelId
             );
 
             // Store conversation ID for future requests
@@ -88,7 +115,13 @@ export const ChatContainer: React.FC = () => {
                 </div>
             )}
             <MessageList messages={messages} />
-            <ChatInput onSend={handleSendMessage} disabled={isLoading} />
+            <ChatInput
+                onSend={handleSendMessage}
+                disabled={isLoading}
+                models={models}
+                selectedModelId={selectedModelId}
+                onModelChange={setSelectedModelId}
+            />
         </div>
     );
 };

@@ -33,6 +33,10 @@ class ChatRequest(BaseModel):
         default=None,
         description="Optional conversation ID to continue an existing conversation."
     )
+    model_id: Optional[str] = Field(
+        default=None,
+        description="Optional model identifier to use for generation. Defaults to server default."
+    )
 
 
 class CitedSource(BaseModel):
