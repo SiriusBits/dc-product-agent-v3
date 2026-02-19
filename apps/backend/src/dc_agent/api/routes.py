@@ -7,8 +7,10 @@ from dc_agent.models.products import (
     ProductPdfResponse,
 )
 from dc_agent.models.search import SearchRequest, SearchResponse
+from dc_agent.models.chat import ChatRequest, ChatResponse
 from dc_agent.services.products import get_product_service
 from dc_agent.services.search import get_search_service
+from dc_agent.services.chat import get_chat_service
 
 router = APIRouter()
 
@@ -162,3 +164,36 @@ async def get_product_pdf(product_id: str, request: Request):
         )
     
     return pdf_info
+
+
+# Chat endpoint
+@router.post("/chat", response_model=ChatResponse)
+async def chat_endpoint(request: ChatRequest):
+    """
+    Chat with the Dixie Chemical product assistant.
+    
+    This endpoint uses RAG (Retrieval-Augmented Generation) to:
+    1. Search for relevant product information based on the query
+    2. Use an LLM to generate a contextual response
+    3. Return the answer with cited sources
+    
+    Args:
+        request: ChatRequest containing the message and optional conversation history
+        
+    Returns:
+        ChatResponse with the generated answer, cited sources, and conversation ID
+    """
+    chat_service = get_chat_service()
+    
+    try:
+        response = await chat_service.chat(
+            query=request.message,
+            conversation_history=request.conversation_history,
+            conversation_id=request.conversation_id,
+        )
+        return response
+    except RuntimeError as e:
+        raise HTTPException(
+            status_code=503,
+            detail=f"Chat service unavailable: {str(e)}"
+        )
