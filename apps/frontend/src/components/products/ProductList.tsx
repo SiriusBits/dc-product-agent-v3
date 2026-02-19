@@ -1,9 +1,9 @@
 import React from 'react';
 import { ProductCard } from './ProductCard';
-import type { Product } from './ProductCard';
+import type { ProductSummary } from '../../lib/api';
 
 interface ProductListProps {
-    products: Product[];
+    products: ProductSummary[];
 }
 
 export const ProductList: React.FC<ProductListProps> = ({ products }) => {
@@ -18,7 +18,7 @@ export const ProductList: React.FC<ProductListProps> = ({ products }) => {
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {products.map((product) => (
-                <ProductCard key={product.id} product={product} />
+                <ProductCard key={product.doc_id} product={product} />
             ))}
         </div>
     );

@@ -33,7 +33,7 @@ export const ProductFilter: React.FC<ProductFilterProps> = ({
                 </div>
                 <div>
                     <label htmlFor="category" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                        Category
+                        Product Family
                     </label>
                     <select
                         id="category"
@@ -41,7 +41,7 @@ export const ProductFilter: React.FC<ProductFilterProps> = ({
                         onChange={(e) => onCategoryChange(e.target.value)}
                         className="w-full rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-900 p-2.5 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none"
                     >
-                        <option value="">All Categories</option>
+                        <option value="">All Product Families</option>
                         {categories.map((category) => (
                             <option key={category} value={category}>
                                 {category}

@@ -1,11 +1,10 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { ProductFilter } from './ProductFilter';
 import { ProductList } from './ProductList';
-import type { Product } from './ProductCard';
-import { api, type Product as ApiProduct } from '../../lib/api';
+import { api, type ProductSummary } from '../../lib/api';
 
 export const ProductBrowser: React.FC = () => {
-    const [products, setProducts] = useState<Product[]>([]);
+    const [products, setProducts] = useState<ProductSummary[]>([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedCategory, setSelectedCategory] = useState('');
     const [isLoading, setIsLoading] = useState(true);
@@ -14,17 +13,8 @@ export const ProductBrowser: React.FC = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await api.getDocuments();
-                // Map API Product to Component Product (if needed, but they match now)
-                // The API Product interface in api.ts matches the structure we need, 
-                // except maybe tags. Our component expects 'tags', but API returns 'category'.
-                // We can map category to tags or just add tags property.
-                // Let's add a default tag for now.
-                const mappedProducts = response.documents.map(p => ({
-                    ...p,
-                    tags: [p.category] // Use category as a tag
-                }));
-                setProducts(mappedProducts);
+                const response = await api.getProducts();
+                setProducts(response.products);
             } catch (err) {
                 console.error('Failed to fetch products. Full error:', err);
                 if (err instanceof Error) {
@@ -40,19 +30,27 @@ export const ProductBrowser: React.FC = () => {
         fetchProducts();
     }, []);
 
+    // Get unique product families for filtering
     const categories = useMemo(() => {
-        const cats = new Set(products.map((p) => p.category));
-        return Array.from(cats).sort();
+        const families = products
+            .map((p) => p.product_family)
+            .filter((f): f is string => f !== null && f !== undefined);
+        return Array.from(new Set(families)).sort();
     }, [products]);
 
     const filteredProducts = useMemo(() => {
         return products.filter((product) => {
+            const searchLower = searchTerm.toLowerCase();
             const matchesSearch =
-                product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                product.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                product.tags.some((tag) => tag.toLowerCase().includes(searchTerm.toLowerCase()));
+                product.product_name.toLowerCase().includes(searchLower) ||
+                product.product_short_name.toLowerCase().includes(searchLower) ||
+                (product.summary?.toLowerCase().includes(searchLower) ?? false) ||
+                (product.cas_number?.toLowerCase().includes(searchLower) ?? false) ||
+                product.key_applications.some((app) => app.toLowerCase().includes(searchLower));
 
-            const matchesCategory = selectedCategory ? product.category === selectedCategory : true;
+            const matchesCategory = selectedCategory 
+                ? product.product_family === selectedCategory 
+                : true;
 
             return matchesSearch && matchesCategory;
         });
