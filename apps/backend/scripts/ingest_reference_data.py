@@ -263,11 +263,15 @@ def process_base_extraction(base_data: Dict[str, Any]) -> List[Tuple[str, Dict[s
     return chunks
 
 
-def process_derived_info(derived_data: Dict[str, Any]) -> List[Tuple[str, Dict[str, Any], str]]:
+def process_derived_info(
+    derived_data: Dict[str, Any],
+    product_name_lookup: Optional[Dict[str, str]] = None
+) -> List[Tuple[str, Dict[str, Any], str]]:
     """Process derived info data into chunks.
     
     Args:
         derived_data: Parsed JSON from derived info file
+        product_name_lookup: Optional dict mapping product_id to product_name
         
     Returns:
         List of (document, metadata, id) tuples
@@ -280,8 +284,10 @@ def process_derived_info(derived_data: Dict[str, Any]) -> List[Tuple[str, Dict[s
     
     derived_info = derived_data.get("derived_info", {})
     
-    # We need to get product_name - we'll extract it from summary or use product_id
+    # Get product_name from lookup or fall back to product_id
     product_name = product_id  # Default fallback
+    if product_name_lookup and product_id in product_name_lookup:
+        product_name = product_name_lookup[product_id]
     
     # 1. Summary Chunk
     summary = derived_info.get("summary", "")
@@ -368,6 +374,9 @@ def ingest_reference_data(clear_existing: bool = False, verify_after: bool = Fal
     all_metadatas = []
     all_ids = []
     
+    # Build product name lookup from base extraction files first
+    product_name_lookup: Dict[str, str] = {}
+    
     # Process Base Extraction Files
     print(f"\nProcessing base extraction files from: {base_extraction_dir}")
     base_files = glob.glob(str(base_extraction_dir / "*_base.json"))
@@ -380,7 +389,13 @@ def ingest_reference_data(clear_existing: bool = False, verify_after: bool = Fal
             
             filename = data.get("filename", Path(json_file).stem)
             product_id = extract_product_id(filename)
-            print(f"  Processing: {product_id}")
+            
+            # Extract and store product_name for lookup
+            product_info = data.get("product_info", {})
+            product_name = product_info.get("product_name", product_id)
+            product_name_lookup[product_id] = product_name
+            
+            print(f"  Processing: {product_id} ({product_name})")
             
             chunks = process_base_extraction(data)
             for doc, meta, chunk_id in chunks:
@@ -410,7 +425,7 @@ def ingest_reference_data(clear_existing: bool = False, verify_after: bool = Fal
             product_id = extract_product_id(filename)
             print(f"  Processing: {product_id}")
             
-            chunks = process_derived_info(data)
+            chunks = process_derived_info(data, product_name_lookup)
             for doc, meta, chunk_id in chunks:
                 all_documents.append(doc)
                 all_metadatas.append(meta)
