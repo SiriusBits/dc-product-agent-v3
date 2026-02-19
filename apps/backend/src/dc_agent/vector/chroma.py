@@ -43,3 +43,45 @@ class ChromaVectorStore(VectorStore):
                     products.add(metadata["product"])
         
         return sorted(list(products))
+
+    def clear_all(self) -> int:
+        """Clear all documents from the collection.
+        
+        Returns:
+            Number of documents deleted.
+        """
+        # Get all document IDs
+        result = self.collection.get()
+        ids = result.get("ids", [])
+        count = len(ids)
+        
+        if ids:
+            self.collection.delete(ids=ids)
+        
+        return count
+
+    def count(self) -> int:
+        """Return the total number of documents in the collection."""
+        return self.collection.count()
+
+    def get_all_metadata(self) -> Dict[str, Any]:
+        """Get all documents with their metadata.
+        
+        Returns:
+            Dictionary containing ids, documents, and metadatas.
+        """
+        return self.collection.get(include=["documents", "metadatas"])
+
+    def get_documents_by_product(self, product_name: str) -> Dict[str, Any]:
+        """Get all documents for a specific product.
+        
+        Args:
+            product_name: The product name to filter by.
+            
+        Returns:
+            Dictionary containing ids, documents, and metadatas for the product.
+        """
+        return self.collection.get(
+            where={"product_name": product_name},
+            include=["documents", "metadatas"]
+        )
