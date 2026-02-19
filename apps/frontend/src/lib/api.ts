@@ -112,6 +112,29 @@ export interface ProductPdfResponse {
     filename: string;
 }
 
+// Search-related interfaces
+export interface SearchRequest {
+    query: string;
+    top_k?: number;
+}
+
+export interface SearchResult {
+    product_id: string;
+    product_name: string;
+    section_name: string;
+    chunk_text: string;
+    relevance_score: number;
+    chunk_type: string | null;
+    doc_id: string | null;
+    page: number | null;
+}
+
+export interface SearchResponse {
+    query: string;
+    results: SearchResult[];
+    total_results: number;
+}
+
 export const api = {
     async query(query: string): Promise<QueryResponse> {
         const response = await fetch('/api/v1/query', {
@@ -170,6 +193,22 @@ export const api = {
                 throw new Error(`PDF not found for product: ${id}`);
             }
             throw new Error('Failed to fetch product PDF');
+        }
+
+        return response.json();
+    },
+
+    async search(query: string, topK: number = 10): Promise<SearchResponse> {
+        const response = await fetch('/api/v1/search', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ query, top_k: topK }),
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to perform search');
         }
 
         return response.json();
