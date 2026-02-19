@@ -50,6 +50,18 @@ class ExtractionMetadata(BaseModel):
     extraction_date: Optional[str] = None
 
 
+class Registration(BaseModel):
+    """Product registration information."""
+    authority: Optional[str] = None
+    jurisdiction: Optional[str] = None
+    registration_number: Optional[str] = None
+    registration_name: Optional[str] = None
+    cas_number: Optional[str] = None
+    status: Optional[str] = None
+    effective_date: Optional[str] = None
+    notes: Optional[str] = None
+
+
 class DerivedInfo(BaseModel):
     """Derived information from AI analysis."""
     summary: Optional[str] = None
@@ -85,7 +97,7 @@ class ProductDetail(BaseModel):
     product_info: ProductInfo
     
     # Registrations and benefits
-    registrations: List[str] = Field(default_factory=list)
+    registrations: List[Registration] = Field(default_factory=list)
     key_benefits: List[str] = Field(default_factory=list)
     
     # Applications

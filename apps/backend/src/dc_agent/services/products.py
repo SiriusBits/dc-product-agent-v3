@@ -14,6 +14,7 @@ from dc_agent.models.products import (
     Section,
     ExtractionMetadata,
     DerivedInfo,
+    Registration,
     ProductListResponse,
     ProductPdfResponse,
 )
@@ -26,9 +27,9 @@ class ProductService:
     
     def __init__(
         self,
-        base_extraction_dir: str = "data/extracts/base_extraction",
-        derived_info_dir: str = "data/extracts/derived_info",
-        pdf_dir: str = "data/extracts/pdfs",
+        base_extraction_dir: str = "../../data/extracts/base_extraction",
+        derived_info_dir: str = "../../data/extracts/derived_info",
+        pdf_dir: str = "../../data/extracts/pdfs",
     ):
         """Initialize the ProductService.
         
@@ -235,6 +236,22 @@ class ProductService:
                 extraction_date=em.get("extraction_date"),
             )
         
+        # Build registrations
+        regs = base.get("registrations", [])
+        registrations = [
+            Registration(
+                authority=r.get("authority"),
+                jurisdiction=r.get("jurisdiction"),
+                registration_number=r.get("registration_number"),
+                registration_name=r.get("registration_name"),
+                cas_number=r.get("cas_number"),
+                status=r.get("status"),
+                effective_date=r.get("effective_date"),
+                notes=r.get("notes"),
+            )
+            for r in regs
+        ]
+        
         # Build derived info
         derived_info = None
         if derived and derived.get("derived_info"):
@@ -253,7 +270,7 @@ class ProductService:
             manufacturer=base.get("manufacturer"),
             contact_info=contact_info,
             product_info=product_info,
-            registrations=base.get("registrations", []),
+            registrations=registrations,
             key_benefits=base.get("key_benefits", []),
             applications_text=base.get("applications_text"),
             applications=base.get("applications", []),
