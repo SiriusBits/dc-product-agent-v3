@@ -12,6 +12,7 @@ from dc_agent.models.products import (
     ContactInfo,
     PropertySpec,
     Section,
+    Registration,
     ExtractionMetadata,
     DerivedInfo,
     ProductListResponse,
