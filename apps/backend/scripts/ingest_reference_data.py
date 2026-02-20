@@ -44,6 +44,7 @@ def create_chunk(
     content: str,
     product_id: str,
     product_name: str,
+    product_short_name: str,
     chunk_type: str,
     section: str,
     doc_id: str,
@@ -55,7 +56,8 @@ def create_chunk(
     Args:
         content: The text content of the chunk
         product_id: Short product identifier (e.g., "MHHPA_301")
-        product_name: Full product name
+        product_name: Full product name (e.g., "Hexadecenylsuccinic Anhydride")
+        product_short_name: Short product name (e.g., "ASA 100")
         chunk_type: Type of chunk (summary, section, properties, etc.)
         section: Section name within the document
         doc_id: Document ID from the source file
@@ -65,12 +67,20 @@ def create_chunk(
     Returns:
         Tuple of (document_text, metadata_dict, chunk_id)
     """
-    # Create structured document text for embedding
-    doc_text = f"Product: {product_name}\nSection: {section}\n\n{content}"
+    # Create display name that includes both names if different
+    if product_name != product_short_name:
+        display_name = f"{product_name} ({product_short_name})"
+    else:
+        display_name = product_name
     
+    # Create structured document text for embedding
+    doc_text = f"Product: {display_name}\nSection: {section}\n\n{content}"
+    
+    # Use short name for metadata (more recognizable)
     metadata = {
         "product_id": product_id,
-        "product_name": product_name,
+        "product_name": product_short_name,  # Use short name for display
+        "product_full_name": product_name,   # Keep full name too
         "chunk_type": chunk_type,
         "section": section,
         "doc_id": doc_id,
@@ -124,6 +134,7 @@ def process_base_extraction(base_data: Dict[str, Any]) -> List[Tuple[str, Dict[s
             content=overview_text,
             product_id=product_id,
             product_name=product_name,
+            product_short_name=product_short_name,
             chunk_type="product_info",
             section="Product Overview",
             doc_id=doc_id,
@@ -139,6 +150,7 @@ def process_base_extraction(base_data: Dict[str, Any]) -> List[Tuple[str, Dict[s
             content=benefits_text,
             product_id=product_id,
             product_name=product_name,
+            product_short_name=product_short_name,
             chunk_type="key_benefits",
             section="Key Benefits",
             doc_id=doc_id,
@@ -159,6 +171,7 @@ def process_base_extraction(base_data: Dict[str, Any]) -> List[Tuple[str, Dict[s
             content=app_content.strip(),
             product_id=product_id,
             product_name=product_name,
+            product_short_name=product_short_name,
             chunk_type="applications",
             section="Applications",
             doc_id=doc_id,
@@ -187,6 +200,7 @@ def process_base_extraction(base_data: Dict[str, Any]) -> List[Tuple[str, Dict[s
             content="\n".join(props_lines),
             product_id=product_id,
             product_name=product_name,
+            product_short_name=product_short_name,
             chunk_type="properties",
             section="Properties and Specifications",
             doc_id=doc_id,
@@ -206,6 +220,7 @@ def process_base_extraction(base_data: Dict[str, Any]) -> List[Tuple[str, Dict[s
                 content=section_text,
                 product_id=product_id,
                 product_name=product_name,
+                product_short_name=product_short_name,
                 chunk_type="section",
                 section=section_name,
                 doc_id=doc_id,
@@ -232,6 +247,7 @@ def process_base_extraction(base_data: Dict[str, Any]) -> List[Tuple[str, Dict[s
             content="\n".join(form_lines),
             product_id=product_id,
             product_name=product_name,
+            product_short_name=product_short_name,
             chunk_type="formulation",
             section="Formulation Data",
             doc_id=doc_id,
@@ -253,6 +269,7 @@ def process_base_extraction(base_data: Dict[str, Any]) -> List[Tuple[str, Dict[s
                 content="\n\n".join(tox_lines),
                 product_id=product_id,
                 product_name=product_name,
+                product_short_name=product_short_name,
                 chunk_type="safety",
                 section="Safety Information",
                 doc_id=doc_id,
@@ -265,13 +282,13 @@ def process_base_extraction(base_data: Dict[str, Any]) -> List[Tuple[str, Dict[s
 
 def process_derived_info(
     derived_data: Dict[str, Any],
-    product_name_lookup: Optional[Dict[str, str]] = None
+    product_name_lookup: Optional[Dict[str, Tuple[str, str]]] = None
 ) -> List[Tuple[str, Dict[str, Any], str]]:
     """Process derived info data into chunks.
     
     Args:
         derived_data: Parsed JSON from derived info file
-        product_name_lookup: Optional dict mapping product_id to product_name
+        product_name_lookup: Optional dict mapping product_id to (product_name, product_short_name)
         
     Returns:
         List of (document, metadata, id) tuples
@@ -284,10 +301,11 @@ def process_derived_info(
     
     derived_info = derived_data.get("derived_info", {})
     
-    # Get product_name from lookup or fall back to product_id
+    # Get product names from lookup or fall back to product_id
     product_name = product_id  # Default fallback
+    product_short_name = product_id  # Default fallback
     if product_name_lookup and product_id in product_name_lookup:
-        product_name = product_name_lookup[product_id]
+        product_name, product_short_name = product_name_lookup[product_id]
     
     # 1. Summary Chunk
     summary = derived_info.get("summary", "")
@@ -296,6 +314,7 @@ def process_derived_info(
             content=summary,
             product_id=product_id,
             product_name=product_name,
+            product_short_name=product_short_name,
             chunk_type="summary",
             section="Summary",
             doc_id=doc_id,
@@ -312,6 +331,7 @@ def process_derived_info(
                 content=persona_text,
                 product_id=product_id,
                 product_name=product_name,
+                product_short_name=product_short_name,
                 chunk_type=f"persona_{persona_type}",
                 section=section_name,
                 doc_id=doc_id,
@@ -327,6 +347,7 @@ def process_derived_info(
             content=apps_text,
             product_id=product_id,
             product_name=product_name,
+            product_short_name=product_short_name,
             chunk_type="key_applications",
             section="Key Applications",
             doc_id=doc_id,
@@ -375,7 +396,8 @@ def ingest_reference_data(clear_existing: bool = False, verify_after: bool = Fal
     all_ids = []
     
     # Build product name lookup from base extraction files first
-    product_name_lookup: Dict[str, str] = {}
+    # Maps product_id -> (product_name, product_short_name)
+    product_name_lookup: Dict[str, Tuple[str, str]] = {}
     
     # Process Base Extraction Files
     print(f"\nProcessing base extraction files from: {base_extraction_dir}")
@@ -390,12 +412,13 @@ def ingest_reference_data(clear_existing: bool = False, verify_after: bool = Fal
             filename = data.get("filename", Path(json_file).stem)
             product_id = extract_product_id(filename)
             
-            # Extract and store product_name for lookup
+            # Extract and store product names for lookup
             product_info = data.get("product_info", {})
             product_name = product_info.get("product_name", product_id)
-            product_name_lookup[product_id] = product_name
+            product_short_name = product_info.get("product_short_name", product_id)
+            product_name_lookup[product_id] = (product_name, product_short_name)
             
-            print(f"  Processing: {product_id} ({product_name})")
+            print(f"  Processing: {product_id} ({product_short_name})")
             
             chunks = process_base_extraction(data)
             for doc, meta, chunk_id in chunks:
