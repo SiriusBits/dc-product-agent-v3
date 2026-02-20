@@ -26,9 +26,9 @@ class ProductService:
     
     def __init__(
         self,
-        base_extraction_dir: str = "data/extracts/base_extraction",
-        derived_info_dir: str = "data/extracts/derived_info",
-        pdf_dir: str = "data/extracts/pdfs",
+        base_extraction_dir: str = "../../data/extracts/base_extraction",
+        derived_info_dir: str = "../../data/extracts/derived_info",
+        pdf_dir: str = "../../data/raw_pdfs",
     ):
         """Initialize the ProductService.
         
