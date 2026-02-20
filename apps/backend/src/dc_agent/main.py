@@ -13,12 +13,16 @@ import os
 app.include_router(api_router, prefix="/api/v1")
 
 # Mount static files
-# Ensure directories exist to avoid errors
-os.makedirs("data/extracts/pdfs", exist_ok=True)
-os.makedirs("data/extracts/images", exist_ok=True)
+# Paths are relative to apps/backend/ where the server runs
+PDF_DIR = "../../data/extracts/pdfs"
+IMAGES_DIR = "../../data/extracts/images"
 
-app.mount("/static/pdfs", StaticFiles(directory="data/extracts/pdfs"), name="pdfs")
-app.mount("/static/images", StaticFiles(directory="data/extracts/images"), name="images")
+# Ensure directories exist to avoid errors
+os.makedirs(PDF_DIR, exist_ok=True)
+os.makedirs(IMAGES_DIR, exist_ok=True)
+
+app.mount("/static/pdfs", StaticFiles(directory=PDF_DIR), name="pdfs")
+app.mount("/static/images", StaticFiles(directory=IMAGES_DIR), name="images")
 
 @app.get("/health")
 async def health_check():
