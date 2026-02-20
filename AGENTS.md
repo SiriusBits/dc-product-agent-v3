@@ -1,5 +1,33 @@
 # Dixie Chemical Product Agent v3 - Agentic RAG Application
 
+## Critical Directives
+
+**These rules MUST be followed for all development work on this project.**
+
+### Package Management
+
+#### Python
+- **ALWAYS** use `uv` for Python package management
+- **ALWAYS** use `uv pip install` to install packages (NEVER use bare `pip install`)
+- **ALWAYS** use `uv run` to execute Python scripts (e.g., `uv run python script.py`)
+- **ALWAYS** define dependencies in `pyproject.toml` (NEVER use `requirements.txt`)
+- **ALWAYS** run `uv sync` after modifying `pyproject.toml`
+
+#### Node.js/TypeScript
+- **ALWAYS** use `pnpm` for Node.js package management (NEVER use `npm` or `yarn`)
+- **ALWAYS** use `pnpm install`, `pnpm add`, `pnpm run`, etc.
+
+### Code Standards
+- **Python**: Use type hints everywhere, async/await for FastAPI
+- **TypeScript**: Strict mode enabled, no `any` types, no JavaScript files
+- **All code** must pass linting before commit
+
+### Path References
+- Backend runs from `apps/backend/` - all relative paths in backend code are relative to this directory
+- Use `../../` prefix to reach project root from backend (e.g., `../../data/extracts/`)
+
+---
+
 ## Project Overview
 
 This is version 3 of an agentic RAG (Retrieval-Augmented Generation) application that provides intelligent search and question-answering capabilities over a comprehensive library of technical chemical product documents (Technical Bulletins). The system combines vector database search with knowledge graph reasoning to deliver precise, contextual answers about chemical products, their properties, applications, and relationships.
@@ -73,48 +101,59 @@ graph TB
 ```
 dixie-product-agent-v3/
 ├── apps/
-│   ├── backend/                    # FastAPI backend
+│   ├── backend/                    # FastAPI backend (runs from here)
 │   │   ├── src/
-│   │   │   ├── dc_agent/
-│   │   │   │   ├── api/           # FastAPI routes
-│   │   │   │   ├── services/      # Business logic
-│   │   │   │   ├── models/        # Data models
-│   │   │   │   ├── vector/        # Vector DB interface
-│   │   │   │   ├── kg/            # Knowledge graph services
-│   │   │   │   ├── retrieval/     # Hybrid retrieval logic
-│   │   │   │   └── utils/         # Utilities
-│   │   │   └── tests/             # Comprehensive test suite
+│   │   │   └── dc_agent/
+│   │   │       ├── api/           # FastAPI routes
+│   │   │       ├── services/      # Business logic
+│   │   │       ├── models/        # Pydantic data models
+│   │   │       ├── vector/        # Vector DB interface (ChromaDB)
+│   │   │       ├── kg/            # Knowledge graph services
+│   │   │       └── retrieval/     # RAG pipeline logic
+│   │   ├── scripts/               # Utility scripts (ingestion, etc.)
 │   │   ├── pyproject.toml         # UV package management
-│   │   └── Dockerfile
+│   │   └── .venv/                 # Python virtual environment
 │   ├── frontend/                   # Astro + React frontend
 │   │   ├── src/
 │   │   │   ├── components/        # React components
 │   │   │   ├── pages/             # Astro pages
-│   │   │   ├── layouts/           # Page layouts
-│   │   │   └── types/             # TypeScript types
-│   │   ├── package.json           # pnpm dependencies
-│   │   └── Dockerfile
-│   └── pdf-extractor/              # Existing extraction utility
-│       ├── backend/
-│       │   ├── extract_validator/
-│       │   ├── ingest/
-│       │   └── tests/
+│   │   │   └── lib/               # API client, utilities
+│   │   └── package.json           # pnpm dependencies
+│   └── pdf-extractor/              # PDF extraction utility
 │       └── pyproject.toml
 ├── packages/
 │   ├── shared-types/               # Shared TypeScript types
 │   └── shared-schemas/             # JSON schemas
-├── data/                           # Data directories
-│   ├── raw_pdfs/                  # Source PDF files
-│   ├── extracts/                  # Processed extractions
-│   ├── embeddings/                # Vector embeddings
+├── raw_pdfs/                       # SOURCE: Unprocessed PDF files (input)
+├── data/
+│   ├── extracts/
+│   │   ├── base_extraction/       # JSON extracts from PDFs
+│   │   ├── derived_info/          # AI-generated summaries/personas
+│   │   ├── pdfs/                  # PROCESSED: PDFs copied after extraction
+│   │   └── images/                # Extracted images from PDFs
+│   ├── chroma/                    # ChromaDB persistent storage
+│   ├── embeddings/                # Vector embeddings cache
 │   └── kg/                        # Knowledge graph exports
+├── reference/                     # Reference schemas and samples
 ├── docs/                          # Documentation
-├── reference/                     # Reference data and schemas
-├── docker-compose.yml             # Local development stack
+├── docker-compose.yml             # Infrastructure (ChromaDB, Neo4j, n8n)
 ├── turbo.json                     # Turbo repo configuration
-├── Makefile                       # Development commands
-└── README.md
+├── pnpm-workspace.yaml            # pnpm monorepo config
+└── Makefile                       # Development commands
 ```
+
+### Data Pipeline Directories
+
+| Directory | Purpose | When Written |
+|-----------|---------|-------------|
+| `raw_pdfs/` | Source PDF files (unprocessed) | Manual upload |
+| `data/extracts/base_extraction/` | JSON extracted from PDFs | During extraction |
+| `data/extracts/derived_info/` | AI summaries, personas | During extraction |
+| `data/extracts/pdfs/` | Processed PDFs (served to users) | Copied during extraction |
+| `data/extracts/images/` | Images extracted from PDFs | During extraction |
+| `data/chroma/` | ChromaDB vector store | During ingestion |
+
+**Important**: When a PDF is processed, it should be **copied** from `raw_pdfs/` to `data/extracts/pdfs/`. The product detail pages serve PDFs from `data/extracts/pdfs/`, not from `raw_pdfs/`. This separation allows tracking which PDFs have been processed.
 
 ## Development Workflow
 
