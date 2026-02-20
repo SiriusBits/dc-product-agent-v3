@@ -357,14 +357,45 @@ export const ProductDetail: React.FC<ProductDetailProps> = ({ productId }) => {
                     <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
                         Registrations & Certifications
                     </h2>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="space-y-3">
                         {product.registrations.map((reg, i) => (
-                            <span
+                            <div
                                 key={i}
-                                className="px-3 py-1.5 text-sm bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200 rounded-full"
+                                className="p-3 bg-purple-50 dark:bg-purple-900/30 rounded-lg"
                             >
-                                {reg}
-                            </span>
+                                <div className="flex items-center gap-2 mb-1">
+                                    {reg.authority && (
+                                        <span className="px-2 py-0.5 text-xs font-medium bg-purple-200 text-purple-800 dark:bg-purple-800 dark:text-purple-200 rounded">
+                                            {reg.authority}
+                                        </span>
+                                    )}
+                                    {reg.jurisdiction && (
+                                        <span className="text-sm text-gray-600 dark:text-gray-400">
+                                            ({reg.jurisdiction})
+                                        </span>
+                                    )}
+                                    {reg.status && (
+                                        <span className="text-xs text-green-600 dark:text-green-400 capitalize">
+                                            {reg.status}
+                                        </span>
+                                    )}
+                                </div>
+                                {reg.registration_number && (
+                                    <p className="text-sm text-gray-800 dark:text-gray-200 font-mono">
+                                        {reg.registration_number}
+                                    </p>
+                                )}
+                                {reg.registration_name && (
+                                    <p className="text-sm text-gray-600 dark:text-gray-400">
+                                        {reg.registration_name}
+                                    </p>
+                                )}
+                                {reg.notes && (
+                                    <p className="text-xs text-gray-500 dark:text-gray-500 mt-1 italic">
+                                        {reg.notes}
+                                    </p>
+                                )}
+                            </div>
                         ))}
                     </div>
                 </div>

@@ -132,6 +132,17 @@ export interface ExtractionMetadata {
     extraction_date: string | null;
 }
 
+export interface Registration {
+    authority: string | null;
+    jurisdiction: string | null;
+    registration_number: string | null;
+    registration_name: string | null;
+    cas_number: string | null;
+    status: string | null;
+    effective_date: string | null;
+    notes: string | null;
+}
+
 export interface ProductDetail {
     doc_id: string;
     filename: string;
@@ -140,7 +151,7 @@ export interface ProductDetail {
     manufacturer: string | null;
     contact_info: ContactInfo | null;
     product_info: ProductInfo;
-    registrations: string[];
+    registrations: Registration[];
     key_benefits: string[];
     applications_text: string | null;
     applications: string[];
