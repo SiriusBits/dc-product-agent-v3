@@ -79,6 +79,7 @@ class GraphitiKGStore:
                 config=LLMConfig(
                     api_key=settings.OPENAI_API_KEY,
                     model=settings.GRAPHITI_LLM_MODEL,
+                    small_model=settings.GRAPHITI_LLM_MODEL,
                 ),
             )
             logger.info(

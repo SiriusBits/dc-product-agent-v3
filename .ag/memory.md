@@ -25,10 +25,11 @@
 - 42 unit tests passing
 
 ## Graph State
-- 499 nodes across 13 labels (Chemical: 124, Property: 157, Application: 79, Product: 21, ...)
-- 576 relationships across 28 types
-- 17 products ingested from `data/extracts/derived_info_yaml/`
+- **Direct Neo4j (M1-M3)**: 499 nodes across 13 labels, 576 relationships across 28 types
+- **Graphiti Episodic (M4)**: 17 products ingested as episodes, Entity/Episodic/Community nodes + RELATES_TO/MENTIONS/HAS_MEMBER edges
+- 17 products sourced from `data/extracts/derived_info_yaml/`
 - Product canonical_names are full names (e.g. "Dixie Chemical Amine 221"); short names (e.g. "DCA 221") are in aliases
+- Graphiti search returns rich facts (e.g. "DCE 142 has a viscosity of 500-1,300 cPs at 25°C")
 
 ### Milestone 4: Graphiti Episodic Memory Integration ✅
 - Rewrote `GraphitiKGStore`: async context manager, lazy init, `build_indices_and_constraints()`, `health_check()`, graceful `close()`
@@ -38,9 +39,12 @@
 - New `scripts/ingest_graphiti_episodes.py`: CLI with --source-dir, --dry-run, --rate-limit
 - Fixed module-level `GraphitiKGStore()` crash in routes.py → app.state lifecycle
 - `/query-kg` now returns typed `GraphitiSearchResponse` (was raw `str(answer)`)
-- Graphiti v0.25.0 schema (Entity/Episodic/Community) coexists safely with M1 schema (13 labels)
-- 35 new tests passing
-- **BLOCKER**: Live episode ingestion fails — `llama3.1:8b` returns JSON Schema definitions instead of populated data for Graphiti's `ExtractedEntities`, `ExtractedEdges`, `NodeResolutions` models. 0/13 products ingested. Needs larger model or API provider.
+- Graphiti v0.28.1 schema (Entity/Episodic/Community) coexists safely with M1 schema (13 labels)
+- **Hybrid LLM architecture**: Ollama `nomic-embed-text` for embeddings + OpenAI `gpt-4o-mini` for Graphiti extraction
+- `GRAPHITI_LLM_PROVIDER` config (default `"openai"`) + `GRAPHITI_LLM_MODEL` (default `"gpt-4o-mini"`)
+- `small_model` explicitly set to same as `model` (Graphiti defaults to `gpt-4.1-nano` which may not be accessible)
+- **17/17 products ingested as episodes** — search verified working
+- 36 tests passing (was 35 — split health check into OpenAI + Ollama variants)
 
 ## Key Files — `apps/backend/src/dc_agent/kg/`
 - `store.py` — `KGStore` ABC (async context manager)
@@ -61,19 +65,39 @@
 - `test_kg_db.py` — 5 tests (M1: Neo4jKGStore, sanitize_label)
 - `test_kg_ingestion.py` — 21 tests (M2: models, validation, predicates, parsing)
 - `test_kg_query_service.py` — 42 tests (M3: all query methods, validation helpers)
-- `test_graphiti_store.py` — 15 tests (M4: lifecycle, health check, search, episodes)
+- `test_graphiti_store.py` — 16 tests (M4: lifecycle, health check OpenAI+Ollama, search, episodes)
 - `test_ollama_adapter.py` — 14 tests (M4: _clean_json, embedder, LLM client, error handling)
 - `test_graphiti_episodes.py` — 6 tests (M4: prepare_episode, ingest_episodes, dry-run)
-- Total KG tests: 103 passing
+- Total KG tests: 104 passing
 - Note: `test_search_service.py` has 2 pre-existing failures (unrelated to KG work)
 
 ## Config
 - Neo4j: `bolt://127.0.0.1:7687`, user `neo4j`, password `password`
 - Backend port: 8001 (not 8000)
-- Ollama: `http://localhost:11434`, embedding model `nomic-embed-text:latest` (works), LLM model `llama3.1:8b` (too small for Graphiti extraction)
+- Ollama: `http://localhost:11434`, embedding model `nomic-embed-text:latest`
+- Graphiti LLM: OpenAI `gpt-4o-mini` via `GRAPHITI_LLM_PROVIDER=openai`, `GRAPHITI_LLM_MODEL=gpt-4o-mini`
+- Ollama LLM (`llama3.1:8b`) available as fallback but too small for Graphiti extraction
 - Data source: `data/extracts/derived_info_yaml/` (17 *_derived.yaml files)
 - JSON equivalents at `data/extracts/derived_info/` (identical KG data)
-- API keys: OPENAI_API_KEY, ANTHROPIC_API_KEY, GEMINI_API_KEY configurable in `.env`
+- API keys: OPENAI_API_KEY, ANTHROPIC_API_KEY, GEMINI_API_KEY all set in `.env`
+- n8n: `http://localhost:5678` (healthy), API requires `X-N8N-API-KEY` header, no workflows built yet
+
+## Existing API Endpoints (Backend :8001)
+- `POST /api/v1/search` — Vector semantic search (ChromaDB)
+- `POST /api/v1/query-kg` — Graphiti episodic memory search
+- `POST /api/v1/query` — Basic vector query with sources
+- `POST /api/v1/chat` — RAG chat with model selection
+- `GET /api/v1/products` — Product catalog listing
+- `GET /api/v1/products/{id}` — Product detail
+- `GET /api/v1/products/{id}/pdf` — Product PDF URL
+- `GET /api/v1/models` — Available LLM models
+- `GET /api/v1/documents` — Unique product list from vector store
+- `POST /api/v1/ingest` — Ingestion trigger (placeholder)
+
+## Dependencies (pinned in pyproject.toml)
+- graphiti-core>=0.28.1, openai>=2.21.0, neo4j>=6.1.0
+- pydantic>=2.12.5, pydantic-settings>=2.13.1, uvicorn>=0.41.0
+- fastapi>=0.109.0 (held at current 0.121.3), chromadb>=0.4.22 (held at current 1.3.5)
 
 ## Architectural Decisions
 - n8n is the retrieval orchestrator (M5) — routes queries to vector/KG/hybrid

@@ -6,8 +6,10 @@ from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 
 from dc_agent.api.routes import router as api_router
+from dc_agent.api.kg_routes import kg_router
 from dc_agent.kg.graphiti_store import GraphitiKGStore
 from dc_agent.kg.neo4j import Neo4jKGStore
+from dc_agent.kg.query_service import KGQueryService
 from dc_agent.kg.schema import init_schema, validate_schema
 
 logger = logging.getLogger(__name__)
@@ -16,16 +18,23 @@ logger = logging.getLogger(__name__)
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Startup / shutdown lifecycle hook."""
-    # --- startup: Neo4j schema ---
+    # --- startup: Neo4j store (kept open for the app lifetime) ---
+    neo4j_store = Neo4jKGStore()
     try:
-        async with Neo4jKGStore() as store:
-            if await store.verify_connectivity():
-                await init_schema(store)
-                await validate_schema(store)
-            else:
-                logger.warning("Neo4j not reachable — skipping schema init")
+        if await neo4j_store.verify_connectivity():
+            await init_schema(neo4j_store)
+            await validate_schema(neo4j_store)
+            app.state.neo4j_store = neo4j_store
+            app.state.kg_query_service = KGQueryService(neo4j_store)
+            logger.info("Neo4j KG store and query service initialised")
+        else:
+            logger.warning("Neo4j not reachable — KG endpoints will return 503")
+            app.state.neo4j_store = None
+            app.state.kg_query_service = None
     except Exception:
-        logger.exception("Schema init failed — app will start without KG schema")
+        logger.exception("Neo4j init failed — KG endpoints will return 503")
+        app.state.neo4j_store = None
+        app.state.kg_query_service = None
 
     # --- startup: Graphiti episodic memory ---
     graphiti_store = GraphitiKGStore()
@@ -40,6 +49,8 @@ async def lifespan(app: FastAPI):
     yield  # app is running
 
     # --- shutdown ---
+    if app.state.neo4j_store is not None:
+        await neo4j_store.close()
     await graphiti_store.close()
     logger.info("Application shutting down")
 
@@ -52,6 +63,7 @@ app = FastAPI(
 )
 
 app.include_router(api_router, prefix="/api/v1")
+app.include_router(kg_router, prefix="/api/v1/kg")
 
 # Mount static files
 # Paths are relative to apps/backend/ where the server runs
