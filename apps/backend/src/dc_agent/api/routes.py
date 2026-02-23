@@ -54,10 +54,6 @@ async def ingest_endpoint(request: IngestRequest):
     # Placeholder logic
     return {"status": "ingestion_started", "message": "Ingestion process initiated."}
 
-from dc_agent.kg.graphiti_store import GraphitiKGStore
-
-kg_store = GraphitiKGStore()
-
 
 @router.post("/search", response_model=SearchResponse)
 async def search_endpoint(request: SearchRequest):
@@ -90,16 +86,23 @@ async def list_documents():
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-@router.post("/query-kg", response_model=QueryResponse)
-async def query_kg_endpoint(request: QueryRequest):
+from dc_agent.kg.graphiti_models import GraphitiSearchResponse
+
+
+@router.post("/query-kg", response_model=GraphitiSearchResponse)
+async def query_kg_endpoint(body: QueryRequest, request: Request):
     """
-    Specific endpoint to query the Knowledge Graph via Graphiti.
+    Query the Knowledge Graph via Graphiti episodic memory.
     """
-    answer = await kg_store.search(request.query)
-    # Convert Graphiti results to string if it's an object
-    return QueryResponse(
-        answer=str(answer),
-        sources=[] 
+    store = getattr(request.app.state, "graphiti_store", None)
+    if store is None or not store._initialized:
+        raise HTTPException(
+            status_code=503,
+            detail="Graphiti episodic memory is not available",
+        )
+    return await store.search(
+        query=body.query,
+        num_results=body.top_k,
     )
 
 

@@ -1,0 +1,363 @@
+doc_id: ac3e1e84-8691-5273-bbc7-d0cf1fe5851b
+filename: JP-10_Technical_Bulletin.pdf
+filepath: ${paths.processed_pdfs_root}/JP-10_Technical_Bulletin.pdf
+extraction_metadata:
+  confidence_scores: ${extraction.default_confidence_scores_derived}
+  extractor_version: ${extraction.extractor_version}
+  extraction_date: '2025-08-28T16:53:00-04:00'
+derived_info:
+  summary: JP-10 (Octahydro-1H-4,7-methanoindene, CAS# 2825-82-3) is a specialized
+    jet fuel and gas turbine fuel primarily used for missiles and military aerospace
+    applications. It is characterized by its high energy density and low freezing
+    point, making it particularly suitable for demanding aerospace environments. The
+    product is a clear, colorless liquid with a purity of 98.5-100%, a flash point
+    of 55-65°C, and a heat of combustion of at least 42.1 MJ/kg. It maintains good
+    flow properties at low temperatures, with kinematic viscosity below 10 cSt at
+    -18°C and below 40 cSt at -54°C. JP-10 is very stable under normal conditions
+    but requires proper storage away from moisture, high temperatures, ignition sources,
+    and oxidizing materials. Handling requires appropriate personal protective equipment
+    including chemical goggles, impenetrable gloves, and adequate ventilation to avoid
+    breathing vapors.
+  personas:
+    sales_summary: JP-10 is a premium, high-performance jet fuel specifically engineered
+      for military aerospace applications where exceptional energy density and low-temperature
+      performance are critical. With a guaranteed minimum heat of combustion of 42.1
+      MJ/kg and excellent flow properties even at temperatures as low as -54°C, this
+      product delivers superior performance in missile propulsion systems and specialized
+      gas turbine applications. Its high purity (98.5-100%) and stability under normal
+      conditions ensure reliable operation in demanding military environments. JP-10
+      represents a specialized offering in our fuel portfolio, addressing the unique
+      requirements of defense contractors and military applications where standard
+      aviation fuels cannot meet the extreme performance demands.
+    technical_summary: JP-10 (Octahydro-1H-4,7-methanoindene) is a high-energy-density
+      missile fuel with CAS# 2825-82-3. This clear, colorless liquid has a purity
+      of 98.5-100%, flash point of 55-65°C, and heat of combustion of minimum 42.1
+      MJ/kg. Its low-temperature performance is exceptional, maintaining viscosity
+      below 10 cSt at -18°C and below 40 cSt at -54°C, with specific gravity of 0.934-0.943
+      (60/60F) and Saybolt color of 25+. The product is chemically stable under normal
+      conditions but should be stored away from moisture, high temperatures, ignition
+      sources, and oxidizing materials. Handling requires protective chemical goggles,
+      impenetrable gloves, and adequate ventilation. In case of skin or eye contact,
+      immediate flushing with water for at least 15 minutes is required, with medical
+      attention for eye exposure.
+  key_applications:
+  - Jet fuel for military aircraft
+  - Gas turbine fuel for missiles
+  - Military aerospace propulsion systems
+  - High-performance missile propellants
+  - Applications requiring high energy density fuels
+  - Low-temperature aerospace applications
+knowledge_graph:
+  entities:
+  - id: 645bfb8a-824c-5efd-b4f3-315bfdcd3a29
+    text: JP-10
+    type: PRODUCT_NAME
+    canonical_name: JP-10
+    aliases:
+    - Octahydro-1H-4,7-methanoindene
+    source_text: JP-10 (Octahydro-1H-4,7-methanoindene, CAS# 2825-82-3)
+    provenance:
+      page: 1
+      spans:
+      - start: 0
+        end: 5
+      document_id: ac3e1e84-8691-5273-bbc7-d0cf1fe5851b
+    metadata: {}
+  - id: 0e7a45ae-8c71-5977-8f5c-1a22837e15ec
+    text: Octahydro-1H-4,7-methanoindene
+    type: CHEMICAL
+    canonical_name: Octahydro-1H-4,7-methanoindene
+    aliases:
+    - JP-10
+    source_text: JP-10 (Octahydro-1H-4,7-methanoindene, CAS# 2825-82-3)
+    provenance:
+      page: 1
+      spans:
+      - start: 7
+        end: 37
+      document_id: ac3e1e84-8691-5273-bbc7-d0cf1fe5851b
+    metadata: {}
+  - id: b2731866-b83c-51dd-91bd-98daef800161
+    text: 2825-82-3
+    type: CAS_NUMBER
+    canonical_name: 2825-82-3
+    aliases: []
+    source_text: CAS# 2825-82-3
+    provenance:
+      page: 1
+      spans:
+      - start: 43
+        end: 52
+      document_id: ac3e1e84-8691-5273-bbc7-d0cf1fe5851b
+    metadata: {}
+  - id: e3cac958-751c-5b25-9c99-cd338a10a6f0
+    text: jet fuel
+    type: APPLICATION
+    canonical_name: jet fuel
+    aliases: []
+    source_text: JP-10 is a jet fuel and a gas turbine fuel for missiles.
+    provenance:
+      page: 1
+      spans:
+      - start: 11
+        end: 19
+      document_id: ac3e1e84-8691-5273-bbc7-d0cf1fe5851b
+    metadata: {}
+  - id: 947bb59e-1529-55e7-b28c-30d8b89e12f2
+    text: gas turbine fuel
+    type: APPLICATION
+    canonical_name: gas turbine fuel
+    aliases: []
+    source_text: JP-10 is a jet fuel and a gas turbine fuel for missiles.
+    provenance:
+      page: 1
+      spans:
+      - start: 24
+        end: 40
+      document_id: ac3e1e84-8691-5273-bbc7-d0cf1fe5851b
+    metadata: {}
+  - id: fa0e8b24-6d36-5e5d-964e-c45d57a449e7
+    text: Dixie Chemical Company
+    type: ORGANIZATION
+    canonical_name: Dixie Chemical Company
+    aliases:
+    - Dixie Functional Additives
+    source_text: JP-10 is available from Dixie Chemical Company, Inc.'s plant in Pasadena,
+      Texas.
+    provenance:
+      page: 2
+      spans:
+      - start: 26
+        end: 49
+      document_id: ac3e1e84-8691-5273-bbc7-d0cf1fe5851b
+    metadata:
+      location: Pasadena, Texas
+  - id: 5c359598-f112-5a20-935b-5dfdc722a069
+    text: high energy density
+    type: BENEFIT
+    canonical_name: high energy density
+    aliases: []
+    source_text: Its high energy density and low freezing point make it ideal for
+      military aerospace applications.
+    provenance:
+      page: 1
+      spans:
+      - start: 4
+        end: 22
+      document_id: ac3e1e84-8691-5273-bbc7-d0cf1fe5851b
+    metadata: {}
+  - id: 2f1149b8-e7cf-5ca3-ad6d-ee06edc1f7dd
+    text: low freezing point
+    type: BENEFIT
+    canonical_name: low freezing point
+    aliases: []
+    source_text: Its high energy density and low freezing point make it ideal for
+      military aerospace applications.
+    provenance:
+      page: 1
+      spans:
+      - start: 27
+        end: 44
+      document_id: ac3e1e84-8691-5273-bbc7-d0cf1fe5851b
+    metadata: {}
+  - id: 4be0ab23-4b2c-5283-a110-9336f0f003ac
+    text: military aerospace applications
+    type: APPLICATION
+    canonical_name: military aerospace applications
+    aliases: []
+    source_text: Its high energy density and low freezing point make it ideal for
+      military aerospace applications.
+    provenance:
+      page: 1
+      spans:
+      - start: 59
+        end: 90
+      document_id: ac3e1e84-8691-5273-bbc7-d0cf1fe5851b
+    metadata: {}
+  kg_triples:
+  - subject: 645bfb8a-824c-5efd-b4f3-315bfdcd3a29
+    predicate: has_chemical_name
+    object: 0e7a45ae-8c71-5977-8f5c-1a22837e15ec
+    source_text: JP-10 (Octahydro-1H-4,7-methanoindene, CAS# 2825-82-3)
+    confidence: 1.0
+    provenance:
+      document_id: ac3e1e84-8691-5273-bbc7-d0cf1fe5851b
+  - subject: 645bfb8a-824c-5efd-b4f3-315bfdcd3a29
+    predicate: has_cas_number
+    object: b2731866-b83c-51dd-91bd-98daef800161
+    source_text: JP-10 (Octahydro-1H-4,7-methanoindene, CAS# 2825-82-3)
+    confidence: 1.0
+    provenance:
+      document_id: ac3e1e84-8691-5273-bbc7-d0cf1fe5851b
+  - subject: 645bfb8a-824c-5efd-b4f3-315bfdcd3a29
+    predicate: is_a
+    object: e3cac958-751c-5b25-9c99-cd338a10a6f0
+    source_text: JP-10 is a jet fuel and a gas turbine fuel for missiles.
+    confidence: 1.0
+    provenance:
+      document_id: ac3e1e84-8691-5273-bbc7-d0cf1fe5851b
+  - subject: 645bfb8a-824c-5efd-b4f3-315bfdcd3a29
+    predicate: is_a
+    object: 947bb59e-1529-55e7-b28c-30d8b89e12f2
+    source_text: JP-10 is a jet fuel and a gas turbine fuel for missiles.
+    confidence: 1.0
+    provenance:
+      document_id: ac3e1e84-8691-5273-bbc7-d0cf1fe5851b
+  - subject: 645bfb8a-824c-5efd-b4f3-315bfdcd3a29
+    predicate: is_manufactured_by
+    object: fa0e8b24-6d36-5e5d-964e-c45d57a449e7
+    source_text: JP-10 is available from Dixie Chemical Company, Inc.'s plant in Pasadena,
+      Texas.
+    confidence: 1.0
+    provenance:
+      document_id: ac3e1e84-8691-5273-bbc7-d0cf1fe5851b
+  - subject: 645bfb8a-824c-5efd-b4f3-315bfdcd3a29
+    predicate: has_benefit
+    object: 5c359598-f112-5a20-935b-5dfdc722a069
+    source_text: Its high energy density and low freezing point make it ideal for
+      military aerospace applications.
+    confidence: 1.0
+    provenance:
+      document_id: ac3e1e84-8691-5273-bbc7-d0cf1fe5851b
+  - subject: 645bfb8a-824c-5efd-b4f3-315bfdcd3a29
+    predicate: has_benefit
+    object: 2f1149b8-e7cf-5ca3-ad6d-ee06edc1f7dd
+    source_text: Its high energy density and low freezing point make it ideal for
+      military aerospace applications.
+    confidence: 1.0
+    provenance:
+      document_id: ac3e1e84-8691-5273-bbc7-d0cf1fe5851b
+  - subject: 645bfb8a-824c-5efd-b4f3-315bfdcd3a29
+    predicate: has_application
+    object: 4be0ab23-4b2c-5283-a110-9336f0f003ac
+    source_text: Its high energy density and low freezing point make it ideal for
+      military aerospace applications.
+    confidence: 1.0
+    provenance:
+      document_id: ac3e1e84-8691-5273-bbc7-d0cf1fe5851b
+  - subject: 645bfb8a-824c-5efd-b4f3-315bfdcd3a29
+    predicate: has_appearance
+    object: Clear Colorless Liquid
+    source_text: 'Appearance: Clear Colorless Liquid'
+    confidence: 1.0
+    provenance:
+      document_id: ac3e1e84-8691-5273-bbc7-d0cf1fe5851b
+  - subject: 645bfb8a-824c-5efd-b4f3-315bfdcd3a29
+    predicate: has_purity
+    object: 98.5 - 100%
+    source_text: 'Total JP-10, %: 98.5 - 100'
+    confidence: 1.0
+    provenance:
+      document_id: ac3e1e84-8691-5273-bbc7-d0cf1fe5851b
+  - subject: 645bfb8a-824c-5efd-b4f3-315bfdcd3a29
+    predicate: has_flash_point
+    object: 55 - 65°C
+    source_text: 'Flash Point, °C: 55 - 65'
+    confidence: 1.0
+    provenance:
+      document_id: ac3e1e84-8691-5273-bbc7-d0cf1fe5851b
+  - subject: 645bfb8a-824c-5efd-b4f3-315bfdcd3a29
+    predicate: has_heat_of_combustion
+    object: 42.1 min MJ/kg
+    source_text: 'Heat of Combustion, MJ/kg: 42.1 min'
+    confidence: 1.0
+    provenance:
+      document_id: ac3e1e84-8691-5273-bbc7-d0cf1fe5851b
+  - subject: 645bfb8a-824c-5efd-b4f3-315bfdcd3a29
+    predicate: has_viscosity_at_minus_18C
+    object: < 10 cSt
+    source_text: 'Kinematic Viscosity @-18°C, cSt: < 10'
+    confidence: 1.0
+    provenance:
+      document_id: ac3e1e84-8691-5273-bbc7-d0cf1fe5851b
+  - subject: 645bfb8a-824c-5efd-b4f3-315bfdcd3a29
+    predicate: has_viscosity_at_minus_54C
+    object: < 40 cSt
+    source_text: 'Kinematic Viscosity @-54°C, cSt: < 40'
+    confidence: 1.0
+    provenance:
+      document_id: ac3e1e84-8691-5273-bbc7-d0cf1fe5851b
+  - subject: 645bfb8a-824c-5efd-b4f3-315bfdcd3a29
+    predicate: has_specific_gravity
+    object: 0.934 -0.943
+    source_text: 'Specific Gravity 60/60F: 0.934 -0.943'
+    confidence: 1.0
+    provenance:
+      document_id: ac3e1e84-8691-5273-bbc7-d0cf1fe5851b
+  - subject: 645bfb8a-824c-5efd-b4f3-315bfdcd3a29
+    predicate: has_saybolt_color
+    object: 25 +
+    source_text: 'Saybolt Color: 25 +'
+    confidence: 1.0
+    provenance:
+      document_id: ac3e1e84-8691-5273-bbc7-d0cf1fe5851b
+  - subject: 645bfb8a-824c-5efd-b4f3-315bfdcd3a29
+    predicate: has_stability
+    object: very stable under normal conditions
+    source_text: JP-10 is very stable under normal conditions.
+    confidence: 1.0
+    provenance:
+      document_id: ac3e1e84-8691-5273-bbc7-d0cf1fe5851b
+  - subject: 645bfb8a-824c-5efd-b4f3-315bfdcd3a29
+    predicate: has_storage_requirement
+    object: stored away from moisture, high temperatures, ignition sources, or oxidizing
+      materials
+    source_text: It should be stored away from moisture, high temperatures, ignition
+      sources, or oxidizing materials.
+    confidence: 1.0
+    provenance:
+      document_id: ac3e1e84-8691-5273-bbc7-d0cf1fe5851b
+  - subject: 645bfb8a-824c-5efd-b4f3-315bfdcd3a29
+    predicate: requires_ppe
+    object: protective chemical goggles
+    source_text: The minimum personal protective equipment when handling these materials
+      typically includes protective chemical goggles, impenetrable gloves, and measures
+      to avoid breathing chemical vapors.
+    confidence: 1.0
+    provenance:
+      document_id: ac3e1e84-8691-5273-bbc7-d0cf1fe5851b
+  - subject: 645bfb8a-824c-5efd-b4f3-315bfdcd3a29
+    predicate: requires_ppe
+    object: impenetrable gloves
+    source_text: The minimum personal protective equipment when handling these materials
+      typically includes protective chemical goggles, impenetrable gloves, and measures
+      to avoid breathing chemical vapors.
+    confidence: 1.0
+    provenance:
+      document_id: ac3e1e84-8691-5273-bbc7-d0cf1fe5851b
+  - subject: 645bfb8a-824c-5efd-b4f3-315bfdcd3a29
+    predicate: requires_ppe
+    object: adequate ventilation
+    source_text: Use only with adequate ventilation.
+    confidence: 1.0
+    provenance:
+      document_id: ac3e1e84-8691-5273-bbc7-d0cf1fe5851b
+  - subject: 645bfb8a-824c-5efd-b4f3-315bfdcd3a29
+    predicate: has_safety_hazard
+    object: skin irritant
+    source_text: Avoid contact with skin, eyes, and clothing.
+    confidence: 1.0
+    provenance:
+      document_id: ac3e1e84-8691-5273-bbc7-d0cf1fe5851b
+  - subject: 645bfb8a-824c-5efd-b4f3-315bfdcd3a29
+    predicate: has_safety_hazard
+    object: eye irritant
+    source_text: Avoid contact with skin, eyes, and clothing.
+    confidence: 1.0
+    provenance:
+      document_id: ac3e1e84-8691-5273-bbc7-d0cf1fe5851b
+  - subject: 645bfb8a-824c-5efd-b4f3-315bfdcd3a29
+    predicate: has_first_aid
+    object: flush with water for at least 15 minutes
+    source_text: In case of contact, immediately flush the affected skin or eyes with
+      copious amounts of water for at least 15 minutes.
+    confidence: 1.0
+    provenance:
+      document_id: ac3e1e84-8691-5273-bbc7-d0cf1fe5851b
+  - subject: 645bfb8a-824c-5efd-b4f3-315bfdcd3a29
+    predicate: has_application
+    object: missile propulsion
+    source_text: JP-10 is a jet fuel and a gas turbine fuel for missiles.
+    confidence: 1.0
+    provenance:
+      document_id: ac3e1e84-8691-5273-bbc7-d0cf1fe5851b

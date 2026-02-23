@@ -1,22 +1,13 @@
-import json
-import os
-import re
-from pathlib import Path
-from typing import List, Dict, Any
-# from tqdm import tqdm
-from dc_agent.vector.chroma import ChromaVectorStore
-from dc_agent.kg.neo4j import Neo4jKGStore
-
-def sanitize_relationship_type(rel_type: str) -> str:
-    """Sanitize relationship type to be safe for Cypher interpolation."""
-    # Replace non-alphanumeric characters with underscores and uppercase
-    sanitized = re.sub(r'[^a-zA-Z0-9_]', '_', rel_type).upper()
-    return sanitized
-
 import asyncio
+import json
+import logging
+from pathlib import Path
+from typing import Any
+
+from dc_agent.vector.chroma import ChromaVectorStore
 from dc_agent.kg.graphiti_store import GraphitiKGStore
 
-# ... (keep imports)
+logger = logging.getLogger(__name__)
 
 async def seed_full_async():
     # Paths

@@ -1,0 +1,532 @@
+doc_id: bba57d5e-1507-54eb-a4a8-1f28e2b4c91d
+filename: ASA_150_Technical_Bulletin.pdf
+filepath: ${paths.processed_pdfs_root}/ASA_150_Technical_Bulletin.pdf
+extraction_metadata:
+  confidence_scores: ${extraction.default_confidence_scores_derived}
+  extractor_version: ${extraction.extractor_version}
+  extraction_date: '2025-08-28T16:53:00-04:00'
+derived_info:
+  summary: ASA 150 is an alkenylsuccinic anhydride based on C16-C18 alpha-olefin,
+    consisting of a blend of hexadecenylsuccinic anhydride (HDSA) and octadecenylsuccinic
+    anhydride (ODSA). This versatile chemical is primarily used as an alkaline paper
+    sizing agent but finds applications across multiple industries including metal
+    working fluids, fuel and lubricant additives, surfactant intermediates, and specialty
+    chemical applications. ASA 150 is REACh registered and available with or without
+    surfactant options (DOSS or phosphate ester), making it suitable for both cationic
+    starch and polymer emulsion systems.
+  personas:
+    sales_summary: ASA 150 offers exceptional versatility across multiple high-value
+      markets including paper manufacturing, metalworking, and specialty chemicals.
+      Key selling advantages include REACh registration for EU compliance, dual surfactant
+      options for customized performance, and proven effectiveness in both cationic
+      starch and polymer emulsion systems. The product's broad application range from
+      paper sizing to corrosion inhibition provides multiple revenue opportunities,
+      while its excellent handling characteristics and 24-month shelf life ensure
+      customer satisfaction and reduced waste.
+    technical_summary: ASA 150 is a C16-C18 alkenylsuccinic anhydride blend (CAS 68784-12-3)
+      containing 40-60% each of HDSA and ODSA components. Key specifications include
+      Gardner color ≤10, residual olefin ≤3%, free acid ≤2%, neutralization number
+      325-360 mg KOH/g, pour point -36°C, and freeze point -21°C. The product requires
+      moisture-free storage to prevent hydrolysis and is compatible with mild steel
+      or stainless steel (304/316) storage systems. Temperature-dependent properties
+      show viscosity decreasing from 8.1 to 7.86 cPs over 0-60°C range.
+  key_applications:
+  - Alkaline paper sizing agents
+  - Cationic starch systems
+  - Polymer emulsion systems
+  - Corrosion inhibitors in metal working fluids
+  - Pour point depressants in fuel additives
+  - Dispersants in lubricant additives
+  - Surfactant intermediates
+  - Acid amides and esters production
+  - Plasticizer applications
+  - Epoxy resin applications
+  - Moisture control for leather goods
+knowledge_graph:
+  entities:
+  - id: f795eda3-9096-5fee-88ab-0d11d8956525
+    text: ASA 150
+    type: PRODUCT_NAME
+    canonical_name: ASA 150
+    aliases:
+    - Alkenylsuccinic anhydride 150
+    source_text: ASA 150
+    provenance:
+      page: 1
+      spans:
+      - start: 0
+        end: 7
+      document_id: bba57d5e-1507-54eb-a4a8-1f28e2b4c91d
+    metadata:
+      manufacturer: Dixie Chemical
+      product_family: Alkenylsuccinic Anhydride
+  - id: 881584db-cf24-5fca-85c1-a0f577fbf777
+    text: 68784-12-3
+    type: CAS_NUMBER
+    canonical_name: 68784-12-3
+    aliases: []
+    source_text: The CASRN is 68784-12-3
+    provenance:
+      page: 3
+      spans:
+      - start: 12
+        end: 22
+      document_id: bba57d5e-1507-54eb-a4a8-1f28e2b4c91d
+    metadata: {}
+  - id: 9a6e6ba2-5504-585a-b4ec-768cccf10e63
+    text: 2,5-Furandione,dihydro-,mono-C15-20-alkenyl derivs
+    type: CHEMICAL
+    canonical_name: 2,5-Furandione,dihydro-,mono-C15-20-alkenyl derivs
+    aliases:
+    - ASA 150
+    source_text: ASA 150 is REACh registered as a component under the name 2,5-Furandione,dihydro-,mono-C15-20-alkenyl
+      derivs
+    provenance:
+      page: 3
+      spans:
+      - start: 57
+        end: 108
+      document_id: bba57d5e-1507-54eb-a4a8-1f28e2b4c91d
+    metadata:
+      cas_number: 68784-12-3
+  - id: 4bf63705-8204-5c8f-afa3-124114cc36eb
+    text: hexadecenylsuccinic anhydride
+    type: CHEMICAL
+    canonical_name: hexadecenylsuccinic anhydride
+    aliases:
+    - HDSA
+    source_text: hexadecenylsuccinic anhydride (HDSA)
+    provenance:
+      page: 2
+      spans:
+      - start: 0
+        end: 36
+      document_id: bba57d5e-1507-54eb-a4a8-1f28e2b4c91d
+    metadata:
+      cas_number: 32072-96-1
+  - id: 5fdbb2d5-803e-58da-8aa9-e008fdf53742
+    text: octadecenylsuccinic anhydride
+    type: CHEMICAL
+    canonical_name: octadecenylsuccinic anhydride
+    aliases:
+    - ODSA
+    source_text: octadecenylsuccinic anhydride (ODSA)
+    provenance:
+      page: 2
+      spans:
+      - start: 0
+        end: 36
+      document_id: bba57d5e-1507-54eb-a4a8-1f28e2b4c91d
+    metadata:
+      cas_number: 28777-98-2
+  - id: cad02419-79d4-552a-a36b-9dfed550f207
+    text: Dixie Chemical
+    type: ORGANIZATION
+    canonical_name: ${manufacturer.name}
+    aliases: []
+    source_text: DIXIE CHEMICAL
+    provenance:
+      page: 1
+      spans:
+      - start: 0
+        end: 14
+      document_id: bba57d5e-1507-54eb-a4a8-1f28e2b4c91d
+    metadata:
+      address: 10601 Bay Area Blvd. Pasadena, TX 77507
+      phone: (281) 474-3271
+  - id: e92cf68a-2d42-5072-b743-68d3ca96fb38
+    text: alkaline paper sizing agents
+    type: APPLICATION
+    canonical_name: alkaline paper sizing agents
+    aliases:
+    - paper sizing
+    source_text: ASAs such as ASA 150 are commonly used as alkaline paper sizing agents
+    provenance:
+      page: 2
+      spans:
+      - start: 44
+        end: 72
+      document_id: bba57d5e-1507-54eb-a4a8-1f28e2b4c91d
+    metadata: {}
+  - id: a395ff9f-012c-59d1-87f9-a85731dc3da0
+    text: corrosion inhibitors
+    type: APPLICATION
+    canonical_name: corrosion inhibitors
+    aliases: []
+    source_text: In metal working fluids, ASAs are utilized as corrosion inhibitors
+    provenance:
+      page: 2
+      spans:
+      - start: 46
+        end: 66
+      document_id: bba57d5e-1507-54eb-a4a8-1f28e2b4c91d
+    metadata: {}
+  - id: 76d22ad8-d0e4-533b-8c05-186529da5274
+    text: pour point depressants
+    type: APPLICATION
+    canonical_name: pour point depressants
+    aliases: []
+    source_text: fuel and lubricant additives including pour point depressants
+    provenance:
+      page: 2
+      spans:
+      - start: 39
+        end: 61
+      document_id: bba57d5e-1507-54eb-a4a8-1f28e2b4c91d
+    metadata: {}
+  - id: 3e50bc28-8cf4-54b1-ad0b-f4326bc3e693
+    text: surfactant intermediates
+    type: APPLICATION
+    canonical_name: surfactant intermediates
+    aliases: []
+    source_text: ASAs find use as intermediates for surfactants
+    provenance:
+      page: 2
+      spans:
+      - start: 21
+        end: 45
+      document_id: bba57d5e-1507-54eb-a4a8-1f28e2b4c91d
+    metadata: {}
+  - id: 4f398afe-125e-5437-b22d-e89a5fca639f
+    text: dioctylsulfo-succinate
+    type: CHEMICAL
+    canonical_name: dioctylsulfo-succinate
+    aliases:
+    - DOSS
+    source_text: dioctylsulfo-succinate (DOSS)
+    provenance:
+      page: 2
+      spans:
+      - start: 0
+        end: 29
+      document_id: bba57d5e-1507-54eb-a4a8-1f28e2b4c91d
+    metadata: {}
+  - id: 7dc7d762-7397-59a7-8d3c-7d7a9ab85d9d
+    text: phosphate ester
+    type: CHEMICAL
+    canonical_name: phosphate ester
+    aliases: []
+    source_text: phosphate ester
+    provenance:
+      page: 2
+      spans:
+      - start: 0
+        end: 15
+      document_id: bba57d5e-1507-54eb-a4a8-1f28e2b4c91d
+    metadata: {}
+  - id: ac0a1e98-2b5e-52b0-ae11-cc13f3019c0e
+    text: REACh registration
+    type: REGISTRATION
+    canonical_name: REACh registration
+    aliases: []
+    source_text: ASA 150 is REACh registered as a component
+    provenance:
+      page: 3
+      spans:
+      - start: 11
+        end: 26
+      document_id: bba57d5e-1507-54eb-a4a8-1f28e2b4c91d
+    metadata:
+      registration_number: 01-2119533117-46
+  - id: 0dfb0978-2f4b-54fc-8bf7-3ce73a2bbf9d
+    text: skin sensitizer
+    type: HAZARD
+    canonical_name: skin sensitizer
+    aliases: []
+    source_text: ASA 150 is a skin sensitizer
+    provenance:
+      page: 3
+      spans:
+      - start: 13
+        end: 28
+      document_id: bba57d5e-1507-54eb-a4a8-1f28e2b4c91d
+    metadata: {}
+  kg_triples:
+  - subject: f795eda3-9096-5fee-88ab-0d11d8956525
+    predicate: has_cas_number
+    object: 881584db-cf24-5fca-85c1-a0f577fbf777
+    source_text: The CASRN is 68784-12-3
+    provenance:
+      page: 3
+      spans:
+      - start: 0
+        end: 23
+      document_id: bba57d5e-1507-54eb-a4a8-1f28e2b4c91d
+    confidence: 1.0
+  - subject: f795eda3-9096-5fee-88ab-0d11d8956525
+    predicate: is_chemical_type
+    object: 9a6e6ba2-5504-585a-b4ec-768cccf10e63
+    source_text: ASA 150 is REACh registered as a component under the name 2,5-Furandione,dihydro-,mono-C15-20-alkenyl
+      derivs
+    provenance:
+      page: 3
+      spans:
+      - start: 0
+        end: 109
+      document_id: bba57d5e-1507-54eb-a4a8-1f28e2b4c91d
+    confidence: 1.0
+  - subject: f795eda3-9096-5fee-88ab-0d11d8956525
+    predicate: manufactured_by
+    object: cad02419-79d4-552a-a36b-9dfed550f207
+    source_text: DIXIE CHEMICAL
+    provenance:
+      page: 1
+      spans:
+      - start: 0
+        end: 14
+      document_id: bba57d5e-1507-54eb-a4a8-1f28e2b4c91d
+    confidence: 1.0
+  - subject: f795eda3-9096-5fee-88ab-0d11d8956525
+    predicate: contains_component
+    object: 4bf63705-8204-5c8f-afa3-124114cc36eb
+    source_text: The material is a blend of hexadecenylsuccinic anhydride (HDSA)
+    provenance:
+      page: 2
+      spans:
+      - start: 0
+        end: 64
+      document_id: bba57d5e-1507-54eb-a4a8-1f28e2b4c91d
+    confidence: 1.0
+  - subject: f795eda3-9096-5fee-88ab-0d11d8956525
+    predicate: contains_component
+    object: 5fdbb2d5-803e-58da-8aa9-e008fdf53742
+    source_text: The material is a blend of octadecenylsuccinic anhydride (ODSA)
+    provenance:
+      page: 2
+      spans:
+      - start: 0
+        end: 63
+      document_id: bba57d5e-1507-54eb-a4a8-1f28e2b4c91d
+    confidence: 1.0
+  - subject: f795eda3-9096-5fee-88ab-0d11d8956525
+    predicate: has_hdsa_content
+    object:
+      property: hdsa_content
+      value: 40-60%
+    source_text: HDSA Content, % 40-60
+    provenance:
+      page: 1
+      spans:
+      - start: 0
+        end: 21
+      document_id: bba57d5e-1507-54eb-a4a8-1f28e2b4c91d
+    confidence: 1.0
+  - subject: f795eda3-9096-5fee-88ab-0d11d8956525
+    predicate: has_odsa_content
+    object:
+      property: odsa_content
+      value: 40-60%
+    source_text: ODSA Content, % 40-60
+    provenance:
+      page: 1
+      spans:
+      - start: 0
+        end: 21
+      document_id: bba57d5e-1507-54eb-a4a8-1f28e2b4c91d
+    confidence: 1.0
+  - subject: f795eda3-9096-5fee-88ab-0d11d8956525
+    predicate: has_appearance
+    object:
+      property: physical_appearance
+      value: Yellow to amber liquid
+    source_text: Physical Appearance Yellow to amber liquid
+    provenance:
+      page: 1
+      spans:
+      - start: 0
+        end: 42
+      document_id: bba57d5e-1507-54eb-a4a8-1f28e2b4c91d
+    confidence: 1.0
+  - subject: f795eda3-9096-5fee-88ab-0d11d8956525
+    predicate: has_gardner_color
+    object:
+      property: gardner_color
+      value: 10 Max
+    source_text: Gardner Color 10 Max
+    provenance:
+      page: 1
+      spans:
+      - start: 0
+        end: 20
+      document_id: bba57d5e-1507-54eb-a4a8-1f28e2b4c91d
+    confidence: 1.0
+  - subject: f795eda3-9096-5fee-88ab-0d11d8956525
+    predicate: has_pour_point
+    object:
+      property: pour_point
+      value: -36°C
+    source_text: Pour Point, °C -36
+    provenance:
+      page: 1
+      spans:
+      - start: 0
+        end: 18
+      document_id: bba57d5e-1507-54eb-a4a8-1f28e2b4c91d
+    confidence: 1.0
+  - subject: f795eda3-9096-5fee-88ab-0d11d8956525
+    predicate: has_freeze_point
+    object:
+      property: freeze_point
+      value: -21°C
+    source_text: Freeze Point, °C -21
+    provenance:
+      page: 1
+      spans:
+      - start: 0
+        end: 20
+      document_id: bba57d5e-1507-54eb-a4a8-1f28e2b4c91d
+    confidence: 1.0
+  - subject: f795eda3-9096-5fee-88ab-0d11d8956525
+    predicate: has_neutralization_number
+    object:
+      property: neutralization_number
+      value: 325-360 mg KOH/g
+    source_text: Neutralization Number, mg KOH/g 325 - 360
+    provenance:
+      page: 1
+      spans:
+      - start: 0
+        end: 42
+      document_id: bba57d5e-1507-54eb-a4a8-1f28e2b4c91d
+    confidence: 1.0
+  - subject: f795eda3-9096-5fee-88ab-0d11d8956525
+    predicate: used_in_application
+    object: e92cf68a-2d42-5072-b743-68d3ca96fb38
+    source_text: ASAs such as ASA 150 are commonly used as alkaline paper sizing agents
+    provenance:
+      page: 2
+      spans:
+      - start: 0
+        end: 71
+      document_id: bba57d5e-1507-54eb-a4a8-1f28e2b4c91d
+    confidence: 1.0
+  - subject: f795eda3-9096-5fee-88ab-0d11d8956525
+    predicate: used_in_application
+    object: a395ff9f-012c-59d1-87f9-a85731dc3da0
+    source_text: In metal working fluids, ASAs are utilized as corrosion inhibitors
+    provenance:
+      page: 2
+      spans:
+      - start: 0
+        end: 67
+      document_id: bba57d5e-1507-54eb-a4a8-1f28e2b4c91d
+    confidence: 1.0
+  - subject: f795eda3-9096-5fee-88ab-0d11d8956525
+    predicate: used_in_application
+    object: 76d22ad8-d0e4-533b-8c05-186529da5274
+    source_text: ASAs are often used in fuel and lubricant additives including pour
+      point depressants
+    provenance:
+      page: 2
+      spans:
+      - start: 0
+        end: 85
+      document_id: bba57d5e-1507-54eb-a4a8-1f28e2b4c91d
+    confidence: 1.0
+  - subject: f795eda3-9096-5fee-88ab-0d11d8956525
+    predicate: used_in_application
+    object: 3e50bc28-8cf4-54b1-ad0b-f4326bc3e693
+    source_text: ASAs find use as intermediates for surfactants
+    provenance:
+      page: 2
+      spans:
+      - start: 0
+        end: 46
+      document_id: bba57d5e-1507-54eb-a4a8-1f28e2b4c91d
+    confidence: 1.0
+  - subject: f795eda3-9096-5fee-88ab-0d11d8956525
+    predicate: available_with_surfactant
+    object: 4f398afe-125e-5437-b22d-e89a5fca639f
+    source_text: Two types of surfactant are available, dioctylsulfo-succinate (DOSS)
+    provenance:
+      page: 2
+      spans:
+      - start: 0
+        end: 69
+      document_id: bba57d5e-1507-54eb-a4a8-1f28e2b4c91d
+    confidence: 1.0
+  - subject: f795eda3-9096-5fee-88ab-0d11d8956525
+    predicate: available_with_surfactant
+    object: 7dc7d762-7397-59a7-8d3c-7d7a9ab85d9d
+    source_text: Two types of surfactant are available, phosphate ester
+    provenance:
+      page: 2
+      spans:
+      - start: 0
+        end: 54
+      document_id: bba57d5e-1507-54eb-a4a8-1f28e2b4c91d
+    confidence: 1.0
+  - subject: f795eda3-9096-5fee-88ab-0d11d8956525
+    predicate: has_registration
+    object: ac0a1e98-2b5e-52b0-ae11-cc13f3019c0e
+    source_text: ASA 150 is REACh registered as a component
+    provenance:
+      page: 3
+      spans:
+      - start: 0
+        end: 42
+      document_id: bba57d5e-1507-54eb-a4a8-1f28e2b4c91d
+    confidence: 1.0
+  - subject: f795eda3-9096-5fee-88ab-0d11d8956525
+    predicate: has_hazard
+    object: 0dfb0978-2f4b-54fc-8bf7-3ce73a2bbf9d
+    source_text: ASA 150 is a skin sensitizer
+    provenance:
+      page: 3
+      spans:
+      - start: 0
+        end: 28
+      document_id: bba57d5e-1507-54eb-a4a8-1f28e2b4c91d
+    confidence: 1.0
+  - subject: f795eda3-9096-5fee-88ab-0d11d8956525
+    predicate: has_shelf_life
+    object:
+      property: shelf_life
+      value: 24 months
+    source_text: When properly stored, ASA 150 has a shelf life of 24 months
+    provenance:
+      page: 3
+      spans:
+      - start: 0
+        end: 59
+      document_id: bba57d5e-1507-54eb-a4a8-1f28e2b4c91d
+    confidence: 1.0
+  - subject: f795eda3-9096-5fee-88ab-0d11d8956525
+    predicate: requires_storage_condition
+    object:
+      property: storage_requirement
+      value: out of contact with moisture
+    source_text: ASA 150 must be stored out of contact with moisture to avoid hydrolysis
+    provenance:
+      page: 3
+      spans:
+      - start: 0
+        end: 72
+      document_id: bba57d5e-1507-54eb-a4a8-1f28e2b4c91d
+    confidence: 1.0
+  - subject: f795eda3-9096-5fee-88ab-0d11d8956525
+    predicate: viscosity_at_temperature
+    object:
+      property: viscosity_0c
+      value: 8.1 cPs
+    source_text: Viscosity as a Function of Temperature graph data
+    provenance:
+      page: 2
+      spans:
+      - start: 0
+        end: 49
+      document_id: bba57d5e-1507-54eb-a4a8-1f28e2b4c91d
+    confidence: 1.0
+  - subject: f795eda3-9096-5fee-88ab-0d11d8956525
+    predicate: viscosity_at_temperature
+    object:
+      property: viscosity_60c
+      value: 7.86 cPs
+    source_text: Viscosity as a Function of Temperature graph data
+    provenance:
+      page: 2
+      spans:
+      - start: 0
+        end: 49
+      document_id: bba57d5e-1507-54eb-a4a8-1f28e2b4c91d
+    confidence: 1.0

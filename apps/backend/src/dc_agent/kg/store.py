@@ -1,27 +1,78 @@
+"""Abstract base class for Knowledge Graph Store operations.
+
+All methods are async.  Implementations must support the async context
+manager protocol (``async with``).
+"""
+
+from __future__ import annotations
+
 from abc import ABC, abstractmethod
-from typing import List, Dict, Any, Optional
+from typing import Any
+
 
 class KGStore(ABC):
-    """Abstract base class for Knowledge Graph Store operations."""
+    """Async interface for Knowledge Graph Store operations."""
+
+    # -- write operations ---------------------------------------------------
 
     @abstractmethod
-    def add_entity(self, label: str, properties: Dict[str, Any]) -> None:
-        """Add an entity to the knowledge graph."""
-        pass
+    async def add_entity(
+        self,
+        label: str,
+        properties: dict[str, Any],
+    ) -> None:
+        """Merge an entity into the graph.
+
+        Uses MERGE semantics keyed on ``properties["id"]`` so that
+        repeated calls update rather than duplicate.
+        """
+        ...
 
     @abstractmethod
-    def add_relationship(self, start_label: str, start_props: Dict[str, Any], 
-                         end_label: str, end_props: Dict[str, Any], 
-                         rel_type: str, rel_props: Dict[str, Any] = None) -> None:
-        """Add a relationship between two entities."""
-        pass
+    async def add_relationship(
+        self,
+        start_id: str,
+        end_id: str,
+        rel_type: str,
+        rel_props: dict[str, Any] | None = None,
+    ) -> None:
+        """Merge a directed relationship between two nodes by ``id``."""
+        ...
 
     @abstractmethod
-    def query_graph(self, query: str, params: Dict[str, Any] = None) -> List[Dict[str, Any]]:
-        """Execute a Cypher query on the knowledge graph."""
-        pass
+    async def execute(
+        self,
+        cypher: str,
+        params: dict[str, Any] | None = None,
+    ) -> list[dict[str, Any]]:
+        """Run an arbitrary *write* Cypher statement and return results."""
+        ...
+
+    # -- read operations ----------------------------------------------------
 
     @abstractmethod
-    def close(self) -> None:
-        """Close the connection to the knowledge graph."""
-        pass
+    async def query(
+        self,
+        cypher: str,
+        params: dict[str, Any] | None = None,
+    ) -> list[dict[str, Any]]:
+        """Run a *read-only* Cypher query and return rows as dicts."""
+        ...
+
+    # -- lifecycle ----------------------------------------------------------
+
+    @abstractmethod
+    async def close(self) -> None:
+        """Release the underlying connection / driver."""
+        ...
+
+    async def __aenter__(self) -> KGStore:
+        return self
+
+    async def __aexit__(
+        self,
+        exc_type: type[BaseException] | None,
+        exc_val: BaseException | None,
+        exc_tb: Any,
+    ) -> None:
+        await self.close()

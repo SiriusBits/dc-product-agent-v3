@@ -13,10 +13,14 @@ class Settings(BaseSettings):
     NEO4J_USER: str = "neo4j"
     NEO4J_PASSWORD: str = "password"
 
-    # Ollama Configuration
+    # Ollama Configuration (embeddings always use Ollama)
     OLLAMA_BASE_URL: str = "http://localhost:11434"
-    OLLAMA_EMBEDDING_MODEL: str = "nomic-embed-text:latest" 
+    OLLAMA_EMBEDDING_MODEL: str = "nomic-embed-text:latest"
     OLLAMA_LLM_MODEL: str = "llama3.1:8b"
+
+    # Graphiti LLM provider: "openai" (default) or "ollama"
+    GRAPHITI_LLM_PROVIDER: str = "openai"
+    GRAPHITI_LLM_MODEL: str = "gpt-4o-mini"
 
     # External Provider API Keys
     OPENAI_API_KEY: str | None = None

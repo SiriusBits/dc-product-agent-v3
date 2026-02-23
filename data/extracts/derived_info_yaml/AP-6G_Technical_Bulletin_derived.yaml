@@ -1,0 +1,262 @@
+doc_id: 82c28fb6-3a9e-5b8b-b074-a706bbf606a2
+filename: AP-6G_Technical_Bulletin.pdf
+filepath: ${paths.processed_pdfs_root}/AP_6G_Technical_Bulletin.pdf
+extraction_metadata:
+  confidence_scores: ${extraction.default_confidence_scores_derived}
+  extractor_version: ${extraction.extractor_version}
+  extraction_date: '2025-08-26T15:10:00-04:00'
+derived_info:
+  summary: AP-6G is a quaternary ammonium salt consisting of Benzyl Triethylammonium
+    Chloride (CAS# 56-37-1) in Ethylene Glycol with an assay of 58-62%. It is primarily
+    used as a phase-transfer catalyst in various industrial applications. The product
+    is hygroscopic and requires storage away from moisture, high temperatures, ignition
+    sources, and oxidizing materials. The technical bulletin provides handling instructions
+    and safety information, emphasizing the need for protective equipment including
+    chemical goggles, impenetrable gloves, and proper ventilation. AP-6G is available
+    from Dixie Chemical in Pasadena, Texas.
+  personas:
+    sales_summary: AP-6G is a premium quaternary ammonium salt formulation of Benzyl
+      Triethylammonium Chloride in Ethylene Glycol, offered at a consistent 58-62%
+      concentration. This product serves as an effective phase-transfer catalyst for
+      a wide range of industrial applications, providing reliable performance with
+      excellent stability under recommended storage conditions. AP-6G is part of Dixie
+      Chemical's specialty catalyst portfolio, backed by our technical expertise and
+      quality manufacturing standards. Available from our Pasadena, Texas facility
+      with customized technical support to help customers optimize their processes.
+    technical_summary: AP-6G contains 58-62% Benzyl Triethylammonium Chloride (CAS#
+      56-37-1) in Ethylene Glycol, functioning as a phase-transfer catalyst. The product
+      is hygroscopic and requires storage away from moisture, high temperatures, ignition
+      sources, and oxidizing materials to maintain stability. When handling AP-6G,
+      protective equipment including chemical goggles, impenetrable gloves, and proper
+      ventilation is essential due to potential skin and eye irritation hazards. In
+      case of contact, immediate flushing with water for at least 15 minutes is recommended,
+      with medical attention required for eye exposure. For detailed safety protocols,
+      consult the product SDS.
+  key_applications:
+  - Phase-transfer catalyst
+  - Industrial chemical processes
+  - Organic synthesis
+  - Polymer chemistry
+  - Specialty chemical manufacturing
+knowledge_graph:
+  entities:
+  - id: 3c127f46-4966-5e9e-a545-69f2901a763b
+    text: AP-6G
+    type: PRODUCT_NAME
+    canonical_name: AP-6G
+    aliases:
+    - Benzyl Triethylammonium Chloride in Ethylene Glycol
+    source_text: AP-6G (Benzyl Triethylammonium Chloride in Ethylene Glycol) (CAS#
+      56-37-1)
+    provenance:
+      document_id: 82c28fb6-3a9e-5b8b-b074-a706bbf606a2
+      page: 1
+  - id: e884a46a-2809-5e78-8099-e6153e6a8900
+    text: Benzyl Triethylammonium Chloride
+    type: CHEMICAL
+    canonical_name: Benzyl Triethylammonium Chloride
+    aliases: []
+    source_text: Benzyl Triethylammonium Chloride in Ethylene Glycol
+    provenance:
+      document_id: 82c28fb6-3a9e-5b8b-b074-a706bbf606a2
+      page: 1
+  - id: dfd004d0-7072-5136-a201-121612e16e41
+    text: Ethylene Glycol
+    type: CHEMICAL
+    canonical_name: Ethylene Glycol
+    aliases: []
+    source_text: Benzyl Triethylammonium Chloride in Ethylene Glycol
+    provenance:
+      document_id: 82c28fb6-3a9e-5b8b-b074-a706bbf606a2
+      page: 1
+  - id: 7f17dd17-ea54-587d-953e-5a82d40bca89
+    text: Quaternary Ammonium Salt
+    type: CHEMICAL_CLASS
+    canonical_name: Quaternary Ammonium Salt
+    aliases: []
+    source_text: AP-6G is a quaternary ammonium salt
+    provenance:
+      document_id: 82c28fb6-3a9e-5b8b-b074-a706bbf606a2
+      page: 1
+  - id: 97e9a366-d599-5643-a5c0-3a2beaa542fd
+    text: Dixie Chemical
+    type: ORGANIZATION
+    canonical_name: ${manufacturer.name}
+    aliases:
+    - Dixie Chemical Company
+    source_text: AP-6G is available from Dixie Chemical in Pasadena, Texas.
+    provenance:
+      document_id: 82c28fb6-3a9e-5b8b-b074-a706bbf606a2
+      page: 2
+  - id: 44cb2177-2e33-5acd-82bf-081b042ca780
+    text: 56-37-1
+    type: CAS_NUMBER
+    canonical_name: 56-37-1
+    aliases:
+    - CAS# 56-37-1
+    source_text: (CAS# 56-37-1)
+    provenance:
+      document_id: 82c28fb6-3a9e-5b8b-b074-a706bbf606a2
+      page: 1
+  - id: 879bcdeb-6906-5589-af16-03f556a8c825
+    text: Phase-transfer catalyst
+    type: APPLICATION
+    canonical_name: Phase-transfer catalyst
+    aliases: []
+    source_text: AP-6G is a quaternary ammonium salt that is well known as phase-transfer
+      catalyst
+    provenance:
+      document_id: 82c28fb6-3a9e-5b8b-b074-a706bbf606a2
+      page: 1
+  kg_triples:
+  - subject: 3c127f46-4966-5e9e-a545-69f2901a763b
+    predicate: has_chemical_composition
+    object: e884a46a-2809-5e78-8099-e6153e6a8900
+    source_text: AP-6G (Benzyl Triethylammonium Chloride in Ethylene Glycol)
+    provenance:
+      document_id: 82c28fb6-3a9e-5b8b-b074-a706bbf606a2
+      page: 1
+    confidence: 1.0
+  - subject: 3c127f46-4966-5e9e-a545-69f2901a763b
+    predicate: has_solvent
+    object: dfd004d0-7072-5136-a201-121612e16e41
+    source_text: AP-6G (Benzyl Triethylammonium Chloride in Ethylene Glycol)
+    provenance:
+      document_id: 82c28fb6-3a9e-5b8b-b074-a706bbf606a2
+      page: 1
+    confidence: 1.0
+  - subject: 3c127f46-4966-5e9e-a545-69f2901a763b
+    predicate: has_cas_number
+    object: 44cb2177-2e33-5acd-82bf-081b042ca780
+    source_text: (CAS# 56-37-1)
+    provenance:
+      document_id: 82c28fb6-3a9e-5b8b-b074-a706bbf606a2
+      page: 1
+    confidence: 1.0
+  - subject: 3c127f46-4966-5e9e-a545-69f2901a763b
+    predicate: is_type_of
+    object: 7f17dd17-ea54-587d-953e-5a82d40bca89
+    source_text: AP-6G is a quaternary ammonium salt
+    provenance:
+      document_id: 82c28fb6-3a9e-5b8b-b074-a706bbf606a2
+      page: 1
+    confidence: 1.0
+  - subject: 3c127f46-4966-5e9e-a545-69f2901a763b
+    predicate: has_manufacturer
+    object: 97e9a366-d599-5643-a5c0-3a2beaa542fd
+    source_text: AP-6G is available from Dixie Chemical in Pasadena, Texas.
+    provenance:
+      document_id: 82c28fb6-3a9e-5b8b-b074-a706bbf606a2
+      page: 2
+    confidence: 1.0
+  - subject: 3c127f46-4966-5e9e-a545-69f2901a763b
+    predicate: has_application
+    object: 879bcdeb-6906-5589-af16-03f556a8c825
+    source_text: AP-6G is a quaternary ammonium salt that is well known as phase-transfer
+      catalyst
+    provenance:
+      document_id: 82c28fb6-3a9e-5b8b-b074-a706bbf606a2
+      page: 1
+    confidence: 1.0
+  - subject: 3c127f46-4966-5e9e-a545-69f2901a763b
+    predicate: has_assay
+    object: 58-62%
+    source_text: 'Assay, %: 58-62'
+    provenance:
+      document_id: 82c28fb6-3a9e-5b8b-b074-a706bbf606a2
+      page: 1
+    confidence: 1.0
+  - subject: 3c127f46-4966-5e9e-a545-69f2901a763b
+    predicate: has_property
+    object: hygroscopic
+    source_text: AP-6G is hygroscopic and stable under normal recommended conditions.
+    provenance:
+      document_id: 82c28fb6-3a9e-5b8b-b074-a706bbf606a2
+      page: 1
+    confidence: 1.0
+  - subject: 3c127f46-4966-5e9e-a545-69f2901a763b
+    predicate: has_property
+    object: stable under normal conditions
+    source_text: AP-6G is hygroscopic and stable under normal recommended conditions.
+    provenance:
+      document_id: 82c28fb6-3a9e-5b8b-b074-a706bbf606a2
+      page: 1
+    confidence: 1.0
+  - subject: 3c127f46-4966-5e9e-a545-69f2901a763b
+    predicate: has_storage_requirement
+    object: store away from moisture
+    source_text: It should be stored away from moisture, high temperatures, ignition
+      sources, or oxidizing materials.
+    provenance:
+      document_id: 82c28fb6-3a9e-5b8b-b074-a706bbf606a2
+      page: 1
+    confidence: 1.0
+  - subject: 3c127f46-4966-5e9e-a545-69f2901a763b
+    predicate: has_storage_requirement
+    object: store away from high temperatures
+    source_text: It should be stored away from moisture, high temperatures, ignition
+      sources, or oxidizing materials.
+    provenance:
+      document_id: 82c28fb6-3a9e-5b8b-b074-a706bbf606a2
+      page: 1
+    confidence: 1.0
+  - subject: 3c127f46-4966-5e9e-a545-69f2901a763b
+    predicate: has_storage_requirement
+    object: store away from ignition sources
+    source_text: It should be stored away from moisture, high temperatures, ignition
+      sources, or oxidizing materials.
+    provenance:
+      document_id: 82c28fb6-3a9e-5b8b-b074-a706bbf606a2
+      page: 1
+    confidence: 1.0
+  - subject: 3c127f46-4966-5e9e-a545-69f2901a763b
+    predicate: has_storage_requirement
+    object: store away from oxidizing materials
+    source_text: It should be stored away from moisture, high temperatures, ignition
+      sources, or oxidizing materials.
+    provenance:
+      document_id: 82c28fb6-3a9e-5b8b-b074-a706bbf606a2
+      page: 1
+    confidence: 1.0
+  - subject: 3c127f46-4966-5e9e-a545-69f2901a763b
+    predicate: has_hazard
+    object: skin irritant
+    source_text: Avoid contact with skin, eyes, and clothing.
+    provenance:
+      document_id: 82c28fb6-3a9e-5b8b-b074-a706bbf606a2
+      page: 1
+    confidence: 1.0
+  - subject: 3c127f46-4966-5e9e-a545-69f2901a763b
+    predicate: has_hazard
+    object: eye irritant
+    source_text: Avoid contact with skin, eyes, and clothing.
+    provenance:
+      document_id: 82c28fb6-3a9e-5b8b-b074-a706bbf606a2
+      page: 1
+    confidence: 1.0
+  - subject: 3c127f46-4966-5e9e-a545-69f2901a763b
+    predicate: requires_ppe
+    object: protective chemical goggles
+    source_text: The minimum personal protective equipment when handling these materials
+      typically includes protective chemical goggles
+    provenance:
+      document_id: 82c28fb6-3a9e-5b8b-b074-a706bbf606a2
+      page: 1
+    confidence: 1.0
+  - subject: 3c127f46-4966-5e9e-a545-69f2901a763b
+    predicate: requires_ppe
+    object: impenetrable gloves
+    source_text: The minimum personal protective equipment when handling these materials
+      typically includes protective chemical goggles, impenetrable gloves
+    provenance:
+      document_id: 82c28fb6-3a9e-5b8b-b074-a706bbf606a2
+      page: 1
+    confidence: 1.0
+  - subject: 3c127f46-4966-5e9e-a545-69f2901a763b
+    predicate: requires_ppe
+    object: adequate ventilation
+    source_text: Use only with adequate ventilation.
+    provenance:
+      document_id: 82c28fb6-3a9e-5b8b-b074-a706bbf606a2
+      page: 1
+    confidence: 1.0

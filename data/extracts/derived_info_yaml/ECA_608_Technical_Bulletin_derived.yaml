@@ -1,0 +1,550 @@
+doc_id: 131794a6-f3b1-51cc-9026-7db90a5b7acd
+filename: ECA_608_Technical_Bulletin.pdf
+filepath: ${paths.processed_pdfs_root}/ECA_608_Technical_Bulletin.pdf
+extraction_metadata:
+  confidence_scores: ${extraction.default_confidence_scores_derived}
+  extractor_version: ${extraction.extractor_version}
+  extraction_date: '2025-08-28T16:53:00-04:00'
+derived_info:
+  summary: 'ECA 608 is a low viscosity, non-crystallizing liquid anhydride epoxy curing
+    agent blend that is pre-catalyzed with latent proprietary accelerators. This pre-catalyzation
+    provides dual benefits: high reactivity at process temperatures while maintaining
+    excellent pot life at room temperature. The product is specifically designed for
+    processes like pultrusion where residence time at curing temperature is limited.
+    With a molecular weight of 172-174, specific gravity of 1.155-1.159 g/cc, and
+    viscosity range of 50-200 cP, ECA 608 offers easy handling and consistent performance.
+    It provides long working times (over 24 hours) at room temperature but delivers
+    excellent cure response at elevated temperatures, resulting in high crosslinking
+    and relatively high glass transition temperatures. When formulated with various
+    epoxy resins, it achieves glass transition temperatures ranging from 138°C to
+    231°C depending on the resin type. Comparative studies show ECA 608 offers advantages
+    over other anhydrides including lower viscosity than ECA 607 and ECA 100KA, and
+    better balance of gel time and cured Tg properties. The product requires protection
+    from moisture contamination during storage as it reacts with water to form diacids.
+    Safety precautions are necessary as anhydrides are primary skin and eye irritants.'
+  personas:
+    sales_summary: ECA 608 is our premium pre-catalyzed epoxy curing agent that solves
+      multiple processing challenges in a single product. This green liquid offers
+      exceptionally low viscosity (50-200 cP) for easy handling and excellent mixing
+      with various epoxy resins. The built-in latent proprietary accelerators eliminate
+      the need for additional catalyst addition, ensuring batch-to-batch consistency
+      and simplifying your manufacturing process. ECA 608 delivers an ideal balance
+      of long working time (24+ hours at room temperature) with rapid cure response
+      at elevated temperatures, making it perfect for pultrusion and other processes
+      where residence time at curing temperature is limited. When formulated with
+      different epoxy resins, it achieves impressive glass transition temperatures
+      up to 231°C with cycloaliphatic epoxy systems. Comparative testing shows ECA
+      608 outperforms other anhydrides with better viscosity, onset temperature, and
+      gel time characteristics. This versatile product works effectively with standard
+      BPA liquid epoxy, low viscosity BPA liquid, cycloaliphatic epoxy, epoxy phenol
+      novolac, epoxy BPA novolac, and BPF liquid epoxy systems, providing you with
+      formulation flexibility across multiple applications.
+    technical_summary: ECA 608 is a pre-catalyzed anhydride epoxy curing agent with
+      molecular weight 172-174, specific gravity 1.155-1.159 g/cc, and viscosity 50-200
+      cP at 25°C. This green liquid contains latent proprietary accelerators that
+      provide low reactivity at room temperature (>24 hour pot life) but high reactivity
+      at cure temperatures. When formulated with standard BPA liquid epoxy at 89 phr,
+      it yields 750 cP viscosity, 20 min gel time at 100°C, and 152°C Tg after standard
+      cure cycle (1h/120°C + 1h/220°C). With cycloaliphatic epoxy at 122 phr, it achieves
+      231°C Tg. Comparative testing shows ECA 608 has 91°C onset temperature versus
+      107°C for ECA 607 and 120°C for ECA 100KA. ECA 608 reacts with water to form
+      diacids, requiring moisture protection during storage. The product is classified
+      as a primary skin and eye irritant, necessitating appropriate PPE including
+      chemical goggles, impenetrable gloves, and adequate ventilation. Recommended
+      cure schedule is 1 hour at 120°C followed by 1 hour post-cure at 220°C for optimal
+      properties.
+  key_applications:
+  - Pultrusion processes
+  - Epoxy curing systems requiring long pot life
+  - High Tg epoxy formulations
+  - Processes with limited residence time at curing temperature
+  - Cycloaliphatic epoxy systems requiring high Tg
+  - BPA liquid epoxy formulations
+  - Epoxy novolac systems
+  - BPF liquid epoxy applications
+  - Pre-catalyzed anhydride curing systems
+  - Non-crystallizing anhydride applications
+knowledge_graph:
+  entities:
+  - id: e5c960fb-49cd-5123-952a-41c0b3c3dbf0
+    text: ECA 608
+    type: PRODUCT_NAME
+    canonical_name: Epoxy Curing Agent 608
+    aliases:
+    - ECA 608
+    source_text: EPOXY CURING AGENT 608 (ECA 608)
+    provenance:
+      page: 1
+      spans:
+      - start: 0
+        end: 7
+      document_id: 131794a6-f3b1-51cc-9026-7db90a5b7acd
+    metadata: {}
+  - id: 282d06b4-c902-5d79-bf13-f9726ad52ebb
+    text: anhydride epoxy curing agent
+    type: APPLICATION
+    canonical_name: anhydride epoxy curing agent
+    aliases: []
+    source_text: ECA 608 is a low viscosity, non-crystallizing liquid anhydride epoxy
+      curing agent blend.
+    provenance:
+      page: 1
+      spans:
+      - start: 55
+        end: 84
+      document_id: 131794a6-f3b1-51cc-9026-7db90a5b7acd
+    metadata: {}
+  - id: 34e70296-aab7-575a-be64-93413901a2f3
+    text: Dixie Chemical Company
+    type: ORGANIZATION
+    canonical_name: Dixie Chemical Company
+    aliases:
+    - Dixie Chemical
+    source_text: ECA 608 is available from Dixie Chemical Company, Inc.'s plant in
+      Pasadena, Texas.
+    provenance:
+      page: 4
+      spans:
+      - start: 26
+        end: 49
+      document_id: 131794a6-f3b1-51cc-9026-7db90a5b7acd
+    metadata:
+      location: Pasadena, Texas
+  - id: 63835c5a-8372-5363-958f-e599e18f8071
+    text: Standard BPA Liquid Epoxy
+    type: CHEMICAL
+    canonical_name: Standard BPA Liquid Epoxy
+    aliases: []
+    source_text: Standard BPA Liquid Epoxy
+    provenance:
+      page: 2
+      spans:
+      - start: 0
+        end: 25
+      document_id: 131794a6-f3b1-51cc-9026-7db90a5b7acd
+    metadata: {}
+  - id: 3e520ef9-c844-5cde-bf9a-71071edc97ca
+    text: Low Viscosity BPA Liquid
+    type: CHEMICAL
+    canonical_name: Low Viscosity BPA Liquid
+    aliases: []
+    source_text: Low Viscosity BPA Liquid
+    provenance:
+      page: 2
+      spans:
+      - start: 0
+        end: 23
+      document_id: 131794a6-f3b1-51cc-9026-7db90a5b7acd
+    metadata: {}
+  - id: d7b485fb-a24c-58e4-b4d2-a048a442091c
+    text: Cycloaliphatic Epoxy
+    type: CHEMICAL
+    canonical_name: Cycloaliphatic Epoxy
+    aliases: []
+    source_text: Cycloaliphatic Epoxy
+    provenance:
+      page: 2
+      spans:
+      - start: 0
+        end: 19
+      document_id: 131794a6-f3b1-51cc-9026-7db90a5b7acd
+    metadata: {}
+  - id: edf96e32-1626-5d2e-8f19-974f504ebccc
+    text: Epoxy Phenol Novolac
+    type: CHEMICAL
+    canonical_name: Epoxy Phenol Novolac
+    aliases: []
+    source_text: Epoxy Phenol Novolac
+    provenance:
+      page: 2
+      spans:
+      - start: 0
+        end: 20
+      document_id: 131794a6-f3b1-51cc-9026-7db90a5b7acd
+    metadata: {}
+  - id: 36f0f04a-bf68-59d1-9ad0-671f5b68d95d
+    text: Epoxy BPA Novolac
+    type: CHEMICAL
+    canonical_name: Epoxy BPA Novolac
+    aliases: []
+    source_text: Epoxy BPA Novolac
+    provenance:
+      page: 2
+      spans:
+      - start: 0
+        end: 17
+      document_id: 131794a6-f3b1-51cc-9026-7db90a5b7acd
+    metadata: {}
+  - id: c2e1ccef-de15-5f34-86b0-b32166bfc00a
+    text: BPF Liquid Epoxy
+    type: CHEMICAL
+    canonical_name: BPF Liquid Epoxy
+    aliases: []
+    source_text: BPF Liquid Epoxy
+    provenance:
+      page: 2
+      spans:
+      - start: 0
+        end: 16
+      document_id: 131794a6-f3b1-51cc-9026-7db90a5b7acd
+    metadata: {}
+  - id: 7f24c2ea-fb74-551d-a055-cf9f3cfe858a
+    text: ECA 607
+    type: PRODUCT_NAME
+    canonical_name: Epoxy Curing Agent 607
+    aliases:
+    - ECA 607
+    source_text: ECA 607
+    provenance:
+      page: 3
+      spans:
+      - start: 0
+        end: 7
+      document_id: 131794a6-f3b1-51cc-9026-7db90a5b7acd
+    metadata: {}
+  - id: 13db9e36-6f83-5d86-8186-317cc7781b8b
+    text: ECA 609
+    type: PRODUCT_NAME
+    canonical_name: Epoxy Curing Agent 609
+    aliases:
+    - ECA 609
+    source_text: ECA 609
+    provenance:
+      page: 3
+      spans:
+      - start: 0
+        end: 7
+      document_id: 131794a6-f3b1-51cc-9026-7db90a5b7acd
+    metadata: {}
+  - id: d457f2f3-49a9-5c6c-b842-bfc4bf4d995d
+    text: ECA 100NC
+    type: PRODUCT_NAME
+    canonical_name: Epoxy Curing Agent 100NC
+    aliases:
+    - ECA 100NC
+    source_text: ECA 100NC with 2% BDMA
+    provenance:
+      page: 3
+      spans:
+      - start: 0
+        end: 9
+      document_id: 131794a6-f3b1-51cc-9026-7db90a5b7acd
+    metadata: {}
+  - id: b552a849-754c-5482-8b43-1b38845ebace
+    text: ECA 100KA
+    type: PRODUCT_NAME
+    canonical_name: Epoxy Curing Agent 100KA
+    aliases:
+    - ECA 100KA
+    source_text: ECA 100KA
+    provenance:
+      page: 3
+      spans:
+      - start: 0
+        end: 9
+      document_id: 131794a6-f3b1-51cc-9026-7db90a5b7acd
+    metadata: {}
+  - id: 2a9629e3-f818-5fe2-ba32-922d7e8e9674
+    text: BDMA
+    type: CHEMICAL
+    canonical_name: Benzyldimethylamine
+    aliases:
+    - BDMA
+    source_text: ECA 100NC with 2% BDMA
+    provenance:
+      page: 3
+      spans:
+      - start: 18
+        end: 22
+      document_id: 131794a6-f3b1-51cc-9026-7db90a5b7acd
+    metadata: {}
+  - id: 55bcca16-370c-53ea-88b1-5f393c263d73
+    text: pultrusion
+    type: APPLICATION
+    canonical_name: pultrusion
+    aliases: []
+    source_text: It is designed to cure efficiently in processes such as pultrusion
+      where residence time at curing temperature is limited.
+    provenance:
+      page: 1
+      spans:
+      - start: 53
+        end: 63
+      document_id: 131794a6-f3b1-51cc-9026-7db90a5b7acd
+    metadata: {}
+  - id: 910066ba-dd3e-5cd7-bbaf-11693de5eee9
+    text: non-crystallizing
+    type: BENEFIT
+    canonical_name: non-crystallizing
+    aliases: []
+    source_text: ECA 608 is a low viscosity, non-crystallizing liquid anhydride epoxy
+      curing agent blend.
+    provenance:
+      page: 1
+      spans:
+      - start: 27
+        end: 43
+      document_id: 131794a6-f3b1-51cc-9026-7db90a5b7acd
+    metadata: {}
+  kg_triples:
+  - subject: e5c960fb-49cd-5123-952a-41c0b3c3dbf0
+    predicate: is_a
+    object: 282d06b4-c902-5d79-bf13-f9726ad52ebb
+    source_text: ECA 608 is a low viscosity, non-crystallizing liquid anhydride epoxy
+      curing agent blend.
+    confidence: 1.0
+    provenance:
+      document_id: 131794a6-f3b1-51cc-9026-7db90a5b7acd
+  - subject: e5c960fb-49cd-5123-952a-41c0b3c3dbf0
+    predicate: is_manufactured_by
+    object: 34e70296-aab7-575a-be64-93413901a2f3
+    source_text: ECA 608 is available from Dixie Chemical Company, Inc.'s plant in
+      Pasadena, Texas.
+    confidence: 1.0
+    provenance:
+      document_id: 131794a6-f3b1-51cc-9026-7db90a5b7acd
+  - subject: e5c960fb-49cd-5123-952a-41c0b3c3dbf0
+    predicate: has_application
+    object: 55bcca16-370c-53ea-88b1-5f393c263d73
+    source_text: It is designed to cure efficiently in processes such as pultrusion
+      where residence time at curing temperature is limited.
+    confidence: 1.0
+    provenance:
+      document_id: 131794a6-f3b1-51cc-9026-7db90a5b7acd
+  - subject: e5c960fb-49cd-5123-952a-41c0b3c3dbf0
+    predicate: has_benefit
+    object: 910066ba-dd3e-5cd7-bbaf-11693de5eee9
+    source_text: ECA 608 is a low viscosity, non-crystallizing liquid anhydride epoxy
+      curing agent blend.
+    confidence: 1.0
+    provenance:
+      document_id: 131794a6-f3b1-51cc-9026-7db90a5b7acd
+  - subject: e5c960fb-49cd-5123-952a-41c0b3c3dbf0
+    predicate: has_molecular_weight
+    object: 172 - 174
+    source_text: 'Molecular Weight (average): 172 - 174'
+    confidence: 1.0
+    provenance:
+      document_id: 131794a6-f3b1-51cc-9026-7db90a5b7acd
+  - subject: e5c960fb-49cd-5123-952a-41c0b3c3dbf0
+    predicate: has_specific_gravity
+    object: 1.155 - 1.159 g/cc
+    source_text: 'Specific gravity @ 25°C, g/cc: 1.155 - 1.159'
+    confidence: 1.0
+    provenance:
+      document_id: 131794a6-f3b1-51cc-9026-7db90a5b7acd
+  - subject: e5c960fb-49cd-5123-952a-41c0b3c3dbf0
+    predicate: has_appearance
+    object: Green Liquid
+    source_text: 'Appearance: Green Liquid'
+    confidence: 1.0
+    provenance:
+      document_id: 131794a6-f3b1-51cc-9026-7db90a5b7acd
+  - subject: e5c960fb-49cd-5123-952a-41c0b3c3dbf0
+    predicate: has_viscosity
+    object: 50 - 200 cP
+    source_text: 'Viscosity (Brookfield at 25 °C), cP: 50 - 200'
+    confidence: 1.0
+    provenance:
+      document_id: 131794a6-f3b1-51cc-9026-7db90a5b7acd
+  - subject: e5c960fb-49cd-5123-952a-41c0b3c3dbf0
+    predicate: has_benefit
+    object: low viscosity
+    source_text: 'Easy Handling: Low viscosity liquid gives low viscosity mixes with
+      various epoxy resins'
+    confidence: 1.0
+    provenance:
+      document_id: 131794a6-f3b1-51cc-9026-7db90a5b7acd
+  - subject: e5c960fb-49cd-5123-952a-41c0b3c3dbf0
+    predicate: has_benefit
+    object: pre-catalyzed
+    source_text: For convenience, it is pre-catalyzed with latent proprietary accelerators
+    confidence: 1.0
+    provenance:
+      document_id: 131794a6-f3b1-51cc-9026-7db90a5b7acd
+  - subject: e5c960fb-49cd-5123-952a-41c0b3c3dbf0
+    predicate: has_benefit
+    object: long pot life
+    source_text: Formulations of ECA 608 and liquid epoxies have a long pot life/working
+      time in excess of 24 hours.
+    confidence: 1.0
+    provenance:
+      document_id: 131794a6-f3b1-51cc-9026-7db90a5b7acd
+  - subject: e5c960fb-49cd-5123-952a-41c0b3c3dbf0
+    predicate: has_benefit
+    object: high reactivity at cure temperature
+    source_text: 'High reactivity at cure temperature: Gives excellent cure response
+      at cure temperatures, resulting in high crosslinking and relatively high Tg.'
+    confidence: 1.0
+    provenance:
+      document_id: 131794a6-f3b1-51cc-9026-7db90a5b7acd
+  - subject: e5c960fb-49cd-5123-952a-41c0b3c3dbf0
+    predicate: has_storage_requirement
+    object: protected from moisture contamination
+    source_text: ECA 608 should be stored in such a way that it is carefully protected
+      from moisture contamination.
+    confidence: 1.0
+    provenance:
+      document_id: 131794a6-f3b1-51cc-9026-7db90a5b7acd
+  - subject: e5c960fb-49cd-5123-952a-41c0b3c3dbf0
+    predicate: has_safety_hazard
+    object: primary skin irritant
+    source_text: These anhydrides are primary skin and eye irritants.
+    confidence: 1.0
+    provenance:
+      document_id: 131794a6-f3b1-51cc-9026-7db90a5b7acd
+  - subject: e5c960fb-49cd-5123-952a-41c0b3c3dbf0
+    predicate: has_safety_hazard
+    object: primary eye irritant
+    source_text: These anhydrides are primary skin and eye irritants.
+    confidence: 1.0
+    provenance:
+      document_id: 131794a6-f3b1-51cc-9026-7db90a5b7acd
+  - subject: e5c960fb-49cd-5123-952a-41c0b3c3dbf0
+    predicate: requires_ppe
+    object: protective chemical goggles
+    source_text: At a minimum, these procedures typically include protective chemical
+      goggles, impenetrable gloves, and measures to avoid breathing chemical vapors.
+    confidence: 1.0
+    provenance:
+      document_id: 131794a6-f3b1-51cc-9026-7db90a5b7acd
+  - subject: e5c960fb-49cd-5123-952a-41c0b3c3dbf0
+    predicate: requires_ppe
+    object: impenetrable gloves
+    source_text: At a minimum, these procedures typically include protective chemical
+      goggles, impenetrable gloves, and measures to avoid breathing chemical vapors.
+    confidence: 1.0
+    provenance:
+      document_id: 131794a6-f3b1-51cc-9026-7db90a5b7acd
+  - subject: e5c960fb-49cd-5123-952a-41c0b3c3dbf0
+    predicate: requires_ppe
+    object: adequate ventilation
+    source_text: Use only with adequate ventilation.
+    confidence: 1.0
+    provenance:
+      document_id: 131794a6-f3b1-51cc-9026-7db90a5b7acd
+  - subject: e5c960fb-49cd-5123-952a-41c0b3c3dbf0
+    predicate: has_first_aid
+    object: flush with water for at least 15 minutes
+    source_text: Generally, these procedures include immediately flushing the affected
+      skin or eyes with copious amounts of water for at least 15 minutes.
+    confidence: 1.0
+    provenance:
+      document_id: 131794a6-f3b1-51cc-9026-7db90a5b7acd
+  - subject: e5c960fb-49cd-5123-952a-41c0b3c3dbf0
+    predicate: formulated_with
+    object: 63835c5a-8372-5363-958f-e599e18f8071
+    source_text: ECA 608 was formulated with a variety of epoxy resins.
+    confidence: 1.0
+    provenance:
+      document_id: 131794a6-f3b1-51cc-9026-7db90a5b7acd
+  - subject: e5c960fb-49cd-5123-952a-41c0b3c3dbf0
+    predicate: formulated_with
+    object: 3e520ef9-c844-5cde-bf9a-71071edc97ca
+    source_text: ECA 608 was formulated with a variety of epoxy resins.
+    confidence: 1.0
+    provenance:
+      document_id: 131794a6-f3b1-51cc-9026-7db90a5b7acd
+  - subject: e5c960fb-49cd-5123-952a-41c0b3c3dbf0
+    predicate: formulated_with
+    object: d7b485fb-a24c-58e4-b4d2-a048a442091c
+    source_text: ECA 608 was formulated with a variety of epoxy resins.
+    confidence: 1.0
+    provenance:
+      document_id: 131794a6-f3b1-51cc-9026-7db90a5b7acd
+  - subject: e5c960fb-49cd-5123-952a-41c0b3c3dbf0
+    predicate: formulated_with
+    object: edf96e32-1626-5d2e-8f19-974f504ebccc
+    source_text: ECA 608 was formulated with a variety of epoxy resins.
+    confidence: 1.0
+    provenance:
+      document_id: 131794a6-f3b1-51cc-9026-7db90a5b7acd
+  - subject: e5c960fb-49cd-5123-952a-41c0b3c3dbf0
+    predicate: formulated_with
+    object: 36f0f04a-bf68-59d1-9ad0-671f5b68d95d
+    source_text: ECA 608 was formulated with a variety of epoxy resins.
+    confidence: 1.0
+    provenance:
+      document_id: 131794a6-f3b1-51cc-9026-7db90a5b7acd
+  - subject: e5c960fb-49cd-5123-952a-41c0b3c3dbf0
+    predicate: formulated_with
+    object: c2e1ccef-de15-5f34-86b0-b32166bfc00a
+    source_text: ECA 608 was formulated with a variety of epoxy resins.
+    confidence: 1.0
+    provenance:
+      document_id: 131794a6-f3b1-51cc-9026-7db90a5b7acd
+  - subject: e5c960fb-49cd-5123-952a-41c0b3c3dbf0
+    predicate: compared_to
+    object: 7f24c2ea-fb74-551d-a055-cf9f3cfe858a
+    source_text: Different pre-catalyzed anhydrides were formulated with a standard
+      BPA liquid epoxy resin.
+    confidence: 1.0
+    provenance:
+      document_id: 131794a6-f3b1-51cc-9026-7db90a5b7acd
+  - subject: e5c960fb-49cd-5123-952a-41c0b3c3dbf0
+    predicate: compared_to
+    object: 13db9e36-6f83-5d86-8186-317cc7781b8b
+    source_text: Different pre-catalyzed anhydrides were formulated with a standard
+      BPA liquid epoxy resin.
+    confidence: 1.0
+    provenance:
+      document_id: 131794a6-f3b1-51cc-9026-7db90a5b7acd
+  - subject: e5c960fb-49cd-5123-952a-41c0b3c3dbf0
+    predicate: compared_to
+    object: d457f2f3-49a9-5c6c-b842-bfc4bf4d995d
+    source_text: Different pre-catalyzed anhydrides were formulated with a standard
+      BPA liquid epoxy resin.
+    confidence: 1.0
+    provenance:
+      document_id: 131794a6-f3b1-51cc-9026-7db90a5b7acd
+  - subject: e5c960fb-49cd-5123-952a-41c0b3c3dbf0
+    predicate: compared_to
+    object: b552a849-754c-5482-8b43-1b38845ebace
+    source_text: Different pre-catalyzed anhydrides were formulated with a standard
+      BPA liquid epoxy resin.
+    confidence: 1.0
+    provenance:
+      document_id: 131794a6-f3b1-51cc-9026-7db90a5b7acd
+  - subject: e5c960fb-49cd-5123-952a-41c0b3c3dbf0
+    predicate: has_onset_temperature
+    object: 91°C
+    source_text: 'Onset Temperature, oC: 91'
+    confidence: 1.0
+    provenance:
+      document_id: 131794a6-f3b1-51cc-9026-7db90a5b7acd
+  - subject: e5c960fb-49cd-5123-952a-41c0b3c3dbf0
+    predicate: has_gel_time
+    object: 20 min
+    source_text: 'Gel Time, min: 20'
+    confidence: 1.0
+    provenance:
+      document_id: 131794a6-f3b1-51cc-9026-7db90a5b7acd
+  - subject: e5c960fb-49cd-5123-952a-41c0b3c3dbf0
+    predicate: has_cured_tg
+    object: 152°C
+    source_text: 'Cured Tg, °C: 152'
+    confidence: 1.0
+    provenance:
+      document_id: 131794a6-f3b1-51cc-9026-7db90a5b7acd
+  - subject: e5c960fb-49cd-5123-952a-41c0b3c3dbf0
+    predicate: achieves_tg_with
+    object: 231°C with Cycloaliphatic Epoxy
+    source_text: 'Cycloaliphatic Epoxy: Cured Tg, °C: 231'
+    confidence: 1.0
+    provenance:
+      document_id: 131794a6-f3b1-51cc-9026-7db90a5b7acd
+  - subject: e5c960fb-49cd-5123-952a-41c0b3c3dbf0
+    predicate: has_chemical_reaction
+    object: reacts with water to form diacids
+    source_text: ECA 608 will react with water to form diacids.
+    confidence: 1.0
+    provenance:
+      document_id: 131794a6-f3b1-51cc-9026-7db90a5b7acd
+  - subject: e5c960fb-49cd-5123-952a-41c0b3c3dbf0
+    predicate: has_cure_schedule
+    object: 1 hour at 120°C followed by 1 hour at 220°C
+    source_text: Samples were cured for 1 hour at 120°C, followed by a post-cure of
+      1 hour at 220°C
+    confidence: 1.0
+    provenance:
+      document_id: 131794a6-f3b1-51cc-9026-7db90a5b7acd
