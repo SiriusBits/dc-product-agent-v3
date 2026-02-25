@@ -1,76 +1,60 @@
 doc_id: cffbcedd-5e83-58bd-9e78-d7a8a23c4ee4
 filename: MHHPA_301_Technical_Bulletin.pdf
-filepath: ${paths.processed_pdfs_root}/MHHPA_301_Technical_Bulletin.pdf
+filepath: data/pdf_extracts/v1/pdfs/MHHPA_301_Technical_Bulletin.pdf
 extraction_metadata:
-  confidence_scores: ${extraction.default_confidence_scores_derived}
-  extractor_version: ${extraction.extractor_version}
+  confidence_scores:
+    summary: 100
+    personas: 100
+    key_applications: 100
+    knowledge_graph: 100
+    overall: 100
+  extractor_version: dev
   extraction_date: '2025-08-28T16:53:00-04:00'
 derived_info:
-  summary: This technical bulletin provides detailed information about MHHPA 301 (Pre-Catalyzed
-    Methylhexahydrophthalic Anhydride), a specialty epoxy curing agent manufactured
-    by Dixie Chemical. The product is characterized as a low color, low viscosity,
-    pre-catalyzed epoxy curing agent with a proprietary catalyst that offers several
-    key benefits. These include easy handling due to its low viscosity (40-100 cP
-    at 25°C), convenience by eliminating the need to add small amounts of catalyst,
-    consistency by preventing batch-to-batch differences, low reactivity at room temperature
-    providing long working times, high reactivity at cure temperature resulting in
-    high crosslinking and relatively high glass transition temperatures (Tg), and
-    low color development making it suitable for premium optical and electrical applications.
-    The bulletin includes a comprehensive formulation example showing MHHPA 301's
-    compatibility with various epoxy resin types, including standard BPA liquid epoxy,
-    low viscosity BPA liquid, cycloaliphatic epoxy, epoxy phenol novolac, epoxy BPA
-    novolac, and BPF liquid epoxy. For each formulation, the document provides details
-    on the parts per hundred resin (phr) of MHHPA 301 used, the resulting viscosity
-    at 25°C, gel time, and glass transition temperature after curing. The highest
-    Tg (206°C) is achieved with cycloaliphatic epoxy. The bulletin also includes a
-    vapor pressure vs. temperature graph showing the product's vapor pressure characteristics
-    from 0°C to 200°C. Important handling and storage information emphasizes protecting
-    the product from moisture contamination to prevent formation of methylhexahydrophthalic
-    acid. Health hazard information identifies the product as a primary skin and eye
-    irritant, requiring appropriate personal protective equipment including chemical
-    goggles and impenetrable gloves. The product is available from Dixie Chemical's
-    plant in Pasadena, Texas.
+  summary: This technical bulletin provides detailed information about MHHPA 301 (Pre-Catalyzed Methylhexahydrophthalic Anhydride),
+    a specialty epoxy curing agent manufactured by Dixie Chemical. The product is characterized as a low color, low viscosity,
+    pre-catalyzed epoxy curing agent with a proprietary catalyst that offers several key benefits. These include easy handling
+    due to its low viscosity (40-100 cP at 25°C), convenience by eliminating the need to add small amounts of catalyst, consistency
+    by preventing batch-to-batch differences, low reactivity at room temperature providing long working times, high reactivity
+    at cure temperature resulting in high crosslinking and relatively high glass transition temperatures (Tg), and low color
+    development making it suitable for premium optical and electrical applications. The bulletin includes a comprehensive
+    formulation example showing MHHPA 301's compatibility with various epoxy resin types, including standard BPA liquid epoxy,
+    low viscosity BPA liquid, cycloaliphatic epoxy, epoxy phenol novolac, epoxy BPA novolac, and BPF liquid epoxy. For each
+    formulation, the document provides details on the parts per hundred resin (phr) of MHHPA 301 used, the resulting viscosity
+    at 25°C, gel time, and glass transition temperature after curing. The highest Tg (206°C) is achieved with cycloaliphatic
+    epoxy. The bulletin also includes a vapor pressure vs. temperature graph showing the product's vapor pressure characteristics
+    from 0°C to 200°C. Important handling and storage information emphasizes protecting the product from moisture contamination
+    to prevent formation of methylhexahydrophthalic acid. Health hazard information identifies the product as a primary skin
+    and eye irritant, requiring appropriate personal protective equipment including chemical goggles and impenetrable gloves.
+    The product is available from Dixie Chemical's plant in Pasadena, Texas.
   personas:
-    sales_summary: MHHPA 301 is a premium pre-catalyzed epoxy curing agent that offers
-      significant advantages for your customers in high-performance electrical, optical,
-      and composite applications. This clear liquid product comes with the catalyst
-      already incorporated, eliminating the need for your customers to handle, measure,
-      and disperse small amounts of catalyst—saving them time, reducing errors, and
-      ensuring batch-to-batch consistency. With its low viscosity (40-100 cP), MHHPA
-      301 creates low-viscosity mixtures with various epoxy resins, making it exceptionally
-      easy to process and apply. The product's dual-reactivity profile provides extended
-      working time at room temperature for comfortable processing, while delivering
-      excellent cure response at elevated temperatures, resulting in high crosslinking
-      and impressive glass transition temperatures (up to 206°C with cycloaliphatic
-      epoxy systems). MHHPA 301's low color and exceptional resistance to yellowing
-      make it the ideal choice for applications where optical clarity and electrical
-      performance are critical, such as LED encapsulation, optical components, and
-      high-performance electrical insulation. Our comprehensive formulation data demonstrates
-      MHHPA 301's versatility across six different epoxy resin types, allowing you
-      to recommend the optimal formulation based on your customer's specific performance
-      requirements. The product is manufactured at our Pasadena, Texas facility with
-      strict quality control to ensure consistent performance in your customers' most
-      demanding applications.
-    technical_summary: MHHPA 301 is a pre-catalyzed methylhexahydrophthalic anhydride
-      with a molecular weight of 170 and specific gravity of 1.20 g/cc at 25°C. This
-      clear liquid has a controlled viscosity range of 40-100 cP (Brookfield at 25°C)
-      and low color (< 50 Pt-Co). The product contains a proprietary catalyst system
-      that eliminates the need for separate catalyst addition while maintaining low
-      reactivity at ambient temperature and high reactivity at cure temperature. Vapor
-      pressure remains below 1 mm Hg up to approximately 110°C, then increases exponentially
-      to approximately 80 mm Hg at 200°C. Formulation guidelines typically recommend
-      80-90 phr with bisphenol A liquid epoxy resins, though optimal loading varies
-      by resin type (89 phr for standard BPA liquid epoxy, 122 phr for cycloaliphatic
-      epoxy). When properly cured (1 hr at 120°C + 1 hr at 220°C), systems achieve
-      glass transition temperatures ranging from 134°C (epoxy phenol novolac) to 206°C
-      (cycloaliphatic epoxy). The product's low residual unsaturation provides excellent
-      resistance to yellowing, critical for optical applications. MHHPA 301 is moisture-sensitive
-      and will form methylhexahydrophthalic acid upon water exposure; therefore, storage
-      conditions must prevent moisture contamination. The material is classified as
-      a primary skin and eye irritant, requiring appropriate PPE including chemical
-      goggles, impenetrable gloves, and adequate ventilation. Quality control testing
-      employs standard methods including D-102 (ASTM D 4052) for specific gravity,
-      D-104 for appearance, D-150 for viscosity, and D-103 (ASTM D 1209) for color.
+    sales_summary: MHHPA 301 is a premium pre-catalyzed epoxy curing agent that offers significant advantages for your customers
+      in high-performance electrical, optical, and composite applications. This clear liquid product comes with the catalyst
+      already incorporated, eliminating the need for your customers to handle, measure, and disperse small amounts of catalyst—saving
+      them time, reducing errors, and ensuring batch-to-batch consistency. With its low viscosity (40-100 cP), MHHPA 301 creates
+      low-viscosity mixtures with various epoxy resins, making it exceptionally easy to process and apply. The product's dual-reactivity
+      profile provides extended working time at room temperature for comfortable processing, while delivering excellent cure
+      response at elevated temperatures, resulting in high crosslinking and impressive glass transition temperatures (up to
+      206°C with cycloaliphatic epoxy systems). MHHPA 301's low color and exceptional resistance to yellowing make it the
+      ideal choice for applications where optical clarity and electrical performance are critical, such as LED encapsulation,
+      optical components, and high-performance electrical insulation. Our comprehensive formulation data demonstrates MHHPA
+      301's versatility across six different epoxy resin types, allowing you to recommend the optimal formulation based on
+      your customer's specific performance requirements. The product is manufactured at our Pasadena, Texas facility with
+      strict quality control to ensure consistent performance in your customers' most demanding applications.
+    technical_summary: MHHPA 301 is a pre-catalyzed methylhexahydrophthalic anhydride with a molecular weight of 170 and specific
+      gravity of 1.20 g/cc at 25°C. This clear liquid has a controlled viscosity range of 40-100 cP (Brookfield at 25°C) and
+      low color (< 50 Pt-Co). The product contains a proprietary catalyst system that eliminates the need for separate catalyst
+      addition while maintaining low reactivity at ambient temperature and high reactivity at cure temperature. Vapor pressure
+      remains below 1 mm Hg up to approximately 110°C, then increases exponentially to approximately 80 mm Hg at 200°C. Formulation
+      guidelines typically recommend 80-90 phr with bisphenol A liquid epoxy resins, though optimal loading varies by resin
+      type (89 phr for standard BPA liquid epoxy, 122 phr for cycloaliphatic epoxy). When properly cured (1 hr at 120°C +
+      1 hr at 220°C), systems achieve glass transition temperatures ranging from 134°C (epoxy phenol novolac) to 206°C (cycloaliphatic
+      epoxy). The product's low residual unsaturation provides excellent resistance to yellowing, critical for optical applications.
+      MHHPA 301 is moisture-sensitive and will form methylhexahydrophthalic acid upon water exposure; therefore, storage conditions
+      must prevent moisture contamination. The material is classified as a primary skin and eye irritant, requiring appropriate
+      PPE including chemical goggles, impenetrable gloves, and adequate ventilation. Quality control testing employs standard
+      methods including D-102 (ASTM D 4052) for specific gravity, D-104 for appearance, D-150 for viscosity, and D-103 (ASTM
+      D 1209) for color.
   key_applications:
   - Epoxy curing agent
   - Optical component encapsulation
@@ -81,330 +65,6 @@ derived_info:
   - Cycloaliphatic epoxy systems
   - Bisphenol A epoxy systems
   - Epoxy novolac systems
-  knowledge_graph:
-    entities:
-    - id: 055d83b0-ee7d-5b7b-9279-7f03b5dce0df
-      text: MHHPA 301
-      type: PRODUCT_NAME
-      canonical_name: PRE-CATALYZED METHYLHEXAHYDROPHTHALIC ANHYDRIDE
-      aliases:
-      - MHHPA 301
-      - Methylhexahydrophthalic Anhydride
-      - PRE-CATALYZED METHYLHEXAHYDROPHTHALIC ANHYDRIDE
-      - Pre-catalyzed MHHPA
-      source_text: PRE-CATALYZED METHYLHEXAHYDROPHTHALIC ANHYDRIDE (MHHPA 301)
-      provenance:
-        document_id: cffbcedd-5e83-58bd-9e78-d7a8a23c4ee4
-        page: 1
-      metadata:
-        manufacturer: Dixie Chemical
-        product_family: Anhydrides
-    - id: f47ac10b-58cc-4372-a567-0e02b2c3d501
-      type: CHEMICAL
-      canonical_name: Methylhexahydrophthalic Anhydride
-      aliases:
-      - MHHPA 301
-      - PRE-CATALYZED METHYLHEXAHYDROPHTHALIC ANHYDRIDE
-      - Pre-Catalyzed MHHPA
-      source_text: PRE-CATALYZED METHYLHEXAHYDROPHTHALIC ANHYDRIDE (MHHPA 301)
-      provenance:
-        document_id: 550e8400-e29b-41d4-a716-446655440003
-        page: 1
-    - id: f47ac10b-58cc-4372-a567-0e02b2c3d502
-      type: ORGANIZATION
-      canonical_name: Dixie Chemical
-      aliases:
-      - Dixie Chemical Company
-      - Dixie Chemical Company, Inc.
-      source_text: DIXIE CHEMICAL 10601 Bay Area Blvd. Pasadena, TX 77507
-      provenance:
-        document_id: 550e8400-e29b-41d4-a716-446655440003
-        page: 1
-    - id: f47ac10b-58cc-4372-a567-0e02b2c3d503
-      type: CHEMICAL
-      canonical_name: methylhexahydrophthalic acid
-      aliases: []
-      source_text: MHHPA 301 will react with water to form methylhexahydrophthalic
-        acid.
-      provenance:
-        document_id: 550e8400-e29b-41d4-a716-446655440003
-        page: 3
-    - id: f47ac10b-58cc-4372-a567-0e02b2c3d504
-      type: CHEMICAL
-      canonical_name: Standard BPA Liquid Epoxy
-      aliases:
-      - Bisphenol A liquid epoxy resin
-      source_text: Standard BPA Liquid Epoxy
-      provenance:
-        document_id: 550e8400-e29b-41d4-a716-446655440003
-        page: 3
-    - id: f47ac10b-58cc-4372-a567-0e02b2c3d505
-      type: CHEMICAL
-      canonical_name: Low Viscosity BPA Liquid
-      aliases: []
-      source_text: Low Viscosity BPA Liquid
-      provenance:
-        document_id: 550e8400-e29b-41d4-a716-446655440003
-        page: 3
-    - id: f47ac10b-58cc-4372-a567-0e02b2c3d506
-      type: CHEMICAL
-      canonical_name: Cycloaliphatic Epoxy
-      aliases: []
-      source_text: Cycloaliphatic Epoxy
-      provenance:
-        document_id: 550e8400-e29b-41d4-a716-446655440003
-        page: 3
-    - id: f47ac10b-58cc-4372-a567-0e02b2c3d507
-      type: CHEMICAL
-      canonical_name: Epoxy Phenol Novolac
-      aliases: []
-      source_text: Epoxy Phenol Novolac
-      provenance:
-        document_id: 550e8400-e29b-41d4-a716-446655440003
-        page: 3
-    - id: f47ac10b-58cc-4372-a567-0e02b2c3d508
-      type: CHEMICAL
-      canonical_name: Epoxy BPA Novolac
-      aliases: []
-      source_text: Epoxy BPA Novolac
-      provenance:
-        document_id: 550e8400-e29b-41d4-a716-446655440003
-        page: 3
-    - id: f47ac10b-58cc-4372-a567-0e02b2c3d509
-      type: CHEMICAL
-      canonical_name: BPF Liquid Epoxy
-      aliases: []
-      source_text: BPF Liquid Epoxy
-      provenance:
-        document_id: 550e8400-e29b-41d4-a716-446655440003
-        page: 3
-    - id: f47ac10b-58cc-4372-a567-0e02b2c3d510
-      type: LOCATION
-      canonical_name: Pasadena, Texas
-      aliases: []
-      source_text: MHHPA 301 is available from Dixie Chemical Company, Inc.'s plant
-        in Pasadena, Texas.
-      provenance:
-        document_id: 550e8400-e29b-41d4-a716-446655440003
-        page: 4
-    - id: f47ac10b-58cc-4372-a567-0e02b2c3d511
-      type: CHEMICAL_CLASS
-      canonical_name: Anhydrides
-      aliases: []
-      source_text: PRE-CATALYZED METHYLHEXAHYDROPHTHALIC ANHYDRIDE
-      provenance:
-        document_id: 550e8400-e29b-41d4-a716-446655440003
-        page: 1
-    - id: f47ac10b-58cc-4372-a567-0e02b2c3d512
-      type: DOCUMENT
-      canonical_name: FORMULATING ANHYDRIDE-CURED EPOXY SYSTEMS
-      aliases: []
-      source_text: For more information on the use of anhydrides like MHHPA 301 as
-        epoxy curing agents, please consult the Technical Bulletin, FORMULATING ANHYDRIDE-CURED
-        EPOXY SYSTEMS, available from Dixie Chemical Company.
-      provenance:
-        document_id: 550e8400-e29b-41d4-a716-446655440003
-        page: 2
-    - id: f47ac10b-58cc-4372-a567-0e02b2c3d513
-      type: DOCUMENT
-      canonical_name: Epoxy Curing Agent Storage Requirements
-      aliases: []
-      source_text: For more details on the design of bulk storage for MHHPA 301, consult
-        the Dixie Chemical Company brochure "Epoxy Curing Agent Storage Requirements."
-      provenance:
-        document_id: 550e8400-e29b-41d4-a716-446655440003
-        page: 3
-    kg_triples:
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
-      predicate: is_a
-      object: f47ac10b-58cc-4372-a567-0e02b2c3d511
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
-      predicate: is_produced_by
-      object: f47ac10b-58cc-4372-a567-0e02b2c3d502
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
-      predicate: has_typical_property
-      object:
-        property: Molecular Weight (average)
-        value: '170'
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
-      predicate: has_typical_property
-      object:
-        property: Specific gravity @ 25°C
-        value: 1.20 g/cc
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
-      predicate: has_typical_property
-      object:
-        property: Appearance
-        value: clear liquid
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
-      predicate: has_typical_property
-      object:
-        property: Viscosity (Brookfield at 25 °C)
-        value: 40 - 100 cP
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
-      predicate: has_typical_property
-      object:
-        property: Color, Pt-Co
-        value: < 50
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
-      predicate: has_application
-      object: Epoxy curing agent
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
-      predicate: has_application
-      object: Optical component encapsulation
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
-      predicate: has_application
-      object: Electrical insulation
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
-      predicate: has_application
-      object: LED encapsulation
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
-      predicate: has_application
-      object: Electronic component potting
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
-      predicate: has_key_benefit
-      object: 'Easy Handling: Low viscosity liquid gives low viscosity mixes with
-        various epoxy resins'
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
-      predicate: has_key_benefit
-      object: 'Convenience: Eliminates the need to add small amounts of catalyst'
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
-      predicate: has_key_benefit
-      object: 'Consistency: Prevents potential batch-to-batch differences caused by
-        errors in measuring and properly dispersing small amounts of catalyst'
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
-      predicate: has_key_benefit
-      object: 'Low reactivity at room temperature: Provides long working times and
-        pot lives for mixes with epoxy resins'
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
-      predicate: has_key_benefit
-      object: 'High reactivity at cure temperature: Gives excellent cure response
-        at cure temperatures, resulting in high crosslinking and relatively high Tg'
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
-      predicate: has_key_benefit
-      object: 'Low color and low color development: Low residual unsaturation gives
-        maximum resistance to yellowing'
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
-      predicate: reacts_with
-      object: f47ac10b-58cc-4372-a567-0e02b2c3d504
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
-      predicate: reacts_with
-      object: f47ac10b-58cc-4372-a567-0e02b2c3d505
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
-      predicate: reacts_with
-      object: f47ac10b-58cc-4372-a567-0e02b2c3d506
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
-      predicate: reacts_with
-      object: f47ac10b-58cc-4372-a567-0e02b2c3d507
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
-      predicate: reacts_with
-      object: f47ac10b-58cc-4372-a567-0e02b2c3d508
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
-      predicate: reacts_with
-      object: f47ac10b-58cc-4372-a567-0e02b2c3d509
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
-      predicate: has_safety_hazard
-      object: primary skin irritant
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
-      predicate: has_safety_hazard
-      object: primary eye irritant
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
-      predicate: has_storage_requirement
-      object: protect from moisture
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
-      predicate: reacts_with_to_form
-      object:
-        reactant: water
-        product:
-          id: f47ac10b-58cc-4372-a567-0e02b2c3d503
-          name: methylhexahydrophthalic acid
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
-      predicate: is_available_from
-      object: f47ac10b-58cc-4372-a567-0e02b2c3d510
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
-      predicate: has_formulation_data_with
-      object:
-        epoxy_type: Standard BPA Liquid Epoxy
-        mhhpa_301_phr: 89
-        viscosity_25c_cp: 1050
-        gel_time_min: 18
-        tg_c: 145
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
-      predicate: has_formulation_data_with
-      object:
-        epoxy_type: Low Viscosity BPA Liquid
-        mhhpa_301_phr: 80
-        viscosity_25c_cp: 150
-        gel_time_min: 18
-        tg_c: 140
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
-      predicate: has_formulation_data_with
-      object:
-        epoxy_type: Cycloaliphatic Epoxy
-        mhhpa_301_phr: 122
-        viscosity_25c_cp: 139
-        gel_time_min: 24
-        tg_c: 206
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
-      predicate: has_formulation_data_with
-      object:
-        epoxy_type: Epoxy Phenol Novolac
-        mhhpa_301_phr: 96
-        viscosity_25c_cp: 968
-        gel_time_min: 17
-        tg_c: 134
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
-      predicate: has_formulation_data_with
-      object:
-        epoxy_type: Epoxy BPA Novolac
-        mhhpa_301_phr: 87
-        viscosity_25c_cp: 3630
-        gel_time_min: 17
-        tg_c: 150
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
-      predicate: has_formulation_data_with
-      object:
-        epoxy_type: BPF Liquid Epoxy
-        mhhpa_301_phr: 96
-        viscosity_25c_cp: 488
-        gel_time_min: 15
-        tg_c: 138
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d502
-      predicate: publishes
-      object: f47ac10b-58cc-4372-a567-0e02b2c3d512
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d502
-      predicate: publishes
-      object: f47ac10b-58cc-4372-a567-0e02b2c3d513
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
-      predicate: has_vapor_pressure_at_temperature
-      object:
-        temperature_c: 100
-        vapor_pressure_mmhg: 0.5
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
-      predicate: has_vapor_pressure_at_temperature
-      object:
-        temperature_c: 120
-        vapor_pressure_mmhg: 2
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
-      predicate: has_vapor_pressure_at_temperature
-      object:
-        temperature_c: 140
-        vapor_pressure_mmhg: 5
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
-      predicate: has_vapor_pressure_at_temperature
-      object:
-        temperature_c: 160
-        vapor_pressure_mmhg: 15
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
-      predicate: has_vapor_pressure_at_temperature
-      object:
-        temperature_c: 180
-        vapor_pressure_mmhg: 40
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
-      predicate: has_vapor_pressure_at_temperature
-      object:
-        temperature_c: 200
-        vapor_pressure_mmhg: 80
 knowledge_graph:
   entities:
   - id: 055d83b0-ee7d-5b7b-9279-7f03b5dce0df
@@ -423,4 +83,373 @@ knowledge_graph:
     metadata:
       manufacturer: Dixie Chemical
       product_family: Anhydrides
-  kg_triples: []
+  - id: f47ac10b-58cc-4372-a567-0e02b2c3d501
+    type: CHEMICAL
+    canonical_name: Methylhexahydrophthalic Anhydride
+    aliases:
+    - MHHPA 301
+    - PRE-CATALYZED METHYLHEXAHYDROPHTHALIC ANHYDRIDE
+    - Pre-Catalyzed MHHPA
+    source_text: PRE-CATALYZED METHYLHEXAHYDROPHTHALIC ANHYDRIDE (MHHPA 301)
+    provenance:
+      document_id: 550e8400-e29b-41d4-a716-446655440003
+      page: 1
+    text: Methylhexahydrophthalic Anhydride
+    metadata: {}
+  - id: f47ac10b-58cc-4372-a567-0e02b2c3d502
+    type: ORGANIZATION
+    canonical_name: Dixie Chemical
+    aliases:
+    - Dixie Chemical Company
+    - Dixie Chemical Company, Inc.
+    source_text: DIXIE CHEMICAL 10601 Bay Area Blvd. Pasadena, TX 77507
+    provenance:
+      document_id: 550e8400-e29b-41d4-a716-446655440003
+      page: 1
+    text: Dixie Chemical
+    metadata: {}
+  - id: f47ac10b-58cc-4372-a567-0e02b2c3d503
+    type: CHEMICAL
+    canonical_name: methylhexahydrophthalic acid
+    aliases: []
+    source_text: MHHPA 301 will react with water to form methylhexahydrophthalic acid.
+    provenance:
+      document_id: 550e8400-e29b-41d4-a716-446655440003
+      page: 3
+    text: methylhexahydrophthalic acid
+    metadata: {}
+  - id: f47ac10b-58cc-4372-a567-0e02b2c3d504
+    type: CHEMICAL
+    canonical_name: Standard BPA Liquid Epoxy
+    aliases:
+    - Bisphenol A liquid epoxy resin
+    source_text: Standard BPA Liquid Epoxy
+    provenance:
+      document_id: 550e8400-e29b-41d4-a716-446655440003
+      page: 3
+    text: Standard BPA Liquid Epoxy
+    metadata: {}
+  - id: f47ac10b-58cc-4372-a567-0e02b2c3d505
+    type: CHEMICAL
+    canonical_name: Low Viscosity BPA Liquid
+    aliases: []
+    source_text: Low Viscosity BPA Liquid
+    provenance:
+      document_id: 550e8400-e29b-41d4-a716-446655440003
+      page: 3
+    text: Low Viscosity BPA Liquid
+    metadata: {}
+  - id: f47ac10b-58cc-4372-a567-0e02b2c3d506
+    type: CHEMICAL
+    canonical_name: Cycloaliphatic Epoxy
+    aliases: []
+    source_text: Cycloaliphatic Epoxy
+    provenance:
+      document_id: 550e8400-e29b-41d4-a716-446655440003
+      page: 3
+    text: Cycloaliphatic Epoxy
+    metadata: {}
+  - id: f47ac10b-58cc-4372-a567-0e02b2c3d507
+    type: CHEMICAL
+    canonical_name: Epoxy Phenol Novolac
+    aliases: []
+    source_text: Epoxy Phenol Novolac
+    provenance:
+      document_id: 550e8400-e29b-41d4-a716-446655440003
+      page: 3
+    text: Epoxy Phenol Novolac
+    metadata: {}
+  - id: f47ac10b-58cc-4372-a567-0e02b2c3d508
+    type: CHEMICAL
+    canonical_name: Epoxy BPA Novolac
+    aliases: []
+    source_text: Epoxy BPA Novolac
+    provenance:
+      document_id: 550e8400-e29b-41d4-a716-446655440003
+      page: 3
+    text: Epoxy BPA Novolac
+    metadata: {}
+  - id: f47ac10b-58cc-4372-a567-0e02b2c3d509
+    type: CHEMICAL
+    canonical_name: BPF Liquid Epoxy
+    aliases: []
+    source_text: BPF Liquid Epoxy
+    provenance:
+      document_id: 550e8400-e29b-41d4-a716-446655440003
+      page: 3
+    text: BPF Liquid Epoxy
+    metadata: {}
+  - id: f47ac10b-58cc-4372-a567-0e02b2c3d510
+    type: LOCATION
+    canonical_name: Pasadena, Texas
+    aliases: []
+    source_text: MHHPA 301 is available from Dixie Chemical Company, Inc.'s plant in Pasadena, Texas.
+    provenance:
+      document_id: 550e8400-e29b-41d4-a716-446655440003
+      page: 4
+    text: Pasadena, Texas
+    metadata: {}
+  - id: f47ac10b-58cc-4372-a567-0e02b2c3d511
+    type: CHEMICAL_CLASS
+    canonical_name: Anhydrides
+    aliases: []
+    source_text: PRE-CATALYZED METHYLHEXAHYDROPHTHALIC ANHYDRIDE
+    provenance:
+      document_id: 550e8400-e29b-41d4-a716-446655440003
+      page: 1
+    text: Anhydrides
+    metadata: {}
+  - id: f47ac10b-58cc-4372-a567-0e02b2c3d512
+    type: DOCUMENT
+    canonical_name: FORMULATING ANHYDRIDE-CURED EPOXY SYSTEMS
+    aliases: []
+    source_text: For more information on the use of anhydrides like MHHPA 301 as epoxy curing agents, please consult the Technical
+      Bulletin, FORMULATING ANHYDRIDE-CURED EPOXY SYSTEMS, available from Dixie Chemical Company.
+    provenance:
+      document_id: 550e8400-e29b-41d4-a716-446655440003
+      page: 2
+    text: FORMULATING ANHYDRIDE-CURED EPOXY SYSTEMS
+    metadata: {}
+  - id: f47ac10b-58cc-4372-a567-0e02b2c3d513
+    type: DOCUMENT
+    canonical_name: Epoxy Curing Agent Storage Requirements
+    aliases: []
+    source_text: For more details on the design of bulk storage for MHHPA 301, consult the Dixie Chemical Company brochure
+      "Epoxy Curing Agent Storage Requirements."
+    provenance:
+      document_id: 550e8400-e29b-41d4-a716-446655440003
+      page: 3
+    text: Epoxy Curing Agent Storage Requirements
+    metadata: {}
+  kg_triples:
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
+    predicate: is_a
+    object: f47ac10b-58cc-4372-a567-0e02b2c3d511
+    source_text: Methylhexahydrophthalic Anhydride is a Anhydrides
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
+    predicate: is_produced_by
+    object: f47ac10b-58cc-4372-a567-0e02b2c3d502
+    source_text: Methylhexahydrophthalic Anhydride is produced by Dixie Chemical
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
+    predicate: has_typical_property
+    object:
+      property: Molecular Weight (average)
+      value: '170'
+    source_text: 'Methylhexahydrophthalic Anhydride has typical property Molecular Weight (average): 170'
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
+    predicate: has_typical_property
+    object:
+      property: Specific gravity @ 25°C
+      value: 1.20 g/cc
+    source_text: 'Methylhexahydrophthalic Anhydride has typical property Specific gravity @ 25°C: 1.20 g/cc'
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
+    predicate: has_typical_property
+    object:
+      property: Appearance
+      value: clear liquid
+    source_text: 'Methylhexahydrophthalic Anhydride has typical property Appearance: clear liquid'
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
+    predicate: has_typical_property
+    object:
+      property: Viscosity (Brookfield at 25 °C)
+      value: 40 - 100 cP
+    source_text: 'Methylhexahydrophthalic Anhydride has typical property Viscosity (Brookfield at 25 °C): 40 - 100 cP'
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
+    predicate: has_typical_property
+    object:
+      property: Color, Pt-Co
+      value: < 50
+    source_text: 'Methylhexahydrophthalic Anhydride has typical property Color, Pt-Co: < 50'
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
+    predicate: has_application
+    object: Epoxy curing agent
+    source_text: Methylhexahydrophthalic Anhydride has application Epoxy curing agent
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
+    predicate: has_application
+    object: Optical component encapsulation
+    source_text: Methylhexahydrophthalic Anhydride has application Optical component encapsulation
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
+    predicate: has_application
+    object: Electrical insulation
+    source_text: Methylhexahydrophthalic Anhydride has application Electrical insulation
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
+    predicate: has_application
+    object: LED encapsulation
+    source_text: Methylhexahydrophthalic Anhydride has application LED encapsulation
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
+    predicate: has_application
+    object: Electronic component potting
+    source_text: Methylhexahydrophthalic Anhydride has application Electronic component potting
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
+    predicate: has_key_benefit
+    object: 'Easy Handling: Low viscosity liquid gives low viscosity mixes with various epoxy resins'
+    source_text: 'Methylhexahydrophthalic Anhydride has key benefit Easy Handling: Low viscosity liquid gives low viscosity
+      mixes with various epoxy resins'
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
+    predicate: has_key_benefit
+    object: 'Convenience: Eliminates the need to add small amounts of catalyst'
+    source_text: 'Methylhexahydrophthalic Anhydride has key benefit Convenience: Eliminates the need to add small amounts
+      of catalyst'
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
+    predicate: has_key_benefit
+    object: 'Consistency: Prevents potential batch-to-batch differences caused by errors in measuring and properly dispersing
+      small amounts of catalyst'
+    source_text: 'Methylhexahydrophthalic Anhydride has key benefit Consistency: Prevents potential batch-to-batch differences
+      caused by errors in measuring and properly dispersing small amounts of catalyst'
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
+    predicate: has_key_benefit
+    object: 'Low reactivity at room temperature: Provides long working times and pot lives for mixes with epoxy resins'
+    source_text: 'Methylhexahydrophthalic Anhydride has key benefit Low reactivity at room temperature: Provides long working
+      times and pot lives for mixes with epoxy resins'
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
+    predicate: has_key_benefit
+    object: 'High reactivity at cure temperature: Gives excellent cure response at cure temperatures, resulting in high crosslinking
+      and relatively high Tg'
+    source_text: 'Methylhexahydrophthalic Anhydride has key benefit High reactivity at cure temperature: Gives excellent cure
+      response at cure temperatures, resulting in high crosslinking and relatively high Tg'
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
+    predicate: has_key_benefit
+    object: 'Low color and low color development: Low residual unsaturation gives maximum resistance to yellowing'
+    source_text: 'Methylhexahydrophthalic Anhydride has key benefit Low color and low color development: Low residual unsaturation
+      gives maximum resistance to yellowing'
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
+    predicate: reacts_with
+    object: f47ac10b-58cc-4372-a567-0e02b2c3d504
+    source_text: Methylhexahydrophthalic Anhydride reacts with Standard BPA Liquid Epoxy
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
+    predicate: reacts_with
+    object: f47ac10b-58cc-4372-a567-0e02b2c3d505
+    source_text: Methylhexahydrophthalic Anhydride reacts with Low Viscosity BPA Liquid
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
+    predicate: reacts_with
+    object: f47ac10b-58cc-4372-a567-0e02b2c3d506
+    source_text: Methylhexahydrophthalic Anhydride reacts with Cycloaliphatic Epoxy
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
+    predicate: reacts_with
+    object: f47ac10b-58cc-4372-a567-0e02b2c3d507
+    source_text: Methylhexahydrophthalic Anhydride reacts with Epoxy Phenol Novolac
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
+    predicate: reacts_with
+    object: f47ac10b-58cc-4372-a567-0e02b2c3d508
+    source_text: Methylhexahydrophthalic Anhydride reacts with Epoxy BPA Novolac
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
+    predicate: reacts_with
+    object: f47ac10b-58cc-4372-a567-0e02b2c3d509
+    source_text: Methylhexahydrophthalic Anhydride reacts with BPF Liquid Epoxy
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
+    predicate: has_safety_hazard
+    object: primary skin irritant
+    source_text: Methylhexahydrophthalic Anhydride has safety hazard primary skin irritant
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
+    predicate: has_safety_hazard
+    object: primary eye irritant
+    source_text: Methylhexahydrophthalic Anhydride has safety hazard primary eye irritant
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
+    predicate: has_storage_requirement
+    object: protect from moisture
+    source_text: Methylhexahydrophthalic Anhydride has storage requirement protect from moisture
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
+    predicate: reacts_with_to_form
+    object:
+      property: reactant
+      value: 'reactant=water, product={''id'': ''f47ac10b-58cc-4372-a567-0e02b2c3d503'', ''name'': ''methylhexahydrophthalic
+        acid''}'
+    source_text: 'Methylhexahydrophthalic Anhydride reacts with to form {''reactant'': ''water'', ''product'': {''id'': ''f47ac10b-58cc-4372-a567-0e02b2c3d503'',
+      ''name'': ''methylhexahydrophthalic acid''}}'
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
+    predicate: is_available_from
+    object: f47ac10b-58cc-4372-a567-0e02b2c3d510
+    source_text: Methylhexahydrophthalic Anhydride is available from Pasadena, Texas
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
+    predicate: has_formulation_data_with
+    object:
+      property: epoxy_type
+      value: epoxy_type=Standard BPA Liquid Epoxy, mhhpa_301_phr=89, viscosity_25c_cp=1050, gel_time_min=18, tg_c=145
+    source_text: 'Methylhexahydrophthalic Anhydride has formulation data with {''epoxy_type'': ''Standard BPA Liquid Epoxy'',
+      ''mhhpa_301_phr'': 89, ''viscosity_25c_cp'': 1050, ''gel_time_min'': 18, ''tg_c'': 145}'
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
+    predicate: has_formulation_data_with
+    object:
+      property: epoxy_type
+      value: epoxy_type=Low Viscosity BPA Liquid, mhhpa_301_phr=80, viscosity_25c_cp=150, gel_time_min=18, tg_c=140
+    source_text: 'Methylhexahydrophthalic Anhydride has formulation data with {''epoxy_type'': ''Low Viscosity BPA Liquid'',
+      ''mhhpa_301_phr'': 80, ''viscosity_25c_cp'': 150, ''gel_time_min'': 18, ''tg_c'': 140}'
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
+    predicate: has_formulation_data_with
+    object:
+      property: epoxy_type
+      value: epoxy_type=Cycloaliphatic Epoxy, mhhpa_301_phr=122, viscosity_25c_cp=139, gel_time_min=24, tg_c=206
+    source_text: 'Methylhexahydrophthalic Anhydride has formulation data with {''epoxy_type'': ''Cycloaliphatic Epoxy'', ''mhhpa_301_phr'':
+      122, ''viscosity_25c_cp'': 139, ''gel_time_min'': 24, ''tg_c'': 206}'
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
+    predicate: has_formulation_data_with
+    object:
+      property: epoxy_type
+      value: epoxy_type=Epoxy Phenol Novolac, mhhpa_301_phr=96, viscosity_25c_cp=968, gel_time_min=17, tg_c=134
+    source_text: 'Methylhexahydrophthalic Anhydride has formulation data with {''epoxy_type'': ''Epoxy Phenol Novolac'', ''mhhpa_301_phr'':
+      96, ''viscosity_25c_cp'': 968, ''gel_time_min'': 17, ''tg_c'': 134}'
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
+    predicate: has_formulation_data_with
+    object:
+      property: epoxy_type
+      value: epoxy_type=Epoxy BPA Novolac, mhhpa_301_phr=87, viscosity_25c_cp=3630, gel_time_min=17, tg_c=150
+    source_text: 'Methylhexahydrophthalic Anhydride has formulation data with {''epoxy_type'': ''Epoxy BPA Novolac'', ''mhhpa_301_phr'':
+      87, ''viscosity_25c_cp'': 3630, ''gel_time_min'': 17, ''tg_c'': 150}'
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
+    predicate: has_formulation_data_with
+    object:
+      property: epoxy_type
+      value: epoxy_type=BPF Liquid Epoxy, mhhpa_301_phr=96, viscosity_25c_cp=488, gel_time_min=15, tg_c=138
+    source_text: 'Methylhexahydrophthalic Anhydride has formulation data with {''epoxy_type'': ''BPF Liquid Epoxy'', ''mhhpa_301_phr'':
+      96, ''viscosity_25c_cp'': 488, ''gel_time_min'': 15, ''tg_c'': 138}'
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d502
+    predicate: publishes
+    object: f47ac10b-58cc-4372-a567-0e02b2c3d512
+    source_text: Dixie Chemical publishes FORMULATING ANHYDRIDE-CURED EPOXY SYSTEMS
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d502
+    predicate: publishes
+    object: f47ac10b-58cc-4372-a567-0e02b2c3d513
+    source_text: Dixie Chemical publishes Epoxy Curing Agent Storage Requirements
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
+    predicate: has_vapor_pressure_at_temperature
+    object:
+      property: temperature_c
+      value: temperature_c=100, vapor_pressure_mmhg=0.5
+    source_text: 'Methylhexahydrophthalic Anhydride has vapor pressure at temperature {''temperature_c'': 100, ''vapor_pressure_mmhg'':
+      0.5}'
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
+    predicate: has_vapor_pressure_at_temperature
+    object:
+      property: temperature_c
+      value: temperature_c=120, vapor_pressure_mmhg=2
+    source_text: 'Methylhexahydrophthalic Anhydride has vapor pressure at temperature {''temperature_c'': 120, ''vapor_pressure_mmhg'':
+      2}'
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
+    predicate: has_vapor_pressure_at_temperature
+    object:
+      property: temperature_c
+      value: temperature_c=140, vapor_pressure_mmhg=5
+    source_text: 'Methylhexahydrophthalic Anhydride has vapor pressure at temperature {''temperature_c'': 140, ''vapor_pressure_mmhg'':
+      5}'
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
+    predicate: has_vapor_pressure_at_temperature
+    object:
+      property: temperature_c
+      value: temperature_c=160, vapor_pressure_mmhg=15
+    source_text: 'Methylhexahydrophthalic Anhydride has vapor pressure at temperature {''temperature_c'': 160, ''vapor_pressure_mmhg'':
+      15}'
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
+    predicate: has_vapor_pressure_at_temperature
+    object:
+      property: temperature_c
+      value: temperature_c=180, vapor_pressure_mmhg=40
+    source_text: 'Methylhexahydrophthalic Anhydride has vapor pressure at temperature {''temperature_c'': 180, ''vapor_pressure_mmhg'':
+      40}'
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d501
+    predicate: has_vapor_pressure_at_temperature
+    object:
+      property: temperature_c
+      value: temperature_c=200, vapor_pressure_mmhg=80
+    source_text: 'Methylhexahydrophthalic Anhydride has vapor pressure at temperature {''temperature_c'': 200, ''vapor_pressure_mmhg'':
+      80}'
+document_type: Product Technical Bulletin

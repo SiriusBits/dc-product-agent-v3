@@ -30,479 +30,7 @@
       "Optical lenses and components",
       "High-performance adhesives",
       "Specialty coatings requiring clarity"
-    ],
-    "knowledge_graph": {
-      "entities": [
-        {
-          "id": "312b0f5c-a81a-5e72-946f-5e4d33fefd07",
-          "text": "MHHPA-NC",
-          "type": "PRODUCT_NAME",
-          "canonical_name": "Methylhexahydrophthalic Anhydride-NC",
-          "aliases": [
-            "MHHPA-NC",
-            "Methylhexahydrophthalic Anhydride-NC"
-          ],
-          "source_text": "Methylhexahydrophthalic Anhydride-NC (MHHPA-NC)",
-          "provenance": {
-            "document_id": "1c0b982f-c206-5ada-adac-704309b24fb6",
-            "page": 1
-          },
-          "metadata": {
-            "manufacturer": "Dixie Chemical",
-            "product_family": "Anhydride"
-          }
-        },
-        {
-          "id": "550e8400-e29b-41d4-a716-446655440201",
-          "type": "CHEMICAL",
-          "canonical_name": "Methylhexahydrophthalic Anhydride-NC",
-          "aliases": [
-            "MHHPA-NC",
-            "Methylhexahydrophthalic Anhydride-NC"
-          ],
-          "source_text": "METHYLHEXAHYDROPHTHALIC ANHYDRIDE-NC (MHHPA-NC) CAS Reg. No. 25550-51-0",
-          "provenance": {
-            "document_id": "550e8400-e29b-41d4-a716-446655440021",
-            "page": 1
-          }
-        },
-        {
-          "id": "550e8400-e29b-41d4-a716-446655440202",
-          "type": "CAS_NUMBER",
-          "canonical_name": "25550-51-0",
-          "aliases": [
-            "CAS Reg. No. 25550-51-0"
-          ],
-          "source_text": "METHYLHEXAHYDROPHTHALIC ANHYDRIDE-NC (MHHPA-NC) CAS Reg. No. 25550-51-0",
-          "provenance": {
-            "document_id": "550e8400-e29b-41d4-a716-446655440021",
-            "page": 1
-          }
-        },
-        {
-          "id": "550e8400-e29b-41d4-a716-446655440203",
-          "type": "CHEMICAL_CLASS",
-          "canonical_name": "Anhydrides",
-          "aliases": [
-            "Anhydride"
-          ],
-          "source_text": "MHHPA NC is a clear colorless, high purity liquid which can be used alone or in combination with hexahydrophthalic anhydride to produce a lower melting mixture or with other anhydrides to modify physical properties.",
-          "provenance": {
-            "document_id": "550e8400-e29b-41d4-a716-446655440021",
-            "page": 2
-          }
-        },
-        {
-          "id": "550e8400-e29b-41d4-a716-446655440204",
-          "type": "CHEMICAL",
-          "canonical_name": "Hexahydrophthalic Anhydride",
-          "aliases": [],
-          "source_text": "MHHPA NC is a clear colorless, high purity liquid which can be used alone or in combination with hexahydrophthalic anhydride to produce a lower melting mixture or with other anhydrides to modify physical properties.",
-          "provenance": {
-            "document_id": "550e8400-e29b-41d4-a716-446655440021",
-            "page": 2
-          }
-        },
-        {
-          "id": "550e8400-e29b-41d4-a716-446655440205",
-          "type": "CHEMICAL",
-          "canonical_name": "Epoxy Resin",
-          "aliases": [
-            "Epoxy resins"
-          ],
-          "source_text": "Its low residual unsaturation level gives maximum resistance to yellowing in coatings and castings, making it desirable where premium optical and electrical performance are needed in epoxy casting and encapsulation applications.",
-          "provenance": {
-            "document_id": "550e8400-e29b-41d4-a716-446655440021",
-            "page": 2
-          }
-        },
-        {
-          "id": "550e8400-e29b-41d4-a716-446655440206",
-          "type": "CHEMICAL",
-          "canonical_name": "Standard BPA Liquid Epoxy",
-          "aliases": [],
-          "source_text": "Standard BPA Liquid Epoxy",
-          "provenance": {
-            "document_id": "550e8400-e29b-41d4-a716-446655440021",
-            "page": 3
-          }
-        },
-        {
-          "id": "550e8400-e29b-41d4-a716-446655440207",
-          "type": "CHEMICAL",
-          "canonical_name": "Low Viscosity BPA Liquid",
-          "aliases": [],
-          "source_text": "Low Viscosity BPA Liquid",
-          "provenance": {
-            "document_id": "550e8400-e29b-41d4-a716-446655440021",
-            "page": 3
-          }
-        },
-        {
-          "id": "550e8400-e29b-41d4-a716-446655440208",
-          "type": "CHEMICAL",
-          "canonical_name": "Cycloaliphatic Epoxy",
-          "aliases": [],
-          "source_text": "Cycloaliphatic Epoxy",
-          "provenance": {
-            "document_id": "550e8400-e29b-41d4-a716-446655440021",
-            "page": 3
-          }
-        },
-        {
-          "id": "550e8400-e29b-41d4-a716-446655440209",
-          "type": "CHEMICAL",
-          "canonical_name": "Epoxy Phenol Novolac",
-          "aliases": [],
-          "source_text": "Epoxy Phenol Novolac",
-          "provenance": {
-            "document_id": "550e8400-e29b-41d4-a716-446655440021",
-            "page": 3
-          }
-        },
-        {
-          "id": "550e8400-e29b-41d4-a716-446655440210",
-          "type": "CHEMICAL",
-          "canonical_name": "Epoxy BPA Novolac",
-          "aliases": [],
-          "source_text": "Epoxy BPA Novolac",
-          "provenance": {
-            "document_id": "550e8400-e29b-41d4-a716-446655440021",
-            "page": 3
-          }
-        },
-        {
-          "id": "550e8400-e29b-41d4-a716-446655440211",
-          "type": "CHEMICAL",
-          "canonical_name": "BPF Liquid Epoxy",
-          "aliases": [],
-          "source_text": "BPF Liquid Epoxy",
-          "provenance": {
-            "document_id": "550e8400-e29b-41d4-a716-446655440021",
-            "page": 3
-          }
-        },
-        {
-          "id": "550e8400-e29b-41d4-a716-446655440212",
-          "type": "CHEMICAL",
-          "canonical_name": "1-Methylimidazole",
-          "aliases": [],
-          "source_text": "The samples were formulated with 100 parts of epoxy resin, 84-117 parts MHHPA NC, and 1 part 1-Methylimidazole.",
-          "provenance": {
-            "document_id": "550e8400-e29b-41d4-a716-446655440021",
-            "page": 3
-          }
-        },
-        {
-          "id": "550e8400-e29b-41d4-a716-446655440213",
-          "type": "ORGANIZATION",
-          "canonical_name": "Dixie Chemical",
-          "aliases": [
-            "Dixie Chemical Company"
-          ],
-          "source_text": "MHHPA NC is available from Dixie Chemical in Pasadena, Texas.",
-          "provenance": {
-            "document_id": "550e8400-e29b-41d4-a716-446655440021",
-            "page": 4
-          }
-        },
-        {
-          "id": "550e8400-e29b-41d4-a716-446655440214",
-          "type": "LOCATION",
-          "canonical_name": "Pasadena, Texas",
-          "aliases": [],
-          "source_text": "MHHPA NC is available from Dixie Chemical in Pasadena, Texas.",
-          "provenance": {
-            "document_id": "550e8400-e29b-41d4-a716-446655440021",
-            "page": 4
-          }
-        },
-        {
-          "id": "550e8400-e29b-41d4-a716-446655440215",
-          "type": "DOCUMENT",
-          "canonical_name": "Formulating Anhydride-Cured Epoxy Systems",
-          "aliases": [],
-          "source_text": "For more information on the use of anhydrides like MHHPA NC as epoxy curing agents, please consult the Technical Bulletin, \"Formulating Anhydride-Cured Epoxy Systems\", available from Dixie Chemical.",
-          "provenance": {
-            "document_id": "550e8400-e29b-41d4-a716-446655440021",
-            "page": 2
-          }
-        },
-        {
-          "id": "550e8400-e29b-41d4-a716-446655440216",
-          "type": "DOCUMENT",
-          "canonical_name": "Epoxy Curing Agent Storage Requirements",
-          "aliases": [],
-          "source_text": "For more details on the design of bulk storage for MHHPA-NC, consult the Dixie Chemical Company brochure \"Epoxy Curing Agent Storage Requirements.\"",
-          "provenance": {
-            "document_id": "550e8400-e29b-41d4-a716-446655440021",
-            "page": 3
-          }
-        }
-      ],
-      "kg_triples": [
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440201",
-          "predicate": "has_identifier",
-          "object_id": "550e8400-e29b-41d4-a716-446655440202"
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440201",
-          "predicate": "is_a",
-          "object_id": "550e8400-e29b-41d4-a716-446655440203"
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440201",
-          "predicate": "can_be_combined_with",
-          "object_id": "550e8400-e29b-41d4-a716-446655440204"
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440201",
-          "predicate": "cures",
-          "object_id": "550e8400-e29b-41d4-a716-446655440205"
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440201",
-          "predicate": "has_molecular_weight",
-          "object": "168"
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440201",
-          "predicate": "has_total_anhydride",
-          "object": "99% Min"
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440201",
-          "predicate": "has_specific_gravity",
-          "object": "1.15 g/cc @ 25°C"
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440201",
-          "predicate": "has_appearance",
-          "object": "Clear Liquid"
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440201",
-          "predicate": "has_color",
-          "object": "25 Max Pt-co"
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440201",
-          "predicate": "has_freezing_point",
-          "object": "-29 to -31 °C"
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440201",
-          "predicate": "has_pour_point",
-          "object": "-38 to -40 °F"
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440201",
-          "predicate": "manufactured_by",
-          "object_id": "550e8400-e29b-41d4-a716-446655440213"
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440201",
-          "predicate": "used_in",
-          "object": "Epoxy casting for optical applications"
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440201",
-          "predicate": "used_in",
-          "object": "Electrical/electronic encapsulation"
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440201",
-          "predicate": "used_in",
-          "object": "High-temperature resistant composites"
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440201",
-          "predicate": "used_in",
-          "object": "Yellowing-resistant coatings"
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440201",
-          "predicate": "used_in",
-          "object": "Fiber-reinforced composites"
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440201",
-          "predicate": "used_in",
-          "object": "Filament winding applications"
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440201",
-          "predicate": "used_in",
-          "object": "Potting compounds for electronics"
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440201",
-          "predicate": "used_in",
-          "object": "Optical lenses and components"
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440201",
-          "predicate": "used_in",
-          "object": "High-performance adhesives"
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440201",
-          "predicate": "used_in",
-          "object": "Specialty coatings requiring clarity"
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440201",
-          "predicate": "provides_property",
-          "object": "Maximum resistance to yellowing"
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440201",
-          "predicate": "provides_property",
-          "object": "Premium optical performance"
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440201",
-          "predicate": "provides_property",
-          "object": "Premium electrical performance"
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440201",
-          "predicate": "provides_property",
-          "object": "Excellent cure response"
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440201",
-          "predicate": "provides_property",
-          "object": "High crosslinking"
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440201",
-          "predicate": "provides_property",
-          "object": "High glass transition temperature"
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440201",
-          "predicate": "has_safety_hazard",
-          "object": "Primary skin irritant"
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440201",
-          "predicate": "has_safety_hazard",
-          "object": "Primary eye irritant"
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440201",
-          "predicate": "requires_ppe",
-          "object": "Protective chemical goggles"
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440201",
-          "predicate": "requires_ppe",
-          "object": "Impenetrable gloves"
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440201",
-          "predicate": "requires_ppe",
-          "object": "Adequate ventilation"
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440201",
-          "predicate": "has_storage_requirement",
-          "object": "Protect from moisture"
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440201",
-          "predicate": "has_special_handling",
-          "object": "Heat to 80°C for 24 hours if crystallization occurs"
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440201",
-          "predicate": "has_special_handling",
-          "object": "Use within 48 hours of melting"
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440201",
-          "predicate": "compatible_with",
-          "object_id": "550e8400-e29b-41d4-a716-446655440206"
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440201",
-          "predicate": "compatible_with",
-          "object_id": "550e8400-e29b-41d4-a716-446655440207"
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440201",
-          "predicate": "compatible_with",
-          "object_id": "550e8400-e29b-41d4-a716-446655440208"
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440201",
-          "predicate": "compatible_with",
-          "object_id": "550e8400-e29b-41d4-a716-446655440209"
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440201",
-          "predicate": "compatible_with",
-          "object_id": "550e8400-e29b-41d4-a716-446655440210"
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440201",
-          "predicate": "compatible_with",
-          "object_id": "550e8400-e29b-41d4-a716-446655440211"
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440201",
-          "predicate": "used_with_catalyst",
-          "object_id": "550e8400-e29b-41d4-a716-446655440212"
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440201",
-          "predicate": "achieves_tg_with",
-          "object": "156°C with Standard BPA Liquid Epoxy"
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440201",
-          "predicate": "achieves_tg_with",
-          "object": "132°C with Low Viscosity BPA Liquid"
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440201",
-          "predicate": "achieves_tg_with",
-          "object": "221°C with Cycloaliphatic Epoxy"
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440201",
-          "predicate": "achieves_tg_with",
-          "object": "157°C with Epoxy Phenol Novolac"
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440201",
-          "predicate": "achieves_tg_with",
-          "object": "142°C with Epoxy BPA Novolac"
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440201",
-          "predicate": "achieves_tg_with",
-          "object": "148°C with BPF Liquid Epoxy"
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440213",
-          "predicate": "located_in",
-          "object_id": "550e8400-e29b-41d4-a716-446655440214"
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440213",
-          "predicate": "publishes",
-          "object_id": "550e8400-e29b-41d4-a716-446655440215"
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440213",
-          "predicate": "publishes",
-          "object_id": "550e8400-e29b-41d4-a716-446655440216"
-        }
-      ]
-    }
+    ]
   },
   "knowledge_graph": {
     "entities": [
@@ -524,9 +52,541 @@
           "manufacturer": "Dixie Chemical",
           "product_family": "Anhydride"
         }
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440201",
+        "type": "CHEMICAL",
+        "canonical_name": "Methylhexahydrophthalic Anhydride-NC",
+        "aliases": [
+          "MHHPA-NC",
+          "Methylhexahydrophthalic Anhydride-NC"
+        ],
+        "source_text": "METHYLHEXAHYDROPHTHALIC ANHYDRIDE-NC (MHHPA-NC) CAS Reg. No. 25550-51-0",
+        "provenance": {
+          "document_id": "550e8400-e29b-41d4-a716-446655440021",
+          "page": 1
+        },
+        "text": "Methylhexahydrophthalic Anhydride-NC",
+        "metadata": {}
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440202",
+        "type": "CAS_NUMBER",
+        "canonical_name": "25550-51-0",
+        "aliases": [
+          "CAS Reg. No. 25550-51-0"
+        ],
+        "source_text": "METHYLHEXAHYDROPHTHALIC ANHYDRIDE-NC (MHHPA-NC) CAS Reg. No. 25550-51-0",
+        "provenance": {
+          "document_id": "550e8400-e29b-41d4-a716-446655440021",
+          "page": 1
+        },
+        "text": "25550-51-0",
+        "metadata": {}
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440203",
+        "type": "CHEMICAL_CLASS",
+        "canonical_name": "Anhydrides",
+        "aliases": [
+          "Anhydride"
+        ],
+        "source_text": "MHHPA NC is a clear colorless, high purity liquid which can be used alone or in combination with hexahydrophthalic anhydride to produce a lower melting mixture or with other anhydrides to modify physical properties.",
+        "provenance": {
+          "document_id": "550e8400-e29b-41d4-a716-446655440021",
+          "page": 2
+        },
+        "text": "Anhydrides",
+        "metadata": {}
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440204",
+        "type": "CHEMICAL",
+        "canonical_name": "Hexahydrophthalic Anhydride",
+        "aliases": [],
+        "source_text": "MHHPA NC is a clear colorless, high purity liquid which can be used alone or in combination with hexahydrophthalic anhydride to produce a lower melting mixture or with other anhydrides to modify physical properties.",
+        "provenance": {
+          "document_id": "550e8400-e29b-41d4-a716-446655440021",
+          "page": 2
+        },
+        "text": "Hexahydrophthalic Anhydride",
+        "metadata": {}
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440205",
+        "type": "CHEMICAL",
+        "canonical_name": "Epoxy Resin",
+        "aliases": [
+          "Epoxy resins"
+        ],
+        "source_text": "Its low residual unsaturation level gives maximum resistance to yellowing in coatings and castings, making it desirable where premium optical and electrical performance are needed in epoxy casting and encapsulation applications.",
+        "provenance": {
+          "document_id": "550e8400-e29b-41d4-a716-446655440021",
+          "page": 2
+        },
+        "text": "Epoxy Resin",
+        "metadata": {}
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440206",
+        "type": "CHEMICAL",
+        "canonical_name": "Standard BPA Liquid Epoxy",
+        "aliases": [],
+        "source_text": "Standard BPA Liquid Epoxy",
+        "provenance": {
+          "document_id": "550e8400-e29b-41d4-a716-446655440021",
+          "page": 3
+        },
+        "text": "Standard BPA Liquid Epoxy",
+        "metadata": {}
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440207",
+        "type": "CHEMICAL",
+        "canonical_name": "Low Viscosity BPA Liquid",
+        "aliases": [],
+        "source_text": "Low Viscosity BPA Liquid",
+        "provenance": {
+          "document_id": "550e8400-e29b-41d4-a716-446655440021",
+          "page": 3
+        },
+        "text": "Low Viscosity BPA Liquid",
+        "metadata": {}
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440208",
+        "type": "CHEMICAL",
+        "canonical_name": "Cycloaliphatic Epoxy",
+        "aliases": [],
+        "source_text": "Cycloaliphatic Epoxy",
+        "provenance": {
+          "document_id": "550e8400-e29b-41d4-a716-446655440021",
+          "page": 3
+        },
+        "text": "Cycloaliphatic Epoxy",
+        "metadata": {}
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440209",
+        "type": "CHEMICAL",
+        "canonical_name": "Epoxy Phenol Novolac",
+        "aliases": [],
+        "source_text": "Epoxy Phenol Novolac",
+        "provenance": {
+          "document_id": "550e8400-e29b-41d4-a716-446655440021",
+          "page": 3
+        },
+        "text": "Epoxy Phenol Novolac",
+        "metadata": {}
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440210",
+        "type": "CHEMICAL",
+        "canonical_name": "Epoxy BPA Novolac",
+        "aliases": [],
+        "source_text": "Epoxy BPA Novolac",
+        "provenance": {
+          "document_id": "550e8400-e29b-41d4-a716-446655440021",
+          "page": 3
+        },
+        "text": "Epoxy BPA Novolac",
+        "metadata": {}
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440211",
+        "type": "CHEMICAL",
+        "canonical_name": "BPF Liquid Epoxy",
+        "aliases": [],
+        "source_text": "BPF Liquid Epoxy",
+        "provenance": {
+          "document_id": "550e8400-e29b-41d4-a716-446655440021",
+          "page": 3
+        },
+        "text": "BPF Liquid Epoxy",
+        "metadata": {}
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440212",
+        "type": "CHEMICAL",
+        "canonical_name": "1-Methylimidazole",
+        "aliases": [],
+        "source_text": "The samples were formulated with 100 parts of epoxy resin, 84-117 parts MHHPA NC, and 1 part 1-Methylimidazole.",
+        "provenance": {
+          "document_id": "550e8400-e29b-41d4-a716-446655440021",
+          "page": 3
+        },
+        "text": "1-Methylimidazole",
+        "metadata": {}
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440213",
+        "type": "ORGANIZATION",
+        "canonical_name": "Dixie Chemical",
+        "aliases": [
+          "Dixie Chemical Company"
+        ],
+        "source_text": "MHHPA NC is available from Dixie Chemical in Pasadena, Texas.",
+        "provenance": {
+          "document_id": "550e8400-e29b-41d4-a716-446655440021",
+          "page": 4
+        },
+        "text": "Dixie Chemical",
+        "metadata": {}
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440214",
+        "type": "LOCATION",
+        "canonical_name": "Pasadena, Texas",
+        "aliases": [],
+        "source_text": "MHHPA NC is available from Dixie Chemical in Pasadena, Texas.",
+        "provenance": {
+          "document_id": "550e8400-e29b-41d4-a716-446655440021",
+          "page": 4
+        },
+        "text": "Pasadena, Texas",
+        "metadata": {}
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440215",
+        "type": "DOCUMENT",
+        "canonical_name": "Formulating Anhydride-Cured Epoxy Systems",
+        "aliases": [],
+        "source_text": "For more information on the use of anhydrides like MHHPA NC as epoxy curing agents, please consult the Technical Bulletin, \"Formulating Anhydride-Cured Epoxy Systems\", available from Dixie Chemical.",
+        "provenance": {
+          "document_id": "550e8400-e29b-41d4-a716-446655440021",
+          "page": 2
+        },
+        "text": "Formulating Anhydride-Cured Epoxy Systems",
+        "metadata": {}
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440216",
+        "type": "DOCUMENT",
+        "canonical_name": "Epoxy Curing Agent Storage Requirements",
+        "aliases": [],
+        "source_text": "For more details on the design of bulk storage for MHHPA-NC, consult the Dixie Chemical Company brochure \"Epoxy Curing Agent Storage Requirements.\"",
+        "provenance": {
+          "document_id": "550e8400-e29b-41d4-a716-446655440021",
+          "page": 3
+        },
+        "text": "Epoxy Curing Agent Storage Requirements",
+        "metadata": {}
       }
     ],
-    "kg_triples": []
+    "kg_triples": [
+      {
+        "predicate": "has_identifier",
+        "subject": "550e8400-e29b-41d4-a716-446655440201",
+        "object": "550e8400-e29b-41d4-a716-446655440202",
+        "source_text": "Methylhexahydrophthalic Anhydride-NC has identifier 25550-51-0"
+      },
+      {
+        "predicate": "is_a",
+        "subject": "550e8400-e29b-41d4-a716-446655440201",
+        "object": "550e8400-e29b-41d4-a716-446655440203",
+        "source_text": "Methylhexahydrophthalic Anhydride-NC is a Anhydrides"
+      },
+      {
+        "predicate": "can_be_combined_with",
+        "subject": "550e8400-e29b-41d4-a716-446655440201",
+        "object": "550e8400-e29b-41d4-a716-446655440204",
+        "source_text": "Methylhexahydrophthalic Anhydride-NC can be combined with Hexahydrophthalic Anhydride"
+      },
+      {
+        "predicate": "cures",
+        "subject": "550e8400-e29b-41d4-a716-446655440201",
+        "object": "550e8400-e29b-41d4-a716-446655440205",
+        "source_text": "Methylhexahydrophthalic Anhydride-NC cures Epoxy Resin"
+      },
+      {
+        "predicate": "has_molecular_weight",
+        "object": "168",
+        "subject": "550e8400-e29b-41d4-a716-446655440201",
+        "source_text": "Methylhexahydrophthalic Anhydride-NC has molecular weight 168"
+      },
+      {
+        "predicate": "has_total_anhydride",
+        "object": "99% Min",
+        "subject": "550e8400-e29b-41d4-a716-446655440201",
+        "source_text": "Methylhexahydrophthalic Anhydride-NC has total anhydride 99% Min"
+      },
+      {
+        "predicate": "has_specific_gravity",
+        "object": "1.15 g/cc @ 25°C",
+        "subject": "550e8400-e29b-41d4-a716-446655440201",
+        "source_text": "Methylhexahydrophthalic Anhydride-NC has specific gravity 1.15 g/cc @ 25°C"
+      },
+      {
+        "predicate": "has_appearance",
+        "object": "Clear Liquid",
+        "subject": "550e8400-e29b-41d4-a716-446655440201",
+        "source_text": "Methylhexahydrophthalic Anhydride-NC has appearance Clear Liquid"
+      },
+      {
+        "predicate": "has_color",
+        "object": "25 Max Pt-co",
+        "subject": "550e8400-e29b-41d4-a716-446655440201",
+        "source_text": "Methylhexahydrophthalic Anhydride-NC has color 25 Max Pt-co"
+      },
+      {
+        "predicate": "has_freezing_point",
+        "object": "-29 to -31 °C",
+        "subject": "550e8400-e29b-41d4-a716-446655440201",
+        "source_text": "Methylhexahydrophthalic Anhydride-NC has freezing point -29 to -31 °C"
+      },
+      {
+        "predicate": "has_pour_point",
+        "object": "-38 to -40 °F",
+        "subject": "550e8400-e29b-41d4-a716-446655440201",
+        "source_text": "Methylhexahydrophthalic Anhydride-NC has pour point -38 to -40 °F"
+      },
+      {
+        "predicate": "manufactured_by",
+        "subject": "550e8400-e29b-41d4-a716-446655440201",
+        "object": "550e8400-e29b-41d4-a716-446655440213",
+        "source_text": "Methylhexahydrophthalic Anhydride-NC manufactured by Dixie Chemical"
+      },
+      {
+        "predicate": "used_in",
+        "object": "Epoxy casting for optical applications",
+        "subject": "550e8400-e29b-41d4-a716-446655440201",
+        "source_text": "Methylhexahydrophthalic Anhydride-NC used in Epoxy casting for optical applications"
+      },
+      {
+        "predicate": "used_in",
+        "object": "Electrical/electronic encapsulation",
+        "subject": "550e8400-e29b-41d4-a716-446655440201",
+        "source_text": "Methylhexahydrophthalic Anhydride-NC used in Electrical/electronic encapsulation"
+      },
+      {
+        "predicate": "used_in",
+        "object": "High-temperature resistant composites",
+        "subject": "550e8400-e29b-41d4-a716-446655440201",
+        "source_text": "Methylhexahydrophthalic Anhydride-NC used in High-temperature resistant composites"
+      },
+      {
+        "predicate": "used_in",
+        "object": "Yellowing-resistant coatings",
+        "subject": "550e8400-e29b-41d4-a716-446655440201",
+        "source_text": "Methylhexahydrophthalic Anhydride-NC used in Yellowing-resistant coatings"
+      },
+      {
+        "predicate": "used_in",
+        "object": "Fiber-reinforced composites",
+        "subject": "550e8400-e29b-41d4-a716-446655440201",
+        "source_text": "Methylhexahydrophthalic Anhydride-NC used in Fiber-reinforced composites"
+      },
+      {
+        "predicate": "used_in",
+        "object": "Filament winding applications",
+        "subject": "550e8400-e29b-41d4-a716-446655440201",
+        "source_text": "Methylhexahydrophthalic Anhydride-NC used in Filament winding applications"
+      },
+      {
+        "predicate": "used_in",
+        "object": "Potting compounds for electronics",
+        "subject": "550e8400-e29b-41d4-a716-446655440201",
+        "source_text": "Methylhexahydrophthalic Anhydride-NC used in Potting compounds for electronics"
+      },
+      {
+        "predicate": "used_in",
+        "object": "Optical lenses and components",
+        "subject": "550e8400-e29b-41d4-a716-446655440201",
+        "source_text": "Methylhexahydrophthalic Anhydride-NC used in Optical lenses and components"
+      },
+      {
+        "predicate": "used_in",
+        "object": "High-performance adhesives",
+        "subject": "550e8400-e29b-41d4-a716-446655440201",
+        "source_text": "Methylhexahydrophthalic Anhydride-NC used in High-performance adhesives"
+      },
+      {
+        "predicate": "used_in",
+        "object": "Specialty coatings requiring clarity",
+        "subject": "550e8400-e29b-41d4-a716-446655440201",
+        "source_text": "Methylhexahydrophthalic Anhydride-NC used in Specialty coatings requiring clarity"
+      },
+      {
+        "predicate": "provides_property",
+        "object": "Maximum resistance to yellowing",
+        "subject": "550e8400-e29b-41d4-a716-446655440201",
+        "source_text": "Methylhexahydrophthalic Anhydride-NC provides property Maximum resistance to yellowing"
+      },
+      {
+        "predicate": "provides_property",
+        "object": "Premium optical performance",
+        "subject": "550e8400-e29b-41d4-a716-446655440201",
+        "source_text": "Methylhexahydrophthalic Anhydride-NC provides property Premium optical performance"
+      },
+      {
+        "predicate": "provides_property",
+        "object": "Premium electrical performance",
+        "subject": "550e8400-e29b-41d4-a716-446655440201",
+        "source_text": "Methylhexahydrophthalic Anhydride-NC provides property Premium electrical performance"
+      },
+      {
+        "predicate": "provides_property",
+        "object": "Excellent cure response",
+        "subject": "550e8400-e29b-41d4-a716-446655440201",
+        "source_text": "Methylhexahydrophthalic Anhydride-NC provides property Excellent cure response"
+      },
+      {
+        "predicate": "provides_property",
+        "object": "High crosslinking",
+        "subject": "550e8400-e29b-41d4-a716-446655440201",
+        "source_text": "Methylhexahydrophthalic Anhydride-NC provides property High crosslinking"
+      },
+      {
+        "predicate": "provides_property",
+        "object": "High glass transition temperature",
+        "subject": "550e8400-e29b-41d4-a716-446655440201",
+        "source_text": "Methylhexahydrophthalic Anhydride-NC provides property High glass transition temperature"
+      },
+      {
+        "predicate": "has_safety_hazard",
+        "object": "Primary skin irritant",
+        "subject": "550e8400-e29b-41d4-a716-446655440201",
+        "source_text": "Methylhexahydrophthalic Anhydride-NC has safety hazard Primary skin irritant"
+      },
+      {
+        "predicate": "has_safety_hazard",
+        "object": "Primary eye irritant",
+        "subject": "550e8400-e29b-41d4-a716-446655440201",
+        "source_text": "Methylhexahydrophthalic Anhydride-NC has safety hazard Primary eye irritant"
+      },
+      {
+        "predicate": "requires_ppe",
+        "object": "Protective chemical goggles",
+        "subject": "550e8400-e29b-41d4-a716-446655440201",
+        "source_text": "Methylhexahydrophthalic Anhydride-NC requires ppe Protective chemical goggles"
+      },
+      {
+        "predicate": "requires_ppe",
+        "object": "Impenetrable gloves",
+        "subject": "550e8400-e29b-41d4-a716-446655440201",
+        "source_text": "Methylhexahydrophthalic Anhydride-NC requires ppe Impenetrable gloves"
+      },
+      {
+        "predicate": "requires_ppe",
+        "object": "Adequate ventilation",
+        "subject": "550e8400-e29b-41d4-a716-446655440201",
+        "source_text": "Methylhexahydrophthalic Anhydride-NC requires ppe Adequate ventilation"
+      },
+      {
+        "predicate": "has_storage_requirement",
+        "object": "Protect from moisture",
+        "subject": "550e8400-e29b-41d4-a716-446655440201",
+        "source_text": "Methylhexahydrophthalic Anhydride-NC has storage requirement Protect from moisture"
+      },
+      {
+        "predicate": "has_special_handling",
+        "object": "Heat to 80°C for 24 hours if crystallization occurs",
+        "subject": "550e8400-e29b-41d4-a716-446655440201",
+        "source_text": "Methylhexahydrophthalic Anhydride-NC has special handling Heat to 80°C for 24 hours if crystallization occurs"
+      },
+      {
+        "predicate": "has_special_handling",
+        "object": "Use within 48 hours of melting",
+        "subject": "550e8400-e29b-41d4-a716-446655440201",
+        "source_text": "Methylhexahydrophthalic Anhydride-NC has special handling Use within 48 hours of melting"
+      },
+      {
+        "predicate": "compatible_with",
+        "subject": "550e8400-e29b-41d4-a716-446655440201",
+        "object": "550e8400-e29b-41d4-a716-446655440206",
+        "source_text": "Methylhexahydrophthalic Anhydride-NC compatible with Standard BPA Liquid Epoxy"
+      },
+      {
+        "predicate": "compatible_with",
+        "subject": "550e8400-e29b-41d4-a716-446655440201",
+        "object": "550e8400-e29b-41d4-a716-446655440207",
+        "source_text": "Methylhexahydrophthalic Anhydride-NC compatible with Low Viscosity BPA Liquid"
+      },
+      {
+        "predicate": "compatible_with",
+        "subject": "550e8400-e29b-41d4-a716-446655440201",
+        "object": "550e8400-e29b-41d4-a716-446655440208",
+        "source_text": "Methylhexahydrophthalic Anhydride-NC compatible with Cycloaliphatic Epoxy"
+      },
+      {
+        "predicate": "compatible_with",
+        "subject": "550e8400-e29b-41d4-a716-446655440201",
+        "object": "550e8400-e29b-41d4-a716-446655440209",
+        "source_text": "Methylhexahydrophthalic Anhydride-NC compatible with Epoxy Phenol Novolac"
+      },
+      {
+        "predicate": "compatible_with",
+        "subject": "550e8400-e29b-41d4-a716-446655440201",
+        "object": "550e8400-e29b-41d4-a716-446655440210",
+        "source_text": "Methylhexahydrophthalic Anhydride-NC compatible with Epoxy BPA Novolac"
+      },
+      {
+        "predicate": "compatible_with",
+        "subject": "550e8400-e29b-41d4-a716-446655440201",
+        "object": "550e8400-e29b-41d4-a716-446655440211",
+        "source_text": "Methylhexahydrophthalic Anhydride-NC compatible with BPF Liquid Epoxy"
+      },
+      {
+        "predicate": "used_with_catalyst",
+        "subject": "550e8400-e29b-41d4-a716-446655440201",
+        "object": "550e8400-e29b-41d4-a716-446655440212",
+        "source_text": "Methylhexahydrophthalic Anhydride-NC used with catalyst 1-Methylimidazole"
+      },
+      {
+        "predicate": "achieves_tg_with",
+        "object": "156°C with Standard BPA Liquid Epoxy",
+        "subject": "550e8400-e29b-41d4-a716-446655440201",
+        "source_text": "Methylhexahydrophthalic Anhydride-NC achieves tg with 156°C with Standard BPA Liquid Epoxy"
+      },
+      {
+        "predicate": "achieves_tg_with",
+        "object": "132°C with Low Viscosity BPA Liquid",
+        "subject": "550e8400-e29b-41d4-a716-446655440201",
+        "source_text": "Methylhexahydrophthalic Anhydride-NC achieves tg with 132°C with Low Viscosity BPA Liquid"
+      },
+      {
+        "predicate": "achieves_tg_with",
+        "object": "221°C with Cycloaliphatic Epoxy",
+        "subject": "550e8400-e29b-41d4-a716-446655440201",
+        "source_text": "Methylhexahydrophthalic Anhydride-NC achieves tg with 221°C with Cycloaliphatic Epoxy"
+      },
+      {
+        "predicate": "achieves_tg_with",
+        "object": "157°C with Epoxy Phenol Novolac",
+        "subject": "550e8400-e29b-41d4-a716-446655440201",
+        "source_text": "Methylhexahydrophthalic Anhydride-NC achieves tg with 157°C with Epoxy Phenol Novolac"
+      },
+      {
+        "predicate": "achieves_tg_with",
+        "object": "142°C with Epoxy BPA Novolac",
+        "subject": "550e8400-e29b-41d4-a716-446655440201",
+        "source_text": "Methylhexahydrophthalic Anhydride-NC achieves tg with 142°C with Epoxy BPA Novolac"
+      },
+      {
+        "predicate": "achieves_tg_with",
+        "object": "148°C with BPF Liquid Epoxy",
+        "subject": "550e8400-e29b-41d4-a716-446655440201",
+        "source_text": "Methylhexahydrophthalic Anhydride-NC achieves tg with 148°C with BPF Liquid Epoxy"
+      },
+      {
+        "predicate": "located_in",
+        "subject": "550e8400-e29b-41d4-a716-446655440213",
+        "object": "550e8400-e29b-41d4-a716-446655440214",
+        "source_text": "Dixie Chemical located in Pasadena, Texas"
+      },
+      {
+        "predicate": "publishes",
+        "subject": "550e8400-e29b-41d4-a716-446655440213",
+        "object": "550e8400-e29b-41d4-a716-446655440215",
+        "source_text": "Dixie Chemical publishes Formulating Anhydride-Cured Epoxy Systems"
+      },
+      {
+        "predicate": "publishes",
+        "subject": "550e8400-e29b-41d4-a716-446655440213",
+        "object": "550e8400-e29b-41d4-a716-446655440216",
+        "source_text": "Dixie Chemical publishes Epoxy Curing Agent Storage Requirements"
+      }
+    ]
   },
   "document_type": "Product Technical Bulletin"
 }

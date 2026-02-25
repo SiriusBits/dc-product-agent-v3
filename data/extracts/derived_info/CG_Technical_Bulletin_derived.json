@@ -26,276 +26,7 @@
       "Preparation of glycidol ethers",
       "Preparation of glycidol esters",
       "Preparation of glycidol amines"
-    ],
-    "knowledge_graph": {
-      "entities": [
-        {
-          "id": "353f2b83-3dc5-554c-88c8-ff6299b22445",
-          "text": "CG",
-          "type": "PRODUCT_NAME",
-          "canonical_name": "3-CHLORO-1, 2-PROPANEDIOL",
-          "aliases": [
-            "3-CHLORO-1, 2-PROPANEDIOL",
-            "CG",
-            "Chloroglycerine"
-          ],
-          "source_text": "3-CHLORO-1, 2-PROPANEDIOL (CG)",
-          "provenance": {
-            "document_id": "d08b5de9-ae15-5d6a-9261-f64eb60c84f6",
-            "page": 1
-          },
-          "metadata": {
-            "manufacturer": "Dixie Chemical",
-            "product_family": "Chlorinated Alcohols"
-          }
-        },
-        {
-          "id": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-          "type": "CHEMICAL",
-          "canonical_name": "Chloroglycerine",
-          "aliases": [
-            "CG",
-            "3-CHLORO-1, 2-PROPANEDIOL"
-          ],
-          "source_text": "3-CHLORO-1, 2-PROPANEDIOL CHLOROGLYCERINE (CG)",
-          "provenance": {
-            "document_id": "550e8400-e29b-41d4-a716-446655440002",
-            "page": 1
-          }
-        },
-        {
-          "id": "f47ac10b-58cc-4372-a567-0e02b2c3d502",
-          "type": "CAS_NUMBER",
-          "canonical_name": "CAS 96-24-2",
-          "aliases": [],
-          "source_text": "CASRN 96-24-2",
-          "provenance": {
-            "document_id": "550e8400-e29b-41d4-a716-446655440002",
-            "page": 1
-          }
-        },
-        {
-          "id": "f47ac10b-58cc-4372-a567-0e02b2c3d503",
-          "type": "ORGANIZATION",
-          "canonical_name": "Dixie Chemical",
-          "aliases": [],
-          "source_text": "Dixie Chemical",
-          "provenance": {
-            "document_id": "550e8400-e29b-41d4-a716-446655440002",
-            "page": 1
-          }
-        },
-        {
-          "id": "f47ac10b-58cc-4372-a567-0e02b2c3d504",
-          "type": "CHEMICAL",
-          "canonical_name": "monochloroglycerine",
-          "aliases": [],
-          "source_text": "mono- and dichloroglycerines",
-          "provenance": {
-            "document_id": "550e8400-e29b-41d4-a716-446655440002",
-            "page": 1
-          }
-        },
-        {
-          "id": "f47ac10b-58cc-4372-a567-0e02b2c3d505",
-          "type": "CHEMICAL",
-          "canonical_name": "dichloroglycerine",
-          "aliases": [],
-          "source_text": "mono- and dichloroglycerines",
-          "provenance": {
-            "document_id": "550e8400-e29b-41d4-a716-446655440002",
-            "page": 1
-          }
-        },
-        {
-          "id": "f47ac10b-58cc-4372-a567-0e02b2c3d506",
-          "type": "CHEMICAL",
-          "canonical_name": "glycidol ethers",
-          "aliases": [],
-          "source_text": "glycidol ethers",
-          "provenance": {
-            "document_id": "550e8400-e29b-41d4-a716-446655440002",
-            "page": 1
-          }
-        },
-        {
-          "id": "f47ac10b-58cc-4372-a567-0e02b2c3d507",
-          "type": "CHEMICAL",
-          "canonical_name": "glycidol esters",
-          "aliases": [],
-          "source_text": "glycidol esters",
-          "provenance": {
-            "document_id": "550e8400-e29b-41d4-a716-446655440002",
-            "page": 1
-          }
-        },
-        {
-          "id": "f47ac10b-58cc-4372-a567-0e02b2c3d508",
-          "type": "CHEMICAL",
-          "canonical_name": "glycidol amines",
-          "aliases": [],
-          "source_text": "glycidol amines",
-          "provenance": {
-            "document_id": "550e8400-e29b-41d4-a716-446655440002",
-            "page": 1
-          }
-        },
-        {
-          "id": "f47ac10b-58cc-4372-a567-0e02b2c3d509",
-          "type": "CHEMICAL_CLASS",
-          "canonical_name": "Chlorinated Alcohols",
-          "aliases": [],
-          "source_text": "3-CHLORO-1, 2-PROPANEDIOL",
-          "provenance": {
-            "document_id": "550e8400-e29b-41d4-a716-446655440002",
-            "page": 1
-          }
-        },
-        {
-          "id": "f47ac10b-58cc-4372-a567-0e02b2c3d510",
-          "type": "LOCATION",
-          "canonical_name": "Pasadena, Texas",
-          "aliases": [],
-          "source_text": "Pasadena, Texas",
-          "provenance": {
-            "document_id": "550e8400-e29b-41d4-a716-446655440002",
-            "page": 2
-          }
-        }
-      ],
-      "kg_triples": [
-        {
-          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-          "predicate": "has_cas_number",
-          "object": "f47ac10b-58cc-4372-a567-0e02b2c3d502"
-        },
-        {
-          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-          "predicate": "is_a",
-          "object": "f47ac10b-58cc-4372-a567-0e02b2c3d509"
-        },
-        {
-          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-          "predicate": "is_produced_by",
-          "object": "f47ac10b-58cc-4372-a567-0e02b2c3d503"
-        },
-        {
-          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-          "predicate": "has_typical_property",
-          "object": {
-            "property": "Appearance",
-            "value": "Clear to light yellow viscous liquid"
-          }
-        },
-        {
-          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-          "predicate": "has_typical_property",
-          "object": {
-            "property": "Color, Pt-Co",
-            "value": "50 Max"
-          }
-        },
-        {
-          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-          "predicate": "has_typical_property",
-          "object": {
-            "property": "Specific Gravity at 25°C",
-            "value": "1.310 – 1.325"
-          }
-        },
-        {
-          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-          "predicate": "has_typical_property",
-          "object": {
-            "property": "Chloroglycerine, %",
-            "value": "98.5% Min"
-          }
-        },
-        {
-          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-          "predicate": "has_typical_property",
-          "object": {
-            "property": "Water, %",
-            "value": "1.0% Max"
-          }
-        },
-        {
-          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-          "predicate": "has_application",
-          "object": "pharmaceutical intermediates"
-        },
-        {
-          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-          "predicate": "has_application",
-          "object": "fungicide"
-        },
-        {
-          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-          "predicate": "has_application",
-          "object": "chemosterilant for rodent control"
-        },
-        {
-          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-          "predicate": "is_used_to_prepare",
-          "object": "f47ac10b-58cc-4372-a567-0e02b2c3d506"
-        },
-        {
-          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-          "predicate": "is_used_to_prepare",
-          "object": "f47ac10b-58cc-4372-a567-0e02b2c3d507"
-        },
-        {
-          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-          "predicate": "is_used_to_prepare",
-          "object": "f47ac10b-58cc-4372-a567-0e02b2c3d508"
-        },
-        {
-          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-          "predicate": "has_safety_hazard",
-          "object": "harmful when taken internally"
-        },
-        {
-          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-          "predicate": "has_safety_hazard",
-          "object": "harmful when absorbed through the skin"
-        },
-        {
-          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-          "predicate": "has_storage_requirement",
-          "object": "well-ventilated area"
-        },
-        {
-          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-          "predicate": "has_storage_requirement",
-          "object": "tightly sealed drums"
-        },
-        {
-          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-          "predicate": "requires_ppe",
-          "object": "impenetrable gloves"
-        },
-        {
-          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-          "predicate": "requires_ppe",
-          "object": "chemically impervious apron"
-        },
-        {
-          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-          "predicate": "requires_ppe",
-          "object": "chemical goggles and face shield"
-        },
-        {
-          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-          "predicate": "requires_ppe",
-          "object": "respiratory protection when ventilation is insufficient"
-        },
-        {
-          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-          "predicate": "is_available_from",
-          "object": "f47ac10b-58cc-4372-a567-0e02b2c3d510"
-        }
-      ]
-    }
+    ]
   },
   "knowledge_graph": {
     "entities": [
@@ -318,9 +49,296 @@
           "manufacturer": "Dixie Chemical",
           "product_family": "Chlorinated Alcohols"
         }
+      },
+      {
+        "id": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
+        "type": "CHEMICAL",
+        "canonical_name": "Chloroglycerine",
+        "aliases": [
+          "CG",
+          "3-CHLORO-1, 2-PROPANEDIOL"
+        ],
+        "source_text": "3-CHLORO-1, 2-PROPANEDIOL CHLOROGLYCERINE (CG)",
+        "provenance": {
+          "document_id": "550e8400-e29b-41d4-a716-446655440002",
+          "page": 1
+        },
+        "text": "Chloroglycerine",
+        "metadata": {}
+      },
+      {
+        "id": "f47ac10b-58cc-4372-a567-0e02b2c3d502",
+        "type": "CAS_NUMBER",
+        "canonical_name": "CAS 96-24-2",
+        "aliases": [],
+        "source_text": "CASRN 96-24-2",
+        "provenance": {
+          "document_id": "550e8400-e29b-41d4-a716-446655440002",
+          "page": 1
+        },
+        "text": "CAS 96-24-2",
+        "metadata": {}
+      },
+      {
+        "id": "f47ac10b-58cc-4372-a567-0e02b2c3d503",
+        "type": "ORGANIZATION",
+        "canonical_name": "Dixie Chemical",
+        "aliases": [],
+        "source_text": "Dixie Chemical",
+        "provenance": {
+          "document_id": "550e8400-e29b-41d4-a716-446655440002",
+          "page": 1
+        },
+        "text": "Dixie Chemical",
+        "metadata": {}
+      },
+      {
+        "id": "f47ac10b-58cc-4372-a567-0e02b2c3d504",
+        "type": "CHEMICAL",
+        "canonical_name": "monochloroglycerine",
+        "aliases": [],
+        "source_text": "mono- and dichloroglycerines",
+        "provenance": {
+          "document_id": "550e8400-e29b-41d4-a716-446655440002",
+          "page": 1
+        },
+        "text": "monochloroglycerine",
+        "metadata": {}
+      },
+      {
+        "id": "f47ac10b-58cc-4372-a567-0e02b2c3d505",
+        "type": "CHEMICAL",
+        "canonical_name": "dichloroglycerine",
+        "aliases": [],
+        "source_text": "mono- and dichloroglycerines",
+        "provenance": {
+          "document_id": "550e8400-e29b-41d4-a716-446655440002",
+          "page": 1
+        },
+        "text": "dichloroglycerine",
+        "metadata": {}
+      },
+      {
+        "id": "f47ac10b-58cc-4372-a567-0e02b2c3d506",
+        "type": "CHEMICAL",
+        "canonical_name": "glycidol ethers",
+        "aliases": [],
+        "source_text": "glycidol ethers",
+        "provenance": {
+          "document_id": "550e8400-e29b-41d4-a716-446655440002",
+          "page": 1
+        },
+        "text": "glycidol ethers",
+        "metadata": {}
+      },
+      {
+        "id": "f47ac10b-58cc-4372-a567-0e02b2c3d507",
+        "type": "CHEMICAL",
+        "canonical_name": "glycidol esters",
+        "aliases": [],
+        "source_text": "glycidol esters",
+        "provenance": {
+          "document_id": "550e8400-e29b-41d4-a716-446655440002",
+          "page": 1
+        },
+        "text": "glycidol esters",
+        "metadata": {}
+      },
+      {
+        "id": "f47ac10b-58cc-4372-a567-0e02b2c3d508",
+        "type": "CHEMICAL",
+        "canonical_name": "glycidol amines",
+        "aliases": [],
+        "source_text": "glycidol amines",
+        "provenance": {
+          "document_id": "550e8400-e29b-41d4-a716-446655440002",
+          "page": 1
+        },
+        "text": "glycidol amines",
+        "metadata": {}
+      },
+      {
+        "id": "f47ac10b-58cc-4372-a567-0e02b2c3d509",
+        "type": "CHEMICAL_CLASS",
+        "canonical_name": "Chlorinated Alcohols",
+        "aliases": [],
+        "source_text": "3-CHLORO-1, 2-PROPANEDIOL",
+        "provenance": {
+          "document_id": "550e8400-e29b-41d4-a716-446655440002",
+          "page": 1
+        },
+        "text": "Chlorinated Alcohols",
+        "metadata": {}
+      },
+      {
+        "id": "f47ac10b-58cc-4372-a567-0e02b2c3d510",
+        "type": "LOCATION",
+        "canonical_name": "Pasadena, Texas",
+        "aliases": [],
+        "source_text": "Pasadena, Texas",
+        "provenance": {
+          "document_id": "550e8400-e29b-41d4-a716-446655440002",
+          "page": 2
+        },
+        "text": "Pasadena, Texas",
+        "metadata": {}
       }
     ],
-    "kg_triples": []
+    "kg_triples": [
+      {
+        "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
+        "predicate": "has_cas_number",
+        "object": "f47ac10b-58cc-4372-a567-0e02b2c3d502",
+        "source_text": "Chloroglycerine has cas number CAS 96-24-2"
+      },
+      {
+        "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
+        "predicate": "is_a",
+        "object": "f47ac10b-58cc-4372-a567-0e02b2c3d509",
+        "source_text": "Chloroglycerine is a Chlorinated Alcohols"
+      },
+      {
+        "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
+        "predicate": "is_produced_by",
+        "object": "f47ac10b-58cc-4372-a567-0e02b2c3d503",
+        "source_text": "Chloroglycerine is produced by Dixie Chemical"
+      },
+      {
+        "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
+        "predicate": "has_typical_property",
+        "object": {
+          "property": "Appearance",
+          "value": "Clear to light yellow viscous liquid"
+        },
+        "source_text": "Chloroglycerine has typical property Appearance: Clear to light yellow viscous liquid"
+      },
+      {
+        "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
+        "predicate": "has_typical_property",
+        "object": {
+          "property": "Color, Pt-Co",
+          "value": "50 Max"
+        },
+        "source_text": "Chloroglycerine has typical property Color, Pt-Co: 50 Max"
+      },
+      {
+        "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
+        "predicate": "has_typical_property",
+        "object": {
+          "property": "Specific Gravity at 25°C",
+          "value": "1.310 – 1.325"
+        },
+        "source_text": "Chloroglycerine has typical property Specific Gravity at 25°C: 1.310 – 1.325"
+      },
+      {
+        "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
+        "predicate": "has_typical_property",
+        "object": {
+          "property": "Chloroglycerine, %",
+          "value": "98.5% Min"
+        },
+        "source_text": "Chloroglycerine has typical property Chloroglycerine, %: 98.5% Min"
+      },
+      {
+        "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
+        "predicate": "has_typical_property",
+        "object": {
+          "property": "Water, %",
+          "value": "1.0% Max"
+        },
+        "source_text": "Chloroglycerine has typical property Water, %: 1.0% Max"
+      },
+      {
+        "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
+        "predicate": "has_application",
+        "object": "pharmaceutical intermediates",
+        "source_text": "Chloroglycerine has application pharmaceutical intermediates"
+      },
+      {
+        "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
+        "predicate": "has_application",
+        "object": "fungicide",
+        "source_text": "Chloroglycerine has application fungicide"
+      },
+      {
+        "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
+        "predicate": "has_application",
+        "object": "chemosterilant for rodent control",
+        "source_text": "Chloroglycerine has application chemosterilant for rodent control"
+      },
+      {
+        "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
+        "predicate": "is_used_to_prepare",
+        "object": "f47ac10b-58cc-4372-a567-0e02b2c3d506",
+        "source_text": "Chloroglycerine is used to prepare glycidol ethers"
+      },
+      {
+        "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
+        "predicate": "is_used_to_prepare",
+        "object": "f47ac10b-58cc-4372-a567-0e02b2c3d507",
+        "source_text": "Chloroglycerine is used to prepare glycidol esters"
+      },
+      {
+        "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
+        "predicate": "is_used_to_prepare",
+        "object": "f47ac10b-58cc-4372-a567-0e02b2c3d508",
+        "source_text": "Chloroglycerine is used to prepare glycidol amines"
+      },
+      {
+        "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
+        "predicate": "has_safety_hazard",
+        "object": "harmful when taken internally",
+        "source_text": "Chloroglycerine has safety hazard harmful when taken internally"
+      },
+      {
+        "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
+        "predicate": "has_safety_hazard",
+        "object": "harmful when absorbed through the skin",
+        "source_text": "Chloroglycerine has safety hazard harmful when absorbed through the skin"
+      },
+      {
+        "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
+        "predicate": "has_storage_requirement",
+        "object": "well-ventilated area",
+        "source_text": "Chloroglycerine has storage requirement well-ventilated area"
+      },
+      {
+        "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
+        "predicate": "has_storage_requirement",
+        "object": "tightly sealed drums",
+        "source_text": "Chloroglycerine has storage requirement tightly sealed drums"
+      },
+      {
+        "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
+        "predicate": "requires_ppe",
+        "object": "impenetrable gloves",
+        "source_text": "Chloroglycerine requires ppe impenetrable gloves"
+      },
+      {
+        "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
+        "predicate": "requires_ppe",
+        "object": "chemically impervious apron",
+        "source_text": "Chloroglycerine requires ppe chemically impervious apron"
+      },
+      {
+        "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
+        "predicate": "requires_ppe",
+        "object": "chemical goggles and face shield",
+        "source_text": "Chloroglycerine requires ppe chemical goggles and face shield"
+      },
+      {
+        "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
+        "predicate": "requires_ppe",
+        "object": "respiratory protection when ventilation is insufficient",
+        "source_text": "Chloroglycerine requires ppe respiratory protection when ventilation is insufficient"
+      },
+      {
+        "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
+        "predicate": "is_available_from",
+        "object": "f47ac10b-58cc-4372-a567-0e02b2c3d510",
+        "source_text": "Chloroglycerine is available from Pasadena, Texas"
+      }
+    ]
   },
   "document_type": "Product Technical Bulletin"
 }

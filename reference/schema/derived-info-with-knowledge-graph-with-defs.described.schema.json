@@ -20,6 +20,10 @@
       ],
       "description": "Original or canonical path to the related PDF (optional)."
     },
+    "document_type": {
+      "type": "string",
+      "description": "Document classification label, e.g., 'Product Technical Bulletin'. Carried forward from the base extraction."
+    },
     "extraction_metadata": {
       "type": "object",
       "properties": {

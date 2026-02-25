@@ -27,669 +27,7 @@
       "High-temperature tooling",
       "Advanced composites",
       "Powder coatings"
-    ],
-    "knowledge_graph": {
-      "entities": [
-        {
-          "id": "da90a52f-23c5-5669-86f9-2a9fac88faa2",
-          "text": "NMA",
-          "type": "PRODUCT_NAME",
-          "canonical_name": "NADIC® Methyl Anhydride",
-          "aliases": [
-            "Methyl-5-norbornene-2,3-dicarboxylic anhydride",
-            "NADIC® Methyl Anhydride",
-            "NMA"
-          ],
-          "source_text": "NADIC® Methyl Anhydride (NMA)",
-          "provenance": {
-            "document_id": "3cb1188c-7b55-5536-b33e-94d3bf237079",
-            "page": 1
-          },
-          "metadata": {
-            "manufacturer": "Dixie Chemical",
-            "product_family": "Anhydride"
-          }
-        },
-        {
-          "id": "550e8400-e29b-41d4-a716-446655440101",
-          "type": "CHEMICAL",
-          "canonical_name": "NADIC Methyl Anhydride",
-          "aliases": [
-            "NMA",
-            "Methyl-5-norbornene-2,3-dicarboxylic anhydride"
-          ],
-          "source_text": "NADIC® methyl anhydride (NMA) is a highly reactive anhydride that is used as a curing agent for epoxy resins in applications requiring high temperature resistance, excellent electrical properties, and good chemical resistance.",
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 1
-          }
-        },
-        {
-          "id": "550e8400-e29b-41d4-a716-446655440102",
-          "type": "CAS_NUMBER",
-          "canonical_name": "25134-21-8",
-          "aliases": [
-            "CAS 25134-21-8"
-          ],
-          "source_text": "CAS# 25134-21-8",
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 1
-          }
-        },
-        {
-          "id": "550e8400-e29b-41d4-a716-446655440103",
-          "type": "CHEMICAL_CLASS",
-          "canonical_name": "Anhydride",
-          "aliases": [
-            "Anhydrides",
-            "Anhydride curing agent"
-          ],
-          "source_text": "NADIC® methyl anhydride (NMA) is a highly reactive anhydride that is used as a curing agent for epoxy resins",
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 1
-          }
-        },
-        {
-          "id": "550e8400-e29b-41d4-a716-446655440104",
-          "type": "CHEMICAL",
-          "canonical_name": "Epoxy Resin",
-          "aliases": [
-            "Epoxy",
-            "Epoxy resins"
-          ],
-          "source_text": "NADIC® methyl anhydride (NMA) is a highly reactive anhydride that is used as a curing agent for epoxy resins",
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 1
-          }
-        },
-        {
-          "id": "550e8400-e29b-41d4-a716-446655440105",
-          "type": "CHEMICAL",
-          "canonical_name": "Bisphenol A Epoxy Resin",
-          "aliases": [
-            "Standard bisphenol A epoxy resin"
-          ],
-          "source_text": "For NMA with an equivalent weight of 178.2 and a standard bisphenol A epoxy resin with an equivalent weight of 190, the theoretical level would be: 178.2 x 100 / 190 = 93.8 phr",
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 3
-          }
-        },
-        {
-          "id": "550e8400-e29b-41d4-a716-446655440106",
-          "type": "CHEMICAL",
-          "canonical_name": "Epoxy Bisphenol A Novolac Resin",
-          "aliases": [
-            "Bisphenol A novolac resin"
-          ],
-          "source_text": "Momentive has published a formulation for a resin system based on this bisphenol A novolac and NADIC methyl anhydride.",
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 6
-          }
-        },
-        {
-          "id": "550e8400-e29b-41d4-a716-446655440107",
-          "type": "CHEMICAL",
-          "canonical_name": "Benzyldimethylamine",
-          "aliases": [
-            "BDMA"
-          ],
-          "source_text": "Benzyldimethylamine (BDMA) is commonly used at levels of 0.5 to 1.0 phr.",
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 6
-          }
-        },
-        {
-          "id": "550e8400-e29b-41d4-a716-446655440108",
-          "type": "CHEMICAL",
-          "canonical_name": "2-Methylimidazole",
-          "aliases": [],
-          "source_text": "Other effective catalysts include 2-methylimidazole and 2-ethyl-4-methylimidazole.",
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 6
-          }
-        },
-        {
-          "id": "550e8400-e29b-41d4-a716-446655440109",
-          "type": "CHEMICAL",
-          "canonical_name": "2-Ethyl-4-methylimidazole",
-          "aliases": [],
-          "source_text": "Other effective catalysts include 2-methylimidazole and 2-ethyl-4-methylimidazole.",
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 6
-          }
-        },
-        {
-          "id": "550e8400-e29b-41d4-a716-446655440110",
-          "type": "CHEMICAL",
-          "canonical_name": "D.E.R. 332",
-          "aliases": [],
-          "source_text": "Dow Chemical Company conducted an excellent and extensive formulation study in which a variety of liquid epoxy resins were formulated with NADIC methyl anhydride.",
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 4
-          }
-        },
-        {
-          "id": "550e8400-e29b-41d4-a716-446655440111",
-          "type": "CHEMICAL",
-          "canonical_name": "D.E.R. 330",
-          "aliases": [],
-          "source_text": "Dow Chemical Company conducted an excellent and extensive formulation study in which a variety of liquid epoxy resins were formulated with NADIC methyl anhydride.",
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 4
-          }
-        },
-        {
-          "id": "550e8400-e29b-41d4-a716-446655440112",
-          "type": "CHEMICAL",
-          "canonical_name": "D.E.R. 317",
-          "aliases": [],
-          "source_text": "Dow Chemical Company conducted an excellent and extensive formulation study in which a variety of liquid epoxy resins were formulated with NADIC methyl anhydride.",
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 4
-          }
-        },
-        {
-          "id": "550e8400-e29b-41d4-a716-446655440113",
-          "type": "CHEMICAL",
-          "canonical_name": "D.E.R. 383",
-          "aliases": [],
-          "source_text": "Dow Chemical Company conducted an excellent and extensive formulation study in which a variety of liquid epoxy resins were formulated with NADIC methyl anhydride.",
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 4
-          }
-        },
-        {
-          "id": "550e8400-e29b-41d4-a716-446655440114",
-          "type": "CHEMICAL",
-          "canonical_name": "D.E.R. 331",
-          "aliases": [],
-          "source_text": "Dow Chemical Company conducted an excellent and extensive formulation study in which a variety of liquid epoxy resins were formulated with NADIC methyl anhydride.",
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 4
-          }
-        },
-        {
-          "id": "550e8400-e29b-41d4-a716-446655440115",
-          "type": "ORGANIZATION",
-          "canonical_name": "Dow Chemical Company",
-          "aliases": [
-            "Dow"
-          ],
-          "source_text": "Dow Chemical Company conducted an excellent and extensive formulation study in which a variety of liquid epoxy resins were formulated with NADIC methyl anhydride.",
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 4
-          }
-        },
-        {
-          "id": "550e8400-e29b-41d4-a716-446655440116",
-          "type": "ORGANIZATION",
-          "canonical_name": "Momentive Specialty Chemicals",
-          "aliases": [
-            "Momentive"
-          ],
-          "source_text": "Momentive has published a formulation for a resin system based on this bisphenol A novolac and NADIC methyl anhydride.",
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 6
-          }
-        },
-        {
-          "id": "550e8400-e29b-41d4-a716-446655440117",
-          "type": "ORGANIZATION",
-          "canonical_name": "Dixie Chemical",
-          "aliases": [],
-          "source_text": "For information on ordering, please contact Dixie Chemical at (281) 474-3271 or email info@dixiechemical.com.",
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 8
-          }
-        },
-        {
-          "id": "550e8400-e29b-41d4-a716-446655440118",
-          "type": "DOCUMENT",
-          "canonical_name": "Dow Liquid Epoxy resins",
-          "aliases": [],
-          "source_text": "\"Dow Liquid Epoxy resins\" Published by Dow Chemical Company, January, 1999.",
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 4
-          }
-        },
-        {
-          "id": "550e8400-e29b-41d4-a716-446655440119",
-          "type": "DOCUMENT",
-          "canonical_name": "Starting Formulation 8011",
-          "aliases": [],
-          "source_text": "\"Starting Formulation 8011,\" published by Momentive Specialty Chemicals, July, 2007.",
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 6
-          }
-        }
-      ],
-      "kg_triples": [
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440101",
-          "predicate": "has_identifier",
-          "object_id": "550e8400-e29b-41d4-a716-446655440102",
-          "confidence": 100,
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 1
-          }
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440101",
-          "predicate": "is_a",
-          "object_id": "550e8400-e29b-41d4-a716-446655440103",
-          "confidence": 100,
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 1
-          }
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440101",
-          "predicate": "cures",
-          "object_id": "550e8400-e29b-41d4-a716-446655440104",
-          "confidence": 100,
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 1
-          }
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440101",
-          "predicate": "has_molecular_weight",
-          "object": "178.2 g/mol",
-          "confidence": 100,
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 1
-          }
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440101",
-          "predicate": "has_specific_gravity",
-          "object": "1.24 g/cc",
-          "confidence": 100,
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 1
-          }
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440101",
-          "predicate": "has_melting_point",
-          "object": "92-97 °C",
-          "confidence": 100,
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 1
-          }
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440101",
-          "predicate": "has_flash_point",
-          "object": "113 °C",
-          "confidence": 100,
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 1
-          }
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440101",
-          "predicate": "has_anhydride_content",
-          "object": "99.0% Min",
-          "confidence": 100,
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 1
-          }
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440101",
-          "predicate": "has_acid_value",
-          "object": "1.0 Max mg KOH/g",
-          "confidence": 100,
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 1
-          }
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440101",
-          "predicate": "has_color",
-          "object": "White to Off-White",
-          "confidence": 100,
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 1
-          }
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440101",
-          "predicate": "used_in",
-          "object": "Aerospace and military applications",
-          "confidence": 100,
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 1
-          }
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440101",
-          "predicate": "used_in",
-          "object": "Electrical laminates",
-          "confidence": 100,
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 1
-          }
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440101",
-          "predicate": "used_in",
-          "object": "Filament winding",
-          "confidence": 100,
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 1
-          }
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440101",
-          "predicate": "used_in",
-          "object": "Electrical encapsulation",
-          "confidence": 100,
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 1
-          }
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440101",
-          "predicate": "used_in",
-          "object": "Tooling",
-          "confidence": 100,
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 1
-          }
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440101",
-          "predicate": "used_in",
-          "object": "Composites",
-          "confidence": 100,
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 1
-          }
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440101",
-          "predicate": "used_in",
-          "object": "Powder coatings",
-          "confidence": 100,
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 1
-          }
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440101",
-          "predicate": "has_theoretical_level_with",
-          "object_id": "550e8400-e29b-41d4-a716-446655440105",
-          "object_qualifier": "93.8 phr",
-          "confidence": 100,
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 3
-          }
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440101",
-          "predicate": "catalyzed_by",
-          "object_id": "550e8400-e29b-41d4-a716-446655440107",
-          "object_qualifier": "0.5 to 1.0 phr",
-          "confidence": 100,
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 6
-          }
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440101",
-          "predicate": "catalyzed_by",
-          "object_id": "550e8400-e29b-41d4-a716-446655440108",
-          "confidence": 100,
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 6
-          }
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440101",
-          "predicate": "catalyzed_by",
-          "object_id": "550e8400-e29b-41d4-a716-446655440109",
-          "confidence": 100,
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 6
-          }
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440101",
-          "predicate": "has_cure_cycle",
-          "object": "2 hours at 100°C followed by 4 hours at 175°C",
-          "confidence": 100,
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 6
-          }
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440101",
-          "predicate": "is_corrosive_to",
-          "object": "skin and eyes",
-          "confidence": 100,
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 8
-          }
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440101",
-          "predicate": "may_cause",
-          "object": "sensitization by skin contact",
-          "confidence": 100,
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 8
-          }
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440101",
-          "predicate": "is_available_in",
-          "object": "50 lb bags and 400 lb drums",
-          "confidence": 100,
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 8
-          }
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440101",
-          "predicate": "manufactured_by",
-          "object_id": "550e8400-e29b-41d4-a716-446655440117",
-          "confidence": 100,
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 8
-          }
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440101",
-          "predicate": "with_resin",
-          "object_id": "550e8400-e29b-41d4-a716-446655440110",
-          "object_qualifier": "achieves heat deflection temperature of 145°C",
-          "confidence": 100,
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 4
-          }
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440101",
-          "predicate": "with_resin",
-          "object_id": "550e8400-e29b-41d4-a716-446655440106",
-          "object_qualifier": "achieves glass transition temperature of 221°C",
-          "confidence": 100,
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 6
-          }
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440115",
-          "predicate": "published",
-          "object_id": "550e8400-e29b-41d4-a716-446655440118",
-          "confidence": 100,
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 4
-          }
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440116",
-          "predicate": "published",
-          "object_id": "550e8400-e29b-41d4-a716-446655440119",
-          "confidence": 100,
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 6
-          }
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440110",
-          "predicate": "is_a",
-          "object_id": "550e8400-e29b-41d4-a716-446655440104",
-          "confidence": 100,
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 4
-          }
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440111",
-          "predicate": "is_a",
-          "object_id": "550e8400-e29b-41d4-a716-446655440104",
-          "confidence": 100,
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 4
-          }
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440112",
-          "predicate": "is_a",
-          "object_id": "550e8400-e29b-41d4-a716-446655440104",
-          "confidence": 100,
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 4
-          }
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440113",
-          "predicate": "is_a",
-          "object_id": "550e8400-e29b-41d4-a716-446655440104",
-          "confidence": 100,
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 4
-          }
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440114",
-          "predicate": "is_a",
-          "object_id": "550e8400-e29b-41d4-a716-446655440104",
-          "confidence": 100,
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 4
-          }
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440107",
-          "predicate": "is_a",
-          "object": "tertiary amine catalyst",
-          "confidence": 100,
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 6
-          }
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440108",
-          "predicate": "is_a",
-          "object": "tertiary amine catalyst",
-          "confidence": 100,
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 6
-          }
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440109",
-          "predicate": "is_a",
-          "object": "tertiary amine catalyst",
-          "confidence": 100,
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 6
-          }
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440106",
-          "predicate": "formulated_with",
-          "object_id": "550e8400-e29b-41d4-a716-446655440101",
-          "object_qualifier": "80 parts",
-          "confidence": 100,
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 6
-          }
-        },
-        {
-          "subject_id": "550e8400-e29b-41d4-a716-446655440106",
-          "predicate": "formulated_with",
-          "object_id": "550e8400-e29b-41d4-a716-446655440107",
-          "object_qualifier": "0.5 parts",
-          "confidence": 100,
-          "provenance": {
-            "doc_id": "550e8400-e29b-41d4-a716-446655440001",
-            "page": 6
-          }
-        }
-      ]
-    }
+    ]
   },
   "knowledge_graph": {
     "entities": [
@@ -712,9 +50,718 @@
           "manufacturer": "Dixie Chemical",
           "product_family": "Anhydride"
         }
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440101",
+        "type": "CHEMICAL",
+        "canonical_name": "NADIC Methyl Anhydride",
+        "aliases": [
+          "NMA",
+          "Methyl-5-norbornene-2,3-dicarboxylic anhydride"
+        ],
+        "source_text": "NADIC® methyl anhydride (NMA) is a highly reactive anhydride that is used as a curing agent for epoxy resins in applications requiring high temperature resistance, excellent electrical properties, and good chemical resistance.",
+        "provenance": {
+          "page": 1,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "text": "NADIC Methyl Anhydride",
+        "metadata": {}
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440102",
+        "type": "CAS_NUMBER",
+        "canonical_name": "25134-21-8",
+        "aliases": [
+          "CAS 25134-21-8"
+        ],
+        "source_text": "CAS# 25134-21-8",
+        "provenance": {
+          "page": 1,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "text": "25134-21-8",
+        "metadata": {}
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440103",
+        "type": "CHEMICAL_CLASS",
+        "canonical_name": "Anhydride",
+        "aliases": [
+          "Anhydrides",
+          "Anhydride curing agent"
+        ],
+        "source_text": "NADIC® methyl anhydride (NMA) is a highly reactive anhydride that is used as a curing agent for epoxy resins",
+        "provenance": {
+          "page": 1,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "text": "Anhydride",
+        "metadata": {}
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440104",
+        "type": "CHEMICAL",
+        "canonical_name": "Epoxy Resin",
+        "aliases": [
+          "Epoxy",
+          "Epoxy resins"
+        ],
+        "source_text": "NADIC® methyl anhydride (NMA) is a highly reactive anhydride that is used as a curing agent for epoxy resins",
+        "provenance": {
+          "page": 1,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "text": "Epoxy Resin",
+        "metadata": {}
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440105",
+        "type": "CHEMICAL",
+        "canonical_name": "Bisphenol A Epoxy Resin",
+        "aliases": [
+          "Standard bisphenol A epoxy resin"
+        ],
+        "source_text": "For NMA with an equivalent weight of 178.2 and a standard bisphenol A epoxy resin with an equivalent weight of 190, the theoretical level would be: 178.2 x 100 / 190 = 93.8 phr",
+        "provenance": {
+          "page": 3,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "text": "Bisphenol A Epoxy Resin",
+        "metadata": {}
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440106",
+        "type": "CHEMICAL",
+        "canonical_name": "Epoxy Bisphenol A Novolac Resin",
+        "aliases": [
+          "Bisphenol A novolac resin"
+        ],
+        "source_text": "Momentive has published a formulation for a resin system based on this bisphenol A novolac and NADIC methyl anhydride.",
+        "provenance": {
+          "page": 6,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "text": "Epoxy Bisphenol A Novolac Resin",
+        "metadata": {}
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440107",
+        "type": "CHEMICAL",
+        "canonical_name": "Benzyldimethylamine",
+        "aliases": [
+          "BDMA"
+        ],
+        "source_text": "Benzyldimethylamine (BDMA) is commonly used at levels of 0.5 to 1.0 phr.",
+        "provenance": {
+          "page": 6,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "text": "Benzyldimethylamine",
+        "metadata": {}
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440108",
+        "type": "CHEMICAL",
+        "canonical_name": "2-Methylimidazole",
+        "aliases": [],
+        "source_text": "Other effective catalysts include 2-methylimidazole and 2-ethyl-4-methylimidazole.",
+        "provenance": {
+          "page": 6,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "text": "2-Methylimidazole",
+        "metadata": {}
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440109",
+        "type": "CHEMICAL",
+        "canonical_name": "2-Ethyl-4-methylimidazole",
+        "aliases": [],
+        "source_text": "Other effective catalysts include 2-methylimidazole and 2-ethyl-4-methylimidazole.",
+        "provenance": {
+          "page": 6,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "text": "2-Ethyl-4-methylimidazole",
+        "metadata": {}
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440110",
+        "type": "CHEMICAL",
+        "canonical_name": "D.E.R. 332",
+        "aliases": [],
+        "source_text": "Dow Chemical Company conducted an excellent and extensive formulation study in which a variety of liquid epoxy resins were formulated with NADIC methyl anhydride.",
+        "provenance": {
+          "page": 4,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "text": "D.E.R. 332",
+        "metadata": {}
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440111",
+        "type": "CHEMICAL",
+        "canonical_name": "D.E.R. 330",
+        "aliases": [],
+        "source_text": "Dow Chemical Company conducted an excellent and extensive formulation study in which a variety of liquid epoxy resins were formulated with NADIC methyl anhydride.",
+        "provenance": {
+          "page": 4,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "text": "D.E.R. 330",
+        "metadata": {}
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440112",
+        "type": "CHEMICAL",
+        "canonical_name": "D.E.R. 317",
+        "aliases": [],
+        "source_text": "Dow Chemical Company conducted an excellent and extensive formulation study in which a variety of liquid epoxy resins were formulated with NADIC methyl anhydride.",
+        "provenance": {
+          "page": 4,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "text": "D.E.R. 317",
+        "metadata": {}
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440113",
+        "type": "CHEMICAL",
+        "canonical_name": "D.E.R. 383",
+        "aliases": [],
+        "source_text": "Dow Chemical Company conducted an excellent and extensive formulation study in which a variety of liquid epoxy resins were formulated with NADIC methyl anhydride.",
+        "provenance": {
+          "page": 4,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "text": "D.E.R. 383",
+        "metadata": {}
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440114",
+        "type": "CHEMICAL",
+        "canonical_name": "D.E.R. 331",
+        "aliases": [],
+        "source_text": "Dow Chemical Company conducted an excellent and extensive formulation study in which a variety of liquid epoxy resins were formulated with NADIC methyl anhydride.",
+        "provenance": {
+          "page": 4,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "text": "D.E.R. 331",
+        "metadata": {}
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440115",
+        "type": "ORGANIZATION",
+        "canonical_name": "Dow Chemical Company",
+        "aliases": [
+          "Dow"
+        ],
+        "source_text": "Dow Chemical Company conducted an excellent and extensive formulation study in which a variety of liquid epoxy resins were formulated with NADIC methyl anhydride.",
+        "provenance": {
+          "page": 4,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "text": "Dow Chemical Company",
+        "metadata": {}
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440116",
+        "type": "ORGANIZATION",
+        "canonical_name": "Momentive Specialty Chemicals",
+        "aliases": [
+          "Momentive"
+        ],
+        "source_text": "Momentive has published a formulation for a resin system based on this bisphenol A novolac and NADIC methyl anhydride.",
+        "provenance": {
+          "page": 6,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "text": "Momentive Specialty Chemicals",
+        "metadata": {}
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440117",
+        "type": "ORGANIZATION",
+        "canonical_name": "Dixie Chemical",
+        "aliases": [],
+        "source_text": "For information on ordering, please contact Dixie Chemical at (281) 474-3271 or email info@dixiechemical.com.",
+        "provenance": {
+          "page": 8,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "text": "Dixie Chemical",
+        "metadata": {}
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440118",
+        "type": "DOCUMENT",
+        "canonical_name": "Dow Liquid Epoxy resins",
+        "aliases": [],
+        "source_text": "\"Dow Liquid Epoxy resins\" Published by Dow Chemical Company, January, 1999.",
+        "provenance": {
+          "page": 4,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "text": "Dow Liquid Epoxy resins",
+        "metadata": {}
+      },
+      {
+        "id": "550e8400-e29b-41d4-a716-446655440119",
+        "type": "DOCUMENT",
+        "canonical_name": "Starting Formulation 8011",
+        "aliases": [],
+        "source_text": "\"Starting Formulation 8011,\" published by Momentive Specialty Chemicals, July, 2007.",
+        "provenance": {
+          "page": 6,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "text": "Starting Formulation 8011",
+        "metadata": {}
       }
     ],
-    "kg_triples": []
+    "kg_triples": [
+      {
+        "predicate": "has_identifier",
+        "confidence": 1.0,
+        "provenance": {
+          "page": 1,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "subject": "550e8400-e29b-41d4-a716-446655440101",
+        "object": "550e8400-e29b-41d4-a716-446655440102",
+        "source_text": "NADIC Methyl Anhydride has identifier 25134-21-8"
+      },
+      {
+        "predicate": "is_a",
+        "confidence": 1.0,
+        "provenance": {
+          "page": 1,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "subject": "550e8400-e29b-41d4-a716-446655440101",
+        "object": "550e8400-e29b-41d4-a716-446655440103",
+        "source_text": "NADIC Methyl Anhydride is a Anhydride"
+      },
+      {
+        "predicate": "cures",
+        "confidence": 1.0,
+        "provenance": {
+          "page": 1,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "subject": "550e8400-e29b-41d4-a716-446655440101",
+        "object": "550e8400-e29b-41d4-a716-446655440104",
+        "source_text": "NADIC Methyl Anhydride cures Epoxy Resin"
+      },
+      {
+        "predicate": "has_molecular_weight",
+        "object": "178.2 g/mol",
+        "confidence": 1.0,
+        "provenance": {
+          "page": 1,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "subject": "550e8400-e29b-41d4-a716-446655440101",
+        "source_text": "NADIC Methyl Anhydride has molecular weight 178.2 g/mol"
+      },
+      {
+        "predicate": "has_specific_gravity",
+        "object": "1.24 g/cc",
+        "confidence": 1.0,
+        "provenance": {
+          "page": 1,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "subject": "550e8400-e29b-41d4-a716-446655440101",
+        "source_text": "NADIC Methyl Anhydride has specific gravity 1.24 g/cc"
+      },
+      {
+        "predicate": "has_melting_point",
+        "object": "92-97 °C",
+        "confidence": 1.0,
+        "provenance": {
+          "page": 1,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "subject": "550e8400-e29b-41d4-a716-446655440101",
+        "source_text": "NADIC Methyl Anhydride has melting point 92-97 °C"
+      },
+      {
+        "predicate": "has_flash_point",
+        "object": "113 °C",
+        "confidence": 1.0,
+        "provenance": {
+          "page": 1,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "subject": "550e8400-e29b-41d4-a716-446655440101",
+        "source_text": "NADIC Methyl Anhydride has flash point 113 °C"
+      },
+      {
+        "predicate": "has_anhydride_content",
+        "object": "99.0% Min",
+        "confidence": 1.0,
+        "provenance": {
+          "page": 1,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "subject": "550e8400-e29b-41d4-a716-446655440101",
+        "source_text": "NADIC Methyl Anhydride has anhydride content 99.0% Min"
+      },
+      {
+        "predicate": "has_acid_value",
+        "object": "1.0 Max mg KOH/g",
+        "confidence": 1.0,
+        "provenance": {
+          "page": 1,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "subject": "550e8400-e29b-41d4-a716-446655440101",
+        "source_text": "NADIC Methyl Anhydride has acid value 1.0 Max mg KOH/g"
+      },
+      {
+        "predicate": "has_color",
+        "object": "White to Off-White",
+        "confidence": 1.0,
+        "provenance": {
+          "page": 1,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "subject": "550e8400-e29b-41d4-a716-446655440101",
+        "source_text": "NADIC Methyl Anhydride has color White to Off-White"
+      },
+      {
+        "predicate": "used_in",
+        "object": "Aerospace and military applications",
+        "confidence": 1.0,
+        "provenance": {
+          "page": 1,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "subject": "550e8400-e29b-41d4-a716-446655440101",
+        "source_text": "NADIC Methyl Anhydride used in Aerospace and military applications"
+      },
+      {
+        "predicate": "used_in",
+        "object": "Electrical laminates",
+        "confidence": 1.0,
+        "provenance": {
+          "page": 1,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "subject": "550e8400-e29b-41d4-a716-446655440101",
+        "source_text": "NADIC Methyl Anhydride used in Electrical laminates"
+      },
+      {
+        "predicate": "used_in",
+        "object": "Filament winding",
+        "confidence": 1.0,
+        "provenance": {
+          "page": 1,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "subject": "550e8400-e29b-41d4-a716-446655440101",
+        "source_text": "NADIC Methyl Anhydride used in Filament winding"
+      },
+      {
+        "predicate": "used_in",
+        "object": "Electrical encapsulation",
+        "confidence": 1.0,
+        "provenance": {
+          "page": 1,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "subject": "550e8400-e29b-41d4-a716-446655440101",
+        "source_text": "NADIC Methyl Anhydride used in Electrical encapsulation"
+      },
+      {
+        "predicate": "used_in",
+        "object": "Tooling",
+        "confidence": 1.0,
+        "provenance": {
+          "page": 1,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "subject": "550e8400-e29b-41d4-a716-446655440101",
+        "source_text": "NADIC Methyl Anhydride used in Tooling"
+      },
+      {
+        "predicate": "used_in",
+        "object": "Composites",
+        "confidence": 1.0,
+        "provenance": {
+          "page": 1,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "subject": "550e8400-e29b-41d4-a716-446655440101",
+        "source_text": "NADIC Methyl Anhydride used in Composites"
+      },
+      {
+        "predicate": "used_in",
+        "object": "Powder coatings",
+        "confidence": 1.0,
+        "provenance": {
+          "page": 1,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "subject": "550e8400-e29b-41d4-a716-446655440101",
+        "source_text": "NADIC Methyl Anhydride used in Powder coatings"
+      },
+      {
+        "predicate": "has_theoretical_level_with",
+        "confidence": 1.0,
+        "provenance": {
+          "page": 3,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "subject": "550e8400-e29b-41d4-a716-446655440101",
+        "object": "550e8400-e29b-41d4-a716-446655440105",
+        "source_text": "NADIC Methyl Anhydride has theoretical level with Bisphenol A Epoxy Resin (93.8 phr)"
+      },
+      {
+        "predicate": "catalyzed_by",
+        "confidence": 1.0,
+        "provenance": {
+          "page": 6,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "subject": "550e8400-e29b-41d4-a716-446655440101",
+        "object": "550e8400-e29b-41d4-a716-446655440107",
+        "source_text": "NADIC Methyl Anhydride catalyzed by Benzyldimethylamine (0.5 to 1.0 phr)"
+      },
+      {
+        "predicate": "catalyzed_by",
+        "confidence": 1.0,
+        "provenance": {
+          "page": 6,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "subject": "550e8400-e29b-41d4-a716-446655440101",
+        "object": "550e8400-e29b-41d4-a716-446655440108",
+        "source_text": "NADIC Methyl Anhydride catalyzed by 2-Methylimidazole"
+      },
+      {
+        "predicate": "catalyzed_by",
+        "confidence": 1.0,
+        "provenance": {
+          "page": 6,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "subject": "550e8400-e29b-41d4-a716-446655440101",
+        "object": "550e8400-e29b-41d4-a716-446655440109",
+        "source_text": "NADIC Methyl Anhydride catalyzed by 2-Ethyl-4-methylimidazole"
+      },
+      {
+        "predicate": "has_cure_cycle",
+        "object": "2 hours at 100°C followed by 4 hours at 175°C",
+        "confidence": 1.0,
+        "provenance": {
+          "page": 6,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "subject": "550e8400-e29b-41d4-a716-446655440101",
+        "source_text": "NADIC Methyl Anhydride has cure cycle 2 hours at 100°C followed by 4 hours at 175°C"
+      },
+      {
+        "predicate": "is_corrosive_to",
+        "object": "skin and eyes",
+        "confidence": 1.0,
+        "provenance": {
+          "page": 8,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "subject": "550e8400-e29b-41d4-a716-446655440101",
+        "source_text": "NADIC Methyl Anhydride is corrosive to skin and eyes"
+      },
+      {
+        "predicate": "may_cause",
+        "object": "sensitization by skin contact",
+        "confidence": 1.0,
+        "provenance": {
+          "page": 8,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "subject": "550e8400-e29b-41d4-a716-446655440101",
+        "source_text": "NADIC Methyl Anhydride may cause sensitization by skin contact"
+      },
+      {
+        "predicate": "is_available_in",
+        "object": "50 lb bags and 400 lb drums",
+        "confidence": 1.0,
+        "provenance": {
+          "page": 8,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "subject": "550e8400-e29b-41d4-a716-446655440101",
+        "source_text": "NADIC Methyl Anhydride is available in 50 lb bags and 400 lb drums"
+      },
+      {
+        "predicate": "manufactured_by",
+        "confidence": 1.0,
+        "provenance": {
+          "page": 8,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "subject": "550e8400-e29b-41d4-a716-446655440101",
+        "object": "550e8400-e29b-41d4-a716-446655440117",
+        "source_text": "NADIC Methyl Anhydride manufactured by Dixie Chemical"
+      },
+      {
+        "predicate": "with_resin",
+        "confidence": 1.0,
+        "provenance": {
+          "page": 4,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "subject": "550e8400-e29b-41d4-a716-446655440101",
+        "object": "550e8400-e29b-41d4-a716-446655440110",
+        "source_text": "NADIC Methyl Anhydride with resin D.E.R. 332 (achieves heat deflection temperature of 145°C)"
+      },
+      {
+        "predicate": "with_resin",
+        "confidence": 1.0,
+        "provenance": {
+          "page": 6,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "subject": "550e8400-e29b-41d4-a716-446655440101",
+        "object": "550e8400-e29b-41d4-a716-446655440106",
+        "source_text": "NADIC Methyl Anhydride with resin Epoxy Bisphenol A Novolac Resin (achieves glass transition temperature of 221°C)"
+      },
+      {
+        "predicate": "published",
+        "confidence": 1.0,
+        "provenance": {
+          "page": 4,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "subject": "550e8400-e29b-41d4-a716-446655440115",
+        "object": "550e8400-e29b-41d4-a716-446655440118",
+        "source_text": "Dow Chemical Company published Dow Liquid Epoxy resins"
+      },
+      {
+        "predicate": "published",
+        "confidence": 1.0,
+        "provenance": {
+          "page": 6,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "subject": "550e8400-e29b-41d4-a716-446655440116",
+        "object": "550e8400-e29b-41d4-a716-446655440119",
+        "source_text": "Momentive Specialty Chemicals published Starting Formulation 8011"
+      },
+      {
+        "predicate": "is_a",
+        "confidence": 1.0,
+        "provenance": {
+          "page": 4,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "subject": "550e8400-e29b-41d4-a716-446655440110",
+        "object": "550e8400-e29b-41d4-a716-446655440104",
+        "source_text": "D.E.R. 332 is a Epoxy Resin"
+      },
+      {
+        "predicate": "is_a",
+        "confidence": 1.0,
+        "provenance": {
+          "page": 4,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "subject": "550e8400-e29b-41d4-a716-446655440111",
+        "object": "550e8400-e29b-41d4-a716-446655440104",
+        "source_text": "D.E.R. 330 is a Epoxy Resin"
+      },
+      {
+        "predicate": "is_a",
+        "confidence": 1.0,
+        "provenance": {
+          "page": 4,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "subject": "550e8400-e29b-41d4-a716-446655440112",
+        "object": "550e8400-e29b-41d4-a716-446655440104",
+        "source_text": "D.E.R. 317 is a Epoxy Resin"
+      },
+      {
+        "predicate": "is_a",
+        "confidence": 1.0,
+        "provenance": {
+          "page": 4,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "subject": "550e8400-e29b-41d4-a716-446655440113",
+        "object": "550e8400-e29b-41d4-a716-446655440104",
+        "source_text": "D.E.R. 383 is a Epoxy Resin"
+      },
+      {
+        "predicate": "is_a",
+        "confidence": 1.0,
+        "provenance": {
+          "page": 4,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "subject": "550e8400-e29b-41d4-a716-446655440114",
+        "object": "550e8400-e29b-41d4-a716-446655440104",
+        "source_text": "D.E.R. 331 is a Epoxy Resin"
+      },
+      {
+        "predicate": "is_a",
+        "object": "tertiary amine catalyst",
+        "confidence": 1.0,
+        "provenance": {
+          "page": 6,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "subject": "550e8400-e29b-41d4-a716-446655440107",
+        "source_text": "Benzyldimethylamine is a tertiary amine catalyst"
+      },
+      {
+        "predicate": "is_a",
+        "object": "tertiary amine catalyst",
+        "confidence": 1.0,
+        "provenance": {
+          "page": 6,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "subject": "550e8400-e29b-41d4-a716-446655440108",
+        "source_text": "2-Methylimidazole is a tertiary amine catalyst"
+      },
+      {
+        "predicate": "is_a",
+        "object": "tertiary amine catalyst",
+        "confidence": 1.0,
+        "provenance": {
+          "page": 6,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "subject": "550e8400-e29b-41d4-a716-446655440109",
+        "source_text": "2-Ethyl-4-methylimidazole is a tertiary amine catalyst"
+      },
+      {
+        "predicate": "formulated_with",
+        "confidence": 1.0,
+        "provenance": {
+          "page": 6,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "subject": "550e8400-e29b-41d4-a716-446655440106",
+        "object": "550e8400-e29b-41d4-a716-446655440101",
+        "source_text": "Epoxy Bisphenol A Novolac Resin formulated with NADIC Methyl Anhydride (80 parts)"
+      },
+      {
+        "predicate": "formulated_with",
+        "confidence": 1.0,
+        "provenance": {
+          "page": 6,
+          "document_id": "550e8400-e29b-41d4-a716-446655440001"
+        },
+        "subject": "550e8400-e29b-41d4-a716-446655440106",
+        "object": "550e8400-e29b-41d4-a716-446655440107",
+        "source_text": "Epoxy Bisphenol A Novolac Resin formulated with Benzyldimethylamine (0.5 parts)"
+      }
+    ]
   },
   "document_type": "Product Technical Bulletin"
 }

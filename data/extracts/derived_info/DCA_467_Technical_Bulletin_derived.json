@@ -772,9 +772,7 @@
         "confidence": 1.0
       },
       {
-        "subject": {
-          "text": "Dried films with DCA 467"
-        },
+        "subject": "Dried films with DCA 467",
         "predicate": "are_considered",
         "object": "non-mutagenic",
         "source_text": "It can, therefore, be concluded that dried films incorporating DCA 467 as a crosslinker can be considered non-mutagenic by the test conditions described by Ames.",
@@ -824,9 +822,7 @@
         "confidence": 1.0
       },
       {
-        "subject": {
-          "text": "Mixtures with DCA 467"
-        },
+        "subject": "Mixtures with DCA 467",
         "predicate": "has_mutagenic_activity",
         "object": "no genetic response",
         "source_text": "None of the mixtures showed any genetic response in the Ames Test.",

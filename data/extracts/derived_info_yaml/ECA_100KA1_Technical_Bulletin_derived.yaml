@@ -1,80 +1,63 @@
 doc_id: 83a60b03-9915-5818-9135-1da5dc896ed9
 filename: ECA_100KA1_Technical_Bulletin.pdf
-filepath: ${paths.processed_pdfs_root}/ECA_100KA1_Technical_Bulletin.pdf
+filepath: data/pdf_extracts/v1/pdfs/ECA_100KA1_Technical_Bulletin.pdf
 extraction_metadata:
-  confidence_scores: ${extraction.default_confidence_scores_derived}
-  extractor_version: ${extraction.extractor_version}
+  confidence_scores:
+    summary: 100
+    personas: 100
+    key_applications: 100
+    knowledge_graph: 100
+    overall: 100
+  extractor_version: dev
   extraction_date: '2025-08-28T16:53:00-04:00'
 derived_info:
-  summary: 'This technical bulletin provides detailed information about Epoxy Curing
-    Agent 100KA1 (ECA 100KA1), a pre-catalyzed version of methylhexahydrophthalic
-    anhydride (MHHPA) manufactured by Dixie Chemical. The document outlines ECA 100KA1''s
-    typical properties, applications, formulation examples, handling and storage requirements,
-    health hazards, and availability. ECA 100KA1 is characterized as a clear, colorless
-    to pale yellow liquid with a Gardner Color of 2 Max, specific gravity of 1.20-1.22
-    g/cc at 25°C, viscosity of 60-80 cPs at 25°C, minimum anhydride content of 95%,
-    maximum acid content of 0.5%, and maximum moisture content of 0.1%. The bulletin
-    highlights that ECA 100KA1 is a non-crystallizing anhydride curing agent for epoxy
-    resins, used in epoxy laminating, filament winding, and electrical encapsulation
-    applications where its excellent electrical properties are utilized. It is particularly
-    suitable for applications requiring UV resistance and alkaline resistance. The
-    document provides formulation examples with six different epoxy resin types: bisphenol
-    A (D.E.R. 331), bisphenol F (D.E.R. 354), polyglycol (D.E.R. 732), cycloaliphatic
-    (ERL 4221), novolac (D.E.N. 438), and glycidyl ester (Heloxy 71). For each formulation,
-    the anhydride level is calculated at 0.85 moles of anhydride per epoxy equivalent,
-    with a recommended cure schedule of 2 hours at 80°C followed by 2 hours at 150°C.
-    The bulletin emphasizes that ECA 100KA1 must be stored out of contact with moisture
-    to avoid hydrolysis of the anhydride to the acid, with a shelf life of 12 months
-    when properly stored. Safety information indicates that ECA 100KA1 is a skin and
-    eye irritant requiring adequate ventilation during handling and immediate flushing
-    with water for at least 15 minutes in case of skin or eye contact. The product
-    is available from Dixie Chemical''s facility in Pasadena, Texas.'
+  summary: 'This technical bulletin provides detailed information about Epoxy Curing Agent 100KA1 (ECA 100KA1), a pre-catalyzed
+    version of methylhexahydrophthalic anhydride (MHHPA) manufactured by Dixie Chemical. The document outlines ECA 100KA1''s
+    typical properties, applications, formulation examples, handling and storage requirements, health hazards, and availability.
+    ECA 100KA1 is characterized as a clear, colorless to pale yellow liquid with a Gardner Color of 2 Max, specific gravity
+    of 1.20-1.22 g/cc at 25°C, viscosity of 60-80 cPs at 25°C, minimum anhydride content of 95%, maximum acid content of 0.5%,
+    and maximum moisture content of 0.1%. The bulletin highlights that ECA 100KA1 is a non-crystallizing anhydride curing
+    agent for epoxy resins, used in epoxy laminating, filament winding, and electrical encapsulation applications where its
+    excellent electrical properties are utilized. It is particularly suitable for applications requiring UV resistance and
+    alkaline resistance. The document provides formulation examples with six different epoxy resin types: bisphenol A (D.E.R.
+    331), bisphenol F (D.E.R. 354), polyglycol (D.E.R. 732), cycloaliphatic (ERL 4221), novolac (D.E.N. 438), and glycidyl
+    ester (Heloxy 71). For each formulation, the anhydride level is calculated at 0.85 moles of anhydride per epoxy equivalent,
+    with a recommended cure schedule of 2 hours at 80°C followed by 2 hours at 150°C. The bulletin emphasizes that ECA 100KA1
+    must be stored out of contact with moisture to avoid hydrolysis of the anhydride to the acid, with a shelf life of 12
+    months when properly stored. Safety information indicates that ECA 100KA1 is a skin and eye irritant requiring adequate
+    ventilation during handling and immediate flushing with water for at least 15 minutes in case of skin or eye contact.
+    The product is available from Dixie Chemical''s facility in Pasadena, Texas.'
   personas:
-    sales_summary: ECA 100KA1 is a premium pre-catalyzed version of methylhexahydrophthalic
-      anhydride (MHHPA) that offers significant processing advantages for manufacturers
-      working with epoxy systems. This clear, low-viscosity liquid (60-80 cPs) provides
-      faster cure cycles and eliminates the crystallization issues common with standard
-      MHHPA products, reducing production delays and improving manufacturing efficiency.
-      With a high anhydride content (minimum 95%) and low acid and moisture levels,
-      ECA 100KA1 delivers consistent, high-quality performance across diverse applications.
-      The product's versatility is demonstrated through its compatibility with all
-      major epoxy resin types—bisphenol A, bisphenol F, cycloaliphatic, novolac, and
-      glycidyl ester—making it a single-source solution for multiple production needs.
-      ECA 100KA1 creates cured systems with excellent electrical properties, making
-      it ideal for electrical encapsulation applications in demanding environments.
-      Its superior UV and alkaline resistance provide extended service life in outdoor
-      and harsh chemical environments, reducing warranty claims and replacement costs.
-      The product's REACh registration in the EU ensures regulatory compliance for
-      global markets. With detailed formulation examples provided for six different
-      epoxy resin systems and a straightforward cure schedule (2 hours at 80°C followed
-      by 2 hours at 150°C), ECA 100KA1 offers customers a well-documented path to
-      successful implementation. Available from our Pasadena, Texas facility with
-      a 12-month shelf life when properly stored, ECA 100KA1 represents a high-value,
-      problem-solving curing agent for customers in the electrical, composite, and
-      specialty coatings industries.
-    technical_summary: 'Epoxy Curing Agent 100KA1 (ECA 100KA1) is a pre-catalyzed
-      methylhexahydrophthalic anhydride (MHHPA) with CAS number 25550-51-0 and EU
-      REACh registration number 01-2119943714-35. The product appears as a clear,
-      colorless to pale yellow liquid with Gardner Color of 2 Max (D-150G). Physical
-      properties include specific gravity of 1.20-1.22 g/cc at 25°C (D-102/ASTM D
-      4052), viscosity of 60-80 cPs at 25°C (D-150V), minimum anhydride content of
-      95% (D-150M), maximum acid content of 0.5% (D-150M), and maximum moisture content
-      of 0.1% (D-150M). As a non-crystallizing anhydride curing agent, ECA 100KA1
-      eliminates the handling issues associated with standard MHHPA products. The
-      pre-catalyzed nature accelerates cure response without requiring additional
-      catalysts. Formulation guidelines are based on 0.85 moles of anhydride per epoxy
-      equivalent, with specific ratios provided for six epoxy resin types: D.E.R.
-      331 (bisphenol A, EEW 186, 90 phr), D.E.R. 354 (bisphenol F, EEW 167, 80 phr),
-      D.E.R. 732 (polyglycol, EEW 320, 155 phr), ERL 4221 (cycloaliphatic, EEW 133,
-      65 phr), D.E.N. 438 (novolac, EEW 176, 85 phr), and Heloxy 71 (glycidyl ester,
-      EEW 148, 72 phr). The recommended cure schedule for all formulations is 2 hours
-      at 80°C followed by 2 hours at 150°C. ECA 100KA1 must be stored away from moisture
-      to prevent hydrolysis of the anhydride to the acid, with a 12-month shelf life
-      under proper storage conditions. The material is classified as a skin and eye
-      irritant requiring standard chemical handling precautions including adequate
-      ventilation and appropriate personal protective equipment. Primary applications
-      include epoxy laminating, filament winding, electrical encapsulation, and systems
-      requiring UV and alkaline resistance.'
+    sales_summary: ECA 100KA1 is a premium pre-catalyzed version of methylhexahydrophthalic anhydride (MHHPA) that offers
+      significant processing advantages for manufacturers working with epoxy systems. This clear, low-viscosity liquid (60-80
+      cPs) provides faster cure cycles and eliminates the crystallization issues common with standard MHHPA products, reducing
+      production delays and improving manufacturing efficiency. With a high anhydride content (minimum 95%) and low acid and
+      moisture levels, ECA 100KA1 delivers consistent, high-quality performance across diverse applications. The product's
+      versatility is demonstrated through its compatibility with all major epoxy resin types—bisphenol A, bisphenol F, cycloaliphatic,
+      novolac, and glycidyl ester—making it a single-source solution for multiple production needs. ECA 100KA1 creates cured
+      systems with excellent electrical properties, making it ideal for electrical encapsulation applications in demanding
+      environments. Its superior UV and alkaline resistance provide extended service life in outdoor and harsh chemical environments,
+      reducing warranty claims and replacement costs. The product's REACh registration in the EU ensures regulatory compliance
+      for global markets. With detailed formulation examples provided for six different epoxy resin systems and a straightforward
+      cure schedule (2 hours at 80°C followed by 2 hours at 150°C), ECA 100KA1 offers customers a well-documented path to
+      successful implementation. Available from our Pasadena, Texas facility with a 12-month shelf life when properly stored,
+      ECA 100KA1 represents a high-value, problem-solving curing agent for customers in the electrical, composite, and specialty
+      coatings industries.
+    technical_summary: 'Epoxy Curing Agent 100KA1 (ECA 100KA1) is a pre-catalyzed methylhexahydrophthalic anhydride (MHHPA)
+      with CAS number 25550-51-0 and EU REACh registration number 01-2119943714-35. The product appears as a clear, colorless
+      to pale yellow liquid with Gardner Color of 2 Max (D-150G). Physical properties include specific gravity of 1.20-1.22
+      g/cc at 25°C (D-102/ASTM D 4052), viscosity of 60-80 cPs at 25°C (D-150V), minimum anhydride content of 95% (D-150M),
+      maximum acid content of 0.5% (D-150M), and maximum moisture content of 0.1% (D-150M). As a non-crystallizing anhydride
+      curing agent, ECA 100KA1 eliminates the handling issues associated with standard MHHPA products. The pre-catalyzed nature
+      accelerates cure response without requiring additional catalysts. Formulation guidelines are based on 0.85 moles of
+      anhydride per epoxy equivalent, with specific ratios provided for six epoxy resin types: D.E.R. 331 (bisphenol A, EEW
+      186, 90 phr), D.E.R. 354 (bisphenol F, EEW 167, 80 phr), D.E.R. 732 (polyglycol, EEW 320, 155 phr), ERL 4221 (cycloaliphatic,
+      EEW 133, 65 phr), D.E.N. 438 (novolac, EEW 176, 85 phr), and Heloxy 71 (glycidyl ester, EEW 148, 72 phr). The recommended
+      cure schedule for all formulations is 2 hours at 80°C followed by 2 hours at 150°C. ECA 100KA1 must be stored away from
+      moisture to prevent hydrolysis of the anhydride to the acid, with a 12-month shelf life under proper storage conditions.
+      The material is classified as a skin and eye irritant requiring standard chemical handling precautions including adequate
+      ventilation and appropriate personal protective equipment. Primary applications include epoxy laminating, filament winding,
+      electrical encapsulation, and systems requiring UV and alkaline resistance.'
   key_applications:
   - Epoxy laminating
   - Filament winding applications
@@ -86,377 +69,6 @@ derived_info:
   - Curing agent for cycloaliphatic epoxy resins
   - Curing agent for novolac epoxy resins
   - Curing agent for glycidyl ester epoxy resins
-  knowledge_graph:
-    entities:
-    - id: a9953e7b-0a26-5e72-9ad8-d94a112b3194
-      text: ECA 100KA1
-      type: PRODUCT_NAME
-      canonical_name: Epoxy Curing Agent 100KA1
-      aliases:
-      - ECA 100KA1
-      - Epoxy Curing Agent 100KA1
-      source_text: Epoxy Curing Agent 100KA1 (ECA 100KA1)
-      provenance:
-        document_id: 83a60b03-9915-5818-9135-1da5dc896ed9
-        page: 1
-      metadata:
-        manufacturer: Dixie Chemical
-        product_family: Epoxy Curing Agent
-    - id: f47ac10b-58cc-4372-a567-0e02b2c3d540
-      type: CHEMICAL
-      canonical_name: Epoxy Curing Agent 100KA1
-      aliases:
-      - ECA 100KA1
-      source_text: Epoxy Curing Agent 100KA1
-      provenance:
-        document_id: 550e8400-e29b-41d4-a716-446655440005
-        page: 1
-    - id: f47ac10b-58cc-4372-a567-0e02b2c3d541
-      type: ORGANIZATION
-      canonical_name: Dixie Chemical
-      aliases:
-      - Dixie Chemical Company
-      - Dixie
-      source_text: DIXIE CHEMICAL 10601 Bay Area Blvd. Pasadena, TX 77507
-      provenance:
-        document_id: 550e8400-e29b-41d4-a716-446655440005
-        page: 1
-    - id: f47ac10b-58cc-4372-a567-0e02b2c3d542
-      type: CHEMICAL
-      canonical_name: Methylhexahydrophthalic Anhydride
-      aliases:
-      - MHHPA
-      source_text: ECA 100KA1 is a pre-catalyzed version of methylhexahydrophthalic
-        anhydride (MHHPA).
-      provenance:
-        document_id: 550e8400-e29b-41d4-a716-446655440005
-        page: 1
-    - id: f47ac10b-58cc-4372-a567-0e02b2c3d543
-      type: CHEMICAL_CLASS
-      canonical_name: Anhydride Curing Agent
-      aliases: []
-      source_text: It is a non-crystallizing anhydride curing agent for epoxy resins.
-      provenance:
-        document_id: 550e8400-e29b-41d4-a716-446655440005
-        page: 1
-    - id: f47ac10b-58cc-4372-a567-0e02b2c3d544
-      type: CHEMICAL
-      canonical_name: D.E.R. 331
-      aliases: []
-      source_text: D.E.R. 331
-      provenance:
-        document_id: 550e8400-e29b-41d4-a716-446655440005
-        page: 1
-    - id: f47ac10b-58cc-4372-a567-0e02b2c3d545
-      type: CHEMICAL
-      canonical_name: D.E.R. 354
-      aliases: []
-      source_text: D.E.R. 354
-      provenance:
-        document_id: 550e8400-e29b-41d4-a716-446655440005
-        page: 1
-    - id: f47ac10b-58cc-4372-a567-0e02b2c3d546
-      type: CHEMICAL
-      canonical_name: D.E.R. 732
-      aliases: []
-      source_text: D.E.R. 732
-      provenance:
-        document_id: 550e8400-e29b-41d4-a716-446655440005
-        page: 1
-    - id: f47ac10b-58cc-4372-a567-0e02b2c3d547
-      type: CHEMICAL
-      canonical_name: ERL 4221
-      aliases: []
-      source_text: ERL 4221
-      provenance:
-        document_id: 550e8400-e29b-41d4-a716-446655440005
-        page: 1
-    - id: f47ac10b-58cc-4372-a567-0e02b2c3d548
-      type: CHEMICAL
-      canonical_name: D.E.N. 438
-      aliases: []
-      source_text: D.E.N. 438
-      provenance:
-        document_id: 550e8400-e29b-41d4-a716-446655440005
-        page: 1
-    - id: f47ac10b-58cc-4372-a567-0e02b2c3d549
-      type: CHEMICAL
-      canonical_name: Heloxy 71
-      aliases: []
-      source_text: Heloxy 71
-      provenance:
-        document_id: 550e8400-e29b-41d4-a716-446655440005
-        page: 1
-    - id: f47ac10b-58cc-4372-a567-0e02b2c3d550
-      type: CHEMICAL_CLASS
-      canonical_name: Bisphenol A Epoxy Resin
-      aliases: []
-      source_text: Bisphenol A
-      provenance:
-        document_id: 550e8400-e29b-41d4-a716-446655440005
-        page: 1
-    - id: f47ac10b-58cc-4372-a567-0e02b2c3d551
-      type: CHEMICAL_CLASS
-      canonical_name: Bisphenol F Epoxy Resin
-      aliases: []
-      source_text: Bisphenol F
-      provenance:
-        document_id: 550e8400-e29b-41d4-a716-446655440005
-        page: 1
-    - id: f47ac10b-58cc-4372-a567-0e02b2c3d552
-      type: CHEMICAL_CLASS
-      canonical_name: Polyglycol Epoxy Resin
-      aliases: []
-      source_text: Polyglycol
-      provenance:
-        document_id: 550e8400-e29b-41d4-a716-446655440005
-        page: 1
-    - id: f47ac10b-58cc-4372-a567-0e02b2c3d553
-      type: CHEMICAL_CLASS
-      canonical_name: Cycloaliphatic Epoxy Resin
-      aliases: []
-      source_text: Cycloaliphatic
-      provenance:
-        document_id: 550e8400-e29b-41d4-a716-446655440005
-        page: 1
-    - id: f47ac10b-58cc-4372-a567-0e02b2c3d554
-      type: CHEMICAL_CLASS
-      canonical_name: Novolac Epoxy Resin
-      aliases: []
-      source_text: Novolac
-      provenance:
-        document_id: 550e8400-e29b-41d4-a716-446655440005
-        page: 1
-    - id: f47ac10b-58cc-4372-a567-0e02b2c3d555
-      type: CHEMICAL_CLASS
-      canonical_name: Glycidyl Ester Epoxy Resin
-      aliases: []
-      source_text: Glycidyl Ester
-      provenance:
-        document_id: 550e8400-e29b-41d4-a716-446655440005
-        page: 1
-    - id: f47ac10b-58cc-4372-a567-0e02b2c3d556
-      type: CAS_NUMBER
-      canonical_name: CAS 25550-51-0
-      aliases:
-      - CASRN 25550-51-0
-      source_text: 'CAS number: 25550-51-0'
-      provenance:
-        document_id: 550e8400-e29b-41d4-a716-446655440005
-        page: 1
-    - id: f47ac10b-58cc-4372-a567-0e02b2c3d557
-      type: REGISTRATION
-      canonical_name: REACh 01-2119943714-35
-      aliases: []
-      source_text: 'REACh registration number: 01-2119943714-35'
-      provenance:
-        document_id: 550e8400-e29b-41d4-a716-446655440005
-        page: 1
-    - id: f47ac10b-58cc-4372-a567-0e02b2c3d558
-      type: LOCATION
-      canonical_name: Pasadena, TX
-      aliases:
-      - Pasadena, Texas
-      source_text: ECA 100KA1 is available from Dixie Chemical in Pasadena, TX.
-      provenance:
-        document_id: 550e8400-e29b-41d4-a716-446655440005
-        page: 2
-    - id: f47ac10b-58cc-4372-a567-0e02b2c3d559
-      type: CHEMICAL_CLASS
-      canonical_name: Latent Accelerator
-      aliases:
-      - Pre-catalyzed
-      source_text: ECA 100KA1 is a pre-catalyzed version of methylhexahydrophthalic
-        anhydride (MHHPA).
-      provenance:
-        document_id: 550e8400-e29b-41d4-a716-446655440005
-        page: 1
-    kg_triples:
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
-      predicate: is_a
-      object: f47ac10b-58cc-4372-a567-0e02b2c3d543
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
-      predicate: is_derived_from
-      object: f47ac10b-58cc-4372-a567-0e02b2c3d542
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
-      predicate: is_produced_by
-      object: f47ac10b-58cc-4372-a567-0e02b2c3d541
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
-      predicate: has_cas_number
-      object: f47ac10b-58cc-4372-a567-0e02b2c3d556
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
-      predicate: has_reach_number
-      object: f47ac10b-58cc-4372-a567-0e02b2c3d557
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
-      predicate: has_typical_property
-      object:
-        property: Physical Appearance
-        value: Clear, colorless to pale yellow liquid
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
-      predicate: has_typical_property
-      object:
-        property: Gardner Color
-        value: 2 Max
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
-      predicate: has_typical_property
-      object:
-        property: Specific Gravity @ 25°C
-        value: 1.20-1.22 g/cc
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
-      predicate: has_typical_property
-      object:
-        property: Viscosity @ 25°C
-        value: 60-80 cPs
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
-      predicate: has_typical_property
-      object:
-        property: Anhydride Content
-        value: 95 Min %
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
-      predicate: has_typical_property
-      object:
-        property: Acid Content
-        value: 0.5 Max %
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
-      predicate: has_typical_property
-      object:
-        property: Moisture
-        value: 0.1 Max %
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
-      predicate: has_application
-      object: Epoxy laminating
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
-      predicate: has_application
-      object: Filament winding applications
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
-      predicate: has_application
-      object: Electrical encapsulation
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
-      predicate: has_application
-      object: Applications requiring UV resistance
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
-      predicate: has_application
-      object: Applications requiring alkaline resistance
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
-      predicate: has_safety_hazard
-      object: skin irritant
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
-      predicate: has_safety_hazard
-      object: eye irritant
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
-      predicate: has_storage_requirement
-      object: moisture-free environment
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
-      predicate: has_shelf_life
-      object: 12 months
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
-      predicate: has_benefit
-      object: non-crystallizing
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
-      predicate: has_benefit
-      object: pre-catalyzed
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
-      predicate: is_available_from
-      object: f47ac10b-58cc-4372-a567-0e02b2c3d558
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
-      predicate: is_compatible_with
-      object: f47ac10b-58cc-4372-a567-0e02b2c3d550
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
-      predicate: is_compatible_with
-      object: f47ac10b-58cc-4372-a567-0e02b2c3d551
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
-      predicate: is_compatible_with
-      object: f47ac10b-58cc-4372-a567-0e02b2c3d552
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
-      predicate: is_compatible_with
-      object: f47ac10b-58cc-4372-a567-0e02b2c3d553
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
-      predicate: is_compatible_with
-      object: f47ac10b-58cc-4372-a567-0e02b2c3d554
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
-      predicate: is_compatible_with
-      object: f47ac10b-58cc-4372-a567-0e02b2c3d555
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d544
-      predicate: is_a
-      object: f47ac10b-58cc-4372-a567-0e02b2c3d550
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d545
-      predicate: is_a
-      object: f47ac10b-58cc-4372-a567-0e02b2c3d551
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d546
-      predicate: is_a
-      object: f47ac10b-58cc-4372-a567-0e02b2c3d552
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d547
-      predicate: is_a
-      object: f47ac10b-58cc-4372-a567-0e02b2c3d553
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d548
-      predicate: is_a
-      object: f47ac10b-58cc-4372-a567-0e02b2c3d554
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d549
-      predicate: is_a
-      object: f47ac10b-58cc-4372-a567-0e02b2c3d555
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d544
-      predicate: has_epoxy_equivalent_weight
-      object: 186 g/eq
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d545
-      predicate: has_epoxy_equivalent_weight
-      object: 167 g/eq
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d546
-      predicate: has_epoxy_equivalent_weight
-      object: 320 g/eq
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d547
-      predicate: has_epoxy_equivalent_weight
-      object: 133 g/eq
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d548
-      predicate: has_epoxy_equivalent_weight
-      object: 176 g/eq
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d549
-      predicate: has_epoxy_equivalent_weight
-      object: 148 g/eq
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
-      predicate: has_formulation_with
-      object:
-        resin: D.E.R. 331
-        resin_amount: 100 pbw
-        anhydride_amount: 90 pbw
-        cure_schedule: 2 hr @ 80°C + 2 hr @ 150°C
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
-      predicate: has_formulation_with
-      object:
-        resin: D.E.R. 354
-        resin_amount: 100 pbw
-        anhydride_amount: 80 pbw
-        cure_schedule: 2 hr @ 80°C + 2 hr @ 150°C
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
-      predicate: has_formulation_with
-      object:
-        resin: D.E.R. 732
-        resin_amount: 100 pbw
-        anhydride_amount: 155 pbw
-        cure_schedule: 2 hr @ 80°C + 2 hr @ 150°C
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
-      predicate: has_formulation_with
-      object:
-        resin: ERL 4221
-        resin_amount: 100 pbw
-        anhydride_amount: 65 pbw
-        cure_schedule: 2 hr @ 80°C + 2 hr @ 150°C
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
-      predicate: has_formulation_with
-      object:
-        resin: D.E.N. 438
-        resin_amount: 100 pbw
-        anhydride_amount: 85 pbw
-        cure_schedule: 2 hr @ 80°C + 2 hr @ 150°C
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
-      predicate: has_formulation_with
-      object:
-        resin: Heloxy 71
-        resin_amount: 100 pbw
-        anhydride_amount: 72 pbw
-        cure_schedule: 2 hr @ 80°C + 2 hr @ 150°C
-    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
-      predicate: contains
-      object: f47ac10b-58cc-4372-a567-0e02b2c3d559
 knowledge_graph:
   entities:
   - id: a9953e7b-0a26-5e72-9ad8-d94a112b3194
@@ -473,4 +85,440 @@ knowledge_graph:
     metadata:
       manufacturer: Dixie Chemical
       product_family: Epoxy Curing Agent
-  kg_triples: []
+  - id: f47ac10b-58cc-4372-a567-0e02b2c3d540
+    type: CHEMICAL
+    canonical_name: Epoxy Curing Agent 100KA1
+    aliases:
+    - ECA 100KA1
+    source_text: Epoxy Curing Agent 100KA1
+    provenance:
+      document_id: 550e8400-e29b-41d4-a716-446655440005
+      page: 1
+    text: Epoxy Curing Agent 100KA1
+    metadata: {}
+  - id: f47ac10b-58cc-4372-a567-0e02b2c3d541
+    type: ORGANIZATION
+    canonical_name: Dixie Chemical
+    aliases:
+    - Dixie Chemical Company
+    - Dixie
+    source_text: DIXIE CHEMICAL 10601 Bay Area Blvd. Pasadena, TX 77507
+    provenance:
+      document_id: 550e8400-e29b-41d4-a716-446655440005
+      page: 1
+    text: Dixie Chemical
+    metadata: {}
+  - id: f47ac10b-58cc-4372-a567-0e02b2c3d542
+    type: CHEMICAL
+    canonical_name: Methylhexahydrophthalic Anhydride
+    aliases:
+    - MHHPA
+    source_text: ECA 100KA1 is a pre-catalyzed version of methylhexahydrophthalic anhydride (MHHPA).
+    provenance:
+      document_id: 550e8400-e29b-41d4-a716-446655440005
+      page: 1
+    text: Methylhexahydrophthalic Anhydride
+    metadata: {}
+  - id: f47ac10b-58cc-4372-a567-0e02b2c3d543
+    type: CHEMICAL_CLASS
+    canonical_name: Anhydride Curing Agent
+    aliases: []
+    source_text: It is a non-crystallizing anhydride curing agent for epoxy resins.
+    provenance:
+      document_id: 550e8400-e29b-41d4-a716-446655440005
+      page: 1
+    text: Anhydride Curing Agent
+    metadata: {}
+  - id: f47ac10b-58cc-4372-a567-0e02b2c3d544
+    type: CHEMICAL
+    canonical_name: D.E.R. 331
+    aliases: []
+    source_text: D.E.R. 331
+    provenance:
+      document_id: 550e8400-e29b-41d4-a716-446655440005
+      page: 1
+    text: D.E.R. 331
+    metadata: {}
+  - id: f47ac10b-58cc-4372-a567-0e02b2c3d545
+    type: CHEMICAL
+    canonical_name: D.E.R. 354
+    aliases: []
+    source_text: D.E.R. 354
+    provenance:
+      document_id: 550e8400-e29b-41d4-a716-446655440005
+      page: 1
+    text: D.E.R. 354
+    metadata: {}
+  - id: f47ac10b-58cc-4372-a567-0e02b2c3d546
+    type: CHEMICAL
+    canonical_name: D.E.R. 732
+    aliases: []
+    source_text: D.E.R. 732
+    provenance:
+      document_id: 550e8400-e29b-41d4-a716-446655440005
+      page: 1
+    text: D.E.R. 732
+    metadata: {}
+  - id: f47ac10b-58cc-4372-a567-0e02b2c3d547
+    type: CHEMICAL
+    canonical_name: ERL 4221
+    aliases: []
+    source_text: ERL 4221
+    provenance:
+      document_id: 550e8400-e29b-41d4-a716-446655440005
+      page: 1
+    text: ERL 4221
+    metadata: {}
+  - id: f47ac10b-58cc-4372-a567-0e02b2c3d548
+    type: CHEMICAL
+    canonical_name: D.E.N. 438
+    aliases: []
+    source_text: D.E.N. 438
+    provenance:
+      document_id: 550e8400-e29b-41d4-a716-446655440005
+      page: 1
+    text: D.E.N. 438
+    metadata: {}
+  - id: f47ac10b-58cc-4372-a567-0e02b2c3d549
+    type: CHEMICAL
+    canonical_name: Heloxy 71
+    aliases: []
+    source_text: Heloxy 71
+    provenance:
+      document_id: 550e8400-e29b-41d4-a716-446655440005
+      page: 1
+    text: Heloxy 71
+    metadata: {}
+  - id: f47ac10b-58cc-4372-a567-0e02b2c3d550
+    type: CHEMICAL_CLASS
+    canonical_name: Bisphenol A Epoxy Resin
+    aliases: []
+    source_text: Bisphenol A
+    provenance:
+      document_id: 550e8400-e29b-41d4-a716-446655440005
+      page: 1
+    text: Bisphenol A Epoxy Resin
+    metadata: {}
+  - id: f47ac10b-58cc-4372-a567-0e02b2c3d551
+    type: CHEMICAL_CLASS
+    canonical_name: Bisphenol F Epoxy Resin
+    aliases: []
+    source_text: Bisphenol F
+    provenance:
+      document_id: 550e8400-e29b-41d4-a716-446655440005
+      page: 1
+    text: Bisphenol F Epoxy Resin
+    metadata: {}
+  - id: f47ac10b-58cc-4372-a567-0e02b2c3d552
+    type: CHEMICAL_CLASS
+    canonical_name: Polyglycol Epoxy Resin
+    aliases: []
+    source_text: Polyglycol
+    provenance:
+      document_id: 550e8400-e29b-41d4-a716-446655440005
+      page: 1
+    text: Polyglycol Epoxy Resin
+    metadata: {}
+  - id: f47ac10b-58cc-4372-a567-0e02b2c3d553
+    type: CHEMICAL_CLASS
+    canonical_name: Cycloaliphatic Epoxy Resin
+    aliases: []
+    source_text: Cycloaliphatic
+    provenance:
+      document_id: 550e8400-e29b-41d4-a716-446655440005
+      page: 1
+    text: Cycloaliphatic Epoxy Resin
+    metadata: {}
+  - id: f47ac10b-58cc-4372-a567-0e02b2c3d554
+    type: CHEMICAL_CLASS
+    canonical_name: Novolac Epoxy Resin
+    aliases: []
+    source_text: Novolac
+    provenance:
+      document_id: 550e8400-e29b-41d4-a716-446655440005
+      page: 1
+    text: Novolac Epoxy Resin
+    metadata: {}
+  - id: f47ac10b-58cc-4372-a567-0e02b2c3d555
+    type: CHEMICAL_CLASS
+    canonical_name: Glycidyl Ester Epoxy Resin
+    aliases: []
+    source_text: Glycidyl Ester
+    provenance:
+      document_id: 550e8400-e29b-41d4-a716-446655440005
+      page: 1
+    text: Glycidyl Ester Epoxy Resin
+    metadata: {}
+  - id: f47ac10b-58cc-4372-a567-0e02b2c3d556
+    type: CAS_NUMBER
+    canonical_name: CAS 25550-51-0
+    aliases:
+    - CASRN 25550-51-0
+    source_text: 'CAS number: 25550-51-0'
+    provenance:
+      document_id: 550e8400-e29b-41d4-a716-446655440005
+      page: 1
+    text: CAS 25550-51-0
+    metadata: {}
+  - id: f47ac10b-58cc-4372-a567-0e02b2c3d557
+    type: REGISTRATION
+    canonical_name: REACh 01-2119943714-35
+    aliases: []
+    source_text: 'REACh registration number: 01-2119943714-35'
+    provenance:
+      document_id: 550e8400-e29b-41d4-a716-446655440005
+      page: 1
+    text: REACh 01-2119943714-35
+    metadata: {}
+  - id: f47ac10b-58cc-4372-a567-0e02b2c3d558
+    type: LOCATION
+    canonical_name: Pasadena, TX
+    aliases:
+    - Pasadena, Texas
+    source_text: ECA 100KA1 is available from Dixie Chemical in Pasadena, TX.
+    provenance:
+      document_id: 550e8400-e29b-41d4-a716-446655440005
+      page: 2
+    text: Pasadena, TX
+    metadata: {}
+  - id: f47ac10b-58cc-4372-a567-0e02b2c3d559
+    type: CHEMICAL_CLASS
+    canonical_name: Latent Accelerator
+    aliases:
+    - Pre-catalyzed
+    source_text: ECA 100KA1 is a pre-catalyzed version of methylhexahydrophthalic anhydride (MHHPA).
+    provenance:
+      document_id: 550e8400-e29b-41d4-a716-446655440005
+      page: 1
+    text: Latent Accelerator
+    metadata: {}
+  kg_triples:
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
+    predicate: is_a
+    object: f47ac10b-58cc-4372-a567-0e02b2c3d543
+    source_text: Epoxy Curing Agent 100KA1 is a Anhydride Curing Agent
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
+    predicate: is_derived_from
+    object: f47ac10b-58cc-4372-a567-0e02b2c3d542
+    source_text: Epoxy Curing Agent 100KA1 is derived from Methylhexahydrophthalic Anhydride
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
+    predicate: is_produced_by
+    object: f47ac10b-58cc-4372-a567-0e02b2c3d541
+    source_text: Epoxy Curing Agent 100KA1 is produced by Dixie Chemical
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
+    predicate: has_cas_number
+    object: f47ac10b-58cc-4372-a567-0e02b2c3d556
+    source_text: Epoxy Curing Agent 100KA1 has cas number CAS 25550-51-0
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
+    predicate: has_reach_number
+    object: f47ac10b-58cc-4372-a567-0e02b2c3d557
+    source_text: Epoxy Curing Agent 100KA1 has reach number REACh 01-2119943714-35
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
+    predicate: has_typical_property
+    object:
+      property: Physical Appearance
+      value: Clear, colorless to pale yellow liquid
+    source_text: 'Epoxy Curing Agent 100KA1 has typical property Physical Appearance: Clear, colorless to pale yellow liquid'
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
+    predicate: has_typical_property
+    object:
+      property: Gardner Color
+      value: 2 Max
+    source_text: 'Epoxy Curing Agent 100KA1 has typical property Gardner Color: 2 Max'
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
+    predicate: has_typical_property
+    object:
+      property: Specific Gravity @ 25°C
+      value: 1.20-1.22 g/cc
+    source_text: 'Epoxy Curing Agent 100KA1 has typical property Specific Gravity @ 25°C: 1.20-1.22 g/cc'
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
+    predicate: has_typical_property
+    object:
+      property: Viscosity @ 25°C
+      value: 60-80 cPs
+    source_text: 'Epoxy Curing Agent 100KA1 has typical property Viscosity @ 25°C: 60-80 cPs'
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
+    predicate: has_typical_property
+    object:
+      property: Anhydride Content
+      value: 95 Min %
+    source_text: 'Epoxy Curing Agent 100KA1 has typical property Anhydride Content: 95 Min %'
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
+    predicate: has_typical_property
+    object:
+      property: Acid Content
+      value: 0.5 Max %
+    source_text: 'Epoxy Curing Agent 100KA1 has typical property Acid Content: 0.5 Max %'
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
+    predicate: has_typical_property
+    object:
+      property: Moisture
+      value: 0.1 Max %
+    source_text: 'Epoxy Curing Agent 100KA1 has typical property Moisture: 0.1 Max %'
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
+    predicate: has_application
+    object: Epoxy laminating
+    source_text: Epoxy Curing Agent 100KA1 has application Epoxy laminating
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
+    predicate: has_application
+    object: Filament winding applications
+    source_text: Epoxy Curing Agent 100KA1 has application Filament winding applications
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
+    predicate: has_application
+    object: Electrical encapsulation
+    source_text: Epoxy Curing Agent 100KA1 has application Electrical encapsulation
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
+    predicate: has_application
+    object: Applications requiring UV resistance
+    source_text: Epoxy Curing Agent 100KA1 has application Applications requiring UV resistance
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
+    predicate: has_application
+    object: Applications requiring alkaline resistance
+    source_text: Epoxy Curing Agent 100KA1 has application Applications requiring alkaline resistance
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
+    predicate: has_safety_hazard
+    object: skin irritant
+    source_text: Epoxy Curing Agent 100KA1 has safety hazard skin irritant
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
+    predicate: has_safety_hazard
+    object: eye irritant
+    source_text: Epoxy Curing Agent 100KA1 has safety hazard eye irritant
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
+    predicate: has_storage_requirement
+    object: moisture-free environment
+    source_text: Epoxy Curing Agent 100KA1 has storage requirement moisture-free environment
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
+    predicate: has_shelf_life
+    object: 12 months
+    source_text: Epoxy Curing Agent 100KA1 has shelf life 12 months
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
+    predicate: has_benefit
+    object: non-crystallizing
+    source_text: Epoxy Curing Agent 100KA1 has benefit non-crystallizing
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
+    predicate: has_benefit
+    object: pre-catalyzed
+    source_text: Epoxy Curing Agent 100KA1 has benefit pre-catalyzed
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
+    predicate: is_available_from
+    object: f47ac10b-58cc-4372-a567-0e02b2c3d558
+    source_text: Epoxy Curing Agent 100KA1 is available from Pasadena, TX
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
+    predicate: is_compatible_with
+    object: f47ac10b-58cc-4372-a567-0e02b2c3d550
+    source_text: Epoxy Curing Agent 100KA1 is compatible with Bisphenol A Epoxy Resin
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
+    predicate: is_compatible_with
+    object: f47ac10b-58cc-4372-a567-0e02b2c3d551
+    source_text: Epoxy Curing Agent 100KA1 is compatible with Bisphenol F Epoxy Resin
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
+    predicate: is_compatible_with
+    object: f47ac10b-58cc-4372-a567-0e02b2c3d552
+    source_text: Epoxy Curing Agent 100KA1 is compatible with Polyglycol Epoxy Resin
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
+    predicate: is_compatible_with
+    object: f47ac10b-58cc-4372-a567-0e02b2c3d553
+    source_text: Epoxy Curing Agent 100KA1 is compatible with Cycloaliphatic Epoxy Resin
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
+    predicate: is_compatible_with
+    object: f47ac10b-58cc-4372-a567-0e02b2c3d554
+    source_text: Epoxy Curing Agent 100KA1 is compatible with Novolac Epoxy Resin
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
+    predicate: is_compatible_with
+    object: f47ac10b-58cc-4372-a567-0e02b2c3d555
+    source_text: Epoxy Curing Agent 100KA1 is compatible with Glycidyl Ester Epoxy Resin
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d544
+    predicate: is_a
+    object: f47ac10b-58cc-4372-a567-0e02b2c3d550
+    source_text: D.E.R. 331 is a Bisphenol A Epoxy Resin
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d545
+    predicate: is_a
+    object: f47ac10b-58cc-4372-a567-0e02b2c3d551
+    source_text: D.E.R. 354 is a Bisphenol F Epoxy Resin
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d546
+    predicate: is_a
+    object: f47ac10b-58cc-4372-a567-0e02b2c3d552
+    source_text: D.E.R. 732 is a Polyglycol Epoxy Resin
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d547
+    predicate: is_a
+    object: f47ac10b-58cc-4372-a567-0e02b2c3d553
+    source_text: ERL 4221 is a Cycloaliphatic Epoxy Resin
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d548
+    predicate: is_a
+    object: f47ac10b-58cc-4372-a567-0e02b2c3d554
+    source_text: D.E.N. 438 is a Novolac Epoxy Resin
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d549
+    predicate: is_a
+    object: f47ac10b-58cc-4372-a567-0e02b2c3d555
+    source_text: Heloxy 71 is a Glycidyl Ester Epoxy Resin
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d544
+    predicate: has_epoxy_equivalent_weight
+    object: 186 g/eq
+    source_text: D.E.R. 331 has epoxy equivalent weight 186 g/eq
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d545
+    predicate: has_epoxy_equivalent_weight
+    object: 167 g/eq
+    source_text: D.E.R. 354 has epoxy equivalent weight 167 g/eq
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d546
+    predicate: has_epoxy_equivalent_weight
+    object: 320 g/eq
+    source_text: D.E.R. 732 has epoxy equivalent weight 320 g/eq
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d547
+    predicate: has_epoxy_equivalent_weight
+    object: 133 g/eq
+    source_text: ERL 4221 has epoxy equivalent weight 133 g/eq
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d548
+    predicate: has_epoxy_equivalent_weight
+    object: 176 g/eq
+    source_text: D.E.N. 438 has epoxy equivalent weight 176 g/eq
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d549
+    predicate: has_epoxy_equivalent_weight
+    object: 148 g/eq
+    source_text: Heloxy 71 has epoxy equivalent weight 148 g/eq
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
+    predicate: has_formulation_with
+    object:
+      property: resin
+      value: resin=D.E.R. 331, resin_amount=100 pbw, anhydride_amount=90 pbw, cure_schedule=2 hr @ 80°C + 2 hr @ 150°C
+    source_text: 'Epoxy Curing Agent 100KA1 has formulation with {''resin'': ''D.E.R. 331'', ''resin_amount'': ''100 pbw'',
+      ''anhydride_amount'': ''90 pbw'', ''cure_schedule'': ''2 hr @ 80°C + 2 hr @ 150°C''}'
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
+    predicate: has_formulation_with
+    object:
+      property: resin
+      value: resin=D.E.R. 354, resin_amount=100 pbw, anhydride_amount=80 pbw, cure_schedule=2 hr @ 80°C + 2 hr @ 150°C
+    source_text: 'Epoxy Curing Agent 100KA1 has formulation with {''resin'': ''D.E.R. 354'', ''resin_amount'': ''100 pbw'',
+      ''anhydride_amount'': ''80 pbw'', ''cure_schedule'': ''2 hr @ 80°C + 2 hr @ 150°C''}'
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
+    predicate: has_formulation_with
+    object:
+      property: resin
+      value: resin=D.E.R. 732, resin_amount=100 pbw, anhydride_amount=155 pbw, cure_schedule=2 hr @ 80°C + 2 hr @ 150°C
+    source_text: 'Epoxy Curing Agent 100KA1 has formulation with {''resin'': ''D.E.R. 732'', ''resin_amount'': ''100 pbw'',
+      ''anhydride_amount'': ''155 pbw'', ''cure_schedule'': ''2 hr @ 80°C + 2 hr @ 150°C''}'
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
+    predicate: has_formulation_with
+    object:
+      property: resin
+      value: resin=ERL 4221, resin_amount=100 pbw, anhydride_amount=65 pbw, cure_schedule=2 hr @ 80°C + 2 hr @ 150°C
+    source_text: 'Epoxy Curing Agent 100KA1 has formulation with {''resin'': ''ERL 4221'', ''resin_amount'': ''100 pbw'',
+      ''anhydride_amount'': ''65 pbw'', ''cure_schedule'': ''2 hr @ 80°C + 2 hr @ 150°C''}'
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
+    predicate: has_formulation_with
+    object:
+      property: resin
+      value: resin=D.E.N. 438, resin_amount=100 pbw, anhydride_amount=85 pbw, cure_schedule=2 hr @ 80°C + 2 hr @ 150°C
+    source_text: 'Epoxy Curing Agent 100KA1 has formulation with {''resin'': ''D.E.N. 438'', ''resin_amount'': ''100 pbw'',
+      ''anhydride_amount'': ''85 pbw'', ''cure_schedule'': ''2 hr @ 80°C + 2 hr @ 150°C''}'
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
+    predicate: has_formulation_with
+    object:
+      property: resin
+      value: resin=Heloxy 71, resin_amount=100 pbw, anhydride_amount=72 pbw, cure_schedule=2 hr @ 80°C + 2 hr @ 150°C
+    source_text: 'Epoxy Curing Agent 100KA1 has formulation with {''resin'': ''Heloxy 71'', ''resin_amount'': ''100 pbw'',
+      ''anhydride_amount'': ''72 pbw'', ''cure_schedule'': ''2 hr @ 80°C + 2 hr @ 150°C''}'
+  - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
+    predicate: contains
+    object: f47ac10b-58cc-4372-a567-0e02b2c3d559
+    source_text: Epoxy Curing Agent 100KA1 contains Latent Accelerator
+document_type: Product Technical Bulletin

@@ -458,6 +458,14 @@
               "type": "object"
             }
           },
+          "notes": {
+            "type": [
+              "string",
+              "object",
+              "null"
+            ],
+            "description": "Optional notes or footnote map for additional information about this table."
+          },
           "table_notes": {
             "type": "array",
             "items": {
@@ -643,6 +651,13 @@
                 "number",
                 "null"
               ]
+            },
+            "properties": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "description": "Confidence in the properties and specifications extraction."
             },
             "overall": {
               "type": [

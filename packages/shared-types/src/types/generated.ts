@@ -293,6 +293,10 @@ export interface BaseTechnicalBulletinExtractionSchema {
     description: string;
     row_count: number;
     data: {}[];
+    /**
+     * Optional notes or footnote map for additional information about this table.
+     */
+    notes?: string | {} | null;
     table_notes?: TableNote[];
   }[];
   /**
@@ -341,6 +345,10 @@ export interface BaseTechnicalBulletinExtractionSchema {
       images?: number | null;
       registrations?: number | null;
       document_footnotes?: number | null;
+      /**
+       * Confidence in the properties and specifications extraction.
+       */
+      properties?: number | null;
       overall?: number | null;
     };
     /**
@@ -798,6 +806,10 @@ export interface BaseTechnicalBulletinExtractionSchema {
     description: string;
     row_count: number;
     data: {}[];
+    /**
+     * Optional notes or footnote map for additional information about this table.
+     */
+    notes?: string | {} | null;
     table_notes?: TableNote[];
   }[];
   /**
@@ -846,6 +858,10 @@ export interface BaseTechnicalBulletinExtractionSchema {
       images?: number | null;
       registrations?: number | null;
       document_footnotes?: number | null;
+      /**
+       * Confidence in the properties and specifications extraction.
+       */
+      properties?: number | null;
       overall?: number | null;
     };
     /**
@@ -1031,6 +1047,10 @@ export interface DerivedInformationKnowledgeGraphSchemaIDsRequired {
    * Original or canonical path to the related PDF (optional).
    */
   filepath?: string | null;
+  /**
+   * Document classification label, e.g., 'Product Technical Bulletin'. Carried forward from the base extraction.
+   */
+  document_type?: string;
   /**
    * Extractor version, date, and confidence scores by area.
    */
