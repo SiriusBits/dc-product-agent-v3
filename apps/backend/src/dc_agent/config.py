@@ -22,6 +22,11 @@ class Settings(BaseSettings):
     GRAPHITI_LLM_PROVIDER: str = "openai"
     GRAPHITI_LLM_MODEL: str = "gpt-4o-mini"
 
+    # n8n Orchestration
+    N8N_ENABLED: bool = True
+    N8N_WEBHOOK_URL: str = "http://localhost:5678/webhook/retrieval"
+    N8N_TIMEOUT: float = 10.0  # seconds
+
     # External Provider API Keys
     OPENAI_API_KEY: str | None = None
     GEMINI_API_KEY: str | None = None

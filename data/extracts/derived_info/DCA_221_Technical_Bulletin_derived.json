@@ -87,7 +87,8 @@
         "type": "CHEMICAL",
         "canonical_name": "Polyglycoldiamine",
         "aliases": [
-          "DCA 221"
+          "DCA 221",
+          "Dixie Chemical Amine 221"
         ],
         "source_text": "Polyglycoldiamine",
         "provenance": {
@@ -968,12 +969,12 @@
       },
       {
         "subject": "5902da40-2e1c-56db-942d-24fcb2109582",
-        "predicate": "formulated_with_polyglocoldiamine_flexible",
+        "predicate": "formulated_with_polyglycoldiamine_flexible",
         "object": {
-          "property": "polyglocoldiamine_amount_flexible",
+          "property": "polyglycoldiamine_amount_flexible",
           "value": 26
         },
-        "source_text": "Polyglocoldiamine 26 pbw",
+        "source_text": "Polyglycoldiamine 26 pbw",
         "provenance": {
           "page": 2,
           "spans": [

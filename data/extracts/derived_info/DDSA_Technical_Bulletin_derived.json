@@ -35,6 +35,25 @@
   "knowledge_graph": {
     "entities": [
       {
+        "id": "369e27d1-0498-5c79-a285-b21dcae85c97",
+        "text": "DDSA",
+        "type": "PRODUCT_NAME",
+        "canonical_name": "Dodecenylsuccinic Anhydride",
+        "aliases": [
+          "DDSA",
+          "Dodecenylsuccinic Anhydride"
+        ],
+        "source_text": "Dodecenylsuccinic Anhydride (DDSA)",
+        "provenance": {
+          "document_id": "9d0a20c9-169c-5ef3-8327-3d3164a05374",
+          "page": 1
+        },
+        "metadata": {
+          "manufacturer": "Dixie Chemical",
+          "product_family": "Alkenylsuccinic Anhydride"
+        }
+      },
+      {
         "id": "b4e54b59-b87b-5f1b-802b-e285181a236c",
         "text": "DDSA",
         "type": "CHEMICAL",

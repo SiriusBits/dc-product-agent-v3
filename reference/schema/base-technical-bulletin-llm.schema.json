@@ -242,12 +242,15 @@
           "items": {
             "type": "string"
           },
+          "uniqueItems": true,
           "description": "Alternate names/aliases to improve recall in search."
         }
       },
       "required": [
         "product_name",
-        "product_short_name"
+        "product_short_name",
+        "chemical_name",
+        "synonyms"
       ],
       "additional_properties": false,
       "description": "Product identity and naming details (name, family, CAS, etc.)."

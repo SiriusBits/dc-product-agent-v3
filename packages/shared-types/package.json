@@ -4,11 +4,16 @@
     "main": "./dist/index.js",
     "types": "./dist/index.d.ts",
     "scripts": {
+        "generate": "ts-node scripts/generate.ts",
+        "prebuild": "pnpm generate",
         "build": "tsc",
         "lint": "eslint src/**/*.ts",
-        "clean": "rm -rf dist"
+        "clean": "rm -rf dist src/types/generated.ts"
     },
     "devDependencies": {
+        "@types/node": "^25.3.0",
+        "json-schema-to-typescript": "^15.0.4",
+        "ts-node": "^10.9.2",
         "typescript": "^5.9.3"
     }
 }

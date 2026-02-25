@@ -33,11 +33,33 @@
     "knowledge_graph": {
       "entities": [
         {
+          "id": "055d83b0-ee7d-5b7b-9279-7f03b5dce0df",
+          "text": "MHHPA 301",
+          "type": "PRODUCT_NAME",
+          "canonical_name": "PRE-CATALYZED METHYLHEXAHYDROPHTHALIC ANHYDRIDE",
+          "aliases": [
+            "MHHPA 301",
+            "Methylhexahydrophthalic Anhydride",
+            "PRE-CATALYZED METHYLHEXAHYDROPHTHALIC ANHYDRIDE",
+            "Pre-catalyzed MHHPA"
+          ],
+          "source_text": "PRE-CATALYZED METHYLHEXAHYDROPHTHALIC ANHYDRIDE (MHHPA 301)",
+          "provenance": {
+            "document_id": "cffbcedd-5e83-58bd-9e78-d7a8a23c4ee4",
+            "page": 1
+          },
+          "metadata": {
+            "manufacturer": "Dixie Chemical",
+            "product_family": "Anhydrides"
+          }
+        },
+        {
           "id": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
           "type": "CHEMICAL",
           "canonical_name": "Methylhexahydrophthalic Anhydride",
           "aliases": [
             "MHHPA 301",
+            "PRE-CATALYZED METHYLHEXAHYDROPHTHALIC ANHYDRIDE",
             "Pre-Catalyzed MHHPA"
           ],
           "source_text": "PRE-CATALYZED METHYLHEXAHYDROPHTHALIC ANHYDRIDE (MHHPA 301)",
@@ -186,32 +208,17 @@
       ],
       "kg_triples": [
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-            "name": "Methylhexahydrophthalic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
           "predicate": "is_a",
-          "object": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d511",
-            "name": "Anhydrides"
-          }
+          "object": "f47ac10b-58cc-4372-a567-0e02b2c3d511"
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-            "name": "Methylhexahydrophthalic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
           "predicate": "is_produced_by",
-          "object": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d502",
-            "name": "Dixie Chemical"
-          }
+          "object": "f47ac10b-58cc-4372-a567-0e02b2c3d502"
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-            "name": "Methylhexahydrophthalic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
           "predicate": "has_typical_property",
           "object": {
             "property": "Molecular Weight (average)",
@@ -219,10 +226,7 @@
           }
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-            "name": "Methylhexahydrophthalic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
           "predicate": "has_typical_property",
           "object": {
             "property": "Specific gravity @ 25°C",
@@ -230,10 +234,7 @@
           }
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-            "name": "Methylhexahydrophthalic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
           "predicate": "has_typical_property",
           "object": {
             "property": "Appearance",
@@ -241,10 +242,7 @@
           }
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-            "name": "Methylhexahydrophthalic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
           "predicate": "has_typical_property",
           "object": {
             "property": "Viscosity (Brookfield at 25 °C)",
@@ -252,10 +250,7 @@
           }
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-            "name": "Methylhexahydrophthalic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
           "predicate": "has_typical_property",
           "object": {
             "property": "Color, Pt-Co",
@@ -263,188 +258,107 @@
           }
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-            "name": "Methylhexahydrophthalic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
           "predicate": "has_application",
           "object": "Epoxy curing agent"
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-            "name": "Methylhexahydrophthalic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
           "predicate": "has_application",
           "object": "Optical component encapsulation"
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-            "name": "Methylhexahydrophthalic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
           "predicate": "has_application",
           "object": "Electrical insulation"
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-            "name": "Methylhexahydrophthalic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
           "predicate": "has_application",
           "object": "LED encapsulation"
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-            "name": "Methylhexahydrophthalic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
           "predicate": "has_application",
           "object": "Electronic component potting"
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-            "name": "Methylhexahydrophthalic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
           "predicate": "has_key_benefit",
           "object": "Easy Handling: Low viscosity liquid gives low viscosity mixes with various epoxy resins"
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-            "name": "Methylhexahydrophthalic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
           "predicate": "has_key_benefit",
           "object": "Convenience: Eliminates the need to add small amounts of catalyst"
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-            "name": "Methylhexahydrophthalic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
           "predicate": "has_key_benefit",
           "object": "Consistency: Prevents potential batch-to-batch differences caused by errors in measuring and properly dispersing small amounts of catalyst"
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-            "name": "Methylhexahydrophthalic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
           "predicate": "has_key_benefit",
           "object": "Low reactivity at room temperature: Provides long working times and pot lives for mixes with epoxy resins"
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-            "name": "Methylhexahydrophthalic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
           "predicate": "has_key_benefit",
           "object": "High reactivity at cure temperature: Gives excellent cure response at cure temperatures, resulting in high crosslinking and relatively high Tg"
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-            "name": "Methylhexahydrophthalic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
           "predicate": "has_key_benefit",
           "object": "Low color and low color development: Low residual unsaturation gives maximum resistance to yellowing"
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-            "name": "Methylhexahydrophthalic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
           "predicate": "reacts_with",
-          "object": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d504",
-            "name": "Standard BPA Liquid Epoxy"
-          }
+          "object": "f47ac10b-58cc-4372-a567-0e02b2c3d504"
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-            "name": "Methylhexahydrophthalic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
           "predicate": "reacts_with",
-          "object": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d505",
-            "name": "Low Viscosity BPA Liquid"
-          }
+          "object": "f47ac10b-58cc-4372-a567-0e02b2c3d505"
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-            "name": "Methylhexahydrophthalic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
           "predicate": "reacts_with",
-          "object": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d506",
-            "name": "Cycloaliphatic Epoxy"
-          }
+          "object": "f47ac10b-58cc-4372-a567-0e02b2c3d506"
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-            "name": "Methylhexahydrophthalic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
           "predicate": "reacts_with",
-          "object": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d507",
-            "name": "Epoxy Phenol Novolac"
-          }
+          "object": "f47ac10b-58cc-4372-a567-0e02b2c3d507"
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-            "name": "Methylhexahydrophthalic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
           "predicate": "reacts_with",
-          "object": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d508",
-            "name": "Epoxy BPA Novolac"
-          }
+          "object": "f47ac10b-58cc-4372-a567-0e02b2c3d508"
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-            "name": "Methylhexahydrophthalic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
           "predicate": "reacts_with",
-          "object": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d509",
-            "name": "BPF Liquid Epoxy"
-          }
+          "object": "f47ac10b-58cc-4372-a567-0e02b2c3d509"
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-            "name": "Methylhexahydrophthalic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
           "predicate": "has_safety_hazard",
           "object": "primary skin irritant"
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-            "name": "Methylhexahydrophthalic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
           "predicate": "has_safety_hazard",
           "object": "primary eye irritant"
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-            "name": "Methylhexahydrophthalic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
           "predicate": "has_storage_requirement",
           "object": "protect from moisture"
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-            "name": "Methylhexahydrophthalic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
           "predicate": "reacts_with_to_form",
           "object": {
             "reactant": "water",
@@ -455,21 +369,12 @@
           }
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-            "name": "Methylhexahydrophthalic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
           "predicate": "is_available_from",
-          "object": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d510",
-            "name": "Pasadena, Texas"
-          }
+          "object": "f47ac10b-58cc-4372-a567-0e02b2c3d510"
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-            "name": "Methylhexahydrophthalic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
           "predicate": "has_formulation_data_with",
           "object": {
             "epoxy_type": "Standard BPA Liquid Epoxy",
@@ -480,10 +385,7 @@
           }
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-            "name": "Methylhexahydrophthalic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
           "predicate": "has_formulation_data_with",
           "object": {
             "epoxy_type": "Low Viscosity BPA Liquid",
@@ -494,10 +396,7 @@
           }
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-            "name": "Methylhexahydrophthalic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
           "predicate": "has_formulation_data_with",
           "object": {
             "epoxy_type": "Cycloaliphatic Epoxy",
@@ -508,10 +407,7 @@
           }
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-            "name": "Methylhexahydrophthalic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
           "predicate": "has_formulation_data_with",
           "object": {
             "epoxy_type": "Epoxy Phenol Novolac",
@@ -522,10 +418,7 @@
           }
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-            "name": "Methylhexahydrophthalic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
           "predicate": "has_formulation_data_with",
           "object": {
             "epoxy_type": "Epoxy BPA Novolac",
@@ -536,10 +429,7 @@
           }
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-            "name": "Methylhexahydrophthalic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
           "predicate": "has_formulation_data_with",
           "object": {
             "epoxy_type": "BPF Liquid Epoxy",
@@ -550,32 +440,17 @@
           }
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d502",
-            "name": "Dixie Chemical"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d502",
           "predicate": "publishes",
-          "object": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d512",
-            "name": "FORMULATING ANHYDRIDE-CURED EPOXY SYSTEMS"
-          }
+          "object": "f47ac10b-58cc-4372-a567-0e02b2c3d512"
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d502",
-            "name": "Dixie Chemical"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d502",
           "predicate": "publishes",
-          "object": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d513",
-            "name": "Epoxy Curing Agent Storage Requirements"
-          }
+          "object": "f47ac10b-58cc-4372-a567-0e02b2c3d513"
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-            "name": "Methylhexahydrophthalic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
           "predicate": "has_vapor_pressure_at_temperature",
           "object": {
             "temperature_c": 100,
@@ -583,10 +458,7 @@
           }
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-            "name": "Methylhexahydrophthalic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
           "predicate": "has_vapor_pressure_at_temperature",
           "object": {
             "temperature_c": 120,
@@ -594,10 +466,7 @@
           }
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-            "name": "Methylhexahydrophthalic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
           "predicate": "has_vapor_pressure_at_temperature",
           "object": {
             "temperature_c": 140,
@@ -605,10 +474,7 @@
           }
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-            "name": "Methylhexahydrophthalic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
           "predicate": "has_vapor_pressure_at_temperature",
           "object": {
             "temperature_c": 160,
@@ -616,10 +482,7 @@
           }
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-            "name": "Methylhexahydrophthalic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
           "predicate": "has_vapor_pressure_at_temperature",
           "object": {
             "temperature_c": 180,
@@ -627,10 +490,7 @@
           }
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
-            "name": "Methylhexahydrophthalic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d501",
           "predicate": "has_vapor_pressure_at_temperature",
           "object": {
             "temperature_c": 200,
@@ -641,7 +501,29 @@
     }
   },
   "knowledge_graph": {
-    "entities": [],
+    "entities": [
+      {
+        "id": "055d83b0-ee7d-5b7b-9279-7f03b5dce0df",
+        "text": "MHHPA 301",
+        "type": "PRODUCT_NAME",
+        "canonical_name": "PRE-CATALYZED METHYLHEXAHYDROPHTHALIC ANHYDRIDE",
+        "aliases": [
+          "MHHPA 301",
+          "Methylhexahydrophthalic Anhydride",
+          "PRE-CATALYZED METHYLHEXAHYDROPHTHALIC ANHYDRIDE",
+          "Pre-catalyzed MHHPA"
+        ],
+        "source_text": "PRE-CATALYZED METHYLHEXAHYDROPHTHALIC ANHYDRIDE (MHHPA 301)",
+        "provenance": {
+          "document_id": "cffbcedd-5e83-58bd-9e78-d7a8a23c4ee4",
+          "page": 1
+        },
+        "metadata": {
+          "manufacturer": "Dixie Chemical",
+          "product_family": "Anhydrides"
+        }
+      }
+    ],
     "kg_triples": []
   },
   "document_type": "Product Technical Bulletin"

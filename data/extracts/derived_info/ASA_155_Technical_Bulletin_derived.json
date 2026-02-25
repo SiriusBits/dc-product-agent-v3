@@ -41,7 +41,12 @@
         "type": "PRODUCT_NAME",
         "canonical_name": "ASA 155",
         "aliases": [
-          "Alkenylsuccinic anhydride 155"
+          "2,5-Furandione,dihydro-,mono-C15-20-alkenyl derivs",
+          "ASA 155",
+          "Alkenylsuccinic Anhydride 155",
+          "Alkenylsuccinic anhydride",
+          "Alkenylsuccinic anhydride 155",
+          "HDSA/ODSA blend"
         ],
         "source_text": "ASA 155 is an alkenylsuccinic anhydride (ASA) based on C16-C18 alpha-olefin.",
         "provenance": {
@@ -55,7 +60,13 @@
         "text": "ASA 155-D",
         "type": "PRODUCT_NAME",
         "canonical_name": "ASA 155-D",
-        "aliases": [],
+        "aliases": [
+          "2,5-Furandione,dihydro-,mono-C15-20-alkenyl derivs",
+          "ASA 155",
+          "Alkenylsuccinic Anhydride 155",
+          "Alkenylsuccinic anhydride",
+          "HDSA/ODSA blend"
+        ],
         "source_text": "ASA 155-D",
         "provenance": {
           "document_id": "e3cd386e-45b9-5163-b041-0fad4ce077e7",
@@ -68,7 +79,13 @@
         "text": "ASA 155-B",
         "type": "PRODUCT_NAME",
         "canonical_name": "ASA 155-B",
-        "aliases": [],
+        "aliases": [
+          "2,5-Furandione,dihydro-,mono-C15-20-alkenyl derivs",
+          "ASA 155",
+          "Alkenylsuccinic Anhydride 155",
+          "Alkenylsuccinic anhydride",
+          "HDSA/ODSA blend"
+        ],
         "source_text": "ASA 155-B",
         "provenance": {
           "document_id": "e3cd386e-45b9-5163-b041-0fad4ce077e7",
@@ -81,7 +98,13 @@
         "text": "ASA 155-C",
         "type": "PRODUCT_NAME",
         "canonical_name": "ASA 155-C",
-        "aliases": [],
+        "aliases": [
+          "2,5-Furandione,dihydro-,mono-C15-20-alkenyl derivs",
+          "ASA 155",
+          "Alkenylsuccinic Anhydride 155",
+          "Alkenylsuccinic anhydride",
+          "HDSA/ODSA blend"
+        ],
         "source_text": "ASA 155-C",
         "provenance": {
           "document_id": "e3cd386e-45b9-5163-b041-0fad4ce077e7",
@@ -124,7 +147,10 @@
         "text": "2,5-Furandione,dihydro-,mono-C15-20-alkenyl derivs",
         "type": "CHEMICAL",
         "canonical_name": "2,5-Furandione,dihydro-,mono-C15-20-alkenyl derivs",
-        "aliases": [],
+        "aliases": [
+          "ASA 155",
+          "Alkenylsuccinic Anhydride 155"
+        ],
         "source_text": "ASA 155 is REACh registered as a component under the name 2,5-Furandione,dihydro-,mono-C15-20-alkenyl derivs.",
         "provenance": {
           "document_id": "e3cd386e-45b9-5163-b041-0fad4ce077e7",

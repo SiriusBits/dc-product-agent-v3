@@ -74,6 +74,7 @@ knowledge_graph:
     canonical_name: DCE 142
     aliases:
     - DCE 142
+    - Diglycidyl 1,2-cyclohexanedicarboxylate
     source_text: DCE 142 (Diglycidyl 1,2-cyclohexanedicarboxylate) CAS Registry Number
       5493-45-8
     provenance:
@@ -87,7 +88,8 @@ knowledge_graph:
     text: Diglycidyl 1,2-cyclohexanedicarboxylate
     type: CHEMICAL
     canonical_name: Diglycidyl 1,2-cyclohexanedicarboxylate
-    aliases: []
+    aliases:
+    - DCE 142
     source_text: DCE 142 (Diglycidyl 1,2-cyclohexanedicarboxylate) CAS Registry Number
       5493-45-8
     provenance:

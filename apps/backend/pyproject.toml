@@ -21,6 +21,7 @@ dev = [
     "pytest>=7.0",
     "pytest-asyncio>=0.23.0",
     "httpx>=0.26.0",
+    "datamodel-code-generator>=0.54.0",
 ]
 
 [build-system]

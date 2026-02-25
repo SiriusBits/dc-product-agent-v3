@@ -36,12 +36,33 @@
     "knowledge_graph": {
       "entities": [
         {
+          "id": "4dd982cd-50cc-517a-a5a2-61904e7faaf1",
+          "text": "ODSA",
+          "type": "PRODUCT_NAME",
+          "canonical_name": "Octadecenylsuccinic Anhydride",
+          "aliases": [
+            "ASA",
+            "ODSA",
+            "Octadecenylsuccinic Anhydride"
+          ],
+          "source_text": "Octadecenylsuccinic Anhydride (ODSA)",
+          "provenance": {
+            "document_id": "e0c59870-2030-5186-a3e7-fb62547957af",
+            "page": 1
+          },
+          "metadata": {
+            "manufacturer": "Dixie Chemical",
+            "product_family": "Alkenylsuccinic Anhydride"
+          }
+        },
+        {
           "id": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
           "type": "CHEMICAL",
           "canonical_name": "Octadecenylsuccinic Anhydride",
           "aliases": [
+            "ASA",
             "ODSA",
-            "ASA"
+            "Octadecenylsuccinic Anhydride"
           ],
           "source_text": "Octadecenylsuccinic Anhydride CASRN 28777-98-2",
           "provenance": {
@@ -100,7 +121,7 @@
         },
         {
           "id": "f47ac10b-58cc-4372-a567-0e02b2c3d525",
-          "type": "IDENTIFIER",
+          "type": "CAS_NUMBER",
           "canonical_name": "CAS 68784-12-3",
           "aliases": [
             "CASRN 68784-12-3"
@@ -113,7 +134,7 @@
         },
         {
           "id": "f47ac10b-58cc-4372-a567-0e02b2c3d526",
-          "type": "IDENTIFIER",
+          "type": "CAS_NUMBER",
           "canonical_name": "CAS 28777-98-2",
           "aliases": [
             "CASRN 28777-98-2"
@@ -126,7 +147,7 @@
         },
         {
           "id": "f47ac10b-58cc-4372-a567-0e02b2c3d527",
-          "type": "IDENTIFIER",
+          "type": "REGISTRATION",
           "canonical_name": "REACh 01-2119533117-46",
           "aliases": [],
           "source_text": "the REACh registry number is 01-2119533117-46",
@@ -175,87 +196,42 @@
       ],
       "kg_triples": [
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
-            "name": "Octadecenylsuccinic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
           "predicate": "is_a",
-          "object": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d522",
-            "name": "Alkenylsuccinic Anhydride"
-          }
+          "object": "f47ac10b-58cc-4372-a567-0e02b2c3d522"
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
-            "name": "Octadecenylsuccinic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
           "predicate": "is_derived_from",
-          "object": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d523",
-            "name": "C18 alpha-olefin"
-          }
+          "object": "f47ac10b-58cc-4372-a567-0e02b2c3d523"
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
-            "name": "Octadecenylsuccinic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
           "predicate": "is_produced_by",
-          "object": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d521",
-            "name": "Dixie Chemical"
-          }
+          "object": "f47ac10b-58cc-4372-a567-0e02b2c3d521"
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
-            "name": "Octadecenylsuccinic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
           "predicate": "has_cas_number",
-          "object": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d526",
-            "name": "CAS 28777-98-2"
-          }
+          "object": "f47ac10b-58cc-4372-a567-0e02b2c3d526"
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d524",
-            "name": "2,5-Furandione,dihydro-,mono-C15-20-alkenyl derivs"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d524",
           "predicate": "has_cas_number",
-          "object": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d525",
-            "name": "CAS 68784-12-3"
-          }
+          "object": "f47ac10b-58cc-4372-a567-0e02b2c3d525"
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d524",
-            "name": "2,5-Furandione,dihydro-,mono-C15-20-alkenyl derivs"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d524",
           "predicate": "has_reach_number",
-          "object": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d527",
-            "name": "REACh 01-2119533117-46"
-          }
+          "object": "f47ac10b-58cc-4372-a567-0e02b2c3d527"
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
-            "name": "Octadecenylsuccinic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
           "predicate": "is_equivalent_to",
-          "object": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d524",
-            "name": "2,5-Furandione,dihydro-,mono-C15-20-alkenyl derivs"
-          }
+          "object": "f47ac10b-58cc-4372-a567-0e02b2c3d524"
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
-            "name": "Octadecenylsuccinic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
           "predicate": "has_typical_property",
           "object": {
             "property": "Physical Appearance",
@@ -263,10 +239,7 @@
           }
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
-            "name": "Octadecenylsuccinic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
           "predicate": "has_typical_property",
           "object": {
             "property": "Specific gravity @ 25 °C",
@@ -274,10 +247,7 @@
           }
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
-            "name": "Octadecenylsuccinic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
           "predicate": "has_typical_property",
           "object": {
             "property": "Gardner Color",
@@ -285,10 +255,7 @@
           }
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
-            "name": "Octadecenylsuccinic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
           "predicate": "has_typical_property",
           "object": {
             "property": "HDSA",
@@ -296,10 +263,7 @@
           }
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
-            "name": "Octadecenylsuccinic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
           "predicate": "has_typical_property",
           "object": {
             "property": "Residual Olefin",
@@ -307,10 +271,7 @@
           }
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
-            "name": "Octadecenylsuccinic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
           "predicate": "has_typical_property",
           "object": {
             "property": "ODSA",
@@ -318,10 +279,7 @@
           }
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
-            "name": "Octadecenylsuccinic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
           "predicate": "has_typical_property",
           "object": {
             "property": "Free Acid",
@@ -329,10 +287,7 @@
           }
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
-            "name": "Octadecenylsuccinic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
           "predicate": "has_typical_property",
           "object": {
             "property": "Neutralization",
@@ -340,10 +295,7 @@
           }
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
-            "name": "Octadecenylsuccinic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
           "predicate": "has_typical_property",
           "object": {
             "property": "Pour Point",
@@ -351,10 +303,7 @@
           }
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
-            "name": "Octadecenylsuccinic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
           "predicate": "has_typical_property",
           "object": {
             "property": "Freeze Point",
@@ -362,152 +311,92 @@
           }
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
-            "name": "Octadecenylsuccinic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
           "predicate": "has_application",
           "object": "Alkaline paper sizing agent"
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
-            "name": "Octadecenylsuccinic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
           "predicate": "has_application",
           "object": "Fuel additives"
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
-            "name": "Octadecenylsuccinic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
           "predicate": "has_application",
           "object": "Lubricant additives"
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
-            "name": "Octadecenylsuccinic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
           "predicate": "has_application",
           "object": "Pour point depressants"
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
-            "name": "Octadecenylsuccinic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
           "predicate": "has_application",
           "object": "Corrosion inhibitors"
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
-            "name": "Octadecenylsuccinic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
           "predicate": "has_application",
           "object": "Dispersants"
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
-            "name": "Octadecenylsuccinic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
           "predicate": "has_application",
           "object": "Surfactant intermediates"
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
-            "name": "Octadecenylsuccinic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
           "predicate": "has_application",
           "object": "Plasticizers"
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
-            "name": "Octadecenylsuccinic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
           "predicate": "has_application",
           "object": "Epoxy formulations"
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
-            "name": "Octadecenylsuccinic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
           "predicate": "has_application",
           "object": "Moisture control for leather goods"
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
-            "name": "Octadecenylsuccinic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
           "predicate": "can_be_converted_to",
           "object": "acid amides"
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
-            "name": "Octadecenylsuccinic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
           "predicate": "can_be_converted_to",
           "object": "esters"
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
-            "name": "Octadecenylsuccinic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
           "predicate": "has_safety_hazard",
           "object": "mild primary skin irritant"
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
-            "name": "Octadecenylsuccinic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
           "predicate": "has_storage_requirement",
           "object": "moisture-free environment"
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
-            "name": "Octadecenylsuccinic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
           "predicate": "has_shelf_life",
           "object": "24 months"
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
-            "name": "Octadecenylsuccinic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
           "predicate": "is_available_from",
-          "object": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d528",
-            "name": "Pasadena, TX"
-          }
+          "object": "f47ac10b-58cc-4372-a567-0e02b2c3d528"
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
-            "name": "Octadecenylsuccinic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
           "predicate": "has_storage_guidance_in",
-          "object": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d529",
-            "name": "Alkenylsuccinic Anhydride Storage Requirements"
-          }
+          "object": "f47ac10b-58cc-4372-a567-0e02b2c3d529"
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
-            "name": "Octadecenylsuccinic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
           "predicate": "has_viscosity_at_temperature",
           "object": {
             "temperature_c": 20,
@@ -515,10 +404,7 @@
           }
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
-            "name": "Octadecenylsuccinic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
           "predicate": "has_viscosity_at_temperature",
           "object": {
             "temperature_c": 40,
@@ -526,10 +412,7 @@
           }
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
-            "name": "Octadecenylsuccinic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
           "predicate": "has_viscosity_at_temperature",
           "object": {
             "temperature_c": 60,
@@ -537,10 +420,7 @@
           }
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
-            "name": "Octadecenylsuccinic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
           "predicate": "has_viscosity_at_temperature",
           "object": {
             "temperature_c": 80,
@@ -548,10 +428,7 @@
           }
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
-            "name": "Octadecenylsuccinic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
           "predicate": "has_specific_gravity_at_temperature",
           "object": {
             "temperature_c": 0,
@@ -559,10 +436,7 @@
           }
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
-            "name": "Octadecenylsuccinic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
           "predicate": "has_specific_gravity_at_temperature",
           "object": {
             "temperature_c": 24,
@@ -570,10 +444,7 @@
           }
         },
         {
-          "subject": {
-            "id": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
-            "name": "Octadecenylsuccinic Anhydride"
-          },
+          "subject": "f47ac10b-58cc-4372-a567-0e02b2c3d520",
           "predicate": "has_specific_gravity_at_temperature",
           "object": {
             "temperature_c": 60,
@@ -584,7 +455,28 @@
     }
   },
   "knowledge_graph": {
-    "entities": [],
+    "entities": [
+      {
+        "id": "4dd982cd-50cc-517a-a5a2-61904e7faaf1",
+        "text": "ODSA",
+        "type": "PRODUCT_NAME",
+        "canonical_name": "Octadecenylsuccinic Anhydride",
+        "aliases": [
+          "ASA",
+          "ODSA",
+          "Octadecenylsuccinic Anhydride"
+        ],
+        "source_text": "Octadecenylsuccinic Anhydride (ODSA)",
+        "provenance": {
+          "document_id": "e0c59870-2030-5186-a3e7-fb62547957af",
+          "page": 1
+        },
+        "metadata": {
+          "manufacturer": "Dixie Chemical",
+          "product_family": "Alkenylsuccinic Anhydride"
+        }
+      }
+    ],
     "kg_triples": []
   },
   "document_type": "Product Technical Bulletin"

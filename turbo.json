@@ -4,9 +4,23 @@
         "**/.env"
     ],
     "tasks": {
+        "generate": {
+            "dependsOn": [
+                "^generate"
+            ],
+            "inputs": [
+                "scripts/**",
+                "../../reference/schema/*.schema.json"
+            ],
+            "outputs": [
+                "src/types/generated.ts",
+                "src/**/generated/**"
+            ]
+        },
         "build": {
             "dependsOn": [
-                "^build"
+                "^build",
+                "generate"
             ],
             "outputs": [
                 "dist/**",

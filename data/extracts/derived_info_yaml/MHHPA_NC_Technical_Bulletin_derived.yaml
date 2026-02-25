@@ -63,17 +63,32 @@ derived_info:
   - Specialty coatings requiring clarity
   knowledge_graph:
     entities:
+    - id: 312b0f5c-a81a-5e72-946f-5e4d33fefd07
+      text: MHHPA-NC
+      type: PRODUCT_NAME
+      canonical_name: Methylhexahydrophthalic Anhydride-NC
+      aliases:
+      - MHHPA-NC
+      - Methylhexahydrophthalic Anhydride-NC
+      source_text: Methylhexahydrophthalic Anhydride-NC (MHHPA-NC)
+      provenance:
+        document_id: 1c0b982f-c206-5ada-adac-704309b24fb6
+        page: 1
+      metadata:
+        manufacturer: Dixie Chemical
+        product_family: Anhydride
     - id: 550e8400-e29b-41d4-a716-446655440201
       type: CHEMICAL
       canonical_name: Methylhexahydrophthalic Anhydride-NC
       aliases:
       - MHHPA-NC
+      - Methylhexahydrophthalic Anhydride-NC
       source_text: METHYLHEXAHYDROPHTHALIC ANHYDRIDE-NC (MHHPA-NC) CAS Reg. No. 25550-51-0
       provenance:
         document_id: 550e8400-e29b-41d4-a716-446655440021
         page: 1
     - id: 550e8400-e29b-41d4-a716-446655440202
-      type: IDENTIFIER
+      type: CAS_NUMBER
       canonical_name: 25550-51-0
       aliases:
       - CAS Reg. No. 25550-51-0
@@ -364,5 +379,19 @@ derived_info:
       predicate: publishes
       object_id: 550e8400-e29b-41d4-a716-446655440216
 knowledge_graph:
-  entities: []
+  entities:
+  - id: 312b0f5c-a81a-5e72-946f-5e4d33fefd07
+    text: MHHPA-NC
+    type: PRODUCT_NAME
+    canonical_name: Methylhexahydrophthalic Anhydride-NC
+    aliases:
+    - MHHPA-NC
+    - Methylhexahydrophthalic Anhydride-NC
+    source_text: Methylhexahydrophthalic Anhydride-NC (MHHPA-NC)
+    provenance:
+      document_id: 1c0b982f-c206-5ada-adac-704309b24fb6
+      page: 1
+    metadata:
+      manufacturer: Dixie Chemical
+      product_family: Anhydride
   kg_triples: []

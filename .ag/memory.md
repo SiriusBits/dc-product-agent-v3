@@ -46,6 +46,32 @@
 - **17/17 products ingested as episodes** — search verified working
 - 36 tests passing (was 35 — split health check into OpenAI + Ollama variants)
 
+### Milestone 5: n8n Retrieval Orchestration ✅
+- n8n workflow JSON: `n8n/workflows/retrieval-orchestration.json` (version-controlled, importable via UI or CLI)
+- Workflow architecture: Webhook Trigger → Query Classifier (rule-based code node) → Intent Router (Switch: vector/kg/hybrid) → HTTP Request nodes → Result Fusion (code nodes) → Respond to Webhook
+- Query classifier: regex-based pattern matching for KG (property lookups, product names, safety data), vector (conceptual/explanatory), hybrid (comparisons, relationships) — no LLM latency
+- Backend `N8nClient` (`services/n8n_client.py`): async httpx, timeout handling, `N8nClientError`, flexible response parsing (handles n8n array wrapping, flat lists, standard shape)
+- `models/n8n.py`: `N8nRetrievalRequest`, `N8nRetrievalResponse`, `N8nResultItem`, `N8nTraceMetadata`, `QueryIntent` enum
+- `ChatService` integration: tries n8n retrieval first, falls back transparently to direct vector search on `N8nClientError`
+- Config: `N8N_ENABLED=true`, `N8N_WEBHOOK_URL`, `N8N_TIMEOUT` in `config.py` and `.env.sample`
+- n8n workflow calls backend endpoints: `/api/v1/search` (vector), `/api/v1/kg/search` (KG entities), `/api/v1/query-kg` (Graphiti)
+- n8n uses `host.docker.internal:8001` to reach the host backend from Docker
+- n8n import: workflow JSON must be imported via UI or CLI restart (SQLite lock prevents import while running)
+- 20 tests passing (response parsing, client lifecycle, retrieve, health check, timeout, fallback, ChatService integration)
+
+### Milestone 6: KG API Endpoints ✅
+- New `api/kg_routes.py` router mounted at `/api/v1/kg` with 12 endpoints
+- Product endpoints: `GET /products/{name}`, `/safety`, `/related`, `/formulations`
+- Compare: `POST /compare` (cross-product property comparison)
+- Search: `POST /search` (fulltext entity search), `GET /entity/{id}`, `GET /entity/{id}/neighbors`
+- Traversal: `POST /traverse` (variable-length path traversal)
+- Admin: `GET /health` (Neo4j + Graphiti), `GET /stats` (node/rel counts by label/type)
+- `api/kg_models.py`: `KGSearchRequest`, `KGCompareRequest`, `KGTraverseRequest`, `KGHealthResponse`, `KGStatsResponse`
+- Neo4jKGStore stays open for app lifetime (was disposing after schema init)
+- `KGQueryService` on `app.state.kg_query_service` — all KG routes use dependency injection via `request.app.state`
+- Graceful 503 responses when Neo4j or KG service unavailable
+- 29 tests passing (all endpoints, 404/400/503 error cases, health variants)
+
 ## Key Files — `apps/backend/src/dc_agent/kg/`
 - `store.py` — `KGStore` ABC (async context manager)
 - `neo4j.py` — `Neo4jKGStore` (async driver, retry, MERGE, verify_connectivity)
@@ -61,6 +87,21 @@
 - `graphiti_episodes.py` — prepare_episode(), ingest_episodes()
 - `ollama_adapter.py` — OllamaEmbedder, OllamaLLMClient (retry, structured logging, OllamaAdapterError)
 
+## Key Files — `apps/backend/src/dc_agent/api/`
+- `kg_routes.py` — 12 KG API endpoints (products, search, compare, traverse, health, stats)
+- `kg_models.py` — Request/response models for KG API
+
+## Key Files — `apps/backend/src/dc_agent/services/`
+- `n8n_client.py` — N8nClient (async httpx, webhook calls, response parsing, N8nClientError)
+- `chat.py` — ChatService with n8n integration and fallback
+
+## Key Files — `apps/backend/src/dc_agent/models/`
+- `n8n.py` — N8nRetrievalRequest/Response, N8nResultItem, N8nTraceMetadata, QueryIntent
+
+## Key Files — `n8n/`
+- `workflows/retrieval-orchestration.json` — n8n retrieval workflow (webhook → classify → route → fuse → respond)
+- `README.md` — Import instructions and architecture docs
+
 ## Tests — `apps/backend/tests/`
 - `test_kg_db.py` — 5 tests (M1: Neo4jKGStore, sanitize_label)
 - `test_kg_ingestion.py` — 21 tests (M2: models, validation, predicates, parsing)
@@ -68,7 +109,9 @@
 - `test_graphiti_store.py` — 16 tests (M4: lifecycle, health check OpenAI+Ollama, search, episodes)
 - `test_ollama_adapter.py` — 14 tests (M4: _clean_json, embedder, LLM client, error handling)
 - `test_graphiti_episodes.py` — 6 tests (M4: prepare_episode, ingest_episodes, dry-run)
-- Total KG tests: 104 passing
+- `test_kg_routes.py` — 29 tests (M6: all KG API endpoints, error cases, 503 handling)
+- `test_n8n_client.py` — 20 tests (M5: response parsing, client lifecycle, retrieve, health, fallback)
+- Total project tests: 153 passing (+ 2 pre-existing search_service failures)
 - Note: `test_search_service.py` has 2 pre-existing failures (unrelated to KG work)
 
 ## Config
@@ -80,29 +123,49 @@
 - Data source: `data/extracts/derived_info_yaml/` (17 *_derived.yaml files)
 - JSON equivalents at `data/extracts/derived_info/` (identical KG data)
 - API keys: OPENAI_API_KEY, ANTHROPIC_API_KEY, GEMINI_API_KEY all set in `.env`
-- n8n: `http://localhost:5678` (healthy), API requires `X-N8N-API-KEY` header, no workflows built yet
+- n8n: `http://localhost:5678` (healthy), webhook at `/webhook/retrieval`
+- n8n API requires `X-N8N-API-KEY` header; webhook endpoints do NOT require API key
+- N8N_ENABLED=true, N8N_WEBHOOK_URL=http://localhost:5678/webhook/retrieval, N8N_TIMEOUT=10.0
 
-## Existing API Endpoints (Backend :8001)
+## API Endpoints (Backend :8001)
 - `POST /api/v1/search` — Vector semantic search (ChromaDB)
 - `POST /api/v1/query-kg` — Graphiti episodic memory search
 - `POST /api/v1/query` — Basic vector query with sources
-- `POST /api/v1/chat` — RAG chat with model selection
+- `POST /api/v1/chat` — RAG chat with model selection (now with n8n retrieval)
 - `GET /api/v1/products` — Product catalog listing
 - `GET /api/v1/products/{id}` — Product detail
 - `GET /api/v1/products/{id}/pdf` — Product PDF URL
 - `GET /api/v1/models` — Available LLM models
 - `GET /api/v1/documents` — Unique product list from vector store
 - `POST /api/v1/ingest` — Ingestion trigger (placeholder)
+- **KG endpoints (M6):**
+  - `GET /api/v1/kg/products/{name}` — Product profile from KG
+  - `GET /api/v1/kg/products/{name}/safety` — Safety profile
+  - `GET /api/v1/kg/products/{name}/related` — Related products
+  - `GET /api/v1/kg/products/{name}/formulations` — Formulation components
+  - `POST /api/v1/kg/compare` — Cross-product property comparison
+  - `POST /api/v1/kg/search` — Fulltext entity search
+  - `GET /api/v1/kg/entity/{id}` — Entity lookup
+  - `GET /api/v1/kg/entity/{id}/neighbors` — One-hop neighbors
+  - `POST /api/v1/kg/traverse` — Variable-length path traversal
+  - `GET /api/v1/kg/health` — Neo4j + Graphiti health
+  - `GET /api/v1/kg/stats` — Node/relationship counts
 
 ## Dependencies (pinned in pyproject.toml)
 - graphiti-core>=0.28.1, openai>=2.21.0, neo4j>=6.1.0
 - pydantic>=2.12.5, pydantic-settings>=2.13.1, uvicorn>=0.41.0
 - fastapi>=0.109.0 (held at current 0.121.3), chromadb>=0.4.22 (held at current 1.3.5)
+- httpx (used by N8nClient for async webhook calls)
 
 ## Architectural Decisions
-- n8n is the retrieval orchestrator (M5) — routes queries to vector/KG/hybrid
+- n8n is the retrieval orchestrator (M5) — routes queries to vector/KG/hybrid via webhook
+- Query classification is rule-based (regex patterns), not LLM-based — avoids latency overhead
+- ChatService tries n8n first, falls back to direct vector search on any N8nClientError
+- Neo4jKGStore stays open for app lifetime (not disposed after schema init) — shared by KG routes
+- KG API endpoints return 503 when Neo4j is unavailable (graceful degradation)
 - `KGStore` ABC allows swapping Neo4j for other backends
 - All ingestion is MERGE-based and idempotent
 - Predicate normalization happens at ingestion time, not query time
 - Entity dedup by canonical_name within same label (cross-file)
 - Auto-created nodes (from string triple objects) use deterministic UUIDs
+- n8n workflow is version-controlled as JSON, imported via UI (CLI blocked by SQLite lock while running)

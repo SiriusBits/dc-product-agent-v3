@@ -74,6 +74,21 @@ derived_info:
   - Moisture control agent for leather goods
   knowledge_graph:
     entities:
+    - id: 51bf2bfd-b8c1-52a6-b26e-015b82bdd62e
+      text: ASA 100
+      type: PRODUCT_NAME
+      canonical_name: Hexadecenylsuccinic Anhydride
+      aliases:
+      - ASA 100
+      - HDSA
+      - Hexadecenylsuccinic Anhydride
+      source_text: Hexadecenylsuccinic Anhydride (ASA 100)
+      provenance:
+        document_id: 32874412-3423-57c4-9ad6-19aefa23ed0b
+        page: 1
+      metadata:
+        manufacturer: Dixie Chemical
+        product_family: Alkenylsuccinic Anhydride
     - id: f47ac10b-58cc-4372-a567-0e02b2c3d479
       type: CHEMICAL
       canonical_name: ASA 100
@@ -135,7 +150,7 @@ derived_info:
         document_id: 550e8400-e29b-41d4-a716-446655440001
         page: 1
     - id: f47ac10b-58cc-4372-a567-0e02b2c3d486
-      type: IDENTIFIER
+      type: CAS_NUMBER
       canonical_name: CAS 68784-12-3
       aliases: []
       source_text: 68784-12-3
@@ -143,7 +158,7 @@ derived_info:
         document_id: 550e8400-e29b-41d4-a716-446655440001
         page: 3
     - id: f47ac10b-58cc-4372-a567-0e02b2c3d487
-      type: IDENTIFIER
+      type: CAS_NUMBER
       canonical_name: CAS 32072-96-1
       aliases: []
       source_text: 32072-96-1
@@ -151,7 +166,7 @@ derived_info:
         document_id: 550e8400-e29b-41d4-a716-446655440001
         page: 3
     - id: f47ac10b-58cc-4372-a567-0e02b2c3d488
-      type: IDENTIFIER
+      type: REGISTRATION
       canonical_name: REACh 01-2119533117-46
       aliases: []
       source_text: 01-2119533117-46
@@ -191,265 +206,176 @@ derived_info:
         document_id: 550e8400-e29b-41d4-a716-446655440001
         page: 3
     kg_triples:
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d479
-        name: ASA 100
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d479
       predicate: is_a
-      object:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d480
-        name: alkenylsuccinic anhydride
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d479
-        name: ASA 100
+      object: f47ac10b-58cc-4372-a567-0e02b2c3d480
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d479
       predicate: derived_from
-      object:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d481
-        name: C16 alpha-olefin
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d479
-        name: ASA 100
+      object: f47ac10b-58cc-4372-a567-0e02b2c3d481
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d479
       predicate: has_cas_number
-      object:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d486
-        name: CAS 68784-12-3
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d482
-        name: HDSA
+      object: f47ac10b-58cc-4372-a567-0e02b2c3d486
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d482
       predicate: has_cas_number
-      object:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d487
-        name: CAS 32072-96-1
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d479
-        name: ASA 100
+      object: f47ac10b-58cc-4372-a567-0e02b2c3d487
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d479
       predicate: has_reach_registration
-      object:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d488
-        name: REACh 01-2119533117-46
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d479
-        name: ASA 100
+      object: f47ac10b-58cc-4372-a567-0e02b2c3d488
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d479
       predicate: is_produced_by
-      object:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d485
-        name: Dixie Chemical
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d479
-        name: ASA 100
+      object: f47ac10b-58cc-4372-a567-0e02b2c3d485
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d479
       predicate: has_typical_property
       object:
         property: Physical Appearance
         value: Clear Amber Liquid
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d479
-        name: ASA 100
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d479
       predicate: has_typical_property
       object:
         property: Specific gravity @ 25 °C
         value: 0.945-0.965 g/cc
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d479
-        name: ASA 100
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d479
       predicate: has_typical_property
       object:
         property: Gardner Color
         value: 10 Max
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d479
-        name: ASA 100
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d479
       predicate: has_typical_property
       object:
         property: Viscosity at 25°C
         value: 90-175 cP
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d479
-        name: ASA 100
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d479
       predicate: has_typical_property
       object:
         property: Residual Olefin
         value: 1% Max
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d479
-        name: ASA 100
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d479
       predicate: has_typical_property
       object:
         property: HDSA
         value: 95% Min
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d479
-        name: ASA 100
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d479
       predicate: has_typical_property
       object:
         property: Free Acid
         value: 1.5% Max
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d479
-        name: ASA 100
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d479
       predicate: has_typical_property
       object:
         property: Neut. Number
         value: 330-355 mg KOH/g
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d479
-        name: ASA 100
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d479
       predicate: has_typical_property
       object:
         property: Pour Point
         value: -34 °C
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d479
-        name: ASA 100
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d479
       predicate: has_typical_property
       object:
         property: Freeze Point
         value: -21 °C
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d479
-        name: ASA 100
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d479
       predicate: has_application
       object: alkaline paper sizing agent
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d479
-        name: ASA 100
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d479
       predicate: has_application
       object: metal working fluid corrosion inhibitor
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d479
-        name: ASA 100
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d479
       predicate: has_application
       object: fuel additive
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d479
-        name: ASA 100
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d479
       predicate: has_application
       object: lubricant additive
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d479
-        name: ASA 100
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d479
       predicate: has_application
       object: pour point depressant
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d479
-        name: ASA 100
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d479
       predicate: has_application
       object: corrosion inhibitor
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d479
-        name: ASA 100
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d479
       predicate: has_application
       object: dispersant
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d479
-        name: ASA 100
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d479
       predicate: has_application
       object: surfactant intermediate
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d479
-        name: ASA 100
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d479
       predicate: has_application
       object: plasticizer component
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d479
-        name: ASA 100
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d479
       predicate: has_application
       object: epoxy component
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d479
-        name: ASA 100
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d479
       predicate: has_application
       object: moisture control agent for leather goods
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d479
-        name: ASA 100
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d479
       predicate: can_be_formulated_with
-      object:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d483
-        name: dioctylsulfo-succinate
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d479
-        name: ASA 100
+      object: f47ac10b-58cc-4372-a567-0e02b2c3d483
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d479
       predicate: can_be_formulated_with
-      object:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d484
-        name: phosphate ester
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d479
-        name: ASA 100
+      object: f47ac10b-58cc-4372-a567-0e02b2c3d484
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d479
       predicate: has_safety_hazard
       object: mild primary skin irritant
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d479
-        name: ASA 100
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d479
       predicate: has_storage_requirement
       object: moisture-free environment
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d479
-        name: ASA 100
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d479
       predicate: has_shelf_life
       object: 24 months
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d479
-        name: ASA 100
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d479
       predicate: can_be_stored_in
-      object:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d490
-        name: mild steel
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d479
-        name: ASA 100
+      object: f47ac10b-58cc-4372-a567-0e02b2c3d490
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d479
       predicate: can_be_stored_in
-      object:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d491
-        name: 304 stainless steel
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d479
-        name: ASA 100
+      object: f47ac10b-58cc-4372-a567-0e02b2c3d491
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d479
       predicate: can_be_stored_in
-      object:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d492
-        name: 316 stainless steel
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d479
-        name: ASA 100
+      object: f47ac10b-58cc-4372-a567-0e02b2c3d492
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d479
       predicate: has_viscosity_at_temperature
       object:
         temperature: 0 °C
         value: 680 cPs
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d479
-        name: ASA 100
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d479
       predicate: has_viscosity_at_temperature
       object:
         temperature: 25 °C
         value: 90-175 cPs
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d479
-        name: ASA 100
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d479
       predicate: has_viscosity_at_temperature
       object:
         temperature: 60 °C
         value: 30 cPs
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d479
-        name: ASA 100
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d479
       predicate: has_specific_gravity_at_temperature
       object:
         temperature: 0 °C
         value: 8.13 lbs/gal
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d479
-        name: ASA 100
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d479
       predicate: has_specific_gravity_at_temperature
       object:
         temperature: 25 °C
         value: 0.945-0.965 g/cc
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d479
-        name: ASA 100
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d479
       predicate: has_specific_gravity_at_temperature
       object:
         temperature: 60 °C
         value: 7.89 lbs/gal
 knowledge_graph:
-  entities: []
+  entities:
+  - id: 51bf2bfd-b8c1-52a6-b26e-015b82bdd62e
+    text: ASA 100
+    type: PRODUCT_NAME
+    canonical_name: Hexadecenylsuccinic Anhydride
+    aliases:
+    - ASA 100
+    - HDSA
+    - Hexadecenylsuccinic Anhydride
+    source_text: Hexadecenylsuccinic Anhydride (ASA 100)
+    provenance:
+      document_id: 32874412-3423-57c4-9ad6-19aefa23ed0b
+      page: 1
+    metadata:
+      manufacturer: Dixie Chemical
+      product_family: Alkenylsuccinic Anhydride
   kg_triples: []

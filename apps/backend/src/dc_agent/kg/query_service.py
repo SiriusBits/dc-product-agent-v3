@@ -336,7 +336,7 @@ class KGQueryService:
 
         # PPE
         rows = await self._store.query(
-            "MATCH (n {id: $id})-[r:REQUIRES_PPE]->(n) RETURN r",
+            "MATCH (n {id: $id})-[r:REQUIRES_PPE]->() RETURN r",
             {"id": nid},
         )
         ppe = [
@@ -349,7 +349,7 @@ class KGQueryService:
 
         # First aid
         rows = await self._store.query(
-            "MATCH (n {id: $id})-[r:HAS_FIRST_AID]->(n) RETURN r",
+            "MATCH (n {id: $id})-[r:HAS_FIRST_AID]->() RETURN r",
             {"id": nid},
         )
         first_aid = [
@@ -375,7 +375,7 @@ class KGQueryService:
 
         # Toxicity
         rows = await self._store.query(
-            "MATCH (n {id: $id})-[r:HAS_TOXICITY]->(n) RETURN r",
+            "MATCH (n {id: $id})-[r:HAS_TOXICITY]->() RETURN r",
             {"id": nid},
         )
         toxicity = [

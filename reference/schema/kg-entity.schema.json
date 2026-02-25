@@ -2,24 +2,50 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://example.com/schemas/kg-entity.schema.json",
   "title": "KG Entity",
+  "description": "Standalone entity schema aligned with common-defs.described.schema.json#/$defs/entity.",
   "type": "object",
   "properties": {
     "id": { "type": "string", "format": "uuid" },
     "text": { "type": "string" },
-    "type": { "type": "string" },
+    "type": {
+      "type": "string",
+      "enum": [
+        "CHEMICAL",
+        "PRODUCT_NAME",
+        "ORGANIZATION",
+        "APPLICATION",
+        "PROPERTY",
+        "CAS_NUMBER",
+        "CHEMICAL_CLASS",
+        "CHEMICAL_FUNCTION",
+        "TEST_METHOD",
+        "UNIT",
+        "HAZARD",
+        "REGISTRATION",
+        "BENEFIT",
+        "MATERIAL",
+        "DOCUMENT",
+        "LOCATION"
+      ]
+    },
     "canonical_name": { "type": ["string", "null"] },
     "aliases": { "type": "array", "items": { "type": "string" } },
-    "source_text": { "type": ["string", "null"] },
+    "source_text": { "type": "string" },
     "provenance": {
       "type": "object",
       "properties": {
-        "document_id": { "type": "string" },
+        "document_id": { "type": "string", "format": "uuid" },
         "page": { "type": ["integer", "null"] }
       },
-      "additionalProperties": true
+      "additionalProperties": false
     },
-    "metadata": { "type": "object" }
+    "metadata": {
+      "type": "object",
+      "additionalProperties": {
+        "type": ["string", "number", "boolean", "null"]
+      }
+    }
   },
-  "required": ["id", "text", "type"],
+  "required": ["id", "text", "type", "source_text"],
   "additionalProperties": false
 }

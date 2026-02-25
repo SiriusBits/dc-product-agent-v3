@@ -54,6 +54,7 @@ knowledge_graph:
     type: PRODUCT_NAME
     canonical_name: JP-10
     aliases:
+    - JP-10
     - Octahydro-1H-4,7-methanoindene
     source_text: JP-10 (Octahydro-1H-4,7-methanoindene, CAS# 2825-82-3)
     provenance:

@@ -72,6 +72,7 @@ knowledge_graph:
     canonical_name: Epoxy Curing Agent 608
     aliases:
     - ECA 608
+    - Epoxy Curing Agent 608
     source_text: EPOXY CURING AGENT 608 (ECA 608)
     provenance:
       page: 1
@@ -194,6 +195,8 @@ knowledge_graph:
     canonical_name: Epoxy Curing Agent 607
     aliases:
     - ECA 607
+    - ECA 608
+    - Epoxy Curing Agent 608
     source_text: ECA 607
     provenance:
       page: 3
@@ -207,7 +210,9 @@ knowledge_graph:
     type: PRODUCT_NAME
     canonical_name: Epoxy Curing Agent 609
     aliases:
+    - ECA 608
     - ECA 609
+    - Epoxy Curing Agent 608
     source_text: ECA 609
     provenance:
       page: 3
@@ -222,6 +227,8 @@ knowledge_graph:
     canonical_name: Epoxy Curing Agent 100NC
     aliases:
     - ECA 100NC
+    - ECA 608
+    - Epoxy Curing Agent 608
     source_text: ECA 100NC with 2% BDMA
     provenance:
       page: 3
@@ -236,6 +243,8 @@ knowledge_graph:
     canonical_name: Epoxy Curing Agent 100KA
     aliases:
     - ECA 100KA
+    - ECA 608
+    - Epoxy Curing Agent 608
     source_text: ECA 100KA
     provenance:
       page: 3

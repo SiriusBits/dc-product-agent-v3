@@ -1,0 +1,286 @@
+{
+  "name": "Retrieval Orchestration",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "retrieval",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "webhook-trigger",
+      "name": "Webhook Trigger",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [200, 300],
+      "webhookId": "retrieval"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Query Classifier — rule-based intent detection\n// Categories: 'vector' (semantic/conceptual), 'kg' (structured/entity), 'hybrid' (both)\n\nconst query = $input.first().json.body?.query || $input.first().json.query || '';\nconst intentHint = $input.first().json.body?.intent_hint || $input.first().json.intent_hint || null;\nconst topK = $input.first().json.body?.top_k || $input.first().json.top_k || 5;\nconst conversationId = $input.first().json.body?.conversation_id || $input.first().json.conversation_id || null;\n\n// If caller provides an intent hint, use it directly\nif (intentHint && ['vector', 'kg', 'hybrid'].includes(intentHint)) {\n  return [{ json: { query, intent: intentHint, top_k: topK, conversation_id: conversationId } }];\n}\n\nconst q = query.toLowerCase();\n\n// KG indicators: specific property lookups, product names, CAS numbers, safety data\nconst kgPatterns = [\n  /viscosity|density|molecular weight|boiling point|flash point|melting point|specific gravity/,\n  /cas\\s*(?:number|#|no)/i,\n  /safety|hazard|ppe|first aid|toxicity|storage/,\n  /\\b(?:dca|dce|eca|asa|mhhpa|ddsa|odsa|nma|jp-?10|ap-?6g|cg)\\s*\\d*/i,\n  /formulation|component|ingredient/,\n  /identifier|registration/,\n  /produced by|manufacturer/,\n];\n\n// Hybrid indicators: comparisons, relationships, multiple products\nconst hybridPatterns = [\n  /compare|comparison|difference|versus|vs\\.?\\b/,\n  /similar|alternative|substitute|replacement/,\n  /related|relationship|family/,\n  /which.*(?:product|chemical).*(?:best|suitable|recommend)/,\n  /\\band\\b.*\\band\\b/,  // multiple conjunctions suggest multi-product\n];\n\n// Vector indicators: conceptual, explanatory, open-ended\nconst vectorPatterns = [\n  /how\\s+(?:does|do|is|are|can|should)/,\n  /what\\s+(?:is|are)\\s+(?:a|an|the)?\\s*(?!viscosity|density|molecular)/,\n  /explain|describe|overview|summary|tell me about/,\n  /why|when|application|use case|benefit/,\n  /process|mechanism|reaction|cure|crosslink/,\n];\n\nlet intent = 'hybrid';  // safe default\n\n// Check patterns in order of specificity\nconst kgScore = kgPatterns.filter(p => p.test(q)).length;\nconst hybridScore = hybridPatterns.filter(p => p.test(q)).length;\nconst vectorScore = vectorPatterns.filter(p => p.test(q)).length;\n\nif (hybridScore > 0 && kgScore > 0) {\n  intent = 'hybrid';\n} else if (kgScore >= 2) {\n  intent = 'kg';\n} else if (kgScore === 1 && vectorScore === 0) {\n  intent = 'kg';\n} else if (vectorScore >= 2 && kgScore === 0) {\n  intent = 'vector';\n} else if (vectorScore > 0 && kgScore === 0 && hybridScore === 0) {\n  intent = 'vector';\n}\n\nreturn [{ json: { query, intent, top_k: topK, conversation_id: conversationId } }];"
+      },
+      "id": "query-classifier",
+      "name": "Query Classifier",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [440, 300]
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": { "caseSensitive": false, "leftValue": "" },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.intent }}",
+                    "rightValue": "vector",
+                    "operator": { "type": "string", "operation": "equals" }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "vector"
+            },
+            {
+              "conditions": {
+                "options": { "caseSensitive": false, "leftValue": "" },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.intent }}",
+                    "rightValue": "kg",
+                    "operator": { "type": "string", "operation": "equals" }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "kg"
+            },
+            {
+              "conditions": {
+                "options": { "caseSensitive": false, "leftValue": "" },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.intent }}",
+                    "rightValue": "hybrid",
+                    "operator": { "type": "string", "operation": "equals" }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "hybrid"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra"
+        }
+      },
+      "id": "intent-switch",
+      "name": "Intent Router",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://host.docker.internal:8001/api/v1/search",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ query: $json.query, top_k: $json.top_k || 5 }) }}",
+        "options": {
+          "timeout": 8000
+        }
+      },
+      "id": "vector-search",
+      "name": "Vector Search",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [940, 100]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://host.docker.internal:8001/api/v1/kg/search",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ query: $json.query, limit: $json.top_k || 5 }) }}",
+        "options": {
+          "timeout": 8000
+        }
+      },
+      "id": "kg-search",
+      "name": "KG Entity Search",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [940, 340]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://host.docker.internal:8001/api/v1/query-kg",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ query: $json.query, top_k: $json.top_k || 5 }) }}",
+        "options": {
+          "timeout": 8000
+        }
+      },
+      "id": "graphiti-search",
+      "name": "Graphiti Search",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [940, 540]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://host.docker.internal:8001/api/v1/search",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ query: $json.query, top_k: $json.top_k || 5 }) }}",
+        "options": {
+          "timeout": 8000
+        }
+      },
+      "id": "hybrid-vector-search",
+      "name": "Hybrid Vector Search",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [940, 720]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://host.docker.internal:8001/api/v1/query-kg",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ query: $json.query, top_k: $json.top_k || 5 }) }}",
+        "options": {
+          "timeout": 8000
+        }
+      },
+      "id": "hybrid-graphiti-search",
+      "name": "Hybrid Graphiti Search",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [940, 900]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Result Fusion — merge vector results into unified format\n\nconst startTime = Date.now();\nconst inputData = $input.first().json;\n\nconst results = [];\n\n// Parse vector search results\nif (inputData.results) {\n  for (const r of inputData.results) {\n    results.push({\n      content: r.chunk_text || r.text || '',\n      source: r.product_name || '',\n      source_type: 'vector',\n      score: r.relevance_score || 0,\n      product_name: r.product_name || '',\n      metadata: { section: r.section_name, doc_id: r.doc_id }\n    });\n  }\n}\n\nconst elapsed = Date.now() - startTime;\n\nreturn [{\n  json: {\n    results,\n    metadata: {\n      execution_id: $execution.id,\n      intent: 'vector',\n      sources_queried: ['vector'],\n      timing_ms: { vector: elapsed },\n      total_ms: elapsed\n    }\n  }\n}];"
+      },
+      "id": "fuse-vector",
+      "name": "Fuse Vector Results",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1200, 100]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Result Fusion — merge KG entity + Graphiti results\n\nconst startTime = Date.now();\nconst items = $input.all();\nconst results = [];\n\nfor (const item of items) {\n  const data = item.json;\n  \n  // KG entity search results (array of EntitySearchResult)\n  if (Array.isArray(data)) {\n    for (const entity of data) {\n      results.push({\n        content: `${entity.label}: ${entity.canonical_name}`,\n        source: entity.canonical_name || '',\n        source_type: 'kg',\n        score: entity.score || 0,\n        product_name: entity.canonical_name || '',\n        metadata: { id: entity.id, label: entity.label }\n      });\n    }\n  }\n  \n  // Graphiti search response\n  if (data.results && Array.isArray(data.results)) {\n    for (const r of data.results) {\n      results.push({\n        content: r.fact || r.content || '',\n        source: r.source_description || '',\n        source_type: 'graphiti',\n        score: r.score || 0,\n        product_name: '',\n        metadata: { uuid: r.uuid }\n      });\n    }\n  }\n}\n\nconst elapsed = Date.now() - startTime;\n\nreturn [{\n  json: {\n    results,\n    metadata: {\n      execution_id: $execution.id,\n      intent: 'kg',\n      sources_queried: ['kg', 'graphiti'],\n      timing_ms: { kg: elapsed },\n      total_ms: elapsed\n    }\n  }\n}];"
+      },
+      "id": "fuse-kg",
+      "name": "Fuse KG Results",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1200, 440]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Result Fusion — merge vector + Graphiti hybrid results, deduplicate, rank\n\nconst startTime = Date.now();\nconst items = $input.all();\nconst results = [];\nconst seen = new Set();\n\nfor (const item of items) {\n  const data = item.json;\n  \n  // Vector search results\n  if (data.results && Array.isArray(data.results)) {\n    for (const r of data.results) {\n      // Vector results have chunk_text\n      if (r.chunk_text || r.text) {\n        const key = (r.chunk_text || r.text || '').substring(0, 100);\n        if (!seen.has(key)) {\n          seen.add(key);\n          results.push({\n            content: r.chunk_text || r.text || '',\n            source: r.product_name || '',\n            source_type: 'vector',\n            score: r.relevance_score || 0,\n            product_name: r.product_name || '',\n            metadata: { section: r.section_name, doc_id: r.doc_id }\n          });\n        }\n      }\n      // Graphiti results have fact\n      if (r.fact || r.content) {\n        const key = (r.fact || r.content || '').substring(0, 100);\n        if (!seen.has(key)) {\n          seen.add(key);\n          results.push({\n            content: r.fact || r.content || '',\n            source: r.source_description || '',\n            source_type: 'graphiti',\n            score: r.score || 0,\n            product_name: '',\n            metadata: { uuid: r.uuid }\n          });\n        }\n      }\n    }\n  }\n}\n\n// Sort by score descending\nresults.sort((a, b) => b.score - a.score);\n\nconst elapsed = Date.now() - startTime;\n\nreturn [{\n  json: {\n    results,\n    metadata: {\n      execution_id: $execution.id,\n      intent: 'hybrid',\n      sources_queried: ['vector', 'graphiti'],\n      timing_ms: { fusion: elapsed },\n      total_ms: elapsed\n    }\n  }\n}];"
+      },
+      "id": "fuse-hybrid",
+      "name": "Fuse Hybrid Results",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1200, 800]
+    },
+    {
+      "parameters": {
+        "options": {
+          "responseCode": 200
+        },
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json) }}"
+      },
+      "id": "respond-webhook",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [1460, 440]
+    }
+  ],
+  "connections": {
+    "Webhook Trigger": {
+      "main": [
+        [{ "node": "Query Classifier", "type": "main", "index": 0 }]
+      ]
+    },
+    "Query Classifier": {
+      "main": [
+        [{ "node": "Intent Router", "type": "main", "index": 0 }]
+      ]
+    },
+    "Intent Router": {
+      "main": [
+        [{ "node": "Vector Search", "type": "main", "index": 0 }],
+        [{ "node": "KG Entity Search", "type": "main", "index": 0 }, { "node": "Graphiti Search", "type": "main", "index": 0 }],
+        [{ "node": "Hybrid Vector Search", "type": "main", "index": 0 }, { "node": "Hybrid Graphiti Search", "type": "main", "index": 0 }]
+      ]
+    },
+    "Vector Search": {
+      "main": [
+        [{ "node": "Fuse Vector Results", "type": "main", "index": 0 }]
+      ]
+    },
+    "KG Entity Search": {
+      "main": [
+        [{ "node": "Fuse KG Results", "type": "main", "index": 0 }]
+      ]
+    },
+    "Graphiti Search": {
+      "main": [
+        [{ "node": "Fuse KG Results", "type": "main", "index": 0 }]
+      ]
+    },
+    "Hybrid Vector Search": {
+      "main": [
+        [{ "node": "Fuse Hybrid Results", "type": "main", "index": 0 }]
+      ]
+    },
+    "Hybrid Graphiti Search": {
+      "main": [
+        [{ "node": "Fuse Hybrid Results", "type": "main", "index": 0 }]
+      ]
+    },
+    "Fuse Vector Results": {
+      "main": [
+        [{ "node": "Respond to Webhook", "type": "main", "index": 0 }]
+      ]
+    },
+    "Fuse KG Results": {
+      "main": [
+        [{ "node": "Respond to Webhook", "type": "main", "index": 0 }]
+      ]
+    },
+    "Fuse Hybrid Results": {
+      "main": [
+        [{ "node": "Respond to Webhook", "type": "main", "index": 0 }]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "tags": [
+    { "name": "retrieval" },
+    { "name": "orchestration" }
+  ],
+  "active": true
+}

@@ -35,6 +35,8 @@
         "type": "PRODUCT_NAME",
         "canonical_name": "AP-6G",
         "aliases": [
+          "AP-6G",
+          "Benzyl Triethylammonium Chloride",
           "Benzyl Triethylammonium Chloride in Ethylene Glycol"
         ],
         "source_text": "AP-6G (Benzyl Triethylammonium Chloride in Ethylene Glycol) (CAS# 56-37-1)",
@@ -49,7 +51,10 @@
         "text": "Benzyl Triethylammonium Chloride",
         "type": "CHEMICAL",
         "canonical_name": "Benzyl Triethylammonium Chloride",
-        "aliases": [],
+        "aliases": [
+          "AP-6G",
+          "Benzyl Triethylammonium Chloride in Ethylene Glycol"
+        ],
         "source_text": "Benzyl Triethylammonium Chloride in Ethylene Glycol",
         "provenance": {
           "document_id": "82c28fb6-3a9e-5b8b-b074-a706bbf606a2",

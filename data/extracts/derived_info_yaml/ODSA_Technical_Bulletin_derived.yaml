@@ -86,12 +86,28 @@ derived_info:
   - Moisture control for leather goods
   knowledge_graph:
     entities:
+    - id: 4dd982cd-50cc-517a-a5a2-61904e7faaf1
+      text: ODSA
+      type: PRODUCT_NAME
+      canonical_name: Octadecenylsuccinic Anhydride
+      aliases:
+      - ASA
+      - ODSA
+      - Octadecenylsuccinic Anhydride
+      source_text: Octadecenylsuccinic Anhydride (ODSA)
+      provenance:
+        document_id: e0c59870-2030-5186-a3e7-fb62547957af
+        page: 1
+      metadata:
+        manufacturer: Dixie Chemical
+        product_family: Alkenylsuccinic Anhydride
     - id: f47ac10b-58cc-4372-a567-0e02b2c3d520
       type: CHEMICAL
       canonical_name: Octadecenylsuccinic Anhydride
       aliases:
-      - ODSA
       - ASA
+      - ODSA
+      - Octadecenylsuccinic Anhydride
       source_text: Octadecenylsuccinic Anhydride CASRN 28777-98-2
       provenance:
         document_id: 550e8400-e29b-41d4-a716-446655440004
@@ -133,7 +149,7 @@ derived_info:
         document_id: 550e8400-e29b-41d4-a716-446655440004
         page: 2
     - id: f47ac10b-58cc-4372-a567-0e02b2c3d525
-      type: IDENTIFIER
+      type: CAS_NUMBER
       canonical_name: CAS 68784-12-3
       aliases:
       - CASRN 68784-12-3
@@ -142,7 +158,7 @@ derived_info:
         document_id: 550e8400-e29b-41d4-a716-446655440004
         page: 2
     - id: f47ac10b-58cc-4372-a567-0e02b2c3d526
-      type: IDENTIFIER
+      type: CAS_NUMBER
       canonical_name: CAS 28777-98-2
       aliases:
       - CASRN 28777-98-2
@@ -151,7 +167,7 @@ derived_info:
         document_id: 550e8400-e29b-41d4-a716-446655440004
         page: 2
     - id: f47ac10b-58cc-4372-a567-0e02b2c3d527
-      type: IDENTIFIER
+      type: REGISTRATION
       canonical_name: REACh 01-2119533117-46
       aliases: []
       source_text: the REACh registry number is 01-2119533117-46
@@ -186,263 +202,178 @@ derived_info:
         document_id: 550e8400-e29b-41d4-a716-446655440004
         page: 1
     kg_triples:
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
-        name: Octadecenylsuccinic Anhydride
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d520
       predicate: is_a
-      object:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d522
-        name: Alkenylsuccinic Anhydride
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
-        name: Octadecenylsuccinic Anhydride
+      object: f47ac10b-58cc-4372-a567-0e02b2c3d522
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d520
       predicate: is_derived_from
-      object:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d523
-        name: C18 alpha-olefin
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
-        name: Octadecenylsuccinic Anhydride
+      object: f47ac10b-58cc-4372-a567-0e02b2c3d523
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d520
       predicate: is_produced_by
-      object:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d521
-        name: Dixie Chemical
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
-        name: Octadecenylsuccinic Anhydride
+      object: f47ac10b-58cc-4372-a567-0e02b2c3d521
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d520
       predicate: has_cas_number
-      object:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d526
-        name: CAS 28777-98-2
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d524
-        name: 2,5-Furandione,dihydro-,mono-C15-20-alkenyl derivs
+      object: f47ac10b-58cc-4372-a567-0e02b2c3d526
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d524
       predicate: has_cas_number
-      object:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d525
-        name: CAS 68784-12-3
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d524
-        name: 2,5-Furandione,dihydro-,mono-C15-20-alkenyl derivs
+      object: f47ac10b-58cc-4372-a567-0e02b2c3d525
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d524
       predicate: has_reach_number
-      object:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d527
-        name: REACh 01-2119533117-46
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
-        name: Octadecenylsuccinic Anhydride
+      object: f47ac10b-58cc-4372-a567-0e02b2c3d527
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d520
       predicate: is_equivalent_to
-      object:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d524
-        name: 2,5-Furandione,dihydro-,mono-C15-20-alkenyl derivs
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
-        name: Octadecenylsuccinic Anhydride
+      object: f47ac10b-58cc-4372-a567-0e02b2c3d524
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d520
       predicate: has_typical_property
       object:
         property: Physical Appearance
         value: Amber colored liquid, mild odor
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
-        name: Octadecenylsuccinic Anhydride
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d520
       predicate: has_typical_property
       object:
         property: Specific gravity @ 25 °C
         value: 0.945-0.965 g/cc
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
-        name: Octadecenylsuccinic Anhydride
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d520
       predicate: has_typical_property
       object:
         property: Gardner Color
         value: 10 Max
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
-        name: Octadecenylsuccinic Anhydride
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d520
       predicate: has_typical_property
       object:
         property: HDSA
         value: Report %
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
-        name: Octadecenylsuccinic Anhydride
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d520
       predicate: has_typical_property
       object:
         property: Residual Olefin
         value: 3.0 Max %
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
-        name: Octadecenylsuccinic Anhydride
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d520
       predicate: has_typical_property
       object:
         property: ODSA
         value: 90.0 Min %
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
-        name: Octadecenylsuccinic Anhydride
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d520
       predicate: has_typical_property
       object:
         property: Free Acid
         value: 2.0 Max %
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
-        name: Octadecenylsuccinic Anhydride
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d520
       predicate: has_typical_property
       object:
         property: Neutralization
         value: 305-335 mg KOH/g
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
-        name: Octadecenylsuccinic Anhydride
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d520
       predicate: has_typical_property
       object:
         property: Pour Point
         value: -15 °C
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
-        name: Octadecenylsuccinic Anhydride
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d520
       predicate: has_typical_property
       object:
         property: Freeze Point
         value: -21 °C
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
-        name: Octadecenylsuccinic Anhydride
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d520
       predicate: has_application
       object: Alkaline paper sizing agent
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
-        name: Octadecenylsuccinic Anhydride
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d520
       predicate: has_application
       object: Fuel additives
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
-        name: Octadecenylsuccinic Anhydride
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d520
       predicate: has_application
       object: Lubricant additives
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
-        name: Octadecenylsuccinic Anhydride
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d520
       predicate: has_application
       object: Pour point depressants
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
-        name: Octadecenylsuccinic Anhydride
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d520
       predicate: has_application
       object: Corrosion inhibitors
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
-        name: Octadecenylsuccinic Anhydride
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d520
       predicate: has_application
       object: Dispersants
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
-        name: Octadecenylsuccinic Anhydride
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d520
       predicate: has_application
       object: Surfactant intermediates
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
-        name: Octadecenylsuccinic Anhydride
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d520
       predicate: has_application
       object: Plasticizers
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
-        name: Octadecenylsuccinic Anhydride
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d520
       predicate: has_application
       object: Epoxy formulations
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
-        name: Octadecenylsuccinic Anhydride
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d520
       predicate: has_application
       object: Moisture control for leather goods
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
-        name: Octadecenylsuccinic Anhydride
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d520
       predicate: can_be_converted_to
       object: acid amides
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
-        name: Octadecenylsuccinic Anhydride
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d520
       predicate: can_be_converted_to
       object: esters
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
-        name: Octadecenylsuccinic Anhydride
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d520
       predicate: has_safety_hazard
       object: mild primary skin irritant
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
-        name: Octadecenylsuccinic Anhydride
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d520
       predicate: has_storage_requirement
       object: moisture-free environment
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
-        name: Octadecenylsuccinic Anhydride
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d520
       predicate: has_shelf_life
       object: 24 months
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
-        name: Octadecenylsuccinic Anhydride
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d520
       predicate: is_available_from
-      object:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d528
-        name: Pasadena, TX
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
-        name: Octadecenylsuccinic Anhydride
+      object: f47ac10b-58cc-4372-a567-0e02b2c3d528
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d520
       predicate: has_storage_guidance_in
-      object:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d529
-        name: Alkenylsuccinic Anhydride Storage Requirements
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
-        name: Octadecenylsuccinic Anhydride
+      object: f47ac10b-58cc-4372-a567-0e02b2c3d529
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d520
       predicate: has_viscosity_at_temperature
       object:
         temperature_c: 20
         viscosity_cps: 180
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
-        name: Octadecenylsuccinic Anhydride
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d520
       predicate: has_viscosity_at_temperature
       object:
         temperature_c: 40
         viscosity_cps: 60
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
-        name: Octadecenylsuccinic Anhydride
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d520
       predicate: has_viscosity_at_temperature
       object:
         temperature_c: 60
         viscosity_cps: 25
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
-        name: Octadecenylsuccinic Anhydride
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d520
       predicate: has_viscosity_at_temperature
       object:
         temperature_c: 80
         viscosity_cps: 15
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
-        name: Octadecenylsuccinic Anhydride
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d520
       predicate: has_specific_gravity_at_temperature
       object:
         temperature_c: 0
         specific_gravity_lbs_gal: 8.04
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
-        name: Octadecenylsuccinic Anhydride
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d520
       predicate: has_specific_gravity_at_temperature
       object:
         temperature_c: 24
         specific_gravity_lbs_gal: 7.92
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d520
-        name: Octadecenylsuccinic Anhydride
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d520
       predicate: has_specific_gravity_at_temperature
       object:
         temperature_c: 60
         specific_gravity_lbs_gal: 7.75
 knowledge_graph:
-  entities: []
+  entities:
+  - id: 4dd982cd-50cc-517a-a5a2-61904e7faaf1
+    text: ODSA
+    type: PRODUCT_NAME
+    canonical_name: Octadecenylsuccinic Anhydride
+    aliases:
+    - ASA
+    - ODSA
+    - Octadecenylsuccinic Anhydride
+    source_text: Octadecenylsuccinic Anhydride (ODSA)
+    provenance:
+      document_id: e0c59870-2030-5186-a3e7-fb62547957af
+      page: 1
+    metadata:
+      manufacturer: Dixie Chemical
+      product_family: Alkenylsuccinic Anhydride
   kg_triples: []

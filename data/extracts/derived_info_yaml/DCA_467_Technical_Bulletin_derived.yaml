@@ -63,6 +63,7 @@ knowledge_graph:
     type: PRODUCT_NAME
     canonical_name: DCA 467
     aliases:
+    - DCA 467
     - Trimethylolpropane tris(2-methyl-1-aziridinepropionate)
     source_text: DCA 467 (Trimethylolpropane tris(2-methyl-1-aziridinepropionate))
       CAS Registry Number 64265-57-2
@@ -136,7 +137,9 @@ knowledge_graph:
     type: PRODUCT_NAME
     canonical_name: NeoCryl
     aliases:
+    - DCA 467
     - NeoCryl acrylic emulsions
+    - Trimethylolpropane tris(2-methyl-1-aziridinepropionate)
     source_text: It is ideal for use with fast air-dry NeoCryl acrylic emulsions
     provenance:
       page: 2
@@ -151,7 +154,9 @@ knowledge_graph:
     type: PRODUCT_NAME
     canonical_name: NeoRez
     aliases:
+    - DCA 467
     - NeoRez waterborne urethane
+    - Trimethylolpropane tris(2-methyl-1-aziridinepropionate)
     source_text: NeoCryl acrylic emulsions, NeoRez waterborne urethane
     provenance:
       page: 2
@@ -166,7 +171,9 @@ knowledge_graph:
     type: PRODUCT_NAME
     canonical_name: NeoPac
     aliases:
+    - DCA 467
     - NeoPac urethane acrylic copolymer
+    - Trimethylolpropane tris(2-methyl-1-aziridinepropionate)
     source_text: NeoRez waterborne urethane and NeoPac urethane acrylic copolymer
       products
     provenance:
@@ -181,7 +188,9 @@ knowledge_graph:
     text: NeoCryl A-601
     type: PRODUCT_NAME
     canonical_name: NeoCryl A-601
-    aliases: []
+    aliases:
+    - DCA 467
+    - Trimethylolpropane tris(2-methyl-1-aziridinepropionate)
     source_text: Mixtures of NeoCryl A-601 latex with the recommended amount of DCA
       467
     provenance:
@@ -196,7 +205,9 @@ knowledge_graph:
     text: NeoRez R-960
     type: PRODUCT_NAME
     canonical_name: NeoRez R-960
-    aliases: []
+    aliases:
+    - DCA 467
+    - Trimethylolpropane tris(2-methyl-1-aziridinepropionate)
     source_text: Films of NeoRez R-960 and NeoCryl A-601 containing recommended amounts
       of DCA 467
     provenance:

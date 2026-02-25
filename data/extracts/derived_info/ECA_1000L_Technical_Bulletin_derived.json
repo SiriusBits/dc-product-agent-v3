@@ -41,7 +41,9 @@
         "canonical_name": "Epoxy Curing Agent 1000L",
         "aliases": [
           "ECA 1000L",
-          "MTHPA"
+          "Epoxy Curing Agent 1000L",
+          "MTHPA",
+          "Methyltetrahydrophthalic Anhydride"
         ],
         "source_text": "EPOXY CURING AGENT 1000L (Methyltetrahydrophthalic Anhydride) (ECA 1000L, MTHPA, CAS# 34090-76-1)",
         "provenance": {
@@ -62,6 +64,8 @@
         "type": "CHEMICAL",
         "canonical_name": "Methyltetrahydrophthalic Anhydride",
         "aliases": [
+          "ECA 1000L",
+          "Epoxy Curing Agent 1000L",
           "MTHPA"
         ],
         "source_text": "EPOXY CURING AGENT 1000L (Methyltetrahydrophthalic Anhydride) (ECA 1000L, MTHPA, CAS# 34090-76-1)",

@@ -1,72 +1,53 @@
-"""Pydantic models for product data."""
+"""Pydantic models for product API responses.
+
+Schema-level models live in dc_agent.models.generated (auto-generated from
+reference/schema/*.schema.json).  This module defines the API response shapes
+that wrap or simplify the generated models for FastAPI serialisation.
+"""
 
 from pydantic import BaseModel, Field
-from typing import List, Optional, Dict, Any
+from typing import Dict, Any, Optional
 
+# Re-export schema-backed models from the generated package.
+# Consumers (services, routes) can import them from here unchanged.
+from dc_agent.models.generated.common_defs_described_schema import (
+    ContactInfo,
+    Registration,
+    PropertySpecRow as PropertySpec,
+)
+
+
+# ── Simplified API models (not in the JSON schemas) ────────────────────
 
 class ProductInfo(BaseModel):
-    """Basic product identification info."""
+    """Product identification info for API responses."""
     product_name: str
     product_short_name: str
-    product_family: Optional[str] = None
-    cas_number: Optional[str] = None
-    chemical_name: Optional[str] = None
-    synonyms: List[str] = Field(default_factory=list)
-
-
-class ContactInfo(BaseModel):
-    """Manufacturer contact information."""
-    address: Optional[str] = None
-    phone: Optional[str] = None
-    fax: Optional[str] = None
-    email: Optional[str] = None
-
-
-class PropertySpec(BaseModel):
-    """Product property or specification."""
-    category: Optional[str] = None
-    name: str
-    unit: Optional[str] = None
-    value_string: Optional[str] = None
-    value_numeric: Optional[float] = None
-    value_min: Optional[float] = None
-    value_max: Optional[float] = None
-    test_method: Optional[str] = None
-    page: Optional[int] = None
-    notes: Optional[str] = None
+    product_family: str | None = None
+    cas_number: str | None = None
+    chemical_name: str | None = None
+    synonyms: list[str] = Field(default_factory=list)
 
 
 class Section(BaseModel):
-    """Document section."""
+    """Document section (simplified for API responses)."""
     name: str
-    page: Optional[int] = None
+    page: int | None = None
     text: str
 
 
-class Registration(BaseModel):
-    """Product registration information."""
-    authority: Optional[str] = None
-    jurisdiction: Optional[str] = None
-    registration_number: Optional[str] = None
-    registration_name: Optional[str] = None
-    cas_number: Optional[str] = None
-    status: Optional[str] = None
-    effective_date: Optional[str] = None
-    notes: Optional[str] = None
-
-
 class ExtractionMetadata(BaseModel):
-    """Metadata about the extraction process."""
+    """Extraction metadata (simplified for API responses)."""
     confidence_scores: Dict[str, Any] = Field(default_factory=dict)
-    extractor_version: Optional[str] = None
-    extraction_date: Optional[str] = None
+    extractor_version: str | None = None
+    extraction_date: str | None = None
 
 
 class DerivedInfo(BaseModel):
-    """Derived information from AI analysis."""
-    summary: Optional[str] = None
-    personas: Optional[Dict[str, str]] = None
-    key_applications: List[str] = Field(default_factory=list)
+    """Derived AI analysis (simplified for API responses)."""
+    summary: str | None = None
+    personas: Dict[str, str] | None = None
+    key_applications: list[str] = Field(default_factory=list)
 
 
 class ProductSummary(BaseModel):
@@ -74,11 +55,11 @@ class ProductSummary(BaseModel):
     doc_id: str
     product_name: str
     product_short_name: str
-    product_family: Optional[str] = None
-    cas_number: Optional[str] = None
-    summary: Optional[str] = None
-    key_applications: List[str] = Field(default_factory=list)
-    pdf_filename: Optional[str] = None
+    product_family: str | None = None
+    cas_number: str | None = None
+    summary: str | None = None
+    key_applications: list[str] = Field(default_factory=list)
+    pdf_filename: str | None = None
 
 
 class ProductDetail(BaseModel):
@@ -86,40 +67,40 @@ class ProductDetail(BaseModel):
     # Identification
     doc_id: str
     filename: str
-    filepath: Optional[str] = None
-    
+    filepath: str | None = None
+
     # Document metadata
-    document_type: Optional[str] = None
-    manufacturer: Optional[str] = None
-    contact_info: Optional[ContactInfo] = None
-    
+    document_type: str | None = None
+    manufacturer: str | None = None
+    contact_info: ContactInfo | None = None
+
     # Product info
     product_info: ProductInfo
-    
+
     # Registrations and benefits
-    registrations: List[Registration] = Field(default_factory=list)
-    key_benefits: List[str] = Field(default_factory=list)
-    
+    registrations: list[Registration] = Field(default_factory=list)
+    key_benefits: list[str] = Field(default_factory=list)
+
     # Applications
-    applications_text: Optional[str] = None
-    applications: List[str] = Field(default_factory=list)
-    
+    applications_text: str | None = None
+    applications: list[str] = Field(default_factory=list)
+
     # Properties and specifications
-    properties_and_specifications: List[PropertySpec] = Field(default_factory=list)
-    
+    properties_and_specifications: list[PropertySpec] = Field(default_factory=list)
+
     # Sections
-    sections: List[Section] = Field(default_factory=list)
-    
+    sections: list[Section] = Field(default_factory=list)
+
     # Derived info (from AI analysis)
-    derived_info: Optional[DerivedInfo] = None
-    
+    derived_info: DerivedInfo | None = None
+
     # Metadata
-    extraction_metadata: Optional[ExtractionMetadata] = None
+    extraction_metadata: ExtractionMetadata | None = None
 
 
 class ProductListResponse(BaseModel):
     """Response for product list endpoint."""
-    products: List[ProductSummary]
+    products: list[ProductSummary]
     count: int
 
 

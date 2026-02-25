@@ -1,9 +1,16 @@
-"""Chat service for LLM-powered Q&A with RAG."""
+"""Chat service for LLM-powered Q&A with RAG.
+
+When n8n orchestration is enabled (``N8N_ENABLED=true``), the service
+routes retrieval through the n8n webhook for intent classification and
+hybrid search.  If n8n is unavailable or times out, it falls back
+transparently to direct vector search.
+"""
 
 import logging
 import uuid
 from typing import List, Optional
 
+from dc_agent.config import settings
 from dc_agent.models.chat import (
     ChatMessage,
     ChatResponse,
@@ -12,6 +19,7 @@ from dc_agent.models.chat import (
 from dc_agent.models.search import SearchResult
 from dc_agent.services.search import SearchService, get_search_service
 from dc_agent.services.llm import LLMService, get_llm_service
+from dc_agent.services.n8n_client import N8nClient, N8nClientError
 from dc_agent.retrieval.rag import RAGPipeline
 
 logger = logging.getLogger(__name__)
@@ -21,7 +29,8 @@ class ChatService:
     """Service for chat-based Q&A using RAG with a pluggable LLM backend.
     
     This service:
-    1. Retrieves relevant context from the vector store via SearchService
+    1. Retrieves relevant context — via n8n orchestration if available,
+       falling back to direct vector search.
     2. Formats the context for the LLM
     3. Calls the selected LLM model to generate a response
     4. Returns the answer with cited sources
@@ -31,18 +40,24 @@ class ChatService:
         self,
         search_service: Optional[SearchService] = None,
         llm_service: Optional[LLMService] = None,
+        n8n_client: Optional[N8nClient] = None,
     ):
         """Initialize the ChatService.
         
         Args:
             search_service: SearchService instance. If not provided, uses singleton.
             llm_service: LLMService instance. If not provided, uses singleton.
+            n8n_client: Optional N8nClient. Created from config if not provided.
         """
         self._search_service = search_service or get_search_service()
         self._llm_service = llm_service or get_llm_service()
         self._rag_pipeline = RAGPipeline()
+        self._n8n_client = n8n_client or (N8nClient() if settings.N8N_ENABLED else None)
         
-        logger.info("ChatService initialized with pluggable LLM backend")
+        logger.info(
+            "ChatService initialized (n8n_enabled=%s)",
+            self._n8n_client is not None,
+        )
     
     @property
     def search_service(self) -> SearchService:
@@ -79,12 +94,12 @@ class ChatService:
         # Generate or use provided conversation ID
         conv_id = conversation_id or str(uuid.uuid4())
         
-        # Step 1: Retrieve relevant context
-        search_response = self._search_service.semantic_search(
+        # Step 1: Retrieve relevant context (n8n orchestrated or direct)
+        search_results = await self._retrieve(
             query=query,
             top_k=top_k,
+            conversation_id=conv_id,
         )
-        search_results = search_response.results
         
         logger.info(f"Retrieved {len(search_results)} context chunks for query")
         
@@ -121,6 +136,74 @@ class ChatService:
             sources=sources,
             conversation_id=conv_id,
         )
+
+
+    # ------------------------------------------------------------------
+    # Private retrieval helpers
+    # ------------------------------------------------------------------
+
+    async def _retrieve(
+        self,
+        query: str,
+        top_k: int,
+        conversation_id: str | None = None,
+    ) -> List[SearchResult]:
+        """Retrieve context — try n8n first, fall back to direct search."""
+        if self._n8n_client is not None:
+            try:
+                return await self._retrieve_via_n8n(
+                    query, top_k=top_k, conversation_id=conversation_id
+                )
+            except N8nClientError as exc:
+                logger.warning(
+                    "n8n retrieval failed, falling back to direct search: %s", exc
+                )
+
+        return self._retrieve_direct(query, top_k=top_k)
+
+    async def _retrieve_via_n8n(
+        self,
+        query: str,
+        *,
+        top_k: int = 5,
+        conversation_id: str | None = None,
+    ) -> List[SearchResult]:
+        """Retrieve via the n8n orchestration webhook."""
+        response = await self._n8n_client.retrieve(
+            query,
+            conversation_id=conversation_id,
+            top_k=top_k,
+        )
+
+        logger.info(
+            "n8n retrieval: intent=%s, %d results in %.0fms",
+            response.metadata.intent.value,
+            len(response.results),
+            response.metadata.total_ms,
+        )
+
+        # Convert n8n results to SearchResult for the existing pipeline
+        return [
+            SearchResult(
+                product_id=item.metadata.get("product_id", ""),
+                product_name=item.product_name or item.source,
+                section_name=item.metadata.get("section", ""),
+                chunk_text=item.content,
+                relevance_score=item.score,
+                chunk_type=item.source_type,
+                doc_id=item.metadata.get("doc_id"),
+            )
+            for item in response.results
+            if item.content  # skip empty results
+        ]
+
+    def _retrieve_direct(self, query: str, *, top_k: int = 5) -> List[SearchResult]:
+        """Retrieve directly from the vector store (fallback path)."""
+        search_response = self._search_service.semantic_search(
+            query=query,
+            top_k=top_k,
+        )
+        return search_response.results
 
 
 # Singleton instance

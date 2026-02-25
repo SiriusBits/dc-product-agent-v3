@@ -1,0 +1,473 @@
+doc_id: 32874412-3423-57c4-9ad6-19aefa23ed0b
+filename: ASA_100_Technical_Bulletin.pdf
+source_filepath: ${paths.raw_pdfs_root}/ASA_100_Technical_Bulletin.pdf
+filepath: ${paths.processed_pdfs_root}/ASA_100_Technical_Bulletin.pdf
+document_file_metadata:
+  document_title: ASA_100_Technical_Bulletin.pdf
+  copyright_status: Unknown
+  created: 8/4/17, 8:06:54 PM UTC
+  modified: 8/4/17, 8:06:54 PM UTC
+  application: Muhimbi PDF Converter Services - www.muhimbi.com
+  advanced:
+    pdf_producer: Muhimbi PDF Converter Services - www.muhimbi.com
+    pdf_version: '1.5'
+    location: /Users/benjaminbykowski/projects/ai-apps/forks/qwen-dc-product/dc-product-agent/data/raw_pdfs/ASA_100_Technical_Bulletin.pdf
+    file_size: 136.80 KB (140,080 Bytes)
+    page_size: 8.50 x 11.00 in
+    number_of_pages: 3
+    tagged_pdf: 'No'
+    fast_web_view: 'No'
+source_file_hash:
+  sha256: 235beedfd26382c23020ed05c2f669e3cd5dd7fee5167b0d256a1d29f8420df3
+document_type: Product Technical Bulletin
+manufacturer: ${manufacturer.name}
+contact_info:
+  address: ${manufacturer.contact_info.address}
+  phone: ${manufacturer.contact_info.phone}
+  fax: ${manufacturer.contact_info.fax}
+  email: ${manufacturer.contact_info.email}
+product_info:
+  product_name: Hexadecenylsuccinic Anhydride
+  product_short_name: ASA 100
+  product_family: Alkenylsuccinic Anhydride
+  cas_number: 68784-12-3
+  chemical_name: Hexadecenylsuccinic Anhydride
+  synonyms:
+  - HDSA
+registrations:
+- authority: REACh
+  jurisdiction: EU
+  registration_number: 01-2119533117-46
+  registration_name: 2,5-Furandione,dihydro-,mono-C15-20-alkenyl derivs
+  cas_number: 68784-12-3
+  status: registered
+  effective_date: null
+  notes: In the US, CASRN 32072-96-1 is typically used for HDSA.
+key_benefits:
+- Easy to handle
+- Can be employed in both cationic starch and polymer emulsion systems
+- Available with or without surfactant (DOSS or phosphate ester)
+applications_text: 'Hexadecenylsuccinic Anhydride (ASA 100) is an alkenylsuccinic
+  anhydride (ASA) based on C16 alpha-olefin. ASAs such as ASA 100 are commonly used
+  as alkaline paper sizing agents. These products are easy to handle and can be employed
+  in both cationic starch and polymer emulsion systems. ASAs are also used in a variety
+  of other products. In metal working fluids, ASAs are utilized as corrosion inhibitors.
+  ASAs are often used in fuel and lubricant additives including pour point depressants,
+  corrosion inhibitors and dispersants. ASAs find use as intermediates for surfactants
+  and can also be converted to acid amides and esters. Other suggested applications
+  are in plasticizers, epoxies, and moisture control for leather goods.
+
+
+  Dixie''s ASA 100 is available with or without surfactant. Two types of surfactant
+  are available, dioctylsulfo-succinate (DOSS) or phosphate ester.'
+applications:
+- Alkaline paper sizing agent
+- Metal working fluid corrosion inhibitor
+- Fuel and lubricant additives
+- Pour point depressants
+- Corrosion inhibitors
+- Dispersants
+- Surfactant intermediates
+- Acid amides and esters
+- Plasticizers
+- Epoxies
+- Moisture control for leather goods
+properties_and_specifications:
+- category: Typical
+  name: Physical Appearance
+  unit: null
+  value_string: Clear Amber Liquid
+  value_numeric: null
+  value_min: null
+  value_max: null
+  test_method: D-104 (Visual)
+  page: 1
+  notes: null
+- category: Typical
+  name: "Specific gravity @ 25 \xB0C"
+  unit: g/cc
+  value_string: 0.945-0.965
+  value_numeric: null
+  value_min: 0.945
+  value_max: 0.965
+  test_method: D-102 (ASTM D 4052)
+  page: 1
+  notes: null
+- category: Typical
+  name: Gardner Color
+  unit: null
+  value_string: 10 Max
+  value_numeric: null
+  value_min: null
+  value_max: 10
+  test_method: D-150G
+  page: 1
+  notes: null
+- category: Typical
+  name: "Viscosity at 25\xB0C"
+  unit: cP
+  value_string: 90-175
+  value_numeric: null
+  value_min: 90
+  value_max: 175
+  test_method: D-150F
+  page: 1
+  notes: null
+- category: Typical
+  name: Residual Olefin
+  unit: '%'
+  value_string: 1 Max
+  value_numeric: null
+  value_min: null
+  value_max: 1
+  test_method: D-150M
+  page: 1
+  notes: null
+- category: Typical
+  name: HDSA
+  unit: '%'
+  value_string: 95 Min
+  value_numeric: null
+  value_min: 95
+  value_max: null
+  test_method: D-150M
+  page: 1
+  notes: null
+- category: Typical
+  name: Free Acid
+  unit: '%'
+  value_string: 1.5 Max
+  value_numeric: null
+  value_min: null
+  value_max: 1.5
+  test_method: D-150M
+  page: 1
+  notes: null
+- category: Typical
+  name: Neut. Number
+  unit: mg KOH/g
+  value_string: 330-355
+  value_numeric: null
+  value_min: 330
+  value_max: 355
+  test_method: D-150I
+  page: 1
+  notes: null
+- category: Typical
+  name: Pour Point
+  unit: "\xB0C"
+  value_string: '-34'
+  value_numeric: -34
+  value_min: null
+  value_max: null
+  test_method: ASTM D97
+  page: 1
+  notes: null
+- category: Typical
+  name: Freeze Point
+  unit: "\xB0C"
+  value_string: '-21'
+  value_numeric: -21
+  value_min: null
+  value_max: null
+  test_method: ASTM D1015
+  page: 1
+  notes: null
+typical_properties:
+  table_name: Typical Properties
+  page: 1
+  data_type: typical_properties
+  description: Hexadecenylsuccinic Anhydride (ASA 100) is an alkenylsuccinic anhydride
+    (ASA) based on C16 alpha-olefin. ASAs such as ASA 100 are commonly used as alkaline
+    paper sizing agents. These products are easy to handle and can be employed in
+    both cationic starch and polymer emulsion systems.
+  row_count: 10
+  data:
+  - name: Physical Appearance
+    unit: null
+    value_string: Clear Amber Liquid
+    value_min: null
+    value_max: null
+    value_numeric: null
+    test_method: D-104 (Visual)
+  - name: "Specific gravity @ 25 \xB0C"
+    unit: g/cc
+    value_string: 0.945-0.965
+    value_min: 0.945
+    value_max: 0.965
+    value_numeric: null
+    test_method: D-102 (ASTM D 4052)
+  - name: Gardner Color
+    unit: null
+    value_string: 10 Max
+    value_min: null
+    value_max: 10
+    value_numeric: null
+    test_method: D-150G
+  - name: "Viscosity at 25\xB0C"
+    unit: cP
+    value_string: 90-175
+    value_min: 90
+    value_max: 175
+    value_numeric: null
+    test_method: D-150F
+  - name: Residual Olefin
+    unit: '%'
+    value_string: 1 Max
+    value_min: null
+    value_max: 1
+    value_numeric: null
+    test_method: D-150M
+  - name: HDSA
+    unit: '%'
+    value_string: 95 Min
+    value_min: 95
+    value_max: null
+    value_numeric: null
+    test_method: D-150M
+  - name: Free Acid
+    unit: '%'
+    value_string: 1.5 Max
+    value_min: null
+    value_max: 1.5
+    value_numeric: null
+    test_method: D-150M
+  - name: Neut. Number
+    unit: mg KOH/g
+    value_string: 330-355
+    value_min: 330
+    value_max: 355
+    value_numeric: null
+    test_method: D-150I
+  - name: Pour Point
+    unit: "\xB0C"
+    value_string: '-34'
+    value_min: null
+    value_max: null
+    value_numeric: -34
+    test_method: ASTM D97
+  - name: Freeze Point
+    unit: "\xB0C"
+    value_string: '-21'
+    value_min: null
+    value_max: null
+    value_numeric: -21
+    test_method: ASTM D1015
+  notes: {}
+other_tables:
+- table_name: Typical Properties
+  page: 1
+  data_type: typical_properties
+  description: Hexadecenylsuccinic Anhydride (ASA 100) is an alkenylsuccinic anhydride
+    (ASA) based on C16 alpha-olefin. ASAs such as ASA 100 are commonly used as alkaline
+    paper sizing agents. These products are easy to handle and can be employed in
+    both cationic starch and polymer emulsion systems.
+  row_count: 10
+  data:
+  - name: Physical Appearance
+    unit: null
+    value_string: Clear Amber Liquid
+    value_min: null
+    value_max: null
+    value_numeric: null
+    test_method: D-104 (Visual)
+  - name: "Specific gravity @ 25 \xB0C"
+    unit: g/cc
+    value_string: 0.945-0.965
+    value_min: 0.945
+    value_max: 0.965
+    value_numeric: null
+    test_method: D-102 (ASTM D 4052)
+  - name: Gardner Color
+    unit: null
+    value_string: 10 Max
+    value_min: null
+    value_max: 10
+    value_numeric: null
+    test_method: D-150G
+  - name: "Viscosity at 25\xB0C"
+    unit: cP
+    value_string: 90-175
+    value_min: 90
+    value_max: 175
+    value_numeric: null
+    test_method: D-150F
+  - name: Residual Olefin
+    unit: '%'
+    value_string: 1 Max
+    value_min: null
+    value_max: 1
+    value_numeric: null
+    test_method: D-150M
+  - name: HDSA
+    unit: '%'
+    value_string: 95 Min
+    value_min: 95
+    value_max: null
+    value_numeric: null
+    test_method: D-150M
+  - name: Free Acid
+    unit: '%'
+    value_string: 1.5 Max
+    value_min: null
+    value_max: 1.5
+    value_numeric: null
+    test_method: D-150M
+  - name: Neut. Number
+    unit: mg KOH/g
+    value_string: 330-355
+    value_min: 330
+    value_max: 355
+    value_numeric: null
+    test_method: D-150I
+  - name: Pour Point
+    unit: "\xB0C"
+    value_string: '-34'
+    value_min: null
+    value_max: null
+    value_numeric: -34
+    test_method: ASTM D97
+  - name: Freeze Point
+    unit: "\xB0C"
+    value_string: '-21'
+    value_min: null
+    value_max: null
+    value_numeric: -21
+    test_method: ASTM D1015
+formulation_data: []
+toxicity_data:
+- metric: skin irritation
+  species: human
+  route: dermal
+  value: null
+  unit: null
+  test_method: null
+  conditions: null
+  page: 3
+  source_text: ASA 100 is a mild primary skin irritant. Avoid contact with skin, eyes
+    and clothing.
+sections:
+- name: Applications
+  page: 2
+  text: 'Hexadecenylsuccinic Anhydride (ASA 100) is an alkenylsuccinic anhydride (ASA)
+    based on C16 alpha-olefin. ASAs such as ASA 100 are commonly used as alkaline
+    paper sizing agents. These products are easy to handle and can be employed in
+    both cationic starch and polymer emulsion systems. ASAs are also used in a variety
+    of other products. In metal working fluids, ASAs are utilized as corrosion inhibitors.
+    ASAs are often used in fuel and lubricant additives including pour point depressants,
+    corrosion inhibitors and dispersants. ASAs find use as intermediates for surfactants
+    and can also be converted to acid amides and esters. Other suggested applications
+    are in plasticizers, epoxies, and moisture control for leather goods.
+
+
+    Dixie''s ASA 100 is available with or without surfactant. Two types of surfactant
+    are available, dioctylsulfo-succinate (DOSS) or phosphate ester.'
+- name: Registration
+  page: 3
+  text: ASA 100 is REACh registered as a component under the name 2,5-Furandione,dihydro-,mono-C15-20-alkenyl
+    derivs. The CASRN is 68784-12-3 and the REACh registry number is 01-2119533117-46.
+    In the US, CASRN 32072-96-1 is typically used for HDSA.
+- name: Handling & Storage
+  page: 3
+  text: 'ASA 100 must be stored out of contact with moisture to avoid hydrolysis of
+    the anhydride to the acid. When properly stored, ASA 100 has a shelf life of 24
+    months.
+
+
+    ASA storage tanks may be constructed of mild steel, 304 or 316 stainless steel.
+    If protection from atmospheric moisture is difficult then 304 or 316 are preferred
+    due to the formation of corrosive acids by the interaction of ASA with water.
+    For more information on the design of bulk storage for ASA products, consult the
+    Dixie Chemical brochure "Alkenylsuccinic Anhydride Storage Requirements."'
+- name: Health Hazards
+  page: 3
+  text: Read and understand the relevant Safety Data Sheets (SDS) for all products
+    before use. ASA 100 is a mild primary skin irritant. Avoid contact with skin,
+    eyes and clothing. Use only with adequate ventilation. In case of contact, immediately
+    flush skin or eyes with plenty of water for at least 15 minutes; for eyes, get
+    medical attention. Wash contaminated clothing before reuse.
+- name: Availability
+  page: 3
+  text: ASA 100 is available from Dixie Chemical in Pasadena, TX. Contact your Dixie
+    representative for details.
+images:
+- filename: asa100_viscosity_temperature_cropped.png
+  page: 1
+  type: graph
+  description: "Viscosity vs Temperature. \u2014 Viscosity decreases with Temperature.\
+    \ Viscosity range 30.0\u2013680.0 cPs; Temperature range 0.0\u201360.0 \xB0C"
+  title: Viscosity as a Function of Temperature
+  x_axis:
+    label: Temperature
+    unit: "\xB0C"
+  y_axis:
+    label: Viscosity
+    unit: cPs
+  graph_data:
+  - x: 0
+    y: 680
+  - x: 5
+    y: 550
+  - x: 10
+    y: 450
+  - x: 15
+    y: 350
+  - x: 20
+    y: 270
+  - x: 25
+    y: 200
+  - x: 30
+    y: 150
+  - x: 35
+    y: 110
+  - x: 40
+    y: 85
+  - x: 45
+    y: 65
+  - x: 50
+    y: 50
+  - x: 55
+    y: 40
+  - x: 60
+    y: 30
+  notes: null
+- filename: asa100_specific_gravity_temperature_cropped.png
+  page: 2
+  type: graph
+  description: "Specific Gravity vs Temperature. \u2014 Specific Gravity decreases\
+    \ with Temperature. Specific Gravity range 7.89\u20138.13 lbs/gal; Temperature\
+    \ range 0.0\u201360.0 \xB0C"
+  title: Specific Gravity as a Function of Temperature
+  x_axis:
+    label: Temperature
+    unit: "\xB0C"
+  y_axis:
+    label: Specific Gravity
+    unit: lbs/gal
+  graph_data:
+  - x: 0
+    y: 8.13
+  - x: 10
+    y: 8.08
+  - x: 20
+    y: 8.03
+  - x: 30
+    y: 7.98
+  - x: 40
+    y: 7.94
+  - x: 50
+    y: 7.91
+  - x: 60
+    y: 7.89
+  notes: null
+document_footnotes: {}
+extraction_metadata:
+  confidence_scores:
+    product_info: 100
+    properties: 100
+    other_tables: 100
+    sections: 100
+    images: 100
+    overall: 100
+  extractor_version: ${extraction.extractor_version}
+  extraction_date: '2025-08-26T19:35:00-04:00'

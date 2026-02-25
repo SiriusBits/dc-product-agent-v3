@@ -88,6 +88,20 @@ derived_info:
   - Curing agent for glycidyl ester epoxy resins
   knowledge_graph:
     entities:
+    - id: a9953e7b-0a26-5e72-9ad8-d94a112b3194
+      text: ECA 100KA1
+      type: PRODUCT_NAME
+      canonical_name: Epoxy Curing Agent 100KA1
+      aliases:
+      - ECA 100KA1
+      - Epoxy Curing Agent 100KA1
+      source_text: Epoxy Curing Agent 100KA1 (ECA 100KA1)
+      provenance:
+        document_id: 83a60b03-9915-5818-9135-1da5dc896ed9
+        page: 1
+      metadata:
+        manufacturer: Dixie Chemical
+        product_family: Epoxy Curing Agent
     - id: f47ac10b-58cc-4372-a567-0e02b2c3d540
       type: CHEMICAL
       canonical_name: Epoxy Curing Agent 100KA1
@@ -222,7 +236,7 @@ derived_info:
         document_id: 550e8400-e29b-41d4-a716-446655440005
         page: 1
     - id: f47ac10b-58cc-4372-a567-0e02b2c3d556
-      type: IDENTIFIER
+      type: CAS_NUMBER
       canonical_name: CAS 25550-51-0
       aliases:
       - CASRN 25550-51-0
@@ -231,7 +245,7 @@ derived_info:
         document_id: 550e8400-e29b-41d4-a716-446655440005
         page: 1
     - id: f47ac10b-58cc-4372-a567-0e02b2c3d557
-      type: IDENTIFIER
+      type: REGISTRATION
       canonical_name: REACh 01-2119943714-35
       aliases: []
       source_text: 'REACh registration number: 01-2119943714-35'
@@ -258,327 +272,205 @@ derived_info:
         document_id: 550e8400-e29b-41d4-a716-446655440005
         page: 1
     kg_triples:
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d540
-        name: Epoxy Curing Agent 100KA1
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
       predicate: is_a
-      object:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d543
-        name: Anhydride Curing Agent
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d540
-        name: Epoxy Curing Agent 100KA1
+      object: f47ac10b-58cc-4372-a567-0e02b2c3d543
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
       predicate: is_derived_from
-      object:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d542
-        name: Methylhexahydrophthalic Anhydride
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d540
-        name: Epoxy Curing Agent 100KA1
+      object: f47ac10b-58cc-4372-a567-0e02b2c3d542
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
       predicate: is_produced_by
-      object:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d541
-        name: Dixie Chemical
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d540
-        name: Epoxy Curing Agent 100KA1
+      object: f47ac10b-58cc-4372-a567-0e02b2c3d541
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
       predicate: has_cas_number
-      object:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d556
-        name: CAS 25550-51-0
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d540
-        name: Epoxy Curing Agent 100KA1
+      object: f47ac10b-58cc-4372-a567-0e02b2c3d556
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
       predicate: has_reach_number
-      object:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d557
-        name: REACh 01-2119943714-35
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d540
-        name: Epoxy Curing Agent 100KA1
+      object: f47ac10b-58cc-4372-a567-0e02b2c3d557
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
       predicate: has_typical_property
       object:
         property: Physical Appearance
         value: Clear, colorless to pale yellow liquid
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d540
-        name: Epoxy Curing Agent 100KA1
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
       predicate: has_typical_property
       object:
         property: Gardner Color
         value: 2 Max
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d540
-        name: Epoxy Curing Agent 100KA1
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
       predicate: has_typical_property
       object:
         property: Specific Gravity @ 25°C
         value: 1.20-1.22 g/cc
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d540
-        name: Epoxy Curing Agent 100KA1
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
       predicate: has_typical_property
       object:
         property: Viscosity @ 25°C
         value: 60-80 cPs
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d540
-        name: Epoxy Curing Agent 100KA1
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
       predicate: has_typical_property
       object:
         property: Anhydride Content
         value: 95 Min %
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d540
-        name: Epoxy Curing Agent 100KA1
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
       predicate: has_typical_property
       object:
         property: Acid Content
         value: 0.5 Max %
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d540
-        name: Epoxy Curing Agent 100KA1
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
       predicate: has_typical_property
       object:
         property: Moisture
         value: 0.1 Max %
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d540
-        name: Epoxy Curing Agent 100KA1
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
       predicate: has_application
       object: Epoxy laminating
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d540
-        name: Epoxy Curing Agent 100KA1
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
       predicate: has_application
       object: Filament winding applications
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d540
-        name: Epoxy Curing Agent 100KA1
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
       predicate: has_application
       object: Electrical encapsulation
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d540
-        name: Epoxy Curing Agent 100KA1
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
       predicate: has_application
       object: Applications requiring UV resistance
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d540
-        name: Epoxy Curing Agent 100KA1
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
       predicate: has_application
       object: Applications requiring alkaline resistance
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d540
-        name: Epoxy Curing Agent 100KA1
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
       predicate: has_safety_hazard
       object: skin irritant
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d540
-        name: Epoxy Curing Agent 100KA1
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
       predicate: has_safety_hazard
       object: eye irritant
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d540
-        name: Epoxy Curing Agent 100KA1
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
       predicate: has_storage_requirement
       object: moisture-free environment
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d540
-        name: Epoxy Curing Agent 100KA1
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
       predicate: has_shelf_life
       object: 12 months
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d540
-        name: Epoxy Curing Agent 100KA1
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
       predicate: has_benefit
       object: non-crystallizing
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d540
-        name: Epoxy Curing Agent 100KA1
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
       predicate: has_benefit
       object: pre-catalyzed
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d540
-        name: Epoxy Curing Agent 100KA1
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
       predicate: is_available_from
-      object:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d558
-        name: Pasadena, TX
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d540
-        name: Epoxy Curing Agent 100KA1
+      object: f47ac10b-58cc-4372-a567-0e02b2c3d558
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
       predicate: is_compatible_with
-      object:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d550
-        name: Bisphenol A Epoxy Resin
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d540
-        name: Epoxy Curing Agent 100KA1
+      object: f47ac10b-58cc-4372-a567-0e02b2c3d550
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
       predicate: is_compatible_with
-      object:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d551
-        name: Bisphenol F Epoxy Resin
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d540
-        name: Epoxy Curing Agent 100KA1
+      object: f47ac10b-58cc-4372-a567-0e02b2c3d551
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
       predicate: is_compatible_with
-      object:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d552
-        name: Polyglycol Epoxy Resin
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d540
-        name: Epoxy Curing Agent 100KA1
+      object: f47ac10b-58cc-4372-a567-0e02b2c3d552
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
       predicate: is_compatible_with
-      object:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d553
-        name: Cycloaliphatic Epoxy Resin
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d540
-        name: Epoxy Curing Agent 100KA1
+      object: f47ac10b-58cc-4372-a567-0e02b2c3d553
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
       predicate: is_compatible_with
-      object:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d554
-        name: Novolac Epoxy Resin
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d540
-        name: Epoxy Curing Agent 100KA1
+      object: f47ac10b-58cc-4372-a567-0e02b2c3d554
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
       predicate: is_compatible_with
-      object:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d555
-        name: Glycidyl Ester Epoxy Resin
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d544
-        name: D.E.R. 331
+      object: f47ac10b-58cc-4372-a567-0e02b2c3d555
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d544
       predicate: is_a
-      object:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d550
-        name: Bisphenol A Epoxy Resin
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d545
-        name: D.E.R. 354
+      object: f47ac10b-58cc-4372-a567-0e02b2c3d550
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d545
       predicate: is_a
-      object:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d551
-        name: Bisphenol F Epoxy Resin
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d546
-        name: D.E.R. 732
+      object: f47ac10b-58cc-4372-a567-0e02b2c3d551
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d546
       predicate: is_a
-      object:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d552
-        name: Polyglycol Epoxy Resin
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d547
-        name: ERL 4221
+      object: f47ac10b-58cc-4372-a567-0e02b2c3d552
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d547
       predicate: is_a
-      object:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d553
-        name: Cycloaliphatic Epoxy Resin
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d548
-        name: D.E.N. 438
+      object: f47ac10b-58cc-4372-a567-0e02b2c3d553
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d548
       predicate: is_a
-      object:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d554
-        name: Novolac Epoxy Resin
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d549
-        name: Heloxy 71
+      object: f47ac10b-58cc-4372-a567-0e02b2c3d554
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d549
       predicate: is_a
-      object:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d555
-        name: Glycidyl Ester Epoxy Resin
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d544
-        name: D.E.R. 331
+      object: f47ac10b-58cc-4372-a567-0e02b2c3d555
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d544
       predicate: has_epoxy_equivalent_weight
       object: 186 g/eq
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d545
-        name: D.E.R. 354
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d545
       predicate: has_epoxy_equivalent_weight
       object: 167 g/eq
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d546
-        name: D.E.R. 732
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d546
       predicate: has_epoxy_equivalent_weight
       object: 320 g/eq
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d547
-        name: ERL 4221
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d547
       predicate: has_epoxy_equivalent_weight
       object: 133 g/eq
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d548
-        name: D.E.N. 438
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d548
       predicate: has_epoxy_equivalent_weight
       object: 176 g/eq
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d549
-        name: Heloxy 71
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d549
       predicate: has_epoxy_equivalent_weight
       object: 148 g/eq
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d540
-        name: Epoxy Curing Agent 100KA1
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
       predicate: has_formulation_with
       object:
         resin: D.E.R. 331
         resin_amount: 100 pbw
         anhydride_amount: 90 pbw
         cure_schedule: 2 hr @ 80°C + 2 hr @ 150°C
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d540
-        name: Epoxy Curing Agent 100KA1
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
       predicate: has_formulation_with
       object:
         resin: D.E.R. 354
         resin_amount: 100 pbw
         anhydride_amount: 80 pbw
         cure_schedule: 2 hr @ 80°C + 2 hr @ 150°C
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d540
-        name: Epoxy Curing Agent 100KA1
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
       predicate: has_formulation_with
       object:
         resin: D.E.R. 732
         resin_amount: 100 pbw
         anhydride_amount: 155 pbw
         cure_schedule: 2 hr @ 80°C + 2 hr @ 150°C
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d540
-        name: Epoxy Curing Agent 100KA1
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
       predicate: has_formulation_with
       object:
         resin: ERL 4221
         resin_amount: 100 pbw
         anhydride_amount: 65 pbw
         cure_schedule: 2 hr @ 80°C + 2 hr @ 150°C
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d540
-        name: Epoxy Curing Agent 100KA1
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
       predicate: has_formulation_with
       object:
         resin: D.E.N. 438
         resin_amount: 100 pbw
         anhydride_amount: 85 pbw
         cure_schedule: 2 hr @ 80°C + 2 hr @ 150°C
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d540
-        name: Epoxy Curing Agent 100KA1
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
       predicate: has_formulation_with
       object:
         resin: Heloxy 71
         resin_amount: 100 pbw
         anhydride_amount: 72 pbw
         cure_schedule: 2 hr @ 80°C + 2 hr @ 150°C
-    - subject:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d540
-        name: Epoxy Curing Agent 100KA1
+    - subject: f47ac10b-58cc-4372-a567-0e02b2c3d540
       predicate: contains
-      object:
-        id: f47ac10b-58cc-4372-a567-0e02b2c3d559
-        name: Latent Accelerator
+      object: f47ac10b-58cc-4372-a567-0e02b2c3d559
 knowledge_graph:
-  entities: []
+  entities:
+  - id: a9953e7b-0a26-5e72-9ad8-d94a112b3194
+    text: ECA 100KA1
+    type: PRODUCT_NAME
+    canonical_name: Epoxy Curing Agent 100KA1
+    aliases:
+    - ECA 100KA1
+    - Epoxy Curing Agent 100KA1
+    source_text: Epoxy Curing Agent 100KA1 (ECA 100KA1)
+    provenance:
+      document_id: 83a60b03-9915-5818-9135-1da5dc896ed9
+      page: 1
+    metadata:
+      manufacturer: Dixie Chemical
+      product_family: Epoxy Curing Agent
   kg_triples: []

@@ -92,7 +92,8 @@
           "items": {
             "$ref": "https://example.com/schemas/common-defs.schema.json#/$defs/entity"
           },
-          "description": "Typed, deduplicated entities with IDs, canonical names, provenance, and metadata."
+          "minItems": 1,
+          "description": "Typed, deduplicated entities with IDs, canonical names, provenance, and metadata. Must contain at least one entity (typically a PRODUCT_NAME)."
         },
         "kg_triples": {
           "type": "array",

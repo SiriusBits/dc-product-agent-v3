@@ -55,6 +55,21 @@ derived_info:
   - Powder coatings
   knowledge_graph:
     entities:
+    - id: da90a52f-23c5-5669-86f9-2a9fac88faa2
+      text: NMA
+      type: PRODUCT_NAME
+      canonical_name: NADIC® Methyl Anhydride
+      aliases:
+      - Methyl-5-norbornene-2,3-dicarboxylic anhydride
+      - NADIC® Methyl Anhydride
+      - NMA
+      source_text: NADIC® Methyl Anhydride (NMA)
+      provenance:
+        document_id: 3cb1188c-7b55-5536-b33e-94d3bf237079
+        page: 1
+      metadata:
+        manufacturer: Dixie Chemical
+        product_family: Anhydride
     - id: 550e8400-e29b-41d4-a716-446655440101
       type: CHEMICAL
       canonical_name: NADIC Methyl Anhydride
@@ -69,7 +84,7 @@ derived_info:
         doc_id: 550e8400-e29b-41d4-a716-446655440001
         page: 1
     - id: 550e8400-e29b-41d4-a716-446655440102
-      type: IDENTIFIER
+      type: CAS_NUMBER
       canonical_name: 25134-21-8
       aliases:
       - CAS 25134-21-8
@@ -532,5 +547,20 @@ derived_info:
         doc_id: 550e8400-e29b-41d4-a716-446655440001
         page: 6
 knowledge_graph:
-  entities: []
+  entities:
+  - id: da90a52f-23c5-5669-86f9-2a9fac88faa2
+    text: NMA
+    type: PRODUCT_NAME
+    canonical_name: NADIC® Methyl Anhydride
+    aliases:
+    - Methyl-5-norbornene-2,3-dicarboxylic anhydride
+    - NADIC® Methyl Anhydride
+    - NMA
+    source_text: NADIC® Methyl Anhydride (NMA)
+    provenance:
+      document_id: 3cb1188c-7b55-5536-b33e-94d3bf237079
+      page: 1
+    metadata:
+      manufacturer: Dixie Chemical
+      product_family: Anhydride
   kg_triples: []

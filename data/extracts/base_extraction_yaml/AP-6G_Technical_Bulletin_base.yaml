@@ -1,0 +1,125 @@
+doc_id: 82c28fb6-3a9e-5b8b-b074-a706bbf606a2
+filename: AP-6G_Technical_Bulletin.pdf
+source_filepath: ${paths.raw_pdfs_root}/AP-6G_Technical_Bulletin.pdf
+filepath: ${paths.processed_pdfs_root}/AP-6G_Technical_Bulletin.pdf
+document_file_metadata:
+  document_title: ECA 100
+  author:
+  - John F. Kill
+  copyright_status: Unknown
+  created: 5/28/24, 7:24:32 PM UTC
+  modified: 5/28/24, 7:24:32 PM UTC
+  application: "Microsoft\xAE Word for Microsoft 365"
+  advanced:
+    pdf_producer: "Microsoft\xAE Word for Microsoft 365"
+    pdf_version: '1.7'
+    location: /Users/benjaminbykowski/projects/ai-apps/forks/qwen-dc-product/dc-product-agent/data/raw_pdfs/AP-6G_Technical_Bulletin.pdf
+    file_size: 215.11 KB (220,270 Bytes)
+    page_size: 8.50 x 11.00 in
+    number_of_pages: 2
+    tagged_pdf: 'No'
+    fast_web_view: 'No'
+document_type: Product Technical Bulletin
+manufacturer: ${manufacturer.name}
+contact_info:
+  address: ${manufacturer.contact_info.address}
+  phone: ${manufacturer.contact_info.phone}
+  fax: null
+  email: ${manufacturer.contact_info.email}
+product_info:
+  product_name: Benzyl Triethylammonium Chloride in Ethylene Glycol
+  product_short_name: AP-6G
+  product_family: Quaternary Ammonium Salt
+  cas_number: 56-37-1
+  chemical_name: Benzyl Triethylammonium Chloride
+registrations: []
+key_benefits: []
+applications_text: AP-6G is a quaternary ammonium salt that is well known as phase-transfer
+  catalyst and many other industrial applications.
+applications: []
+properties_and_specifications:
+- category: Typical
+  name: Assay
+  unit: '%'
+  value_string: 58-62
+  value_numeric: null
+  value_min: 58
+  value_max: 62
+  test_method: D-162I
+  page: 1
+  notes: null
+epoxy_resin_properties: null
+typical_properties:
+  table_name: Typical Properties
+  page: 1
+  data_type: typical_properties
+  description: AP-6G is a quaternary ammonium salt that is well known as phase-transfer
+    catalyst and many other industrial applications.
+  row_count: 1
+  data:
+  - name: Assay
+    unit: '%'
+    value_string: 58-62
+    value_min: 58
+    value_max: 62
+    value_numeric: null
+    test_method: D-162I
+other_tables:
+- table_name: Typical Properties
+  page: 1
+  data_type: typical_properties
+  description: AP-6G is a quaternary ammonium salt that is well known as phase-transfer
+    catalyst and many other industrial applications.
+  row_count: 1
+  data:
+  - name: Assay
+    unit: '%'
+    value_string: 58-62
+    value_min: 58
+    value_max: 62
+    value_numeric: null
+    test_method: D-162I
+formulation_data: []
+toxicity_data: []
+sections:
+- name: Applications
+  page: 1
+  text: AP-6G is a quaternary ammonium salt that is well known as phase-transfer catalyst
+    and many other industrial applications.
+- name: Handling & Storage
+  page: 1
+  text: AP-6G is hygroscopic and stable under normal recommended conditions. It should
+    be stored away from moisture, high temperatures, ignition sources, or oxidizing
+    materials.
+- name: Health Hazards
+  page: 1
+  text: 'Avoid contact with skin, eyes, and clothing. Use only with adequate ventilation.
+    In case of contact, immediately flush the affected skin or eyes with copious amounts
+    of water for at least 15 minutes. In the case of eye contact, get medical attention.
+    Wash contaminated clothing before reuse.
+
+
+    The minimum personal protective equipment when handling these materials typically
+    includes protective chemical goggles, impenetrable gloves, and measures to avoid
+    breathing chemical vapors. Please consult the SDS of AP-6G for more details to
+    handle the chemical safely.
+
+    '
+- name: Availability
+  page: 2
+  text: AP-6G is available from Dixie Chemical in Pasadena, Texas. Contact your Dixie
+    Chemical Company representative for details.
+images: []
+document_footnotes: {}
+extraction_metadata:
+  confidence_scores:
+    product_info: 100
+    properties: 100
+    other_tables: 100
+    sections: 100
+    images: 100
+    overall: 100
+  extractor_version: ${extraction.extractor_version}
+  extraction_date: '2025-08-26T15:10:00-04:00'
+source_file_hash:
+  sha256: 7e3209c186576c662bbf5c807249eead2ddd9d4614c2b0e4f2bca946c8f0084f
