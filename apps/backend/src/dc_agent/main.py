@@ -7,6 +7,7 @@ from fastapi.staticfiles import StaticFiles
 
 from dc_agent.api.routes import router as api_router
 from dc_agent.api.kg_routes import kg_router
+from dc_agent.api.internal import internal_router
 from dc_agent.kg.graphiti_store import GraphitiKGStore
 from dc_agent.kg.neo4j import Neo4jKGStore
 from dc_agent.kg.query_service import KGQueryService
@@ -64,6 +65,7 @@ app = FastAPI(
 
 app.include_router(api_router, prefix="/api/v1")
 app.include_router(kg_router, prefix="/api/v1/kg")
+app.include_router(internal_router, prefix="/internal")
 
 # Mount static files
 # Paths are relative to apps/backend/ where the server runs

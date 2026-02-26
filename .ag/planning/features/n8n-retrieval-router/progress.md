@@ -1,12 +1,11 @@
 # Progress: n8n-retrieval-router
 
 ## Subtasks
-- [ ] Create backend internal router (`api/internal.py`)
-- [ ] Implement /internal/vector-search endpoint
-- [ ] Implement /internal/kg-search endpoint
-- [ ] Implement /internal/kg-product endpoint
-- [ ] Build n8n vector routing branch
-- [ ] Build n8n KG routing branch
-- [ ] Build n8n hybrid parallel branch
-- [ ] Add error handling / fallback nodes
-- [ ] Test each path end-to-end
+- [x] Create backend internal router (`api/internal.py`)
+- [x] Implement /internal/vector-search endpoint
+- [x] Implement /internal/kg-search endpoint (includes profile enrichment — covers kg-product)
+- [x] Build n8n vector routing branch
+- [x] Build n8n KG routing branch (KG search + Graphiti)
+- [x] Build n8n hybrid parallel branch (vector + KG in parallel)
+- [x] Add error handling / fallback nodes (`onError: continueRegularOutput`)
+- [ ] Test each path end-to-end (requires running containers)

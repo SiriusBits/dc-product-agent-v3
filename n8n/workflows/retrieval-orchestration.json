@@ -17,7 +17,7 @@
     },
     {
       "parameters": {
-        "jsCode": "// Query Classifier — rule-based intent detection\n// Categories: 'vector' (semantic/conceptual), 'kg' (structured/entity), 'hybrid' (both)\n\nconst query = $input.first().json.body?.query || $input.first().json.query || '';\nconst intentHint = $input.first().json.body?.intent_hint || $input.first().json.intent_hint || null;\nconst topK = $input.first().json.body?.top_k || $input.first().json.top_k || 5;\nconst conversationId = $input.first().json.body?.conversation_id || $input.first().json.conversation_id || null;\n\n// If caller provides an intent hint, use it directly\nif (intentHint && ['vector', 'kg', 'hybrid'].includes(intentHint)) {\n  return [{ json: { query, intent: intentHint, top_k: topK, conversation_id: conversationId } }];\n}\n\nconst q = query.toLowerCase();\n\n// KG indicators: specific property lookups, product names, CAS numbers, safety data\nconst kgPatterns = [\n  /viscosity|density|molecular weight|boiling point|flash point|melting point|specific gravity/,\n  /cas\\s*(?:number|#|no)/i,\n  /safety|hazard|ppe|first aid|toxicity|storage/,\n  /\\b(?:dca|dce|eca|asa|mhhpa|ddsa|odsa|nma|jp-?10|ap-?6g|cg)\\s*\\d*/i,\n  /formulation|component|ingredient/,\n  /identifier|registration/,\n  /produced by|manufacturer/,\n];\n\n// Hybrid indicators: comparisons, relationships, multiple products\nconst hybridPatterns = [\n  /compare|comparison|difference|versus|vs\\.?\\b/,\n  /similar|alternative|substitute|replacement/,\n  /related|relationship|family/,\n  /which.*(?:product|chemical).*(?:best|suitable|recommend)/,\n  /\\band\\b.*\\band\\b/,  // multiple conjunctions suggest multi-product\n];\n\n// Vector indicators: conceptual, explanatory, open-ended\nconst vectorPatterns = [\n  /how\\s+(?:does|do|is|are|can|should)/,\n  /what\\s+(?:is|are)\\s+(?:a|an|the)?\\s*(?!viscosity|density|molecular)/,\n  /explain|describe|overview|summary|tell me about/,\n  /why|when|application|use case|benefit/,\n  /process|mechanism|reaction|cure|crosslink/,\n];\n\nlet intent = 'hybrid';  // safe default\n\n// Check patterns in order of specificity\nconst kgScore = kgPatterns.filter(p => p.test(q)).length;\nconst hybridScore = hybridPatterns.filter(p => p.test(q)).length;\nconst vectorScore = vectorPatterns.filter(p => p.test(q)).length;\n\nif (hybridScore > 0 && kgScore > 0) {\n  intent = 'hybrid';\n} else if (kgScore >= 2) {\n  intent = 'kg';\n} else if (kgScore === 1 && vectorScore === 0) {\n  intent = 'kg';\n} else if (vectorScore >= 2 && kgScore === 0) {\n  intent = 'vector';\n} else if (vectorScore > 0 && kgScore === 0 && hybridScore === 0) {\n  intent = 'vector';\n}\n\nreturn [{ json: { query, intent, top_k: topK, conversation_id: conversationId } }];"
+        "jsCode": "// Query Classifier — rule-based intent detection with confidence scoring\n// Categories: 'vector' (semantic/conceptual), 'kg' (structured/entity), 'hybrid' (both)\n\nconst query = $input.first().json.body?.query || $input.first().json.query || '';\nconst intentHint = $input.first().json.body?.intent_hint || $input.first().json.intent_hint || null;\nconst topK = $input.first().json.body?.top_k || $input.first().json.top_k || 5;\nconst conversationId = $input.first().json.body?.conversation_id || $input.first().json.conversation_id || null;\nconst classifyStart = Date.now();\n\n// If caller provides an intent hint, use it directly\nif (intentHint && ['vector', 'kg', 'hybrid'].includes(intentHint)) {\n  return [{ json: {\n    query, intent: intentHint, confidence: 1.0,\n    top_k: topK, conversation_id: conversationId,\n    pipeline_start: classifyStart, classify_ms: 0\n  }}];\n}\n\nconst q = query.toLowerCase();\n\n// KG indicators: specific property lookups, product names, CAS numbers, safety data\nconst kgPatterns = [\n  /viscosity|density|molecular weight|boiling point|flash point|melting point|specific gravity/,\n  /cas\\s*(?:number|#|no)/i,\n  /safety|hazard|ppe|first aid|toxicity|storage/,\n  /\\b(?:dca|dce|eca|asa|mhhpa|ddsa|odsa|nma|jp-?10|ap-?6g|cg)\\s*\\d*/i,\n  /formulation|component|ingredient/,\n  /identifier|registration/,\n  /produced by|manufacturer/\n];\n\n// Hybrid indicators: comparisons, relationships, multiple products\nconst hybridPatterns = [\n  /compare|comparison|difference|versus|vs\\.?\\b/,\n  /similar|alternative|substitute|replacement/,\n  /related|relationship|family/,\n  /which.*(?:product|chemical).*(?:best|suitable|recommend)/,\n  /\\band\\b.*\\band\\b/\n];\n\n// Vector indicators: conceptual, explanatory, open-ended\nconst vectorPatterns = [\n  /how\\s+(?:does|do|is|are|can|should)/,\n  /what\\s+(?:is|are)\\s+(?:a|an|the)?\\s*(?!viscosity|density|molecular)/,\n  /explain|describe|overview|summary|tell me about/,\n  /why|when|application|use case|benefit/,\n  /process|mechanism|reaction|cure|crosslink/\n];\n\nconst kgScore = kgPatterns.filter(p => p.test(q)).length;\nconst hybridScore = hybridPatterns.filter(p => p.test(q)).length;\nconst vectorScore = vectorPatterns.filter(p => p.test(q)).length;\nconst totalMatches = kgScore + hybridScore + vectorScore;\n\nlet intent = 'hybrid';\nlet confidence = 0.5;\n\nif (hybridScore > 0 && kgScore > 0) {\n  intent = 'hybrid';\n  confidence = Math.min(1.0, (hybridScore + kgScore) / Math.max(totalMatches, 1));\n} else if (kgScore >= 2) {\n  intent = 'kg';\n  confidence = Math.min(1.0, kgScore / Math.max(totalMatches, 1));\n} else if (kgScore === 1 && vectorScore === 0) {\n  intent = 'kg';\n  confidence = 0.6;\n} else if (vectorScore >= 2 && kgScore === 0) {\n  intent = 'vector';\n  confidence = Math.min(1.0, vectorScore / Math.max(totalMatches, 1));\n} else if (vectorScore > 0 && kgScore === 0 && hybridScore === 0) {\n  intent = 'vector';\n  confidence = 0.6;\n}\n\nconst classifyMs = Date.now() - classifyStart;\n\nreturn [{ json: {\n  query, intent, confidence: Math.round(confidence * 100) / 100,\n  top_k: topK, conversation_id: conversationId,\n  pipeline_start: classifyStart, classify_ms: classifyMs\n}}];"
       },
       "id": "query-classifier",
       "name": "Query Classifier",
@@ -89,7 +89,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "http://host.docker.internal:8001/api/v1/search",
+        "url": "http://host.docker.internal:8001/internal/vector-search",
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={{ JSON.stringify({ query: $json.query, top_k: $json.top_k || 5 }) }}",
@@ -101,24 +101,26 @@
       "name": "Vector Search",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [940, 100]
+      "position": [940, 100],
+      "onError": "continueRegularOutput"
     },
     {
       "parameters": {
         "method": "POST",
-        "url": "http://host.docker.internal:8001/api/v1/kg/search",
+        "url": "http://host.docker.internal:8001/internal/kg-search",
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={{ JSON.stringify({ query: $json.query, limit: $json.top_k || 5 }) }}",
+        "jsonBody": "={{ JSON.stringify({ query: $json.query, limit: $json.top_k || 5, include_profile: true }) }}",
         "options": {
           "timeout": 8000
         }
       },
       "id": "kg-search",
-      "name": "KG Entity Search",
+      "name": "KG Search",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [940, 340]
+      "position": [940, 340],
+      "onError": "continueRegularOutput"
     },
     {
       "parameters": {
@@ -135,12 +137,13 @@
       "name": "Graphiti Search",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [940, 540]
+      "position": [940, 540],
+      "onError": "continueRegularOutput"
     },
     {
       "parameters": {
         "method": "POST",
-        "url": "http://host.docker.internal:8001/api/v1/search",
+        "url": "http://host.docker.internal:8001/internal/vector-search",
         "sendBody": true,
         "specifyBody": "json",
         "jsonBody": "={{ JSON.stringify({ query: $json.query, top_k: $json.top_k || 5 }) }}",
@@ -152,28 +155,30 @@
       "name": "Hybrid Vector Search",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [940, 720]
+      "position": [940, 720],
+      "onError": "continueRegularOutput"
     },
     {
       "parameters": {
         "method": "POST",
-        "url": "http://host.docker.internal:8001/api/v1/query-kg",
+        "url": "http://host.docker.internal:8001/internal/kg-search",
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={{ JSON.stringify({ query: $json.query, top_k: $json.top_k || 5 }) }}",
+        "jsonBody": "={{ JSON.stringify({ query: $json.query, limit: $json.top_k || 5, include_profile: true }) }}",
         "options": {
           "timeout": 8000
         }
       },
-      "id": "hybrid-graphiti-search",
-      "name": "Hybrid Graphiti Search",
+      "id": "hybrid-kg-search",
+      "name": "Hybrid KG Search",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
-      "position": [940, 900]
+      "position": [940, 900],
+      "onError": "continueRegularOutput"
     },
     {
       "parameters": {
-        "jsCode": "// Result Fusion — merge vector results into unified format\n\nconst startTime = Date.now();\nconst inputData = $input.first().json;\n\nconst results = [];\n\n// Parse vector search results\nif (inputData.results) {\n  for (const r of inputData.results) {\n    results.push({\n      content: r.chunk_text || r.text || '',\n      source: r.product_name || '',\n      source_type: 'vector',\n      score: r.relevance_score || 0,\n      product_name: r.product_name || '',\n      metadata: { section: r.section_name, doc_id: r.doc_id }\n    });\n  }\n}\n\nconst elapsed = Date.now() - startTime;\n\nreturn [{\n  json: {\n    results,\n    metadata: {\n      execution_id: $execution.id,\n      intent: 'vector',\n      sources_queried: ['vector'],\n      timing_ms: { vector: elapsed },\n      total_ms: elapsed\n    }\n  }\n}];"
+        "jsCode": "// Fuse Vector Results — format vector search output with timing and result counts\n\nconst pipelineStart = $('Query Classifier').first().json.pipeline_start || Date.now();\nconst classifyMs = $('Query Classifier').first().json.classify_ms || 0;\nconst confidence = $('Query Classifier').first().json.confidence || 0;\nconst inputData = $input.first().json;\n\nconst results = [];\n\n// Parse internal vector search response\nif (inputData.results && Array.isArray(inputData.results)) {\n  for (const r of inputData.results) {\n    results.push({\n      content: r.chunk_text || '',\n      source: r.product_name || '',\n      source_type: 'vector',\n      score: r.relevance_score || 0,\n      product_name: r.product_name || '',\n      metadata: { section: r.section_name, doc_id: r.doc_id, product_id: r.product_id }\n    });\n  }\n}\n\nconst totalMs = Date.now() - pipelineStart;\n\nreturn [{\n  json: {\n    results,\n    metadata: {\n      execution_id: $execution.id,\n      intent: 'vector',\n      classification_confidence: confidence,\n      sources_queried: ['vector'],\n      timing_ms: { classify: classifyMs, vector: totalMs - classifyMs },\n      total_ms: totalMs,\n      result_counts: { vector_count: results.length, fused_count: results.length }\n    }\n  }\n}];"
       },
       "id": "fuse-vector",
       "name": "Fuse Vector Results",
@@ -183,7 +188,7 @@
     },
     {
       "parameters": {
-        "jsCode": "// Result Fusion — merge KG entity + Graphiti results\n\nconst startTime = Date.now();\nconst items = $input.all();\nconst results = [];\n\nfor (const item of items) {\n  const data = item.json;\n  \n  // KG entity search results (array of EntitySearchResult)\n  if (Array.isArray(data)) {\n    for (const entity of data) {\n      results.push({\n        content: `${entity.label}: ${entity.canonical_name}`,\n        source: entity.canonical_name || '',\n        source_type: 'kg',\n        score: entity.score || 0,\n        product_name: entity.canonical_name || '',\n        metadata: { id: entity.id, label: entity.label }\n      });\n    }\n  }\n  \n  // Graphiti search response\n  if (data.results && Array.isArray(data.results)) {\n    for (const r of data.results) {\n      results.push({\n        content: r.fact || r.content || '',\n        source: r.source_description || '',\n        source_type: 'graphiti',\n        score: r.score || 0,\n        product_name: '',\n        metadata: { uuid: r.uuid }\n      });\n    }\n  }\n}\n\nconst elapsed = Date.now() - startTime;\n\nreturn [{\n  json: {\n    results,\n    metadata: {\n      execution_id: $execution.id,\n      intent: 'kg',\n      sources_queried: ['kg', 'graphiti'],\n      timing_ms: { kg: elapsed },\n      total_ms: elapsed\n    }\n  }\n}];"
+        "jsCode": "// Fuse KG Results — merge KG entity search + Graphiti results with timing\n\nconst pipelineStart = $('Query Classifier').first().json.pipeline_start || Date.now();\nconst classifyMs = $('Query Classifier').first().json.classify_ms || 0;\nconst confidence = $('Query Classifier').first().json.confidence || 0;\nconst items = $input.all();\nconst results = [];\nlet kgCount = 0;\nlet graphitiCount = 0;\n\nfor (const item of items) {\n  const data = item.json;\n\n  // Internal KG search response {entities, profile, count}\n  if (data.entities && Array.isArray(data.entities)) {\n    for (const entity of data.entities) {\n      results.push({\n        content: `${entity.label}: ${entity.canonical_name}`,\n        source: entity.canonical_name || '',\n        source_type: 'kg',\n        score: entity.score || 0,\n        product_name: entity.canonical_name || '',\n        metadata: { id: entity.id, label: entity.label }\n      });\n      kgCount++;\n    }\n    // If profile is included, add as a rich context block\n    if (data.profile) {\n      const p = data.profile;\n      const propsText = (p.properties || []).map(prop => `${prop.name}: ${prop.value}${prop.unit ? ' ' + prop.unit : ''}`).join('; ');\n      const appsText = (p.applications || []).join(', ');\n      const classText = (p.classification || []).join(', ');\n      let profileContent = `Product: ${p.product_name}`;\n      if (classText) profileContent += `\\nClassification: ${classText}`;\n      if (appsText) profileContent += `\\nApplications: ${appsText}`;\n      if (propsText) profileContent += `\\nProperties: ${propsText}`;\n      if (p.manufacturer) profileContent += `\\nManufacturer: ${p.manufacturer}`;\n\n      results.unshift({\n        content: profileContent,\n        source: p.product_name,\n        source_type: 'kg',\n        score: 1.0,\n        product_name: p.product_name,\n        metadata: { type: 'product_profile' }\n      });\n      kgCount++;\n    }\n  }\n\n  // Graphiti search response {results: [{fact, ...}]}\n  if (data.results && Array.isArray(data.results)) {\n    for (const r of data.results) {\n      if (r.fact || r.content) {\n        results.push({\n          content: r.fact || r.content || '',\n          source: r.source_description || '',\n          source_type: 'graphiti',\n          score: r.score || 0,\n          product_name: '',\n          metadata: { uuid: r.uuid }\n        });\n        graphitiCount++;\n      }\n    }\n  }\n}\n\nconst totalMs = Date.now() - pipelineStart;\n\nreturn [{\n  json: {\n    results,\n    metadata: {\n      execution_id: $execution.id,\n      intent: 'kg',\n      classification_confidence: confidence,\n      sources_queried: ['kg', 'graphiti'],\n      timing_ms: { classify: classifyMs, kg: totalMs - classifyMs },\n      total_ms: totalMs,\n      result_counts: { kg_count: kgCount, graphiti_count: graphitiCount, fused_count: results.length }\n    }\n  }\n}];"
       },
       "id": "fuse-kg",
       "name": "Fuse KG Results",
@@ -193,7 +198,7 @@
     },
     {
       "parameters": {
-        "jsCode": "// Result Fusion — merge vector + Graphiti hybrid results, deduplicate, rank\n\nconst startTime = Date.now();\nconst items = $input.all();\nconst results = [];\nconst seen = new Set();\n\nfor (const item of items) {\n  const data = item.json;\n  \n  // Vector search results\n  if (data.results && Array.isArray(data.results)) {\n    for (const r of data.results) {\n      // Vector results have chunk_text\n      if (r.chunk_text || r.text) {\n        const key = (r.chunk_text || r.text || '').substring(0, 100);\n        if (!seen.has(key)) {\n          seen.add(key);\n          results.push({\n            content: r.chunk_text || r.text || '',\n            source: r.product_name || '',\n            source_type: 'vector',\n            score: r.relevance_score || 0,\n            product_name: r.product_name || '',\n            metadata: { section: r.section_name, doc_id: r.doc_id }\n          });\n        }\n      }\n      // Graphiti results have fact\n      if (r.fact || r.content) {\n        const key = (r.fact || r.content || '').substring(0, 100);\n        if (!seen.has(key)) {\n          seen.add(key);\n          results.push({\n            content: r.fact || r.content || '',\n            source: r.source_description || '',\n            source_type: 'graphiti',\n            score: r.score || 0,\n            product_name: '',\n            metadata: { uuid: r.uuid }\n          });\n        }\n      }\n    }\n  }\n}\n\n// Sort by score descending\nresults.sort((a, b) => b.score - a.score);\n\nconst elapsed = Date.now() - startTime;\n\nreturn [{\n  json: {\n    results,\n    metadata: {\n      execution_id: $execution.id,\n      intent: 'hybrid',\n      sources_queried: ['vector', 'graphiti'],\n      timing_ms: { fusion: elapsed },\n      total_ms: elapsed\n    }\n  }\n}];"
+        "jsCode": "// Fuse Hybrid Results — merge vector + KG with configurable weights, dedup, rank\n// Weights are configurable via workflow static data\n\nconst pipelineStart = $('Query Classifier').first().json.pipeline_start || Date.now();\nconst classifyMs = $('Query Classifier').first().json.classify_ms || 0;\nconst confidence = $('Query Classifier').first().json.confidence || 0;\n\n// Configurable weights (edit in workflow settings > Static Data)\nconst staticData = $getWorkflowStaticData('global');\nconst vectorWeight = staticData.vector_weight ?? 0.6;\nconst kgWeight = staticData.kg_weight ?? 0.4;\n\nconst items = $input.all();\nconst results = [];\nconst seen = new Set();\nlet vectorCount = 0;\nlet kgCount = 0;\n\nfor (const item of items) {\n  const data = item.json;\n\n  // Internal vector search response\n  if (data.results && Array.isArray(data.results)) {\n    for (const r of data.results) {\n      if (r.chunk_text) {\n        const key = (r.chunk_text || '').substring(0, 100);\n        if (!seen.has(key)) {\n          seen.add(key);\n          results.push({\n            content: r.chunk_text,\n            source: r.product_name || '',\n            source_type: 'vector',\n            score: (r.relevance_score || 0) * vectorWeight,\n            raw_score: r.relevance_score || 0,\n            product_name: r.product_name || '',\n            metadata: { section: r.section_name, doc_id: r.doc_id, product_id: r.product_id }\n          });\n          vectorCount++;\n        }\n      }\n    }\n  }\n\n  // Internal KG search response\n  if (data.entities && Array.isArray(data.entities)) {\n    for (const entity of data.entities) {\n      const key = `kg:${entity.id}`;\n      if (!seen.has(key)) {\n        seen.add(key);\n        results.push({\n          content: `${entity.label}: ${entity.canonical_name}`,\n          source: entity.canonical_name || '',\n          source_type: 'kg',\n          score: (entity.score || 0) * kgWeight,\n          raw_score: entity.score || 0,\n          product_name: entity.canonical_name || '',\n          metadata: { id: entity.id, label: entity.label }\n        });\n        kgCount++;\n      }\n    }\n    // Add profile as top result if available\n    if (data.profile) {\n      const p = data.profile;\n      const propsText = (p.properties || []).map(prop => `${prop.name}: ${prop.value}${prop.unit ? ' ' + prop.unit : ''}`).join('; ');\n      const appsText = (p.applications || []).join(', ');\n      const classText = (p.classification || []).join(', ');\n      let profileContent = `Product: ${p.product_name}`;\n      if (classText) profileContent += `\\nClassification: ${classText}`;\n      if (appsText) profileContent += `\\nApplications: ${appsText}`;\n      if (propsText) profileContent += `\\nProperties: ${propsText}`;\n      if (p.manufacturer) profileContent += `\\nManufacturer: ${p.manufacturer}`;\n\n      results.unshift({\n        content: profileContent,\n        source: p.product_name,\n        source_type: 'kg',\n        score: 1.0,\n        raw_score: 1.0,\n        product_name: p.product_name,\n        metadata: { type: 'product_profile' }\n      });\n      kgCount++;\n    }\n  }\n}\n\n// Sort by weighted score descending\nresults.sort((a, b) => b.score - a.score);\n\nconst totalMs = Date.now() - pipelineStart;\n\nreturn [{\n  json: {\n    results,\n    metadata: {\n      execution_id: $execution.id,\n      intent: 'hybrid',\n      classification_confidence: confidence,\n      sources_queried: ['vector', 'kg'],\n      timing_ms: { classify: classifyMs, retrieval: totalMs - classifyMs },\n      total_ms: totalMs,\n      result_counts: { vector_count: vectorCount, kg_count: kgCount, fused_count: results.length }\n    }\n  }\n}];"
       },
       "id": "fuse-hybrid",
       "name": "Fuse Hybrid Results",
@@ -230,8 +235,8 @@
     "Intent Router": {
       "main": [
         [{ "node": "Vector Search", "type": "main", "index": 0 }],
-        [{ "node": "KG Entity Search", "type": "main", "index": 0 }, { "node": "Graphiti Search", "type": "main", "index": 0 }],
-        [{ "node": "Hybrid Vector Search", "type": "main", "index": 0 }, { "node": "Hybrid Graphiti Search", "type": "main", "index": 0 }]
+        [{ "node": "KG Search", "type": "main", "index": 0 }, { "node": "Graphiti Search", "type": "main", "index": 0 }],
+        [{ "node": "Hybrid Vector Search", "type": "main", "index": 0 }, { "node": "Hybrid KG Search", "type": "main", "index": 0 }]
       ]
     },
     "Vector Search": {
@@ -239,7 +244,7 @@
         [{ "node": "Fuse Vector Results", "type": "main", "index": 0 }]
       ]
     },
-    "KG Entity Search": {
+    "KG Search": {
       "main": [
         [{ "node": "Fuse KG Results", "type": "main", "index": 0 }]
       ]
@@ -254,7 +259,7 @@
         [{ "node": "Fuse Hybrid Results", "type": "main", "index": 0 }]
       ]
     },
-    "Hybrid Graphiti Search": {
+    "Hybrid KG Search": {
       "main": [
         [{ "node": "Fuse Hybrid Results", "type": "main", "index": 0 }]
       ]
@@ -277,6 +282,12 @@
   },
   "settings": {
     "executionOrder": "v1"
+  },
+  "staticData": {
+    "global": {
+      "vector_weight": 0.6,
+      "kg_weight": 0.4
+    }
   },
   "tags": [
     { "name": "retrieval" },

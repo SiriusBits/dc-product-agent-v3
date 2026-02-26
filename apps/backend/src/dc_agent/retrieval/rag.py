@@ -18,6 +18,10 @@ When answering questions:
 4. When referencing specific products, mention their names clearly
 5. If asked about something outside the scope of the provided context, politely explain that you can only answer questions about Dixie Chemical products based on the available documentation
 
+You may receive two types of context:
+- **Document excerpts** (from vector search): prose text from technical bulletins. Use these for detailed explanations and descriptions.
+- **Knowledge graph facts** (from KG): structured data about products including classifications, properties, applications, identifiers, and relationships. When you see structured KG data, treat property values and classifications as authoritative facts. Synthesize KG facts into natural language rather than listing them verbatim.
+
 Always maintain a professional, helpful tone appropriate for technical chemical product inquiries."""
 
 
@@ -52,30 +56,65 @@ class RAGPipeline:
     
     def format_context(self, search_results: List[SearchResult]) -> str:
         """Format search results as context for the LLM.
-        
+
+        Dispatches to specialised formatters based on the ``chunk_type``
+        (source_type) of each result so that KG and vector results are
+        presented differently.
+
         Args:
-            search_results: List of search results from the vector store.
-            
+            search_results: List of search results (may include vector, kg,
+                and graphiti results).
+
         Returns:
             Formatted context string with source attribution.
         """
         if not search_results:
             return ""
-        
-        context_parts = []
-        context_parts.append("Here is the relevant information from our technical documentation:\n")
-        
-        for i, result in enumerate(search_results, 1):
-            source_header = f"[Source {i}: {result.product_name}"
+
+        vector_results = [r for r in search_results if r.chunk_type in (None, "vector", "section", "properties", "summary")]
+        kg_results = [r for r in search_results if r.chunk_type in ("kg", "graphiti")]
+
+        parts: list[str] = []
+
+        if kg_results:
+            parts.append(self._format_kg_context(kg_results))
+        if vector_results:
+            parts.append(self._format_vector_context(vector_results, start_index=len(kg_results) + 1))
+
+        return "\n\n".join(parts)
+
+    # -- private formatters -------------------------------------------------
+
+    @staticmethod
+    def _format_vector_context(
+        results: List[SearchResult],
+        start_index: int = 1,
+    ) -> str:
+        """Format vector (prose) search results."""
+        parts = ["Here is the relevant information from our technical documentation:\n"]
+        for i, result in enumerate(results, start_index):
+            header = f"[Source {i}: {result.product_name}"
             if result.section_name:
-                source_header += f" - {result.section_name}"
-            source_header += f"] (Relevance: {result.relevance_score:.2f})"
-            
-            context_parts.append(source_header)
-            context_parts.append(result.chunk_text)
-            context_parts.append("")  # Empty line between sources
-        
-        return "\n".join(context_parts)
+                header += f" - {result.section_name}"
+            header += f"] (Relevance: {result.relevance_score:.2f})"
+            parts.append(header)
+            parts.append(result.chunk_text)
+            parts.append("")  # blank line
+        return "\n".join(parts)
+
+    @staticmethod
+    def _format_kg_context(results: List[SearchResult]) -> str:
+        """Format knowledge-graph results as structured facts."""
+        parts = ["Here are structured facts from the knowledge graph:\n"]
+        for i, result in enumerate(results, 1):
+            label = f"[KG Fact {i}"
+            if result.product_name:
+                label += f": {result.product_name}"
+            label += "]"
+            parts.append(label)
+            parts.append(result.chunk_text)
+            parts.append("")  # blank line
+        return "\n".join(parts)
     
     def build_messages(
         self,
@@ -130,28 +169,43 @@ Please provide a comprehensive answer based on the context above. If the context
     
     def extract_sources(self, search_results: List[SearchResult]) -> List[CitedSource]:
         """Extract cited sources from search results.
-        
+
+        Handles both vector results (with section names) and KG results
+        (with entity labels / source types).
+
         Args:
             search_results: List of search results.
-            
+
         Returns:
             List of CitedSource objects.
         """
-        sources = []
-        seen = set()  # Track unique product-section combinations
-        
+        sources: list[CitedSource] = []
+        seen: set[tuple[str, str]] = set()
+
         for result in search_results:
-            key = (result.product_name, result.section_name)
+            source_type = result.chunk_type or "vector"
+
+            if source_type in ("kg", "graphiti"):
+                # KG provenance: use product_name + source_type as key
+                key = (result.product_name, source_type)
+                section_label = f"Knowledge Graph ({source_type})"
+            else:
+                key = (result.product_name, result.section_name)
+                section_label = result.section_name
+
             if key not in seen:
                 seen.add(key)
+                excerpt = result.chunk_text
+                if len(excerpt) > 200:
+                    excerpt = excerpt[:200] + "..."
                 sources.append(CitedSource(
                     product_name=result.product_name,
-                    section=result.section_name,
+                    section=section_label,
                     relevance=result.relevance_score,
-                    chunk_text=result.chunk_text[:200] + "..." if len(result.chunk_text) > 200 else result.chunk_text,
+                    chunk_text=excerpt,
                     product_id=result.product_id,
                 ))
-        
+
         return sources
     
     def get_no_context_response(self) -> str:

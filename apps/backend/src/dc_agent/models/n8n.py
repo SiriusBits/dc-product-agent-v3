@@ -47,12 +47,22 @@ class N8nTraceMetadata(BaseModel):
 
     execution_id: str = ""
     intent: QueryIntent = QueryIntent.HYBRID
+    classification_confidence: float = Field(
+        default=0.0,
+        ge=0.0,
+        le=1.0,
+        description="Confidence of the intent classification (0.0-1.0).",
+    )
     sources_queried: list[str] = Field(default_factory=list)
     timing_ms: dict[str, float] = Field(
         default_factory=dict,
         description="Per-source timing in milliseconds.",
     )
     total_ms: float = 0.0
+    result_counts: dict[str, int] = Field(
+        default_factory=dict,
+        description="Per-source result counts (e.g. vector_count, kg_count, fused_count).",
+    )
 
 
 class N8nRetrievalResponse(BaseModel):
