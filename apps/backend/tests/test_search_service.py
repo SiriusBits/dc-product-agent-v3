@@ -56,7 +56,7 @@ class TestSearchService(unittest.TestCase):
         self.assertEqual(first.section_name, "Applications")
         self.assertEqual(first.chunk_text, "Document 1 content")
         self.assertEqual(first.chunk_type, "applications")
-        self.assertEqual(first.doc_id, "doc-123")
+        self.assertEqual(first.doc_id, "chunk1")  # uses Chroma record ID
         self.assertEqual(first.page, 1)
         
         # Verify relevance score conversion (1 / (1 + distance))
@@ -99,7 +99,7 @@ class TestSearchService(unittest.TestCase):
         self.assertEqual(first.product_name, "Unknown Product")
         self.assertEqual(first.section_name, "Unknown Section")
         self.assertIsNone(first.chunk_type)
-        self.assertIsNone(first.doc_id)
+        self.assertEqual(first.doc_id, "chunk1")  # uses Chroma record ID
         self.assertIsNone(first.page)
 
 

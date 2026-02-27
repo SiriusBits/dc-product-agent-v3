@@ -37,6 +37,10 @@ filterwarnings = [
     # graphiti-core uses Pydantic v1-style class Config — suppress until upstream fixes
     "ignore::pydantic.warnings.PydanticDeprecatedSince20",
 ]
+markers = [
+    "integration: requires live Neo4j (run with --run-integration)",
+    "benchmark: performance benchmarks (run with --run-benchmark)",
+]
 
 [dependency-groups]
 dev = [

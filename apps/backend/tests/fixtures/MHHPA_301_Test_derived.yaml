@@ -1,0 +1,104 @@
+knowledge_graph:
+  entities:
+  - id: test-mhhpa301-product
+    type: PRODUCT_NAME
+    canonical_name: MHHPA 301
+    aliases:
+    - Methylhexahydrophthalic Anhydride
+    source_text: MHHPA 301 (Methylhexahydrophthalic Anhydride)
+    provenance:
+      document_id: test-doc-mhhpa301
+      page: 1
+    text: MHHPA 301
+    metadata:
+      manufacturer: Dixie Chemical
+  - id: test-mhhpa301-chemical
+    type: CHEMICAL
+    canonical_name: MHHPA 301
+    aliases:
+    - Methylhexahydrophthalic Anhydride
+    source_text: MHHPA 301 anhydride curing agent
+    provenance:
+      document_id: test-doc-mhhpa301
+      page: 1
+    text: MHHPA 301
+    metadata: {}
+  - id: test-mhhpa301-class
+    type: CHEMICAL_CLASS
+    canonical_name: Anhydride
+    aliases:
+    - anhydride curing agent
+    source_text: anhydride
+    provenance:
+      document_id: test-doc-mhhpa301
+      page: 1
+    text: Anhydride
+    metadata: {}
+  - id: test-mhhpa301-app-epoxy
+    type: APPLICATION
+    canonical_name: Epoxy Curing
+    aliases:
+    - epoxy curing agent
+    source_text: used as a curing agent for epoxy resins
+    provenance:
+      document_id: test-doc-mhhpa301
+      page: 2
+    text: Epoxy Curing
+    metadata: {}
+  - id: test-mhhpa301-app-encap
+    type: APPLICATION
+    canonical_name: Electrical Encapsulation
+    aliases: []
+    source_text: electrical encapsulation
+    provenance:
+      document_id: test-doc-mhhpa301
+      page: 2
+    text: Electrical Encapsulation
+    metadata: {}
+  - id: test-mhhpa301-org
+    type: ORGANIZATION
+    canonical_name: Dixie Chemical
+    aliases: []
+    source_text: Dixie Chemical
+    provenance:
+      document_id: test-doc-mhhpa301
+      page: 1
+    text: Dixie Chemical
+    metadata: {}
+  - id: test-mhhpa301-cas
+    type: CAS_NUMBER
+    canonical_name: CAS 25550-51-0
+    aliases: []
+    source_text: 25550-51-0
+    provenance:
+      document_id: test-doc-mhhpa301
+      page: 1
+    text: CAS 25550-51-0
+    metadata: {}
+  kg_triples:
+  - subject: test-mhhpa301-chemical
+    predicate: is_a
+    object: test-mhhpa301-class
+    source_text: MHHPA 301 is an anhydride
+  - subject: test-mhhpa301-chemical
+    predicate: has_application
+    object: test-mhhpa301-app-epoxy
+    source_text: MHHPA 301 is used for epoxy curing
+  - subject: test-mhhpa301-chemical
+    predicate: has_application
+    object: test-mhhpa301-app-encap
+    source_text: MHHPA 301 is used in electrical encapsulation
+  - subject: test-mhhpa301-chemical
+    predicate: produced_by
+    object: test-mhhpa301-org
+    source_text: MHHPA 301 is manufactured by Dixie Chemical
+  - subject: test-mhhpa301-chemical
+    predicate: has_identifier
+    object: test-mhhpa301-cas
+    source_text: MHHPA 301 CAS number 25550-51-0
+  - subject: test-mhhpa301-chemical
+    predicate: has_property
+    object:
+      property: Viscosity
+      value: 50 cP at 25°C
+    source_text: Viscosity of MHHPA 301 is 50 cP at 25°C

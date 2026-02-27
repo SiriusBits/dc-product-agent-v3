@@ -1,0 +1,125 @@
+knowledge_graph:
+  entities:
+  - id: test-dca221-product
+    type: PRODUCT_NAME
+    canonical_name: DCA 221
+    aliases:
+    - Dixie Chemical Amine 221
+    source_text: DCA 221 (Dixie Chemical Amine 221)
+    provenance:
+      document_id: test-doc-dca221
+      page: 1
+    text: DCA 221
+    metadata:
+      manufacturer: Dixie Chemical
+  - id: test-dca221-chemical
+    type: CHEMICAL
+    canonical_name: DCA 221
+    aliases:
+    - Dixie Chemical Amine 221
+    source_text: DCA 221 cycloaliphatic amine curing agent
+    provenance:
+      document_id: test-doc-dca221
+      page: 1
+    text: DCA 221
+    metadata: {}
+  - id: test-dca221-class
+    type: CHEMICAL_CLASS
+    canonical_name: Cycloaliphatic Amine
+    aliases:
+    - cycloaliphatic amine
+    source_text: cycloaliphatic amine
+    provenance:
+      document_id: test-doc-dca221
+      page: 1
+    text: Cycloaliphatic Amine
+    metadata: {}
+  - id: test-dca221-app-epoxy
+    type: APPLICATION
+    canonical_name: Epoxy Curing
+    aliases:
+    - epoxy curing agent
+    source_text: used as a curing agent for epoxy resins
+    provenance:
+      document_id: test-doc-dca221
+      page: 2
+    text: Epoxy Curing
+    metadata: {}
+  - id: test-dca221-app-encap
+    type: APPLICATION
+    canonical_name: Electrical Encapsulation
+    aliases: []
+    source_text: electrical encapsulation
+    provenance:
+      document_id: test-doc-dca221
+      page: 2
+    text: Electrical Encapsulation
+    metadata: {}
+  - id: test-dca221-org
+    type: ORGANIZATION
+    canonical_name: Dixie Chemical
+    aliases:
+    - Dixie Chemical Company
+    source_text: Dixie Chemical
+    provenance:
+      document_id: test-doc-dca221
+      page: 1
+    text: Dixie Chemical
+    metadata: {}
+  - id: test-dca221-cas
+    type: CAS_NUMBER
+    canonical_name: CAS 2855-13-2
+    aliases: []
+    source_text: 2855-13-2
+    provenance:
+      document_id: test-doc-dca221
+      page: 1
+    text: CAS 2855-13-2
+    metadata: {}
+  - id: test-dca221-benefit
+    type: BENEFIT
+    canonical_name: Low viscosity
+    aliases: []
+    source_text: low viscosity curing agent
+    provenance:
+      document_id: test-doc-dca221
+      page: 2
+    text: Low viscosity
+    metadata: {}
+  kg_triples:
+  - subject: test-dca221-chemical
+    predicate: is_a
+    object: test-dca221-class
+    source_text: DCA 221 is a cycloaliphatic amine
+  - subject: test-dca221-chemical
+    predicate: has_application
+    object: test-dca221-app-epoxy
+    source_text: DCA 221 is used for epoxy curing
+  - subject: test-dca221-chemical
+    predicate: has_application
+    object: test-dca221-app-encap
+    source_text: DCA 221 is used in electrical encapsulation
+  - subject: test-dca221-chemical
+    predicate: produced_by
+    object: test-dca221-org
+    source_text: DCA 221 is manufactured by Dixie Chemical
+  - subject: test-dca221-chemical
+    predicate: has_identifier
+    object: test-dca221-cas
+    source_text: DCA 221 CAS number 2855-13-2
+  - subject: test-dca221-chemical
+    predicate: has_benefit
+    object: test-dca221-benefit
+    source_text: DCA 221 offers low viscosity
+  - subject: test-dca221-chemical
+    predicate: has_property
+    object:
+      property: Viscosity
+      value: 10 cP at 25°C
+    source_text: Viscosity of DCA 221 is 10 cP at 25°C
+  - subject: test-dca221-chemical
+    predicate: has_property
+    object:
+      property: Molecular Weight
+      value: "170"
+    source_text: Molecular weight of DCA 221 is 170
